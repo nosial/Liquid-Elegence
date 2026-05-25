@@ -12,5 +12,5 @@ web_application:
  - /*:
     - dynamical_web/**
 web_locale:
- - /*
+ - /*:
     - dynamical_locale/**
