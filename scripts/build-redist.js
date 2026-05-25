@@ -1,0 +1,40 @@
+#!/usr/bin/env node
+/**
+ * Liquid Elegance — Redist Assembly Script
+ * Assembles dist/redist/ with all variant CSS, shared JS, vendor, and assets.
+ */
+const fs = require('fs');
+const path = require('path');
+const copyDir = require('./lib/copy-dir');
+
+const ROOT = path.join(__dirname, '..');
+const DIST = path.join(ROOT, 'dist');
+const FULL = path.join(DIST, 'full');
+const REDIST = path.join(DIST, 'redist');
+
+    // 1. Copy full build CSS to dist/redist/css/
+const fullCssFiles = ['liquid-elegance.css', 'liquid-elegance.css.map',
+                      'liquid-elegance.dev.css', 'liquid-elegance.dev.css.map'];
+const redistCss = path.join(REDIST, 'css');
+fs.mkdirSync(redistCss, { recursive: true });
+for (const f of fullCssFiles) {
+    const src = path.join(FULL, 'css', f);
+    if (fs.existsSync(src)) {
+        fs.copyFileSync(src, path.join(redistCss, f));
+    }
+}
+console.log('Copied full CSS build to dist/redist/css/');
+
+// 2. Copy JS (exclude theme-customizer.js for variant use, but include in redist)
+const jsCount = copyDir(path.join(FULL, 'js'), path.join(REDIST, 'js'));
+console.log(`Copied ${jsCount} JS files to dist/redist/js/`);
+
+// 3. Copy vendor
+const vendorCount = copyDir(path.join(FULL, 'vendor'), path.join(REDIST, 'vendor'));
+console.log(`Copied ${vendorCount} vendor files to dist/redist/vendor/`);
+
+// 4. Copy assets
+const assetsCount = copyDir(path.join(FULL, 'assets'), path.join(REDIST, 'assets'));
+console.log(`Copied ${assetsCount} asset files to dist/redist/assets/`);
+
+console.log('\nRedist assembly complete: dist/redist/');
