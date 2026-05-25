@@ -1,0 +1,333 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+
+{% block content %}
+<div class="page-header"><h1 class="page-title">Notifications</h1></div>
+
+<!-- Toolbar -->
+<div class="notif-toolbar">
+    <div class="toolbar-left">
+        <button class="btn btn-sm btn-primary" id="markAllReadBtn"><i data-feather="check"></i> Mark All Read</button>
+        <span class="unread-count" id="unreadCount">8 unread notifications</span>
+    </div>
+    <div class="toolbar-right">
+        <select class="form-select form-select-sm glass-select" id="filterStatus">
+            <option value="all">All</option>
+            <option value="unread">Unread</option>
+            <option value="read">Read</option>
+        </select>
+        <select class="form-select form-select-sm glass-select" id="filterType">
+            <option value="all">All Types</option>
+            <option value="order">Orders</option>
+            <option value="system">System</option>
+            <option value="message">Messages</option>
+            <option value="security">Security</option>
+            <option value="task">Tasks</option>
+            <option value="payment">Payments</option>
+            <option value="user">Users</option>
+        </select>
+    </div>
+</div>
+
+<!-- Notification List -->
+<div class="list-group notification-list" id="notificationList">
+    <!-- 1 -->
+    <div class="list-group-item list-group-item-action unread" data-type="order">
+        <div class="notif-icon icon-order"><i data-feather="shopping-cart"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Order Received <span class="unread-dot"></span></div>
+            <div class="notif-desc">New order #ORD-2024-1847 received from Sarah Mitchell for $4,250.00</div>
+            <div class="notif-time">5 minutes ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 2 -->
+    <div class="list-group-item list-group-item-action unread" data-type="payment">
+        <div class="notif-icon icon-payment"><i data-feather="credit-card"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Payment Confirmed <span class="unread-dot"></span></div>
+            <div class="notif-desc">Payment of $1,890.00 confirmed for order #ORD-2024-1846 via Visa ending 4242</div>
+            <div class="notif-time">12 minutes ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 3 -->
+    <div class="list-group-item list-group-item-action unread" data-type="user">
+        <div class="notif-icon icon-user"><i data-feather="user-plus"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">New User Registered <span class="unread-dot"></span></div>
+            <div class="notif-desc">Emily Chen (emily.chen@designhub.co) just created a new account</div>
+            <div class="notif-time">28 minutes ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 4 -->
+    <div class="list-group-item list-group-item-action unread" data-type="system">
+        <div class="notif-icon icon-system"><i data-feather="settings"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">System Update <span class="unread-dot"></span></div>
+            <div class="notif-desc">System maintenance scheduled for March 25, 2024 from 2:00 AM to 4:00 AM UTC</div>
+            <div class="notif-time">1 hour ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 5 -->
+    <div class="list-group-item list-group-item-action unread" data-type="message">
+        <div class="notif-icon icon-message"><i data-feather="message-circle"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Message Received <span class="unread-dot"></span></div>
+            <div class="notif-desc">David Park sent you a message: &lsquo;Hey, can we discuss the Q2 roadmap tomorrow?&rsquo;</div>
+            <div class="notif-time">2 hours ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 6 -->
+    <div class="list-group-item list-group-item-action unread" data-type="security">
+        <div class="notif-icon icon-security"><i data-feather="shield"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Security Alert <span class="unread-dot"></span></div>
+            <div class="notif-desc">New login detected from Chrome on Windows in New York, NY at 10:45 AM</div>
+            <div class="notif-time">3 hours ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 7 -->
+    <div class="list-group-item list-group-item-action unread" data-type="task">
+        <div class="notif-icon icon-task"><i data-feather="check-square"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Task Assigned <span class="unread-dot"></span></div>
+            <div class="notif-desc">You&rsquo;ve been assigned to &lsquo;Implement dashboard analytics&rsquo; by Rachel Green</div>
+            <div class="notif-time">4 hours ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 8 -->
+    <div class="list-group-item list-group-item-action unread" data-type="order">
+        <div class="notif-icon icon-order"><i data-feather="shopping-cart"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Order Received <span class="unread-dot"></span></div>
+            <div class="notif-desc">New order #ORD-2024-1845 received from Alex Volkov for $5,600.00</div>
+            <div class="notif-time">5 hours ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 9 -->
+    <div class="list-group-item list-group-item-action" data-type="payment">
+        <div class="notif-icon icon-payment"><i data-feather="credit-card"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Payment Confirmed</div>
+            <div class="notif-desc">Payment of $3,200.00 confirmed for order #ORD-2024-1844 via PayPal</div>
+            <div class="notif-time">6 hours ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 10 -->
+    <div class="list-group-item list-group-item-action" data-type="system">
+        <div class="notif-icon icon-system"><i data-feather="settings"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">System Update</div>
+            <div class="notif-desc">Version 2.4.1 has been deployed successfully. View changelog for details.</div>
+            <div class="notif-time">8 hours ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 11 -->
+    <div class="list-group-item list-group-item-action" data-type="user">
+        <div class="notif-icon icon-user"><i data-feather="user-plus"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">New User Registered</div>
+            <div class="notif-desc">Thomas Weber (thomas.w@euroconsult.de) just created a new account</div>
+            <div class="notif-time">Yesterday</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 12 -->
+    <div class="list-group-item list-group-item-action" data-type="message">
+        <div class="notif-icon icon-message"><i data-feather="message-circle"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Message Received</div>
+            <div class="notif-desc">Lisa Thompson commented on your post: &lsquo;Great insights on the new feature!&rsquo;</div>
+            <div class="notif-time">Yesterday</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 13 -->
+    <div class="list-group-item list-group-item-action" data-type="task">
+        <div class="notif-icon icon-task"><i data-feather="check-square"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Task Assigned</div>
+            <div class="notif-desc">Task &lsquo;Review API documentation&rsquo; has been marked as complete by James Rodriguez</div>
+            <div class="notif-time">Yesterday</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 14 -->
+    <div class="list-group-item list-group-item-action" data-type="security">
+        <div class="notif-icon icon-security"><i data-feather="shield"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Security Alert</div>
+            <div class="notif-desc">Two-factor authentication was enabled for your account</div>
+            <div class="notif-time">2 days ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 15 -->
+    <div class="list-group-item list-group-item-action" data-type="order">
+        <div class="notif-icon icon-order"><i data-feather="shopping-cart"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Order Received</div>
+            <div class="notif-desc">New order #ORD-2024-1843 received from Priya Sharma for $3,200.00</div>
+            <div class="notif-time">2 days ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 16 -->
+    <div class="list-group-item list-group-item-action" data-type="payment">
+        <div class="notif-icon icon-payment"><i data-feather="credit-card"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Payment Confirmed</div>
+            <div class="notif-desc">Refund of $450.00 processed for order #ORD-2024-1839</div>
+            <div class="notif-time">3 days ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 17 -->
+    <div class="list-group-item list-group-item-action" data-type="system">
+        <div class="notif-icon icon-system"><i data-feather="settings"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">System Update</div>
+            <div class="notif-desc">New feature: Dark mode is now available in theme settings</div>
+            <div class="notif-time">3 days ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 18 -->
+    <div class="list-group-item list-group-item-action" data-type="message">
+        <div class="notif-icon icon-message"><i data-feather="message-circle"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Message Received</div>
+            <div class="notif-desc">Omar Hassan invited you to join the &lsquo;Project Alpha&rsquo; workspace</div>
+            <div class="notif-time">4 days ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 19 -->
+    <div class="list-group-item list-group-item-action" data-type="task">
+        <div class="notif-icon icon-task"><i data-feather="check-square"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">Task Assigned</div>
+            <div class="notif-desc">Sprint planning meeting scheduled for Monday at 10:00 AM</div>
+            <div class="notif-time">5 days ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+    <!-- 20 -->
+    <div class="list-group-item list-group-item-action" data-type="user">
+        <div class="notif-icon icon-user"><i data-feather="user-plus"></i></div>
+        <div class="notif-body">
+            <div class="notif-title">New User Registered</div>
+            <div class="notif-desc">Maria Santos (maria.s@creativelab.br) just created a new account</div>
+            <div class="notif-time">1 week ago</div>
+        </div>
+        <button class="notif-delete" title="Delete"><i data-feather="x"></i></button>
+    </div>
+</div>
+
+<!-- Load More -->
+<div class="load-more-wrap">
+    <button class="btn btn-glass-outline" id="loadMoreBtn"><i data-feather="chevrons-down"></i> Load More</button>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+
+            const list = document.getElementById('notificationList');
+            const markAllBtn = document.getElementById('markAllReadBtn');
+            const unreadCountEl = document.getElementById('unreadCount');
+            const filterStatus = document.getElementById('filterStatus');
+            const filterType = document.getElementById('filterType');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+            function updateUnreadCount() {
+                const count = list.querySelectorAll('.list-group-item.unread').length;
+                unreadCountEl.textContent = count + ' unread notification' + (count !== 1 ? 's' : '');
+            }
+
+            function applyFilters() {
+                const status = filterStatus.value;
+                const type = filterType.value;
+                list.querySelectorAll('.list-group-item').forEach(function(item) {
+                    let showStatus = true;
+                    let showType = true;
+                    if (status === 'unread') showStatus = item.classList.contains('unread');
+                    if (status === 'read') showStatus = !item.classList.contains('unread');
+                    if (type !== 'all') showType = item.getAttribute('data-type') === type;
+                    item.style.display = (showStatus && showType) ? '' : 'none';
+                });
+            }
+
+            // Mark all read
+            markAllBtn.addEventListener('click', function() {
+                list.querySelectorAll('.list-group-item.unread').forEach(function(item) {
+                    item.classList.remove('unread');
+                    var dot = item.querySelector('.unread-dot');
+                    if (dot) dot.remove();
+                });
+                updateUnreadCount();
+                applyFilters();
+            });
+
+            // Click notification to toggle read/unread
+            list.addEventListener('click', function(e) {
+                var deleteBtn = e.target.closest('.notif-delete');
+                if (deleteBtn) return;
+                var item = e.target.closest('.list-group-item');
+                if (!item) return;
+                if (item.classList.contains('unread')) {
+                    item.classList.remove('unread');
+                    var dot = item.querySelector('.unread-dot');
+                    if (dot) dot.remove();
+                } else {
+                    item.classList.add('unread');
+                    var titleEl = item.querySelector('.notif-title');
+                    if (titleEl && !titleEl.querySelector('.unread-dot')) {
+                        var newDot = document.createElement('span');
+                        newDot.className = 'unread-dot';
+                        titleEl.appendChild(newDot);
+                    }
+                }
+                updateUnreadCount();
+                applyFilters();
+            });
+
+            // Delete notification
+            list.addEventListener('click', function(e) {
+                var deleteBtn = e.target.closest('.notif-delete');
+                if (!deleteBtn) return;
+                e.stopPropagation();
+                var item = deleteBtn.closest('.list-group-item');
+                if (!item) return;
+                item.classList.add('fade-out');
+                setTimeout(function() {
+                    item.remove();
+                    updateUnreadCount();
+                    applyFilters();
+                    feather.replace();
+                }, 300);
+            });
+
+            // Filters
+            filterStatus.addEventListener('change', applyFilters);
+            filterType.addEventListener('change', applyFilters);
+
+            // Load more
+            loadMoreBtn.addEventListener('click', function() {
+                LiquidElegance.showToast('No more notifications', 'info');
+            });
+        });
+</script>
+{% endblock %}

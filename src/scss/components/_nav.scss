@@ -1,0 +1,342 @@
+/* =========================================================================
+   15. NAV PILLS (glass)
+   ========================================================================= */
+
+.glass-nav-pills .nav-link {
+    background: transparent;
+    color: var(--le-text-secondary);
+    border-radius: var(--le-radius-sm);
+    padding: var(--le-nav-pill-padding-y, 8px) var(--le-nav-pill-padding-x, 16px);
+    font-size: var(--le-nav-pill-font, 0.875rem);
+    font-weight: 500;
+    position: relative;
+    filter: brightness(1);
+    transition:
+        background 0.3s var(--le-spring-snappy),
+        color 0.2s var(--le-spring-snappy),
+        box-shadow 0.3s var(--le-spring-snappy),
+        filter 0.2s var(--le-spring-snappy);
+    border: 1px solid transparent;
+}
+
+.glass-nav-pills .nav-link:hover {
+    background: var(--le-control-bg);
+    color: var(--le-text-primary);
+    filter: brightness(1.05);
+    border-color: var(--le-control-border);
+    box-shadow: var(--le-control-shadow);
+}
+
+.glass-nav-pills .nav-link.active {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 50%),
+        var(--le-control-bg-active);
+    color: var(--le-primary);
+    font-weight: 600;
+    border-color: var(--le-control-border-strong);
+    box-shadow: var(--le-control-shadow-active), var(--le-inner-glow);
+}
+
+/* Standard Bootstrap nav-tabs */
+.nav-tabs {
+    border-bottom: 1px solid var(--le-divider-color, rgba(0, 0, 0, 0.08));
+    gap: 0;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 0;
+    color: var(--le-text-secondary);
+    font-weight: 500;
+    font-size: var(--le-nav-tab-font, 0.875rem);
+    padding: var(--le-nav-tab-padding-y, 0.625rem) var(--le-nav-tab-padding-x, 1rem);
+    position: relative;
+    transition:
+        color 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+        border-color 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+        background 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+        box-shadow 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    background: transparent;
+}
+
+.nav-tabs .nav-link:hover {
+    border-bottom-color: rgba(var(--le-primary-rgb), 0.42);
+    color: var(--le-text-primary);
+    background: var(--le-control-bg);
+    box-shadow: inset 0 -2px 12px rgba(var(--le-primary-rgb), 0.06);
+}
+
+.nav-tabs .nav-link.active {
+    border-bottom-color: var(--le-primary);
+    color: var(--le-primary);
+    background: var(--le-control-bg-active);
+    font-weight: 600;
+    box-shadow: inset 0 -3px 16px rgba(var(--le-primary-rgb), 0.10), var(--le-inner-glow);
+}
+
+/* Sliding active indicator glow */
+.nav-tabs .nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: var(--le-primary);
+    border-radius: 2px;
+    box-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.60), 0 0 32px rgba(var(--le-primary-rgb), 0.22);
+    pointer-events: none;
+}
+
+/* Standard Bootstrap nav-pills */
+.nav-pills {
+    gap: var(--le-nav-pill-gap, 4px);
+}
+
+.nav-pills .nav-link {
+    border-radius: var(--le-radius, 8px);
+    color: var(--le-text-secondary);
+    font-weight: 500;
+    font-size: var(--le-nav-pill-font, 0.875rem);
+    padding: var(--le-nav-pill-padding-y, 0.5rem) var(--le-nav-pill-padding-x, 1rem);
+    filter: brightness(1);
+    transition:
+        background 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+        color 0.2s ease,
+        box-shadow 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+        filter 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.nav-pills .nav-link:hover {
+    background: var(--le-control-bg);
+    color: var(--le-text-primary);
+    border-color: var(--le-control-border);
+    filter: brightness(1.05);
+    transform: none;
+    box-shadow: var(--le-control-shadow);
+}
+
+.nav-pills .nav-link.active {
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 50%),
+        var(--le-control-bg-active);
+    color: var(--le-primary);
+    font-weight: 600;
+    border-color: var(--le-control-border-strong);
+    box-shadow: var(--le-control-shadow-active), var(--le-inner-glow);
+}
+
+/* Dark mode nav */
+[data-theme="dark"] .nav-tabs {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .nav-tabs .nav-link:hover {
+    border-bottom-color: rgba(var(--le-primary-rgb), 0.4);
+    background: var(--le-control-bg);
+}
+
+[data-theme="dark"] .nav-tabs .nav-link.active {
+    background: var(--le-control-bg-active);
+}
+
+[data-theme="dark"] .nav-pills .nav-link:hover {
+    background: var(--le-control-bg);
+    border-color: var(--le-control-border);
+}
+
+[data-theme="dark"] .nav-pills .nav-link.active {
+    background: var(--le-control-bg-active);
+    border-color: var(--le-control-border-strong);
+}
+
+[data-theme="dark"] .glass-nav-pills .nav-link:hover {
+    background: var(--le-control-bg);
+}
+
+/* Density-aware nav — tokens drive the values, shared selector for both modes */
+[data-density="compact"] .nav-tabs .nav-link,
+[data-density="compact"] .nav-pills .nav-link,
+[data-density="comfortable"] .nav-tabs .nav-link,
+[data-density="comfortable"] .nav-pills .nav-link {
+    padding: var(--le-nav-tab-padding-y) var(--le-nav-tab-padding-x);
+    font-size: var(--le-nav-tab-font);
+}
+
+
+/* ── Navbar Glass ────────────────────────────────────────────────── */
+.navbar-glass {
+    background: var(--le-glass-bg);
+    -webkit-backdrop-filter: blur(24px) saturate(1.2) brightness(1.25);
+    backdrop-filter: blur(24px) saturate(1.2) brightness(1.25);
+    border: 1px solid var(--le-control-border);
+    box-shadow: var(--le-control-shadow);
+}
+
+[data-theme="dark"] .navbar-glass {
+    background: rgba(var(--le-dark-surface-rgb), 0.45);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .navbar-light .navbar-nav .nav-link,
+[data-theme="dark"] .navbar-light .navbar-nav .nav-link.active,
+[data-theme="dark"] .navbar-light .navbar-brand {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="dark"] .navbar-light .navbar-nav .nav-link.disabled {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+[data-theme="dark"] .navbar-light .navbar-toggler {
+    filter: brightness(0) invert(1);
+}
+
+/* ── Scrollspy List Group ────────────────────────────────────────── */
+.le-scrollspy-list .list-group-item {
+    background: transparent;
+    border: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-secondary);
+    font-size: 0.875rem;
+    padding: 0.625rem 1rem;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.le-scrollspy-list .list-group-item:hover {
+    background: var(--le-control-bg);
+    color: var(--le-text-primary);
+    border-color: var(--le-control-border);
+}
+
+.le-scrollspy-list .list-group-item.active {
+    background: var(--le-control-bg-active);
+    color: var(--le-primary);
+    font-weight: 600;
+    border-color: rgba(var(--le-primary-rgb), 0.26);
+    box-shadow: var(--le-control-shadow-active), var(--le-inner-glow);
+    z-index: 1;
+}
+
+.scrollspy-example {
+    scroll-margin-top: 1rem;
+}
+
+/* =========================================================================
+    16. DROPDOWN OVERRIDES
+    ========================================================================= */
+
+.dropdown-menu {
+    background: var(--le-surface-floating-bg);
+    backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    -webkit-backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    border: 1px solid var(--le-surface-floating-border);
+    border-radius: var(--le-radius);
+    box-shadow:
+        var(--le-surface-floating-shadow),
+        var(--le-meniscus-shadow),
+        0 1px 0 0 rgba(255, 255, 255, 0.40) inset;
+    padding: var(--le-tooltip-py, 6px);
+    animation: scale-in 0.22s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Chromatic bottom edge — water-droplet refraction line */
+.dropdown-menu::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--le-chroma-red) 20%,
+        rgba(255, 255, 255, 0.14) 50%,
+        var(--le-chroma-blue) 80%,
+        transparent
+    );
+    border-radius: 0 0 var(--le-radius) var(--le-radius);
+    pointer-events: none;
+    opacity: 0.75;
+    transition: opacity 0.25s ease;
+}
+
+.dropdown-menu:hover::after {
+    opacity: 1;
+}
+
+.dropdown-menu .dropdown-item {
+    border-radius: 6px;
+    padding: var(--le-tooltip-py, 7px) var(--le-tooltip-px, 12px);
+    font-size: var(--le-nav-tab-font, 0.875rem);
+    color: var(--le-text-primary);
+    position: relative;
+    filter: brightness(1);
+    transition:
+        background 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+        color 0.2s ease,
+        box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+        filter 0.2s ease,
+        padding-left 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background: var(--le-control-bg-active);
+    color: var(--le-primary);
+    box-shadow: var(--le-control-shadow), 0 0 0 1px rgba(var(--le-primary-rgb), 0.05);
+    filter: brightness(1.06);
+    padding-left: 18px;
+}
+
+.dropdown-menu .dropdown-item:active {
+    background: rgba(var(--le-primary-rgb), 0.16);
+    filter: brightness(0.95);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.10);
+}
+
+.dropdown-menu .dropdown-divider {
+    border-color: var(--le-glass-border-subtle);
+    margin: 4px 0;
+}
+
+
+/* =========================================================================
+   17. BREADCRUMB OVERRIDES
+   ========================================================================= */
+
+.breadcrumb {
+    font-size: var(--le-breadcrumb-font, 0.8125rem);
+    background: transparent;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.breadcrumb-item a {
+    color: var(--le-text-muted);
+    text-decoration: none;
+    transition:
+        color var(--le-transition-fast),
+        text-shadow var(--le-transition-fast);
+}
+
+.breadcrumb-item a:hover {
+    color: var(--le-primary);
+    text-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.28);
+}
+
+.breadcrumb-item.active {
+    color: var(--le-text-primary);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--le-text-muted);
+}

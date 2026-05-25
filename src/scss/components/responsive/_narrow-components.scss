@@ -1,0 +1,93 @@
+/* ---- Additional mobile component optimizations ---- */
+
+/* ---- XS screens (≤ 480px): further component compaction ---- */
+@media (max-width: 480px) {
+
+  /* Buttons: smaller but still touch-friendly */
+  .btn {
+    font-size: 0.8125rem;
+  }
+
+  .btn-glass,
+  .btn-glass-primary,
+  .btn-glass-outline {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  .btn-sm {
+    min-height: 34px;
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* Forms: tighter labels */
+  .glass-card .form-label,
+  .modal-glass .form-label {
+    font-size: 0.6875rem;
+    margin-bottom: 3px;
+  }
+
+  /* Modals: truly fullscreen on small devices */
+  .modal-glass .modal-dialog {
+    margin: 0.25rem;
+    max-width: calc(100% - 0.5rem);
+  }
+
+  .modal-glass .modal-header,
+  .modal-glass .modal-footer {
+    padding: 10px 14px;
+  }
+
+  .modal-glass .modal-body {
+    padding: 12px 14px;
+  }
+
+  .modal-glass .modal-title {
+    font-size: 1rem;
+  }
+
+  /* Tables: minimum font */
+  .glass-card .table thead th,
+  .glass-card .table tbody td {
+    padding: 6px 8px;
+    font-size: 0.6875rem;
+  }
+
+  /* Nav pills/tabs: compact */
+  .nav-tabs .nav-link,
+  .nav-pills .nav-link,
+  .glass-nav-pills .nav-link {
+    padding: 0.375rem 0.625rem;
+    font-size: 0.75rem;
+  }
+
+  /* Accordion: tightest */
+  .glass-accordion .accordion-button {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  .glass-accordion .accordion-body {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  /* Progress bars: maintain visibility */
+  .progress {
+    height: 5px;
+    border-radius: 3px;
+  }
+
+  /* Badge: minimum readable size */
+  .badge {
+    font-size: 0.625rem;
+    padding: 0.25em 0.5em;
+  }
+
+  /* List group items: compact */
+  .list-group-item {
+    padding: 8px 12px;
+    font-size: 0.8125rem;
+  }
+}

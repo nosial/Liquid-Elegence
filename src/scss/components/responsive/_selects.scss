@@ -1,0 +1,75 @@
+/* ---- Select2 / custom selects: full width on mobile ---- */
+@media (max-width: 575.98px) {
+  .glass-card select,
+  .glass-card .form-select {
+    width: 100%;
+    min-height: 40px;
+  }
+}
+
+/* ---- Horizontal scroll fade hint for tables ---- */
+@media (max-width: 575.98px) {
+  .glass-card .table-responsive::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 24px;
+    background: linear-gradient(90deg, transparent, var(--le-glass-bg));
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: 1;
+  }
+
+  .glass-card .table-responsive {
+    position: relative;
+  }
+}
+
+/* ---- Extra small phones (≤380px): emergency overflows ---- */
+@media (max-width: 380px) {
+  .glass-card-header .d-flex {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .glass-card-header .btn {
+    padding: 4px 8px;
+    font-size: 0.6875rem;
+  }
+
+  .glass-card-title {
+    font-size: 0.8125rem;
+  }
+
+  /* Ensure all images fit */
+  .glass-card img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+/* ---- Reduced motion: respect user preferences ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .progress-bar::after {
+    animation: none !important;
+  }
+
+  .notification-badge {
+    animation: none !important;
+  }
+
+  .status-dot.online {
+    animation: none !important;
+  }
+}

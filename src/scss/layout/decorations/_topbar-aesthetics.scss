@@ -1,0 +1,185 @@
+/* ── Topbar Aesthetics ── */
+
+/* Topbar bottom edge — vivid gradient line for visual separation */
+.topbar {
+  position: relative;
+}
+
+.topbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(var(--le-primary-rgb), 0.25) 20%,
+    rgba(var(--le-primary-rgb), 0.45) 50%,
+    rgba(var(--le-primary-rgb), 0.25) 80%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .topbar::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--le-primary-rgb), 0.15) 20%,
+    rgba(var(--le-primary-rgb), 0.35) 50%,
+    rgba(var(--le-primary-rgb), 0.15) 80%,
+    transparent 100%
+  );
+}
+
+/* Search input — glass treatment with frosted background & animated focus ring */
+.topbar-search .form-control {
+  background: var(--le-control-bg);
+  border: 1px solid var(--le-control-border);
+  box-shadow: var(--le-control-shadow);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topbar-search .form-control:focus {
+  background: var(--le-control-bg-hover);
+  border-color: rgba(var(--le-primary-rgb), 0.4);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04),
+              0 0 0 3px rgba(var(--le-primary-rgb), 0.12),
+              0 0 16px rgba(var(--le-primary-rgb), 0.08);
+  outline: none;
+}
+
+@keyframes search-ring-expand {
+  0%   { box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0 0 rgba(var(--le-primary-rgb), 0.2); }
+  100% { box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04), 0 0 0 3px rgba(var(--le-primary-rgb), 0.12), 0 0 16px rgba(var(--le-primary-rgb), 0.08); }
+}
+
+.topbar-search .form-control:focus {
+  animation: search-ring-expand 0.35s ease-out forwards;
+}
+
+[data-theme="dark"] .topbar-search .form-control {
+  background: var(--le-control-bg);
+  border-color: var(--le-control-border);
+  box-shadow: var(--le-control-shadow);
+}
+
+[data-theme="dark"] .topbar-search .form-control:focus {
+  background: var(--le-control-bg-hover);
+  border-color: rgba(var(--le-primary-rgb), 0.35);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15),
+              0 0 0 3px rgba(var(--le-primary-rgb), 0.15),
+              0 0 20px rgba(var(--le-primary-rgb), 0.1);
+}
+
+/* Topbar icon buttons — glass hover with luminance and inner highlight */
+.topbar-icon-btn {
+  position: relative;
+  border-radius: 12px;
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              filter 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topbar-icon-btn:hover {
+  background: var(--le-control-bg-active);
+  box-shadow: var(--le-control-shadow-active),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  filter: brightness(1.05);
+}
+
+.topbar-icon-btn:active {
+  filter: brightness(0.96);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transform: scale(0.96);
+}
+
+[data-theme="dark"] .topbar-icon-btn:hover {
+  background: rgba(var(--le-primary-rgb), 0.12);
+  box-shadow: 0 2px 14px rgba(var(--le-primary-rgb), 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Notification / message dropdowns — glass panel with frosted header */
+.topbar .dropdown-menu {
+  background: var(--le-surface-floating-bg);
+  border: 1px solid var(--le-surface-floating-border);
+  border-radius: var(--le-radius);
+  box-shadow: var(--le-surface-floating-shadow);
+  overflow: hidden;
+}
+
+.topbar .dropdown-menu .dropdown-header,
+.topbar .dropdown-menu > :first-child {
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .topbar .dropdown-menu .dropdown-header,
+[data-theme="dark"] .topbar .dropdown-menu > :first-child {
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+/* User avatar — animated gradient ring glow */
+.topbar-user .avatar,
+.topbar-user .avatar-placeholder {
+  position: relative;
+  box-shadow: 0 0 0 2px rgba(var(--le-primary-rgb), 0.20),
+              0 0 14px rgba(var(--le-primary-rgb), 0.12);
+  transition: box-shadow 0.3s ease;
+}
+
+.topbar-user .avatar:hover,
+.topbar-user .avatar-placeholder:hover,
+.topbar-user .dropdown-toggle:hover .avatar,
+.topbar-user .dropdown-toggle:hover .avatar-placeholder {
+  box-shadow: 0 0 0 2.5px rgba(var(--le-primary-rgb), 0.45),
+              0 0 20px rgba(var(--le-primary-rgb), 0.20),
+              0 0 40px rgba(var(--le-primary-rgb), 0.06);
+}
+
+/* Breadcrumb — glass pill with frosted segments and inner highlight */
+.breadcrumb-nav .breadcrumb {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 100px;
+  padding: 0.3rem 0.85rem;
+  margin: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.breadcrumb-nav .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(var(--le-primary-rgb), 0.4);
+  content: '›';
+  font-weight: var(--le-font-weight-semibold);
+}
+
+.breadcrumb-nav .breadcrumb-item a {
+  color: var(--le-text-secondary);
+  text-decoration: none;
+  padding: 0.15rem 0.4rem;
+  border-radius: var(--le-radius-sm);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.breadcrumb-nav .breadcrumb-item a:hover {
+  color: var(--le-primary);
+  background: rgba(var(--le-primary-rgb), 0.08);
+}
+
+.breadcrumb-nav .breadcrumb-item.active {
+  color: var(--le-text-primary);
+  font-weight: var(--le-font-weight-medium);
+}
+
+[data-theme="dark"] .breadcrumb-nav .breadcrumb {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.06);
+}

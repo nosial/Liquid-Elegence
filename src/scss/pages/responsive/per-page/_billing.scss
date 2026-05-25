@@ -1,0 +1,92 @@
+/* --------------------------------------------------------------------------
+   23q. Billing — improved mobile cards and tables
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .payment-card {
+    padding: 12px;
+  }
+
+  .payment-card-number {
+    font-size: 0.8125rem;
+    letter-spacing: 0.5px;
+  }
+
+  .payment-card .d-flex {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Billing stat cards: compact */
+  .status-card {
+    padding: 8px;
+  }
+
+  .status-card-value {
+    font-size: 1rem;
+  }
+
+  .status-card-title {
+    font-size: 0.6875rem;
+  }
+
+  /* Usage bars */
+  .usage-stat .d-flex {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .usage-label,
+  .usage-value {
+    font-size: 0.6875rem;
+  }
+
+  /* Transaction tables: scroll */
+  .billing-table-wrap,
+  .glass-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .billing-table-wrap .table,
+  .glass-table-wrapper .table {
+    min-width: 450px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   20t. Billing page — mobile layout (phone)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .payment-card {
+    padding: 12px;
+  }
+
+  .payment-card-number {
+    font-size: 0.875rem;
+    letter-spacing: 1px;
+  }
+
+  .billing-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .billing-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .status-card {
+    padding: 10px;
+  }
+
+  .status-card-value {
+    font-size: 1.125rem;
+  }
+
+  .usage-bar-label {
+    font-size: 0.6875rem;
+  }
+}
+
+

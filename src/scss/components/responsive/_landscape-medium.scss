@@ -1,0 +1,122 @@
+/* ---- Landscape with medium viewport (tablet landscape) ---------------- */
+@media (max-height: 700px) and (min-height: 501px) and (orientation: landscape) {
+
+  /* Slightly reduced topbar */
+  .topbar {
+    height: 56px;
+    min-height: 56px;
+  }
+
+  .sidebar-header {
+    height: 56px;
+    min-height: 56px;
+  }
+
+  /* Modals: ensure scrollable on shorter viewports */
+  .modal-glass .modal-body {
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+  }
+
+  /* Tighter content */
+  .glass-card-body {
+    padding: 14px;
+  }
+
+  .glass-card-header {
+    padding: 10px 16px;
+  }
+}
+
+
+/* ---- Safe-area insets for notched devices (iPhone X+, etc.) ----------- */
+@supports (padding: env(safe-area-inset-bottom)) {
+
+  .main-footer {
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  }
+
+  .sidebar {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  @media (max-width: 991.98px) {
+    .page-content {
+      padding-left: calc(12px + env(safe-area-inset-left));
+      padding-right: calc(12px + env(safe-area-inset-right));
+    }
+  }
+}
+
+
+/* ---- Additional mobile touch optimizations ---- */
+
+/* Tablet (≤ 768px): sidebar links touch-friendly */
+@media (max-width: 768px) {
+  .sidebar-link {
+    padding: 12px;
+    min-height: 44px;
+  }
+
+  .sidebar-nav-label {
+    padding: 6px 20px;
+  }
+}
+
+/* Mobile (≤ 576px): table-responsive bleeds to the card edge so the
+   table reads as full-width. The negative margin uses the same
+   `--le-body-pad` token as the body padding, so when the body has
+   `p-0` (which resets the token below) the bleed is 0 and the table
+   stays inside the card. */
+@media (max-width: 576px) {
+  .glass-card .table-responsive,
+  .glass-card .glass-table-wrapper {
+    margin: 0 calc(var(--le-body-pad, 14px) * -1);
+    width: calc(100% + (var(--le-body-pad, 14px) * 2));
+    border-radius: 0;
+  }
+
+  /* Full-width buttons in card footers on mobile */
+  .glass-card-footer .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .glass-card-footer .d-flex {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Progress bars: slightly taller for visibility on mobile */
+  .progress {
+    height: 6px;
+  }
+}
+
+/* Mobile (≤ 480px): extra-compact for smallest screens */
+@media (max-width: 480px) {
+  /* Avatar system: slightly smaller */
+  .avatar-group .avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 0.625rem;
+  }
+
+  /* Tooltips: ensure readable on mobile */
+  .tooltip-inner {
+    max-width: 220px;
+    font-size: 0.75rem;
+  }
+
+  /* Toast notifications: wider on mobile */
+  .toast-container {
+    left: 0.5rem !important;
+    right: 0.5rem !important;
+    padding: 0 !important;
+  }
+
+  .toast-container .toast {
+    width: 100%;
+    max-width: none;
+  }
+}

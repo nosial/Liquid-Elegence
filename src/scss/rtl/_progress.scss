@@ -1,0 +1,10 @@
+/* ─────────────────────────────────────────────────────────────
+   18. Progress bars
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .progress-bar {
+    direction: ltr;             /* keeps percentage growing left-to-right */
+    transform-origin: right;
+}
+
+

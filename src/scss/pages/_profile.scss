@@ -1,0 +1,350 @@
+/* ============================================================================
+   10. PROFILE
+   ============================================================================ */
+
+/* ---- profile header card (LinkedIn-style) ---- */
+.profile-header-card {
+  padding: 0 !important;
+  overflow: hidden;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile-cover {
+  height: 180px;
+  background: linear-gradient(135deg, var(--le-primary), var(--le-secondary, var(--le-primary-dark)));
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.12) 100%);
+  pointer-events: none;
+}
+
+.profile-info-section {
+  padding: 0 1.5rem 1.25rem;
+  position: relative;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--le-primary), var(--le-secondary, var(--le-primary-dark)));
+  border: 4px solid var(--le-glass-bg-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -60px;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.profile-avatar-initials {
+  color: var(--le-text-inverse);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+/* ---- profile info row (side-by-side layout) ---- */
+.profile-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.profile-info-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-name {
+  margin: 0 0 0.15rem;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.profile-headline {
+  margin: 0 0 0.25rem;
+  color: var(--le-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.profile-location {
+  margin: 0 0 0.5rem;
+  color: var(--le-text-muted);
+  font-size: 0.85rem;
+}
+
+/* ---- inline stats (connections-style) ---- */
+.profile-stats-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.profile-stat-link {
+  color: var(--le-primary);
+  text-decoration: none;
+  transition: color var(--le-transition-fast);
+
+  strong {
+    font-weight: 600;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.profile-stat-dot {
+  color: var(--le-text-muted);
+  user-select: none;
+}
+
+/* ---- action buttons ---- */
+.profile-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  align-items: flex-start;
+  padding-top: 0.25rem;
+}
+
+/* ---- responsive: stack on mobile ---- */
+@media (max-width: 575.98px) {
+  .profile-cover {
+    height: 120px;
+  }
+
+  .profile-avatar {
+    width: 96px;
+    height: 96px;
+    margin-top: -48px;
+  }
+
+  .profile-avatar-initials {
+    font-size: 2rem;
+  }
+
+  .profile-info-row {
+    flex-direction: column;
+  }
+
+  .profile-actions {
+    flex-wrap: wrap;
+  }
+}
+
+/* ---- skill tags ---- */
+.profile-skills .badge {
+  background: rgba(var(--le-primary-rgb), 0.12);
+  color: var(--le-primary);
+  padding: 0.35em 0.75em;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ---- activity items ----
+   These items live inside a `.glass-card` and use Bootstrap's `.list-group` /
+   `.list-group-item` classes purely as a structural hook. We strip the
+   Bootstrap defaults (white background, full 1px border on every side, rounded
+   corners, opaque z-index stacking) so only the optional subtle bottom
+   separator we add via `.border-bottom-subtle` remains. */
+.profile-activity {
+  --bs-list-group-bg: transparent;
+  --bs-list-group-border-color: transparent;
+  --bs-list-group-border-width: 0;
+  --bs-list-group-border-radius: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.profile-activity .list-group-item {
+  padding: 0.75rem 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.profile-activity .list-group-item.border-bottom-subtle {
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+.profile-activity-icon {
+  background: rgba(var(--le-primary-rgb), 0.1);
+  border-radius: var(--le-radius-sm);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--le-primary);
+}
+
+/* ---- team avatars ---- */
+.profile-team-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  color: var(--le-text-primary);
+}
+
+.profile-upload {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--le-radius-full);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--le-glass-bg);
+  border: 2px dashed var(--le-glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-upload img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--le-overlay-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--le-transition-fast);
+  color: var(--le-text-inverse);
+  font-size: 11px;
+  gap: 2px;
+}
+
+.profile-upload:hover .camera-overlay {
+  opacity: 1;
+}
+
+/* ---- social links ---- */
+.social-links {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--le-radius-full);
+  background: var(--le-glass-bg-subtle);
+  border: 1px solid var(--le-glass-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--le-text-muted);
+  transition: all var(--le-transition-fast);
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: var(--le-glass-bg);
+  color: var(--le-primary);
+  border-color: var(--le-primary);
+}
+
+
+/* ---- density: compact ---- */
+[data-density="compact"] .profile-cover {
+  height: 140px;
+}
+
+[data-density="compact"] .profile-avatar {
+  width: 96px;
+  height: 96px;
+  margin-top: -48px;
+}
+
+[data-density="compact"] .profile-avatar-initials {
+  font-size: 2rem;
+}
+
+[data-density="compact"] .profile-upload {
+  width: 64px;
+  height: 64px;
+}
+
+[data-density="compact"] .camera-overlay {
+  font-size: 10px;
+}
+
+[data-density="compact"] .social-links {
+  gap: 6px;
+}
+
+[data-density="compact"] .social-link {
+  width: 30px;
+  height: 30px;
+}
+
+
+/* ---- density: comfortable ---- */
+[data-density="comfortable"] .profile-cover {
+  height: 220px;
+}
+
+[data-density="comfortable"] .profile-avatar {
+  width: 140px;
+  height: 140px;
+  margin-top: -70px;
+}
+
+[data-density="comfortable"] .profile-avatar-initials {
+  font-size: 3rem;
+}
+
+[data-density="comfortable"] .profile-upload {
+  width: 96px;
+  height: 96px;
+}
+
+[data-density="comfortable"] .camera-overlay {
+  font-size: 12px;
+  gap: 4px;
+}
+
+[data-density="comfortable"] .social-links {
+  gap: 10px;
+}
+
+[data-density="comfortable"] .social-link {
+  width: 42px;
+  height: 42px;
+}

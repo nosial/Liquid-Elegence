@@ -1,0 +1,250 @@
+// pages/responsive/baseline/cross-page.scss
+// Cross-page baseline.
+
+/* ============================================================================
+   Global responsive & theme consistency overrides
+   ----------------------------------------------------------------------------
+   Applied broadly across every demo page so we don't have to touch every
+   inline `<style>` block one-by-one. Covers the recurring patterns identified
+   while fixing individual pages:
+
+     1. Toolbar containers (.toolbar-glass, .crud-toolbar, .table-header-actions)
+        — flex layout, action groups push right via Bootstrap's `ms-auto`
+        utility (no `justify-content: space-between` which only works for
+        2 children). Keeps everything visible & properly distributed across
+        every breakpoint.
+
+     2. Search inputs (.search-box, .toolbar-search)
+        — grow to fill available width on tablet/desktop instead of being
+        capped to 300px and clustering on the left.
+
+     3. Search icon wrappers (.search-icon)
+        — robust vertical centering via full-height absolute box + flex
+        rather than baseline-dependent `top: 50%; translateY(-50%)`. Works
+        identically in light and dark themes.
+
+     4. Form control placeholders
+        — explicit theme-aware colour so dark-mode inputs don't render with
+        Bootstrap's default dark placeholder text on a dark surface.
+
+     5. Inline `rgba(255, 255, 255, …)` glass surfaces in templates
+        — forced to use theme-aware glass tokens in dark mode so the inline
+        styles don't punch a permanently-light hole through the dark theme.
+
+     6. Mobile metric / quick-stat grids
+        — already addressed in per-page/_dashboard.scss; this file
+        adds a safety pass for additional component groups (col-6 col-md-4,
+        col-sm-6 col-lg-3, etc.) that crush content on portrait phones.
+   ============================================================================ */
+
+
+/* ── 1. Toolbar containers ────────────────────────────────────────────────── */
+
+.toolbar-glass,
+.crud-toolbar,
+.table-header-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+
+/* ── 2. Search inputs grow into available width ──────────────────────────── */
+
+.toolbar-glass .search-box,
+.crud-toolbar  .search-box,
+.toolbar-glass .toolbar-search,
+.crud-toolbar  .toolbar-search {
+  flex: 1 1 240px;
+  min-width: 200px;
+  max-width: none;
+}
+
+
+/* ── 3. Search icon centering (works in both themes) ─────────────────────── */
+
+.search-box,
+.toolbar-search {
+  position: relative;
+}
+
+.search-box .search-icon,
+.toolbar-search .search-icon {
+  /* Use !important to outrank page-level inline `<style>` blocks that load
+     after this file in the cascade and try to re-center via the fragile
+     `top: 50%; transform: translateY(-50%)` pattern. */
+  position: absolute !important;
+  left: 10px !important;
+  right: auto !important;
+  top: 50% !important;
+  bottom: auto !important;
+  width: 18px;
+  height: 18px;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: var(--le-text-secondary);
+  opacity: 0.95;
+  pointer-events: none;
+  transform: translateY(-50%) !important;
+  line-height: 1;
+}
+
+[data-theme="dark"] .search-box .search-icon,
+[data-theme="dark"] .toolbar-search .search-icon {
+  color: rgba(255, 255, 255, 0.78);
+  opacity: 1;
+}
+
+.search-box .search-icon svg,
+.toolbar-search .search-icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  stroke-width: 2.25;
+}
+
+.search-box input,
+.toolbar-search input {
+  padding-left: 2.25rem;
+  width: 100%;
+}
+
+
+/* ── 4. Theme-aware placeholders everywhere ──────────────────────────────── */
+
+.form-control::placeholder,
+.form-select::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: var(--le-text-muted);
+  opacity: 1;
+}
+
+[data-theme="dark"] .form-control::placeholder,
+[data-theme="dark"] .form-select::placeholder,
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+  opacity: 1;
+}
+
+
+/* ── 5. Theme-aware surfaces for shared glass containers ──────────────────
+   Selectors below ensure `.toolbar-glass`, `.table-glass`, `.mobile-card`,
+   etc. use the current theme's glass tokens. `!important` is retained as a
+   safety net for any third-party widget or runtime-injected style that may
+   target these classes after the bundle loads. */
+
+[data-theme="dark"] .toolbar-glass,
+[data-theme="dark"] .table-glass-wrapper,
+[data-theme="dark"] .table-glass,
+[data-theme="dark"] .pagination-wrapper {
+  background: var(--le-glass-bg) !important;
+  border-color: var(--le-glass-border) !important;
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .toolbar-glass .form-control,
+[data-theme="dark"] .toolbar-glass .form-select,
+[data-theme="dark"] .toolbar-glass input,
+[data-theme="dark"] .toolbar-glass select {
+  background: var(--le-control-bg) !important;
+  border-color: var(--le-control-border) !important;
+  color: var(--le-text-primary) !important;
+}
+
+[data-theme="dark"] .table-glass thead th {
+  background: var(--le-table-head-bg) !important;
+  border-color: var(--le-glass-border) !important;
+  color: var(--le-text-secondary);
+}
+
+[data-theme="dark"] .table-glass tbody td {
+  border-color: var(--le-divider-color) !important;
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .table-glass tbody tr:hover {
+  background: var(--le-table-row-hover) !important;
+}
+
+[data-theme="dark"] .mobile-card {
+  background: var(--le-glass-bg) !important;
+  border-color: var(--le-glass-border) !important;
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .modal-glass .modal-content {
+  background: var(--le-surface-floating-bg) !important;
+  border-color: var(--le-surface-floating-border) !important;
+  color: var(--le-text-primary);
+}
+
+
+/* ── 6. Mobile responsive safety net ──────────────────────────────────────
+   Prevent quick-stat / metric-style grids on smaller widths from crushing
+   their contents. Stops at sm/md so wider phones keep multi-up grids when
+   they have the room. */
+
+@media (max-width: 479.98px) {
+  /* Any 4-up or 3-up at xl/lg that was promoted to 2-up at sm should drop to
+     1-up on narrow portrait phones — content gets too cramped at <240px slot
+     widths. */
+  .row > [class*="col-sm-6"][class*="col-lg-3"],
+  .row > [class*="col-6"][class*="col-md-3"],
+  .row > [class*="col-6"][class*="col-md-4"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* ── 7. Toolbar action group on tiny screens ─────────────────────────────
+   When an `.ms-auto` action group inside a toolbar wraps to its own line on
+   xs, line-break it cleanly and stretch its buttons full width so users on
+   phones don't get a tiny right-aligned cluster. */
+
+@media (max-width: 575.98px) {
+  .toolbar-glass > .ms-auto,
+  .crud-toolbar > .ms-auto,
+  .table-header-actions > .ms-auto {
+    margin-left: 0 !important;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  /* Make filter selects in toolbars take a sensible mobile width too */
+  .toolbar-glass .form-select,
+  .crud-toolbar  .form-select {
+    flex: 1 1 calc(50% - 0.5rem);
+    min-width: 0;
+  }
+}
+
+
+/* ── 8. Component density safety on smaller viewports ─────────────────────
+   For demo pages that show many control variants in dense rows (buttons,
+   forms, badges, etc.), allow them to wrap nicely instead of overflowing. */
+
+@media (max-width: 767.98px) {
+  .demo-row,
+  .demo-block,
+  .components-showcase,
+  .button-group-demo,
+  .badge-demo,
+  .avatar-demo {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Button groups in demos: allow them to wrap to multiple rows so they
+     don't spill horizontally beyond the viewport. */
+  .demo-block .btn-group,
+  .components-showcase .btn-group {
+    flex-wrap: wrap;
+  }
+}

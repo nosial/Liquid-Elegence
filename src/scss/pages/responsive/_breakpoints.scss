@@ -1,0 +1,199 @@
+/* ============================================================================
+   18. RESPONSIVE BREAKPOINTS
+   ============================================================================ */
+
+/* ---- tablet / small desktop (≤ 767.98px) ---- */
+@media (max-width: 767.98px) {
+
+  /* chat — sidebar & info panel handled in _chat.scss */
+  .chat-main {
+    width: 100%;
+  }
+  .fm-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+
+  /* crud tables */
+  .table-desktop {
+    display: none;
+  }
+  .mobile-cards,
+  .cards-container {
+    display: block;
+  }
+  .crud-toolbar,
+  .toolbar-glass {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .toolbar-left,
+  .toolbar-right {
+    flex-wrap: wrap;
+  }
+  .toolbar-search,
+  .search-box {
+    max-width: 100%;
+  }
+  .toolbar-search input,
+  .search-box input {
+    font-size: 1rem;
+    min-height: 44px;
+  }
+  .toolbar-filter {
+    min-height: 44px;
+  }
+
+  /* auth */
+  .auth-card {
+    padding: 24px;
+  }
+  .auth-container {
+    max-width: 100%;
+  }
+  .auth-title {
+    font-size: 20px;
+  }
+
+  /* error */
+  .error-code {
+    font-size: 5rem;
+  }
+  .error-subtitle {
+    font-size: 20px;
+  }
+
+  /* pricing — card/title sizing */
+  .pricing-card {
+    padding: 24px;
+  }
+  .pricing-card.featured {
+    filter: none;
+  }
+  .pricing-card.featured:hover {
+    filter: brightness(1.06);
+  }
+  .plan-price {
+    font-size: 36px;
+  }
+
+  /* invoice — document header */
+  .invoice-document {
+    padding: 16px;
+  }
+  .invoice-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .invoice-meta {
+    text-align: left;
+  }
+
+  /* notifications — toolbar */
+  .notif-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* billing — tables scrollable */
+  .billing-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* FAQ — tabs scrollable */
+  .faq-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+    gap: 4px;
+  }
+  .faq-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .faq-tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 36px;
+  }
+
+  /* settings — nav pills horizontal scroll */
+  .settings-card .nav-pills {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    padding-bottom: 4px;
+  }
+  .settings-card .nav-pills::-webkit-scrollbar {
+    display: none;
+  }
+  .settings-card .nav-pills .nav-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .session-item,
+  .device-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .session-item .btn,
+  .device-item .btn {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  /* countdown */
+  .countdown-card {
+    padding: 14px 16px;
+    min-width: 70px;
+  }
+  .countdown-number {
+    font-size: 28px;
+  }
+
+  /* pagination */
+  .pagination-wrapper {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
+/* ---- small mobile (≤ 575.98px) ---- */
+@media (max-width: 575.98px) {
+
+  /* mobile card touch targets */
+  .mobile-card,
+  .card-mobile,
+  .mobile-user-card {
+    padding: 14px;
+  }
+  .card-actions button,
+  .mc-actions button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  .card-details {
+    grid-template-columns: 1fr;
+  }
+
+  /* mail list compact */
+  .mail-item-label {
+    font-size: 0.5625rem;
+  }
+
+  /* CRUD toolbar full width */
+  .toolbar-filters {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .filter-group {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+
+

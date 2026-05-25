@@ -1,0 +1,79 @@
+/* ---------------------------------------------------------------------------
+   Density Overrides
+   --------------------------------------------------------------------------- */
+
+/* ── Compact ── */
+[data-density="compact"] {
+
+    /* Layout */
+    .calendar-layout  { gap: var(--le-spacing-md); }
+    .calendar-sidebar { width: 240px; }
+
+    /* Create-event button */
+    .btn-create-event {
+        gap: var(--le-spacing-xs);
+        padding: 0.5rem 0.75rem;
+        font-size: var(--le-font-size-xs);
+    }
+
+    /* Mini calendar */
+    .mini-cal-header    { margin-bottom: var(--le-spacing-sm); }
+    .mini-cal-header h6 { font-size: var(--le-font-size-xs); }
+    .mini-cal-nav       { padding: 0.125rem; }
+    .mini-cal-grid      { gap: 1px; }
+    .mini-cal-day-name  { font-size: 0.625rem; padding: 0.125rem 0; }
+    .mini-cal-date      { font-size: 0.6875rem; padding: 0.2rem 0; }
+    .mini-cal-date .event-dots .dot { width: 3px; height: 3px; }
+
+    /* Upcoming events */
+    .upcoming-event       { gap: var(--le-spacing-sm); padding: 0.375rem 0; }
+    .upcoming-event-bar   { width: 3px; }
+    .upcoming-event-title { font-size: 0.75rem; margin-bottom: 0; }
+    .upcoming-event-meta  { font-size: 0.625rem; }
+
+    /* Calendar filters */
+    .cal-filter-item  { gap: var(--le-spacing-xs); padding: 0.25rem 0; font-size: 0.75rem; }
+    .cal-filter-check { width: 15px; height: 15px; }
+    .cal-filter-check svg { width: 10px; height: 10px; }
+
+    /* Main header & navigation */
+    .cal-main-header { gap: var(--le-spacing-sm); }
+    .cal-nav-group   { gap: var(--le-spacing-xs); }
+    .cal-nav         { padding: 0.5rem 0.75rem; }
+    .cal-header      { padding: 0.5rem 0.75rem; }
+    .cal-nav-btn     { width: 28px; height: 28px; }
+    .cal-today-btn   { padding: 0.25rem 0.5rem; font-size: 0.75rem; }
+
+    /* View tabs */
+    .glass-tabs      { padding: 2px; gap: 1px; }
+    .glass-tabs .btn { padding: 0.25rem 0.625rem; font-size: 0.75rem; }
+
+    /* Month grid header */
+    .month-grid-header { padding: var(--le-spacing-xs); font-size: 0.6875rem; }
+
+    /* Month cells */
+    .month-cell          { min-height: 72px; padding: 0.25rem; }
+    .month-cell .date-num { font-size: 0.6875rem; width: 20px; height: 20px; }
+
+    /* Event pills */
+    .event-pill  { font-size: 0.625rem; padding: 1px 4px; margin-bottom: 1px; }
+    .more-events { font-size: 0.625rem; padding: 1px 4px; }
+
+    /* Week view */
+    .week-time-label { font-size: 0.625rem; height: 38px; padding: 0.125rem var(--le-spacing-xs); }
+    .week-day-col    { height: 38px; }
+    .week-day-header { padding: var(--le-spacing-xs); font-size: 0.6875rem; }
+
+    /* Day view */
+    .day-time-slot { height: 38px; }
+
+    /* Event modal */
+    #eventModal .modal-body .form-group { margin-bottom: 0.75rem; }
+    #eventModal .modal-body label       { font-size: 0.75rem; margin-bottom: 0.25rem; }
+    #eventModal .modal-body .form-row   { gap: var(--le-spacing-sm); }
+    .btn-modal-cancel        { padding: 0.375rem 0.75rem; font-size: 0.75rem; }
+    .btn-modal-save          { padding: 0.375rem 1rem; font-size: 0.75rem; }
+
+    /* Event-pill context button */
+    .event-pill-more-btn { width: 15px; height: 15px; }
+}

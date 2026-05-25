@@ -1,0 +1,193 @@
+/* ==========================================================================
+   3. SIDEBAR — Navigation
+   ========================================================================== */
+
+/* --- Sidebar Body (scrollable area) --- */
+
+.sidebar-body {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: var(--le-spacing-sm) 0;
+}
+
+/* --- Nav container --- */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Nav sections (grouped) --- */
+
+.sidebar-nav-section {
+    padding-top: var(--le-spacing-md);
+}
+
+.sidebar-nav-section:first-child {
+    padding-top: 0;
+}
+
+/* Section label: uppercase muted badge with decorative accent */
+.sidebar-nav-label {
+    display: flex;
+    align-items: center;
+    font-size: 0.6875rem;
+    font-weight: var(--le-font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--le-text-muted);
+    padding: var(--le-spacing-xs) var(--le-spacing-md) var(--le-spacing-xs) 20px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    gap: 8px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sidebar-nav-label:hover {
+    color: var(--le-text-secondary);
+}
+
+/* Expand/collapse chevron indicator */
+.sidebar-nav-label::after {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    border-left: none;
+    border-top: none;
+    transform: rotate(-45deg);
+    margin-left: auto;
+    opacity: 0.5;
+    flex-shrink: 0;
+    order: 2;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+}
+
+.sidebar-nav-section.section-open > .sidebar-nav-label::after {
+    transform: rotate(45deg);
+    opacity: 0.7;
+}
+
+/* Collapsible menu: hidden by default, expandable */
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-nav-section.section-open > .sidebar-menu {
+    max-height: 2000px;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Menu items --- */
+
+.sidebar-item {
+    margin-bottom: 2px;
+    padding: 0 8px;
+}
+
+/* --- Sidebar link (the main interactive element) --- */
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 12px;
+    border-radius: 10px;
+    color: var(--le-text-secondary);
+    text-decoration: none;
+    font-size: var(--le-font-size-sm);
+    font-weight: var(--le-font-weight-normal);
+    transition: background-color 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+                border-color 0.2s ease,
+                color 0.2s ease,
+                box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+
+.sidebar-link:hover {
+    background: var(--le-control-bg);
+    color: var(--le-text-primary);
+    text-decoration: none;
+    border-color: rgba(var(--le-primary-rgb), 0.10);
+    box-shadow: var(--le-control-shadow);
+}
+
+.sidebar-link:active {
+    background: var(--le-control-bg-active);
+    border-color: rgba(var(--le-primary-rgb), 0.18);
+}
+
+/* Icon inside sidebar link — contained in subtle circle */
+.sidebar-link svg,
+.sidebar-link i {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    stroke-width: 1.8;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar-link:hover svg,
+.sidebar-link:hover i {
+    color: var(--le-primary);
+    transform: scale(1.10);
+    filter: drop-shadow(0 0 3px rgba(var(--le-primary-rgb), 0.2));
+}
+
+/* Text label inside sidebar link */
+.sidebar-link span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 1;
+    transition: opacity 0.2s ease, width 0.3s ease;
+}
+
+/* --- Active state — glowing pill with accent indicator --- */
+
+.sidebar-item.active > .sidebar-link {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(var(--le-primary-rgb), 0.18) 100%
+    );
+    color: var(--le-primary);
+    font-weight: var(--le-font-weight-semibold);
+    box-shadow: 0 12px 24px rgba(var(--le-primary-rgb), 0.12),
+                0 0 0 1px rgba(var(--le-primary-rgb), 0.08),
+                var(--le-inner-glow);
+    border: 1px solid rgba(var(--le-primary-rgb), 0.18);
+}
+
+.sidebar-item.active > .sidebar-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 15%;
+    bottom: 15%;
+    width: 3px;
+    border-radius: 0 4px 4px 0;
+    background: var(--le-sidebar-active-indicator);
+    box-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.70),
+                0 0 6px rgba(var(--le-primary-rgb), 0.40);
+}
+
+.sidebar-item.active > .sidebar-link svg,
+.sidebar-item.active > .sidebar-link i {
+    color: var(--le-primary);
+    filter: drop-shadow(0 0 4px rgba(var(--le-primary-rgb), 0.3));
+}

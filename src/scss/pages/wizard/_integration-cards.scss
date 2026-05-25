@@ -1,0 +1,95 @@
+/* =============================================================================
+   Integration Cards
+   ============================================================================= */
+
+.integration-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.integration-card {
+    padding: var(--le-spacing-md);
+    border-radius: var(--le-radius);
+    border: 1px solid var(--le-glass-border);
+    background: var(--le-glass-bg);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--le-transition-fast);
+}
+
+.integration-card:hover {
+    border-color: var(--le-primary);
+    filter: brightness(1.04);
+}
+
+.integration-card.active {
+    border-color: var(--le-primary);
+    background: rgba(var(--le-primary-rgb), 0.06);
+    box-shadow: inset 0 0 20px rgba(var(--le-primary-rgb), 0.06);
+}
+
+.integration-card:active {
+    filter: brightness(0.96);
+}
+
+.integration-card input {
+    display: none;
+}
+
+.integration-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--le-radius-sm);
+    margin: 0 auto var(--le-spacing-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: var(--le-font-weight-bold);
+}
+
+.integration-name {
+    font-size: var(--le-font-size-sm);
+    font-weight: 600;
+    color: var(--le-text-primary);
+}
+
+
+/* =============================================================================
+   Notification Checkboxes
+   ============================================================================= */
+
+.notif-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.notif-check {
+    display: flex;
+    align-items: center;
+    gap: var(--le-spacing-xs);
+    padding: var(--le-spacing-xs) 0.875rem;
+    border-radius: var(--le-radius);
+    border: 1px solid var(--le-glass-border);
+    background: var(--le-glass-bg);
+    cursor: pointer;
+    font-size: var(--le-font-size-sm);
+    font-weight: 500;
+    transition: all var(--le-transition-fast);
+}
+
+.notif-check:hover {
+    border-color: var(--le-primary);
+}
+
+.notif-check.active {
+    border-color: var(--le-primary);
+    background: rgba(var(--le-primary-rgb), 0.06);
+    box-shadow: inset 0 0 20px rgba(var(--le-primary-rgb), 0.06);
+}
+
+.notif-check input {
+    display: none;
+}

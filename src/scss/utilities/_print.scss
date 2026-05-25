@@ -1,0 +1,49 @@
+// -- Print Helpers --
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .glass-card,
+  .metric-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .sidebar,
+  .sidebar-backdrop,
+  .topbar,
+  .main-footer,
+  .customizer-fab,
+  .customizer-panel {
+    display: none !important;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  .page-content {
+    padding: 0 !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  .topbar-toggle-btn,
+  .mobile-only,
+  .d-lg-none {
+    display: none !important;
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+

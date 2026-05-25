@@ -1,0 +1,426 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}CRM — Liquid Elegance{% endblock %}
+
+{% block scripts_before %}
+<script src="{{ asset_root or root }}vendor/chart.js/chart.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-3">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboards</a></li>
+    <li class="breadcrumb-item active" aria-current="page">CRM</li>
+  </ol>
+</nav>
+
+<!-- Page Header -->
+<div class="mb-4">
+  <h1 class="h3 mb-1">CRM</h1>
+  <p class="text-muted mb-0">Manage your contacts and pipeline</p>
+</div>
+
+<!-- Metric Cards -->
+<div class="row g-4 mb-4">
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">Total Contacts</p>
+            <h3 class="metric-value mb-1">8,492</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +6.3%</span>
+          </div>
+          <div class="metric-icon bg-primary-subtle">
+            <i data-feather="users"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="crmSparkContacts" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">Active Deals</p>
+            <h3 class="metric-value mb-1">142</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +15.1%</span>
+          </div>
+          <div class="metric-icon bg-info-subtle">
+            <i data-feather="briefcase"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="crmSparkDeals" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">Won Deals</p>
+            <h3 class="metric-value mb-1">89</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +11.7%</span>
+          </div>
+          <div class="metric-icon bg-success-subtle">
+            <i data-feather="check-circle"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="crmSparkWon" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">Pipeline Value</p>
+            <h3 class="metric-value mb-1">$2.4M</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +8.9%</span>
+          </div>
+          <div class="metric-icon bg-warning-subtle">
+            <i data-feather="dollar-sign"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="crmSparkPipeline" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Pipeline Overview & Pipeline Chart -->
+<div class="row g-4 mb-4">
+  <div class="col-lg-5">
+    <div class="glass-card h-100">
+      <div class="glass-card-header">
+        <h5 class="glass-card-title mb-0">Pipeline Overview</h5>
+      </div>
+      <div class="glass-card-body">
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="rounded-circle d-inline-block le-legend-dot le-bar-info"></span>
+              <span class="fw-medium">Lead</span>
+            </div>
+            <div class="text-end">
+              <span class="fw-semibold">48 deals</span>
+              <span class="text-muted small d-block">$520,000</span>
+            </div>
+          </div>
+          <div class="progress le-h-8 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:100%;background:var(--le-info,#06b6d4);"></div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="rounded-circle d-inline-block le-legend-dot le-bar-primary"></span>
+              <span class="fw-medium">Qualified</span>
+            </div>
+            <div class="text-end">
+              <span class="fw-semibold">35 deals</span>
+              <span class="text-muted small d-block">$680,000</span>
+            </div>
+          </div>
+          <div class="progress le-h-8 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:73%;background:var(--le-primary,#6366f1);"></div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="rounded-circle d-inline-block le-legend-dot le-bar-warning"></span>
+              <span class="fw-medium">Proposal</span>
+            </div>
+            <div class="text-end">
+              <span class="fw-semibold">28 deals</span>
+              <span class="text-muted small d-block">$490,000</span>
+            </div>
+          </div>
+          <div class="progress le-h-8 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:58%;background:var(--le-warning,#f59e0b);"></div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="rounded-circle d-inline-block le-legend-dot le-bar-success"></span>
+              <span class="fw-medium">Negotiation</span>
+            </div>
+            <div class="text-end">
+              <span class="fw-semibold">18 deals</span>
+              <span class="text-muted small d-block">$420,000</span>
+            </div>
+          </div>
+          <div class="progress le-h-8 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:38%;background:var(--le-success,#10b981);"></div>
+          </div>
+        </div>
+        <div class="mb-0">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="rounded-circle d-inline-block le-legend-dot le-bar-danger"></span>
+              <span class="fw-medium">Closed</span>
+            </div>
+            <div class="text-end">
+              <span class="fw-semibold">13 deals</span>
+              <span class="text-muted small d-block">$290,000</span>
+            </div>
+          </div>
+          <div class="progress le-h-8 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:27%;background:var(--le-danger,#ef4444);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-7">
+    <div class="glass-card h-100">
+      <div class="glass-card-header d-flex justify-content-between align-items-center">
+        <h5 class="glass-card-title mb-0">Pipeline Funnel</h5>
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-outline-primary active">This Quarter</button>
+          <button type="button" class="btn btn-outline-primary">Last Quarter</button>
+        </div>
+      </div>
+      <div class="glass-card-body">
+        <div class="chart-wrapper le-chart-300"><canvas id="pipelineChart" height="300"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Activities & Top Sales Reps -->
+<div class="row g-4 mb-4">
+  <div class="col-lg-6">
+    <div class="glass-card h-100">
+      <div class="glass-card-header">
+        <h5 class="glass-card-title mb-0">Recent Activities</h5>
+      </div>
+      <div class="glass-card-body">
+        <div class="position-relative ps-5">
+          <div class="position-absolute top-0 bottom-0 le-timeline-line"></div>
+          <div class="d-flex gap-3 mb-4 position-relative">
+            <span class="position-absolute rounded-circle bg-success le-timeline-dot"></span>
+            <div>
+              <p class="mb-1 fw-medium">Call with Acme Corp</p>
+              <p class="text-muted small mb-0">Sarah completed a 45-min discovery call with Acme Corp's CTO.</p>
+              <span class="text-muted small">12 minutes ago</span>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mb-4 position-relative">
+            <span class="position-absolute rounded-circle bg-primary le-timeline-dot"></span>
+            <div>
+              <p class="mb-1 fw-medium">Email sent to TechStart Inc</p>
+              <p class="text-muted small mb-0">James sent a proposal follow-up email to the procurement team.</p>
+              <span class="text-muted small">1 hour ago</span>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mb-4 position-relative">
+            <span class="position-absolute rounded-circle bg-warning le-timeline-dot"></span>
+            <div>
+              <p class="mb-1 fw-medium">Meeting scheduled — CloudNine Ltd</p>
+              <p class="text-muted small mb-0">Demo meeting booked for Thursday at 2:00 PM with VP of Engineering.</p>
+              <span class="text-muted small">2 hours ago</span>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mb-4 position-relative">
+            <span class="position-absolute rounded-circle bg-info le-timeline-dot"></span>
+            <div>
+              <p class="mb-1 fw-medium">Deal closed — DataFlow Systems</p>
+              <p class="text-muted small mb-0">Emily closed a $45,000 annual contract with DataFlow Systems.</p>
+              <span class="text-muted small">4 hours ago</span>
+            </div>
+          </div>
+          <div class="d-flex gap-3 mb-4 position-relative">
+            <span class="position-absolute rounded-circle bg-danger le-timeline-dot"></span>
+            <div>
+              <p class="mb-1 fw-medium">Follow-up call — BrightPath Co</p>
+              <p class="text-muted small mb-0">Robert conducted a pricing negotiation call. Deal moved to Negotiation stage.</p>
+              <span class="text-muted small">5 hours ago</span>
+            </div>
+          </div>
+          <div class="d-flex gap-3 position-relative">
+            <span class="position-absolute rounded-circle bg-secondary le-timeline-dot"></span>
+            <div>
+              <p class="mb-1 fw-medium">New lead added — NovaTech</p>
+              <p class="text-muted small mb-0">Lisa added NovaTech as a new lead from the trade show contact list.</p>
+              <span class="text-muted small">Yesterday</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="glass-card h-100">
+      <div class="glass-card-header d-flex justify-content-between align-items-center">
+        <h5 class="glass-card-title mb-0">Top Sales Reps</h5>
+        <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary">View All</a>
+      </div>
+      <div class="glass-card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th class="text-end">Deals</th>
+                <th class="text-end">Revenue</th>
+                <th class="text-end">Win Rate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-primary">SM</span>
+                    <div>
+                      <span class="fw-medium d-block">Sarah Mitchell</span>
+                      <span class="text-muted small">Senior Account Exec</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end fw-semibold">24</td>
+                <td class="text-end fw-semibold">$342,000</td>
+                <td class="text-end"><span class="glass-badge glass-badge-success">78%</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-info">JD</span>
+                    <div>
+                      <span class="fw-medium d-block">James Donovan</span>
+                      <span class="text-muted small">Account Executive</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end fw-semibold">19</td>
+                <td class="text-end fw-semibold">$287,500</td>
+                <td class="text-end"><span class="glass-badge glass-badge-success">72%</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-warning">EW</span>
+                    <div>
+                      <span class="fw-medium d-block">Emily Watson</span>
+                      <span class="text-muted small">Account Executive</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end fw-semibold">22</td>
+                <td class="text-end fw-semibold">$264,800</td>
+                <td class="text-end"><span class="glass-badge glass-badge-success">68%</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-success">RP</span>
+                    <div>
+                      <span class="fw-medium d-block">Robert Park</span>
+                      <span class="text-muted small">Sales Development Rep</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end fw-semibold">16</td>
+                <td class="text-end fw-semibold">$198,200</td>
+                <td class="text-end"><span class="glass-badge glass-badge-warning">61%</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-danger">LC</span>
+                    <div>
+                      <span class="fw-medium d-block">Lisa Chen</span>
+                      <span class="text-muted small">Sales Development Rep</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end fw-semibold">14</td>
+                <td class="text-end fw-semibold">$156,400</td>
+                <td class="text-end"><span class="glass-badge glass-badge-warning">58%</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const leStyles = getComputedStyle(document.documentElement);
+  const leInfo    = leStyles.getPropertyValue('--le-info').trim()    || '#06b6d4';
+  const lePrimary = leStyles.getPropertyValue('--le-primary').trim() || '#6366f1';
+  const leWarning = leStyles.getPropertyValue('--le-warning').trim() || '#f59e0b';
+  const leSuccess = leStyles.getPropertyValue('--le-success').trim() || '#10b981';
+  const leDanger  = leStyles.getPropertyValue('--le-danger').trim()  || '#ef4444';
+
+  function createSparkline(id, data, color) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    new Chart(ctx, {
+      type: 'line',
+      data: { labels: data.map((_, i) => i), datasets: [{ data, borderColor: color, borderWidth: 2, fill: true, backgroundColor: color + '20', tension: 0.4, pointRadius: 0 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } }
+    });
+  }
+
+  createSparkline('crmSparkContacts', [6.2, 6.5, 6.8, 7.1, 7.0, 7.4, 7.8, 8.5], lePrimary);
+  createSparkline('crmSparkDeals', [95, 102, 108, 115, 120, 128, 135, 142], leInfo);
+  createSparkline('crmSparkWon', [52, 56, 60, 65, 70, 74, 82, 89], leSuccess);
+  createSparkline('crmSparkPipeline', [1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.4], leWarning);
+
+  // Pipeline funnel chart (horizontal bar)
+  const pipeCtx = document.getElementById('pipelineChart');
+  if (pipeCtx) {
+    new Chart(pipeCtx.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Lead','Qualified','Proposal','Negotiation','Closed'],
+        datasets: [
+          {
+            label: 'Deal Count',
+            data: [48, 35, 28, 18, 13],
+            backgroundColor: [leInfo, lePrimary, leWarning, leSuccess, leDanger],
+            borderRadius: 6,
+            barPercentage: 0.6
+          },
+          {
+            label: 'Value ($K)',
+            data: [520, 680, 490, 420, 290],
+            backgroundColor: [leInfo + '55', lePrimary + '55', leWarning + '55', leSuccess + '55', leDanger + '55'],
+            borderRadius: 6,
+            barPercentage: 0.6,
+            yAxisID: 'y1'
+          }
+        ]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'top' } },
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: { color: 'rgba(148,163,184,0.1)' }
+          },
+          y: { grid: { display: false } },
+          y1: { display: false }
+        }
+      }
+    });
+  }
+});
+</script>
+{% endblock %}

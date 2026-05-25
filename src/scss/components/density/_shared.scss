@@ -1,0 +1,362 @@
+/* =========================================================================
+   24. DENSITY VARIANTS
+   =========================================================================
+   Shared selector block — tokens (set per-density in glass/_density.scss)
+   drive the actual value differences. Only truly per-density hardcoded
+   values live in the compact / comfortable sub-blocks.
+   ========================================================================= */
+
+[data-density="compact"],
+[data-density="comfortable"] {
+
+    /* Cards */
+    .glass-card-body,
+    .card-body {
+        padding: var(--le-card-padding);
+    }
+
+    .glass-card-header {
+        padding: var(--le-card-header-padding);
+    }
+
+    .glass-card-footer {
+        padding: var(--le-card-footer-py) var(--le-card-footer-px);
+        font-size: var(--le-card-footer-font);
+    }
+
+    /* Tables */
+    .table-glass tbody td,
+    .glass-card .table tbody td,
+    .table-glass-wrapper .table tbody td,
+    .glass-table-wrapper .table tbody td {
+        padding: var(--le-table-cell-py) var(--le-table-cell-px);
+        font-size: var(--le-table-body-font);
+    }
+
+    .table-glass thead th,
+    .glass-card .table thead th,
+    .table-glass-wrapper .table thead th,
+    .glass-table-wrapper .table thead th {
+        padding: var(--le-table-cell-py) var(--le-table-cell-px);
+        font-size: var(--le-table-head-font);
+    }
+
+    /* Metrics */
+    .metric-value {
+        font-size: var(--le-metric-value-size);
+    }
+
+    .metric-label {
+        font-size: var(--le-metric-label-font);
+        margin-bottom: var(--le-metric-label-mb);
+    }
+
+    .metric-change {
+        font-size: var(--le-metric-change-font);
+        gap: var(--le-metric-change-gap);
+    }
+
+    .metric-icon {
+        width: var(--le-metric-icon-size);
+        height: var(--le-metric-icon-size);
+        border-radius: var(--le-metric-icon-radius);
+    }
+
+    .metric-icon svg {
+        width: var(--le-metric-icon-svg);
+        height: var(--le-metric-icon-svg);
+    }
+
+    /* Pagination */
+    .pagination-info {
+        font-size: var(--le-pagination-font);
+    }
+
+    .pagination .page-link {
+        padding: var(--le-pagination-py) var(--le-pagination-px);
+        font-size: var(--le-pagination-font);
+    }
+
+    /* Toolbar */
+    .toolbar-glass,
+    .crud-toolbar {
+        padding: var(--le-toolbar-padding);
+        gap: var(--le-toolbar-gap);
+        margin-bottom: var(--le-toolbar-mb);
+    }
+
+    /* Buttons */
+    .btn-glass,
+    .btn-glass-primary,
+    .btn-glass-outline {
+        padding: var(--le-btn-padding-y) var(--le-btn-padding-x);
+        font-size: var(--le-btn-font);
+        gap: var(--le-btn-gap);
+    }
+
+    /* Badges */
+    .badge,
+    .badge-glass,
+    .badge-status {
+        padding: var(--le-badge-padding-y) var(--le-badge-padding-x);
+        font-size: var(--le-badge-font-size);
+    }
+
+    /* Alerts */
+    .alert,
+    .alert-glass {
+        padding: var(--le-alert-py) var(--le-alert-px);
+        font-size: var(--le-alert-font);
+    }
+
+    /* Modals */
+    .modal-body,
+    .modal-glass .modal-body {
+        padding: var(--le-modal-body-py) var(--le-modal-body-px);
+    }
+
+    .modal-header,
+    .modal-footer,
+    .modal-glass .modal-header,
+    .modal-glass .modal-footer {
+        padding: var(--le-modal-header-py) var(--le-modal-header-px);
+    }
+
+    /* Nav pills & tabs */
+    .nav-pills .nav-link,
+    .glass-nav-pills .nav-link {
+        padding: var(--le-nav-pill-padding-y) var(--le-nav-pill-padding-x);
+        font-size: var(--le-nav-pill-font);
+    }
+
+    .nav-tabs .nav-link {
+        padding: var(--le-nav-tab-padding-y) var(--le-nav-tab-padding-x);
+        font-size: var(--le-nav-tab-font);
+    }
+
+    .nav-pills {
+        gap: var(--le-nav-pill-gap);
+    }
+
+    /* Lists */
+    .list-group-item {
+        padding: var(--le-list-item-py) var(--le-list-item-px);
+        font-size: var(--le-list-item-font);
+    }
+
+    /* Accordion */
+    .accordion-button,
+    .glass-accordion .accordion-button {
+        padding: var(--le-accordion-btn-py) var(--le-accordion-btn-px);
+        font-size: var(--le-list-item-font);
+    }
+
+    .accordion-body,
+    .glass-accordion .accordion-body {
+        padding: var(--le-accordion-body-py) var(--le-accordion-body-px);
+        font-size: var(--le-list-item-font);
+    }
+
+    .glass-accordion .accordion-item {
+        margin-bottom: var(--le-accordion-item-mb);
+    }
+
+    /* Toast */
+    .toast-body {
+        padding: var(--le-toast-body-py) var(--le-toast-body-px);
+        font-size: var(--le-toast-body-font);
+    }
+
+    .toast-header {
+        padding: var(--le-toast-header-py) var(--le-toast-header-px);
+        font-size: var(--le-toast-header-font);
+    }
+
+    /* Dropdowns */
+    .dropdown-menu {
+        padding: var(--le-dropdown-padding);
+    }
+
+    .dropdown-item {
+        padding: var(--le-dropdown-item-py) var(--le-dropdown-item-px);
+        font-size: var(--le-dropdown-item-font);
+        border-radius: var(--le-radius-xs);
+    }
+
+    .dropdown-menu .dropdown-divider {
+        margin: var(--le-action-btn-py) 0;
+    }
+
+    /* Offcanvas */
+    .offcanvas-header {
+        padding: var(--le-offcanvas-header-py) var(--le-offcanvas-header-px);
+    }
+
+    .offcanvas-body {
+        padding: var(--le-offcanvas-body-py) var(--le-offcanvas-body-px);
+    }
+
+    /* Activity feed */
+    .activity-feed {
+        gap: var(--le-feed-gap);
+    }
+
+    .activity-item {
+        padding: var(--le-feed-item-padding);
+    }
+
+    /* Progress */
+    .progress {
+        height: var(--le-progress-height);
+    }
+
+    /* Avatars */
+    .avatar {
+        width: var(--le-avatar-size);
+        height: var(--le-avatar-size);
+    }
+
+    .avatar-sm {
+        width: var(--le-avatar-size-sm);
+        height: var(--le-avatar-size-sm);
+    }
+
+    .avatar-lg {
+        width: var(--le-avatar-size-lg);
+        height: var(--le-avatar-size-lg);
+    }
+
+    .avatar-xl {
+        width: var(--le-avatar-size-xl);
+        height: var(--le-avatar-size-xl);
+    }
+
+    .avatar-circle {
+        width: var(--le-avatar-size);
+        height: var(--le-avatar-size);
+        font-size: var(--le-icon-circle-font);
+    }
+
+    .icon-circle {
+        width: var(--le-icon-circle-size);
+        height: var(--le-icon-circle-size);
+        font-size: var(--le-icon-circle-font);
+    }
+
+    .icon-circle-sm {
+        width: var(--le-icon-circle-size-sm);
+        height: var(--le-icon-circle-size-sm);
+        font-size: var(--le-icon-circle-font-sm);
+    }
+
+    .icon-circle-lg {
+        width: var(--le-icon-circle-size-lg);
+        height: var(--le-icon-circle-size-lg);
+        font-size: var(--le-icon-circle-font-lg);
+    }
+
+    .icon-circle-xl {
+        width: var(--le-icon-circle-size-xl);
+        height: var(--le-icon-circle-size-xl);
+        font-size: var(--le-icon-circle-font-xl);
+    }
+
+    .mini-avatar {
+        width: var(--le-mini-avatar-size);
+        height: var(--le-mini-avatar-size);
+        font-size: var(--le-font-size-xs);
+    }
+
+    .avatar-group .avatar,
+    .avatar-group .mini-avatar {
+        margin-left: var(--le-avatar-group-overlap);
+    }
+
+    .status-dot {
+        width: var(--le-dot-size);
+        height: var(--le-dot-size);
+    }
+
+    .legend-dot {
+        width: var(--le-legend-dot-size);
+        height: var(--le-legend-dot-size);
+    }
+
+    /* Action buttons */
+    .action-btns {
+        gap: var(--le-action-btn-gap);
+    }
+
+    .action-btns .btn-sm {
+        padding: var(--le-action-btn-py) var(--le-action-btn-px);
+        font-size: var(--le-action-btn-font);
+    }
+
+    /* Forms */
+    .glass-input,
+    .glass-select {
+        padding: var(--le-input-padding-y) var(--le-input-padding-x);
+        font-size: var(--le-form-font);
+    }
+
+    .glass-card .form-control,
+    .glass-card .form-select {
+        padding: var(--le-input-padding-y) var(--le-input-padding-x);
+        font-size: var(--le-form-font);
+    }
+
+    .glass-card .form-label {
+        font-size: var(--le-form-label-font);
+        margin-bottom: var(--le-form-label-mb);
+    }
+
+    .glass-card .form-control-sm {
+        padding: var(--le-action-btn-py) var(--le-action-btn-px);
+        font-size: var(--le-action-btn-font);
+    }
+
+    .form-check-label {
+        font-size: var(--le-form-check-font);
+    }
+
+    /* Context menu */
+    .le-context-menu {
+        padding: var(--le-action-btn-gap);
+    }
+
+    .le-context-menu-header {
+        font-size: var(--le-font-size-xs);
+        padding: var(--le-action-btn-py) var(--le-list-item-px) 0.25rem;
+    }
+
+    .le-context-menu-item {
+        gap: var(--le-action-btn-gap);
+        padding: var(--le-context-item-py) var(--le-context-item-px);
+        font-size: var(--le-context-item-font);
+    }
+
+    .le-context-menu-sep {
+        margin: var(--le-action-btn-py) var(--le-action-btn-px);
+    }
+
+    /* Tooltips & Popovers */
+    .tooltip .tooltip-inner {
+        padding: var(--le-tooltip-py) var(--le-tooltip-px);
+        font-size: var(--le-tooltip-font);
+    }
+
+    .popover-body {
+        font-size: var(--le-popover-font);
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+        font-size: var(--le-breadcrumb-font);
+    }
+
+    /* Pagination wrapper */
+    .pagination-wrapper {
+        padding: var(--le-card-footer-py) var(--le-card-footer-px);
+        gap: var(--le-toolbar-gap);
+    }
+}

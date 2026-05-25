@@ -1,0 +1,190 @@
+/* =============================================================================
+   §16 — Utility Classes
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   §16.1 — Glass Utilities
+   ------------------------------------------------------------------------ */
+
+/* Semi-transparent text */
+.text-glass {
+  color: var(--le-text-secondary);
+  opacity: 0.7;
+}
+
+[data-theme="dark"] .text-glass {
+  color: var(--le-text-secondary);
+  opacity: 0.6;
+}
+
+/* Quick glass background */
+.bg-glass {
+  background: var(--le-glass-bg);
+  -webkit-backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate));
+  backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate));
+}
+
+.bg-glass-strong {
+  background: var(--le-glass-bg-strong);
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-strong)) saturate(var(--le-liquid-saturate));
+  backdrop-filter: blur(var(--le-glass-blur-strong)) saturate(var(--le-liquid-saturate));
+}
+
+.bg-glass-subtle {
+  background: var(--le-glass-bg-subtle);
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(1.3);
+  backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(1.3);
+}
+
+/* Glass border */
+.border-glass {
+  border: 1px solid var(--le-glass-border);
+}
+
+.border-glass-strong {
+  border: 1px solid var(--le-glass-border-strong);
+}
+
+.border-glass-subtle {
+  border: 1px solid var(--le-glass-border-subtle);
+}
+
+/* Glass shadow */
+.shadow-glass {
+  box-shadow: var(--le-glass-shadow);
+}
+
+.shadow-glass-lg {
+  box-shadow: var(--le-glass-shadow-lg);
+}
+
+/* Just the blur (with saturate for liquid feel) */
+.blur-bg {
+  -webkit-backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate));
+  backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate));
+}
+
+.blur-bg-strong {
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-strong)) saturate(var(--le-liquid-saturate));
+  backdrop-filter: blur(var(--le-glass-blur-strong)) saturate(var(--le-liquid-saturate));
+}
+
+/* ---------------------------------------------------------------------------
+   §16.2 — Color Utilities
+   ------------------------------------------------------------------------ */
+
+.text-primary   { color: var(--le-primary)   !important; }
+.text-secondary { color: var(--le-secondary) !important; }
+.text-success   { color: var(--le-success)   !important; }
+.text-warning   { color: var(--le-warning)   !important; }
+.text-danger    { color: var(--le-danger)    !important; }
+.text-info      { color: var(--le-info)      !important; }
+.text-muted     { color: var(--le-text-muted) !important; }
+
+.bg-primary-soft {
+  background: rgba(var(--le-primary-rgb), 0.12);
+  color: var(--le-primary-dark);
+}
+
+.bg-success-soft {
+  background: rgba(var(--le-success-rgb), 0.12);
+  color: var(--le-success-dark);
+}
+
+.bg-warning-soft {
+  background: rgba(var(--le-warning-rgb), 0.12);
+  color: var(--le-warning-dark);
+}
+
+.bg-danger-soft {
+  background: rgba(var(--le-danger-rgb), 0.12);
+  color: var(--le-danger-dark);
+}
+
+.bg-info-soft {
+  background: rgba(var(--le-info-rgb), 0.12);
+  color: var(--le-info-dark);
+}
+
+.bg-secondary-soft {
+  background: rgba(var(--le-secondary-rgb), 0.12);
+  color: var(--le-secondary-dark);
+}
+
+/* ---------------------------------------------------------------------------
+   §16.3 — Spacing Utilities
+   ------------------------------------------------------------------------ */
+
+.p-glass  { padding: var(--le-spacing-lg); }
+.px-glass { padding-left: var(--le-spacing-lg); padding-right: var(--le-spacing-lg); }
+.py-glass { padding-top: var(--le-spacing-lg);  padding-bottom: var(--le-spacing-lg); }
+.m-glass  { margin: var(--le-spacing-lg); }
+.gap-glass { gap: var(--le-spacing-md); }
+
+/* ---------------------------------------------------------------------------
+   §16.4 — Radius Utilities
+   ------------------------------------------------------------------------ */
+
+.rounded-glass     { border-radius: var(--le-radius);      }
+.rounded-glass-sm  { border-radius: var(--le-radius-sm);   }
+.rounded-glass-lg  { border-radius: var(--le-radius-lg);   }
+.rounded-glass-xl  { border-radius: var(--le-radius-xl);   }
+.rounded-glass-2xl { border-radius: var(--le-radius-2xl);  }
+
+/* ---------------------------------------------------------------------------
+   §16.5 — Shadow Utilities
+   ------------------------------------------------------------------------ */
+
+.shadow-depth-xs { box-shadow: var(--le-shadow-xs); }
+.shadow-depth-sm { box-shadow: var(--le-shadow-sm); }
+.shadow-depth    { box-shadow: var(--le-shadow);    }
+.shadow-depth-md { box-shadow: var(--le-shadow-md); }
+.shadow-depth-lg { box-shadow: var(--le-shadow-lg); }
+.shadow-depth-xl { box-shadow: var(--le-shadow-xl); }
+
+/* ---------------------------------------------------------------------------
+   §16.5b — Glass Elevation Tiers
+   ------------------------------------------------------------------------ */
+
+.glass-elevation-1 {
+  -webkit-backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate));
+  backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate));
+  box-shadow: var(--le-shadow-sm);
+}
+
+.glass-elevation-2 {
+  -webkit-backdrop-filter: blur(calc(var(--le-glass-blur) * 1.5)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  backdrop-filter: blur(calc(var(--le-glass-blur) * 1.5)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  box-shadow: var(--le-shadow-md);
+}
+
+.glass-elevation-3 {
+  -webkit-backdrop-filter: blur(calc(var(--le-glass-blur) * 2)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  backdrop-filter: blur(calc(var(--le-glass-blur) * 2)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  box-shadow: var(--le-shadow-xl);
+}
+
+/* ---------------------------------------------------------------------------
+    §16.6 — Interactive Utilities
+    ------------------------------------------------------------------------ */
+
+/* Hover lift & glow are defined in glass/_animations.scss (§13.7) */
+
+/* Pressable (brightness dim on active) */
+.pressable {
+  transition: filter var(--le-transition-fast);
+}
+
+.pressable:active {
+  filter: brightness(0.96);
+}
+
+/* Focus ring — accessible, glass-themed */
+.focus-glass:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(var(--le-primary-rgb), 0.35),
+    var(--le-glass-shadow);
+}
+
+

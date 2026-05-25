@@ -1,0 +1,261 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="forum-feed.html">ForumBoard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">u/alice_codes</li>
+        </ol>
+    </nav>
+
+    <!-- Profile Header -->
+    <div class="glass-card mb-4 forum-profile-header">
+        <div class="forum-profile-banner"></div>
+        <div class="forum-profile-info">
+            <div class="forum-profile-avatar">AC</div>
+            <div class="forum-profile-row">
+                <div>
+                    <h3 class="forum-profile-username">alice_codes</h3>
+                    <p class="forum-profile-handle">u/alice_codes &middot; Joined March 2021</p>
+                    <p class="forum-profile-bio">Full-stack developer passionate about web standards and open source. Currently building tools that make the web a better place. React, TypeScript, Node.js enthusiast.</p>
+                    <div class="forum-profile-stats">
+                        <div class="forum-profile-stat">
+                            <span class="forum-profile-stat-value">24,582</span>
+                            <span class="forum-profile-stat-label">Post Karma</span>
+                        </div>
+                        <div class="forum-profile-stat">
+                            <span class="forum-profile-stat-value">18,943</span>
+                            <span class="forum-profile-stat-label">Comment Karma</span>
+                        </div>
+                        <div class="forum-profile-stat">
+                            <span class="forum-profile-stat-value">1,248</span>
+                            <span class="forum-profile-stat-label">Followers</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="forum-profile-actions">
+                    <button class="btn btn-primary btn-sm"><i data-feather="user-plus" class="le-icon-14 le-valign-2"></i> Follow</button>
+                    <button class="btn btn-outline-secondary btn-sm"><i data-feather="mail" class="le-icon-14 le-valign-2"></i> Message</button>
+                    <button class="btn btn-outline-secondary btn-sm"><i data-feather="more-horizontal" class="le-icon-14"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="glass-card mb-4 p-0">
+        <div class="forum-profile-tabs">
+            <button class="forum-profile-tab active">Posts</button>
+            <button class="forum-profile-tab">Comments</button>
+            <button class="forum-profile-tab">Saved</button>
+            <button class="forum-profile-tab">Upvoted</button>
+            <button class="forum-profile-tab">Awards</button>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Posts Column -->
+        <div class="col-lg-8 forum-main-col">
+
+            {% set userPosts = [
+                {
+                    subreddit: "r/webdev", time: "3 hours ago",
+                    flair: "discussion", flair_class: "forum-flair-discussion",
+                    title: "What's your unpopular opinion about modern frontend frameworks?",
+                    preview: "I'll start — I think the React ecosystem has become too complex for most projects.",
+                    votes: 1284, comments: 847
+                },
+                {
+                    subreddit: "r/typescript", time: "2 days ago",
+                    flair: "showcase", flair_class: "forum-flair-showcase",
+                    title: "I built a full-stack type-safe API framework in TypeScript",
+                    preview: "After 6 months of work, I'm excited to share my open-source framework that provides end-to-end type safety from database to frontend.",
+                    votes: 3456, comments: 234
+                },
+                {
+                    subreddit: "r/opensource", time: "1 week ago",
+                    flair: "announcement", flair_class: "forum-flair-announcement",
+                    title: "Announcing DevToolkit v3.0 — Now with AI-powered code review",
+                    preview: "Today we're releasing the biggest update to DevToolkit yet. Version 3.0 includes an AI-powered code review assistant, improved performance, and a completely redesigned UI.",
+                    votes: 5678, comments: 567
+                },
+                {
+                    subreddit: "r/webdev", time: "2 weeks ago",
+                    flair: "help", flair_class: "forum-flair-help",
+                    title: "Best practices for handling authentication in microservices?",
+                    preview: "We're migrating from a monolith to microservices and struggling with auth. Looking for real-world advice on JWT vs session-based auth in a distributed system.",
+                    votes: 892, comments: 156
+                },
+                {
+                    subreddit: "r/programming", time: "3 weeks ago",
+                    flair: "meta", flair_class: "forum-flair-meta",
+                    title: "The art of writing readable code — A guide for senior developers",
+                    preview: "After 10 years in the industry, I've compiled my thoughts on what makes code truly readable. Spoiler: it's not about clever abstractions.",
+                    votes: 7234, comments: 890
+                }
+            ] %}
+
+            <div class="glass-card animate-fade-in-up">
+            {% for post in userPosts %}
+                <div class="forum-post-card stagger-{{ loop.index }}">
+                    <div class="forum-vote">
+                        <button class="forum-vote-btn" title="Upvote"><i data-feather="arrow-up" class="le-icon-18"></i></button>
+                        <span class="forum-vote-count">{{ post.votes | string }}</span>
+                        <button class="forum-vote-btn" title="Downvote"><i data-feather="arrow-down" class="le-icon-18"></i></button>
+                    </div>
+                    <div class="forum-post-body">
+                        <div class="forum-post-meta">
+                            <a href="forum-feed.html" class="forum-subreddit-link">{{ post.subreddit }}</a>
+                            <span class="forum-meta-dot">&middot;</span>
+                            <span>{{ post.time }}</span>
+                            {% if post.flair %}
+                            <span class="forum-flair {{ post.flair_class }}">{{ post.flair | capitalize }}</span>
+                            {% endif %}
+                        </div>
+                        <h3 class="forum-post-title">
+                            <a href="forum-post.html">{{ post.title }}</a>
+                        </h3>
+                        <div class="forum-post-preview">{{ post.preview }}</div>
+                        <div class="forum-post-actions">
+                            <a href="forum-post.html" class="forum-action-btn"><i data-feather="message-square" class="le-icon-14"></i> {{ post.comments }} Comments</a>
+                            <button class="forum-action-btn"><i data-feather="share" class="le-icon-14"></i> Share</button>
+                            <button class="forum-action-btn"><i data-feather="bookmark" class="le-icon-14"></i> Save</button>
+                        </div>
+                    </div>
+                </div>
+                {% if not loop.last %}<div class="glass-divider my-3"></div>{% endif %}
+            {% endfor %}
+            </div>
+
+        </div>
+
+        <!-- Sidebar backdrop (mobile) -->
+        <div class="forum-sidebar-backdrop" id="forumSidebarBackdrop"></div>
+
+        <!-- Right Sidebar -->
+        <div class="col-lg-4 forum-sidebar-col" id="forumSidebar">
+
+            <!-- Mobile header with close button -->
+            <div class="forum-sidebar-mobile-header">
+                <span class="forum-sidebar-mobile-title">Community</span>
+                <button class="forum-sidebar-close" id="forumSidebarClose" aria-label="Close sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div class="glass-card">
+
+                <!-- Karma -->
+                <section class="glass-card-body forum-karma-card">
+                    <div class="forum-karma-value">43,525</div>
+                    <div class="forum-karma-label">Total Karma</div>
+                    <div class="forum-karma-breakdown">
+                        <div>
+                            <span class="forum-karma-type-value">24,582</span>
+                            <span class="forum-karma-type-label">Post</span>
+                        </div>
+                        <div>
+                            <span class="forum-karma-type-value">18,943</span>
+                            <span class="forum-karma-type-label">Comment</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- About -->
+                <section class="glass-card-body">
+                    <h5 class="mb-3 le-fs-2xl">About</h5>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <i data-feather="calendar" class="text-muted le-icon-18 le-shrink-0"></i>
+                            <div>
+                                <div class="le-fs-lg fw-semibold">Cake Day</div>
+                                <span class="text-muted le-fs-md">March 15, 2021</span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i data-feather="map-pin" class="text-muted le-icon-18 le-shrink-0"></i>
+                            <div>
+                                <div class="le-fs-lg fw-semibold">Location</div>
+                                <span class="text-muted le-fs-md">Portland, OR</span>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i data-feather="globe" class="text-muted le-icon-18 le-shrink-0"></i>
+                            <div>
+                                <div class="le-fs-lg fw-semibold">Website</div>
+                                <a href="javascript:void(0)" class="le-fs-md le-text-primary">alice-codes.dev</a>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i data-feather="github" class="text-muted le-icon-18 le-shrink-0"></i>
+                            <div>
+                                <div class="le-fs-lg fw-semibold">GitHub</div>
+                                <a href="javascript:void(0)" class="le-fs-md le-text-primary">@alice-codes</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Trophies -->
+                <section class="glass-card-body">
+                    <h5 class="mb-3 le-fs-2xl">Trophy Case</h5>
+                    <div class="forum-trophy-grid">
+                        {% set trophies = [
+                            { icon: "🏆", name: "Top Contributor" },
+                            { icon: "⭐", name: "Gold Award x5" },
+                            { icon: "📝", name: "Prolific Poster" },
+                            { icon: "💬", name: "Conversation Starter" },
+                            { icon: "🎂", name: "4 Year Club" },
+                            { icon: "✉️", name: "Verified Email" }
+                        ] %}
+                        {% for trophy in trophies %}
+                        <div class="forum-trophy-item">
+                            <span class="forum-trophy-icon">{{ trophy.icon }}</span>
+                            <span class="forum-trophy-name">{{ trophy.name }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Active Communities -->
+                <section class="glass-card-body forum-sidebar-widget">
+                    <h6>Active In</h6>
+                    {% set communities = [
+                        { name: "r/webdev", color: "linear-gradient(135deg, var(--le-primary), var(--le-secondary))" },
+                        { name: "r/typescript", color: "linear-gradient(135deg, #3178c6, #235a97)" },
+                        { name: "r/opensource", color: "linear-gradient(135deg, var(--le-success), #059669)" },
+                        { name: "r/programming", color: "linear-gradient(135deg, var(--le-warning), var(--le-danger))" }
+                    ] %}
+                    {% for c in communities %}
+                    <div class="forum-trending-item">
+                        <div class="forum-trending-icon" style="background:{{ c.color }};">{{ c.name[2] | upper }}</div>
+                        <a href="javascript:void(0)" class="forum-trending-name">{{ c.name }}</a>
+                    </div>
+                    {% endfor %}
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Floating sidebar toggle (mobile) -->
+    <button class="forum-sidebar-toggle-fab" id="forumSidebarToggle" aria-label="Show sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    </button>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/forum.js"></script>
+{% endblock %}

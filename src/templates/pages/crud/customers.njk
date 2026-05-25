@@ -1,0 +1,471 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+
+{% block content %}
+
+<div class="page-header">
+    <h2>Customers Management</h2>
+    <p>View and manage customer records</p>
+</div>
+
+<div class="toolbar-glass">
+    <div class="search-box">
+        <span class="search-icon"><i data-feather="search"></i></span>
+        <input type="text" class="form-control" id="searchInput" placeholder="Search customers...">
+    </div>
+    <select class="form-select le-bg-glass le-rounded-8 le-min-w-150" id="statusFilter">
+        <option value="">All Status</option>
+        <option value="Active">Active</option>
+        <option value="Inactive">Inactive</option>
+        <option value="VIP">VIP</option>
+    </select>
+    <div class="ms-auto d-flex gap-2">
+        <button class="btn btn-outline-secondary" id="exportCsvBtn"><i data-feather="download" class="le-icon-16 le-icon-mr-4"></i> Export CSV</button>
+        <button class="btn btn-primary" id="addCustomerBtn"><i data-feather="plus" class="le-icon-16 le-icon-mr-4"></i> Add Customer</button>
+    </div>
+</div>
+
+<div class="glass-card p-0">
+    <div class="table-glass-wrapper">
+        <div class="table-responsive">
+            <table class="table-glass">
+                <thead>
+                    <tr>
+                        <th data-sort="name">Customer <span class="sort-icon">↕</span></th>
+                        <th data-sort="phone">Phone <span class="sort-icon">↕</span></th>
+                        <th data-sort="location">Location <span class="sort-icon">↕</span></th>
+                        <th data-sort="status">Status <span class="sort-icon">↕</span></th>
+                        <th data-sort="orders">Orders <span class="sort-icon">↕</span></th>
+                        <th data-sort="totalSpent">Total Spent <span class="sort-icon">↕</span></th>
+                        <th data-sort="joinDate">Join Date <span class="sort-icon">↕</span></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="customersTableBody"></tbody>
+            </table>
+        </div>
+        <div id="mobileCards" class="mobile-cards p-3"></div>
+        <div class="pagination-wrapper">
+            <span class="pagination-info" id="paginationInfo"></span>
+            <nav><ul class="pagination pagination-sm mb-0" id="paginationControls"></ul></nav>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Customer Modal -->
+<div class="modal fade modal-glass" id="customerModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="customerModalTitle">Add Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="customerForm">
+                    <input type="hidden" id="customerId">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" id="custName" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="custEmail" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Phone</label>
+                            <input type="text" class="form-control" id="custPhone">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Status</label>
+                            <select class="form-select" id="custStatus">
+                                <option value="Active">Active</option>
+                                <option value="Inactive">Inactive</option>
+                                <option value="VIP">VIP</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Address</label>
+                            <input type="text" class="form-control" id="custAddress">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">City</label>
+                            <input type="text" class="form-control" id="custCity">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Country</label>
+                            <input type="text" class="form-control" id="custCountry">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveCustomerBtn">Save Customer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade modal-glass" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-0">Are you sure you want to delete <strong id="deleteCustomerName"></strong>? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger btn-sm" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Customer Modal -->
+<div class="modal fade modal-glass" id="viewModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Customer Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="viewModalBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    (function() {
+        'use strict';
+
+        let customersData = [
+            { id: 1, name: 'Sarah Johnson', email: 'sarah.johnson@email.com', phone: '+1 (555) 123-4567', address: '123 Park Ave', city: 'New York', country: 'USA', status: 'VIP', orders: 45, totalSpent: 12450.00, joinDate: '2022-03-15' },
+            { id: 2, name: 'Michael Chen', email: 'michael.chen@email.com', phone: '+1 (555) 234-5678', address: '456 Market St', city: 'San Francisco', country: 'USA', status: 'Active', orders: 23, totalSpent: 5670.00, joinDate: '2022-06-20' },
+            { id: 3, name: 'Emily Davis', email: 'emily.davis@email.com', phone: '+44 20 7123 4567', address: '10 Downing Ln', city: 'London', country: 'UK', status: 'Active', orders: 34, totalSpent: 8920.00, joinDate: '2022-01-10' },
+            { id: 4, name: 'James Wilson', email: 'james.wilson@email.com', phone: '+1 (555) 345-6789', address: '789 Lake Shore Dr', city: 'Chicago', country: 'USA', status: 'Inactive', orders: 5, totalSpent: 890.00, joinDate: '2023-02-28' },
+            { id: 5, name: 'Lisa Anderson', email: 'lisa.anderson@email.com', phone: '+61 2 9876 5432', address: '22 Harbour St', city: 'Sydney', country: 'Australia', status: 'VIP', orders: 56, totalSpent: 15230.00, joinDate: '2021-11-05' },
+            { id: 6, name: 'Robert Taylor', email: 'robert.taylor@email.com', phone: '+1 (555) 456-7890', address: '321 Main St', city: 'Houston', country: 'USA', status: 'Active', orders: 12, totalSpent: 3450.00, joinDate: '2023-05-12' },
+            { id: 7, name: 'Amanda Martinez', email: 'amanda.martinez@email.com', phone: '+34 91 123 4567', address: 'Calle Gran Via 55', city: 'Madrid', country: 'Spain', status: 'Active', orders: 28, totalSpent: 7120.00, joinDate: '2022-08-30' },
+            { id: 8, name: 'David Brown', email: 'david.brown@email.com', phone: '+1 (555) 567-8901', address: '555 Pine St', city: 'Seattle', country: 'USA', status: 'Active', orders: 19, totalSpent: 4560.00, joinDate: '2022-12-01' },
+            { id: 9, name: 'Jennifer Lee', email: 'jennifer.lee@email.com', phone: '+82 2 1234 5678', address: '88 Gangnam Blvd', city: 'Seoul', country: 'South Korea', status: 'VIP', orders: 67, totalSpent: 18900.00, joinDate: '2021-07-22' },
+            { id: 10, name: 'Thomas White', email: 'thomas.white@email.com', phone: '+1 (555) 678-9012', address: '100 Mountain Rd', city: 'Denver', country: 'USA', status: 'Inactive', orders: 3, totalSpent: 345.00, joinDate: '2023-09-15' },
+            { id: 11, name: 'Maria Garcia', email: 'maria.garcia@email.com', phone: '+52 55 1234 5678', address: 'Av. Reforma 200', city: 'Mexico City', country: 'Mexico', status: 'Active', orders: 15, totalSpent: 3890.00, joinDate: '2023-01-08' },
+            { id: 12, name: 'Christopher Hall', email: 'chris.hall@email.com', phone: '+1 (555) 789-0123', address: '42 Beacon St', city: 'Boston', country: 'USA', status: 'Active', orders: 31, totalSpent: 9230.00, joinDate: '2022-04-17' },
+            { id: 13, name: 'Jessica Clark', email: 'jessica.clark@email.com', phone: '+49 30 1234 5678', address: 'Friedrichstr. 12', city: 'Berlin', country: 'Germany', status: 'Inactive', orders: 7, totalSpent: 1560.00, joinDate: '2023-06-25' },
+            { id: 14, name: 'Daniel Lewis', email: 'daniel.lewis@email.com', phone: '+1 (555) 890-1234', address: '800 Ocean Dr', city: 'Miami', country: 'USA', status: 'Active', orders: 22, totalSpent: 6780.00, joinDate: '2022-09-03' },
+            { id: 15, name: 'Ashley Robinson', email: 'ashley.robinson@email.com', phone: '+81 3 1234 5678', address: '1-1 Shibuya', city: 'Tokyo', country: 'Japan', status: 'VIP', orders: 48, totalSpent: 14560.00, joinDate: '2021-12-18' },
+            { id: 16, name: 'Matthew Walker', email: 'matt.walker@email.com', phone: '+1 (555) 901-2345', address: '250 Burnside St', city: 'Portland', country: 'USA', status: 'Active', orders: 16, totalSpent: 4120.00, joinDate: '2023-03-22' },
+            { id: 17, name: 'Stephanie Young', email: 'steph.young@email.com', phone: '+33 1 23 45 67 89', address: '5 Rue de Rivoli', city: 'Paris', country: 'France', status: 'Active', orders: 25, totalSpent: 6340.00, joinDate: '2022-07-14' },
+            { id: 18, name: 'Andrew King', email: 'andrew.king@email.com', phone: '+1 (555) 012-3456', address: '900 Congress Ave', city: 'Austin', country: 'USA', status: 'Inactive', orders: 2, totalSpent: 230.00, joinDate: '2024-01-05' },
+            { id: 19, name: 'Nicole Wright', email: 'nicole.wright@email.com', phone: '+55 11 1234 5678', address: 'Av. Paulista 1000', city: 'São Paulo', country: 'Brazil', status: 'Active', orders: 20, totalSpent: 5120.00, joinDate: '2022-10-28' },
+            { id: 20, name: 'Kevin Scott', email: 'kevin.scott@email.com', phone: '+1 (555) 135-7924', address: '75 Peachtree St', city: 'Atlanta', country: 'USA', status: 'Active', orders: 14, totalSpent: 3670.00, joinDate: '2023-04-09' }
+        ];
+
+        let nextId = 21;
+        let currentPage = 1;
+        const perPage = 10;
+        let sortField = '';
+        let sortDir = 'asc';
+        let deleteTargetId = null;
+
+        const searchInput = document.getElementById('searchInput');
+        const statusFilter = document.getElementById('statusFilter');
+        const tableBody = document.getElementById('customersTableBody');
+        const mobileCards = document.getElementById('mobileCards');
+        const paginationInfo = document.getElementById('paginationInfo');
+        const paginationControls = document.getElementById('paginationControls');
+
+        const customerModal = new bootstrap.Modal(document.getElementById('customerModal'));
+        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+        const viewModal = new bootstrap.Modal(document.getElementById('viewModal'));
+
+        function getInitials(name) {
+            return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+        }
+
+        function avatarClass(status) {
+            if (status === 'VIP') return 'bg-vip';
+            if (status === 'Inactive') return 'bg-inactive';
+            return 'bg-active';
+        }
+
+        function statusBadge(status) {
+            if (status === 'VIP') return '<span class="badge badge-vip">★ VIP</span>';
+            if (status === 'Inactive') return '<span class="badge badge-inactive">Inactive</span>';
+            return '<span class="badge badge-active">Active</span>';
+        }
+
+        function formatCurrency(val) {
+            return '$' + val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function formatDate(d) {
+            return new Date(d).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        }
+
+        function getFilteredData() {
+            let data = [...customersData];
+            const q = searchInput.value.toLowerCase().trim();
+            const st = statusFilter.value;
+            if (q) {
+                data = data.filter(c =>
+                    c.name.toLowerCase().includes(q) ||
+                    c.email.toLowerCase().includes(q) ||
+                    c.phone.toLowerCase().includes(q) ||
+                    c.city.toLowerCase().includes(q) ||
+                    c.country.toLowerCase().includes(q)
+                );
+            }
+            if (st) {
+                data = data.filter(c => c.status === st);
+            }
+            if (sortField) {
+                data.sort((a, b) => {
+                    let va = a[sortField], vb = b[sortField];
+                    if (sortField === 'location') { va = a.city + a.country; vb = b.city + b.country; }
+                    if (typeof va === 'string') va = va.toLowerCase();
+                    if (typeof vb === 'string') vb = vb.toLowerCase();
+                    if (va < vb) return sortDir === 'asc' ? -1 : 1;
+                    if (va > vb) return sortDir === 'asc' ? 1 : -1;
+                    return 0;
+                });
+            }
+            return data;
+        }
+
+        function render() {
+            const filtered = getFilteredData();
+            const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+            if (currentPage > totalPages) currentPage = totalPages;
+            const start = (currentPage - 1) * perPage;
+            const pageData = filtered.slice(start, start + perPage);
+
+            // Table
+            tableBody.innerHTML = pageData.map(c => `
+                <tr>
+                    <td>
+                        <div class="customer-info">
+                            <div class="customer-avatar ${avatarClass(c.status)}">${getInitials(c.name)}</div>
+                            <div class="details">
+                                <div class="name">${c.name}</div>
+                                <div class="email">${c.email}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${c.phone}</td>
+                    <td>${c.city}, ${c.country}</td>
+                    <td>${statusBadge(c.status)}</td>
+                    <td>${c.orders}</td>
+                    <td>${formatCurrency(c.totalSpent)}</td>
+                    <td>${formatDate(c.joinDate)}</td>
+                    <td>
+                        <div class="action-btns">
+                            <button class="btn btn-sm btn-outline-info" title="View" onclick="viewCustomer(${c.id})"><i data-feather="eye"></i></button>
+                            <button class="btn btn-sm btn-outline-primary" title="Edit" onclick="editCustomer(${c.id})"><i data-feather="edit-2"></i></button>
+                            <button class="btn btn-sm btn-outline-danger" title="Delete" onclick="deleteCustomer(${c.id})"><i data-feather="trash-2"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Mobile cards
+            mobileCards.innerHTML = pageData.map(c => `
+                <div class="mobile-card">
+                    <div class="mc-header">
+                        <div class="customer-avatar ${avatarClass(c.status)}">${getInitials(c.name)}</div>
+                        <div>
+                            <div class="name">${c.name}</div>
+                            <div class="email">${c.email}</div>
+                        </div>
+                        <div class="ms-auto">${statusBadge(c.status)}</div>
+                    </div>
+                    <div class="mc-body">
+                        <div><span class="mc-label">Phone</span><br>${c.phone}</div>
+                        <div><span class="mc-label">Location</span><br>${c.city}, ${c.country}</div>
+                        <div><span class="mc-label">Orders</span><br>${c.orders}</div>
+                        <div><span class="mc-label">Total Spent</span><br>${formatCurrency(c.totalSpent)}</div>
+                    </div>
+                    <div class="mc-actions">
+                        <button class="btn btn-sm btn-outline-info" onclick="viewCustomer(${c.id})"><i data-feather="eye"></i></button>
+                        <button class="btn btn-sm btn-outline-primary" onclick="editCustomer(${c.id})"><i data-feather="edit-2"></i></button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="deleteCustomer(${c.id})"><i data-feather="trash-2"></i></button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Pagination info
+            if (filtered.length === 0) {
+                paginationInfo.textContent = 'No customers found';
+            } else {
+                paginationInfo.textContent = `Showing ${start + 1}-${Math.min(start + perPage, filtered.length)} of ${filtered.length} customers`;
+            }
+
+            // Pagination controls
+            let pages = '';
+            pages += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}"><a class="page-link" href="javascript:void(0)" data-page="${currentPage - 1}">&laquo;</a></li>`;
+            for (let i = 1; i <= totalPages; i++) {
+                pages += `<li class="page-item ${i === currentPage ? 'active' : ''}"><a class="page-link" href="javascript:void(0)" data-page="${i}">${i}</a></li>`;
+            }
+            pages += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}"><a class="page-link" href="javascript:void(0)" data-page="${currentPage + 1}">&raquo;</a></li>`;
+            paginationControls.innerHTML = pages;
+
+            if (typeof feather !== 'undefined') feather.replace();
+        }
+
+        // Sorting
+        document.querySelectorAll('.table-glass thead th[data-sort]').forEach(th => {
+            th.addEventListener('click', function() {
+                const field = this.dataset.sort;
+                if (sortField === field) {
+                    sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+                } else {
+                    sortField = field;
+                    sortDir = 'asc';
+                }
+                document.querySelectorAll('.table-glass thead th .sort-icon').forEach(s => s.classList.remove('active'));
+                this.querySelector('.sort-icon').classList.add('active');
+                this.querySelector('.sort-icon').textContent = sortDir === 'asc' ? '↑' : '↓';
+                currentPage = 1;
+                render();
+            });
+        });
+
+        // Search & filter
+        searchInput.addEventListener('input', function() { currentPage = 1; render(); });
+        statusFilter.addEventListener('change', function() { currentPage = 1; render(); });
+
+        // Pagination clicks
+        paginationControls.addEventListener('click', function(e) {
+            e.preventDefault();
+            const page = parseInt(e.target.dataset.page);
+            if (page && !isNaN(page)) { currentPage = page; render(); }
+        });
+
+        // Add customer button
+        document.getElementById('addCustomerBtn').addEventListener('click', function() {
+            document.getElementById('customerModalTitle').textContent = 'Add Customer';
+            document.getElementById('customerForm').reset();
+            document.getElementById('customerId').value = '';
+            customerModal.show();
+        });
+
+        // Edit customer
+        window.editCustomer = function(id) {
+            const c = customersData.find(x => x.id === id);
+            if (!c) return;
+            document.getElementById('customerModalTitle').textContent = 'Edit Customer';
+            document.getElementById('customerId').value = c.id;
+            document.getElementById('custName').value = c.name;
+            document.getElementById('custEmail').value = c.email;
+            document.getElementById('custPhone').value = c.phone;
+            document.getElementById('custAddress').value = c.address || '';
+            document.getElementById('custCity').value = c.city;
+            document.getElementById('custCountry').value = c.country;
+            document.getElementById('custStatus').value = c.status;
+            customerModal.show();
+        };
+
+        // Save customer
+        document.getElementById('saveCustomerBtn').addEventListener('click', function() {
+            const name = document.getElementById('custName').value.trim();
+            const email = document.getElementById('custEmail').value.trim();
+            if (!name || !email) { LiquidElegance.showToast('Name and Email are required.', 'warning'); return; }
+            const id = document.getElementById('customerId').value;
+            const data = {
+                name: name,
+                email: email,
+                phone: document.getElementById('custPhone').value.trim(),
+                address: document.getElementById('custAddress').value.trim(),
+                city: document.getElementById('custCity').value.trim(),
+                country: document.getElementById('custCountry').value.trim(),
+                status: document.getElementById('custStatus').value
+            };
+            if (id) {
+                const c = customersData.find(x => x.id === parseInt(id));
+                if (c) Object.assign(c, data);
+            } else {
+                customersData.push({
+                    id: nextId++,
+                    ...data,
+                    orders: 0,
+                    totalSpent: 0,
+                    joinDate: new Date().toISOString().split('T')[0]
+                });
+            }
+            customerModal.hide();
+            render();
+        });
+
+        // Delete customer
+        window.deleteCustomer = function(id) {
+            const c = customersData.find(x => x.id === id);
+            if (!c) return;
+            deleteTargetId = id;
+            document.getElementById('deleteCustomerName').textContent = c.name;
+            deleteModal.show();
+        };
+
+        document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+            if (deleteTargetId !== null) {
+                customersData = customersData.filter(c => c.id !== deleteTargetId);
+                deleteTargetId = null;
+                deleteModal.hide();
+                render();
+            }
+        });
+
+        // View customer
+        window.viewCustomer = function(id) {
+            const c = customersData.find(x => x.id === id);
+            if (!c) return;
+            document.getElementById('viewModalBody').innerHTML = `
+                <div class="text-center mb-3">
+                    <div class="customer-avatar ${avatarClass(c.status)} mx-auto le-box-64 le-fs-icon-xl">${getInitials(c.name)}</div>
+                    <h5 class="mt-2 mb-0">${c.name}</h5>
+                    <div class="mt-1">${statusBadge(c.status)}</div>
+                </div>
+                <div class="view-detail-row"><span class="label">Email</span><span class="value">${c.email}</span></div>
+                <div class="view-detail-row"><span class="label">Phone</span><span class="value">${c.phone}</span></div>
+                <div class="view-detail-row"><span class="label">Address</span><span class="value">${c.address || '—'}</span></div>
+                <div class="view-detail-row"><span class="label">City</span><span class="value">${c.city}</span></div>
+                <div class="view-detail-row"><span class="label">Country</span><span class="value">${c.country}</span></div>
+                <div class="view-detail-row"><span class="label">Orders</span><span class="value">${c.orders}</span></div>
+                <div class="view-detail-row"><span class="label">Total Spent</span><span class="value">${formatCurrency(c.totalSpent)}</span></div>
+                <div class="view-detail-row"><span class="label">Join Date</span><span class="value">${formatDate(c.joinDate)}</span></div>
+            `;
+            if (typeof feather !== 'undefined') feather.replace();
+            viewModal.show();
+        };
+
+        // Export CSV
+        document.getElementById('exportCsvBtn').addEventListener('click', function() {
+            const filtered = getFilteredData();
+            const headers = ['Name','Email','Phone','City','Country','Status','Orders','Total Spent','Join Date'];
+            const rows = filtered.map(c => [
+                c.name, c.email, c.phone, c.city, c.country, c.status, c.orders, c.totalSpent.toFixed(2), c.joinDate
+            ]);
+            let csv = headers.join(',') + '\n' + rows.map(r => r.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(',')).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'customers.csv'; a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Initial render
+        render();
+    })();
+</script>
+{% endblock %}

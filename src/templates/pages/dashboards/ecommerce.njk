@@ -1,0 +1,515 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}eCommerce — Liquid Elegance{% endblock %}
+
+{% block scripts_before %}
+<script src="{{ asset_root or root }}vendor/chart.js/chart.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-3">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboards</a></li>
+    <li class="breadcrumb-item active" aria-current="page">eCommerce</li>
+  </ol>
+</nav>
+
+<!-- Page Header -->
+<div class="mb-4">
+  <h1 class="h3 mb-1">eCommerce</h1>
+  <p class="text-muted mb-0">Track your sales and product performance</p>
+</div>
+
+<!-- Metric Cards -->
+<div class="row g-4 mb-4">
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">Total Sales</p>
+            <h3 class="metric-value mb-1">$124,563</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +18.2%</span>
+          </div>
+          <div class="metric-icon bg-primary-subtle">
+            <i data-feather="shopping-bag"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="ecomSparkSales" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">Revenue</p>
+            <h3 class="metric-value mb-1">$89,421</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +12.4%</span>
+          </div>
+          <div class="metric-icon bg-success-subtle">
+            <i data-feather="dollar-sign"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="ecomSparkRevenue" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">Orders</p>
+            <h3 class="metric-value mb-1">3,847</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +9.8%</span>
+          </div>
+          <div class="metric-icon bg-info-subtle">
+            <i data-feather="shopping-cart"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="ecomSparkOrders" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">Customers</p>
+            <h3 class="metric-value mb-1">1,249</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +22.5%</span>
+          </div>
+          <div class="metric-icon bg-warning-subtle">
+            <i data-feather="users"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="ecomSparkCustomers" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sales Trend Chart + Revenue by Category -->
+<div class="row g-4 mb-4">
+  <div class="col-lg-8">
+    <div class="glass-card h-100">
+      <div class="glass-card-header d-flex justify-content-between align-items-center">
+        <h5 class="glass-card-title mb-0">Sales Trend</h5>
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-outline-primary">6M</button>
+          <button type="button" class="btn btn-outline-primary active">12M</button>
+          <button type="button" class="btn btn-outline-primary">YTD</button>
+        </div>
+      </div>
+      <div class="glass-card-body">
+        <div class="chart-wrapper le-chart-300"><canvas id="salesTrendChart" height="300"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="glass-card h-100">
+      <div class="glass-card-header">
+        <h5 class="glass-card-title mb-0">Revenue by Category</h5>
+      </div>
+      <div class="glass-card-body">
+        <div class="chart-wrapper le-chart-260"><canvas id="categoryChart" height="260"></canvas></div>
+        <div class="mt-3">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="rounded-circle d-inline-block le-legend-dot le-bar-primary"></span>
+              <span class="small">Electronics</span>
+            </div>
+            <span class="small fw-semibold">38%</span>
+          </div>
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="rounded-circle d-inline-block le-legend-dot le-bar-success"></span>
+              <span class="small">Clothing</span>
+            </div>
+            <span class="small fw-semibold">24%</span>
+          </div>
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="rounded-circle d-inline-block le-legend-dot le-bar-warning"></span>
+              <span class="small">Home &amp; Garden</span>
+            </div>
+            <span class="small fw-semibold">18%</span>
+          </div>
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="rounded-circle d-inline-block le-legend-dot le-bar-info"></span>
+              <span class="small">Sports</span>
+            </div>
+            <span class="small fw-semibold">12%</span>
+          </div>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <span class="rounded-circle d-inline-block le-legend-dot le-bar-danger"></span>
+              <span class="small">Other</span>
+            </div>
+            <span class="small fw-semibold">8%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Orders -->
+<div class="row g-4 mb-4">
+  <div class="col-12">
+    <div class="glass-card">
+      <div class="glass-card-header d-flex justify-content-between align-items-center">
+        <h5 class="glass-card-title mb-0">Recent Orders</h5>
+        <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary">View All</a>
+      </div>
+      <div class="glass-card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Products</th>
+                <th class="text-end">Total</th>
+                <th>Payment</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fw-medium">#ORD-7841</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-primary">SM</span>
+                    Sarah Mitchell
+                  </div>
+                </td>
+                <td>MacBook Pro 14", Magic Mouse</td>
+                <td class="text-end fw-semibold">$2,849.00</td>
+                <td><i data-feather="credit-card" class="me-1 text-muted le-icon-14"></i>Visa</td>
+                <td><span class="glass-badge glass-badge-success">Delivered</span></td>
+              </tr>
+              <tr>
+                <td class="fw-medium">#ORD-7840</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-info">JD</span>
+                    James Donovan
+                  </div>
+                </td>
+                <td>Running Shoes, Sports Watch</td>
+                <td class="text-end fw-semibold">$384.50</td>
+                <td><i data-feather="credit-card" class="me-1 text-muted le-icon-14"></i>PayPal</td>
+                <td><span class="glass-badge glass-badge-primary">Shipped</span></td>
+              </tr>
+              <tr>
+                <td class="fw-medium">#ORD-7839</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-warning">EW</span>
+                    Emily Watson
+                  </div>
+                </td>
+                <td>Ceramic Vase Set, Table Lamp</td>
+                <td class="text-end fw-semibold">$127.80</td>
+                <td><i data-feather="credit-card" class="me-1 text-muted le-icon-14"></i>Mastercard</td>
+                <td><span class="glass-badge glass-badge-warning">Processing</span></td>
+              </tr>
+              <tr>
+                <td class="fw-medium">#ORD-7838</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-success">RP</span>
+                    Robert Park
+                  </div>
+                </td>
+                <td>Wireless Headphones, USB-C Hub</td>
+                <td class="text-end fw-semibold">$215.99</td>
+                <td><i data-feather="credit-card" class="me-1 text-muted le-icon-14"></i>Apple Pay</td>
+                <td><span class="glass-badge glass-badge-success">Delivered</span></td>
+              </tr>
+              <tr>
+                <td class="fw-medium">#ORD-7837</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-danger">LC</span>
+                    Lisa Chen
+                  </div>
+                </td>
+                <td>Yoga Mat, Resistance Bands, Water Bottle</td>
+                <td class="text-end fw-semibold">$89.70</td>
+                <td><i data-feather="credit-card" class="me-1 text-muted le-icon-14"></i>Visa</td>
+                <td><span class="glass-badge glass-badge-primary">Shipped</span></td>
+              </tr>
+              <tr>
+                <td class="fw-medium">#ORD-7836</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-secondary">MJ</span>
+                    Michael Jensen
+                  </div>
+                </td>
+                <td>4K Monitor, Mechanical Keyboard</td>
+                <td class="text-end fw-semibold">$742.00</td>
+                <td><i data-feather="credit-card" class="me-1 text-muted le-icon-14"></i>Stripe</td>
+                <td><span class="glass-badge glass-badge-danger">Refunded</span></td>
+              </tr>
+              <tr>
+                <td class="fw-medium">#ORD-7835</td>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-primary">AK</span>
+                    Anna Kim
+                  </div>
+                </td>
+                <td>Silk Blouse, Leather Handbag</td>
+                <td class="text-end fw-semibold">$465.00</td>
+                <td><i data-feather="credit-card" class="me-1 text-muted le-icon-14"></i>PayPal</td>
+                <td><span class="glass-badge glass-badge-warning">Processing</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Product Performance -->
+<div class="row g-4 mb-4">
+  <div class="col-12">
+    <div class="glass-card">
+      <div class="glass-card-header d-flex justify-content-between align-items-center">
+        <h5 class="glass-card-title mb-0">Product Performance</h5>
+        <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary">View All</a>
+      </div>
+      <div class="glass-card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th class="text-end">Sales</th>
+                <th class="text-end">Revenue</th>
+                <th>Stock Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-3">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded bg-primary bg-opacity-10 le-box-40">
+                      <i data-feather="monitor" class="text-primary le-icon-20"></i>
+                    </span>
+                    <div>
+                      <span class="fw-medium d-block">MacBook Pro 14"</span>
+                      <span class="text-muted small">Electronics</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end">342</td>
+                <td class="text-end fw-semibold">$682,258</td>
+                <td><span class="glass-badge glass-badge-success">In Stock</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-3">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded bg-info bg-opacity-10 le-box-40">
+                      <i data-feather="headphones" class="text-info le-icon-20"></i>
+                    </span>
+                    <div>
+                      <span class="fw-medium d-block">Wireless Headphones Pro</span>
+                      <span class="text-muted small">Electronics</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end">891</td>
+                <td class="text-end fw-semibold">$133,650</td>
+                <td><span class="glass-badge glass-badge-success">In Stock</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-3">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded bg-warning bg-opacity-10 le-box-40">
+                      <i data-feather="watch" class="text-warning le-icon-20"></i>
+                    </span>
+                    <div>
+                      <span class="fw-medium d-block">Smart Fitness Watch</span>
+                      <span class="text-muted small">Sports</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end">567</td>
+                <td class="text-end fw-semibold">$113,400</td>
+                <td><span class="glass-badge glass-badge-warning">Low Stock</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-3">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded bg-success bg-opacity-10 le-box-40">
+                      <i data-feather="home" class="text-success le-icon-20"></i>
+                    </span>
+                    <div>
+                      <span class="fw-medium d-block">Minimalist Desk Lamp</span>
+                      <span class="text-muted small">Home &amp; Garden</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end">1,204</td>
+                <td class="text-end fw-semibold">$84,280</td>
+                <td><span class="glass-badge glass-badge-success">In Stock</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-3">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded bg-danger bg-opacity-10 le-box-40">
+                      <i data-feather="package" class="text-danger le-icon-20"></i>
+                    </span>
+                    <div>
+                      <span class="fw-medium d-block">Premium Leather Backpack</span>
+                      <span class="text-muted small">Clothing</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end">438</td>
+                <td class="text-end fw-semibold">$65,700</td>
+                <td><span class="glass-badge glass-badge-danger">Out of Stock</span></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-3">
+                    <span class="d-inline-flex align-items-center justify-content-center rounded bg-secondary bg-opacity-10 le-box-40">
+                      <i data-feather="camera" class="text-secondary le-icon-20"></i>
+                    </span>
+                    <div>
+                      <span class="fw-medium d-block">Mirrorless Camera Kit</span>
+                      <span class="text-muted small">Electronics</span>
+                    </div>
+                  </div>
+                </td>
+                <td class="text-end">124</td>
+                <td class="text-end fw-semibold">$148,800</td>
+                <td><span class="glass-badge glass-badge-success">In Stock</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const leStyles = getComputedStyle(document.documentElement);
+  const lePrimary = leStyles.getPropertyValue('--le-primary').trim() || '#6366f1';
+  const leSuccess = leStyles.getPropertyValue('--le-success').trim() || '#10b981';
+  const leWarning = leStyles.getPropertyValue('--le-warning').trim() || '#f59e0b';
+  const leInfo    = leStyles.getPropertyValue('--le-info').trim()    || '#06b6d4';
+  const leDanger  = leStyles.getPropertyValue('--le-danger').trim()  || '#ef4444';
+
+  function createSparkline(id, data, color) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    new Chart(ctx, {
+      type: 'line',
+      data: { labels: data.map((_, i) => i), datasets: [{ data, borderColor: color, borderWidth: 2, fill: true, backgroundColor: color + '20', tension: 0.4, pointRadius: 0 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } }
+    });
+  }
+
+  createSparkline('ecomSparkSales', [28, 32, 30, 36, 34, 40, 42, 48], lePrimary);
+  createSparkline('ecomSparkRevenue', [18, 22, 20, 26, 28, 24, 30, 34], leSuccess);
+  createSparkline('ecomSparkOrders', [120, 145, 135, 160, 155, 170, 165, 185], leInfo);
+  createSparkline('ecomSparkCustomers', [600, 680, 720, 850, 810, 940, 1020, 1140], leWarning);
+
+  // Sales Trend line chart
+  const salesCtx = document.getElementById('salesTrendChart');
+  if (salesCtx) {
+    new Chart(salesCtx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [
+          {
+            label: 'Revenue',
+            data: [4200,5100,4800,6200,7100,6800,7900,8400,7600,9100,10200,11400],
+            borderColor: lePrimary,
+            backgroundColor: lePrimary + '18',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            yAxisID: 'y'
+          },
+          {
+            label: 'Orders',
+            data: [180,220,210,275,310,295,340,365,330,395,440,480],
+            borderColor: leSuccess,
+            backgroundColor: 'transparent',
+            borderDash: [5, 5],
+            tension: 0.4,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            yAxisID: 'y1'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { position: 'top' } },
+        scales: {
+          x: { grid: { display: false } },
+          y: {
+            type: 'linear', position: 'left',
+            beginAtZero: true,
+            grid: { color: 'rgba(148,163,184,0.1)' },
+            ticks: { callback: function(v) { return '$' + (v / 1000) + 'k'; } }
+          },
+          y1: {
+            type: 'linear', position: 'right',
+            beginAtZero: true,
+            grid: { drawOnChartArea: false }
+          }
+        }
+      }
+    });
+  }
+
+  // Revenue by Category doughnut chart
+  const catCtx = document.getElementById('categoryChart');
+  if (catCtx) {
+    new Chart(catCtx.getContext('2d'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Electronics','Clothing','Home & Garden','Sports','Other'],
+        datasets: [{
+          data: [38, 24, 18, 12, 8],
+          backgroundColor: [lePrimary, leSuccess, leWarning, leInfo, leDanger],
+          borderWidth: 0,
+          hoverOffset: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        cutout: '68%',
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  }
+});
+</script>
+{% endblock %}

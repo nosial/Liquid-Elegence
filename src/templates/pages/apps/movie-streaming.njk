@@ -1,0 +1,282 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    {# ============ Shared catalog data ============ #}
+    {% set billboard = {
+        id: "stellar-drift",
+        title: "Stellar Drift",
+        eyebrow: "Cineflux Original",
+        year: "2024", maturity: "TV-14", duration: "2h 14m",
+        rating: "97% Match",
+        tags: ["Sci-Fi", "Adventure", "Mystery"],
+        desc: "When a deep-space cartographer drifts off course into an uncharted nebula, she uncovers a derelict colony ship — and a centuries-old transmission still pulsing with light.",
+        color: "linear-gradient(135deg, #6366f1, #06b6d4)"
+    } %}
+
+    {% set continueWatching = [
+        { id: "midnight-metro",   title: "Midnight Metro",        progress: 64, remaining: "27 min left",  ep: "S2:E4 — Last Train",        color: "linear-gradient(135deg, #1e3a8a, #06b6d4)" },
+        { id: "saffron-sky",      title: "Saffron Sky",           progress: 22, remaining: "1h 12m left",                                  color: "linear-gradient(135deg, #f59e0b, #ef4444)" },
+        { id: "cipher",           title: "Cipher",                progress: 81, remaining: "9 min left",   ep: "S1:E7 — Trace Route",       color: "linear-gradient(135deg, #0f172a, #6366f1)" },
+        { id: "wildflower-country", title: "Wildflower Country",  progress: 45, remaining: "52 min left",                                  color: "linear-gradient(135deg, #84cc16, #14b8a6)" },
+        { id: "ghost-frequency",  title: "Ghost Frequency",       progress: 12, remaining: "1h 35m left",                                  color: "linear-gradient(135deg, #581c87, #ec4899)" },
+        { id: "iron-garden",      title: "Iron Garden",           progress: 70, remaining: "18 min left",  ep: "S3:E2 — The Forge",         color: "linear-gradient(135deg, #ea580c, #78350f)" }
+    ] %}
+
+    {% set trending = [
+        { id: "echoes-of-tomorrow",   title: "Echoes of Tomorrow",   year: "2024", maturity: "PG-13", duration: "1h 58m", badge: "NEW",    color: "linear-gradient(135deg, #6366f1, #ec4899)" },
+        { id: "neon-wolves",          title: "Neon Wolves",          year: "2023", maturity: "TV-MA", duration: "S2",     badge: "TOP 10", color: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+        { id: "the-glass-detective",  title: "The Glass Detective",  year: "2024", maturity: "TV-14", duration: "S1",     badge: "NEW",    color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+        { id: "polaris-run",          title: "Polaris Run",          year: "2024", maturity: "PG-13", duration: "2h 05m", badge: "4K",     color: "linear-gradient(135deg, #1e293b, #475569)" },
+        { id: "velvet-dawn",          title: "Velvet Dawn",          year: "2023", maturity: "TV-14", duration: "S3",                       color: "linear-gradient(135deg, #be123c, #f97316)" },
+        { id: "deep-ember",           title: "Deep Ember",           year: "2024", maturity: "R",     duration: "1h 47m", badge: "HD",     color: "linear-gradient(135deg, #7c2d12, #b91c1c)" },
+        { id: "paper-cities",         title: "Paper Cities",         year: "2023", maturity: "PG",    duration: "2h 02m",                   color: "linear-gradient(135deg, #475569, #94a3b8)" },
+        { id: "voltage",              title: "Voltage",              year: "2024", maturity: "PG-13", duration: "1h 51m", badge: "NEW",    color: "linear-gradient(135deg, #facc15, #ea580c)" },
+        { id: "atlas-burning",        title: "Atlas Burning",        year: "2023", maturity: "TV-MA", duration: "S2",                       color: "linear-gradient(135deg, #b91c1c, #1f2937)" },
+        { id: "moonshade",            title: "Moonshade",            year: "2024", maturity: "TV-MA", duration: "S1",     badge: "NEW",    color: "linear-gradient(135deg, #1e1b4b, #312e81)" }
+    ] %}
+
+    {% set top10 = [
+        "stellar-drift", "neon-wolves", "the-glass-detective", "echoes-of-tomorrow",
+        "midnight-metro", "iron-garden", "voltage", "polaris-run",
+        "atlas-burning", "deep-ember"
+    ] %}
+    {% set top10Lookup = {
+        "stellar-drift":        { title: "Stellar Drift",        year: "2024", maturity: "TV-14", duration: "1 Season",  color: "linear-gradient(135deg, #6366f1, #06b6d4)" },
+        "neon-wolves":          { title: "Neon Wolves",          year: "2023", maturity: "TV-MA", duration: "2 Seasons", color: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+        "the-glass-detective":  { title: "The Glass Detective",  year: "2024", maturity: "TV-14", duration: "1 Season",  color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+        "echoes-of-tomorrow":   { title: "Echoes of Tomorrow",   year: "2024", maturity: "PG-13", duration: "1h 58m",    color: "linear-gradient(135deg, #6366f1, #ec4899)" },
+        "midnight-metro":       { title: "Midnight Metro",       year: "2023", maturity: "TV-14", duration: "2 Seasons", color: "linear-gradient(135deg, #1e3a8a, #06b6d4)" },
+        "iron-garden":          { title: "Iron Garden",          year: "2024", maturity: "TV-MA", duration: "3 Seasons", color: "linear-gradient(135deg, #ea580c, #78350f)" },
+        "voltage":              { title: "Voltage",              year: "2024", maturity: "PG-13", duration: "1h 51m",    color: "linear-gradient(135deg, #facc15, #ea580c)" },
+        "polaris-run":          { title: "Polaris Run",          year: "2024", maturity: "PG-13", duration: "2h 05m",    color: "linear-gradient(135deg, #1e293b, #475569)" },
+        "atlas-burning":        { title: "Atlas Burning",        year: "2023", maturity: "TV-MA", duration: "2 Seasons", color: "linear-gradient(135deg, #b91c1c, #1f2937)" },
+        "deep-ember":           { title: "Deep Ember",           year: "2024", maturity: "R",     duration: "1h 47m",    color: "linear-gradient(135deg, #7c2d12, #b91c1c)" }
+    } %}
+
+    {% set newReleases = [
+        { id: "quantum-heist",        title: "Quantum Heist",        year: "2025", maturity: "PG-13", duration: "2h 11m", badge: "NEW",  color: "linear-gradient(135deg, #0ea5e9, #6366f1)" },
+        { id: "cobalt-hour",          title: "Cobalt Hour",          year: "2025", maturity: "TV-MA", duration: "S1",     badge: "NEW",  color: "linear-gradient(135deg, #1e40af, #0891b2)" },
+        { id: "violet-hours",         title: "Violet Hours",         year: "2025", maturity: "TV-14", duration: "1h 39m", badge: "NEW",  color: "linear-gradient(135deg, #8b5cf6, #ec4899)" },
+        { id: "the-lighthouse-keeper",title: "The Lighthouse Keeper",year: "2025", maturity: "PG",    duration: "2h 24m", badge: "NEW",  color: "linear-gradient(135deg, #0c4a6e, #0ea5e9)" },
+        { id: "northwind",            title: "Northwind",            year: "2025", maturity: "PG-13", duration: "1h 52m", badge: "NEW",  color: "linear-gradient(135deg, #14b8a6, #0f172a)" },
+        { id: "embers-and-ash",       title: "Embers & Ash",         year: "2025", maturity: "R",     duration: "2h 03m", badge: "NEW",  color: "linear-gradient(135deg, #b91c1c, #4c1d95)" },
+        { id: "starboard",            title: "Starboard",            year: "2025", maturity: "PG",    duration: "1h 44m", badge: "NEW",  color: "linear-gradient(135deg, #0ea5e9, #14b8a6)" },
+        { id: "the-gilded-cage",      title: "The Gilded Cage",      year: "2025", maturity: "TV-MA", duration: "S1",     badge: "NEW",  color: "linear-gradient(135deg, #ca8a04, #78350f)" }
+    ] %}
+
+    {% set originals = [
+        { id: "stellar-drift",        title: "Stellar Drift",        year: "2024", maturity: "TV-14", duration: "1 Season",  badge: "CINEFLUX", color: "linear-gradient(135deg, #6366f1, #06b6d4)" },
+        { id: "neon-wolves",          title: "Neon Wolves",          year: "2023", maturity: "TV-MA", duration: "2 Seasons", badge: "CINEFLUX", color: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+        { id: "iron-garden",          title: "Iron Garden",          year: "2022", maturity: "TV-MA", duration: "3 Seasons", badge: "CINEFLUX", color: "linear-gradient(135deg, #ea580c, #78350f)" },
+        { id: "the-glass-detective",  title: "The Glass Detective",  year: "2024", maturity: "TV-14", duration: "1 Season",  badge: "CINEFLUX", color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+        { id: "midnight-metro",       title: "Midnight Metro",       year: "2023", maturity: "TV-14", duration: "2 Seasons", badge: "CINEFLUX", color: "linear-gradient(135deg, #1e3a8a, #06b6d4)" },
+        { id: "ghost-frequency",      title: "Ghost Frequency",      year: "2023", maturity: "TV-MA", duration: "1 Season",  badge: "CINEFLUX", color: "linear-gradient(135deg, #581c87, #ec4899)" },
+        { id: "atlas-burning",        title: "Atlas Burning",        year: "2023", maturity: "TV-MA", duration: "2 Seasons", badge: "CINEFLUX", color: "linear-gradient(135deg, #b91c1c, #1f2937)" }
+    ] %}
+
+    {% set documentaries = [
+        { id: "solar-bloom",          title: "Solar Bloom",          year: "2024", maturity: "G",     duration: "1h 32m",                color: "linear-gradient(135deg, #fb923c, #fde047)" },
+        { id: "the-deep-currents",    title: "The Deep Currents",    year: "2023", maturity: "PG",    duration: "1h 48m",                color: "linear-gradient(135deg, #0c4a6e, #06b6d4)" },
+        { id: "letters-from-saturn",  title: "Letters from Saturn",  year: "2024", maturity: "PG",    duration: "1h 22m", badge: "HD",   color: "linear-gradient(135deg, #1e1b4b, #6366f1)" },
+        { id: "city-of-glass",        title: "City of Glass",        year: "2022", maturity: "PG",    duration: "1h 15m",                color: "linear-gradient(135deg, #475569, #cbd5e1)" },
+        { id: "the-quiet-forest",     title: "The Quiet Forest",     year: "2023", maturity: "G",     duration: "1h 09m",                color: "linear-gradient(135deg, #166534, #84cc16)" },
+        { id: "tempo-rising",         title: "Tempo Rising",         year: "2024", maturity: "PG-13", duration: "1h 37m",                color: "linear-gradient(135deg, #be123c, #f97316)" }
+    ] %}
+
+    {# Macro: standard landscape card (Netflix style — title overlaid only, hover shows meta strip) #}
+    {% macro movieCard(v, badgeClass="") %}
+        <a href="movie-streaming-title.html" class="movie-card">
+            <div class="movie-card-thumb" style="background: {{ v.color }};">
+                {% if v.badge %}
+                    <div class="movie-card-badges">
+                        <span class="movie-card-badge{% if v.badge == 'NEW' %} is-new{% elif v.badge == 'HD' %} is-hd{% elif v.badge == '4K' %} is-4k{% elif v.badge == 'CINEFLUX' %} is-cf{% elif v.badge == 'TOP 10' %} is-top{% endif %}">{{ v.badge }}</span>
+                    </div>
+                {% endif %}
+                <span class="movie-card-thumb-title">{{ v.title }}</span>
+                <span class="movie-card-icon"><i data-feather="play" class="le-icon-20"></i></span>
+                <div class="movie-card-hover">
+                    <div class="movie-card-hover-meta">
+                        <span class="movie-pill movie-pill-strong">98% Match</span>
+                        <span class="movie-pill">{{ v.maturity }}</span>
+                        <span>{{ v.duration }}</span>
+                        <span class="movie-dot"></span>
+                        <span>{{ v.year }}</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    {% endmacro %}
+
+    {# ===== Billboard / Hero (full-bleed, no card wrapper) ===== #}
+    <section class="movie-billboard glass-card animate-fade-in">
+        <div class="movie-billboard-bg" style="background: {{ billboard.color }};"></div>
+        <div class="movie-billboard-fade"></div>
+        <div class="movie-billboard-side"></div>
+        <div class="movie-billboard-content">
+            <span class="movie-billboard-eyebrow"><i data-feather="award" class="le-icon-14"></i>{{ billboard.eyebrow }}</span>
+            <h2 class="movie-billboard-title">{{ billboard.title }}</h2>
+            <div class="movie-billboard-meta">
+                <span class="movie-pill movie-pill-strong">{{ billboard.rating }}</span>
+                <span>{{ billboard.year }}</span>
+                <span class="movie-dot"></span>
+                <span>{{ billboard.duration }}</span>
+                <span class="movie-pill">{{ billboard.maturity }}</span>
+            </div>
+            <p class="movie-billboard-desc">{{ billboard.desc }}</p>
+            <div class="movie-billboard-actions">
+                <a href="movie-streaming-watch.html" class="movie-btn movie-btn-play"><i data-feather="play" class="le-icon-18"></i>Play</a>
+                <a href="movie-streaming-title.html" class="movie-btn movie-btn-ghost"><i data-feather="info" class="le-icon-18"></i>More Info</a>
+                <button type="button" class="movie-btn movie-btn-ghost movie-btn-icon movie-mylist-btn" aria-label="Add to My List"><i data-feather="plus" class="le-icon-18"></i></button>
+            </div>
+        </div>
+        <div class="movie-billboard-extras">
+            <span class="movie-billboard-maturity">{{ billboard.maturity }}</span>
+        </div>
+    </section>
+
+    {# ===== Browse rails — consolidated into one layered panel =====
+       All six rails (Continue Watching → Documentaries) live inside a
+       single outer glass-card so the page reads as one frosted shell
+       rather than six stacked panels. Each rail keeps its own internal
+       horizontal padding for the side-nav buttons, separated by
+       `.glass-divider` blocks for the layered look. #}
+    <div class="glass-card movie-rails-panel animate-fade-in-up stagger-1">
+
+        {# ===== Continue Watching ===== #}
+        <section class="movie-rail">
+            <div class="movie-rail-header">
+                <h3 class="movie-rail-title">Continue Watching</h3>
+                <a href="movie-streaming-browse.html" class="movie-rail-link"><span>Explore All</span><i data-feather="chevron-right" class="le-icon-14"></i></a>
+            </div>
+            <div class="movie-rail-viewport">
+                <button class="movie-rail-nav is-prev" data-rail-nav="prev" aria-label="Scroll left"><i data-feather="chevron-left"></i></button>
+                <div class="movie-rail-track">
+                    {% for v in continueWatching %}
+                    <a href="movie-streaming-watch.html" class="movie-card is-continue">
+                        <div class="movie-card-thumb" style="background: {{ v.color }};">
+                            <span class="movie-card-icon"><i data-feather="play" class="le-icon-20"></i></span>
+                            <span class="movie-card-remaining">{{ v.remaining }}</span>
+                            <div class="movie-card-progress"><div class="movie-card-progress-fill" style="width: {{ v.progress }}%;"></div></div>
+                            <div class="movie-card-hover">
+                                <div class="movie-card-hover-title">{{ v.title }}</div>
+                                <div class="movie-card-hover-meta">
+                                    {% if v.ep %}<span>{{ v.ep }}</span>{% else %}<span>{{ v.remaining }}</span>{% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+                <button class="movie-rail-nav is-next" data-rail-nav="next" aria-label="Scroll right"><i data-feather="chevron-right"></i></button>
+            </div>
+        </section>
+
+        <div class="glass-divider my-3"></div>
+
+        {# ===== Trending Now ===== #}
+        <section class="movie-rail">
+            <div class="movie-rail-header">
+                <h3 class="movie-rail-title">Trending Now</h3>
+                <a href="movie-streaming-browse.html" class="movie-rail-link"><span>Explore All</span><i data-feather="chevron-right" class="le-icon-14"></i></a>
+            </div>
+            <div class="movie-rail-viewport">
+                <button class="movie-rail-nav is-prev" data-rail-nav="prev" aria-label="Scroll left"><i data-feather="chevron-left"></i></button>
+                <div class="movie-rail-track">
+                    {% for v in trending %}{{ movieCard(v) }}{% endfor %}
+                </div>
+                <button class="movie-rail-nav is-next" data-rail-nav="next" aria-label="Scroll right"><i data-feather="chevron-right"></i></button>
+            </div>
+        </section>
+
+        <div class="glass-divider my-3"></div>
+
+        {# ===== Top 10 ===== #}
+        <section class="movie-rail">
+            <div class="movie-rail-header">
+                <h3 class="movie-rail-title">Top 10 in Your Country Today</h3>
+            </div>
+            <div class="movie-rail-viewport">
+                <button class="movie-rail-nav is-prev" data-rail-nav="prev" aria-label="Scroll left"><i data-feather="chevron-left"></i></button>
+                <div class="movie-rail-track is-top10-track">
+                    {% for id in top10 %}
+                    {% set v = top10Lookup[id] %}
+                    <a href="movie-streaming-title.html" class="movie-card is-top10">
+                        <span class="movie-card-rank" data-rank="{{ loop.index }}">{{ loop.index }}</span>
+                        <div class="movie-card-thumb movie-card-thumb-portrait" style="background: {{ v.color }};">
+                            <span class="movie-card-icon"><i data-feather="play" class="le-icon-20"></i></span>
+                            <div class="movie-card-hover">
+                                <div class="movie-card-hover-title">{{ v.title }}</div>
+                                <div class="movie-card-hover-meta">
+                                    <span class="movie-pill">{{ v.maturity }}</span>
+                                    <span>{{ v.duration }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+                <button class="movie-rail-nav is-next" data-rail-nav="next" aria-label="Scroll right"><i data-feather="chevron-right"></i></button>
+            </div>
+        </section>
+
+        <div class="glass-divider my-3"></div>
+
+        {# ===== New Releases ===== #}
+        <section class="movie-rail">
+            <div class="movie-rail-header">
+                <h3 class="movie-rail-title">New Releases</h3>
+                <a href="movie-streaming-browse.html?filter=new" class="movie-rail-link"><span>Explore All</span><i data-feather="chevron-right" class="le-icon-14"></i></a>
+            </div>
+            <div class="movie-rail-viewport">
+                <button class="movie-rail-nav is-prev" data-rail-nav="prev" aria-label="Scroll left"><i data-feather="chevron-left"></i></button>
+                <div class="movie-rail-track">
+                    {% for v in newReleases %}{{ movieCard(v) }}{% endfor %}
+                </div>
+                <button class="movie-rail-nav is-next" data-rail-nav="next" aria-label="Scroll right"><i data-feather="chevron-right"></i></button>
+            </div>
+        </section>
+
+        <div class="glass-divider my-3"></div>
+
+        {# ===== Cineflux Originals ===== #}
+        <section class="movie-rail">
+            <div class="movie-rail-header">
+                <h3 class="movie-rail-title">Cineflux Originals</h3>
+                <a href="movie-streaming-browse.html?filter=originals" class="movie-rail-link"><span>Explore All</span><i data-feather="chevron-right" class="le-icon-14"></i></a>
+            </div>
+            <div class="movie-rail-viewport">
+                <button class="movie-rail-nav is-prev" data-rail-nav="prev" aria-label="Scroll left"><i data-feather="chevron-left"></i></button>
+                <div class="movie-rail-track">
+                    {% for v in originals %}{{ movieCard(v) }}{% endfor %}
+                </div>
+                <button class="movie-rail-nav is-next" data-rail-nav="next" aria-label="Scroll right"><i data-feather="chevron-right"></i></button>
+            </div>
+        </section>
+
+        <div class="glass-divider my-3"></div>
+
+        {# ===== Documentaries ===== #}
+        <section class="movie-rail">
+            <div class="movie-rail-header">
+                <h3 class="movie-rail-title">Critically Acclaimed Documentaries</h3>
+                <a href="movie-streaming-browse.html?filter=documentary" class="movie-rail-link"><span>Explore All</span><i data-feather="chevron-right" class="le-icon-14"></i></a>
+            </div>
+            <div class="movie-rail-viewport">
+                <button class="movie-rail-nav is-prev" data-rail-nav="prev" aria-label="Scroll left"><i data-feather="chevron-left"></i></button>
+                <div class="movie-rail-track">
+                    {% for v in documentaries %}{{ movieCard(v) }}{% endfor %}
+                </div>
+                <button class="movie-rail-nav is-next" data-rail-nav="next" aria-label="Scroll right"><i data-feather="chevron-right"></i></button>
+            </div>
+        </section>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root }}js/apps/movie-streaming.js"></script>
+{% endblock %}

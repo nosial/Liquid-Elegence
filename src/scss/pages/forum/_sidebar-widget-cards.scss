@@ -1,0 +1,82 @@
+/* ---------------------------------------------------------------------------
+   Sidebar Widget Cards
+   --------------------------------------------------------------------------- */
+.forum-sidebar-widget h6 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--le-text-muted);
+}
+
+.forum-rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: rules;
+}
+
+.forum-rules-list li {
+  counter-increment: rules;
+  padding: 8px 0;
+  font-size: 0.85rem;
+  color: var(--le-text-secondary);
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.forum-rules-list li:last-child {
+  border-bottom: none;
+}
+
+.forum-rules-list li::before {
+  content: counter(rules) ".";
+  font-weight: 700;
+  color: var(--le-text-muted);
+  flex-shrink: 0;
+  min-width: 20px;
+}
+
+/* Trending / popular communities */
+.forum-trending-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+}
+
+.forum-trending-item + .forum-trending-item {
+  border-top: 1px solid var(--le-glass-border-subtle);
+}
+
+.forum-trending-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--le-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.7rem;
+  color: var(--le-text-inverse);
+  flex-shrink: 0;
+}
+
+.forum-trending-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--le-text-primary);
+  text-decoration: none;
+}
+
+.forum-trending-name:hover {
+  color: var(--le-primary);
+}
+
+.forum-trending-members {
+  font-size: 0.72rem;
+  color: var(--le-text-muted);
+}

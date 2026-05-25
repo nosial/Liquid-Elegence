@@ -1,0 +1,218 @@
+/* =============================================================================
+   §3 — Body & Background
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   §3.1 — Light Mode Mesh Gradient
+   ------------------------------------------------------------------------ */
+[data-theme="light"] body,
+body {
+  background-color: #e6ebf4;
+  background-image:
+    radial-gradient(ellipse at 10% 20%,  rgba(var(--le-mesh-1-rgb), 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 15%,  rgba(var(--le-mesh-2-rgb), 0.11) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 80%,  rgba(var(--le-mesh-3-rgb), 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 60%,  rgba(var(--le-mesh-4-rgb), 0.09) 0%, transparent 40%),
+    radial-gradient(ellipse at 20% 70%,  rgba(var(--le-mesh-5-rgb), 0.08) 0%, transparent 45%),
+    linear-gradient(135deg, #e6ebf4 0%, #dde3f0 50%, #e8e8f2 100%);
+  background-attachment: fixed;
+  background-size:
+    50% 50%, 45% 45%, 50% 50%, 40% 40%, 45% 45%, cover;
+  animation: mesh-drift 90s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------------------------------
+   §3.2 — Dark Mode Mesh Gradient
+   ------------------------------------------------------------------------ */
+[data-theme="dark"] body {
+  background-color: #0a1020;
+  background-image:
+    radial-gradient(ellipse at 10% 20%,  rgba(var(--le-mesh-1-rgb), 0.28) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 10%,  rgba(var(--le-mesh-2-rgb), 0.24) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 85%,  rgba(var(--le-mesh-5-rgb), 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 55%,  rgba(var(--le-mesh-3-rgb), 0.18) 0%, transparent 45%),
+    radial-gradient(ellipse at 25% 65%,  rgba(var(--le-mesh-4-rgb), 0.15) 0%, transparent 50%),
+    linear-gradient(135deg, #0a1020 0%, #111a30 40%, #15203a 100%);
+  background-attachment: fixed;
+  background-size:
+    50% 50%, 45% 45%, 50% 50%, 40% 40%, 45% 45%, cover;
+  animation: mesh-drift 90s ease-in-out infinite;
+}
+
+/* Dark-mode water-droplet glass card — translucent so the mesh background
+   diffracts through, matching the light-mode liquid-glass aesthetic */
+[data-theme="dark"] .glass-card {
+  background:
+    linear-gradient(
+      165deg,
+      rgba(var(--le-primary-rgb), 0.12) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(var(--le-secondary-rgb), 0.10) 100%
+    ),
+    rgba(var(--le-dark-surface-rgb), 0.12);
+  border-color: rgba(255, 255, 255, 0.14);
+  -webkit-backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  box-shadow:
+    var(--le-glass-shadow),
+    var(--le-inner-glow),
+    var(--le-meniscus-shadow);
+}
+
+[data-theme="dark"] .glass-card::before {
+  background:
+    /* Convex-lens caustic — gentler on dark to avoid glare */
+    radial-gradient(
+      ellipse 70% 45% at 28% 8%,
+      var(--le-specular-color) 0%,
+      rgba(255, 255, 255, 0.03) 35%,
+      transparent 65%
+    ),
+    /* Secondary caustic — faint refracted splash */
+    radial-gradient(
+      ellipse 40% 30% at 75% 90%,
+      rgba(var(--le-primary-rgb), 0.02) 0%,
+      transparent 60%
+    ),
+    /* Chromatic dispersion — subtle color fringe */
+    linear-gradient(
+      172deg,
+      var(--le-chroma-red) 0%,
+      transparent 18%,
+      transparent 82%,
+      var(--le-chroma-blue) 100%
+    ),
+    linear-gradient(
+      90deg,
+      var(--le-chroma-red) 0%,
+      transparent 6%,
+      transparent 94%,
+      var(--le-chroma-blue) 100%
+    );
+  opacity: 0.30;
+}
+
+[data-theme="dark"] .glass-card:hover::before {
+  opacity: 0.50;
+}
+
+[data-theme="dark"] .glass-card:hover {
+  filter: brightness(1.03);
+  box-shadow:
+    var(--le-glass-shadow-lg),
+    0 0 16px rgba(var(--le-primary-rgb), 0.06),
+    var(--le-inner-glow-strong);
+}
+
+
+/* =============================================================================
+   §4 — Base Typography
+   ============================================================================= */
+
+body {
+  font-family: var(--le-font-family);
+  font-size: var(--le-font-size-base);
+  font-weight: var(--le-font-weight-normal);
+  line-height: var(--le-line-height);
+  color: var(--le-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: var(--le-font-weight-semibold);
+  line-height: var(--le-line-height-tight);
+  letter-spacing: var(--le-letter-spacing-tight);
+  color: var(--le-text-primary);
+}
+
+h1, .h1 { font-size: var(--le-font-size-4xl); }
+h2, .h2 { font-size: var(--le-font-size-3xl); }
+h3, .h3 { font-size: var(--le-font-size-2xl); }
+h4, .h4 { font-size: var(--le-font-size-xl);  }
+h5, .h5 { font-size: var(--le-font-size-lg);  }
+h6, .h6 { font-size: var(--le-font-size-md);  }
+
+p {
+  color: var(--le-text-secondary);
+  margin-bottom: var(--le-spacing-md);
+}
+
+small, .text-sm {
+  font-size: var(--le-font-size-sm);
+}
+
+.text-xs {
+  font-size: var(--le-font-size-xs);
+}
+
+code, kbd, pre, samp {
+  font-family: var(--le-font-mono);
+}
+
+
+/* =============================================================================
+   §5 — Selection
+   ============================================================================= */
+
+::selection {
+  background-color: rgba(var(--le-primary-rgb), 0.30);
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] ::selection {
+  background-color: rgba(var(--le-primary-rgb), 0.40);
+  color: var(--le-white);
+}
+
+
+/* =============================================================================
+   §6 — Scrollbar Styling
+   ============================================================================= */
+
+/* Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--le-scrollbar-thumb);
+  border-radius: var(--le-radius-full);
+  transition: background var(--le-transition);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--le-primary-rgb), 0.35);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--le-scrollbar-thumb);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--le-primary-rgb), 0.42);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--le-scrollbar-thumb) var(--le-scrollbar-track);
+}
+
+[data-theme="dark"] * {
+  scrollbar-color: var(--le-scrollbar-thumb) var(--le-scrollbar-track);
+}
+
+

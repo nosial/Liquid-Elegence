@@ -1,0 +1,102 @@
+// pages/responsive/per-page/_notifications.scss
+// Responsive notifications page rules across breakpoints.
+
+/* --------------------------------------------------------------------------
+   20m. Notifications — items, toolbar, actions
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .notif-item {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .notif-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .notif-icon svg,
+  .notif-icon i {
+    width: 16px;
+    height: 16px;
+  }
+
+  .notif-content {
+    min-width: 0;
+  }
+
+  .notif-title {
+    font-size: 0.8125rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .notif-body {
+    font-size: 0.75rem;
+  }
+
+  .notif-time {
+    font-size: 0.625rem;
+  }
+
+  .notif-actions {
+    gap: 4px;
+  }
+
+  .notif-actions button {
+    min-width: 32px;
+    min-height: 32px;
+    padding: 4px;
+  }
+
+  .notif-toolbar {
+    gap: 6px;
+  }
+
+  .notif-toolbar .btn {
+    min-height: 40px;
+    font-size: 0.75rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   23w. Notifications — improved mobile toolbar and items
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .notif-toolbar {
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch;
+  }
+
+  .notif-toolbar .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 40px;
+    font-size: 0.75rem;
+  }
+
+  .notif-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+
+  .notif-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .notif-tabs .btn,
+  .notif-tabs .nav-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    min-height: 36px;
+  }
+}
+
+
+

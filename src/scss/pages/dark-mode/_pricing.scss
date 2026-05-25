@@ -1,0 +1,63 @@
+/* ── Pricing ──────────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] .pricing-card {
+  background: rgba(var(--le-dark-surface-rgb), 0.45);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .pricing-card:hover {
+  background: rgba(var(--le-dark-surface-rgb), 0.55);
+}
+
+[data-theme="dark"] .pricing-card.featured {
+  box-shadow: 0 0 40px rgba(var(--le-primary-rgb), 0.2);
+}
+
+[data-theme="dark"] .plan-features li {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+
+/* ── Profile ──────────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] .profile-upload {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+[data-theme="dark"] .social-link {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .social-link:hover {
+  background: rgba(var(--le-primary-rgb), 0.12);
+}
+
+
+/* ── Settings ─────────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] .settings-card .nav-pills .nav-link:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .settings-card .nav-pills .nav-link.active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .integration-item {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .integration-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .integration-icon {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .tfa-section {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}

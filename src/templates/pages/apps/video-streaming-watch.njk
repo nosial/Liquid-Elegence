@@ -1,0 +1,249 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="video-streaming.html">Streamflix</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Watch</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+
+        <!-- Main column -->
+        <div class="col-lg-8 video-main-col">
+
+            <!-- Player Card -->
+            <div class="glass-card mb-3 video-player-card animate-fade-in-up"
+                 data-video-src="{{ asset_root or root }}assets/media/big_buck_bunny_720p_h264.mov">
+                <div class="video-player-frame" id="vidPlayerFrame">
+                    <video id="vidVideo" preload="metadata" playsinline></video>
+
+                    <div class="video-player-poster" id="vidPoster">
+                        <span class="video-poster-play"><i data-feather="play"></i></span>
+                    </div>
+
+                    <div class="video-player-flash" id="vidPlayerFlash"><i data-feather="play"></i></div>
+
+                    <div class="video-player-controls" id="vidPlayerControls">
+                        <div class="video-progress" id="vidProgress">
+                            <div class="video-progress-track">
+                                <div class="video-progress-buffer" id="vidProgressBuffer"></div>
+                                <div class="video-progress-fill" id="vidProgressFill"></div>
+                                <div class="video-progress-thumb" id="vidProgressThumb"></div>
+                            </div>
+                        </div>
+                        <div class="video-controls-row">
+                            <button class="video-ctrl video-ctrl-play" id="vidPlay" title="Play / Pause">
+                                <i data-feather="play" class="video-icon-play"></i>
+                                <i data-feather="pause" class="video-icon-pause"></i>
+                            </button>
+                            <button class="video-ctrl" id="vidSkipBack" title="Back 10s"><i data-feather="rotate-ccw"></i></button>
+                            <button class="video-ctrl" id="vidSkipFwd" title="Forward 10s"><i data-feather="rotate-cw"></i></button>
+                            <div class="video-volume" id="vidVolumeBox">
+                                <button class="video-ctrl" id="vidMute" title="Mute"><i data-feather="volume-2" id="vidVolIcon"></i></button>
+                                <div class="video-volume-slider">
+                                    <div class="video-volume-bar" id="vidVolBar">
+                                        <div class="video-volume-fill" id="vidVolFill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="video-time"><span id="vidTimeCur">0:00</span><span class="sep">/</span><span id="vidTimeTot">0:00</span></span>
+                            <span class="video-controls-spacer"></span>
+                            <button class="video-ctrl" id="vidCaptions" title="Captions"><i data-feather="message-square"></i></button>
+                            <button class="video-ctrl" id="vidSettings" title="Settings"><i data-feather="settings"></i></button>
+                            <button class="video-ctrl" id="vidPip" title="Picture-in-picture"><i data-feather="copy"></i></button>
+                            <button class="video-ctrl" id="vidFullscreen" title="Fullscreen"><i data-feather="maximize"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="video-settings-menu" id="vidSettingsMenu">
+                        <div class="video-settings-label">Playback speed</div>
+                        <button class="video-settings-item" data-speed="0.5"><span>0.5x</span><i data-feather="check" class="check"></i></button>
+                        <button class="video-settings-item" data-speed="0.75"><span>0.75x</span><i data-feather="check" class="check"></i></button>
+                        <button class="video-settings-item is-selected" data-speed="1"><span>Normal</span><i data-feather="check" class="check"></i></button>
+                        <button class="video-settings-item" data-speed="1.25"><span>1.25x</span><i data-feather="check" class="check"></i></button>
+                        <button class="video-settings-item" data-speed="1.5"><span>1.5x</span><i data-feather="check" class="check"></i></button>
+                        <button class="video-settings-item" data-speed="2"><span>2x</span><i data-feather="check" class="check"></i></button>
+                        <div class="video-settings-section">
+                            <div class="video-settings-label">Quality</div>
+                            <button class="video-settings-item is-selected" data-quality="auto"><span>Auto (720p)</span><i data-feather="check" class="check"></i></button>
+                            <button class="video-settings-item" data-quality="1080p"><span>1080p</span><i data-feather="check" class="check"></i></button>
+                            <button class="video-settings-item" data-quality="720p"><span>720p</span><i data-feather="check" class="check"></i></button>
+                            <button class="video-settings-item" data-quality="480p"><span>480p</span><i data-feather="check" class="check"></i></button>
+                            <button class="video-settings-item" data-quality="360p"><span>360p</span><i data-feather="check" class="check"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video metadata + comments — single layered panel.
+                 The player above is its own region; everything *about*
+                 this video (title/actions/description + comments) shares
+                 one outer glass-card, with .glass-divider separating the
+                 two internal sections. Mirrors music-player's pattern of
+                 one panel per logical region. -->
+            <div class="glass-card glass-card-body video-watch-panel animate-fade-in-up stagger-2">
+
+                <!-- Title + Channel + Actions + Description -->
+                <section class="video-watch-section">
+                    <h1 class="video-watch-title">Big Buck Bunny — A Cinematic Open Movie Demo</h1>
+
+                    <div class="video-watch-meta-row">
+                        <div class="video-watch-channel">
+                            <a href="video-streaming-channel.html" class="video-watch-channel-avatar">WF</a>
+                            <div class="video-watch-channel-info">
+                                <a href="video-streaming-channel.html" class="video-watch-channel-name">Wild Frames</a>
+                                <div class="video-watch-channel-subs">3.4M subscribers</div>
+                            </div>
+                            <button class="btn btn-primary btn-sm le-pill-md video-subscribe-btn" id="vidWatchSubscribe">Subscribe</button>
+                        </div>
+                        <div class="video-watch-actions">
+                            <div class="video-action-group">
+                                <button class="video-action-btn" id="vidLike"><i data-feather="thumbs-up" class="le-icon-16"></i><span id="vidLikeCount">348K</span></button>
+                                <button class="video-action-btn" id="vidDislike"><i data-feather="thumbs-down" class="le-icon-16"></i></button>
+                            </div>
+                            <button class="video-action-btn" id="vidShare"><i data-feather="share-2" class="le-icon-16"></i><span>Share</span></button>
+                            <button class="video-action-btn" id="vidSave"><i data-feather="bookmark" class="le-icon-16"></i><span>Save</span></button>
+                            <button class="video-action-btn" title="More"><i data-feather="more-horizontal" class="le-icon-16"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="video-watch-desc" id="vidDescBox">
+                        <div class="video-watch-desc-stats">
+                            <span>12M views</span><span>·</span><span>2 weeks ago</span>
+                        </div>
+                        <div class="video-watch-desc-text">A cheerful giant rabbit deals with three bullies in this iconic open-source short film by the Blender Foundation. Used here to demo the Streamflix player. Filmed entirely in CG with the Blender open-source toolchain, Big Buck Bunny is one of the most-loved open movie projects in the world.
+
+Director: Sacha Goedegebure
+Producer: Ton Roosendaal
+Music: Jan Morgenstern
+License: Creative Commons Attribution 3.0</div>
+                        <div class="video-watch-tags">
+                            <a href="javascript:void(0)" class="video-watch-tag">#animation</a>
+                            <a href="javascript:void(0)" class="video-watch-tag">#opensource</a>
+                            <a href="javascript:void(0)" class="video-watch-tag">#shortfilm</a>
+                            <a href="javascript:void(0)" class="video-watch-tag">#blender</a>
+                        </div>
+                        <button class="video-watch-desc-toggle" id="vidDescToggle">Show more</button>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Comments -->
+                <section class="video-watch-section video-comments-section">
+                    <div class="video-comments-header mb-3">
+                        <h6 class="video-comments-count mb-0">8 Comments</h6>
+                        <button class="video-comments-sort" id="vidCommentsSort"><i data-feather="filter" class="le-icon-14"></i><span>Sort by</span></button>
+                    </div>
+
+                    <!-- Compose -->
+                    <div class="video-comment-compose mb-4" id="vidCompose">
+                        <span class="video-comment-avatar le-bg-gradient-primary">JD</span>
+                        <div class="video-comment-compose-input">
+                            <textarea id="vidComposeText" rows="1" placeholder="Add a comment..."></textarea>
+                            <div class="video-comment-compose-actions">
+                                <button class="btn btn-link btn-sm video-comment-btn" id="vidComposeCancel">Cancel</button>
+                                <button class="btn btn-primary btn-sm le-pill-md video-comment-btn primary" id="vidComposePost" disabled>Comment</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Comments List (Static) -->
+                    {% set comments = [
+                        { author: "Alex Rivera", initials: "AR", time: "2 hours ago", text: "This is genuinely one of the best things I've seen all month. Beautifully done.", likes: "1.2K", liked: true, pinned: true, color: "linear-gradient(135deg, #6366f1, #8b5cf6)" },
+                        { author: "Priya Sharma", initials: "PS", time: "5 hours ago", text: "The transition at 4:12 gave me chills. Absolutely cinematic. Watching this on repeat.", likes: "847", color: "linear-gradient(135deg, #ec4899, #be185d)" },
+                        { author: "Jordan Lee", initials: "JL", time: "8 hours ago", text: "I keep coming back to this. Such a well-made piece of work — the lighting on the bunny's fur is unreal for an open-source render from this era.", likes: "412", color: "linear-gradient(135deg, #10b981, #059669)" },
+                        { author: "Maya Chen", initials: "MC", time: "1 day ago", text: "Could you do a follow-up that goes deeper into the technical setup? Specifically curious about the fur shader.", likes: "218", color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+                        { author: "Daniel Petrov", initials: "DP", time: "2 days ago", text: "The pacing is so good. Nothing feels rushed and nothing feels slow. A masterclass in short-form storytelling.", likes: "189", color: "linear-gradient(135deg, #f59e0b, #d97706)" },
+                        { author: "Sasha Bloom", initials: "SB", time: "3 days ago", text: "Why is this not getting more views?? People are sleeping on Wild Frames. Subbed instantly.", likes: "96", color: "linear-gradient(135deg, #f43f5e, #a855f7)" },
+                        { author: "Theo Kim", initials: "TK", time: "5 days ago", text: "I learned more in this 10 minutes than in three of my college lectures, lol.", likes: "64", color: "linear-gradient(135deg, #0ea5e9, #22c55e)" },
+                        { author: "Layla Hart", initials: "LH", time: "1 week ago", text: "Soundtrack credit, please? I need this on loop.", likes: "42", color: "linear-gradient(135deg, #eab308, #f97316)" }
+                    ] %}
+
+                    <div class="video-comment-list">
+                        {% for c in comments %}
+                        <div class="video-comment animate-fade-in-up stagger-{{ loop.index if loop.index <= 6 else 6 }}">
+                            <span class="video-comment-avatar" style="background:{{ c.color }};">{{ c.initials }}</span>
+                            <div class="video-comment-body">
+                                {% if c.pinned %}
+                                <div class="video-comment-pinned"><i data-feather="bookmark" class="le-icon-12"></i><span>Pinned by creator</span></div>
+                                {% endif %}
+                                <div class="video-comment-head">
+                                    <span class="video-comment-author">{{ c.author }}</span>
+                                    <span class="video-comment-time">{{ c.time }}</span>
+                                </div>
+                                <div class="video-comment-text">{{ c.text }}</div>
+                                <div class="video-comment-actions">
+                                    <button class="video-comment-action{% if c.liked %} is-active{% endif %}" data-comment-act="like"><i data-feather="thumbs-up" class="le-icon-14"></i><span>{{ c.likes }}</span></button>
+                                    <button class="video-comment-action" data-comment-act="dislike"><i data-feather="thumbs-down" class="le-icon-14"></i></button>
+                                    <button class="video-comment-action" data-comment-act="reply">Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+        <!-- Sidebar column -->
+        <div class="col-lg-4 video-sidebar-col">
+
+            <!-- Up next / Suggestions -->
+            <div class="glass-card mb-3 video-sidebar-widget animate-fade-in-up stagger-2">
+                <div class="glass-card-body">
+                    <div class="video-suggestions-tabs mb-3">
+                        <button class="video-suggestions-tab is-active" data-suggest-tab="all">All</button>
+                        <button class="video-suggestions-tab" data-suggest-tab="related">Related</button>
+                        <button class="video-suggestions-tab" data-suggest-tab="from-channel">From channel</button>
+                    </div>
+
+                    {% set suggestions = [
+                        { title: "Aurora — A 4K Cinematic Time-Lapse", channel: "Wild Frames", duration: "6:52", views: "2.4M", age: "2 months ago", color: "linear-gradient(135deg, #10b981, #06b6d4)", tab: "from-channel" },
+                        { title: "Synthwave Live Mix — Driving Through Neon City", channel: "Synthwave Sundays", duration: "1:30:00", views: "1.2M", age: "1 week ago", color: "linear-gradient(135deg, #ec4899, #8b5cf6)", tab: "related" },
+                        { title: "Pixel Art Animation: Day to Night Cycle", channel: "Pixel Perfect Studios", duration: "10:12", views: "740K", age: "2 weeks ago", color: "linear-gradient(135deg, #6366f1, #8b5cf6)", tab: "related" },
+                        { title: "Iceland in 4K — A Travel Diary", channel: "Atlas Wandering", duration: "22:00", views: "980K", age: "1 month ago", color: "linear-gradient(135deg, #0ea5e9, #22c55e)", tab: "related" },
+                        { title: "How They Made That Shot — Cinematography Breakdown", channel: "Wild Frames", duration: "14:44", views: "412K", age: "1 week ago", color: "linear-gradient(135deg, #10b981, #06b6d4)", tab: "from-channel" },
+                        { title: "Why Async Doesn't Mean Parallel — Explained Clearly", channel: "CodeCraft Daily", duration: "15:24", views: "312K", age: "1 week ago", color: "linear-gradient(135deg, #06b6d4, #3b82f6)", tab: "related" },
+                        { title: "The Easiest Pasta You'll Ever Make", channel: "TasteBud Kitchen", duration: "12:18", views: "412K", age: "5 days ago", color: "linear-gradient(135deg, #eab308, #f97316)", tab: "related" },
+                        { title: "Stand-Up: 7 Minutes That Will Make You Smile", channel: "Pixel Perfect Studios", duration: "7:06", views: "880K", age: "2 weeks ago", color: "linear-gradient(135deg, #6366f1, #8b5cf6)", tab: "related" }
+                    ] %}
+
+                    <div class="video-suggestions-list">
+                        {% for v in suggestions %}
+                        <a href="video-streaming-watch.html" class="video-card-h" data-suggest="{{ v.tab }}">
+                            <div class="video-thumb" style="background:{{ v.color }};">
+                                <i data-feather="film" class="video-thumb-icon"></i>
+                                <span class="video-thumb-duration">{{ v.duration }}</span>
+                            </div>
+                            <div class="video-meta">
+                                <div class="video-meta-text">
+                                    <h6 class="video-meta-title">{{ v.title }}</h6>
+                                    <span class="video-meta-channel">{{ v.channel }}</span>
+                                    <div class="video-meta-stats"><span>{{ v.views }} views</span><span class="dot">·</span><span>{{ v.age }}</span></div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/video-streaming.js"></script>
+{% endblock %}

@@ -1,0 +1,60 @@
+// ── Gradient badge (primary gradient + white text) ───────────────────────
+.le-badge-gradient {
+  background: linear-gradient(135deg, var(--le-primary), var(--le-secondary));
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.le-badge-gradient-success {
+  background: linear-gradient(135deg, var(--le-success), #059669);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.le-badge-gradient-warning {
+  background: linear-gradient(135deg, var(--le-warning), #d97706);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+// ── Inline primary-tinted badge with border ──────────────────────────────
+.le-badge-primary-outline {
+  background: rgba(var(--le-primary-rgb), 0.12);
+  border: 1px solid rgba(var(--le-primary-rgb), 0.25);
+  display: inline-block;
+}
+
+// ── Danger action button (no-border, tinted) ─────────────────────────────
+.le-btn-danger-ghost {
+  background: rgba(var(--le-danger-rgb), 0.1);
+  color: var(--le-danger);
+  border: none;
+  font-weight: 600;
+}
+
+// ── Primary solid button (no-border) ─────────────────────────────────────
+.le-btn-primary-solid {
+  background: var(--le-primary);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+}
+
+// ── Kanban / drag placeholder ────────────────────────────────────────────
+.le-placeholder {
+  position: relative;
+  min-height: 80px;
+  background: var(--le-glass-bg-subtle);
+  border-radius: 0.5rem;
+  border: 1px dashed var(--le-glass-border);
+}
+
+// ── Unstyled button (no background, no border) ───────────────────────────
+.le-btn-unstyled {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--le-text-muted);
+  padding: 0 0 0 4px;
+}

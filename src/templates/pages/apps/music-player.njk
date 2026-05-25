@@ -1,0 +1,475 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+            <div class="music-shell">
+            <div class="music-layout" id="musicApp">
+
+                <!-- Mobile sidebar backdrop -->
+                <div class="music-sidebar-backdrop" id="musicSidebarBackdrop"></div>
+
+                <!-- ======= LEFT SIDEBAR — LIBRARY ======= -->
+                <aside class="music-sidebar" id="musicSidebar">
+                    <div class="glass-card glass-card-body music-sidebar-inner d-flex flex-column gap-3">
+                        <div class="music-sidebar-header-mobile">
+                            <span class="music-sidebar-title">Your Library</span>
+                            <button class="music-sidebar-close" id="musicSidebarClose" title="Close"><i data-feather="x"></i></button>
+                        </div>
+
+                        <div class="music-brand">
+                            <div class="music-brand-icon"><i data-feather="music"></i></div>
+                            <div>
+                                <div class="music-brand-title">Lumen Music</div>
+                                <div class="music-brand-sub">Stream &amp; listen</div>
+                            </div>
+                        </div>
+
+                        <div class="music-search">
+                            <i data-feather="search"></i>
+                            <input type="text" class="glass-input" id="musicSearch" placeholder="Search tracks, artists, stations…">
+                        </div>
+
+                        <nav class="music-nav">
+                            <span class="music-nav-label">Discover</span>
+                            <button class="music-nav-item active" data-view="browse">
+                                <i data-feather="compass"></i><span>Browse</span>
+                            </button>
+                            <button class="music-nav-item" data-view="tracks">
+                                <i data-feather="music"></i><span>Tracks</span>
+                            </button>
+                            <button class="music-nav-item" data-view="albums">
+                                <i data-feather="disc"></i><span>Albums</span>
+                            </button>
+                            <button class="music-nav-item" data-view="artists">
+                                <i data-feather="users"></i><span>Artists</span>
+                            </button>
+                            <button class="music-nav-item" data-view="radio">
+                                <i data-feather="radio"></i><span>Radio Stations</span>
+                            </button>
+                        </nav>
+
+                        <nav class="music-nav">
+                            <span class="music-nav-label">Your Library</span>
+                            <button class="music-nav-item" data-view="liked">
+                                <i data-feather="heart"></i><span>Liked Songs</span>
+                                <span class="music-nav-count">28</span>
+                            </button>
+                            <button class="music-nav-item" data-view="recent">
+                                <i data-feather="clock"></i><span>Recently Played</span>
+                            </button>
+                            <button class="music-nav-item" data-view="downloaded">
+                                <i data-feather="download"></i><span>Downloaded</span>
+                            </button>
+                        </nav>
+
+                        <div class="music-playlists">
+                            <div class="music-playlists-header">
+                                <span class="music-nav-label mb-0">Playlists</span>
+                                <button class="music-playlist-add" id="newPlaylistBtn" title="New Playlist"><i data-feather="plus"></i></button>
+                            </div>
+                            <button class="music-playlist-item" data-playlist="chill-evening">
+                                <span class="music-playlist-cover music-cover-grad-1"><i data-feather="moon"></i></span>
+                                <span class="music-playlist-meta">
+                                    <span class="music-playlist-name">Chill Evening</span>
+                                    <span class="music-playlist-info">14 tracks</span>
+                                </span>
+                            </button>
+                            <button class="music-playlist-item" data-playlist="focus-flow">
+                                <span class="music-playlist-cover music-cover-grad-2"><i data-feather="zap"></i></span>
+                                <span class="music-playlist-meta">
+                                    <span class="music-playlist-name">Focus Flow</span>
+                                    <span class="music-playlist-info">22 tracks</span>
+                                </span>
+                            </button>
+                            <button class="music-playlist-item" data-playlist="weekend-drive">
+                                <span class="music-playlist-cover music-cover-grad-3"><i data-feather="navigation"></i></span>
+                                <span class="music-playlist-meta">
+                                    <span class="music-playlist-name">Weekend Drive</span>
+                                    <span class="music-playlist-info">31 tracks</span>
+                                </span>
+                            </button>
+                            <button class="music-playlist-item" data-playlist="late-night-jazz">
+                                <span class="music-playlist-cover music-cover-grad-4"><i data-feather="coffee"></i></span>
+                                <span class="music-playlist-meta">
+                                    <span class="music-playlist-name">Late Night Jazz</span>
+                                    <span class="music-playlist-info">18 tracks</span>
+                                </span>
+                            </button>
+                            <button class="music-playlist-item" data-playlist="workout-burn">
+                                <span class="music-playlist-cover music-cover-grad-5"><i data-feather="activity"></i></span>
+                                <span class="music-playlist-meta">
+                                    <span class="music-playlist-name">Workout Burn</span>
+                                    <span class="music-playlist-info">25 tracks</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- ======= MAIN CONTENT ======= -->
+                <main class="music-main">
+                    <div class="glass-card glass-card-body music-main-inner d-flex flex-column flex-grow-1">
+
+                        <!-- Top bar -->
+                        <div class="music-topbar">
+                            <button class="music-sidebar-toggle" id="musicSidebarToggle" title="Library"><i data-feather="menu"></i></button>
+                            <div class="music-topbar-nav">
+                                <button class="music-nav-arrow" id="musicNavBack" title="Back"><i data-feather="chevron-left"></i></button>
+                                <button class="music-nav-arrow" id="musicNavForward" title="Forward"><i data-feather="chevron-right"></i></button>
+                            </div>
+                            <h5 class="music-page-title" id="musicPageTitle">Browse</h5>
+                            <div class="music-topbar-actions">
+                                <button class="music-icon-btn" id="musicQueueToggle" title="Queue"><i data-feather="list"></i></button>
+                            </div>
+                        </div>
+
+                        <!-- Scrollable content area -->
+                        <div class="music-scroll" id="musicScroll">
+
+                            <!-- ===== BROWSE VIEW ===== -->
+                            <section class="music-view active" data-view="browse">
+                                <div class="music-hero">
+                                    <div class="music-hero-bg"></div>
+                                    <div class="music-hero-content">
+                                        <span class="music-hero-eyebrow">Featured Today</span>
+                                        <h2 class="music-hero-title">Sounds for a glassy afternoon</h2>
+                                        <p class="music-hero-sub">A curated mix of ambient, lo-fi, and modern classical to drift away to.</p>
+                                        <div class="music-hero-actions">
+                                            <button class="music-btn music-btn-primary" data-track-id="t1">
+                                                <i data-feather="play"></i><span>Play All</span>
+                                            </button>
+                                            <button class="music-btn music-btn-ghost">
+                                                <i data-feather="plus"></i><span>Save</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="music-section">
+                                    <div class="music-section-header">
+                                        <h6 class="music-section-title">Featured Albums</h6>
+                                        <button class="music-section-link">View all</button>
+                                    </div>
+                                    <div class="music-card-grid" id="featuredAlbums">
+                                        <!-- album cards rendered by JS -->
+                                    </div>
+                                </div>
+
+                                <div class="music-section">
+                                    <div class="music-section-header">
+                                        <h6 class="music-section-title">Trending Now</h6>
+                                        <button class="music-section-link">View all</button>
+                                    </div>
+                                    <div class="music-track-list" id="trendingTracks">
+                                        <!-- track rows rendered by JS -->
+                                    </div>
+                                </div>
+
+                                <div class="music-section">
+                                    <div class="music-section-header">
+                                        <h6 class="music-section-title">Made for You</h6>
+                                        <button class="music-section-link">View all</button>
+                                    </div>
+                                    <div class="music-card-grid" id="madeForYou">
+                                        <!-- mix cards rendered by JS -->
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ===== TRACKS VIEW ===== -->
+                            <section class="music-view" data-view="tracks">
+                                <div class="music-section">
+                                    <div class="music-section-header">
+                                        <h6 class="music-section-title">All Tracks</h6>
+                                        <div class="music-section-tools">
+                                            <div class="glass-tabs music-tabs">
+                                                <button class="glass-tab active" data-filter="all">All</button>
+                                                <button class="glass-tab" data-filter="recent">Recent</button>
+                                                <button class="glass-tab" data-filter="liked">Liked</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="music-track-list music-track-list-full" id="allTracks">
+                                        <!-- rendered by JS -->
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ===== ALBUMS VIEW ===== -->
+                            <section class="music-view" data-view="albums">
+                                <div class="music-section">
+                                    <div class="music-section-header">
+                                        <h6 class="music-section-title">Albums</h6>
+                                    </div>
+                                    <div class="music-card-grid music-card-grid-dense" id="allAlbums">
+                                        <!-- rendered by JS -->
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ===== ARTISTS VIEW ===== -->
+                            <section class="music-view" data-view="artists">
+                                <div class="music-section">
+                                    <div class="music-section-header">
+                                        <h6 class="music-section-title">Artists</h6>
+                                    </div>
+                                    <div class="music-card-grid music-card-grid-artists" id="allArtists">
+                                        <!-- rendered by JS -->
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ===== RADIO VIEW ===== -->
+                            <section class="music-view" data-view="radio">
+                                <div class="music-section">
+                                    <div class="music-section-header">
+                                        <h6 class="music-section-title">Live Radio Stations</h6>
+                                        <span class="music-live-badge"><span class="music-live-dot"></span>Live</span>
+                                    </div>
+                                    <div class="music-card-grid music-card-grid-dense" id="radioStations">
+                                        <!-- rendered by JS -->
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ===== LIKED VIEW ===== -->
+                            <section class="music-view" data-view="liked">
+                                <div class="music-list-hero">
+                                    <div class="music-list-hero-cover music-cover-grad-liked">
+                                        <i data-feather="heart"></i>
+                                    </div>
+                                    <div class="music-list-hero-meta">
+                                        <span class="music-hero-eyebrow">Playlist</span>
+                                        <h2 class="music-hero-title">Liked Songs</h2>
+                                        <p class="music-hero-sub">Tracks you've loved across the library.</p>
+                                        <div class="music-hero-actions">
+                                            <button class="music-btn music-btn-primary" data-track-id="t1"><i data-feather="play"></i><span>Play</span></button>
+                                            <button class="music-btn music-btn-ghost"><i data-feather="shuffle"></i><span>Shuffle</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="music-section">
+                                    <div class="music-track-list music-track-list-full" id="likedTracks">
+                                        <!-- rendered by JS -->
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ===== RECENT VIEW ===== -->
+                            <section class="music-view" data-view="recent">
+                                <div class="music-section">
+                                    <div class="music-section-header">
+                                        <h6 class="music-section-title">Recently Played</h6>
+                                    </div>
+                                    <div class="music-track-list music-track-list-full" id="recentTracks">
+                                        <!-- rendered by JS -->
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ===== DOWNLOADED VIEW ===== -->
+                            <section class="music-view" data-view="downloaded">
+                                <div class="music-section">
+                                    <div class="music-section-header">
+                                        <h6 class="music-section-title">Downloaded</h6>
+                                    </div>
+                                    <div class="music-empty">
+                                        <div class="music-empty-icon"><i data-feather="download-cloud"></i></div>
+                                        <h6>No downloads yet</h6>
+                                        <p>Save tracks for offline listening to see them here.</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ===== PLAYLIST VIEW ===== -->
+                            <section class="music-view" data-view="playlist">
+                                <div class="music-list-hero">
+                                    <div class="music-list-hero-cover" id="playlistHeroCover"></div>
+                                    <div class="music-list-hero-meta">
+                                        <span class="music-hero-eyebrow">Playlist</span>
+                                        <h2 class="music-hero-title" id="playlistHeroTitle">Playlist</h2>
+                                        <p class="music-hero-sub" id="playlistHeroSub">A handpicked collection.</p>
+                                        <div class="music-hero-actions">
+                                            <button class="music-btn music-btn-primary" id="playlistPlayBtn"><i data-feather="play"></i><span>Play</span></button>
+                                            <button class="music-btn music-btn-ghost"><i data-feather="shuffle"></i><span>Shuffle</span></button>
+                                            <button class="music-btn music-btn-ghost"><i data-feather="heart"></i></button>
+                                            <button class="music-btn music-btn-ghost"><i data-feather="more-horizontal"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="music-section">
+                                    <div class="music-track-list music-track-list-full" id="playlistTracks">
+                                        <!-- rendered by JS -->
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- ===== ALBUM VIEW ===== -->
+                            <section class="music-view" data-view="album">
+                                <div class="music-list-hero">
+                                    <div class="music-list-hero-cover" id="albumHeroCover"></div>
+                                    <div class="music-list-hero-meta">
+                                        <span class="music-hero-eyebrow">Album</span>
+                                        <h2 class="music-hero-title" id="albumHeroTitle">Album</h2>
+                                        <p class="music-hero-sub" id="albumHeroSub">Artist · Year · Tracks</p>
+                                        <div class="music-hero-actions">
+                                            <button class="music-btn music-btn-primary" id="albumPlayBtn"><i data-feather="play"></i><span>Play</span></button>
+                                            <button class="music-btn music-btn-ghost"><i data-feather="heart"></i></button>
+                                            <button class="music-btn music-btn-ghost"><i data-feather="more-horizontal"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="music-section">
+                                    <div class="music-track-list music-track-list-full" id="albumTracks">
+                                        <!-- rendered by JS -->
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                    </div>
+                </main>
+
+                <!-- ======= QUEUE PANEL ======= -->
+                <aside class="music-queue" id="musicQueue">
+                    <div class="glass-card glass-card-body music-queue-inner d-flex flex-column gap-3">
+                        <div class="music-queue-header">
+                            <h6 class="mb-0">Up Next</h6>
+                            <button class="music-icon-btn" id="musicQueueClose" title="Close"><i data-feather="x"></i></button>
+                        </div>
+                        <div class="music-queue-now">
+                            <span class="music-nav-label mb-2">Now Playing</span>
+                            <div class="music-queue-now-row" id="queueNowPlaying">
+                                <!-- populated by JS -->
+                            </div>
+                        </div>
+                        <div class="glass-divider"></div>
+                        <div>
+                            <span class="music-nav-label mb-2">Queue</span>
+                            <div class="music-queue-list" id="queueList">
+                                <!-- populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+            <!-- /music-layout -->
+
+                <!-- ======= PLAYER BAR ======= -->
+                <div class="music-player-bar glass-card" id="musicPlayer">
+                    <audio id="musicAudio" preload="metadata"
+                           data-track-src="{{ asset_root or root }}assets/media/sample.mp3"
+                           data-radio-src="{{ asset_root or root }}assets/media/sample.mp3"></audio>
+
+                    <!-- LEFT — track identity -->
+                    <div class="music-player-track">
+                        <div class="music-player-art" id="playerArt">
+                            <i data-feather="music"></i>
+                        </div>
+                        <div class="music-player-meta">
+                            <div class="music-player-title" id="playerTitle">Select a track to play</div>
+                            <div class="music-player-artist" id="playerArtist">—</div>
+                        </div>
+                        <button class="music-player-like" id="playerLike" title="Like" aria-pressed="false">
+                            <i data-feather="heart"></i>
+                        </button>
+                    </div>
+
+                    <!-- CENTER — controls + progress -->
+                    <div class="music-player-center">
+                        <div class="music-player-controls">
+                            <button class="music-ctrl music-ctrl-sm" id="ctrlShuffle" title="Shuffle" aria-pressed="false">
+                                <i data-feather="shuffle"></i>
+                            </button>
+                            <button class="music-ctrl" id="ctrlPrev" title="Previous">
+                                <i data-feather="skip-back"></i>
+                            </button>
+                            <button class="music-ctrl music-ctrl-play" id="ctrlPlay" title="Play">
+                                <i data-feather="play" class="music-icon-play"></i>
+                                <i data-feather="pause" class="music-icon-pause"></i>
+                            </button>
+                            <button class="music-ctrl" id="ctrlNext" title="Next">
+                                <i data-feather="skip-forward"></i>
+                            </button>
+                            <button class="music-ctrl music-ctrl-sm" id="ctrlRepeat" title="Repeat" aria-pressed="false" data-mode="off">
+                                <i data-feather="repeat"></i>
+                            </button>
+                        </div>
+                        <div class="music-player-progress">
+                            <span class="music-time" id="timeCurrent">0:00</span>
+                            <div class="music-progress" id="progressTrack">
+                                <div class="music-progress-buffer" id="progressBuffer"></div>
+                                <div class="music-progress-fill" id="progressFill"></div>
+                                <div class="music-progress-thumb" id="progressThumb"></div>
+                            </div>
+                            <span class="music-time" id="timeTotal">0:00</span>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT — extras -->
+                    <div class="music-player-right">
+                        <button class="music-ctrl music-ctrl-sm" id="ctrlQueue" title="Queue"><i data-feather="list"></i></button>
+                        <button class="music-ctrl music-ctrl-sm" id="ctrlMute" title="Mute" aria-pressed="false">
+                            <i data-feather="volume-2" class="music-icon-vol"></i>
+                            <i data-feather="volume-x" class="music-icon-mute"></i>
+                        </button>
+                        <div class="music-volume">
+                            <div class="music-volume-track" id="volumeTrack">
+                                <div class="music-volume-fill" id="volumeFill"></div>
+                                <div class="music-volume-thumb" id="volumeThumb"></div>
+                            </div>
+                        </div>
+                        <button class="music-ctrl music-ctrl-sm music-ctrl-expand" id="ctrlExpand" title="Now Playing"><i data-feather="maximize-2"></i></button>
+                    </div>
+
+                    <!-- mobile compact progress -->
+                    <div class="music-player-mobile-progress" id="playerMobileProgress"></div>
+                </div>
+
+                <!-- ======= NOW-PLAYING MODAL (mobile expand) ======= -->
+                <div class="modal fade modal-glass music-now-playing-modal" id="nowPlayingModal" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content glass-modal">
+                            <div class="modal-header glass-modal-header">
+                                <button class="btn-close-glass" data-bs-dismiss="modal" title="Close"><i data-feather="chevron-down"></i></button>
+                                <span class="music-now-playing-source" id="nowPlayingSource">Now Playing</span>
+                                <button class="btn-close-glass" id="nowPlayingMore" title="More"><i data-feather="more-horizontal"></i></button>
+                            </div>
+                            <div class="modal-body music-now-playing-body">
+                                <div class="music-now-art" id="nowPlayingArt"></div>
+                                <div class="music-now-meta">
+                                    <h4 class="music-now-title" id="nowPlayingTitle">—</h4>
+                                    <div class="music-now-artist" id="nowPlayingArtist">—</div>
+                                </div>
+                                <div class="music-player-progress music-now-progress">
+                                    <span class="music-time" id="nowTimeCurrent">0:00</span>
+                                    <div class="music-progress" id="nowProgressTrack">
+                                        <div class="music-progress-fill" id="nowProgressFill"></div>
+                                        <div class="music-progress-thumb"></div>
+                                    </div>
+                                    <span class="music-time" id="nowTimeTotal">0:00</span>
+                                </div>
+                                <div class="music-now-controls">
+                                    <button class="music-ctrl music-ctrl-sm" id="nowShuffle"><i data-feather="shuffle"></i></button>
+                                    <button class="music-ctrl" id="nowPrev"><i data-feather="skip-back"></i></button>
+                                    <button class="music-ctrl music-ctrl-play music-ctrl-play-lg" id="nowPlay">
+                                        <i data-feather="play" class="music-icon-play"></i>
+                                        <i data-feather="pause" class="music-icon-pause"></i>
+                                    </button>
+                                    <button class="music-ctrl" id="nowNext"><i data-feather="skip-forward"></i></button>
+                                    <button class="music-ctrl music-ctrl-sm" id="nowRepeat"><i data-feather="repeat"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /music-shell -->
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/music-player.js"></script>
+{% endblock %}

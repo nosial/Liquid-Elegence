@@ -1,0 +1,20 @@
+/* ── Responsive Glass Adjustments ── */
+
+@media (max-width: 767.98px) {
+  :root {
+    --le-glass-blur:        10px;
+    --le-glass-blur-strong: 16px;
+    --le-glass-blur-subtle: 6px;
+  }
+
+  body::after {
+    display: none;
+  }
+
+  .glass-card::after {
+    display: none;
+  }
+}
+
+/* prefers-reduced-motion is handled globally in glass/_accessibility.scss */
+

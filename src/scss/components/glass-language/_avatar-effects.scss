@@ -1,0 +1,87 @@
+/* ── Avatar Premium Effects ── */
+
+/* Avatar gradient ring */
+.avatar-ring {
+  position: relative;
+  padding: 3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--le-primary) 0%, var(--le-secondary) 100%);
+
+  img,
+  .avatar-placeholder {
+    border-radius: 50%;
+    border: 2px solid var(--le-gray-900, #0f172a);
+  }
+}
+
+/* Animated online status ring */
+.avatar-status-ring {
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--le-success);
+    border: 2.5px solid var(--le-gray-900, #0f172a);
+    z-index: 2;
+  }
+
+  &.online::after {
+    animation: avatar-online-pulse 2s ease-in-out infinite;
+  }
+  &.offline::after { background: var(--le-gray-400); }
+  &.busy::after    { background: var(--le-danger); }
+  &.away::after    { background: var(--le-warning); }
+}
+
+@keyframes avatar-online-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--le-success-rgb), 0.4); }
+  50%      { box-shadow: 0 0 0 4px rgba(var(--le-success-rgb), 0); }
+}
+
+/* Avatar group */
+.avatar-group {
+  display: flex;
+  flex-direction: row;
+
+  .avatar,
+  .avatar-ring {
+    margin-left: -12px;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    transition: filter var(--le-transition-fast), z-index 0s;
+    position: relative;
+
+    &:first-child { margin-left: 0; }
+    &:hover {
+      filter: brightness(1.06);
+      z-index: 10;
+    }
+  }
+}
+
+/* Avatar placeholder */
+.avatar-glass-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--le-text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Avatar sizes */
+.avatar-xs, .avatar-glass-placeholder.avatar-xs { width: 24px; height: 24px; font-size: 0.625rem; }
+.avatar-sm, .avatar-glass-placeholder.avatar-sm { width: 32px; height: 32px; font-size: 0.75rem;  }
+.avatar-md, .avatar-glass-placeholder.avatar-md { width: 40px; height: 40px; font-size: 0.875rem; }
+.avatar-lg, .avatar-glass-placeholder.avatar-lg { width: 56px; height: 56px; font-size: 1.125rem; }
+.avatar-xl, .avatar-glass-placeholder.avatar-xl { width: 72px; height: 72px; font-size: 1.5rem;   }

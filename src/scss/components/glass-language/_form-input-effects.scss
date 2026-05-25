@@ -1,0 +1,93 @@
+/* ── Form Input Premium Effects ── */
+
+/* Frosted glass input */
+.glass-input {
+  background-color: var(--le-control-bg);
+  border: 1px solid var(--le-control-border);
+  border-radius: var(--le-radius-md, 0.5rem);
+  padding: 0.625rem 1rem;
+  color: var(--le-text-primary);
+  font-size: 0.9375rem;
+  transition: background-color var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1), border-color var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1), color var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1), filter var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--le-control-shadow);
+
+  &::placeholder {
+    color: var(--le-text-muted, rgba(255, 255, 255, 0.4));
+  }
+
+  &:focus {
+    outline: none;
+    background-color: var(--le-control-bg-hover);
+    border-color: rgba(var(--le-primary-rgb), 0.5);
+    box-shadow:
+      0 0 0 2px rgba(var(--le-primary-rgb), 0.15),
+      0 0 0 4px rgba(var(--le-primary-rgb), 0.06),
+      inset 0 1px 2px rgba(0, 0, 0, 0.04),
+      0 0 20px -8px rgba(var(--le-primary-rgb), 0.2);
+    animation: input-ring-expand 0.3s ease forwards;
+  }
+}
+
+@keyframes input-ring-expand {
+  0%   { box-shadow: 0 0 0 2px rgba(var(--le-primary-rgb), 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.04); }
+  50%  { box-shadow: 0 0 0 4px rgba(var(--le-primary-rgb), 0.12), inset 0 1px 2px rgba(0, 0, 0, 0.04), 0 0 20px -8px rgba(var(--le-primary-rgb), 0.2); }
+  100% { box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.08), inset 0 1px 2px rgba(0, 0, 0, 0.04), 0 0 16px -8px rgba(var(--le-primary-rgb), 0.15); }
+}
+
+/* Glass select — canonical chevron rule.
+   Uses individual background-* properties (not the `background:` shorthand) so
+   any other rule that sets `background-color` doesn't silently wipe the
+   chevron image or cause it to tile. Selector is doubled with `.form-select.glass-select`
+   to win the cascade against Bootstrap's `.form-select` (specificity 0,2,0). */
+.glass-select,
+.form-select.glass-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--le-control-bg);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba(107,114,128,0.9)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 12px 12px;
+  border: 1px solid var(--le-control-border);
+  border-radius: var(--le-radius-md, 0.5rem);
+  padding: 0.5rem 2.25rem 0.5rem 0.875rem;
+  color: var(--le-text-primary);
+  font-size: 0.9375rem;
+  transition: background-color var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1), border-color var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1), color var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--le-control-shadow);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--le-control-bg-hover);
+    background-repeat: no-repeat;
+    border-color: rgba(var(--le-primary-rgb), 0.22);
+    box-shadow: var(--le-control-shadow), 0 0 0 1px rgba(var(--le-primary-rgb), 0.05);
+  }
+
+  &:focus {
+    outline: none;
+    background-color: var(--le-control-bg-hover);
+    background-repeat: no-repeat;
+    border-color: rgba(var(--le-primary-rgb), 0.5);
+    box-shadow:
+      0 0 0 3px rgba(var(--le-primary-rgb), 0.12),
+      inset 0 1px 2px rgba(0, 0, 0, 0.04),
+      0 0 16px -8px rgba(var(--le-primary-rgb), 0.15);
+  }
+}
+
+/* Small variant: tighten padding so the chevron sits comfortably in the smaller height */
+.form-select-sm.glass-select {
+  padding: 0.3125rem 1.875rem 0.3125rem 0.625rem;
+  background-position: right 0.5rem center;
+  background-size: 10px 10px;
+  font-size: 0.8125rem;
+}
+
+/* Large variant */
+.form-select-lg.glass-select {
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  background-position: right 1rem center;
+  background-size: 14px 14px;
+}

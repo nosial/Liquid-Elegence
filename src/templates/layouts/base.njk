@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="{{ variant_theme or 'light' }}" data-theme-color="{{ variant_color or 'default' }}" data-density="default" data-layout="{{ variant_layout or 'sidebar' }}" data-layout-width="fluid"{% if is_variant %} data-variant{% endif %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Liquid Elegance{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset_root or root }}css/{{ css_file or 'liquid-elegance.css' }}">
+</head>
+<body{% block body_attrs %}{% endblock %}>
+    {% block body %}{% endblock %}
+
+    <script src="{{ asset_root or root }}vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset_root or root }}vendor/feather-icons/feather.min.js"></script>
+    <script src="{{ asset_root or root }}js/app.js"></script>
+    {% block scripts_before %}{% endblock %}
+    <script src="{{ asset_root or root }}js/sidebar.js"></script>
+    {% if not is_variant %}
+    <script src="{{ asset_root or root }}js/theme-customizer.js"></script>
+    {% endif %}
+    {% block scripts %}{% endblock %}
+</body>
+</html>

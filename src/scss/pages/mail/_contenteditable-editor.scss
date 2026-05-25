@@ -1,0 +1,69 @@
+/* ── Contenteditable editor ── */
+.compose-editor-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.compose-editor {
+    flex: 1;
+    min-height: 180px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--le-text-primary);
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-top: none;
+    border-radius: 0 0 var(--le-radius) var(--le-radius);
+    outline: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.compose-editor:focus {
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.08);
+}
+
+.compose-editor:empty::before {
+    content: attr(data-placeholder);
+    color: var(--le-text-muted);
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.compose-editor p {
+    margin: 0 0 0.5em;
+}
+
+.compose-editor ul, .compose-editor ol {
+    margin: 0.25em 0 0.5em 1.25em;
+    padding: 0;
+}
+
+.compose-editor blockquote {
+    margin: 0.5em 0;
+    padding: 0.5em 0.75em;
+    border-left: 3px solid var(--le-primary);
+    background: rgba(var(--le-primary-rgb), 0.04);
+    border-radius: 0 var(--le-radius-sm) var(--le-radius-sm) 0;
+}
+
+.compose-editor pre {
+    margin: 0.5em 0;
+    padding: 0.625rem 0.75rem;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: var(--le-radius-sm);
+    font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', monospace;
+    font-size: 0.8125rem;
+    overflow-x: auto;
+}
+
+.compose-editor a {
+    color: var(--le-primary);
+    text-decoration: underline;
+}

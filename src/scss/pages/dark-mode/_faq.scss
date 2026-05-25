@@ -1,0 +1,68 @@
+/* ── FAQ ───────────────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] .support-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+
+/* ── Notifications ────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] .notif-toolbar {
+  background: rgba(var(--le-dark-surface-rgb), 0.50);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .notification-list .list-group-item,
+[data-theme="dark"] .notification-row {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .notification-list .list-group-item:hover,
+[data-theme="dark"] .notification-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .notification-list .list-group-item.unread {
+  background: rgba(var(--le-primary-rgb), 0.06);
+}
+
+[data-theme="dark"] .notification-list .badge {
+  background: rgba(var(--le-primary-rgb), 0.14);
+}
+
+
+/* ── Dashboard Aesthetics ─────────────────────────────────────────────────────── */
+
+[data-theme="dark"] .glass-card-body .chart-container::before,
+[data-theme="dark"] .glass-card .glass-card-body > div:has(canvas)::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(var(--le-primary-rgb), 0.25),
+    transparent
+  );
+}
+
+
+/* ── Chat / Mail (existing) ───────────────────────────────────────────────── */
+
+[data-theme="dark"] .message-row.sent .message-bubble {
+  background: var(--le-primary-dark);
+}
+
+[data-theme="dark"] .fm-dropzone:hover {
+  background: rgba(var(--le-primary-rgb), 0.06);
+}
+
+
+/* ── Legend Dots + Chart Styles ─────────────────────────────────────── */
+
+[data-theme="dark"] .legend-dot {
+  box-shadow: 0 0 8px currentColor;
+}
+
+[data-theme="dark"] .badge-glass,
+[data-theme="dark"] .badge-status {
+  border-color: rgba(255, 255, 255, 0.1);
+}

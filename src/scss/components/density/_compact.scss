@@ -1,0 +1,23 @@
+/* ---- Compact-only overrides ---- */
+[data-density="compact"] {
+    .le-context-menu {
+        min-width: 135px;
+    }
+
+    /* Ensure card titles and headings scale with density */
+    .glass-card-header .card-title,
+    .glass-card-header h5,
+    .glass-card-header h6 {
+        font-size: 0.8125rem;
+    }
+
+    .glass-card-header .card-subtitle {
+        font-size: 0.6875rem;
+    }
+
+    /* Chart containers get tighter aspect */
+    .chart-container,
+    [class*="chart-"] {
+        min-height: 0;
+    }
+}

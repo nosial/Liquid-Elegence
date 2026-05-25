@@ -1,0 +1,16 @@
+/* Dark mode adjustments */
+
+[data-theme="dark"] .music-ctrl-play {
+    background: #fff;
+    color: #111;
+}
+
+[data-theme="dark"] .music-ctrl-play:hover {
+    background: var(--le-primary);
+    color: #fff;
+}
+
+[data-theme="dark"] .music-card-cover { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45); }
+[data-theme="dark"] .music-list-hero-cover { box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55); }
+[data-theme="dark"] .music-now-art { box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55); }
+

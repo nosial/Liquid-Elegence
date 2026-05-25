@@ -1,0 +1,98 @@
+/* =========================================================================
+   Table Frosted Headers & Row Hover
+   ========================================================================= */
+
+/* Frosted glass table header */
+.table-glass thead th {
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle));
+    background: var(--le-glass-bg-strong);
+}
+
+[data-theme="dark"] .table-glass thead th {
+    background: rgba(var(--le-dark-surface-rgb), 0.7);
+}
+
+/* Row hover left accent border */
+.table-glass tbody tr {
+    position: relative;
+}
+
+.table-glass tbody td:first-child {
+    position: relative;
+}
+
+.table-glass tbody td:first-child::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--le-primary);
+    border-radius: 0 2px 2px 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--le-transition-fast);
+}
+
+.table-glass tbody tr:hover td:first-child::before {
+    transform: scaleX(1);
+}
+
+
+/* =========================================================================
+   Badge & Status Glow
+   ========================================================================= */
+
+/* Status dot glow halos */
+.status-online {
+    box-shadow: 0 0 7px rgba(var(--le-success-rgb), 0.55),
+                0 0 14px rgba(var(--le-success-rgb), 0.22);
+}
+
+.status-away {
+    box-shadow: 0 0 7px rgba(var(--le-warning-rgb), 0.55),
+                0 0 14px rgba(var(--le-warning-rgb), 0.22);
+}
+
+/* Glass badge color variants */
+.badge-glass-primary {
+    background: rgba(var(--le-primary-rgb), 0.14);
+    border: 1px solid rgba(var(--le-primary-rgb), 0.22);
+    color: var(--le-primary);
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.badge-glass-success {
+    background: rgba(var(--le-success-rgb), 0.14);
+    border: 1px solid rgba(var(--le-success-rgb), 0.22);
+    color: var(--le-success);
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.badge-glass-warning {
+    background: rgba(var(--le-warning-rgb), 0.14);
+    border: 1px solid rgba(var(--le-warning-rgb), 0.22);
+    color: var(--le-warning);
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.badge-glass-danger {
+    background: rgba(var(--le-danger-rgb), 0.14);
+    border: 1px solid rgba(var(--le-danger-rgb), 0.22);
+    color: var(--le-danger);
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+}

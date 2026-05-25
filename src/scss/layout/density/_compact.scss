@@ -1,0 +1,238 @@
+/* ==========================================================================
+   16. DENSITY LEVELS
+   ========================================================================== */
+
+/* ---- Compact ---- */
+
+[data-density="compact"] {
+
+    /* --- Sidebar --- */
+
+    .sidebar-link {
+        padding: 5px 9px;
+        font-size: 0.75rem;
+        gap: 8px;
+
+        svg, i {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    .sidebar-nav-label {
+        font-size: 0.625rem;
+        padding: 3px 14px 2px 16px;
+        margin-bottom: 2px;
+    }
+
+    .sidebar-item {
+        margin-bottom: 1px;
+        padding: 0 6px;
+    }
+
+    .sidebar-header {
+        padding: 0 12px;
+    }
+
+    .sidebar-brand {
+        gap: 7px;
+    }
+
+    .brand-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 1.125rem;
+        border-radius: 7px;
+    }
+
+    .sidebar-body {
+        padding: 2px 0;
+    }
+
+    .sidebar-collapsed .sidebar-link {
+        padding: 5px 0;
+    }
+
+    /* --- Topbar --- */
+
+    .topbar-icon-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+
+        svg, i {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    .topbar-toggle-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .topbar-search {
+        .form-control {
+            height: 28px;
+            width: 160px;
+            padding-left: 28px;
+            padding-right: 8px;
+            font-size: 0.75rem;
+            border-radius: 16px;
+
+            &:focus {
+                width: 220px;
+            }
+        }
+
+        svg, i {
+            left: 9px;
+            width: 13px;
+            height: 13px;
+        }
+
+        .search-shortcut kbd {
+            min-width: 16px;
+            height: 16px;
+            padding: 0 3px;
+            font-size: 0.5rem;
+        }
+    }
+
+    .topbar-user {
+        .dropdown-toggle {
+            gap: 6px;
+            padding: 2px 6px 2px 2px;
+            border-radius: 18px;
+        }
+
+        .avatar {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    .avatar-placeholder {
+        font-size: 0.5625rem;
+        border-width: 1.5px;
+    }
+
+    .notification-badge {
+        min-width: 14px;
+        height: 14px;
+        font-size: 8px;
+    }
+
+    .topbar .dropdown-menu[data-bs-popper] {
+        margin-top: 6px;
+    }
+
+    /* --- Topbar Dropdowns --- */
+
+    .topbar .notification-dropdown {
+        width: 270px;
+    }
+
+    .topbar .dropdown-header-section {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .topbar .dropdown-body-section {
+        max-height: 240px;
+    }
+
+    .topbar .dropdown-footer-section {
+        padding: 0.4375rem 0.75rem;
+    }
+
+    .topbar .notification-dropdown .dropdown-item {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .topbar .dropdown-item-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+    }
+
+    .topbar .dropdown-item-title {
+        font-size: 0.75rem;
+    }
+
+    .topbar .dropdown-item-desc {
+        font-size: 0.6875rem;
+    }
+
+    .topbar .dropdown-item-time {
+        font-size: 0.625rem;
+    }
+
+    .topbar .dropdown-user-info {
+        padding: 0.4375rem 0.625rem;
+    }
+
+    .topbar .topbar-profile-dropdown {
+        min-width: 155px;
+        padding: 4px;
+    }
+
+    .topbar-user .dropdown-menu {
+        min-width: 140px;
+        padding: 4px;
+    }
+
+    .topbar-user .dropdown-item {
+        gap: 5px;
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-size: 0.75rem;
+
+        svg, i {
+            width: 13px;
+            height: 13px;
+        }
+    }
+
+    .topbar-user .dropdown-divider {
+        margin: 2px 0;
+    }
+
+    /* --- Page Header & Footer --- */
+
+    .page-title {
+        font-size: 1.125rem;
+    }
+
+    .page-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .main-footer {
+        padding: 7px 14px;
+        font-size: 0.75rem;
+    }
+
+    .breadcrumb-nav .breadcrumb {
+        font-size: 0.75rem;
+    }
+
+    /* --- Grid Gutters --- */
+
+    .row.g-4 {
+        --bs-gutter-x: calc(var(--le-grid-gap) * 2);
+        --bs-gutter-y: var(--le-grid-gap);
+    }
+
+    .row.g-3 {
+        --bs-gutter-x: calc(var(--le-grid-gap) * 2);
+        --bs-gutter-y: var(--le-grid-gap);
+    }
+
+    .row.mb-4 {
+        margin-bottom: var(--le-section-gap) !important;
+    }
+
+    .row.mb-3 {
+        margin-bottom: var(--le-section-gap) !important;
+    }
+}

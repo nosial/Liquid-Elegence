@@ -1,0 +1,335 @@
+/* ---- Comfortable ---- */
+[data-density="comfortable"] {
+
+    .wizard-page-header {
+        margin-bottom: var(--le-spacing-2xl);
+    }
+
+    .wizard-page-header h3 {
+        margin-bottom: var(--le-spacing-sm);
+    }
+
+    .wizard-page-header p {
+        font-size: var(--le-font-size-base);
+    }
+
+    .wizard-container {
+        max-width: 880px;
+    }
+
+    /* Progress indicator */
+    .wizard-progress {
+        margin-bottom: var(--le-spacing-3xl);
+        padding: 0 var(--le-spacing-lg);
+    }
+
+    .wizard-progress::before {
+        top: 24px;
+        height: 4px;
+    }
+
+    .progress-line-fill {
+        top: 24px;
+        height: 4px;
+    }
+
+    .step-circle {
+        width: 48px;
+        height: 48px;
+        font-size: var(--le-font-size-base);
+        margin-bottom: var(--le-spacing-sm);
+    }
+
+    .step-circle.completed svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .step-label {
+        font-size: var(--le-font-size-sm);
+    }
+
+    /* Form elements */
+    .form-group {
+        margin-bottom: var(--le-spacing-xl);
+    }
+
+    .form-group label {
+        font-size: var(--le-font-size-base);
+        margin-bottom: 0.5rem;
+    }
+
+    .form-group .glass-input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.6875rem 1rem;
+        font-size: var(--le-font-size-base);
+    }
+
+    .form-group select {
+        padding-right: 2.75rem;
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+    }
+
+    .error-msg {
+        font-size: var(--le-font-size-sm);
+        margin-top: 0.375rem;
+    }
+
+    .form-row {
+        gap: var(--le-spacing-lg);
+    }
+
+    /* Priority pills */
+    .priority-group {
+        gap: var(--le-spacing-sm);
+    }
+
+    .priority-pill {
+        padding: var(--le-spacing-sm) var(--le-spacing-xl);
+        font-size: var(--le-font-size-base);
+        gap: 0.5rem;
+    }
+
+    /* Team members */
+    .team-member-row {
+        gap: 0.75rem;
+        padding: 0.75rem;
+        margin-bottom: var(--le-spacing-sm);
+    }
+
+    .member-avatar {
+        width: 44px;
+        height: 44px;
+        font-size: var(--le-font-size-sm);
+    }
+
+    .member-name {
+        font-size: var(--le-font-size-base);
+    }
+
+    .member-role-select {
+        padding: 0.5rem 0.8125rem;
+        font-size: var(--le-font-size-base);
+    }
+
+    .btn-remove-member {
+        padding: 0.375rem;
+    }
+
+    .btn-add-member {
+        padding: 0.8125rem var(--le-spacing-lg);
+        font-size: var(--le-font-size-base);
+    }
+
+    /* Size picker */
+    .size-picker {
+        gap: 0.5rem;
+    }
+
+    .size-option {
+        width: 48px;
+        height: 48px;
+        font-size: var(--le-font-size-base);
+    }
+
+    /* Visibility options */
+    .visibility-group {
+        gap: var(--le-spacing-sm);
+    }
+
+    .visibility-option {
+        gap: 1rem;
+        padding: 1.125rem var(--le-spacing-lg);
+    }
+
+    .visibility-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .visibility-icon i,
+    .visibility-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .visibility-text strong {
+        font-size: var(--le-font-size-base);
+    }
+
+    .visibility-text span {
+        font-size: var(--le-font-size-sm);
+    }
+
+    /* Toggle switches */
+    .toggle-row {
+        padding: 1rem 0;
+    }
+
+    .toggle-label {
+        font-size: var(--le-font-size-base);
+    }
+
+    .toggle-switch {
+        width: 52px;
+        height: 28px;
+    }
+
+    .toggle-slider::before {
+        width: 22px;
+        height: 22px;
+        left: 3px;
+        bottom: 3px;
+    }
+
+    .toggle-switch input:checked + .toggle-slider::before {
+        transform: translateX(24px);
+    }
+
+    /* Integration cards */
+    .integration-grid {
+        gap: 1rem;
+    }
+
+    .integration-card {
+        padding: var(--le-spacing-lg);
+    }
+
+    .integration-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+    }
+
+    .integration-name {
+        font-size: var(--le-font-size-base);
+    }
+
+    /* Notification checkboxes */
+    .notif-checkboxes {
+        gap: 1rem;
+    }
+
+    .notif-check {
+        padding: var(--le-spacing-sm) 1.125rem;
+        font-size: var(--le-font-size-base);
+    }
+
+    /* Review summary */
+    .review-section {
+        margin-bottom: var(--le-spacing-xl);
+    }
+
+    .review-section-header {
+        margin-bottom: var(--le-spacing-sm);
+    }
+
+    .review-section-header h6 {
+        font-size: var(--le-font-size-base);
+    }
+
+    .review-edit-link {
+        font-size: var(--le-font-size-sm);
+    }
+
+    .review-grid {
+        grid-template-columns: 160px 1fr;
+        gap: 0.5rem var(--le-spacing-lg);
+        font-size: var(--le-font-size-base);
+        padding: var(--le-spacing-md);
+    }
+
+    .review-tags {
+        gap: 0.5rem;
+    }
+
+    .review-tag {
+        padding: 0.375rem 0.75rem;
+        font-size: var(--le-font-size-sm);
+    }
+
+    /* Terms checkbox */
+    .terms-check {
+        gap: 1rem;
+        padding: var(--le-spacing-lg);
+        margin-top: var(--le-spacing-lg);
+    }
+
+    .terms-check input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+    }
+
+    .terms-check label {
+        font-size: var(--le-font-size-base);
+    }
+
+    /* Wizard navigation */
+    .wizard-nav {
+        margin-top: var(--le-spacing-2xl);
+        padding-top: var(--le-spacing-2xl);
+    }
+
+    .wizard-nav .step-info {
+        font-size: var(--le-font-size-base);
+    }
+
+    .wizard-nav .nav-buttons {
+        gap: 1rem;
+    }
+
+    .btn-wizard-prev {
+        padding: 0.8125rem 1.625rem;
+        font-size: var(--le-font-size-base);
+    }
+
+    .btn-wizard-next {
+        padding: 0.8125rem 1.875rem;
+        font-size: var(--le-font-size-base);
+    }
+
+    .btn-wizard-launch {
+        padding: 0.8125rem 1.875rem;
+        font-size: var(--le-font-size-base);
+    }
+
+    /* Success state */
+    .success-state {
+        padding: var(--le-spacing-3xl) var(--le-spacing-lg);
+    }
+
+    .success-checkmark {
+        width: 96px;
+        height: 96px;
+        margin: 0 auto var(--le-spacing-2xl);
+    }
+
+    .success-checkmark i,
+    .success-checkmark svg {
+        width: 44px;
+        height: 44px;
+    }
+
+    .success-state h4 {
+        margin-bottom: var(--le-spacing-sm);
+    }
+
+    .success-state p {
+        margin-bottom: var(--le-spacing-2xl);
+    }
+
+    .btn-go-dashboard {
+        padding: 1rem 1.875rem;
+        font-size: var(--le-font-size-base);
+    }
+
+    /* Confetti */
+    .confetti-particle {
+        width: 10px;
+        height: 10px;
+    }
+}

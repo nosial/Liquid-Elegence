@@ -1,0 +1,129 @@
+<header class="topbar">
+    <div class="topbar-left">
+        <button class="topbar-toggle-btn d-lg-none" id="sidebarToggleBtn">
+            <i data-feather="menu"></i>
+        </button>
+        <a href="{{ root }}index.html" class="topbar-brand d-none">
+            <span class="brand-icon" aria-hidden="true"><span class="brand-icon-glyph">◆</span></span>
+            <span class="brand-text">Liquid Elegance</span>
+        </a>
+        {% block breadcrumb %}
+        <nav class="breadcrumb-nav">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item"><a href="{{ root }}index.html">Home</a></li>
+            </ol>
+        </nav>
+        {% endblock %}
+    </div>
+    <div class="topbar-right">
+        <div class="topbar-search">
+            <i data-feather="search"></i>
+            <input type="text" class="form-control" placeholder="Search...">
+            <span class="search-shortcut d-none d-lg-flex"><kbd>⌘</kbd><kbd>K</kbd></span>
+        </div>
+        <div class="topbar-icons">
+            <div class="dropdown">
+                <button class="topbar-icon-btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" title="Notifications">
+                    <i data-feather="bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                    <div class="dropdown-header-section">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0 fw-bold">Notifications</h6>
+                            <span class="glass-badge">3 new</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-body-section">
+                        <a href="javascript:void(0)" class="dropdown-item d-flex gap-3 align-items-start">
+                            <div class="dropdown-item-icon le-bg-primary-12"><i data-feather="package" class="le-icon-16 le-text-primary"></i></div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <p class="mb-0 dropdown-item-title">New order received</p>
+                                <p class="mb-0 dropdown-item-desc">Order #4820 from Sarah Connor</p>
+                                <small class="dropdown-item-time">2 min ago</small>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)" class="dropdown-item d-flex gap-3 align-items-start">
+                            <div class="dropdown-item-icon le-bg-success-12"><i data-feather="user-plus" class="le-icon-16 le-text-success"></i></div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <p class="mb-0 dropdown-item-title">New user registered</p>
+                                <p class="mb-0 dropdown-item-desc">Marcus Johnson joined the platform</p>
+                                <small class="dropdown-item-time">18 min ago</small>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)" class="dropdown-item d-flex gap-3 align-items-start">
+                            <div class="dropdown-item-icon le-bg-warning-12"><i data-feather="alert-triangle" class="le-icon-16 le-text-warning"></i></div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <p class="mb-0 dropdown-item-title">Server CPU high</p>
+                                <p class="mb-0 dropdown-item-desc">CPU usage exceeded 90% threshold</p>
+                                <small class="dropdown-item-time">45 min ago</small>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-footer-section">
+                        <a href="{{ root }}pages/pages/notifications.html">View all notifications</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="topbar-icon-btn dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside" title="Messages">
+                    <i data-feather="message-square"></i>
+                    <span class="notification-badge">5</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                    <div class="dropdown-header-section">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0 fw-bold">Messages</h6>
+                            <span class="glass-badge">5 new</span>
+                        </div>
+                    </div>
+                    <div class="dropdown-body-section">
+                        <a href="{{ root }}pages/apps/chat.html" class="dropdown-item d-flex gap-3 align-items-start">
+                            <div class="dropdown-item-icon le-badge-gradient">AK</div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <div class="d-flex justify-content-between"><p class="mb-0 dropdown-item-title">Alice Kim</p><small class="dropdown-item-time">5m</small></div>
+                                <p class="mb-0 text-truncate dropdown-item-desc">Hey, can you review the latest mockups?</p>
+                            </div>
+                        </a>
+                        <a href="{{ root }}pages/apps/chat.html" class="dropdown-item d-flex gap-3 align-items-start">
+                            <div class="dropdown-item-icon le-badge-gradient-success">BM</div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <div class="d-flex justify-content-between"><p class="mb-0 dropdown-item-title">Bob Martin</p><small class="dropdown-item-time">22m</small></div>
+                                <p class="mb-0 text-truncate dropdown-item-desc">The deployment is ready for staging 🚀</p>
+                            </div>
+                        </a>
+                        <a href="{{ root }}pages/apps/chat.html" class="dropdown-item d-flex gap-3 align-items-start">
+                            <div class="dropdown-item-icon le-badge-gradient-warning">CL</div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <div class="d-flex justify-content-between"><p class="mb-0 dropdown-item-title">Clara Lee</p><small class="dropdown-item-time">1h</small></div>
+                                <p class="mb-0 text-truncate dropdown-item-desc">Meeting rescheduled to 3pm tomorrow</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="dropdown-footer-section">
+                        <a href="{{ root }}pages/apps/chat.html">View all messages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="topbar-user dropdown">
+            <button class="dropdown-toggle" data-bs-toggle="dropdown">
+                <div class="avatar avatar-sm">
+                    <div class="avatar-placeholder">JD</div>
+                </div>
+                <span class="user-name d-none d-md-inline">John Doe</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end topbar-profile-dropdown">
+                <li class="dropdown-user-info">
+                    <div class="fw-bold le-fs-xl">John Doe</div>
+                    <div class="le-fs-base le-text-muted">john@example.com</div>
+                </li>
+                <li><a class="dropdown-item" href="{{ root }}pages/pages/profile.html"><i data-feather="user"></i> Profile</a></li>
+                <li><a class="dropdown-item" href="{{ root }}pages/pages/settings.html"><i data-feather="settings"></i> Settings</a></li>
+                <li><a class="dropdown-item" href="{{ root }}pages/pages/notifications.html"><i data-feather="bell"></i> Notifications</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-danger" href="{{ root }}pages/auth/signin.html"><i data-feather="log-out"></i> Sign Out</a></li>
+            </ul>
+        </div>
+    </div>
+</header>

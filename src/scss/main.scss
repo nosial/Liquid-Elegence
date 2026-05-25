@@ -1,0 +1,23 @@
+// ==========================================================================
+// Liquid Elegance — Main SCSS Entry Point
+// ==========================================================================
+// Uses the Sass module system (@use/@forward) for all imports.
+// Bootstrap 5.3 is loaded via @use; --quiet-deps suppresses its internal
+// deprecation warnings.
+
+// Vendor
+@use "bootstrap/scss/bootstrap";
+
+// Design System
+@use "glass";
+
+// Themes
+@use "themes";
+
+// Layout & Components
+@use "layout";
+@use "components";
+@use "pages";
+@use "utilities";
+@use "customizer";
+@use "rtl";

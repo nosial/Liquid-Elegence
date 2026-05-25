@@ -1,0 +1,63 @@
+// ── Chart legend dot (10px circle) ───────────────────────────────────────
+.le-legend-dot {
+  width: 10px;
+  height: 10px;
+}
+
+// ── Stacked avatar overlap ───────────────────────────────────────────────
+.le-avatar-stacked {
+  margin-left: -8px;
+  border: 2px solid var(--le-glass-bg-strong);
+}
+
+// ── Profile cover / hero banner ──────────────────────────────────────────
+.le-cover-banner {
+  height: 80px;
+  background: linear-gradient(135deg, var(--le-primary), var(--le-secondary));
+  border-radius: var(--le-radius);
+  margin-bottom: 8px;
+}
+
+// ── Section title (uppercase muted label) ────────────────────────────────
+.le-section-title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--le-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+// ── Form resize + padding ────────────────────────────────────────────────
+.le-textarea {
+  resize: vertical;
+  font-size: 0.8125rem;
+  padding: 0.75rem;
+  border-radius: var(--le-radius-md);
+}
+
+// ── Misc one-off utilities ───────────────────────────────────────────────
+.le-shrink-0     { flex-shrink: 0; }
+.le-grow-1       { flex-grow: 1; }
+.le-min-w-auto   { min-width: auto; }
+
+// ── Search input with absolute icon ──────────────────────────────────────
+.le-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+// ── Floating notification bar ────────────────────────────────────────────
+.le-floating-bar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  left: 8px;
+  font-size: 0.85rem;
+  box-shadow: var(--le-glass-shadow);
+}

@@ -1,0 +1,65 @@
+/* ── Page Header Aesthetics ── */
+
+/* Page title — gradient text */
+.page-header .page-title {
+  font-weight: var(--le-font-weight-bold);
+  letter-spacing: -0.02em;
+  background: linear-gradient(
+    135deg,
+    var(--le-text-primary) 30%,
+    var(--le-primary) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .page-header .page-title {
+  background: linear-gradient(
+    135deg,
+    #f1f5f9 30%,
+    var(--le-primary-light) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Breadcrumb integration — glass pill with frosted segments */
+.page-header .breadcrumb {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  padding: 0.25rem 0.75rem;
+  font-size: var(--le-font-size-sm);
+}
+
+.page-header .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(var(--le-primary-rgb), 0.35);
+}
+
+.page-header .breadcrumb-item a {
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--le-radius-sm);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.page-header .breadcrumb-item a:hover {
+  background: rgba(var(--le-primary-rgb), 0.1);
+  color: var(--le-primary);
+}
+
+[data-theme="dark"] .page-header .breadcrumb {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Page subtitle — elegant typography */
+.page-header .page-subtitle {
+  font-weight: var(--le-font-weight-normal);
+  color: var(--le-text-secondary);
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  margin-top: 0.25rem;
+  opacity: 0.85;
+}

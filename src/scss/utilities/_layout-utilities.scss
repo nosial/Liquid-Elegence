@@ -1,0 +1,112 @@
+
+// -- Truncation --
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-truncate-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// -- Spacing Helpers --
+.gap-xs { gap: var(--le-spacing-xs); }
+.gap-sm { gap: var(--le-spacing-sm); }
+.gap-md { gap: var(--le-spacing-md); }
+.gap-lg { gap: var(--le-spacing-lg); }
+.gap-xl { gap: var(--le-spacing-xl); }
+
+// -- Border Radius Helpers --
+.rounded-glass { border-radius: var(--le-radius); }
+.rounded-glass-lg { border-radius: var(--le-radius-lg); }
+.rounded-glass-xl { border-radius: var(--le-radius-xl); }
+
+// -- Backdrop Blur Helpers --
+.blur {
+  backdrop-filter: blur(var(--le-glass-blur));
+  -webkit-backdrop-filter: blur(var(--le-glass-blur));
+}
+
+.blur-strong {
+  backdrop-filter: blur(var(--le-glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-strong));
+}
+
+.blur-subtle {
+  backdrop-filter: blur(var(--le-glass-blur-subtle));
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle));
+}
+
+// -- Glass Surface Helpers --
+.glass-surface {
+  background: var(--le-glass-bg);
+  backdrop-filter: blur(var(--le-glass-blur));
+  -webkit-backdrop-filter: blur(var(--le-glass-blur));
+  border: 1px solid var(--le-glass-border);
+}
+
+.glass-surface-strong {
+  background: var(--le-glass-bg-strong);
+  backdrop-filter: blur(var(--le-glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-strong));
+  border: 1px solid var(--le-glass-border-strong);
+}
+
+.glass-surface-subtle {
+  background: var(--le-glass-bg-subtle);
+  backdrop-filter: blur(var(--le-glass-blur-subtle));
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle));
+  border: 1px solid var(--le-glass-border-subtle);
+}
+
+// -- Shadow Helpers --
+.shadow-glass { box-shadow: var(--le-glass-shadow); }
+.shadow-glass-lg { box-shadow: var(--le-glass-shadow-lg); }
+.shadow-glow { box-shadow: var(--le-accent-glow); }
+
+// -- Gradient Text --
+.gradient-text {
+  background: linear-gradient(135deg, var(--le-primary), var(--le-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// -- Hover Lift --
+.hover-lift-sm {
+  transition: filter var(--le-transition), box-shadow var(--le-transition);
+
+  &:hover {
+    filter: brightness(1.04);
+    box-shadow: var(--le-shadow-md);
+  }
+}
+
+.hover-glow {
+  transition: box-shadow var(--le-transition);
+
+  &:hover {
+    box-shadow: var(--le-accent-glow);
+  }
+}
+
+// -- Aspect Ratios --
+.aspect-square { aspect-ratio: 1 / 1; }
+.aspect-video { aspect-ratio: 16 / 9; }
+
+// -- Transition Helpers --
+.transition-fast { transition: all var(--le-transition-fast); }
+.transition-base { transition: all var(--le-transition); }
+.transition-slow { transition: all var(--le-transition-slow); }
+
+// -- No Select --
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+

@@ -1,0 +1,388 @@
+/* Chirp responsive rules consolidated from:
+   - pages/responsive/baseline/_responsive-baseline.scss (moved here)
+   - pages/responsive/_breakpoints.scss §chirp section (moved here) */
+
+@use "../mixins" as *;
+
+/* ---------------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+  .chirp-profile-banner {
+    height: 140px;
+  }
+
+  .chirp-profile-avatar {
+    width: 90px;
+    height: 90px;
+    font-size: 1.8rem;
+    margin-top: -48px;
+  }
+
+  .chirp-profile-actions {
+    position: static;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* (consolidated from per-page/_faq.scss §23t + original chirp/_responsive.scss) */
+  .chirp-main-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .chirp-tweet {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .chirp-tweet-avatar {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+
+  .chirp-tweet-content {
+    min-width: 0;
+  }
+
+  .chirp-tweet-header {
+    font-size: 0.75rem;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .chirp-tweet-text {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+
+  .chirp-tweet-actions {
+    gap: 2px;
+    max-width: 100%;
+  }
+
+  .chirp-tweet-action {
+    min-width: 40px;
+    min-height: 34px;
+    font-size: 0.6875rem;
+    padding: 4px 6px;
+  }
+
+  .chirp-compose {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .chirp-compose-input {
+    min-height: 60px;
+    font-size: 0.875rem;
+  }
+
+  .chirp-compose-toolbar {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .chirp-compose-btn {
+    width: 100%;
+    min-height: 40px;
+    justify-content: center;
+  }
+
+  .chirp-compose-tools {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .chirp-compose-tool {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+  }
+
+  .chirp-profile-banner {
+    height: 100px;
+  }
+
+  .chirp-profile-avatar {
+    width: 72px;
+    height: 72px;
+    font-size: 1.4rem;
+    margin-top: -36px;
+  }
+
+  .chirp-profile-stats {
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 0.8125rem;
+  }
+
+  .chirp-profile-actions {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .chirp-profile-actions .btn {
+    flex: 1;
+    min-width: 0;
+    min-height: 40px;
+    justify-content: center;
+    font-size: 0.75rem;
+  }
+
+  .chirp-feed-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .chirp-feed-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chirp-feed-tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 40px;
+    font-size: 0.8125rem;
+  }
+
+  .chirp-settings-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+
+  .chirp-settings-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chirp-settings-nav .nav-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+/* ============================================================================
+   20. MOBILE/TABLET RESPONSIVE OVERRIDES
+   ============================================================================ */
+
+/* --------------------------------------------------------------------------
+   20a. Chirp — tablet/mobile: sidebar column + compose toolbar
+   -------------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+  /* Sidebar: slide-over drawer via transform */
+  .chirp-sidebar-col {
+    @include sidebar-drawer-right(320px);
+    padding: 1rem;
+    flex: none;
+  }
+  .chirp-sidebar-col.show {
+    transform: translateX(0);
+  }
+
+  .chirp-sidebar-backdrop {
+    @include sidebar-backdrop;
+  }
+  .chirp-sidebar-backdrop.show {
+    @include sidebar-backdrop-show;
+  }
+
+  .chirp-sidebar-mobile-header {
+    @include sidebar-mobile-header;
+    padding: 0.5rem 0;
+    margin-bottom: 0.75rem;
+  }
+  .chirp-sidebar-mobile-title {
+    @include sidebar-mobile-title;
+  }
+  .chirp-sidebar-close {
+    @include sidebar-close-btn;
+  }
+  .chirp-sidebar-close:hover { @include sidebar-close-hover; }
+  .chirp-sidebar-close svg { width: 20px; height: 20px; }
+
+  .chirp-sidebar-toggle-fab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1020;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: var(--le-primary);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(var(--le-primary-rgb), 0.35),
+                0 2px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+  }
+  .chirp-sidebar-toggle-fab:active { filter: brightness(0.96); }
+  .chirp-sidebar-toggle-fab svg { width: 20px; height: 20px; }
+
+  /* Main feed takes full width */
+  .chirp-main-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* Compose toolbar wraps */
+  .chirp-compose-toolbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chirp-compose-tools {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  /* Tweet actions full width */
+  .chirp-tweet-actions {
+    max-width: 100%;
+    gap: 4px;
+  }
+
+  .chirp-tweet-action {
+    min-width: 44px;
+    min-height: 36px;
+  }
+
+  /* Search input full width */
+  .chirp-search {
+    max-width: 100%;
+  }
+
+  .chirp-search .glass-input {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 767.98px) {
+  /* Chirp compose: full width tools */
+  .chirp-compose-tool {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+
+  /* Profile banner tighter */
+  .chirp-profile-banner {
+    height: 120px;
+  }
+
+  /* Profile actions stack */
+  .chirp-profile-actions {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chirp-profile-actions .btn {
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  /* Feed tabs scrollable */
+  .chirp-feed-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .chirp-feed-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .chirp-feed-tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 44px;
+  }
+
+  /* Footer links wrap */
+  .chirp-footer-links {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    font-size: 0.6875rem;
+  }
+
+  /* Trending item padding tighter */
+  .chirp-trend-item {
+    padding: 10px 14px;
+  }
+
+  .chirp-follow-item {
+    gap: 10px;
+  }
+
+  .chirp-follow-item .btn {
+    min-height: 36px;
+    padding: 4px 12px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chirp-profile-banner {
+    height: 100px;
+  }
+
+  .chirp-profile-stats {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .chirp-tweet {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .chirp-tweet-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 0.75rem;
+  }
+
+  .chirp-tweet-header {
+    font-size: 0.8125rem;
+  }
+
+  .chirp-compose {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .chirp-compose-input {
+    font-size: 0.9375rem;
+  }
+}
+
+/* ---- from _breakpoints.scss §chirp (767.98px) ---- */
+@media (max-width: 767.98px) {
+  /* chirp — main feed full-width */
+  .chirp-main-col {
+    width: 100%;
+  }
+  .chirp-feed-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+  .chirp-feed-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .chirp-feed-tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 40px;
+  }
+}

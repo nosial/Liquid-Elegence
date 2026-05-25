@@ -1,0 +1,263 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Dropdowns — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Dropdowns</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Standard Dropdowns ─────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Standard Dropdowns</h5>
+                <p class="text-muted mb-3 le-fs-body">Default Bootstrap dropdown buttons in different colour variants.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Primary</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">Success</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown">Danger</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Outline</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown">Warning</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown">Info</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Separated link</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;div class="dropdown"&gt;
+    &lt;button class="btn btn-primary dropdown-toggle"
+            data-bs-toggle="dropdown"&gt;
+        Dropdown
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+        &lt;li&gt;&lt;a class="dropdown-item" href="javascript:void(0)"&gt;Action&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;hr class="dropdown-divider"&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="dropdown-item" href="javascript:void(0)"&gt;Other&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Glass Dropdowns ────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Dropdowns</h5>
+                <p class="text-muted mb-3 le-fs-body">Dropdowns with glass styling, icons, and section headers.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <div class="dropdown dropdown-glass">
+                        <button class="btn btn-glass btn-glass-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">Glass Primary</button>
+                        <ul class="dropdown-menu">
+                            <li><h6 class="dropdown-header">Navigation</h6></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="home" class="le-icon-14 le-icon-mr-8"></i> Dashboard</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="bar-chart-2" class="le-icon-14 le-icon-mr-8"></i> Analytics</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header">Account</h6></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings" class="le-icon-14 le-icon-mr-8"></i> Settings</a></li>
+                            <li><a class="dropdown-item text-danger" href="javascript:void(0)"><i data-feather="log-out" class="le-icon-14 le-icon-mr-8"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown dropdown-glass">
+                        <button class="btn btn-glass btn-glass-success dropdown-toggle" type="button" data-bs-toggle="dropdown">Glass Success</button>
+                        <ul class="dropdown-menu">
+                            <li><h6 class="dropdown-header">Actions</h6></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="plus" class="le-icon-14 le-icon-mr-8"></i> Create New</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="upload" class="le-icon-14 le-icon-mr-8"></i> Import</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="download" class="le-icon-14 le-icon-mr-8"></i> Export</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown dropdown-glass">
+                        <button class="btn btn-glass btn-glass-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Glass Secondary</button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="user" class="le-icon-14 le-icon-mr-8"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="bell" class="le-icon-14 le-icon-mr-8"></i> Notifications</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="help-circle" class="le-icon-14 le-icon-mr-8"></i> Help</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;div class="dropdown dropdown-glass"&gt;
+    &lt;button class="btn btn-glass btn-glass-primary dropdown-toggle"
+            data-bs-toggle="dropdown"&gt;
+        Glass Dropdown
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+        &lt;li&gt;&lt;h6 class="dropdown-header"&gt;Section&lt;/h6&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a class="dropdown-item" href="javascript:void(0)"&gt;
+            &lt;i data-feather="home"&gt;&lt;/i&gt; Dashboard
+        &lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Dropdown Directions / Split Button Dropdowns ───────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Dropdown Directions</h5>
+                <p class="text-muted mb-3 le-fs-body">Dropdowns opening in different directions using directional classes.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <div class="dropdown dropdown-glass">
+                        <button class="btn btn-glass btn-glass-primary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i data-feather="chevron-down" class="le-icon-14 le-icon-mr-4"></i> Dropdown
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropup dropdown-glass">
+                        <button class="btn btn-glass btn-glass-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i data-feather="chevron-up" class="le-icon-14 le-icon-mr-4"></i> Dropup
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropstart dropdown-glass">
+                        <button class="btn btn-glass btn-glass-warning dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i data-feather="chevron-left" class="le-icon-14 le-icon-mr-4"></i> Dropstart
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropend dropdown-glass">
+                        <button class="btn btn-glass btn-glass-info dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i data-feather="chevron-right" class="le-icon-14 le-icon-mr-4"></i> Dropend
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Split Button Dropdowns</h5>
+                <p class="text-muted mb-3 le-fs-body">Dropdown triggers separated from the primary action button.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary">Action</button>
+                        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-success">Save</button>
+                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Save as Draft</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Save &amp; Publish</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)">Save &amp; Close</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-glass btn-glass-primary">Export</button>
+                        <button type="button" class="btn btn-glass btn-glass-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="file-text" class="le-icon-14 le-icon-mr-8"></i> Export as CSV</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="file" class="le-icon-14 le-icon-mr-8"></i> Export as PDF</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="printer" class="le-icon-14 le-icon-mr-8"></i> Print</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                            <span class="visually-hidden">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:void(0)">Move to Trash</a></li>
+                            <li><a class="dropdown-item text-danger" href="javascript:void(0)">Delete Permanently</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,355 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+            <div class="mail-container">
+                <!-- Sidebar backdrop (mobile) -->
+                <div class="mail-sidebar-backdrop" id="mailSidebarBackdrop"></div>
+
+                <!-- Left Panel: Folders & Labels -->
+                <div class="mail-sidebar" id="mailSidebar">
+                    <div class="glass-card">
+                        <div class="mail-sidebar-body">
+                            <div class="mail-sidebar-header-mobile">
+                                <span class="mail-sidebar-title">Mail</span>
+                                <button class="mail-sidebar-close" id="mailSidebarClose" title="Close"><i data-feather="x"></i></button>
+                            </div>
+                            <div class="mb-3">
+                                <button class="compose-btn" data-bs-toggle="modal" data-bs-target="#composeModal"><i data-feather="edit"></i> Compose</button>
+                            </div>
+                            <ul class="mail-folder-list">
+                                <li class="mail-folder-item active" data-folder="inbox"><i data-feather="inbox"></i> Inbox <span class="folder-count">24</span></li>
+                                <li class="mail-folder-item" data-folder="starred"><i data-feather="star"></i> Starred <span class="folder-count">3</span></li>
+                                <li class="mail-folder-item" data-folder="sent"><i data-feather="send"></i> Sent</li>
+                                <li class="mail-folder-item" data-folder="drafts"><i data-feather="file"></i> Drafts <span class="folder-count">2</span></li>
+                                <li class="mail-folder-item" data-folder="spam"><i data-feather="alert-octagon"></i> Spam <span class="folder-count">8</span></li>
+                                <li class="mail-folder-item" data-folder="trash"><i data-feather="trash-2"></i> Trash</li>
+                            </ul>
+                            <div class="glass-divider my-3"></div>
+                            <div class="le-section-title">Labels</div>
+                            <div class="mail-label-item"><span class="mail-label-dot le-bg-blue-std"></span> Work</div>
+                            <div class="mail-label-item"><span class="mail-label-dot le-bg-success"></span> Personal</div>
+                            <div class="mail-label-item"><span class="mail-label-dot le-bg-warning"></span> Finance</div>
+                            <div class="mail-label-item"><span class="mail-label-dot le-bg-purple"></span> Travel</div>
+                            <div class="mail-storage">
+                                <div class="mail-storage-text">6.4 GB of 15 GB used</div>
+                                <div class="mail-storage-bar"><div class="mail-storage-fill"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Panel: Email List -->
+                <div class="mail-list-panel">
+                    <div class="glass-card">
+                        <div class="mail-search">
+                            <button class="mail-sidebar-toggle" id="mailSidebarToggle" title="Folders"><i data-feather="menu"></i></button>
+                            <div class="mail-search-wrap">
+                                <i data-feather="search"></i>
+                                <input type="text" class="glass-input" placeholder="Search emails..." id="mailSearch">
+                            </div>
+                        </div>
+                        <div class="mail-toolbar">
+                            <input type="checkbox" id="selectAll" class="le-icon-14 le-cursor-pointer">
+                            <button class="mail-toolbar-btn" title="Refresh"><i data-feather="refresh-cw"></i></button>
+                            <button class="mail-toolbar-btn" title="Archive"><i data-feather="archive"></i></button>
+                            <button class="mail-toolbar-btn" title="Delete"><i data-feather="trash-2"></i></button>
+                            <button class="mail-toolbar-btn" title="Mark Unread"><i data-feather="mail"></i></button>
+                            <span class="pagination-info">1–25 of 156</span>
+                        </div>
+                        <div class="mail-items" id="mailItems">
+                            <div class="mail-item unread" data-id="1" data-starred="true" data-flagged="false" data-subject="Q4 Revenue Report — Final Draft" data-from="Sarah Connor" data-from-email="sarah@company.com" data-body="<p>Hi John,</p><p>Attached is the final draft of the Q4 revenue report. Please review the summary section and let me know if you'd like any changes before we send it to the board.</p><p>Key highlights:</p><ul><li>Revenue up 18% YoY</li><li>Customer acquisition cost down 12%</li><li>Net promoter score improved to 72</li></ul><p>Let me know your thoughts!</p><p>Best,<br>Sarah</p>" data-date="10:24 AM" data-attachments="true" data-label="work">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">Sarah Connor <span class="mail-item-label le-bg-primary-12 le-text-primary">Work</span></div>
+                                    <div class="mail-item-subject"><strong>Q4 Revenue Report</strong> — Final draft ready for review</div>
+                                </div>
+                                <div class="mail-item-meta">
+                                    <span class="mail-item-time">10:24 AM</span>
+                                    <span class="mail-item-attachment"><i data-feather="paperclip"></i></span>
+                                </div>
+                            </div>
+                            <div class="mail-item unread" data-id="2" data-flagged="false" data-subject="Team Standup Notes — Dec 18" data-from="Marcus Johnson" data-from-email="marcus@company.com" data-body="<p>Hey team,</p><p>Here are the notes from today's standup:</p><pre>- Frontend: Chat page 90% complete\n- Backend: API endpoints deployed to staging\n- QA: Regression tests passing\n- Blockers: None reported</pre><p>Next standup tomorrow at 9:30 AM.</p><p>— Marcus</p>" data-date="9:55 AM" data-label="work">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">Marcus Johnson <span class="mail-item-label le-bg-primary-12 le-text-primary">Work</span></div>
+                                    <div class="mail-item-subject"><strong>Team Standup Notes</strong> — Dec 18 summary and action items</div>
+                                </div>
+                                <div class="mail-item-meta"><span class="mail-item-time">9:55 AM</span></div>
+                            </div>
+                            <div class="mail-item" data-id="3" data-starred="true" data-flagged="false" data-subject="Your Flight Booking Confirmation" data-from="TravelBot" data-from-email="noreply@travel.com" data-body="<p>Dear John,</p><p>Your flight has been confirmed!</p><p><strong>Flight:</strong> UA 847<br><strong>From:</strong> SFO → JFK<br><strong>Date:</strong> Dec 28, 2024<br><strong>Departure:</strong> 8:15 AM<br><strong>Arrival:</strong> 4:45 PM</p><p>You can manage your booking at <a href='javascript:void(0)'>travel.com/bookings</a>.</p><p>Safe travels!</p>" data-date="Yesterday" data-label="travel">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">TravelBot <span class="mail-item-label le-bg-primary-12 le-text-primary">Travel</span></div>
+                                    <div class="mail-item-subject">Your Flight Booking Confirmation — UA 847 SFO→JFK</div>
+                                </div>
+                                <div class="mail-item-meta"><span class="mail-item-time">Yesterday</span></div>
+                            </div>
+                            <div class="mail-item unread" data-id="4" data-flagged="false" data-subject="Invoice #INV-2024-0892" data-from="Billing System" data-from-email="billing@company.com" data-body="<p>Hello John,</p><p>A new invoice has been generated for your account:</p><p><strong>Invoice:</strong> #INV-2024-0892<br><strong>Amount:</strong> $4,250.00<br><strong>Due Date:</strong> Jan 15, 2025</p><p>Please review and process payment at your earliest convenience.</p><p>— Billing Team</p>" data-date="Yesterday" data-attachments="true" data-label="finance">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">Billing System <span class="mail-item-label le-bg-warning-12 le-text-warning">Finance</span></div>
+                                    <div class="mail-item-subject"><strong>Invoice #INV-2024-0892</strong> — $4,250.00 due Jan 15</div>
+                                </div>
+                                <div class="mail-item-meta">
+                                    <span class="mail-item-time">Yesterday</span>
+                                    <span class="mail-item-attachment"><i data-feather="paperclip"></i></span>
+                                </div>
+                            </div>
+                            <div class="mail-item" data-id="5" data-flagged="false" data-subject="Re: Design System Updates" data-from="Emily Zhang" data-from-email="emily@company.com" data-body="<p>Hey John,</p><p>I've pushed the updated design tokens to the repo. The main changes are:</p><pre>--le-radius-lg: 16px → 20px\n--le-glass-blur: 12px → 16px\nNew: --le-glass-bg-strong</pre><p>Let me know if these values look good on the dashboard.</p><p>— Emily</p>" data-date="Dec 17">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">Emily Zhang</div>
+                                    <div class="mail-item-subject">Re: Design System Updates — new token values pushed</div>
+                                </div>
+                                <div class="mail-item-meta"><span class="mail-item-time">Dec 17</span></div>
+                            </div>
+                            <div class="mail-item" data-id="6" data-flagged="false" data-subject="Weekly Newsletter: Top Tech Trends" data-from="TechDigest" data-from-email="digest@techdigest.io" data-body="<p>This Week in Tech:</p><p>1. AI agents are revolutionizing software development<br>2. WebGPU adoption accelerates across browsers<br>3. Rust gains momentum in system programming<br>4. New CSS features shipping in 2025</p><p>Read more at <a href='javascript:void(0)'>techdigest.io/weekly</a></p>" data-date="Dec 17">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">TechDigest</div>
+                                    <div class="mail-item-subject">Weekly Newsletter: Top Tech Trends — AI, WebGPU, Rust</div>
+                                </div>
+                                <div class="mail-item-meta"><span class="mail-item-time">Dec 17</span></div>
+                            </div>
+                            <div class="mail-item unread" data-id="7" data-flagged="false" data-subject="Project Deadline Reminder" data-from="Alex Rivera" data-from-email="alex@company.com" data-body="<p>Hi John,</p><p>Just a friendly reminder that the Liquid Elegance project deadline is coming up on December 22nd.</p><p>Outstanding items:<br>• Chat page (in progress)<br>• Mail page (in progress)<br>• File manager page<br>• Final QA pass</p><p>Let me know if you need any help!</p><p>— Alex</p>" data-date="Dec 16" data-label="work">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">Alex Rivera <span class="mail-item-label le-bg-primary-12 le-text-primary">Work</span></div>
+                                    <div class="mail-item-subject"><strong>Project Deadline Reminder</strong> — Dec 22 deliverables</div>
+                                </div>
+                                <div class="mail-item-meta"><span class="mail-item-time">Dec 16</span></div>
+                            </div>
+                            <div class="mail-item" data-id="8" data-starred="true" data-flagged="false" data-subject="Your Monthly Statement" data-from="First National Bank" data-from-email="statements@fnb.com" data-body="<p>Dear John Doe,</p><p>Your monthly statement for November 2024 is now available.</p><p><strong>Account:</strong> ****4821<br><strong>Statement Period:</strong> Nov 1 — Nov 30<br><strong>Ending Balance:</strong> $12,450.83</p><p>View your full statement online at <a href='javascript:void(0)'>fnb.com/statements</a>.</p>" data-date="Dec 15" data-attachments="true" data-label="finance">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">First National Bank <span class="mail-item-label le-bg-warning-12 le-text-warning">Finance</span></div>
+                                    <div class="mail-item-subject">Your Monthly Statement — November 2024</div>
+                                </div>
+                                <div class="mail-item-meta">
+                                    <span class="mail-item-time">Dec 15</span>
+                                    <span class="mail-item-attachment"><i data-feather="paperclip"></i></span>
+                                </div>
+                            </div>
+                            <div class="mail-item" data-id="9" data-flagged="false" data-subject="Vacation Request Approved" data-from="HR Department" data-from-email="hr@company.com" data-body="<p>Hi John,</p><p>Your vacation request has been approved!</p><p><strong>Dates:</strong> Dec 26 — Jan 2<br><strong>Type:</strong> Paid Time Off<br><strong>Approved by:</strong> Lisa Park (Manager)</p><p>Enjoy your time off! 🎉</p><p>— HR Team</p>" data-date="Dec 14" data-label="personal">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">HR Department <span class="mail-item-label le-bg-success-12 le-text-success">Personal</span></div>
+                                    <div class="mail-item-subject">Vacation Request Approved — Dec 26 to Jan 2</div>
+                                </div>
+                                <div class="mail-item-meta"><span class="mail-item-time">Dec 14</span></div>
+                            </div>
+                            <div class="mail-item" data-id="10" data-flagged="false" data-subject="Re: API Rate Limiting Discussion" data-from="Priya Patel" data-from-email="priya@company.com" data-body="<p>John,</p><p>After our discussion, I've implemented the rate limiting middleware. Here's the config:</p><pre>rateLimiter({\n  windowMs: 15 * 60 * 1000,\n  max: 100,\n  message: 'Too many requests'\n})</pre><p>Deployed to staging for testing. Let me know your feedback.</p><p>— Priya</p>" data-date="Dec 13">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">Priya Patel</div>
+                                    <div class="mail-item-subject">Re: API Rate Limiting Discussion — middleware deployed</div>
+                                </div>
+                                <div class="mail-item-meta"><span class="mail-item-time">Dec 13</span></div>
+                            </div>
+                            <div class="mail-item" data-id="11" data-flagged="false" data-subject="Conference Registration Confirmation" data-from="DevConf 2025" data-from-email="hello@devconf.io" data-body="<p>Hi John,</p><p>You're registered for DevConf 2025!</p><p><strong>Date:</strong> March 15-17, 2025<br><strong>Location:</strong> Moscone Center, San Francisco<br><strong>Badge:</strong> Full Access Pass</p><p>We'll send your badge QR code closer to the event.</p>" data-date="Dec 12" data-label="travel">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">DevConf 2025 <span class="mail-item-label le-bg-primary-12 le-text-primary">Travel</span></div>
+                                    <div class="mail-item-subject">Conference Registration Confirmation — March 15-17</div>
+                                </div>
+                                <div class="mail-item-meta"><span class="mail-item-time">Dec 12</span></div>
+                            </div>
+                            <div class="mail-item" data-id="12" data-flagged="false" data-subject="Shared Document: Brand Guidelines v3" data-from="Lena Müller" data-from-email="lena@company.com" data-body="<p>Hi John,</p><p>I've shared the updated brand guidelines with you. Key changes in v3:</p><p>• Updated color palette with accessibility improvements<br>• New icon set specifications<br>• Revised typography scale<br>• Component usage examples</p><p>Please review when you get a chance.</p><p>— Lena</p>" data-date="Dec 11" data-attachments="true">
+                                <div class="mail-item-check"><input type="checkbox"></div>
+                                <div class="mail-item-content">
+                                    <div class="mail-item-sender">Lena Müller</div>
+                                    <div class="mail-item-subject">Shared Document: Brand Guidelines v3 — updated colors &amp; icons</div>
+                                </div>
+                                <div class="mail-item-meta">
+                                    <span class="mail-item-time">Dec 11</span>
+                                    <span class="mail-item-attachment"><i data-feather="paperclip"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Empty State (shown when no email selected) -->
+                <div class="mail-reading-pane" id="emptyPane">
+                    <div class="glass-card">
+                        <div class="mail-empty-state">
+                            <div class="mail-empty-state-icon"><i data-feather="inbox"></i></div>
+                            <h5>Select an email</h5>
+                            <p>Choose a message from the list to read its contents here.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Reading Pane -->
+                <div class="mail-reading-pane hidden" id="readingPane">
+                    <div class="glass-card">
+                        <div class="reading-nav-mobile">
+                            <button class="mail-back-btn" id="mailBack" title="Back to inbox"><i data-feather="arrow-left"></i> <span>Back</span></button>
+                        </div>
+                        <div class="reading-header">
+                            <div class="reading-subject" id="readingSubject">Q4 Revenue Report — Final Draft</div>
+                            <div class="reading-meta">
+                                <div class="reading-avatar le-bg-gradient-primary" id="readingAvatar">SC</div>
+                                <div>
+                                    <div class="reading-from-name" id="readingFromName">Sarah Connor</div>
+                                    <div class="reading-from-email" id="readingFromEmail">sarah@company.com</div>
+                                    <div class="reading-to">To: john@example.com</div>
+                                </div>
+                                <div class="reading-date" id="readingDate">10:24 AM</div>
+                            </div>
+                        </div>
+                        <div class="reading-actions">
+                            <button class="reading-action-btn"><i data-feather="corner-up-left"></i> Reply</button>
+                            <button class="reading-action-btn"><i data-feather="corner-up-left"></i> Reply All</button>
+                            <button class="reading-action-btn"><i data-feather="corner-up-right"></i> Forward</button>
+                            <button class="reading-action-btn"><i data-feather="archive"></i> Archive</button>
+                            <button class="reading-action-btn"><i data-feather="trash-2"></i> Trash</button>
+                            <button class="reading-action-btn"><i data-feather="more-horizontal"></i></button>
+                        </div>
+                        <div class="reading-body" id="readingBody">
+                        </div>
+                        <div class="reading-attachments" id="readingAttachments">
+                            <div class="reading-attachments-title">Attachments (2)</div>
+                            <div class="attachment-card">
+                                <div class="attachment-icon le-bg-danger-10"><i data-feather="file-text" class="le-text-danger"></i></div>
+                                <div class="attachment-info">
+                                    <div class="attachment-name">Q4-Revenue-Report.pdf</div>
+                                    <div class="attachment-size">2.4 MB</div>
+                                </div>
+                                <button class="attachment-download" title="Download"><i data-feather="download"></i></button>
+                            </div>
+                            <div class="attachment-card">
+                                <div class="attachment-icon le-bg-primary-10"><i data-feather="image" class="le-text-primary"></i></div>
+                                <div class="attachment-info">
+                                    <div class="attachment-name">Revenue-Chart.png</div>
+                                    <div class="attachment-size">845 KB</div>
+                                </div>
+                                <button class="attachment-download" title="Download"><i data-feather="download"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- Mobile floating compose button -->
+    <button class="mail-fab-compose" id="mailFabCompose" data-bs-toggle="modal" data-bs-target="#composeModal" title="Compose">
+        <i data-feather="edit-2"></i>
+    </button>
+    <div class="modal fade modal-glass compose-modal" id="composeModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i data-feather="edit-2"></i> New Message</h5>
+                    <div class="compose-header-actions">
+                        <button type="button" class="compose-minimize-btn" id="composeMinimize" title="Minimize"><i data-feather="minus"></i></button>
+                        <button type="button" class="compose-expand-btn" id="composeExpand" title="Full screen"><i data-feather="maximize-2"></i></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <!-- To field with CC/BCC toggle -->
+                    <div class="compose-field compose-field-to">
+                        <label>To</label>
+                        <div class="compose-field-row">
+                            <input type="text" class="glass-input" id="composeTo" placeholder="recipient@email.com">
+                            <button type="button" class="compose-cc-toggle" id="composeCcToggle">Cc / Bcc</button>
+                        </div>
+                    </div>
+
+                    <!-- CC field (hidden by default) -->
+                    <div class="compose-field compose-field-cc hidden" id="composeCcField">
+                        <label>Cc</label>
+                        <input type="text" class="glass-input" id="composeCc" placeholder="cc@email.com">
+                    </div>
+
+                    <!-- BCC field (hidden by default) -->
+                    <div class="compose-field compose-field-bcc hidden" id="composeBccField">
+                        <label>Bcc</label>
+                        <input type="text" class="glass-input" id="composeBcc" placeholder="bcc@email.com">
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="compose-field">
+                        <label>Subject</label>
+                        <input type="text" class="glass-input" id="composeSubject" placeholder="Email subject...">
+                    </div>
+
+                    <!-- Rich text formatting toolbar -->
+                    <div class="compose-toolbar" id="composeToolbar">
+                        <div class="compose-toolbar-group">
+                            <button type="button" class="compose-tool-btn" data-command="bold" title="Bold (Ctrl+B)"><i data-feather="bold"></i></button>
+                            <button type="button" class="compose-tool-btn" data-command="italic" title="Italic (Ctrl+I)"><i data-feather="italic"></i></button>
+                            <button type="button" class="compose-tool-btn" data-command="underline" title="Underline (Ctrl+U)"><i data-feather="underline"></i></button>
+                            <button type="button" class="compose-tool-btn" data-command="strikeThrough" title="Strikethrough"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><path d="M17.5 7.5c0-2-1.5-3.5-5.5-3.5S6.5 5.5 6.5 7.5c0 1.5 1 2.5 3.5 3.5"/><path d="M8.5 16.5c0 2 1.5 3.5 5.5 3.5s5.5-1.5 5.5-3.5c0-1.5-1-2.5-3.5-3.5"/></svg></button>
+                        </div>
+                        <div class="compose-toolbar-sep"></div>
+                        <div class="compose-toolbar-group">
+                            <button type="button" class="compose-tool-btn" data-command="insertUnorderedList" title="Bullet list"><i data-feather="list"></i></button>
+                            <button type="button" class="compose-tool-btn" data-command="insertOrderedList" title="Numbered list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><text x="2" y="7.5" font-size="7" fill="currentColor" stroke="none" font-family="sans-serif">1</text><text x="2" y="13.5" font-size="7" fill="currentColor" stroke="none" font-family="sans-serif">2</text><text x="2" y="19.5" font-size="7" fill="currentColor" stroke="none" font-family="sans-serif">3</text></svg></button>
+                        </div>
+                        <div class="compose-toolbar-sep"></div>
+                        <div class="compose-toolbar-group">
+                            <button type="button" class="compose-tool-btn" data-command="justifyLeft" title="Align left"><i data-feather="align-left"></i></button>
+                            <button type="button" class="compose-tool-btn" data-command="justifyCenter" title="Align center"><i data-feather="align-center"></i></button>
+                            <button type="button" class="compose-tool-btn" data-command="justifyRight" title="Align right"><i data-feather="align-right"></i></button>
+                        </div>
+                        <div class="compose-toolbar-sep"></div>
+                        <div class="compose-toolbar-group">
+                            <button type="button" class="compose-tool-btn" data-command="createLink" title="Insert link"><i data-feather="link"></i></button>
+                            <button type="button" class="compose-tool-btn" data-command="unlink" title="Remove link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 0 10h-3m-6 0H6A5 5 0 0 1 6 7h3"/><line x1="2" y1="2" x2="22" y2="22"/></svg></button>
+                        </div>
+                        <div class="compose-toolbar-sep"></div>
+                        <div class="compose-toolbar-group">
+                            <button type="button" class="compose-tool-btn" data-command="formatBlock" data-value="blockquote" title="Quote"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="3" y2="18"/><line x1="7" y1="6" x2="21" y2="6"/><line x1="7" y1="12" x2="21" y2="12"/><line x1="7" y1="18" x2="17" y2="18"/></svg></button>
+                            <button type="button" class="compose-tool-btn" data-command="formatBlock" data-value="pre" title="Code block"><i data-feather="code"></i></button>
+                            <button type="button" class="compose-tool-btn" data-command="removeFormat" title="Clear formatting"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16"/><path d="M10 4v3"/><path d="M12 19l-4-8"/><line x1="4" y1="21" x2="20" y2="5"/></svg></button>
+                        </div>
+                        <!-- Overflow toggle for mobile -->
+                        <button type="button" class="compose-toolbar-overflow" id="composeToolbarOverflow" title="More formatting"><i data-feather="more-horizontal"></i></button>
+                    </div>
+
+                    <!-- Rich text editor (contenteditable) -->
+                    <div class="compose-editor-wrap">
+                        <div class="compose-editor" id="composeEditor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Message body" data-placeholder="Write your message..."></div>
+                    </div>
+
+                    <!-- Attachment zone -->
+                    <div class="compose-attachments" id="composeAttachments">
+                        <div class="compose-drop-zone" id="composeDropZone">
+                            <div class="compose-drop-zone-content">
+                                <i data-feather="upload-cloud"></i>
+                                <span>Drop files here or <label for="composeFileInput" class="compose-browse-link">browse</label></span>
+                                <small>Max 25 MB per file</small>
+                            </div>
+                            <input type="file" id="composeFileInput" multiple class="compose-file-input">
+                        </div>
+                        <div class="compose-file-list" id="composeFileList"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="compose-footer-left">
+                        <button type="button" class="compose-footer-btn" id="composeAttachBtn" title="Attach files"><i data-feather="paperclip"></i></button>
+                        <button type="button" class="compose-footer-btn" id="composeEmojiBtn" title="Insert emoji"><i data-feather="smile"></i></button>
+                    </div>
+                    <div class="compose-footer-right">
+                        <button type="button" class="btn compose-discard-btn" data-bs-dismiss="modal">
+                            <i data-feather="trash-2"></i> <span>Discard</span>
+                        </button>
+                        <button type="button" class="btn compose-draft-btn" data-bs-dismiss="modal">
+                            <i data-feather="save"></i> <span>Draft</span>
+                        </button>
+                        <button type="button" class="btn compose-send-btn" id="composeSendBtn">
+                            <i data-feather="send"></i> <span>Send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/mail.js"></script>
+{% endblock %}

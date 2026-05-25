@@ -1,0 +1,387 @@
+/* =============================================================================
+   Responsive (consolidated from per-page/_wizard.scss, _breakpoints.scss, _adjustments.scss)
+   ============================================================================= */
+
+@media (max-width: 767.98px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .integration-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wizard-progress {
+        padding: 0;
+    }
+
+    .step-label {
+        font-size: 0.625rem;
+    }
+
+    .wizard-nav {
+        flex-direction: column;
+        gap: var(--le-spacing-md);
+        align-items: stretch;
+    }
+
+    .wizard-nav .step-info {
+        text-align: center;
+    }
+
+    .wizard-nav .nav-buttons {
+        justify-content: center;
+    }
+
+    .btn-wizard-prev,
+    .btn-wizard-next,
+    .btn-wizard-launch {
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+        min-height: 48px;
+        font-size: 0.9375rem;
+    }
+
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .review-label {
+        margin-top: var(--le-spacing-xs);
+        font-weight: 600;
+    }
+
+    .priority-pill {
+        min-height: 44px;
+        padding: 0.5rem 1.25rem;
+    }
+
+    .visibility-option {
+        padding: 0.75rem;
+    }
+
+    .size-option {
+        width: 44px;
+        height: 44px;
+    }
+
+    .notif-check {
+        min-height: 44px;
+        padding: 0.5rem 0.875rem;
+    }
+
+    .team-member-row {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .member-role-select {
+        min-height: 44px;
+        font-size: 1rem;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .btn-remove-member {
+        min-width: 40px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-add-member {
+        min-height: 48px;
+    }
+
+    .toggle-row {
+        min-height: 48px;
+    }
+
+    .toggle-switch {
+        width: 52px;
+        height: 28px;
+        flex-shrink: 0;
+    }
+
+    .toggle-slider::before {
+        width: 22px;
+        height: 22px;
+    }
+
+    /* wizard steps from _breakpoints.scss */
+    .wizard-steps {
+        padding: 0 8px;
+        gap: 4px;
+    }
+
+    .wizard-step-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .wizard-step-label {
+        font-size: 10px;
+    }
+
+    .wizard-steps::before {
+        left: 40px;
+        right: 40px;
+        top: 18px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .wizard-container {
+        padding: 0;
+    }
+
+    .step-circle {
+        width: 36px;
+        height: 36px;
+        font-size: 0.75rem;
+    }
+
+    .step-label {
+        display: none;
+    }
+
+    .wizard-progress::before {
+        top: 18px;
+    }
+
+    .progress-line-fill {
+        top: 18px;
+    }
+
+    .integration-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group .glass-input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 1rem;
+        min-height: 44px;
+    }
+
+    .terms-check {
+        padding: 0.875rem;
+    }
+
+    .terms-check input[type="checkbox"] {
+        width: 22px;
+        height: 22px;
+    }
+
+    .review-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .success-checkmark {
+        width: 64px;
+        height: 64px;
+    }
+
+    .success-checkmark i,
+    .success-checkmark svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .btn-go-dashboard {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+    }
+
+    /* from per-page/_wizard.scss — 20h */
+    .visibility-options {
+        grid-template-columns: 1fr;
+    }
+
+    .size-options {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .priority-pills,
+    .priority-group {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .toggle-row .toggle-label {
+        font-size: 0.8125rem;
+    }
+
+    .toggle-row .toggle-desc {
+        font-size: 0.6875rem;
+    }
+
+    .team-member-row {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
+
+    .team-member-row .member-info {
+        flex: 1;
+    }
+
+    .team-member-row .member-role-select {
+        width: 100%;
+    }
+
+    /* from per-page/_wizard.scss — 23k */
+    .wizard-container {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .wizard-progress {
+        padding: 0;
+        gap: 0;
+        margin-bottom: 0.75rem;
+    }
+
+    .step-circle {
+        width: 28px;
+        height: 28px;
+        font-size: 0.625rem;
+    }
+
+    .wizard-progress::before {
+        top: 14px;
+        left: 14px;
+        right: 14px;
+    }
+
+    .progress-line-fill {
+        top: 14px;
+        left: 14px;
+    }
+
+    .size-option {
+        width: 34px;
+        height: 34px;
+        font-size: 0.6875rem;
+    }
+
+    .integration-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .priority-pills,
+    .priority-group {
+        gap: 6px;
+    }
+
+    .priority-pills .btn,
+    .priority-group .btn {
+        padding: 6px 10px;
+        font-size: 0.6875rem;
+        min-height: 36px;
+    }
+
+    .wizard-body {
+        padding: 1rem;
+    }
+
+    .review-section {
+        padding: 0.75rem;
+    }
+
+    .review-label {
+        font-size: 0.6875rem;
+    }
+
+    .review-value {
+        font-size: 0.8125rem;
+    }
+
+    .team-member-row {
+        flex-direction: column;
+        gap: 6px;
+        align-items: stretch;
+    }
+
+    .team-member-row .member-role-select {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* from _adjustments.scss — 21h */
+    .wizard-container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .wizard-progress {
+        padding: 0;
+        margin-bottom: 1rem;
+    }
+
+    .step-circle {
+        width: 32px;
+        height: 32px;
+        font-size: 0.6875rem;
+    }
+
+    .wizard-progress::before {
+        top: 16px;
+        left: 16px;
+        right: 16px;
+    }
+
+    .progress-line-fill {
+        top: 16px;
+        left: 16px;
+    }
+
+    .wizard-nav {
+        padding-top: 0.75rem;
+        margin-top: 0.75rem;
+    }
+}
+
+@media (max-width: 380px) {
+    /* from per-page/_wizard.scss */
+    .size-option {
+        width: 30px;
+        height: 30px;
+        font-size: 0.625rem;
+    }
+
+    .integration-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wizard-body {
+        padding: 0.75rem;
+    }
+}
+
+/* Landscape phone */
+@media (max-height: 500px) and (orientation: landscape) {
+    .wizard-progress {
+        margin-bottom: 1rem;
+    }
+
+    .wizard-nav {
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+
+    .success-state {
+        padding: 1.5rem 0.5rem;
+    }
+}

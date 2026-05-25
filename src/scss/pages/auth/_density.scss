@@ -1,0 +1,160 @@
+/* ---- density: compact ---- */
+[data-density="compact"] .auth-page {
+  padding: 12px;
+}
+
+[data-density="compact"] .auth-container {
+  max-width: 540px;
+}
+
+[data-density="compact"] .auth-card {
+  padding: 28px;
+}
+
+[data-density="compact"] .auth-brand {
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+[data-density="compact"] .auth-brand-icon {
+  font-size: 20px;
+}
+
+[data-density="compact"] .auth-brand-text {
+  font-size: 17px;
+}
+
+[data-density="compact"] .auth-title {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+[data-density="compact"] .auth-subtitle {
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+[data-density="compact"] .auth-form {
+  gap: 12px;
+}
+
+[data-density="compact"] .auth-card .form-control {
+  padding: 10px 12px 10px 38px;
+  font-size: 13px;
+}
+
+[data-density="compact"] .auth-card .btn-primary,
+[data-density="compact"] .auth-card .btn-outline-primary {
+  padding: 10px;
+  font-size: 13px;
+}
+
+[data-density="compact"] .auth-divider {
+  margin: 16px 0;
+}
+
+[data-density="compact"] .auth-social .btn {
+  padding: 8px;
+  font-size: 12px;
+}
+
+[data-density="compact"] .auth-footer {
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+[data-density="compact"] .otp-input {
+  width: 42px;
+  height: 48px;
+  font-size: 20px;
+}
+
+[data-density="compact"] .otp-inputs {
+  gap: 8px;
+}
+
+[data-density="compact"] .auth-icon-circle {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 12px;
+}
+
+[data-density="compact"] .lock-avatar {
+  width: 64px;
+  height: 64px;
+  font-size: 22px;
+}
+
+[data-density="compact"] .lock-time-display,
+[data-density="compact"] .lock-time {
+  font-size: 52px;
+}
+
+
+/* ---- density: comfortable ---- */
+[data-density="comfortable"] .auth-page {
+  padding: 24px;
+}
+
+[data-density="comfortable"] .auth-container {
+  max-width: 720px;
+}
+
+[data-density="comfortable"] .auth-card {
+  padding: 42px;
+}
+
+[data-density="comfortable"] .auth-brand {
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+[data-density="comfortable"] .auth-brand-icon {
+  font-size: 28px;
+}
+
+[data-density="comfortable"] .auth-brand-text {
+  font-size: 22px;
+}
+
+[data-density="comfortable"] .auth-title {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+[data-density="comfortable"] .auth-subtitle {
+  font-size: 15px;
+  margin-bottom: 24px;
+}
+
+[data-density="comfortable"] .auth-form {
+  gap: 20px;
+}
+
+[data-density="comfortable"] .auth-card .form-control {
+  padding: 12px 14px 12px 44px;
+  font-size: 15px;
+}
+
+[data-density="comfortable"] .auth-card .btn-primary,
+[data-density="comfortable"] .auth-card .btn-outline-primary {
+  padding: 12px;
+  font-size: 16px;
+}
+
+[data-density="comfortable"] .auth-divider {
+  margin: 24px 0;
+}
+
+[data-density="comfortable"] .auth-social .btn {
+  padding: 12px;
+  font-size: 14px;
+}
+
+[data-density="comfortable"] .otp-input {
+  width: 54px;
+  height: 62px;
+  font-size: 26px;
+}
+
+

@@ -1,0 +1,67 @@
+/* ============================================================
+   Liquid Elegance — Theme Customizer Panel
+   A slide-in glass panel for live theme switching, RTL toggle,
+   density, layout options, and colour presets.
+   ============================================================ */
+
+
+/* ─────────────────────────────────────────────────────────────
+   1. Panel wrapper
+   ───────────────────────────────────────────────────────────── */
+
+.customizer-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 90vw;
+    z-index: 10501;
+
+    /* Glass surface */
+    background: rgba(255, 255, 255, 0.60);
+    backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    -webkit-backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    border-left: 1px solid var(--le-glass-border, rgba(255, 255, 255, 0.25));
+    box-shadow:
+        -8px 0 32px rgba(0, 0, 0, 0.08),
+        inset 1px 0 0 rgba(255, 255, 255, 0.35);
+
+    /* Slide-in animation */
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Dark mode glass */
+[data-theme="dark"] .customizer-panel {
+    background: rgba(var(--le-dark-surface-rgb), 0.72);
+    border-left-color: rgba(255, 255, 255, 0.10);
+    box-shadow:
+        -8px 0 32px rgba(0, 0, 0, 0.30),
+        inset 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Open state */
+.customizer-panel.open {
+    transform: translateX(0);
+}
+
+/* RTL support — panel slides from left */
+[dir="rtl"] .customizer-panel {
+    right: auto;
+    left: 0;
+    border-left: none;
+    border-right: 1px solid var(--le-glass-border, rgba(255, 255, 255, 0.25));
+    box-shadow:
+        8px 0 32px rgba(0, 0, 0, 0.08),
+        inset -1px 0 0 rgba(255, 255, 255, 0.35);
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] .customizer-panel.open {
+    transform: translateX(0);
+}

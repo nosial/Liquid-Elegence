@@ -1,0 +1,290 @@
+/* ============================================================================
+   12. FAQ
+   ============================================================================ */
+
+.glass-accordion {
+  border-radius: var(--le-radius-lg);
+  overflow: hidden;
+}
+
+.glass-accordion .accordion-item {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+.glass-accordion .accordion-item:last-child {
+  border-bottom: none;
+}
+
+.glass-accordion .accordion-button {
+  background: transparent;
+  color: var(--le-text-primary);
+  font-weight: 500;
+  box-shadow: none;
+  padding: 16px 20px;
+  font-size: 14px;
+}
+
+.glass-accordion .accordion-button:not(.collapsed) {
+  color: var(--le-primary);
+  font-weight: 600;
+  background: transparent;
+  box-shadow: none;
+}
+
+.glass-accordion .accordion-button:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.glass-accordion .accordion-body {
+  color: var(--le-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 0 20px 16px;
+}
+
+/* ---- categories ---- */
+.faq-category {
+  display: none;
+}
+
+.faq-category.active {
+  display: block;
+}
+
+/* ---- support card — STANDALONE on page ---- */
+.support-card {
+  text-align: center;
+  padding: 24px;
+  background: var(--le-surface-content-fill);
+  border: 1px solid var(--le-surface-content-border);
+  border-radius: var(--le-radius-lg);
+  box-shadow: var(--le-surface-content-shadow);
+  backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  -webkit-backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+}
+
+
+/* ---- density: compact ---- */
+[data-density="compact"] .glass-accordion .accordion-button {
+  padding: 12px 16px;
+  font-size: 13px;
+}
+
+[data-density="compact"] .glass-accordion .accordion-body {
+  padding: 0 16px 12px;
+  font-size: 13px;
+}
+
+[data-density="compact"] .support-card {
+  padding: 18px;
+}
+
+
+/* ---- density: comfortable ---- */
+[data-density="comfortable"] .glass-accordion .accordion-button {
+  padding: 20px 24px;
+  font-size: 15px;
+}
+
+[data-density="comfortable"] .glass-accordion .accordion-body {
+  padding: 0 24px 20px;
+  font-size: 15px;
+}
+
+[data-density="comfortable"] .support-card {
+  padding: 28px;
+}
+
+// Migrated from templates/pages/pages/faq.njk
+/* Section Headers */
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--le-text-primary);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--le-text-muted);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Search Bar */
+        .faq-search {
+            max-width: 480px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+        .faq-search .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--le-text-muted);
+            pointer-events: none;
+        }
+        .faq-search .form-control {
+            background: var(--le-glass-bg);
+            border: 1px solid var(--le-glass-border);
+            backdrop-filter: blur(var(--le-glass-blur));
+            -webkit-backdrop-filter: blur(var(--le-glass-blur));
+            border-radius: var(--le-radius-xl);
+            padding: 0.75rem 1rem 0.75rem 2.75rem;
+            color: var(--le-text-primary);
+            font-size: 0.9375rem;
+        }
+        .faq-search .form-control::placeholder {
+            color: var(--le-text-muted);
+        }
+        .faq-search .form-control:focus {
+            border-color: rgba(var(--le-primary-rgb), 0.4);
+            box-shadow: 0 0 0 0.2rem rgba(var(--le-primary-rgb), 0.15);
+            background: var(--le-glass-bg-strong);
+        }
+
+        /* Category Tabs */
+        .faq-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .faq-tab {
+            background: var(--le-glass-bg);
+            border: 1px solid var(--le-glass-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--le-radius-lg);
+            padding: 0.6rem 1.25rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--le-text-secondary);
+        }
+        .faq-tab:hover {
+            background: var(--le-glass-bg-strong);
+            color: var(--le-text-primary);
+            border-color: rgba(var(--le-primary-rgb), 0.3);
+        }
+        .faq-tab.active {
+            background: rgba(var(--le-primary-rgb), 0.15);
+            border-color: rgba(var(--le-primary-rgb), 0.4);
+            color: var(--le-primary);
+            font-weight: 600;
+        }
+
+        /* Glass Accordion */
+        .glass-accordion .accordion-item {
+            background: var(--le-glass-bg);
+            border: 1px solid var(--le-glass-border);
+            border-radius: var(--le-radius-md) !important;
+            margin-bottom: 0.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        .glass-accordion .accordion-button {
+            background: transparent;
+            color: var(--le-text-primary);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            padding: 1rem 1.25rem;
+            box-shadow: none;
+            border-radius: inherit !important;
+        }
+        .glass-accordion .accordion-button:not(.collapsed) {
+            background: rgba(var(--le-primary-rgb), 0.08);
+            color: var(--le-primary);
+            box-shadow: none;
+        }
+        .glass-accordion .accordion-button:focus {
+            box-shadow: none;
+            border-color: transparent;
+        }
+        .glass-accordion .accordion-button::after {
+            filter: invert(0.5);
+        }
+        .glass-accordion .accordion-body {
+            padding: 0 1.25rem 1rem;
+            color: var(--le-text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        /* No Results */
+        .faq-no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--le-text-muted);
+            display: none;
+        }
+        .faq-no-results i {
+            margin-bottom: 1rem;
+        }
+
+        /* Support Contact Card */
+        .support-card {
+            background: var(--le-glass-bg);
+            border: 1px solid var(--le-glass-border);
+            backdrop-filter: blur(var(--le-glass-blur));
+            -webkit-backdrop-filter: blur(var(--le-glass-blur));
+            border-radius: var(--le-radius-xl);
+            padding: 2.5rem;
+            text-align: center;
+        }
+        .support-card .support-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: rgba(var(--le-primary-rgb), 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            color: var(--le-primary);
+        }
+        .support-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--le-text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .support-card p {
+            color: var(--le-text-secondary);
+            font-size: 0.9375rem;
+            margin-bottom: 1.5rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .support-card .btn-support {
+            background: var(--le-primary);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: var(--le-radius-lg);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: all 0.2s ease;
+        }
+        .support-card .btn-support:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 4px 20px rgba(var(--le-primary-rgb), 0.4);
+        }
+        .support-card .support-email {
+            display: block;
+            margin-top: 1rem;
+            color: var(--le-text-muted);
+            font-size: 0.8125rem;
+        }
+        .support-card .support-email a {
+            color: var(--le-primary);
+            text-decoration: none;
+        }

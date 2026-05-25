@@ -1,0 +1,29 @@
+/* ==========================================================================
+   18. CUSTOM SCROLLBAR — Sidebar
+   ========================================================================== */
+
+.sidebar-body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-body::-webkit-scrollbar-thumb {
+    background: rgba(var(--le-primary-rgb), 0.18);
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+.sidebar-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--le-primary-rgb), 0.35);
+}
+
+/* Firefox */
+.sidebar-body {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--le-primary-rgb), 0.18) transparent;
+}
+
+

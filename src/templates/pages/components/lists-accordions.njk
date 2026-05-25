@@ -1,0 +1,440 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Lists &amp; Accordions — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Lists &amp; Accordions</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Standard List Group ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Standard List Group</h5>
+                <p class="text-muted mb-3 le-fs-body">A basic Bootstrap list group with active and disabled states.</p>
+                <ul class="list-group">
+                    <li class="list-group-item active">Active item</li>
+                    <li class="list-group-item">Second item</li>
+                    <li class="list-group-item">Third item</li>
+                    <li class="list-group-item disabled">Disabled item</li>
+                    <li class="list-group-item">Fifth item</li>
+                </ul>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;ul class="list-group"&gt;
+    &lt;li class="list-group-item active"&gt;Active&lt;/li&gt;
+    &lt;li class="list-group-item"&gt;Item&lt;/li&gt;
+    &lt;li class="list-group-item disabled"&gt;Disabled&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Glass list group --&gt;
+&lt;div class="list-group list-group-glass"&gt;
+    &lt;a href="javascript:void(0)" class="list-group-item
+       list-group-item-action"&gt;Item&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{# ── Glass List Group ───────────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass List Group</h5>
+                <p class="text-muted mb-3 le-fs-body">Actionable list items with the glass morphism style applied.</p>
+                <div class="list-group list-group-glass">
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action active">Active glass item</a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action">Second item</a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action">Third item</a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action disabled">Disabled item</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── List Group with Badges / List Group with Icons & Content ────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">List Group with Badges</h5>
+                <p class="text-muted mb-3 le-fs-body">List items with pill badges aligned to the right.</p>
+                <ul class="list-group list-group-glass">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Inbox
+                        <span class="badge badge-glass-primary rounded-pill">14</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Drafts
+                        <span class="badge badge-glass-secondary rounded-pill">2</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Sent
+                        <span class="badge badge-glass-success rounded-pill">1</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Spam
+                        <span class="badge badge-glass-danger rounded-pill">99+</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Trash
+                        <span class="badge badge-glass-warning rounded-pill">5</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">List Group with Icons &amp; Content</h5>
+                <p class="text-muted mb-3 le-fs-body">Rich list items with icons, headings, and descriptive text.</p>
+                <div class="list-group list-group-glass">
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="icon-circle icon-circle-sm icon-circle-primary">
+                                <i data-feather="package" class="le-icon-16"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">New order received</h6>
+                                <p class="mb-1 text-muted le-fs-lg">Order #4820 from Sarah Connor has been placed.</p>
+                                <small class="text-muted">3 minutes ago</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="icon-circle icon-circle-sm icon-circle-success">
+                                <i data-feather="user-plus" class="le-icon-16"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">New user registered</h6>
+                                <p class="mb-1 text-muted le-fs-lg">Alex Morgan signed up with a corporate email address.</p>
+                                <small class="text-muted">15 minutes ago</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="icon-circle icon-circle-sm icon-circle-warning">
+                                <i data-feather="alert-triangle" class="le-icon-16"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Server load warning</h6>
+                                <p class="mb-1 text-muted le-fs-lg">CPU usage exceeded 90% on production server us-east-1.</p>
+                                <small class="text-muted">42 minutes ago</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="icon-circle icon-circle-sm icon-circle-info">
+                                <i data-feather="check-circle" class="le-icon-16"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Deployment complete</h6>
+                                <p class="mb-1 text-muted le-fs-lg">Version 2.4.1 has been deployed to all staging environments.</p>
+                                <small class="text-muted">1 hour ago</small>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="javascript:void(0)" class="list-group-item list-group-item-action">
+                        <div class="d-flex gap-3 align-items-start">
+                            <div class="icon-circle icon-circle-sm icon-circle-secondary">
+                                <i data-feather="message-circle" class="le-icon-16"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">New comment on PR #312</h6>
+                                <p class="mb-1 text-muted le-fs-lg">Jamie left a review comment on the authentication refactor.</p>
+                                <small class="text-muted">2 hours ago</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Standard Accordion / Glass Accordion ───────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Standard Accordion</h5>
+                <p class="text-muted mb-3 le-fs-body">Default Bootstrap accordion with collapsible panels.</p>
+                <div class="accordion" id="standardAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#stdCollapse1">
+                                What is Liquid Elegance?
+                            </button>
+                        </h2>
+                        <div id="stdCollapse1" class="accordion-collapse collapse show" data-bs-parent="#standardAccordion">
+                            <div class="accordion-body">
+                                Liquid Elegance is a Bootstrap 5 admin template featuring a modern glass morphism design system with frosted-glass cards, translucent elements, and subtle blur effects for a sleek dashboard experience.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stdCollapse2">
+                                Which browsers are supported?
+                            </button>
+                        </h2>
+                        <div id="stdCollapse2" class="accordion-collapse collapse" data-bs-parent="#standardAccordion">
+                            <div class="accordion-body">
+                                Liquid Elegance supports all modern evergreen browsers including Chrome, Firefox, Safari, and Edge. The glass effects degrade gracefully in older browsers that do not support <code>backdrop-filter</code>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stdCollapse3">
+                                Can I customise the colour palette?
+                            </button>
+                        </h2>
+                        <div id="stdCollapse3" class="accordion-collapse collapse" data-bs-parent="#standardAccordion">
+                            <div class="accordion-body">
+                                Yes. All colours are defined as CSS custom properties in the root stylesheet. Override them in your own stylesheet or adjust the SCSS variables before building to apply a completely different palette.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#stdCollapse4">
+                                Is dark mode included?
+                            </button>
+                        </h2>
+                        <div id="stdCollapse4" class="accordion-collapse collapse" data-bs-parent="#standardAccordion">
+                            <div class="accordion-body">
+                                Absolutely. A built-in dark mode toggle switches between light and dark themes seamlessly. The glass effects adapt automatically with adjusted opacities and tints.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;div class="accordion" id="myAccordion"&gt;
+    &lt;div class="accordion-item"&gt;
+        &lt;h2 class="accordion-header"&gt;
+            &lt;button class="accordion-button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapse1"&gt;
+                Title
+            &lt;/button&gt;
+        &lt;/h2&gt;
+        &lt;div id="collapse1" class="accordion-collapse collapse show"
+             data-bs-parent="#myAccordion"&gt;
+            &lt;div class="accordion-body"&gt;Content&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Glass variant --&gt;
+&lt;div class="accordion accordion-glass"&gt;…&lt;/div&gt;
+
+&lt;!-- Flush (no borders) --&gt;
+&lt;div class="accordion accordion-flush"&gt;…&lt;/div&gt;
+
+&lt;!-- Always-open (omit data-bs-parent) --&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Accordion</h5>
+                <p class="text-muted mb-3 le-fs-body">Accordion styled with the glass morphism theme.</p>
+                <div class="accordion accordion-glass" id="glassAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#glassCollapse1">
+                                Getting Started
+                            </button>
+                        </h2>
+                        <div id="glassCollapse1" class="accordion-collapse collapse show" data-bs-parent="#glassAccordion">
+                            <div class="accordion-body">
+                                Install dependencies with <code>npm install</code>, then run <code>npm run dev</code> to start the development server. Edit Nunjucks templates in the <code>src/templates</code> directory and SCSS files under <code>src/scss</code>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#glassCollapse2">
+                                Folder Structure
+                            </button>
+                        </h2>
+                        <div id="glassCollapse2" class="accordion-collapse collapse" data-bs-parent="#glassAccordion">
+                            <div class="accordion-body">
+                                The project uses a standard layout: <code>src/</code> contains templates, SCSS, and JavaScript source files. The build process compiles everything into the <code>dist/</code> directory ready for deployment.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#glassCollapse3">
+                                Customising Components
+                            </button>
+                        </h2>
+                        <div id="glassCollapse3" class="accordion-collapse collapse" data-bs-parent="#glassAccordion">
+                            <div class="accordion-body">
+                                Every component supports glass styling through dedicated CSS classes. Add <code>.glass-card</code>, <code>.accordion-glass</code>, or <code>.list-group-glass</code> to apply the frosted-glass aesthetic to standard Bootstrap components.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#glassCollapse4">
+                                Building for Production
+                            </button>
+                        </h2>
+                        <div id="glassCollapse4" class="accordion-collapse collapse" data-bs-parent="#glassAccordion">
+                            <div class="accordion-body">
+                                Run <code>npm run build</code> to generate optimised, minified assets. The build pipeline purges unused CSS, minifies JavaScript, and compresses images for the smallest possible bundle size.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#glassCollapse5">
+                                Support &amp; Updates
+                            </button>
+                        </h2>
+                        <div id="glassCollapse5" class="accordion-collapse collapse" data-bs-parent="#glassAccordion">
+                            <div class="accordion-body">
+                                The template receives regular updates with new components and bug patches. Check the changelog for the latest release notes and upgrade instructions.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Always Open Accordion / Flush Accordion ────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Always Open Accordion</h5>
+                <p class="text-muted mb-3 le-fs-body">Multiple panels can stay open simultaneously — no <code>data-bs-parent</code> attribute.</p>
+                <div class="accordion accordion-glass" id="alwaysOpenAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#aoCollapse1">
+                                Dashboard Overview
+                            </button>
+                        </h2>
+                        <div id="aoCollapse1" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                The dashboard provides a real-time snapshot of key metrics, including revenue, active users, server health, and recent activity. Widgets can be rearranged and customised.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aoCollapse2">
+                                User Management
+                            </button>
+                        </h2>
+                        <div id="aoCollapse2" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                Manage users, roles, and permissions from a centralised panel. Bulk actions allow you to update, deactivate, or export user records efficiently.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aoCollapse3">
+                                Reports &amp; Analytics
+                            </button>
+                        </h2>
+                        <div id="aoCollapse3" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                Generate detailed reports with filtering by date range, category, and status. Export to CSV, PDF, or share interactive links with team members.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Flush Accordion</h5>
+                <p class="text-muted mb-3 le-fs-body">Removes borders and rounded corners for a seamless edge-to-edge appearance.</p>
+                <div class="accordion accordion-flush accordion-glass" id="flushAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flushCollapse1">
+                                What payment methods are accepted?
+                            </button>
+                        </h2>
+                        <div id="flushCollapse1" class="accordion-collapse collapse show" data-bs-parent="#flushAccordion">
+                            <div class="accordion-body">
+                                We accept all major credit cards (Visa, Mastercard, Amex), PayPal, and bank transfers. Enterprise clients can request invoicing with NET-30 terms.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flushCollapse2">
+                                How do I request a refund?
+                            </button>
+                        </h2>
+                        <div id="flushCollapse2" class="accordion-collapse collapse" data-bs-parent="#flushAccordion">
+                            <div class="accordion-body">
+                                Submit a refund request through the billing portal within 30 days of purchase. Refunds are typically processed within 5–7 business days.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flushCollapse3">
+                                Can I upgrade my plan later?
+                            </button>
+                        </h2>
+                        <div id="flushCollapse3" class="accordion-collapse collapse" data-bs-parent="#flushAccordion">
+                            <div class="accordion-body">
+                                Yes, you can upgrade or downgrade your plan at any time from the account settings page. Changes take effect at the start of the next billing cycle.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flushCollapse4">
+                                Is there a free trial?
+                            </button>
+                        </h2>
+                        <div id="flushCollapse4" class="accordion-collapse collapse" data-bs-parent="#flushAccordion">
+                            <div class="accordion-body">
+                                A 14-day free trial is available on all plans. No credit card is required to get started — simply create an account and explore the full feature set.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

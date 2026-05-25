@@ -1,0 +1,96 @@
+/* ── Nav Premium ── */
+
+/* Glass nav pills */
+.nav-pills-glass {
+  gap: 0.25rem;
+
+  .nav-link {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--le-radius-full, 9999px);
+    padding: 0.5rem 1.25rem;
+    color: var(--le-text-secondary, rgba(255, 255, 255, 0.6));
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: background-color var(--le-transition), border-color var(--le-transition), color var(--le-transition), box-shadow var(--le-transition), filter var(--le-transition);
+
+    &:hover {
+      background: var(--le-control-bg);
+      border-color: var(--le-control-border);
+      color: var(--le-text-primary);
+      box-shadow: var(--le-control-shadow);
+    }
+
+    &.active {
+      background: var(--le-control-bg-active);
+      border-color: var(--le-control-border-strong);
+      color: var(--le-primary-on-glass);
+      box-shadow:
+        0 10px 24px rgba(var(--le-primary-rgb), 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+/* Animated underline variant */
+.nav-underline-glass {
+  position: relative;
+  gap: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  .nav-link {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0.75rem 1.25rem;
+    color: var(--le-text-secondary, rgba(255, 255, 255, 0.6));
+    font-weight: 500;
+    font-size: 0.875rem;
+    position: relative;
+    transition: color var(--le-transition);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--le-primary), var(--le-primary-light));
+      border-radius: 1px;
+      transition: width var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1), box-shadow var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      color: var(--le-text-primary);
+
+      &::after {
+        width: 50%;
+      }
+    }
+
+    &.active {
+      color: var(--le-primary-on-glass);
+
+      &::after {
+        width: 100%;
+        box-shadow: 0 0 8px rgba(var(--le-primary-rgb), 0.3);
+      }
+    }
+  }
+}
+
+/* Tab content animation */
+.tab-content-glass {
+  .tab-pane {
+    &.fade {
+      transition: opacity var(--le-transition), filter var(--le-transition);
+      filter: brightness(0.95);
+    }
+
+    &.show {
+      filter: brightness(1);
+    }
+  }
+}

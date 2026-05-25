@@ -1,0 +1,40 @@
+// ==========================================================================
+// Page-Specific Styles — Modular Imports
+// ==========================================================================
+
+// App pages
+@forward "chat";
+@forward "mail";
+@forward "file-manager";
+@forward "calendar";
+@forward "wizard";
+@forward "kanban";
+@forward "music-player";
+@forward "video-streaming";
+@forward "movie-streaming";
+
+// CRUD & data pages
+@forward "crud";
+@forward "invoice";
+@forward "billing";
+
+// Content pages
+@forward "pricing";
+@forward "profile";
+@forward "settings";
+@forward "faq";
+@forward "notifications";
+@forward "forum";
+@forward "chirp";
+
+// Auth & utility
+@forward "auth";
+@forward "error";
+@forward "utility";
+
+// Demos
+@forward "glass-effects-demo";
+
+// Theme & responsive layers
+@forward "dark-mode";
+@forward "responsive";

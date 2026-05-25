@@ -1,0 +1,88 @@
+/* ---- Small phone: extra compact ---- */
+@media (max-width: 575.98px) {
+    .mail-container {
+        height: calc(100dvh - 100px);
+        height: calc(100vh - 100px);
+    }
+
+    /* Sidebar full-width slide-over */
+    .mail-sidebar {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Compact mail items */
+    .mail-item {
+        padding: 0.625rem 0.625rem;
+    }
+    .mail-item-subject {
+        font-size: 0.75rem;
+    }
+    .mail-item-time {
+        font-size: 0.625rem;
+    }
+    .mail-item-label {
+        display: none;
+    }
+
+    /* Reading pane adjustments */
+    .reading-subject {
+        font-size: 0.9375rem;
+    }
+    .reading-body {
+        padding: 0.75rem;
+    }
+    .reading-body pre {
+        font-size: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    /* Attachment cards full width */
+    .attachment-name {
+        max-width: 140px;
+    }
+
+    /* FAB smaller on small phones */
+    .mail-fab-compose {
+        bottom: 1rem;
+        right: 1rem;
+        width: 52px;
+        height: 52px;
+    }
+
+    /* Compose modal */
+    .compose-modal .modal-footer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .compose-footer-left {
+        width: 100%;
+        justify-content: center;
+        border-bottom: 1px solid var(--le-glass-border-subtle);
+        padding-bottom: 0.5rem;
+    }
+    .compose-footer-right {
+        width: 100%;
+        justify-content: center;
+    }
+    .compose-footer-right .btn {
+        flex: 1;
+        min-height: 44px;
+        justify-content: center;
+    }
+    .compose-discard-btn span,
+    .compose-draft-btn span {
+        display: none;
+    }
+    .compose-toolbar-sep:nth-of-type(n+3) {
+        display: none;
+    }
+    .compose-drop-zone-content i,
+    .compose-drop-zone-content svg {
+        width: 24px;
+        height: 24px;
+    }
+    .compose-file-name {
+        max-width: 140px;
+    }
+}

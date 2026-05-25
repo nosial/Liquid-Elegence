@@ -1,0 +1,441 @@
+/* ==========================================================================
+   15. LAYOUT VARIANTS
+   ========================================================================== */
+
+/* --- Horizontal Layout --- */
+
+/*
+  Architecture:
+  In horizontal mode (desktop ≥992px only), the topbar becomes position:fixed
+  at the very top, the sidebar transforms into a horizontal nav bar fixed below
+  the topbar, and main-content gets padding-top to clear both.
+
+  On mobile (<992px), horizontal mode automatically uses the standard vertical
+  off-canvas sidebar — no special overrides needed.
+*/
+
+@media (min-width: 992px) {
+    /* Bootstrap .fixed-top pattern: position fixed with explicit width */
+    [data-layout="horizontal"] .topbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: var(--le-topbar-height, 64px);
+        min-height: var(--le-topbar-height, 64px);
+        z-index: 1030;
+        border-bottom: none;
+        box-shadow: none;
+    }
+
+    [data-layout="horizontal"] .topbar::after {
+        display: none;
+    }
+
+    [data-layout="horizontal"] .sidebar {
+        position: fixed;
+        top: var(--le-topbar-height, 64px);
+        left: 0;
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        max-width: none;
+        height: var(--le-hnav-height, 46px);
+        max-height: none;
+        z-index: 1029;
+        display: flex;
+        flex-direction: row;
+        border: none;
+        border-top: none;
+        border-bottom: 1px solid var(--le-glass-border);
+        margin-top: 0;
+        background: rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(var(--le-glass-blur)) saturate(130%);
+        -webkit-backdrop-filter: blur(var(--le-glass-blur)) saturate(130%);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+        overflow: visible;
+        transition: none;
+        transform: none;
+    }
+
+    /* Prevent sidebar-collapsed state from overriding horizontal layout width */
+    [data-layout="horizontal"] .sidebar-collapsed .sidebar,
+    [data-layout="horizontal"] .sidebar-collapsed .sidebar:hover {
+        width: 100%;
+        max-width: none;
+    }
+
+    [data-layout="horizontal"] .sidebar::before,
+    [data-layout="horizontal"] .sidebar::after {
+        display: none;
+    }
+
+    /* Hide sidebar-header in horizontal mode (brand moves to topbar) */
+    [data-layout="horizontal"] .sidebar-header {
+        display: none;
+    }
+
+    /* No divider needed without sidebar brand */
+    [data-layout="horizontal"] .sidebar-body::before {
+        display: none;
+    }
+
+    /* Show brand in topbar for horizontal layout */
+    [data-layout="horizontal"] .topbar-brand {
+        display: flex !important;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: var(--le-text-primary);
+        flex-shrink: 0;
+        margin-right: 16px;
+    }
+
+    [data-layout="horizontal"] .topbar-brand:hover {
+        color: var(--le-text-primary);
+        text-decoration: none;
+    }
+
+    [data-layout="horizontal"] .topbar-brand:hover .brand-icon {
+        filter: drop-shadow(0 0 14px rgba(var(--le-primary-rgb), 0.65));
+    }
+
+    [data-layout="horizontal"] .topbar-brand:hover .brand-icon-glyph {
+        transform: scale(1.08);
+    }
+
+    [data-layout="horizontal"] .topbar-brand .brand-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 1.15rem;
+        border-radius: 8px;
+    }
+
+    [data-layout="horizontal"] .topbar-brand .brand-text {
+        font-size: 0.9375rem;
+    }
+
+    [data-layout="horizontal"] .sidebar-body {
+        display: flex;
+        flex-direction: row;
+    }
+
+    [data-layout="horizontal"] .sidebar-body {
+        overflow: visible;
+        max-height: none;
+        height: 100%;
+        flex: 1;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    [data-layout="horizontal"] .sidebar-nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 4px;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* Each nav section becomes a dropdown-style container */
+    [data-layout="horizontal"] .sidebar-nav-section {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        position: relative;
+        padding: 0;
+        margin: 0;
+        border: none;
+        flex-shrink: 1;
+        min-width: 0;
+    }
+
+    [data-layout="horizontal"] .sidebar-nav-section + .sidebar-nav-section {
+        border-top: none;
+        margin-top: 0;
+        padding-top: 0;
+        margin-left: 0;
+        padding-left: 0;
+        border-left: none;
+    }
+
+    [data-layout="horizontal"] .sidebar-nav-section + .sidebar-nav-section::before {
+        display: none;
+    }
+
+    /* Section labels become clickable dropdown triggers with glass pill style */
+    [data-layout="horizontal"] .sidebar-nav-label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 7px 14px;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--le-text-secondary);
+        cursor: pointer;
+        border-radius: 10px;
+        border: 1px solid transparent;
+        transition: background-color 0.2s ease, border-color 0.2s ease,
+                    color 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        user-select: none;
+        text-transform: none;
+        letter-spacing: 0;
+        margin: 0;
+        min-width: 0;
+    }
+
+    [data-layout="horizontal"] .sidebar-nav-label::after {
+        content: '';
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        border-left: none;
+        border-top: none;
+        transform: rotate(45deg);
+        margin-left: 4px;
+        opacity: 0.45;
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+        flex: none;
+        background: none;
+    }
+
+    [data-layout="horizontal"] .sidebar-nav-label:hover {
+        background: rgba(var(--le-primary-rgb), 0.07);
+        color: var(--le-text-primary);
+        border-color: rgba(var(--le-primary-rgb), 0.08);
+    }
+
+    [data-layout="horizontal"] .sidebar-nav-section.hnav-open > .sidebar-nav-label {
+        background: rgba(var(--le-primary-rgb), 0.10);
+        color: var(--le-primary);
+        border-color: rgba(var(--le-primary-rgb), 0.15);
+        box-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    [data-layout="horizontal"] .sidebar-nav-section.hnav-open > .sidebar-nav-label::after {
+        transform: rotate(225deg);
+        opacity: 0.7;
+    }
+
+    /* Frosted glass dropdown — matches .glass-strong pattern with backdrop blur. */
+    [data-layout="horizontal"] .sidebar-menu {
+        display: none;
+        max-height: none;
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        min-width: 230px;
+        padding: 8px;
+        margin: 0;
+        list-style: none;
+        overflow: visible;
+        background: var(--le-glass-bg-strong);
+        border: 1px solid var(--le-glass-border);
+        border-radius: var(--le-radius-lg);
+        backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+        -webkit-backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+        box-shadow:
+            var(--le-glass-shadow),
+            var(--le-inner-glow);
+        z-index: 1060;
+        flex-direction: column;
+        gap: 2px;
+        animation: dropdownLiquidIn 0.28s var(--le-spring-snappy) both;
+    }
+
+    /* Glass caustic + chromatic dispersion overlay — matches .glass-strong::before pattern */
+    [data-layout="horizontal"] .sidebar-menu::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background:
+            radial-gradient(
+                ellipse 70% 45% at 28% 8%,
+                var(--le-specular-color) 0%,
+                var(--le-reflection-mid) 30%,
+                transparent 60%
+            ),
+            radial-gradient(
+                ellipse 45% 35% at 72% 88%,
+                var(--le-reflection-caustic) 0%,
+                transparent 55%
+            ),
+            linear-gradient(
+                172deg,
+                var(--le-chroma-red) 0%,
+                transparent 16%,
+                transparent 84%,
+                var(--le-chroma-blue) 100%
+            ),
+            linear-gradient(
+                90deg,
+                var(--le-chroma-red) 0%,
+                transparent 6%,
+                transparent 94%,
+                var(--le-chroma-blue) 100%
+            );
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.40;
+    }
+
+    /* Lift items above glass surface */
+    [data-layout="horizontal"] .sidebar-menu > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    [data-layout="horizontal"] .sidebar-nav-section.hnav-open > .sidebar-menu {
+        display: flex;
+    }
+
+    [data-layout="horizontal"] .sidebar-item {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    [data-layout="horizontal"] .sidebar-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 14px;
+        border-radius: 10px;
+        font-size: 0.8125rem;
+        white-space: nowrap;
+        color: var(--le-text-secondary);
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease,
+                    box-shadow 0.2s ease, transform 0.15s ease;
+        position: relative;
+    }
+
+    [data-layout="horizontal"] .sidebar-link:hover {
+        background: rgba(var(--le-primary-rgb), 0.08);
+        color: var(--le-primary);
+        transform: translateX(3px);
+    }
+
+    [data-layout="horizontal"] .sidebar-item.active > .sidebar-link {
+        background: linear-gradient(
+            135deg,
+            rgba(var(--le-primary-rgb), 0.12) 0%,
+            rgba(var(--le-primary-rgb), 0.06) 100%
+        );
+        color: var(--le-primary);
+        font-weight: 600;
+        border-left: none;
+        animation: none;
+        box-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.08);
+    }
+
+    [data-layout="horizontal"] .sidebar-item.active > .sidebar-link svg,
+    [data-layout="horizontal"] .sidebar-item.active > .sidebar-link i {
+        filter: drop-shadow(0 0 3px rgba(var(--le-primary-rgb), 0.3));
+    }
+
+    [data-layout="horizontal"] .sidebar-link svg,
+    [data-layout="horizontal"] .sidebar-link i {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+    }
+
+    [data-layout="horizontal"] .sidebar-link::after {
+        display: none;
+    }
+
+    [data-layout="horizontal"] .sidebar-link::before {
+        display: none;
+    }
+
+    [data-layout="horizontal"] .main-content {
+        margin-left: 0;
+        padding-top: calc(var(--le-topbar-height, 64px) + var(--le-hnav-height, 46px));
+    }
+
+    [data-layout="horizontal"] .sidebar-backdrop {
+        display: none;
+    }
+
+    [data-layout="horizontal"] .sidebar-toggle-btn {
+        display: none;
+    }
+
+    /* Dark mode horizontal nav */
+    [data-theme="dark"][data-layout="horizontal"] .sidebar {
+        background: rgba(var(--le-dark-surface-rgb), 0.30);
+        border-bottom-color: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+    }
+
+    [data-theme="dark"][data-layout="horizontal"] .topbar {
+        border-bottom: none;
+    }
+
+    [data-theme="dark"][data-layout="horizontal"] .sidebar-nav-label:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.04);
+    }
+
+    [data-theme="dark"][data-layout="horizontal"] .sidebar-nav-section.hnav-open > .sidebar-nav-label {
+        background: rgba(var(--le-primary-rgb), 0.15);
+        border-color: rgba(var(--le-primary-rgb), 0.20);
+    }
+
+    [data-theme="dark"][data-layout="horizontal"] .sidebar-link:hover {
+        background: rgba(var(--le-primary-rgb), 0.12);
+    }
+
+    /* --- Light mode horizontal nav --- */
+
+    [data-theme="light"][data-layout="horizontal"] .sidebar {
+        background: rgba(255, 255, 255, 0.78);
+        border-bottom-color: rgba(0, 0, 0, 0.06);
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+    }
+
+    [data-theme="light"][data-layout="horizontal"] .topbar {
+        border-bottom: none;
+    }
+
+    [data-theme="light"][data-layout="horizontal"] .sidebar-nav-label {
+        color: var(--le-gray-600);
+    }
+
+    [data-theme="light"][data-layout="horizontal"] .sidebar-nav-label:hover {
+        background: rgba(0, 0, 0, 0.04);
+        color: var(--le-gray-800);
+    }
+
+    [data-theme="light"][data-layout="horizontal"] .sidebar-nav-section.hnav-open > .sidebar-nav-label {
+        background: rgba(var(--le-primary-rgb), 0.09);
+        color: var(--le-primary-dark);
+        border-color: rgba(var(--le-primary-rgb), 0.12);
+    }
+
+    [data-theme="light"][data-layout="horizontal"] .sidebar-link {
+        color: var(--le-gray-600);
+    }
+
+    [data-theme="light"][data-layout="horizontal"] .sidebar-link:hover {
+        background: rgba(var(--le-primary-rgb), 0.07);
+        color: var(--le-primary);
+    }
+
+    [data-theme="light"][data-layout="horizontal"] .sidebar-item.active > .sidebar-link {
+        background: rgba(var(--le-primary-rgb), 0.10);
+        color: var(--le-primary-dark);
+    }
+}

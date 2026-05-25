@@ -1,0 +1,447 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2">
+    <div>
+        <h2 class="mb-1">Users Management</h2>
+        <p class="text-muted mb-0">Manage system users and permissions</p>
+    </div>
+</div>
+
+<div class="crud-toolbar">
+    <div class="search-box">
+        <i data-feather="search" class="search-icon"></i>
+        <input type="text" class="form-control" id="searchInput" placeholder="Search users...">
+    </div>
+    <select class="form-select le-min-w-140" id="roleFilter">
+        <option value="">All Roles</option>
+        <option value="Admin">Admin</option>
+        <option value="Editor">Editor</option>
+        <option value="Viewer">Viewer</option>
+        <option value="Moderator">Moderator</option>
+    </select>
+    <select class="form-select le-min-w-150" id="statusFilter">
+        <option value="">All Status</option>
+        <option value="Active">Active</option>
+        <option value="Suspended">Suspended</option>
+        <option value="Pending">Pending</option>
+    </select>
+    <div class="ms-auto d-flex gap-2">
+        <button class="btn btn-outline-secondary" id="exportCsvBtn"><i data-feather="download" class="le-icon-16"></i> Export CSV</button>
+        <button class="btn btn-primary" id="addUserBtn"><i data-feather="plus" class="le-icon-16"></i> Add User</button>
+    </div>
+</div>
+
+<div class="glass-card p-0">
+    <div class="table-glass table-desktop">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th data-sort="name">User <span class="sort-icon">↕</span></th>
+                        <th data-sort="role">Role <span class="sort-icon">↕</span></th>
+                        <th data-sort="department">Department <span class="sort-icon">↕</span></th>
+                        <th data-sort="status">Status <span class="sort-icon">↕</span></th>
+                        <th data-sort="lastLogin">Last Login <span class="sort-icon">↕</span></th>
+                        <th data-sort="created">Created <span class="sort-icon">↕</span></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody"></tbody>
+            </table>
+        </div>
+        <div class="pagination-wrapper">
+            <div class="pagination-info" id="paginationInfo"></div>
+            <nav><ul class="pagination mb-0" id="paginationControls"></ul></nav>
+        </div>
+    </div>
+</div>
+
+<div class="card-mobile" id="mobileCards"></div>
+<div class="card-mobile">
+    <div class="pagination-wrapper">
+        <div class="pagination-info" id="paginationInfoMobile"></div>
+        <nav><ul class="pagination mb-0" id="paginationControlsMobile"></ul></nav>
+    </div>
+</div>
+
+<!-- Add/Edit User Modal -->
+<div class="modal fade modal-glass" id="userModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content glass-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalTitle">Add User</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <input type="hidden" id="userId">
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="userName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="userEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <select class="form-select" id="userRole" required>
+                            <option value="Admin">Admin</option>
+                            <option value="Editor">Editor</option>
+                            <option value="Viewer">Viewer</option>
+                            <option value="Moderator">Moderator</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Department</label>
+                        <select class="form-select" id="userDepartment" required>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Support">Support</option>
+                            <option value="Design">Design</option>
+                            <option value="HR">HR</option>
+                            <option value="Finance">Finance</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Status</label>
+                        <select class="form-select" id="userStatus" required>
+                            <option value="Active">Active</option>
+                            <option value="Suspended">Suspended</option>
+                            <option value="Pending">Pending</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveUserBtn">Save User</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade modal-glass" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content glass-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-0">Are you sure you want to delete <strong id="deleteUserName"></strong>? This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View User Modal -->
+<div class="modal fade modal-glass" id="viewModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content glass-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">User Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="viewModalBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    (function() {
+        'use strict';
+
+        let usersData = [
+            { id: 1, name: 'Sarah Johnson', email: 'sarah.johnson@company.com', role: 'Admin', department: 'Engineering', status: 'Active', lastLogin: '2024-12-15 09:30', created: '2022-01-15' },
+            { id: 2, name: 'Michael Chen', email: 'michael.chen@company.com', role: 'Editor', department: 'Marketing', status: 'Active', lastLogin: '2024-12-14 14:22', created: '2022-03-20' },
+            { id: 3, name: 'Emily Davis', email: 'emily.davis@company.com', role: 'Admin', department: 'Engineering', status: 'Active', lastLogin: '2024-12-15 08:45', created: '2022-02-10' },
+            { id: 4, name: 'James Wilson', email: 'james.wilson@company.com', role: 'Viewer', department: 'Sales', status: 'Suspended', lastLogin: '2024-11-20 16:30', created: '2023-01-05' },
+            { id: 5, name: 'Lisa Anderson', email: 'lisa.anderson@company.com', role: 'Editor', department: 'Design', status: 'Active', lastLogin: '2024-12-14 11:15', created: '2022-06-18' },
+            { id: 6, name: 'Robert Taylor', email: 'robert.taylor@company.com', role: 'Moderator', department: 'Support', status: 'Active', lastLogin: '2024-12-13 09:00', created: '2022-08-22' },
+            { id: 7, name: 'Amanda Martinez', email: 'amanda.martinez@company.com', role: 'Viewer', department: 'HR', status: 'Pending', lastLogin: '2024-12-10 13:45', created: '2024-11-30' },
+            { id: 8, name: 'David Brown', email: 'david.brown@company.com', role: 'Editor', department: 'Engineering', status: 'Active', lastLogin: '2024-12-15 10:20', created: '2022-04-12' },
+            { id: 9, name: 'Jennifer Lee', email: 'jennifer.lee@company.com', role: 'Admin', department: 'Finance', status: 'Active', lastLogin: '2024-12-14 15:30', created: '2021-11-08' },
+            { id: 10, name: 'Thomas White', email: 'thomas.white@company.com', role: 'Viewer', department: 'Marketing', status: 'Suspended', lastLogin: '2024-10-05 08:00', created: '2023-05-15' },
+            { id: 11, name: 'Maria Garcia', email: 'maria.garcia@company.com', role: 'Editor', department: 'Design', status: 'Active', lastLogin: '2024-12-13 12:00', created: '2023-02-28' },
+            { id: 12, name: 'Christopher Hall', email: 'chris.hall@company.com', role: 'Moderator', department: 'Support', status: 'Active', lastLogin: '2024-12-12 16:45', created: '2022-09-10' },
+            { id: 13, name: 'Jessica Clark', email: 'jessica.clark@company.com', role: 'Viewer', department: 'Sales', status: 'Pending', lastLogin: '2024-12-08 09:30', created: '2024-12-01' },
+            { id: 14, name: 'Daniel Lewis', email: 'daniel.lewis@company.com', role: 'Editor', department: 'Engineering', status: 'Active', lastLogin: '2024-12-15 07:50', created: '2022-07-20' },
+            { id: 15, name: 'Ashley Robinson', email: 'ashley.robinson@company.com', role: 'Moderator', department: 'HR', status: 'Active', lastLogin: '2024-12-11 14:10', created: '2023-03-15' },
+            { id: 16, name: 'Matthew Walker', email: 'matt.walker@company.com', role: 'Viewer', department: 'Finance', status: 'Active', lastLogin: '2024-12-14 10:30', created: '2023-06-22' },
+            { id: 17, name: 'Stephanie Young', email: 'steph.young@company.com', role: 'Editor', department: 'Marketing', status: 'Suspended', lastLogin: '2024-09-15 11:00', created: '2022-12-05' },
+            { id: 18, name: 'Andrew King', email: 'andrew.king@company.com', role: 'Admin', department: 'Engineering', status: 'Active', lastLogin: '2024-12-15 09:15', created: '2021-08-30' },
+            { id: 19, name: 'Nicole Wright', email: 'nicole.wright@company.com', role: 'Viewer', department: 'Design', status: 'Pending', lastLogin: '2024-12-05 13:20', created: '2024-11-15' },
+            { id: 20, name: 'Kevin Scott', email: 'kevin.scott@company.com', role: 'Moderator', department: 'Sales', status: 'Active', lastLogin: '2024-12-13 15:45', created: '2023-04-18' }
+        ];
+
+        let currentPage = 1;
+        const perPage = 10;
+        let sortField = 'name';
+        let sortDir = 'asc';
+        let deleteTargetId = null;
+        let nextId = 21;
+
+        const roleBadge = { Admin: 'danger', Editor: 'primary', Viewer: 'secondary', Moderator: 'warning' };
+        const statusBadge = { Active: 'success', Suspended: 'danger', Pending: 'warning' };
+
+        function getInitials(name) {
+            return name.split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+        }
+
+        function avatarClass(id) {
+            return 'bg-avatar-' + ((id % 5) + 1);
+        }
+
+        function getFiltered() {
+            const q = document.getElementById('searchInput').value.toLowerCase();
+            const role = document.getElementById('roleFilter').value;
+            const status = document.getElementById('statusFilter').value;
+            return usersData.filter(u => {
+                if (q && !u.name.toLowerCase().includes(q) && !u.email.toLowerCase().includes(q)) return false;
+                if (role && u.role !== role) return false;
+                if (status && u.status !== status) return false;
+                return true;
+            });
+        }
+
+        function getSorted(data) {
+            return [...data].sort((a, b) => {
+                let va = a[sortField], vb = b[sortField];
+                if (typeof va === 'string') va = va.toLowerCase();
+                if (typeof vb === 'string') vb = vb.toLowerCase();
+                if (va < vb) return sortDir === 'asc' ? -1 : 1;
+                if (va > vb) return sortDir === 'asc' ? 1 : -1;
+                return 0;
+            });
+        }
+
+        function renderTable() {
+            const filtered = getSorted(getFiltered());
+            const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+            if (currentPage > totalPages) currentPage = totalPages;
+            const start = (currentPage - 1) * perPage;
+            const pageData = filtered.slice(start, start + perPage);
+
+            // Desktop table
+            const tbody = document.getElementById('usersTableBody');
+            tbody.innerHTML = pageData.map(u => `
+                <tr>
+                    <td>
+                        <div class="user-info">
+                            <div class="avatar-circle ${avatarClass(u.id)}">${getInitials(u.name)}</div>
+                            <div class="user-details">
+                                <span class="user-name">${u.name}</span>
+                                <span class="user-email">${u.email}</span>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-${roleBadge[u.role]}">${u.role}</span></td>
+                    <td>${u.department}</td>
+                    <td><span class="badge bg-${statusBadge[u.status]}">${u.status}</span></td>
+                    <td>${u.lastLogin}</td>
+                    <td>${u.created}</td>
+                    <td>
+                        <div class="table-actions">
+                            <button class="btn btn-sm btn-outline-info" title="View" onclick="viewUser(${u.id})"><i data-feather="eye" class="le-icon-14"></i></button>
+                            <button class="btn btn-sm btn-outline-primary" title="Edit" onclick="editUser(${u.id})"><i data-feather="edit-2" class="le-icon-14"></i></button>
+                            <button class="btn btn-sm btn-outline-danger" title="Delete" onclick="deleteUser(${u.id})"><i data-feather="trash-2" class="le-icon-14"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+
+            // Mobile cards
+            document.getElementById('mobileCards').innerHTML = pageData.map(u => `
+                <div class="mobile-user-card">
+                    <div class="card-header-row">
+                        <div class="user-info">
+                            <div class="avatar-circle ${avatarClass(u.id)}">${getInitials(u.name)}</div>
+                            <div class="user-details">
+                                <span class="user-name">${u.name}</span>
+                                <span class="user-email">${u.email}</span>
+                            </div>
+                        </div>
+                        <div class="table-actions">
+                            <button class="btn btn-sm btn-outline-info" onclick="viewUser(${u.id})"><i data-feather="eye" class="le-icon-14"></i></button>
+                            <button class="btn btn-sm btn-outline-primary" onclick="editUser(${u.id})"><i data-feather="edit-2" class="le-icon-14"></i></button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="deleteUser(${u.id})"><i data-feather="trash-2" class="le-icon-14"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-field"><span class="label">Role</span><span class="badge bg-${roleBadge[u.role]}">${u.role}</span></div>
+                    <div class="card-field"><span class="label">Department</span><span>${u.department}</span></div>
+                    <div class="card-field"><span class="label">Status</span><span class="badge bg-${statusBadge[u.status]}">${u.status}</span></div>
+                    <div class="card-field"><span class="label">Last Login</span><span>${u.lastLogin}</span></div>
+                    <div class="card-field"><span class="label">Created</span><span>${u.created}</span></div>
+                </div>
+            `).join('');
+
+            // Pagination info
+            const infoText = filtered.length === 0 ? 'No users found' : `Showing ${start + 1}-${Math.min(start + perPage, filtered.length)} of ${filtered.length} users`;
+            document.getElementById('paginationInfo').textContent = infoText;
+            document.getElementById('paginationInfoMobile').textContent = infoText;
+
+            // Pagination controls
+            let pagesHtml = `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}"><a class="page-link" href="javascript:void(0)" onclick="goToPage(${currentPage - 1});return false;">&laquo;</a></li>`;
+            for (let i = 1; i <= totalPages; i++) {
+                pagesHtml += `<li class="page-item ${i === currentPage ? 'active' : ''}"><a class="page-link" href="javascript:void(0)" onclick="goToPage(${i});return false;">${i}</a></li>`;
+            }
+            pagesHtml += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}"><a class="page-link" href="javascript:void(0)" onclick="goToPage(${currentPage + 1});return false;">&raquo;</a></li>`;
+            document.getElementById('paginationControls').innerHTML = pagesHtml;
+            document.getElementById('paginationControlsMobile').innerHTML = pagesHtml;
+
+            if (typeof feather !== 'undefined') feather.replace();
+        }
+
+        window.goToPage = function(page) {
+            const filtered = getFiltered();
+            const totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderTable();
+        };
+
+        // Sorting
+        document.querySelectorAll('th[data-sort]').forEach(th => {
+            th.addEventListener('click', function() {
+                const field = this.getAttribute('data-sort');
+                if (sortField === field) {
+                    sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+                } else {
+                    sortField = field;
+                    sortDir = 'asc';
+                }
+                document.querySelectorAll('th[data-sort] .sort-icon').forEach(s => s.textContent = '↕');
+                this.querySelector('.sort-icon').textContent = sortDir === 'asc' ? '↑' : '↓';
+                currentPage = 1;
+                renderTable();
+            });
+        });
+
+        // Filters
+        document.getElementById('searchInput').addEventListener('input', function() { currentPage = 1; renderTable(); });
+        document.getElementById('roleFilter').addEventListener('change', function() { currentPage = 1; renderTable(); });
+        document.getElementById('statusFilter').addEventListener('change', function() { currentPage = 1; renderTable(); });
+
+        // Add User
+        document.getElementById('addUserBtn').addEventListener('click', function() {
+            document.getElementById('userModalTitle').textContent = 'Add User';
+            document.getElementById('userForm').reset();
+            document.getElementById('userId').value = '';
+            new bootstrap.Modal(document.getElementById('userModal')).show();
+        });
+
+        // Save User
+        document.getElementById('saveUserBtn').addEventListener('click', function() {
+            const form = document.getElementById('userForm');
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+            const id = document.getElementById('userId').value;
+            const userData = {
+                name: document.getElementById('userName').value,
+                email: document.getElementById('userEmail').value,
+                role: document.getElementById('userRole').value,
+                department: document.getElementById('userDepartment').value,
+                status: document.getElementById('userStatus').value
+            };
+            if (id) {
+                const idx = usersData.findIndex(u => u.id === parseInt(id));
+                if (idx > -1) Object.assign(usersData[idx], userData);
+            } else {
+                const now = new Date();
+                userData.id = nextId++;
+                userData.lastLogin = 'Never';
+                userData.created = now.toISOString().split('T')[0];
+                usersData.push(userData);
+            }
+            bootstrap.Modal.getInstance(document.getElementById('userModal')).hide();
+            renderTable();
+        });
+
+        // Edit User
+        window.editUser = function(id) {
+            const u = usersData.find(u => u.id === id);
+            if (!u) return;
+            document.getElementById('userModalTitle').textContent = 'Edit User';
+            document.getElementById('userId').value = u.id;
+            document.getElementById('userName').value = u.name;
+            document.getElementById('userEmail').value = u.email;
+            document.getElementById('userRole').value = u.role;
+            document.getElementById('userDepartment').value = u.department;
+            document.getElementById('userStatus').value = u.status;
+            new bootstrap.Modal(document.getElementById('userModal')).show();
+        };
+
+        // Delete User
+        window.deleteUser = function(id) {
+            const u = usersData.find(u => u.id === id);
+            if (!u) return;
+            deleteTargetId = id;
+            document.getElementById('deleteUserName').textContent = u.name;
+            new bootstrap.Modal(document.getElementById('deleteModal')).show();
+        };
+
+        document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+            if (deleteTargetId !== null) {
+                usersData = usersData.filter(u => u.id !== deleteTargetId);
+                deleteTargetId = null;
+            }
+            bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
+            renderTable();
+        });
+
+        // View User
+        window.viewUser = function(id) {
+            const u = usersData.find(u => u.id === id);
+            if (!u) return;
+            document.getElementById('viewModalBody').innerHTML = `
+                <div class="text-center mb-3">
+                    <div class="avatar-circle ${avatarClass(u.id)} mx-auto le-box-64 le-fs-icon-xl">${getInitials(u.name)}</div>
+                    <h5 class="mt-2 mb-0">${u.name}</h5>
+                    <p class="text-muted">${u.email}</p>
+                </div>
+                <table class="table table-sm mb-0">
+                    <tr><th style="width:40%">Role</th><td><span class="badge bg-${roleBadge[u.role]}">${u.role}</span></td></tr>
+                    <tr><th>Department</th><td>${u.department}</td></tr>
+                    <tr><th>Status</th><td><span class="badge bg-${statusBadge[u.status]}">${u.status}</span></td></tr>
+                    <tr><th>Last Login</th><td>${u.lastLogin}</td></tr>
+                    <tr><th>Created</th><td>${u.created}</td></tr>
+                </table>
+            `;
+            new bootstrap.Modal(document.getElementById('viewModal')).show();
+            if (typeof feather !== 'undefined') feather.replace();
+        };
+
+        // CSV Export
+        document.getElementById('exportCsvBtn').addEventListener('click', function() {
+            const data = getSorted(getFiltered());
+            const headers = ['Name','Email','Role','Department','Status','Last Login','Created'];
+            const rows = data.map(u => [u.name, u.email, u.role, u.department, u.status, u.lastLogin, u.created].map(v => '"' + String(v).replace(/"/g, '""') + '"').join(','));
+            const csv = [headers.join(','), ...rows].join('\n');
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'users_export.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Initial render
+        renderTable();
+    })();
+</script>
+{% endblock %}

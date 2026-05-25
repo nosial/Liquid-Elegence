@@ -1,0 +1,525 @@
+@use "../mixins" as *;
+
+/* =============================================================================
+   Responsive
+   =============================================================================
+   File Manager responsive rules consolidated from:
+     - pages/file-manager/_responsive.scss (original)
+     - pages/responsive/per-page/_file-manager.scss (moved here)
+     - pages/responsive/_adjustments.scss §21e (moved here)
+   ============================================================================= */
+
+@media (max-width: 1199.98px) {
+    .fm-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 991.98px) {
+    .fm-layout { flex-direction: column; }
+    .fm-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Sidebar toggle */
+    .fm-sidebar-toggle {
+        @include sidebar-toggle-inline;
+    }
+    .fm-sidebar-toggle:hover,
+    .fm-sidebar-toggle:active {
+        @include sidebar-toggle-hover;
+    }
+    .fm-sidebar-toggle svg { width: 20px; height: 20px; }
+
+    /* Sidebar backdrop */
+    .fm-sidebar-backdrop {
+        @include sidebar-backdrop;
+    }
+    .fm-sidebar-backdrop.show {
+        @include sidebar-backdrop-show;
+    }
+
+    /* Sidebar: slide-over drawer via transform */
+    .fm-sidebar-panel {
+        @include sidebar-drawer-left;
+    }
+    .fm-sidebar-panel.show {
+        transform: translateX(0);
+    }
+    .fm-sidebar-panel .glass-card {
+        border-radius: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-shadow: none;
+        border-left: none;
+    }
+    .fm-sidebar-panel .glass-card > .glass-card-body {
+        flex: 1;
+        overflow-y: auto;
+    }
+
+    /* Sidebar mobile header */
+    .fm-sidebar-header-mobile {
+        @include sidebar-mobile-header;
+    }
+    .fm-sidebar-title {
+        @include sidebar-mobile-title;
+    }
+    .fm-sidebar-close {
+        @include sidebar-close-btn;
+    }
+    .fm-sidebar-close:hover { @include sidebar-close-hover; }
+    .fm-sidebar-close svg { width: 20px; height: 20px; }
+
+    /* Preview panel: full-width drawer overlay on tablet and below */
+    .fm-preview-panel {
+        width: 100% !important;
+        position: fixed;
+        inset: 0;
+        z-index: 1041;
+        border-left: none;
+        border-radius: 0;
+        background: var(--le-glass-bg-strong);
+        backdrop-filter: blur(var(--le-glass-blur-strong));
+        -webkit-backdrop-filter: blur(var(--le-glass-blur-strong));
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+        overflow-y: auto;
+    }
+    .fm-preview-panel.visible {
+        animation: fmPreviewSlideIn 0.25s ease-out;
+    }
+    @keyframes fmPreviewSlideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to   { transform: translateX(0); opacity: 1; }
+    }
+}
+
+@media (max-width: 767.98px) {
+    .fm-view-btn {
+        width: 44px;
+        height: 44px;
+    }
+    .fm-sort-select {
+        min-height: 44px;
+        font-size: 1rem;
+    }
+    .fm-breadcrumb {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+    }
+    .fm-breadcrumb::-webkit-scrollbar {
+        display: none;
+    }
+    .fm-card {
+        -webkit-tap-highlight-color: transparent;
+    }
+    .fm-card:hover {
+        filter: none;
+    }
+    .fm-nav-item {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    .fm-action-btn,
+    .fm-upload-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    .fm-card-more-btn {
+        display: flex;
+    }
+    .fm-file-card .fm-checkbox {
+        display: none;
+    }
+
+    /* Hide toolbar button text, show icons only */
+    .btn-fm span {
+        display: none;
+    }
+    .btn-fm {
+        padding: 0.4375rem 0.625rem;
+    }
+
+    /* Table view: hide Type and Modified columns */
+    .fm-table thead th:nth-child(4),
+    .fm-table thead th:nth-child(5),
+    .fm-table tbody td:nth-child(4),
+    .fm-table tbody td:nth-child(5) {
+        display: none;
+    }
+
+    /* Table action buttons touch-friendly */
+    .fm-table-actions button {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Quick access: single column on tablet/phone */
+    .fm-quick-items {
+        grid-template-columns: 1fr;
+    }
+
+    /* Quick access item: tighter */
+    .fm-quick-item {
+        padding: 0.625rem 0.75rem;
+    }
+    .fm-quick-item small {
+        font-size: 0.625rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .fm-grid { grid-template-columns: 1fr 1fr; }
+    .fm-toolbar {
+        padding: 0.625rem;
+        gap: 0.5rem;
+    }
+    .fm-toolbar-actions {
+        flex-wrap: wrap;
+    }
+    .fm-search-wrap {
+        flex: 1 1 100%;
+    }
+    .fm-search-input {
+        width: 100%;
+        font-size: 1rem;
+    }
+    .fm-card {
+        padding: 0.875rem;
+    }
+    .fm-card-icon {
+        font-size: 28px;
+    }
+    .fm-card-name {
+        font-size: 0.8125rem;
+    }
+
+    /* Table view: also hide Size column at this breakpoint */
+    .fm-table thead th:nth-child(3),
+    .fm-table tbody td:nth-child(3) {
+        display: none;
+    }
+
+    /* Bottom bar compact */
+    .fm-bottom-bar {
+        font-size: 0.6875rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .fm-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Table: only show checkbox + name + actions */
+    .fm-table thead th:nth-child(3),
+    .fm-table thead th:nth-child(4),
+    .fm-table thead th:nth-child(5),
+    .fm-table tbody td:nth-child(3),
+    .fm-table tbody td:nth-child(4),
+    .fm-table tbody td:nth-child(5) {
+        display: none;
+    }
+}
+
+/* Landscape phone */
+@media (max-height: 500px) and (orientation: landscape) {
+    .fm-layout {
+        min-height: calc(100dvh - 100px);
+        min-height: calc(100vh - 100px);
+    }
+}
+
+/* ==========================================================================
+   File Manager — per-page responsive sections (consolidated from
+   pages/responsive/per-page/_file-manager.scss)
+   ========================================================================== */
+
+/* Cards, toolbar, file names, preview overlay */
+@media (max-width: 767.98px) {
+  .fm-toolbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .fm-toolbar-left,
+  .fm-toolbar-right {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .fm-search {
+    width: 100%;
+    order: -1;
+  }
+
+  .fm-search .glass-input {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .fm-card {
+    padding: 14px 10px;
+  }
+
+  /* File names truncation */
+  .fm-card-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .fm-card-size {
+    font-size: 0.6875rem;
+  }
+
+  /* Storage ring scales in sidebar */
+  .fm-storage-ring svg {
+    width: 100%;
+    height: auto;
+    max-width: 140px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* Toolbar actions: sort select adapts */
+  .fm-sort-select {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  /* Preview panel: close button bigger for touch */
+  .fm-preview-close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fm-card {
+    padding: 10px 8px;
+  }
+
+  .fm-card-icon {
+    font-size: 26px;
+  }
+
+  .fm-card-icon svg,
+  .fm-card-icon i {
+    width: 26px;
+    height: 26px;
+  }
+
+  .fm-card-name {
+    font-size: 0.75rem;
+  }
+
+  .fm-card-size {
+    font-size: 0.625rem;
+  }
+
+  .fm-breadcrumb {
+    font-size: 0.6875rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .fm-breadcrumb::-webkit-scrollbar {
+    display: none;
+  }
+
+  .fm-breadcrumb-item {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Preview panel: pad less on tiny screens */
+  .fm-preview-body {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .fm-preview-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .fm-preview-icon i,
+  .fm-preview-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .fm-preview-name {
+    font-size: 0.875rem;
+  }
+
+  .fm-preview-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .fm-action-btn {
+    font-size: 0.6875rem;
+    padding: 0.4375rem;
+  }
+}
+
+/* Fluid grid with auto-fit on mobile */
+@media (max-width: 575.98px) {
+  .fm-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+  }
+
+  .fm-card {
+    padding: 10px 8px;
+  }
+
+  .fm-card-icon {
+    font-size: 24px;
+  }
+
+  .fm-card-icon svg,
+  .fm-card-icon i {
+    width: 24px;
+    height: 24px;
+  }
+
+  .fm-card-name {
+    font-size: 0.6875rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .fm-card-size {
+    font-size: 0.5625rem;
+  }
+
+  /* File manager sidebar: full-width overlay */
+  .fm-sidebar-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Preview panel: full-width overlay */
+  .fm-preview-panel.show {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Toolbar improvements */
+  .fm-toolbar {
+    gap: 6px;
+  }
+
+  .fm-toolbar-left,
+  .fm-toolbar-right {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .fm-view-toggle {
+    display: flex;
+    gap: 2px;
+  }
+
+  .fm-view-toggle .btn {
+    min-width: 36px;
+    min-height: 36px;
+  }
+}
+
+@media (max-width: 380px) {
+  .fm-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 6px;
+  }
+
+  .fm-card {
+    padding: 8px 6px;
+  }
+
+  .fm-card-icon {
+    font-size: 20px;
+  }
+
+  .fm-card-icon svg,
+  .fm-card-icon i {
+    width: 20px;
+    height: 20px;
+  }
+
+  .fm-card-name {
+    font-size: 0.625rem;
+  }
+}
+
+/* Extra small phone grid + drawer + modals (from adjustments §21e) */
+@media (max-width: 380px) {
+  .fm-sidebar-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .fm-grid {
+    gap: 8px;
+  }
+
+  .fm-card {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .fm-card-icon {
+    font-size: 24px;
+  }
+
+  .fm-card-icon svg,
+  .fm-card-icon i {
+    width: 24px;
+    height: 24px;
+  }
+
+  .fm-card-name {
+    font-size: 0.6875rem;
+  }
+
+  /* Preview panel actions: single column on tiny phones */
+  .fm-preview-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Upload / New Folder modals: near-fullscreen on small phones */
+@media (max-width: 575.98px) {
+  #uploadModal .modal-dialog,
+  #newFolderModal .modal-dialog {
+    margin: 0.5rem;
+    max-width: calc(100% - 1rem);
+  }
+
+  .fm-drop-zone {
+    padding: 1.5rem 1rem;
+  }
+
+  .fm-drop-zone-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 0.75rem;
+  }
+
+  .fm-drop-zone-text {
+    font-size: 0.8125rem;
+  }
+
+  .fm-drop-zone-hint {
+    font-size: 0.6875rem;
+  }
+}

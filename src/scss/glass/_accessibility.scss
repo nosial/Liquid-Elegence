@@ -1,0 +1,227 @@
+/* =============================================================================
+    §17 — Reduced Motion
+    ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .glass-shimmer::before,
+  .glass-glow,
+  .glass-float,
+  .glass-card-animated::before,
+  .animate-fade-in-up,
+  .animate-scale-in,
+  .animate-slide-in-right,
+  .animate-slide-down,
+  .animate-rotate-in,
+  .animate-frost-in,
+  .animate-glow-fade-in,
+  .animate-glow-breathe,
+  .animate-shadow-pulse,
+  .animate-luminance-shift,
+  .animate-border-glow,
+  .animate-opacity-breathe,
+  .progress-shimmer .progress-bar,
+  .animate-float,
+  .animate-pulse-soft,
+  .animate-glow,
+  .animate-bounce-in,
+  .animate-slide-up,
+  .animate-blur-in,
+  .animate-glass-in,
+  .animate-shimmer,
+  .animate-spin,
+  .animate-stagger-children > * {
+    animation: none !important;
+  }
+
+  .border-gradient-animated::before,
+  .border-gradient-primary::before {
+    animation: none !important;
+  }
+
+  .hover-lift:hover {
+    transform: none;
+  }
+
+  body::after,
+  .glass-caustic::after {
+    display: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .bg-glass,
+  .bg-glass-strong,
+  .bg-glass-subtle,
+  .bg-glass-dark,
+  .bg-glass-primary,
+  .bg-glass-success,
+  .bg-glass-warning,
+  .bg-glass-danger,
+  .bg-glass-info {
+    border-width: 2px;
+  }
+
+  .bg-glass {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+
+  .bg-glass-dark {
+    background: rgba(0, 0, 0, 0.55);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .text-gradient-primary,
+  .text-gradient-sunset,
+  .text-gradient-ocean,
+  .text-gradient-forest,
+  .text-gradient-fire,
+  .text-gradient-aurora {
+    -webkit-text-fill-color: unset;
+    background: none;
+    color: var(--le-text-primary);
+  }
+
+  .overlay-glass::before {
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .overlay-glass-dark::before {
+    background: rgba(0, 0, 0, 0.60);
+  }
+}
+
+
+/* =============================================================================
+   §17a — Keyboard Focus Ring (baseline)
+   Applies a consistent, theme-aware focus ring to interactive elements when
+   reached via keyboard. Per-component rules can refine but should not remove
+   the visible indicator.
+   ============================================================================= */
+
+:where(
+  a,
+  button,
+  input,
+  select,
+  textarea,
+  summary,
+  [tabindex]:not([tabindex="-1"]),
+  [role="button"],
+  [role="tab"],
+  [role="link"],
+  [role="menuitem"]
+):focus-visible {
+  outline: 2px solid var(--le-primary);
+  outline-offset: 2px;
+  border-radius: var(--le-radius-sm, 6px);
+}
+
+:where(input, select, textarea):focus-visible {
+  outline-offset: 0;
+}
+
+
+/* =============================================================================
+   §17b — Animated Background Mesh Drift
+   Defined in _keyframes.scss — single source of truth
+   ============================================================================= */
+
+
+/* =============================================================================
+   §17c — Glass Card Specular Highlights
+   ============================================================================= */
+
+.glass-card-specular::before {
+  background:
+    radial-gradient(circle at 20% 20%, var(--le-reflection-start) 0%, transparent 50%),
+    radial-gradient(circle at 95% 5%, var(--le-reflection-mid) 0%, transparent 20%),
+    radial-gradient(circle at 5% 95%, var(--le-reflection-edge) 0%, transparent 15%);
+  opacity: 0.6;
+}
+
+[data-theme="dark"] .glass-card-specular::before {
+  opacity: 0.4;
+}
+
+
+/* =============================================================================
+   §17d — Frosted Glass Divider
+   ============================================================================= */
+
+.glass-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--le-glass-border-strong), transparent);
+  border: none;
+  margin: var(--le-spacing-md) 0;
+  opacity: 0.7;
+}
+
+
+/* =============================================================================
+   §17e — Prismatic Rainbow Edge Refraction (hover)
+   ============================================================================= */
+
+.glass-prismatic {
+  position: relative;
+  border: 1px solid var(--le-glass-border);
+  transition:
+    border-color var(--le-transition),
+    box-shadow var(--le-transition);
+}
+
+.glass-prismatic::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,
+    rgba(239, 68, 68, 0) 0%,
+    rgba(245, 158, 11, 0) 20%,
+    rgba(34, 197, 94, 0) 40%,
+    rgba(14, 165, 233, 0) 60%,
+    rgba(99, 102, 241, 0) 80%,
+    rgba(139, 92, 246, 0) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+  transition: background var(--le-transition);
+}
+
+.glass-prismatic:hover::after {
+  background: linear-gradient(135deg,
+    rgba(239, 68, 68, 0.3) 0%,
+    rgba(245, 158, 11, 0.3) 20%,
+    rgba(34, 197, 94, 0.3) 40%,
+    rgba(14, 165, 233, 0.3) 60%,
+    rgba(99, 102, 241, 0.3) 80%,
+    rgba(139, 92, 246, 0.3) 100%);
+}
+
+[data-theme="dark"] .glass-prismatic:hover::after {
+  background: linear-gradient(135deg,
+    rgba(239, 68, 68, 0.2) 0%,
+    rgba(245, 158, 11, 0.2) 20%,
+    rgba(34, 197, 94, 0.2) 40%,
+    rgba(14, 165, 233, 0.2) 60%,
+    rgba(99, 102, 241, 0.2) 80%,
+    rgba(139, 92, 246, 0.2) 100%);
+}
+
+

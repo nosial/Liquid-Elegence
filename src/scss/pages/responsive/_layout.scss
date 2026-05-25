@@ -1,0 +1,376 @@
+/* ============================================================================
+   22. MOBILE-FRIENDLY LAYOUT OVERHAUL
+   Addresses layout problems on phones where pages resize but aren't
+   truly usable — touching targets, overflowing content, and inline
+   layouts that need to stack.
+   ============================================================================ */
+
+
+/* --------------------------------------------------------------------------
+   22a. Global modals — near-fullscreen on phones
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .modal .modal-dialog {
+    margin: 0.5rem;
+    max-width: calc(100% - 1rem);
+  }
+
+  .modal .modal-body {
+    max-height: calc(100dvh - 140px);
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+  }
+
+  .modal .modal-footer {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .modal .modal-footer .btn {
+    flex: 1;
+    min-height: 44px;
+    justify-content: center;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   22b. Kanban — compact header & card chips on mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .kanban-header-left h2 {
+    font-size: 1.125rem;
+  }
+
+  .kanban-header-left .project-meta {
+    gap: 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .kanban-header-right {
+    gap: 4px;
+  }
+
+  .kanban-header-right .btn {
+    min-height: 40px;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* Member avatars overlap tighter */
+  .kanban-team .t-avatar {
+    width: 28px;
+    height: 28px;
+    margin-left: -8px;
+  }
+
+  /* Progress bar compact */
+  .kanban-progress-bar-wrap {
+    height: 4px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   22c. Mail — reading pane improvements + date column on phones
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  /* Mail items: hide date on small phones */
+  .mail-item-date {
+    display: none;
+  }
+
+  /* Mail item: compact row */
+  .mail-item {
+    padding: 0.5rem 0.625rem;
+    gap: 0.5rem;
+  }
+
+  .mail-item-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  /* Reading pane actions wrap on small phones */
+  .reading-toolbar {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .reading-toolbar button {
+    min-height: 40px;
+    min-width: 40px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   22d. Calendar — event pills compact, mini calendar full-width
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .month-cell .event-dot {
+    width: 4px;
+    height: 4px;
+  }
+
+  /* Sidebar events list: compact */
+  .cal-event-item {
+    padding: 6px 8px;
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+
+  .cal-event-time {
+    font-size: 0.625rem;
+  }
+
+  /* Calendar sidebar overlay: full-width on phone */
+  .calendar-sidebar.show {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   22e. Invoices page — metric cards + table scrollable
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  /* Metric cards: stack tighter. Do NOT add padding to `.metric-card`
+     itself — the inner `.glass-card-body` already supplies the padding,
+     and any extra padding here creates a visible inset around the
+     bleed-to-edge sparkline (which negates only the body padding via
+     negative margins, not this outer pad). */
+  .metric-card {
+    /* padding intentionally not overridden here */
+  }
+
+  .metric-card .metric-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+
+  .metric-card .metric-value {
+    font-size: 1.25rem;
+  }
+
+  .metric-card .metric-label {
+    font-size: 0.75rem;
+  }
+
+  /* Invoice table: horizontal scroll */
+  .glass-table-card {
+    padding: 0.75rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .glass-table-card .table {
+    min-width: 500px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   22f. Settings — form groups + security section stacking
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  /* Session/device rows: stack info and button */
+  .session-item,
+  .device-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .session-item .btn,
+  .device-item .btn {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  /* 2FA backup codes: wrap */
+  .backup-codes {
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+
+  /* Form labels: smaller on mobile */
+  .settings-card label {
+    font-size: 0.8125rem;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   22g. Billing — payment card + usage bars
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .payment-card .d-flex {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Usage bars: label stacks */
+  .usage-stat .d-flex {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  /* Transaction table scroll */
+  .glass-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .glass-table-wrapper .table {
+    min-width: 450px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   22h. Pricing — toggle + card styles
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .pricing-toggle {
+    gap: 0.5rem;
+  }
+
+  .pricing-label {
+    font-size: 0.8125rem;
+  }
+
+  /* Feature list: full-width check marks */
+  .pricing-card .feature-list {
+    text-align: left;
+  }
+
+  .pricing-card .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+    22i. Global touch-target enforcement
+    All interactive elements must be at least 44x44px on phones.
+    -------------------------------------------------------------------------- */
+@media (max-width: 767.98px) {
+  /* Ensure common button/link targets are touch-friendly */
+  .glass-card-header .btn,
+  .glass-card-footer .btn,
+  .glass-card-body .btn {
+    min-height: 40px;
+  }
+
+  /* Glass tabs: scrollable + touch-friendly */
+  .glass-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex-wrap: nowrap;
+  }
+
+  .glass-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .glass-tabs .glass-tab,
+  .glass-tabs .btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 40px;
+  }
+
+  /* Badge/label spacing */
+  .badge {
+    font-size: 0.625rem;
+    padding: 0.25em 0.5em;
+  }
+
+  /* List group items: touch-friendly */
+  .list-group-item {
+    min-height: 44px;
+  }
+
+  /* Prevent any flex/grid child from overflowing viewport on tablet */
+  .row > [class*="col-"] {
+    min-width: 0;
+  }
+
+  /* Ensure all card-like containers prevent horizontal overflow */
+  .glass-card,
+  .glass-card-body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* Phone: all buttons in cards should be touch-friendly */
+  .glass-card .btn,
+  .glass-card-body .btn {
+    min-height: 44px;
+  }
+
+  /* Form controls touch-friendly */
+  .form-control,
+  .form-select {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+
+  /* Dropdown items touch-friendly */
+  .dropdown-item {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Sidebar drawer toggles touch-friendly */
+  [class*="sidebar-toggle"] {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+
+
+/* --------------------------------------------------------------------------
+   22k. Forum — create bar + comment compose on mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .forum-create-bar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .forum-create-bar .btn {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .forum-comment-compose {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .forum-comment-compose textarea {
+    min-height: 60px;
+    font-size: 0.875rem;
+  }
+
+  .forum-comment-compose .btn {
+    align-self: flex-end;
+    min-height: 40px;
+  }
+}
+
+

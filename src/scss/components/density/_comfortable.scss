@@ -1,0 +1,17 @@
+/* ---- Comfortable-only overrides ---- */
+[data-density="comfortable"] {
+    .le-context-menu {
+        min-width: 210px;
+    }
+
+    /* Card titles and headings scale up */
+    .glass-card-header .card-title,
+    .glass-card-header h5,
+    .glass-card-header h6 {
+        font-size: 1rem;
+    }
+
+    .glass-card-header .card-subtitle {
+        font-size: 0.8125rem;
+    }
+}

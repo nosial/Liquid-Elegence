@@ -1,0 +1,31 @@
+/* ── Mobile context menu button on event pills ── */
+.event-pill { position: relative; }
+
+.event-pill-more-btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: var(--le-radius-xs);
+    background: rgba(255, 255, 255, 0.35);
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    z-index: 2;
+    transition: background 0.15s;
+
+    i, svg { width: 12px; height: 12px; }
+    &:hover, &:active {
+        background: rgba(255, 255, 255, 0.6);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .event-pill-more-btn { display: flex; }
+}

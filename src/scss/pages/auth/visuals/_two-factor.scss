@@ -1,0 +1,57 @@
+// pages/auth/visuals/_two-factor.scss
+// Rules unique to the two-factor template.
+
+.otp-inputs {
+            display: flex;
+            gap: clamp(6px, 2vw, 10px);
+            justify-content: center;
+            margin: var(--le-spacing-lg) 0;
+        }
+
+.otp-input {
+            width: clamp(38px, 12vw, 52px);
+            height: clamp(48px, 14vw, 60px);
+            text-align: center;
+            font-size: clamp(1.125rem, 4vw, 1.5rem);
+            font-weight: var(--le-font-weight-bold);
+            color: var(--le-text-primary);
+            background: var(--le-glass-bg);
+            border: 2px solid var(--le-glass-border);
+            border-radius: var(--le-radius);
+            outline: none;
+            transition: all var(--le-transition-fast);
+            caret-color: var(--le-primary);
+            padding: 0;
+        }
+
+.otp-input:focus {
+            border-color: var(--le-primary);
+            box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.15);
+            background: var(--le-glass-bg-strong);
+        }
+
+.otp-input.filled {
+            border-color: var(--le-primary);
+            background: rgba(var(--le-primary-rgb), 0.06);
+        }
+
+.otp-timer {
+            text-align: center;
+            font-size: var(--le-font-size-sm);
+            color: var(--le-text-muted);
+            margin-bottom: var(--le-spacing-md);
+        }
+
+.otp-timer span {
+            color: var(--le-primary);
+            font-weight: var(--le-font-weight-semibold);
+            font-variant-numeric: tabular-nums;
+        }
+
+.auth-alt-links {
+            text-align: center;
+            margin-top: var(--le-spacing-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--le-spacing-sm);
+        }

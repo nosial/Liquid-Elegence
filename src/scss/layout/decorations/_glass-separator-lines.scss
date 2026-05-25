@@ -1,0 +1,95 @@
+/* ── Glass Separator Lines ── */
+
+/* Sidebar section spacing (separator lines removed for cleaner appearance) */
+.sidebar-nav-section + .sidebar-nav-section {
+  border-top: none;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+/* Dropdown dividers — glass gradient style */
+.topbar .dropdown-menu .dropdown-divider,
+.dropdown-menu .dropdown-divider {
+  border: none;
+  height: 1px;
+  margin: 0.35rem 8%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--le-primary-rgb), 0.15) 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(var(--le-primary-rgb), 0.15) 70%,
+    transparent 100%
+  );
+}
+
+[data-theme="dark"] .topbar .dropdown-menu .dropdown-divider,
+[data-theme="dark"] .dropdown-menu .dropdown-divider {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--le-primary-rgb), 0.1) 30%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(var(--le-primary-rgb), 0.1) 70%,
+    transparent 100%
+  );
+}
+
+/* Card section dividers within the layout */
+.page-content .card-header {
+  position: relative;
+  border-bottom: none;
+}
+
+.page-content .card-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--le-primary-rgb), 0.12) 25%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(var(--le-primary-rgb), 0.12) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.page-content .card-footer {
+  position: relative;
+  border-top: none;
+}
+
+.page-content .card-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--le-primary-rgb), 0.12) 25%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(var(--le-primary-rgb), 0.12) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+[data-theme="dark"] .page-content .card-header::after,
+[data-theme="dark"] .page-content .card-footer::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--le-primary-rgb), 0.08) 25%,
+    rgba(255, 255, 255, 0.04) 50%,
+    rgba(var(--le-primary-rgb), 0.08) 75%,
+    transparent 100%
+  );
+}

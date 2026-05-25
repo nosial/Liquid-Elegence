@@ -1,0 +1,16 @@
+// per-page/ — responsive rules per page
+@forward "dashboard-charts-progress";
+@forward "dashboard";
+
+@forward "crud";
+@forward "forum";
+@forward "invoice";
+@forward "profile";
+@forward "settings";
+@forward "billing";
+@forward "faq";
+@forward "auth";
+@forward "error";
+@forward "notifications";
+@forward "kanban";
+@forward "pricing";

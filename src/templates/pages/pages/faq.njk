@@ -1,0 +1,412 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="text-center mb-4">
+        <h1 class="section-title">Help Center</h1>
+        <p class="section-subtitle">Find answers to frequently asked questions or reach out to our support team</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="faq-search">
+        <i data-feather="search" class="search-icon le-icon-18"></i>
+        <input type="text" class="form-control" id="faqSearch" placeholder="Search for answers...">
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="faq-tabs" id="faqTabs">
+        <button class="faq-tab active" data-category="general">General</button>
+        <button class="faq-tab" data-category="getting-started">Getting Started</button>
+        <button class="faq-tab" data-category="customization">Customization</button>
+        <button class="faq-tab" data-category="billing">Billing</button>
+        <button class="faq-tab" data-category="technical-support">Technical Support</button>
+    </div>
+
+    <!-- FAQ Accordion Groups -->
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <!-- No Results Message -->
+            <div class="faq-no-results" id="faqNoResults">
+                <i data-feather="search" class="le-box-48"></i>
+                <h5 class="le-text-body mt-3">No results found</h5>
+                <p>Try searching with different keywords or browse categories above.</p>
+            </div>
+
+            <!-- General -->
+            <div class="faq-category active" data-category="general">
+                <div class="accordion glass-accordion" id="faqGeneral">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#gen1" aria-expanded="true" aria-controls="gen1">What is Liquid Elegance?</button>
+                        </h2>
+                        <div id="gen1" class="accordion-collapse collapse show" data-bs-parent="#faqGeneral">
+                            <div class="accordion-body">Liquid Elegance is a premium admin dashboard template built with Bootstrap 5 and a unique liquid glass design system. It provides a comprehensive set of UI components, pages, and layouts to help you build beautiful and functional admin panels, SaaS applications, and internal tools quickly and efficiently.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gen2" aria-expanded="false" aria-controls="gen2">Is there a free trial available?</button>
+                        </h2>
+                        <div id="gen2" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                            <div class="accordion-body">Yes! We offer a 14-day free trial on all plans. You can explore the full feature set without entering any payment information. At the end of the trial, you can choose to subscribe or your access will be paused until you select a plan.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gen3" aria-expanded="false" aria-controls="gen3">What's included in the template?</button>
+                        </h2>
+                        <div id="gen3" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                            <div class="accordion-body">Liquid Elegance includes 5 dashboard variants, 15+ application pages, CRUD interfaces, authentication pages, utility pages, 6 color themes, a theme customizer, responsive sidebar navigation, and over 50 reusable UI components &mdash; all styled with our signature liquid glass aesthetic.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gen4" aria-expanded="false" aria-controls="gen4">Do you offer regular updates?</button>
+                        </h2>
+                        <div id="gen4" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                            <div class="accordion-body">Absolutely. We release updates monthly that include new components, pages, bug patches, and compatibility improvements. All updates are free for active license holders. We also publish a changelog so you can see exactly what has changed in each release.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gen5" aria-expanded="false" aria-controls="gen5">Which browsers are supported?</button>
+                        </h2>
+                        <div id="gen5" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                            <div class="accordion-body">Liquid Elegance supports all modern browsers including Chrome, Firefox, Safari, Edge, and Opera. We test across the latest two versions of each browser. The glass effects use CSS backdrop-filter which has excellent support in modern browsers. For older browsers, graceful fallbacks are provided.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gen6" aria-expanded="false" aria-controls="gen6">Can I use Liquid Elegance for commercial projects?</button>
+                        </h2>
+                        <div id="gen6" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                            <div class="accordion-body">Yes, all licenses permit commercial use. The Standard license allows use in a single commercial product. The Extended license allows use in a product that is sold to end users. Please review the full license terms on our website for details.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gen7" aria-expanded="false" aria-controls="gen7">Is Liquid Elegance responsive on mobile devices?</button>
+                        </h2>
+                        <div id="gen7" class="accordion-collapse collapse" data-bs-parent="#faqGeneral">
+                            <div class="accordion-body">Yes, Liquid Elegance is fully responsive across all device sizes. The sidebar collapses into a mobile-friendly overlay, tables become scrollable, and all components adapt to smaller screens. We test on iOS Safari, Chrome for Android, and various tablet sizes.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Getting Started -->
+            <div class="faq-category" data-category="getting-started">
+                <div class="accordion glass-accordion" id="faqGettingStarted">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#gs1" aria-expanded="true" aria-controls="gs1">How do I install Liquid Elegance?</button>
+                        </h2>
+                        <div id="gs1" class="accordion-collapse collapse show" data-bs-parent="#faqGettingStarted">
+                            <div class="accordion-body">Download the template package and extract it to your project directory. Open <code>index.html</code> in your browser to see the dashboard. No build tools are required for the base template. If you want to customize the SCSS, install Node.js and run <code>npm install</code> followed by <code>npm run build</code>.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gs2" aria-expanded="false" aria-controls="gs2">What are the first steps after installation?</button>
+                        </h2>
+                        <div id="gs2" class="accordion-collapse collapse" data-bs-parent="#faqGettingStarted">
+                            <div class="accordion-body">Start by exploring the dashboard pages to understand the layout structure. Then review the sidebar navigation to see all available pages. Check the theme customizer (gear icon) to switch themes and layout options. Finally, pick a page template closest to your needs and start customizing it.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gs3" aria-expanded="false" aria-controls="gs3">How do I customize the theme colors?</button>
+                        </h2>
+                        <div id="gs3" class="accordion-collapse collapse" data-bs-parent="#faqGettingStarted">
+                            <div class="accordion-body">Use the built-in theme customizer to switch between 6 pre-built color themes (Default, Ocean, Sunset, Forest, Berry, Slate). For deeper customization, edit the CSS variables in <code>liquid-glass.css</code> or create a new theme file in the <code>assets/css/themes/</code> directory following the existing pattern.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gs4" aria-expanded="false" aria-controls="gs4">How do I add new pages?</button>
+                        </h2>
+                        <div id="gs4" class="accordion-collapse collapse" data-bs-parent="#faqGettingStarted">
+                            <div class="accordion-body">Copy any existing page as a starting point. Each page follows the same structure: sidebar, topbar, page content area, and footer. Update the sidebar navigation active state, change the breadcrumb, and replace the page content with your own. All required CSS and JS files are already linked.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gs5" aria-expanded="false" aria-controls="gs5">What is the folder structure?</button>
+                        </h2>
+                        <div id="gs5" class="accordion-collapse collapse" data-bs-parent="#faqGettingStarted">
+                            <div class="accordion-body">The template is organized into: <code>assets/css/</code> for stylesheets (liquid-glass.css, layout.css, components.css, pages.css, themes/), <code>assets/js/</code> for JavaScript (app.js, sidebar.js, theme-customizer.js), <code>css/</code> and <code>js/</code> for Bootstrap files, and <code>pages/</code> for all HTML pages organized by category (dashboards, apps, crud, pages, auth, utility).</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gs6" aria-expanded="false" aria-controls="gs6">Can I integrate Liquid Elegance with a backend framework?</button>
+                        </h2>
+                        <div id="gs6" class="accordion-collapse collapse" data-bs-parent="#faqGettingStarted">
+                            <div class="accordion-body">Yes! Liquid Elegance is a pure HTML/CSS/JS template that can be integrated with any backend framework (Laravel, Django, Express, ASP.NET, Spring Boot, etc.). Simply convert the HTML pages into your framework's template engine format, keeping the same CSS and JS references.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customization -->
+            <div class="faq-category" data-category="customization">
+                <div class="accordion glass-accordion" id="faqCustomization">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#cust1" aria-expanded="true" aria-controls="cust1">How do I change the primary color?</button>
+                        </h2>
+                        <div id="cust1" class="accordion-collapse collapse show" data-bs-parent="#faqCustomization">
+                            <div class="accordion-body">Override the <code>--le-primary</code> and <code>--le-primary-rgb</code> CSS variables in your custom stylesheet or create a new theme file. For example: <code>:root { --le-primary: #8b5cf6; --le-primary-rgb: 139, 92, 246; }</code>. All components reference these variables, so changing them updates the entire UI automatically.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cust2" aria-expanded="false" aria-controls="cust2">How do I create a custom theme?</button>
+                        </h2>
+                        <div id="cust2" class="accordion-collapse collapse" data-bs-parent="#faqCustomization">
+                            <div class="accordion-body">Copy one of the existing theme files from <code>assets/css/themes/</code> and rename it. Update the CSS variables inside to match your brand colors. Then add a <code>&lt;link&gt;</code> tag to your pages and register it in the theme customizer configuration. Each theme file overrides the default CSS variables with its own color palette.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cust3" aria-expanded="false" aria-controls="cust3">Can I modify the sidebar layout?</button>
+                        </h2>
+                        <div id="cust3" class="accordion-collapse collapse" data-bs-parent="#faqCustomization">
+                            <div class="accordion-body">Yes. The sidebar structure is defined in each page's HTML. You can add, remove, or reorder menu items, create nested submenus, change icons (using Feather Icons), and adjust section labels. The sidebar styles are in <code>layout.css</code> and can be customized with CSS variables for width, background, and spacing.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cust4" aria-expanded="false" aria-controls="cust4">How do I add custom glass components?</button>
+                        </h2>
+                        <div id="cust4" class="accordion-collapse collapse" data-bs-parent="#faqCustomization">
+                            <div class="accordion-body">Use the glass design variables for consistent styling: <code>background: var(--le-glass-bg)</code>, <code>border: 1px solid var(--le-glass-border)</code>, <code>backdrop-filter: blur(var(--le-glass-blur))</code>, and <code>border-radius: var(--le-radius-lg)</code>. These four properties will give any element the signature liquid glass appearance that matches the rest of the UI.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cust5" aria-expanded="false" aria-controls="cust5">Can I override CSS variables per-component?</button>
+                        </h2>
+                        <div id="cust5" class="accordion-collapse collapse" data-bs-parent="#faqCustomization">
+                            <div class="accordion-body">Yes. CSS custom properties cascade, so you can override them at any level. For example, set <code>--le-glass-bg: rgba(255,255,255,0.2)</code> on a specific card to make it more opaque than the default. This is useful for creating visual hierarchy without modifying the global theme.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#cust6" aria-expanded="false" aria-controls="cust6">How does dark mode customization work?</button>
+                        </h2>
+                        <div id="cust6" class="accordion-collapse collapse" data-bs-parent="#faqCustomization">
+                            <div class="accordion-body">Dark and light modes are controlled by the <code>data-theme</code> attribute on the <code>&lt;html&gt;</code> element. The CSS variables adapt automatically based on the active theme. When customizing, always use <code>var(--le-*)</code> variables instead of hardcoded colors so your styles work correctly in both modes without additional media queries.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Billing -->
+            <div class="faq-category" data-category="billing">
+                <div class="accordion glass-accordion" id="faqBilling">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bill1" aria-expanded="true" aria-controls="bill1">What payment methods do you accept?</button>
+                        </h2>
+                        <div id="bill1" class="accordion-collapse collapse show" data-bs-parent="#faqBilling">
+                            <div class="accordion-body">We accept all major credit and debit cards (Visa, MasterCard, American Express, Discover), PayPal, and bank transfers for annual Enterprise plans. All transactions are securely processed through Stripe with full PCI compliance. We also support Apple Pay and Google Pay where available.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bill2" aria-expanded="false" aria-controls="bill2">What is your refund policy?</button>
+                        </h2>
+                        <div id="bill2" class="accordion-collapse collapse" data-bs-parent="#faqBilling">
+                            <div class="accordion-body">We offer a 30-day money-back guarantee on all new subscriptions. If you're not satisfied with Liquid Elegance within the first 30 days, contact our support team for a full refund. After 30 days, we offer prorated refunds for annual plans on a case-by-case basis.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bill3" aria-expanded="false" aria-controls="bill3">Can I change my plan later?</button>
+                        </h2>
+                        <div id="bill3" class="accordion-collapse collapse" data-bs-parent="#faqBilling">
+                            <div class="accordion-body">Yes, you can upgrade or downgrade your plan at any time from the Billing page in your account settings. Upgrades take effect immediately with prorated charges. Downgrades take effect at the start of your next billing period, and any difference is credited to your account.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bill4" aria-expanded="false" aria-controls="bill4">How do I cancel my subscription?</button>
+                        </h2>
+                        <div id="bill4" class="accordion-collapse collapse" data-bs-parent="#faqBilling">
+                            <div class="accordion-body">Navigate to Settings &gt; Billing and click "Cancel Subscription." Your access continues until the end of the current billing period. We'll send a confirmation email with the exact date your access expires. You can reactivate at any time, and your data will be preserved for 90 days after cancellation.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bill5" aria-expanded="false" aria-controls="bill5">How do I access my invoices?</button>
+                        </h2>
+                        <div id="bill5" class="accordion-collapse collapse" data-bs-parent="#faqBilling">
+                            <div class="accordion-body">All invoices are available in the Billing section of your account. You can view, download as PDF, or print any invoice. Invoices are generated automatically for each payment and include all the details needed for tax and accounting purposes. You can also set up a billing email to receive invoices automatically.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Support -->
+            <div class="faq-category" data-category="technical-support">
+                <div class="accordion glass-accordion" id="faqTechSupport">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#tech1" aria-expanded="true" aria-controls="tech1">How do I get technical support?</button>
+                        </h2>
+                        <div id="tech1" class="accordion-collapse collapse show" data-bs-parent="#faqTechSupport">
+                            <div class="accordion-body">You can reach our support team by emailing support@liquidadmin.com, using the contact form below, or opening a ticket through your account dashboard. We also have a comprehensive documentation site and video tutorials to help you get started and troubleshoot common issues.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech2" aria-expanded="false" aria-controls="tech2">What is the typical response time?</button>
+                        </h2>
+                        <div id="tech2" class="accordion-collapse collapse" data-bs-parent="#faqTechSupport">
+                            <div class="accordion-body">Starter plan users receive email support with a 48-hour response time. Professional plan users get priority support with a 12-hour response time. Enterprise plan users enjoy 24/7 dedicated support with a 2-hour response time and access to a dedicated account manager.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech3" aria-expanded="false" aria-controls="tech3">Is there a community forum?</button>
+                        </h2>
+                        <div id="tech3" class="accordion-collapse collapse" data-bs-parent="#faqTechSupport">
+                            <div class="accordion-body">Yes! We have an active community forum where users share tips, ask questions, and showcase their projects. Our team actively monitors the forum and contributes answers. It's a great resource for learning best practices and connecting with other Liquid Elegance developers.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech4" aria-expanded="false" aria-controls="tech4">How do I report a bug?</button>
+                        </h2>
+                        <div id="tech4" class="accordion-collapse collapse" data-bs-parent="#faqTechSupport">
+                            <div class="accordion-body">Report bugs through our GitHub Issues page or by emailing support@liquidadmin.com. Please include your browser version, operating system, steps to reproduce the issue, and screenshots if possible. We triage all bug reports within 24 hours and prioritize based on severity.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tech5" aria-expanded="false" aria-controls="tech5">Can I request new features?</button>
+                        </h2>
+                        <div id="tech5" class="accordion-collapse collapse" data-bs-parent="#faqTechSupport">
+                            <div class="accordion-body">Absolutely! We love hearing from our users. Submit feature requests through our community forum or support email. We review all requests monthly and prioritize based on community demand. Many of our most popular features started as user suggestions. Enterprise users can also request custom development.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Support Contact Card -->
+    <div class="row justify-content-center mt-5 mb-4">
+        <div class="col-lg-6">
+            <div class="support-card">
+                <div class="support-icon">
+                    <i data-feather="headphones" class="le-icon-28"></i>
+                </div>
+                <h3>Still need help?</h3>
+                <p>Our support team is here to assist you. We typically respond within 24 hours on business days.</p>
+                <a href="mailto:support@liquidadmin.com" class="btn btn-support">Contact Support</a>
+                <span class="support-email">Or email us directly at <a href="mailto:support@liquidadmin.com">support@liquidadmin.com</a></span>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var tabs = document.querySelectorAll('.faq-tab');
+            var categories = document.querySelectorAll('.faq-category');
+            var searchInput = document.getElementById('faqSearch');
+            var noResults = document.getElementById('faqNoResults');
+
+            // Category tab switching
+            tabs.forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    var cat = this.getAttribute('data-category');
+
+                    // Clear search
+                    searchInput.value = '';
+
+                    // Update active tab
+                    tabs.forEach(function(t) { t.classList.remove('active'); });
+                    this.classList.add('active');
+
+                    // Show/hide categories
+                    categories.forEach(function(c) {
+                        if (c.getAttribute('data-category') === cat) {
+                            c.classList.add('active');
+                            // Show all items in this category
+                            c.querySelectorAll('.accordion-item').forEach(function(item) {
+                                item.style.display = '';
+                            });
+                        } else {
+                            c.classList.remove('active');
+                        }
+                    });
+
+                    noResults.style.display = 'none';
+
+                    // Expand first item in active category
+                    var activeCategory = document.querySelector('.faq-category[data-category="' + cat + '"]');
+                    if (activeCategory) {
+                        var firstCollapse = activeCategory.querySelector('.accordion-collapse');
+                        if (firstCollapse) {
+                            var bsCollapse = bootstrap.Collapse.getOrCreateInstance(firstCollapse, {toggle: false});
+                            bsCollapse.show();
+                            var btn = firstCollapse.previousElementSibling.querySelector('.accordion-button');
+                            if (btn) btn.classList.remove('collapsed');
+                        }
+                    }
+                });
+            });
+
+            // Search functionality
+            searchInput.addEventListener('input', function() {
+                var query = this.value.toLowerCase().trim();
+
+                if (!query) {
+                    // Restore to active tab view
+                    var activeTab = document.querySelector('.faq-tab.active');
+                    if (activeTab) activeTab.click();
+                    return;
+                }
+
+                var matchCount = 0;
+
+                // Show all categories, filter items
+                categories.forEach(function(cat) {
+                    cat.classList.add('active');
+                    var items = cat.querySelectorAll('.accordion-item');
+                    var catHasMatch = false;
+
+                    items.forEach(function(item) {
+                        var questionText = item.querySelector('.accordion-button').textContent.toLowerCase();
+                        var answerText = item.querySelector('.accordion-body').textContent.toLowerCase();
+
+                        if (questionText.indexOf(query) !== -1 || answerText.indexOf(query) !== -1) {
+                            item.style.display = '';
+                            catHasMatch = true;
+                            matchCount++;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+
+                    if (!catHasMatch) {
+                        cat.classList.remove('active');
+                    }
+                });
+
+                noResults.style.display = matchCount === 0 ? 'block' : 'none';
+            });
+        });
+</script>
+{% endblock %}

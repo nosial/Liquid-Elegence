@@ -1,0 +1,136 @@
+/* ---------------------------------------------------------------------------
+   Day View — timeline with event blocks and now indicator
+   --------------------------------------------------------------------------- */
+
+.day-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    background: var(--le-glass-bg-subtle);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: var(--le-radius);
+}
+
+.day-header-title {
+    margin: 0;
+    font-weight: var(--le-font-weight-bold);
+    font-size: 0.9375rem;
+}
+
+.badge-today {
+    display: inline-block;
+    background: var(--le-primary);
+    color: var(--le-text-inverse);
+    font-size: 0.625rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    vertical-align: middle;
+    margin-left: 0.25rem;
+}
+
+.day-header-count {
+    font-size: 0.8125rem;
+    color: var(--le-text-muted);
+    font-weight: var(--le-font-weight-semibold);
+}
+
+.day-timeline {
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: var(--le-radius-md);
+    overflow: hidden;
+}
+
+.day-time-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+.day-time-row:last-child {
+    border-bottom: none;
+}
+
+.day-time-row.current-hour {
+    background: rgba(var(--le-primary-rgb), 0.04);
+}
+
+.day-time-label {
+    font-size: var(--le-font-size-xs);
+    color: var(--le-text-muted);
+    padding: var(--le-spacing-xs) var(--le-spacing-sm);
+    text-align: right;
+    border-right: 1px solid var(--le-glass-border-subtle);
+    min-height: 48px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.day-time-slot {
+    min-height: 48px;
+    padding: 2px 8px;
+    position: relative;
+    cursor: pointer;
+    transition: background var(--le-transition-fast);
+}
+
+.day-time-slot:hover {
+    background: rgba(var(--le-primary-rgb), 0.04);
+}
+
+.day-now-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--le-danger);
+    z-index: 2;
+    box-shadow: 0 0 6px rgba(var(--le-danger-rgb), 0.5);
+}
+
+.day-now-indicator::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: -3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--le-danger);
+}
+
+.day-event-block {
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-bottom: 2px;
+    cursor: pointer;
+    border-left: 4px solid;
+    transition: all var(--le-transition-fast);
+}
+
+.day-event-block:hover {
+    filter: brightness(1.05);
+    box-shadow: var(--le-shadow-sm);
+}
+
+.day-event-block.cat-work     { background: rgba(var(--le-primary-rgb), 0.12); border-left-color: var(--le-primary); }
+.day-event-block.cat-personal { background: rgba(var(--le-success-rgb), 0.12); border-left-color: var(--le-success); }
+.day-event-block.cat-meetings { background: rgba(99, 102, 241, 0.12); border-left-color: rgb(99, 102, 241); }
+.day-event-block.cat-holidays { background: rgba(var(--le-warning-rgb), 0.12); border-left-color: var(--le-warning); }
+.day-event-block.cat-danger   { background: rgba(var(--le-danger-rgb), 0.12); border-left-color: var(--le-danger); }
+
+.day-event-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--le-text-primary);
+}
+
+.day-event-meta {
+    font-size: var(--le-font-size-xs);
+    color: var(--le-text-muted);
+    margin-top: 1px;
+}

@@ -1,0 +1,72 @@
+/* ---- Tablet & below: improve table horizontal scroll UX ---- */
+@media (max-width: 767.98px) {
+  .table-responsive,
+  .glass-table-wrapper {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Scroll shadow hint */
+  .table-responsive {
+    background:
+      linear-gradient(90deg, var(--le-glass-bg) 30%, transparent),
+      linear-gradient(90deg, transparent, var(--le-glass-bg) 70%) 100% 0,
+      radial-gradient(farthest-side at 0 50%, rgba(0,0,0,0.1), transparent),
+      radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,0.1), transparent) 100% 0;
+    background-repeat: no-repeat;
+    background-size: 20px 100%, 20px 100%, 10px 100%, 10px 100%;
+    background-attachment: local, local, scroll, scroll;
+  }
+}
+
+/* ---- Mobile: full-width button groups ---- */
+@media (max-width: 575.98px) {
+  .btn-group:not(.btn-group-sm) {
+    flex-wrap: wrap;
+  }
+
+  /* D-flex gap adjustment for mobile */
+  .d-flex.gap-3 {
+    gap: 0.5rem !important;
+  }
+
+  .d-flex.gap-4 {
+    gap: 0.75rem !important;
+  }
+}
+
+/* ---- Offcanvas: mobile full-width ---- */
+@media (max-width: 480px) {
+  .offcanvas {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* ---- Glass card with chart wrapper: prevent overflow on mobile ---- */
+@media (max-width: 767.98px) {
+  .glass-card:has(> .glass-card-body > .chart-wrapper:last-child) {
+    overflow: hidden;
+    overflow: clip;
+  }
+}
+
+
+/* ============================================================================
+   MOBILE COMPONENT ADJUSTMENTS
+   Additional responsive improvements for common UI components.
+   ============================================================================ */
+
+/* ---- Glass card action buttons: stack on narrow viewports ---- */
+@media (max-width: 575.98px) {
+  .glass-card-header .btn-group {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .glass-card-header .btn-group .btn {
+    flex: 1 1 auto;
+    min-height: 40px;
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+}

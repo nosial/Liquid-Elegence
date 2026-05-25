@@ -1,0 +1,180 @@
+/* =============================================================================
+   Liquid Effects
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   §19.1 — Animated Background Orbs
+   Floating gradient orbs that drift behind glass surfaces
+   ------------------------------------------------------------------------ */
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(10px, -8px) scale(1.03); }
+  50% { transform: translate(-4px, 8px) scale(0.98); }
+  75% { transform: translate(-10px, -4px) scale(1.02); }
+}
+
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-8px, 6px) scale(1.02); }
+  66% { transform: translate(7px, -8px) scale(0.97); }
+}
+
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  20% { transform: translate(6px, 8px) scale(1.02); }
+  40% { transform: translate(-7px, -5px) scale(0.99); }
+  60% { transform: translate(8px, -7px) scale(1.03); }
+  80% { transform: translate(-5px, 4px) scale(0.98); }
+}
+
+.liquid-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-bg::before,
+.liquid-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.liquid-bg::before {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(var(--le-primary-rgb), 0.25) 0%, transparent 70%);
+  top: -50px;
+  right: -50px;
+  animation: orb-drift-1 20s ease-in-out infinite;
+}
+
+.liquid-bg::after {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(var(--le-secondary-rgb), 0.20) 0%, transparent 70%);
+  bottom: -30px;
+  left: -30px;
+  animation: orb-drift-2 25s ease-in-out infinite;
+}
+
+[data-theme="dark"] .liquid-bg::before {
+  opacity: 0.35;
+}
+
+[data-theme="dark"] .liquid-bg::after {
+  opacity: 0.25;
+}
+
+/* ---------------------------------------------------------------------------
+   §19.2 — Glass Caustics (Light refraction patterns)
+   ------------------------------------------------------------------------ */
+@keyframes caustics {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+.glass-caustics {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-caustics::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-conic-gradient(
+      from 0deg at 50% 50%,
+      var(--le-caustic-color) 0deg,
+      transparent 25deg,
+      var(--le-chroma-blue) 50deg,
+      transparent 75deg,
+      var(--le-chroma-red) 100deg,
+      transparent 125deg
+    );
+  background-size: 200% 200%;
+  animation: caustics var(--le-caustic-speed) linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+[data-theme="dark"] .glass-caustics::before {
+  opacity: 0.3;
+}
+
+/* ---------------------------------------------------------------------------
+   §19.3 — Iridescent Border
+   Rainbow-shifting border effect on hover
+   ------------------------------------------------------------------------ */
+@keyframes iridescent-shift {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.glass-iridescent {
+  position: relative;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+.glass-iridescent::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    rgba(var(--le-primary-rgb), 0.4),
+    rgba(var(--le-secondary-rgb), 0.3),
+    rgba(var(--le-info-rgb), 0.3),
+    rgba(var(--le-success-rgb), 0.2),
+    rgba(var(--le-warning-rgb), 0.3),
+    rgba(var(--le-primary-rgb), 0.4)
+  );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: iridescent-shift 6s linear infinite;
+}
+
+.glass-iridescent:hover::before {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   §19.4 — Glass Depth Layers
+   Multi-layer glass for extra depth perception
+   ------------------------------------------------------------------------ */
+.glass-depth {
+  position: relative;
+}
+
+.glass-depth::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: inherit;
+  background: rgba(var(--le-white-rgb), 0.06);
+  border: 1px solid rgba(var(--le-white-rgb), 0.08);
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme="dark"] .glass-depth::before {
+  background: rgba(var(--le-white-rgb), 0.03);
+  border-color: rgba(var(--le-white-rgb), 0.04);
+}

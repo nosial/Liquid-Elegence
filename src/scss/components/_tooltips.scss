@@ -1,0 +1,112 @@
+/* =========================================================================
+   22. TOOLTIPS & POPOVERS (glass)
+
+   IMPORTANT: Do NOT animate `transform` on `.tooltip` or `.popover` themselves.
+   Popper.js sets the positioning transform inline (e.g. `transform:
+   translate3d(x, y, 0)`); a CSS animation on `transform` would clobber that
+   positioning and pin the element to the top-left of its containing block.
+
+   Animate opacity on the wrapper, and apply scale/translate to the *inner*
+   element (`.tooltip-inner`, `.popover-header/body`) instead.
+   ========================================================================= */
+
+/* ── Popover ──────────────────────────────────────────────────────────── */
+.popover {
+    /* Tell Bootstrap which colors to use for the arrow — these CSS vars are
+       what the .popover-arrow::after pseudo-element reads. */
+    --bs-popover-bg: rgba(255, 255, 255, 0.96);
+    --bs-popover-border-color: var(--le-glass-border);
+    --bs-popover-header-bg: transparent;
+    --bs-popover-header-color: var(--le-text-primary);
+    --bs-popover-body-color: var(--le-text-secondary);
+
+    background-color: var(--bs-popover-bg);
+    border: 1px solid var(--bs-popover-border-color);
+    border-radius: var(--le-radius, 0.75rem);
+    font-family: var(--le-font-family);
+    box-shadow:
+        0 12px 36px rgba(0, 0, 0, 0.14),
+        0 4px 12px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+    /* opacity-only entry — safe with Popper */
+    animation: popover-enter 0.18s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes popover-enter {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.popover-header {
+    background-color: transparent;
+    background-image: linear-gradient(180deg, rgba(var(--le-primary-rgb), 0.05) 0%, transparent 100%);
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-primary);
+    font-weight: 600;
+}
+
+.popover-body {
+    color: var(--le-text-secondary);
+    font-size: var(--le-popover-font, 0.8125rem);
+}
+
+/* ── Tooltip ──────────────────────────────────────────────────────────── */
+/* Solid, opaque dark plate so text is always legible.
+
+   Bootstrap 5.3 drives tooltip color/opacity/sizing via CSS custom properties
+   on `.tooltip` (--bs-tooltip-*). It also defaults --bs-tooltip-opacity to 0.9,
+   which dims our background and the arrow. We override these vars on the
+   wrapper itself so the whole tooltip — plate AND arrow — picks them up
+   without needing per-side border rules. */
+.tooltip {
+    --bs-tooltip-bg: #0f172a;
+    --bs-tooltip-color: #ffffff;
+    --bs-tooltip-opacity: 1;
+    --bs-tooltip-border-radius: var(--le-radius-sm, 0.5rem);
+    --bs-tooltip-font-size: 0.875rem;
+    --bs-tooltip-padding-x: 0.75rem;
+    --bs-tooltip-padding-y: 0.4375rem;
+    --bs-tooltip-max-width: 240px;
+    font-family: var(--le-font-family);
+}
+
+.tooltip.show { opacity: 1; }
+
+.tooltip .tooltip-inner {
+    background-color: var(--bs-tooltip-bg);
+    color: var(--bs-tooltip-color);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.28),
+        0 2px 6px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    /* Entry animation lives on the *inner* element so it doesn't clobber
+       Popper's transform on the outer .tooltip. */
+    animation: tooltip-inner-enter 0.15s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    transform-origin: center center;
+}
+
+@keyframes tooltip-inner-enter {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── Dark mode ────────────────────────────────────────────────────────── */
+[data-theme="dark"] .popover {
+    --bs-popover-bg: rgba(var(--le-dark-surface-rgb), 0.96);
+    --bs-popover-border-color: rgba(255, 255, 255, 0.10);
+    --bs-popover-header-color: var(--le-text-primary);
+    --bs-popover-body-color: var(--le-text-secondary);
+    box-shadow:
+        0 14px 44px rgba(0, 0, 0, 0.55),
+        0 4px 14px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .popover-header {
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+    background-image: linear-gradient(180deg, rgba(var(--le-primary-rgb), 0.10) 0%, transparent 100%);
+}

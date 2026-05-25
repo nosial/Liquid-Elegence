@@ -1,0 +1,118 @@
+// ── Chip / tag small size ────────────────────────────────────────────────
+.le-chip-sm {
+  font-size: 0.72rem;
+  padding: 3px 10px;
+}
+
+// ── Two-line vertical gap ────────────────────────────────────────────────
+.le-gap-16 { gap: 16px; }
+
+// ── Avatar overlap margin (negative offset) ──────────────────────────────
+.le-lifted-avatar {
+  margin-top: -28px;
+}
+
+// ── Negative margin stretch (full-bleed inside card) ─────────────────────
+.le-stretch-card {
+  border-radius: 0;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
+}
+
+// ── Inline max-height thumbnail ──────────────────────────────────────────
+.le-thumb-80 {
+  max-height: 80px;
+  background: var(--le-glass-bg);
+}
+
+// ── Inline-block positioned ──────────────────────────────────────────────
+.le-pos-relative { position: relative; }
+
+// ── Z-index ──────────────────────────────────────────────────────────────
+.le-z-11 { z-index: 11; }
+
+// ── Chart container heights ──────────────────────────────────────────────
+.le-chart-60  { position: relative; height: 60px; }
+.le-chart-220 { position: relative; height: 220px; }
+.le-chart-260 { position: relative; height: 260px; }
+.le-chart-300 { position: relative; height: 300px; }
+.le-chart-320 { position: relative; height: 320px; }
+
+// ── Specific compound patterns found in pages ────────────────────────────
+// Forum / Chirp link titles
+.le-link-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--le-text-primary);
+  text-decoration: none;
+  display: block;
+}
+.le-link-title-multiline {
+  @extend .le-link-title;
+  line-height: 1.4;
+}
+
+// Block label
+.le-block-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--le-text-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+// Forum / Chirp post body text
+.le-post-body {
+  font-size: 0.85rem;
+  color: var(--le-text-secondary);
+  line-height: 1.5;
+}
+.le-post-body-spaced {
+  @extend .le-post-body;
+  margin-bottom: 12px;
+}
+
+// Meta text
+.le-meta-text {
+  font-size: 0.82rem;
+  color: var(--le-text-muted);
+  margin-bottom: 4px;
+}
+.le-meta-text-sm {
+  font-size: 0.8rem;
+  color: var(--le-text-muted);
+  margin-bottom: 4px;
+}
+
+// Feed footer bar
+.le-feed-footer {
+  padding: 4px 16px 0;
+  font-size: 0.75rem;
+  color: var(--le-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// Profile stat heading
+.le-stat-heading {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+// Form input in glass body
+.le-glass-form-input {
+  font-size: 0.8125rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--le-radius-md);
+}
+
+// Padded card
+.le-pad-card { padding: 1.25rem; }
+.le-pad-card-top { padding: 1.25rem 1.5rem 0.75rem; }
+.le-pad-inset { padding: 12px 16px; }
+.le-pad-inset-bordered {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+}

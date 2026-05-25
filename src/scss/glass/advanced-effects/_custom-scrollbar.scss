@@ -1,0 +1,83 @@
+/* =============================================================================
+   §20.9 — Custom Scrollbar Styling
+   ============================================================================= */
+
+.glass-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.glass-scrollbar::-webkit-scrollbar-track {
+  background: rgba(var(--le-black-rgb, 0, 0, 0), 0.04);
+  border-radius: 10px;
+}
+
+.glass-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.30),
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.15)
+  );
+  border: 2px solid rgba(var(--le-white-rgb, 255, 255, 255), 0.10);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background var(--le-transition-fast), border-color var(--le-transition-fast);
+}
+
+.glass-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.45),
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.25)
+  );
+  border-color: rgba(var(--le-white-rgb, 255, 255, 255), 0.18);
+}
+
+.glass-scrollbar::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--le-primary-rgb), 0.35),
+    rgba(var(--le-primary-rgb), 0.18)
+  );
+  border-color: rgba(var(--le-primary-rgb), 0.20);
+}
+
+.glass-scrollbar::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox scrollbar (limited styling) */
+.glass-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.25)
+    rgba(var(--le-black-rgb, 0, 0, 0), 0.04);
+}
+
+[data-theme="dark"] .glass-scrollbar::-webkit-scrollbar-track {
+  background: rgba(var(--le-white-rgb, 255, 255, 255), 0.03);
+}
+
+[data-theme="dark"] .glass-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.16),
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.08)
+  );
+  border-color: rgba(var(--le-white-rgb, 255, 255, 255), 0.06);
+}
+
+[data-theme="dark"] .glass-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.25),
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.12)
+  );
+}
+
+[data-theme="dark"] .glass-scrollbar {
+  scrollbar-color:
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.12)
+    rgba(var(--le-white-rgb, 255, 255, 255), 0.03);
+}

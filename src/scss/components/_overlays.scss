@@ -1,0 +1,160 @@
+/* =========================================================================
+   13. MODALS (glass)
+   ========================================================================= */
+
+.modal-glass .modal-content {
+    position: relative;
+    background: var(--le-surface-floating-bg);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    border: 1px solid var(--le-surface-floating-border);
+    border-radius: var(--le-radius-xl);
+    box-shadow:
+        var(--le-surface-floating-shadow),
+        0 0 60px rgba(var(--le-primary-rgb), 0.10),
+        var(--le-inner-glow),
+        0 1px 0 0 rgba(255, 255, 255, 0.35) inset;
+    color: var(--le-text-primary);
+    overflow: hidden;
+    animation: modal-spring 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes modal-spring {
+    0% {
+        opacity: 0;
+        transform: scale(0.88) translateY(16px);
+    }
+    70% {
+        transform: scale(1.01) translateY(-2px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Specular highlight + chromatic fringe overlay */
+.modal-glass .modal-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    background:
+        radial-gradient(
+            ellipse 70% 40% at 30% 0%,
+            var(--le-specular-color) 0%,
+            rgba(255, 255, 255, 0.05) 40%,
+            transparent 65%
+        ),
+        linear-gradient(
+            175deg,
+            var(--le-chroma-red) 0%,
+            transparent 18%,
+            transparent 82%,
+            var(--le-chroma-blue) 100%
+        );
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.modal-glass .modal-header {
+    border-bottom: 1px solid var(--le-surface-floating-border);
+    padding: var(--le-modal-header-py, 1rem) var(--le-modal-header-px, 1.25rem);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 100%),
+        var(--le-control-bg);
+}
+
+.modal-glass .modal-header .modal-title {
+    font-weight: var(--le-font-weight-semibold, 600);
+    color: var(--le-text-primary);
+}
+
+.modal-glass .modal-header .btn-close {
+    filter: var(--le-btn-close-filter, none);
+}
+
+.modal-glass .modal-body {
+    padding: var(--le-modal-body-py, 1.25rem) var(--le-modal-body-px, 1.5rem);
+}
+
+.modal-glass .modal-footer {
+    border-top: 1px solid var(--le-surface-floating-border);
+    padding: var(--le-modal-header-py, 1rem) var(--le-modal-header-px, 1.25rem);
+    background: transparent;
+}
+
+/* Dark mode glass modal */
+[data-theme="dark"] .modal-glass .modal-content {
+    box-shadow:
+        var(--le-glass-shadow-lg),
+        0 0 48px rgba(var(--le-primary-rgb), 0.10),
+        var(--le-inner-glow);
+}
+
+[data-theme="dark"] .modal-glass .modal-content::before {
+    opacity: 0.5;
+}
+
+
+/* =========================================================================
+   14. ACCORDION (glass)
+   ========================================================================= */
+
+.glass-accordion .accordion-item {
+    background: var(--le-control-bg);
+    border: 1px solid var(--le-control-border);
+    border-radius: var(--le-radius) !important;
+    margin-bottom: var(--le-accordion-item-mb, 8px);
+    overflow: hidden;
+    box-shadow: var(--le-control-shadow);
+    transition: background 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+                border-color 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.glass-accordion .accordion-button {
+    background: transparent;
+    color: var(--le-text-primary);
+    font-weight: 500;
+    box-shadow: none;
+    padding: var(--le-modal-header-py, 1rem) var(--le-modal-header-px, 1.25rem);
+    transition: background 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+                color 0.2s ease,
+                border-color var(--le-transition);
+}
+
+.glass-accordion .accordion-button:not(.collapsed) {
+    background: var(--le-control-bg-active);
+    color: var(--le-primary);
+    box-shadow: none;
+    font-weight: 600;
+}
+
+.glass-accordion .accordion-button:hover {
+    background: var(--le-control-bg-hover);
+    box-shadow: var(--le-control-shadow);
+}
+
+.glass-accordion .accordion-item:has(.accordion-button:not(.collapsed)) {
+    border-color: rgba(var(--le-primary-rgb), 0.26);
+    box-shadow: 0 10px 26px rgba(var(--le-primary-rgb), 0.12),
+                0 0 0 1px rgba(var(--le-primary-rgb), 0.08),
+                var(--le-inner-glow);
+}
+
+.glass-accordion .accordion-button::after {
+    filter: var(--le-accordion-icon-filter, none);
+}
+
+.glass-accordion .accordion-body {
+    padding: var(--le-modal-body-py, 1.25rem) var(--le-modal-body-px, 1.5rem);
+    color: var(--le-text-secondary);
+    font-size: var(--le-list-item-font, 0.875rem);
+    line-height: 1.7;
+}
+

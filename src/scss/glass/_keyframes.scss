@@ -1,0 +1,349 @@
+/* =============================================================================
+   §12 — Animation Keyframes
+   All animations are visual-only — no repositioning via transform.
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   §12.1 — Shimmer
+   Sweeping highlight on pseudo-element (position: absolute)
+   ------------------------------------------------------------------------ */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.2 — Glow Pulse
+   Breathing box-shadow glow
+   ------------------------------------------------------------------------ */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 8px rgba(var(--le-primary-rgb), 0.12),
+      0 0 16px rgba(var(--le-primary-rgb), 0.06);
+  }
+  50% {
+    box-shadow:
+      0 0 12px rgba(var(--le-primary-rgb), 0.18),
+      0 0 24px rgba(var(--le-primary-rgb), 0.08);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.3 — Float  (visual-only glow breathing — no Y-axis movement)
+   ------------------------------------------------------------------------ */
+@keyframes float {
+  0%, 100% {
+    box-shadow:
+      0 2px 8px rgba(var(--le-primary-rgb), 0.10),
+      0 0 0 0 rgba(var(--le-primary-rgb), 0);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow:
+      0 4px 18px rgba(var(--le-primary-rgb), 0.18),
+      0 0 12px rgba(var(--le-primary-rgb), 0.06);
+    filter: brightness(1.03);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.4 — Fade In (opacity + glow bloom — no Y-axis movement)
+   ------------------------------------------------------------------------ */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(var(--le-primary-rgb), 0);
+  }
+  to {
+    opacity: 1;
+    box-shadow: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.5 — Scale In  (opacity + glow bloom — no scale transform)
+   ------------------------------------------------------------------------ */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    box-shadow: 0 0 20px rgba(var(--le-primary-rgb), 0.12);
+  }
+  to {
+    opacity: 1;
+    box-shadow: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.6 — Slide In Right  (opacity + glow bloom — no X-axis movement)
+   ------------------------------------------------------------------------ */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    box-shadow: 0 0 18px rgba(var(--le-primary-rgb), 0.10);
+  }
+  to {
+    opacity: 1;
+    box-shadow: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.7 — Mesh Drift (body background)
+   ------------------------------------------------------------------------ */
+@keyframes mesh-drift {
+  0%, 100% {
+    background-position: 0% 0%, 100% 0%, 50% 100%, 80% 60%, 20% 70%, center;
+  }
+  33% {
+    background-position: 5% 5%, 95% 5%, 45% 95%, 75% 55%, 25% 75%, center;
+  }
+  66% {
+    background-position: 3% 3%, 97% 3%, 52% 97%, 82% 62%, 18% 68%, center;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.8 — Material Ripple  (pseudo-element — visual only)
+   ------------------------------------------------------------------------ */
+@keyframes ripple-expand {
+  0% {
+    transform: scale(0);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.9 — Subtle Pulse
+   ------------------------------------------------------------------------ */
+@keyframes subtle-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(var(--le-primary-rgb), 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(var(--le-primary-rgb), 0);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.10 — Slide Down  (opacity + glow bloom — no Y-axis movement)
+   ------------------------------------------------------------------------ */
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    box-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.10);
+  }
+  to {
+    opacity: 1;
+    box-shadow: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.11 — Rotate In  (opacity + glow bloom — no rotation/scale)
+   ------------------------------------------------------------------------ */
+@keyframes rotate-in {
+  from {
+    opacity: 0;
+    box-shadow: 0 0 22px rgba(var(--le-primary-rgb), 0.12);
+  }
+  to {
+    opacity: 1;
+    box-shadow: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.12 — Glow Breathe  (continuous ambient glow)
+   ------------------------------------------------------------------------ */
+@keyframes glow-breathe {
+  0%, 100% {
+    box-shadow:
+      0 0 6px rgba(var(--le-primary-rgb), 0.08),
+      0 0 0 0 rgba(var(--le-primary-rgb), 0);
+  }
+  50% {
+    box-shadow:
+      0 0 14px rgba(var(--le-primary-rgb), 0.16),
+      0 0 28px rgba(var(--le-primary-rgb), 0.06);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.13 — Shadow Pulse  (rhythmic shadow intensity)
+   ------------------------------------------------------------------------ */
+@keyframes shadow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 2px 6px rgba(0, 0, 0, 0.06),
+      0 0 0 0 rgba(var(--le-primary-rgb), 0);
+  }
+  50% {
+    box-shadow:
+      0 4px 14px rgba(0, 0, 0, 0.10),
+      0 0 8px rgba(var(--le-primary-rgb), 0.08);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.14 — Luminance Shift  (subtle brightness oscillation)
+   ------------------------------------------------------------------------ */
+@keyframes luminance-shift {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.04);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.15 — Border Glow  (animated border-color shimmer)
+   ------------------------------------------------------------------------ */
+@keyframes border-glow {
+  0%, 100% {
+    border-color: rgba(var(--le-primary-rgb), 0.10);
+  }
+  50% {
+    border-color: rgba(var(--le-primary-rgb), 0.30);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.16 — Frost In  (entrance: opacity + frosted blur bloom)
+   ------------------------------------------------------------------------ */
+@keyframes frost-in {
+  from {
+    opacity: 0;
+    filter: blur(4px) brightness(1.1);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0) brightness(1);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.17 — Glow Fade In  (entrance: opacity + glow halo bloom)
+   ------------------------------------------------------------------------ */
+@keyframes glow-fade-in {
+  0% {
+    opacity: 0;
+    box-shadow:
+      0 0 24px rgba(var(--le-primary-rgb), 0.20),
+      0 0 48px rgba(var(--le-primary-rgb), 0.08);
+  }
+  70% {
+    opacity: 1;
+    box-shadow:
+      0 0 10px rgba(var(--le-primary-rgb), 0.10),
+      0 0 20px rgba(var(--le-primary-rgb), 0.04);
+  }
+  100% {
+    opacity: 1;
+    box-shadow: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.18 — Opacity Breathe  (gentle opacity oscillation)
+   ------------------------------------------------------------------------ */
+@keyframes opacity-breathe {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.19 — Specular Breathe  (slow light intensity oscillation)
+   The specular overlay opacity gently oscillates, simulating subtle
+   changes in ambient light intensity — as if light is playing across
+   the glass surface. Applied via `.glass-card-animated` class.
+   Works with any number of gradient layers since it targets opacity.
+   ------------------------------------------------------------------------ */
+@keyframes specular-breathe {
+  0%, 100% {
+    opacity: 0.60;
+  }
+  50% {
+    opacity: 0.80;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.20 — Progress Shimmer  (liquid fill shimmer sweep)
+   A subtle light sweep across the filled portion of a progress bar,
+   mimicking light playing on the surface of flowing liquid.
+   ------------------------------------------------------------------------ */
+@keyframes progress-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.21 — Badge Glow  (subtle ambient glow pulse)
+   Gentle primary-colored glow oscillation for interactive badges.
+   ------------------------------------------------------------------------ */
+@keyframes badge-glow {
+  0%, 100% {
+    box-shadow: 0 0 4px rgba(var(--le-primary-rgb), 0);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(var(--le-primary-rgb), 0.12);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   §12.22 — Row Light Sweep  (table row hover light collection)
+   A subtle light that sweeps in from the left on row hover, as if light
+   is collecting along the edge of the glass.
+   ------------------------------------------------------------------------ */
+@keyframes row-light-sweep {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Dropdown glass entrance */
+@keyframes dropdown-glass-enter {
+    from {
+        opacity: 0;
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+/* Notification badge pulse */
+@keyframes badge-pulse {
+    0%, 100% {
+        box-shadow: 0 2px 10px rgba(var(--le-danger-rgb), 0.45);
+    }
+    50% {
+        box-shadow: 0 2px 10px rgba(var(--le-danger-rgb), 0.45),
+                    0 0 0 5px rgba(var(--le-danger-rgb), 0.18);
+    }
+}
+
+

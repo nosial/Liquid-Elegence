@@ -1,0 +1,168 @@
+/* Main panel: topbar, scroll container, hero */
+
+.music-main-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.music-topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    margin-bottom: 12px;
+}
+
+.music-sidebar-toggle {
+    display: none;
+    appearance: none;
+    background: transparent;
+    border: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.music-sidebar-toggle:hover {
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+}
+
+.music-topbar-nav {
+    display: flex;
+    gap: 4px;
+}
+
+.music-nav-arrow {
+    appearance: none;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-secondary);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease;
+}
+
+.music-nav-arrow:hover { color: var(--le-text-primary); background: var(--le-glass-bg-strong); }
+.music-nav-arrow svg { width: 16px; height: 16px; }
+
+.music-page-title {
+    margin: 0;
+    font-weight: 600;
+    color: var(--le-text-primary);
+    flex-grow: 1;
+}
+
+.music-topbar-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.music-icon-btn {
+    appearance: none;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--le-text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+
+.music-icon-btn:hover,
+.music-icon-btn.active {
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+    border-color: var(--le-glass-border-subtle);
+}
+
+.music-icon-btn svg { width: 18px; height: 18px; }
+
+/* ---------------------------------------------------------------------------
+   §5 — Scroll container & views
+   ------------------------------------------------------------------------ */
+
+.music-scroll {
+    flex: 1 1 auto;
+    overflow: visible;
+    padding-right: 4px;
+    margin-right: -4px;
+}
+
+.music-view {
+    display: none;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.music-view.active { display: flex; }
+
+/* ---------------------------------------------------------------------------
+   §6 — Hero banner
+   ------------------------------------------------------------------------ */
+
+.music-hero {
+    position: relative;
+    border-radius: var(--le-radius-lg);
+    overflow: hidden;
+    padding: 28px;
+    background: linear-gradient(135deg,
+        rgba(var(--le-primary-rgb), 0.20) 0%,
+        rgba(var(--le-primary-rgb), 0.05) 60%,
+        var(--le-glass-bg) 100%);
+    border: 1px solid var(--le-glass-border-subtle);
+    isolation: isolate;
+}
+
+.music-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(ellipse at 80% 20%, rgba(var(--le-primary-rgb), 0.40) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(var(--le-info-rgb, 59, 130, 246), 0.30) 0%, transparent 55%);
+    opacity: 0.7;
+}
+
+.music-hero-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--le-primary);
+}
+
+.music-hero-title {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    margin: 6px 0 8px;
+    color: var(--le-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.music-hero-sub {
+    color: var(--le-text-secondary);
+    margin-bottom: 16px;
+    max-width: 540px;
+}
+
+.music-hero-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+

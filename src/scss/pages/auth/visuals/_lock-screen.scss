@@ -1,0 +1,126 @@
+// pages/auth/visuals/_lock-screen.scss
+// Rules unique to the lock-screen template.
+
+/* Soft ambient layer behind the lock card — theme aware */
+        .auth-page::after {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 30% 70%, rgba(var(--le-primary-rgb), 0.06) 0%, transparent 55%),
+                radial-gradient(ellipse at 70% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 55%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+[data-theme="dark"] .auth-page::after {
+            background:
+                radial-gradient(ellipse at 30% 70%, rgba(var(--le-primary-rgb), 0.10) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%);
+        }
+
+.lock-screen-wrapper {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(16px, 4vw, 32px);
+            gap: clamp(16px, 4vh, 32px);
+        }
+
+.lock-time {
+            text-align: center;
+            margin-bottom: 0;
+            animation: cardFadeIn 0.6s ease-out;
+        }
+
+.lock-time-display {
+            font-size: clamp(2.75rem, 11vw, 4.5rem);
+            font-weight: 200;
+            color: var(--le-text-primary);
+            letter-spacing: clamp(2px, 0.5vw, 4px);
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.18);
+        }
+
+[data-theme="dark"] .lock-time-display {
+            text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+        }
+
+.lock-date-display {
+            font-size: var(--le-font-size-lg);
+            color: var(--le-text-muted);
+            margin-top: var(--le-spacing-sm);
+            font-weight: 300;
+        }
+
+body.page-lock-screen .auth-card {
+            animation: cardFadeIn 0.6s ease-out 0.15s both;
+            max-width: 380px;
+            text-align: center;
+        }
+
+.lock-avatar {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--le-primary), rgba(139, 92, 246, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--le-spacing-md);
+            font-size: 2rem;
+            font-weight: var(--le-font-weight-bold);
+            color: #fff;
+            box-shadow:
+                0 4px 20px rgba(var(--le-primary-rgb), 0.3),
+                0 0 0 4px rgba(var(--le-primary-rgb), 0.1);
+            position: relative;
+        }
+
+.lock-avatar::after {
+            content: "";
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(var(--le-primary-rgb), 0.15);
+        }
+
+.lock-name {
+            font-size: var(--le-font-size-xl);
+            font-weight: var(--le-font-weight-bold);
+            color: var(--le-text-primary);
+            margin-bottom: 2px;
+        }
+
+.lock-email {
+            font-size: var(--le-font-size-sm);
+            color: var(--le-text-muted);
+            margin-bottom: var(--le-spacing-lg);
+        }
+
+.auth-input-group .form-control { padding-left: 42px; text-align: left; }
+
+.auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--le-spacing-md);
+        }
+
+.lock-alt-link {
+            display: block;
+            margin-top: var(--le-spacing-lg);
+            font-size: var(--le-font-size-sm);
+            color: var(--le-text-muted);
+            text-decoration: none;
+            transition: color var(--le-transition-fast);
+        }
+
+.lock-alt-link:hover {
+            color: var(--le-primary);
+        }
+
+.invalid-feedback { font-size: var(--le-font-size-xs); color: var(--le-danger); margin-top: 4px; text-align: left; }

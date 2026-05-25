@@ -1,0 +1,112 @@
+/* ── Footer buttons ── */
+.compose-footer-left {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.compose-footer-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.compose-footer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: var(--le-radius-sm);
+    background: transparent;
+    color: var(--le-text-muted);
+    cursor: pointer;
+    transition: all var(--le-transition-fast);
+}
+
+.compose-footer-btn:hover {
+    background: rgba(var(--le-primary-rgb), 0.08);
+    color: var(--le-primary);
+}
+
+.compose-footer-btn i, .compose-footer-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.compose-discard-btn {
+    color: var(--le-text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.4375rem 0.875rem;
+    border-radius: var(--le-radius-md);
+    border: 1px solid var(--le-glass-border-subtle);
+    background: transparent;
+    transition: all var(--le-transition-fast);
+}
+
+.compose-discard-btn:hover {
+    background: rgba(239, 68, 68, 0.06);
+    border-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.compose-discard-btn i, .compose-discard-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.compose-draft-btn {
+    color: var(--le-text-secondary);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.4375rem 0.875rem;
+    border-radius: var(--le-radius-md);
+    border: 1px solid var(--le-glass-border-subtle);
+    background: transparent;
+    transition: all var(--le-transition-fast);
+}
+
+.compose-draft-btn:hover {
+    background: rgba(var(--le-primary-rgb), 0.06);
+    border-color: rgba(var(--le-primary-rgb), 0.2);
+    color: var(--le-primary);
+}
+
+.compose-draft-btn i, .compose-draft-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.compose-send-btn {
+    background: linear-gradient(135deg, var(--le-primary), var(--le-primary-dark, var(--le-primary)));
+    color: var(--le-text-inverse);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    border-radius: var(--le-radius-md);
+    padding: 0.4375rem 1.25rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    box-shadow: 0 2px 10px rgba(var(--le-primary-rgb), 0.25);
+    transition: all var(--le-transition-fast);
+}
+
+.compose-send-btn:hover {
+    box-shadow: 0 4px 16px rgba(var(--le-primary-rgb), 0.35);
+    filter: brightness(1.05);
+    color: var(--le-text-inverse);
+}
+
+.compose-send-btn i, .compose-send-btn svg {
+    width: 14px;
+    height: 14px;
+}

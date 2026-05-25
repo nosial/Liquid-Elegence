@@ -1,0 +1,199 @@
+@use "../mixins" as *;
+
+/* ---------------------------------------------------------------------------
+   Mobile Navigation Elements (hidden on desktop, shown via responsive)
+   --------------------------------------------------------------------------- */
+
+/* Back button in reading pane */
+.reading-nav-mobile {
+    display: none;
+}
+
+/* Sidebar toggle in toolbar */
+.mail-sidebar-toggle {
+    display: none;
+}
+
+/* Sidebar backdrop */
+.mail-sidebar-backdrop {
+    display: none;
+}
+
+/* Sidebar mobile header (close btn) */
+.mail-sidebar-header-mobile {
+    display: none;
+}
+
+.mail-sidebar-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: var(--le-radius-sm);
+    background: rgba(var(--le-primary-rgb), 0.06);
+    color: var(--le-text-secondary);
+    cursor: pointer;
+    transition: all var(--le-transition-fast);
+    flex-shrink: 0;
+}
+
+.mail-sidebar-close:hover {
+    background: rgba(var(--le-primary-rgb), 0.12);
+    color: var(--le-primary);
+}
+
+.mail-sidebar-close i,
+.mail-sidebar-close svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Floating compose button */
+.mail-fab-compose {
+    display: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------------- */
+
+/* ---- Tablet: use drawer pattern for sidebar ---- */
+@media (max-width: 991.98px) {
+    .mail-container {
+        flex-direction: column;
+        height: calc(100dvh - 140px);
+        height: calc(100vh - 140px);
+        min-height: 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Sidebar hidden, drawer pattern like mobile */
+    .mail-sidebar {
+        @include sidebar-drawer-left;
+        overflow-y: auto;
+    }
+    .mail-sidebar.show {
+        transform: translateX(0);
+    }
+    .mail-sidebar .glass-card {
+        border-radius: 0;
+        height: 100%;
+        box-shadow: none;
+        border-left: none;
+    }
+
+    /* Sidebar toggle + backdrop visible at tablet */
+    .mail-sidebar-toggle {
+        @include sidebar-toggle-inline;
+    }
+    .mail-sidebar-backdrop {
+        @include sidebar-backdrop;
+    }
+    .mail-sidebar-backdrop.show {
+        @include sidebar-backdrop-show;
+    }
+    .mail-sidebar-header-mobile {
+        @include sidebar-mobile-header;
+        padding: 0.75rem 0;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Search bar layout with toggle */
+    .mail-search {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+    .mail-search-wrap { flex: 1; }
+
+    /* All panels full-width column layout */
+    .mail-list-panel { width: 100%; flex: 1; min-height: 0; overflow: hidden; }
+    .mail-reading-pane { width: 100%; }
+
+    /* Border-radius for stacked layout */
+    .mail-list-panel .glass-card,
+    .mail-reading-pane .glass-card {
+        border-radius: var(--le-radius-lg);
+        height: 100%;
+    }
+
+    /* Hide empty state at tablet */
+    #emptyPane { display: none; }
+
+    /* Reading pane: full-screen overlay when open */
+    #readingPane:not(.hidden) {
+        position: fixed;
+        inset: 0;
+        z-index: 1030;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        animation: mailPaneSlideIn 0.2s ease-out;
+    }
+    #readingPane:not(.hidden) .glass-card {
+        border-radius: 0;
+        height: auto;
+        min-height: 100dvh;
+        min-height: 100vh;
+    }
+
+    /* Back button / mobile reading nav */
+    .reading-nav-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid var(--le-glass-border);
+        background: var(--le-glass-bg);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle));
+        -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle));
+    }
+    .mail-back-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 0.75rem;
+        min-height: 44px;
+        border: none;
+        background: transparent;
+        color: var(--le-primary);
+        font-size: 0.875rem;
+        font-weight: 600;
+        border-radius: var(--le-radius-md);
+        cursor: pointer;
+    }
+
+    /* Floating compose button (FAB) */
+    .mail-fab-compose {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 1020;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: none;
+        background: var(--le-primary);
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(var(--le-primary-rgb), 0.35),
+                    0 2px 8px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+    }
+    .mail-fab-compose svg { width: 22px; height: 22px; }
+}
+
+@keyframes mailPaneSlideIn {
+    from { transform: translateX(100%); }
+    to   { transform: translateX(0); }
+}

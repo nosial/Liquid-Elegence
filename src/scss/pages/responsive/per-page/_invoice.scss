@@ -1,0 +1,80 @@
+/* --------------------------------------------------------------------------
+   20l. Invoice — improved mobile document layout (consolidated 20l+23n)
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .invoice-document {
+    padding: 10px;
+    border-radius: var(--le-radius);
+  }
+
+  .invoice-header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .invoice-meta {
+    text-align: center;
+  }
+
+  .invoice-logo {
+    margin: 0 auto;
+  }
+
+  .invoice-parties {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .invoice-party {
+    text-align: center;
+    font-size: 0.8125rem;
+  }
+
+  .line-items-wrapper,
+  .invoice-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .line-items-table {
+    min-width: 400px;
+    font-size: 0.625rem;
+  }
+
+  .line-items-table th,
+  .line-items-table td {
+    padding: 4px 6px;
+    font-size: 0.625rem;
+  }
+
+  .line-items-table .col-desc {
+    display: none;
+  }
+
+  .totals-table {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .totals-table td {
+    padding: 6px 8px;
+    font-size: 0.75rem;
+  }
+
+  .invoice-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .invoice-actions .btn {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .invoice-notes {
+    font-size: 0.75rem;
+    padding: 0.75rem;
+  }
+}

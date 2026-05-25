@@ -1,0 +1,160 @@
+/* -----------------------------------------------------------------------------
+   Modal — glass style
+   -------------------------------------------------------------------------- */
+
+.modal-content.glass-modal {
+    background: var(--le-glass-bg-strong);
+    border: 1px solid var(--le-glass-border);
+    border-radius: var(--le-radius-lg);
+}
+
+.modal-header.glass-modal-header {
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    padding: 1rem 1.25rem;
+}
+
+.modal-footer.glass-modal-footer {
+    border-top: 1px solid var(--le-glass-border-subtle);
+    padding: 0.75rem 1.25rem;
+}
+
+/* =============================================================================
+   Preview Panel
+   ============================================================================= */
+
+.fm-preview-panel {
+    width: 320px;
+    flex-shrink: 0;
+    display: none;
+    flex-direction: column;
+    border-radius: 0;
+    border-left: 1px solid var(--le-glass-border);
+    overflow-y: auto;
+}
+.fm-preview-panel.visible {
+    display: flex;
+}
+.fm-preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+.fm-preview-header h6 {
+    font-weight: 600;
+    margin: 0;
+    color: var(--le-text-primary);
+}
+.fm-preview-close {
+    background: none;
+    border: none;
+    color: var(--le-text-muted);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: var(--le-radius-xs);
+    transition: all 0.15s;
+}
+.fm-preview-close:hover {
+    background: rgba(var(--le-primary-rgb), 0.08);
+    color: var(--le-primary);
+}
+.fm-preview-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+}
+.fm-preview-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: var(--le-radius-lg);
+    background: rgba(var(--le-primary-rgb), 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+.fm-preview-icon i,
+.fm-preview-icon svg {
+    width: 32px;
+    height: 32px;
+    color: var(--le-primary);
+}
+.fm-preview-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--le-text-primary);
+    text-align: center;
+    word-break: break-word;
+    margin: 0;
+}
+.fm-preview-type {
+    font-size: 0.75rem;
+    color: var(--le-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin: -0.5rem 0 0;
+}
+.fm-preview-meta {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 1rem;
+    border-top: 1px solid var(--le-glass-border-subtle);
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    background: var(--le-glass-bg-subtle);
+    border-radius: var(--le-radius-sm);
+}
+.fm-meta-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8125rem;
+}
+.fm-meta-label {
+    color: var(--le-text-muted);
+}
+.fm-meta-value {
+    color: var(--le-text-primary);
+    font-weight: 500;
+}
+.fm-preview-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+}
+.fm-action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border: 1px solid var(--le-glass-border);
+    border-radius: var(--le-radius-sm);
+    background: var(--le-glass-bg);
+    color: var(--le-text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+.fm-action-btn:hover {
+    background: rgba(var(--le-primary-rgb), 0.08);
+    border-color: rgba(var(--le-primary-rgb), 0.2);
+    color: var(--le-primary);
+}
+.fm-action-btn.danger:hover {
+    background: rgba(var(--le-danger-rgb), 0.08);
+    border-color: rgba(var(--le-danger-rgb), 0.2);
+    color: var(--le-danger);
+}
+.fm-action-btn i,
+.fm-action-btn svg {
+    width: 14px;
+    height: 14px;
+}

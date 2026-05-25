@@ -1,0 +1,16 @@
+/* ── Density: File Manager ── */
+[data-density="compact"] .fm-sidebar { width: 200px; padding: 0.75rem; }
+[data-density="compact"] .fm-toolbar { padding: 0.4rem 0.75rem; gap: 0.4rem; }
+[data-density="compact"] .fm-file-card { padding: 0.5rem; }
+[data-density="compact"] .fm-file-icon { width: 36px; height: 36px; font-size: 1.25rem; }
+[data-density="compact"] .fm-file-name { font-size: var(--le-font-size-sm); }
+[data-density="compact"] .fm-breadcrumb { padding: 0.3rem 0.5rem; font-size: var(--le-font-size-xs); }
+[data-density="compact"] .fm-grid { gap: 0.5rem; }
+
+[data-density="comfortable"] .fm-sidebar { width: 270px; padding: 1.125rem; }
+[data-density="comfortable"] .fm-toolbar { padding: 0.75rem 1rem; gap: 0.625rem; }
+[data-density="comfortable"] .fm-file-card { padding: 1rem; }
+[data-density="comfortable"] .fm-file-icon { width: 52px; height: 52px; font-size: 1.875rem; }
+[data-density="comfortable"] .fm-file-name { font-size: var(--le-font-size-base); }
+[data-density="comfortable"] .fm-breadcrumb { padding: 0.5rem 0.875rem; font-size: var(--le-font-size-sm); }
+[data-density="comfortable"] .fm-grid { gap: 1rem; }

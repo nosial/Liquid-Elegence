@@ -1,0 +1,26 @@
+/* =============================================================================
+   Movie Streaming — Dark Mode
+   The dark glass tokens in the rest of the project already cover most surfaces.
+   This file fine-tunes a couple of areas that need different treatment.
+   ============================================================================= */
+
+[data-theme="dark"] .movie-rail-edge-fade.is-left {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.55), transparent);
+}
+
+[data-theme="dark"] .movie-rail-edge-fade.is-right {
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0.55), transparent);
+}
+
+[data-theme="dark"] .movie-card-rank {
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="dark"] .movie-card.is-top10:hover .movie-card-rank {
+    -webkit-text-stroke-color: var(--le-primary);
+}
+
+[data-theme="dark"] .movie-card-badge.is-hd {
+    background: rgba(255, 255, 255, 0.92);
+    color: #111;
+}

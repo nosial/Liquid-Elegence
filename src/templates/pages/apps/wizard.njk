@@ -1,0 +1,248 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+            <div class="wizard-page-header">
+                <h3>Create New Project</h3>
+                <p>Complete the steps below to set up your project</p>
+            </div>
+
+            <div class="wizard-container">
+                <div class="glass-card glass-card-body">
+                    <!-- Progress Indicator -->
+                    <div class="wizard-progress">
+                        <div class="progress-line-fill" id="progressLine"></div>
+                        <div class="wizard-step-indicator active" data-step="1">
+                            <div class="step-circle current">1</div>
+                            <span class="step-label">Project Info</span>
+                        </div>
+                        <div class="wizard-step-indicator" data-step="2">
+                            <div class="step-circle upcoming">2</div>
+                            <span class="step-label">Team Setup</span>
+                        </div>
+                        <div class="wizard-step-indicator" data-step="3">
+                            <div class="step-circle upcoming">3</div>
+                            <span class="step-label">Configuration</span>
+                        </div>
+                        <div class="wizard-step-indicator" data-step="4">
+                            <div class="step-circle upcoming">4</div>
+                            <span class="step-label">Review &amp; Launch</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Project Info -->
+                    <div class="step-content active" id="step1">
+                        <div class="form-group">
+                            <label>Project Name *</label>
+                            <input type="text" class="glass-input" id="projectName" placeholder="Enter project name">
+                            <div class="error-msg" id="projectNameError">Project name is required</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="glass-input" id="projectDesc" rows="3" placeholder="Describe your project"></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="glass-input" id="projectCategory">
+                                    <option value="Web App">Web App</option>
+                                    <option value="Mobile App">Mobile App</option>
+                                    <option value="API/Backend">API/Backend</option>
+                                    <option value="Design System">Design System</option>
+                                    <option value="Data Pipeline">Data Pipeline</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Start Date</label>
+                                <input type="date" class="glass-input" id="projectStartDate">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Priority</label>
+                            <div class="priority-group" id="priorityGroup">
+                                <label class="priority-pill"><input type="radio" name="priority" value="Low"> <i data-feather="arrow-down" class="le-icon-14"></i> Low</label>
+                                <label class="priority-pill active"><input type="radio" name="priority" value="Medium" checked> <i data-feather="minus" class="le-icon-14"></i> Medium</label>
+                                <label class="priority-pill"><input type="radio" name="priority" value="High"> <i data-feather="arrow-up" class="le-icon-14"></i> High</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Estimated Duration</label>
+                            <select class="glass-input" id="projectDuration">
+                                <option value="1 week">1 week</option>
+                                <option value="2 weeks">2 weeks</option>
+                                <option value="1 month" selected>1 month</option>
+                                <option value="3 months">3 months</option>
+                                <option value="6 months">6 months</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Team Setup -->
+                    <div class="step-content" id="step2">
+                        <div class="form-group">
+                            <label>Team Size</label>
+                            <div class="size-picker" id="sizePicker">
+                                <div class="size-option" data-val="1">1</div>
+                                <div class="size-option" data-val="2">2</div>
+                                <div class="size-option active" data-val="3">3</div>
+                                <div class="size-option" data-val="4">4</div>
+                                <div class="size-option" data-val="5">5</div>
+                                <div class="size-option" data-val="6">6</div>
+                                <div class="size-option" data-val="7">7</div>
+                                <div class="size-option" data-val="8">8</div>
+                                <div class="size-option" data-val="9">9</div>
+                                <div class="size-option" data-val="10">10</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Team Members</label>
+                            <div id="teamMembers">
+                                <div class="team-member-row" data-member="1">
+                                    <div class="member-avatar le-bg-gradient-primary">SM</div>
+                                    <div class="member-info"><div class="member-name">Sarah Mitchell</div></div>
+                                    <select class="member-role-select"><option value="Owner" selected>Owner</option><option value="Admin">Admin</option><option value="Member">Member</option><option value="Viewer">Viewer</option></select>
+                                    <button class="btn-remove-member" title="Remove"><i data-feather="x" class="le-icon-16"></i></button>
+                                </div>
+                                <div class="team-member-row" data-member="2">
+                                    <div class="member-avatar le-bg-gradient-success">JW</div>
+                                    <div class="member-info"><div class="member-name">James Wilson</div></div>
+                                    <select class="member-role-select"><option value="Owner">Owner</option><option value="Admin" selected>Admin</option><option value="Member">Member</option><option value="Viewer">Viewer</option></select>
+                                    <button class="btn-remove-member" title="Remove"><i data-feather="x" class="le-icon-16"></i></button>
+                                </div>
+                                <div class="team-member-row" data-member="3">
+                                    <div class="member-avatar le-bg-gradient-primary">LC</div>
+                                    <div class="member-info"><div class="member-name">Lisa Chen</div></div>
+                                    <select class="member-role-select"><option value="Owner">Owner</option><option value="Admin">Admin</option><option value="Member" selected>Member</option><option value="Viewer">Viewer</option></select>
+                                    <button class="btn-remove-member" title="Remove"><i data-feather="x" class="le-icon-16"></i></button>
+                                </div>
+                            </div>
+                            <button class="btn-add-member" id="addMemberBtn"><i data-feather="plus" class="le-icon-16"></i> Add Member</button>
+                            <div class="error-msg" id="teamError">At least one team member is required</div>
+                        </div>
+                        <div class="form-group">
+                            <label>Project Visibility</label>
+                            <div class="visibility-group" id="visibilityGroup">
+                                <label class="visibility-option active">
+                                    <input type="radio" name="visibility" value="Private" checked>
+                                    <div class="visibility-icon"><i data-feather="lock"></i></div>
+                                    <div class="visibility-text"><strong>Private</strong><span>Only invited members can access</span></div>
+                                </label>
+                                <label class="visibility-option">
+                                    <input type="radio" name="visibility" value="Team Only">
+                                    <div class="visibility-icon"><i data-feather="users"></i></div>
+                                    <div class="visibility-text"><strong>Team Only</strong><span>All team members in your org can access</span></div>
+                                </label>
+                                <label class="visibility-option">
+                                    <input type="radio" name="visibility" value="Public">
+                                    <div class="visibility-icon"><i data-feather="globe"></i></div>
+                                    <div class="visibility-text"><strong>Public</strong><span>Anyone with the link can view</span></div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Configuration -->
+                    <div class="step-content" id="step3">
+                        <div class="form-group">
+                            <label>Repository Settings</label>
+                            <div class="le-glass-bordered-input">
+                                <div class="toggle-row">
+                                    <span class="toggle-label">Enable CI/CD</span>
+                                    <label class="toggle-switch"><input type="checkbox" data-toggle="cicd" checked><span class="toggle-slider"></span></label>
+                                </div>
+                                <div class="toggle-row">
+                                    <span class="toggle-label">Enable Code Review</span>
+                                    <label class="toggle-switch"><input type="checkbox" data-toggle="codereview" checked><span class="toggle-slider"></span></label>
+                                </div>
+                                <div class="toggle-row">
+                                    <span class="toggle-label">Branch Protection</span>
+                                    <label class="toggle-switch"><input type="checkbox" data-toggle="branchprotect" checked><span class="toggle-slider"></span></label>
+                                </div>
+                                <div class="toggle-row">
+                                    <span class="toggle-label">Auto-deploy to Staging</span>
+                                    <label class="toggle-switch"><input type="checkbox" data-toggle="autodeploy"><span class="toggle-slider"></span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Integrations</label>
+                            <div class="integration-grid" id="integrationGrid">
+                                <label class="integration-card">
+                                    <input type="checkbox" value="Slack">
+                                    <div class="integration-icon le-bg-primary-12 le-text-primary">#</div>
+                                    <div class="integration-name">Slack</div>
+                                </label>
+                                <label class="integration-card active">
+                                    <input type="checkbox" value="GitHub" checked>
+                                    <div class="integration-icon le-bg-glass-subtle"><i data-feather="github" class="le-icon-20"></i></div>
+                                    <div class="integration-name">GitHub</div>
+                                </label>
+                                <label class="integration-card">
+                                    <input type="checkbox" value="Jira">
+                                    <div class="integration-icon le-bg-primary-12 le-text-primary">J</div>
+                                    <div class="integration-name">Jira</div>
+                                </label>
+                                <label class="integration-card">
+                                    <input type="checkbox" value="Figma">
+                                    <div class="integration-icon le-bg-primary-12 le-text-primary">F</div>
+                                    <div class="integration-name">Figma</div>
+                                </label>
+                                <label class="integration-card">
+                                    <input type="checkbox" value="AWS">
+                                    <div class="integration-icon le-bg-warning-12 le-text-warning"><i data-feather="cloud" class="le-icon-20"></i></div>
+                                    <div class="integration-name">AWS</div>
+                                </label>
+                                <label class="integration-card">
+                                    <input type="checkbox" value="Vercel">
+                                    <div class="integration-icon le-bg-glass-subtle">▲</div>
+                                    <div class="integration-name">Vercel</div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Notification Preferences</label>
+                            <div class="notif-checkboxes" id="notifCheckboxes">
+                                <label class="notif-check active"><input type="checkbox" value="Email" checked><i data-feather="mail" class="le-icon-14"></i> Email</label>
+                                <label class="notif-check"><input type="checkbox" value="Push"><i data-feather="smartphone" class="le-icon-14"></i> Push</label>
+                                <label class="notif-check"><input type="checkbox" value="Slack"><i data-feather="hash" class="le-icon-14"></i> Slack</label>
+                                <label class="notif-check"><input type="checkbox" value="Weekly Digest"><i data-feather="calendar" class="le-icon-14"></i> Weekly Digest</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review & Launch -->
+                    <div class="step-content" id="step4">
+                        <div class="glass-inner le-pad-card le-rounded-md" id="reviewSummary">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <div class="terms-check" id="termsCheck">
+                            <input type="checkbox" id="termsCheckbox">
+                            <label for="termsCheckbox">I confirm the project settings are correct</label>
+                        </div>
+                        <div class="error-msg mt-1" id="termsError">You must confirm the settings before launching</div>
+                    </div>
+
+                    <!-- Success State -->
+                    <div class="success-state" id="successState">
+                        <div class="success-checkmark"><i data-feather="check"></i></div>
+                        <h4>Project Created Successfully!</h4>
+                        <p>Your project has been set up and is ready to go.</p>
+                        <a href="../dashboards/overview.html" class="btn-go-dashboard"><i data-feather="arrow-right" class="le-icon-16"></i> Go to Dashboard</a>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="wizard-nav" id="wizardNav">
+                        <span class="step-info" id="stepInfo">Step 1 of 4</span>
+                        <div class="nav-buttons">
+                            <button class="btn-wizard-prev d-none" id="prevBtn">Previous</button>
+                            <button class="btn-wizard-next" id="nextBtn">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/wizard.js"></script>
+{% endblock %}

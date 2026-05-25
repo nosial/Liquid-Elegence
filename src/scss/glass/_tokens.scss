@@ -1,0 +1,385 @@
+/* =============================================================================
+   Liquid Elegance — Liquid Glass Design System
+   =============================================================================
+   A premium glassmorphism design system for Bootstrap 5 admin interfaces.
+   Inspired by Apple's visionOS / liquid glass aesthetic.
+
+   Version:  1.0.0
+   License:  MIT
+   ============================================================================= */
+
+
+/* =============================================================================
+   §1 — Design Tokens (Custom Properties)
+   ============================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------------
+     §1.1 — Color Palette
+     ------------------------------------------------------------------------ */
+
+  /* Primary: Teal / Cyan */
+  --le-primary:           #0ea5e9;
+  --le-primary-rgb:       14, 165, 233;
+  --le-primary-light:     #38bdf8;
+  --le-primary-dark:      #0284c7;
+  --le-primary-darker:    #0369a1;
+
+  /* Secondary: Violet */
+  --le-secondary:         #8b5cf6;
+  --le-secondary-rgb:     139, 92, 246;
+  --le-secondary-light:   #a78bfa;
+  --le-secondary-dark:    #7c3aed;
+
+  /* Semantic Colors */
+  --le-success:           #22c55e;
+  --le-success-rgb:       34, 197, 94;
+  --le-success-light:     #4ade80;
+  --le-success-dark:      #16a34a;
+
+  --le-warning:           #f59e0b;
+  --le-warning-rgb:       245, 158, 11;
+  --le-warning-light:     #fbbf24;
+  --le-warning-dark:      #d97706;
+
+  --le-danger:            #ef4444;
+  --le-danger-rgb:        239, 68, 68;
+  --le-danger-light:      #f87171;
+  --le-danger-dark:       #dc2626;
+
+  --le-info:              #6366f1;
+  --le-info-rgb:          99, 102, 241;
+  --le-info-light:        #818cf8;
+  --le-info-dark:         #4f46e5;
+
+  /* Neutrals */
+  --le-white:             #ffffff;
+  --le-white-rgb:         255, 255, 255;
+  --le-black:             #000000;
+  --le-black-rgb:         0, 0, 0;
+  --le-gray-50:           #f8fafc;
+  --le-gray-100:          #f1f5f9;
+  --le-gray-200:          #e2e8f0;
+  --le-gray-300:          #cbd5e1;
+  --le-gray-400:          #94a3b8;
+  --le-gray-500:          #64748b;
+  --le-gray-600:          #475569;
+  --le-gray-700:          #334155;
+  --le-gray-800:          #1e293b;
+  --le-gray-900:          #0f172a;
+  --le-gray-950:          #020617;
+
+  /* ---------------------------------------------------------------------------
+     §1.2 — Glass Tokens
+     ------------------------------------------------------------------------ */
+  --le-glass-bg:              rgba(255, 255, 255, 0.52);
+  --le-glass-bg-strong:       rgba(255, 255, 255, 0.70);
+  --le-glass-bg-subtle:       rgba(255, 255, 255, 0.32);
+  --le-glass-border:          rgba(255, 255, 255, 0.55);
+  --le-glass-border-strong:   rgba(255, 255, 255, 0.72);
+  --le-glass-border-subtle:   rgba(255, 255, 255, 0.32);
+  --le-glass-shadow:          0 8px 32px rgba(0, 0, 0, 0.10),
+                              0 2px 6px rgba(0, 0, 0, 0.04);
+  --le-glass-shadow-lg:       0 20px 60px rgba(0, 0, 0, 0.16),
+                              0 8px 20px rgba(0, 0, 0, 0.06);
+  --le-glass-blur:            22px;
+  --le-glass-blur-strong:     44px;
+  --le-glass-blur-subtle:     12px;
+
+  /* Saturate tiers — used with backdrop-filter across all glass components.
+     Base values set in _globals.scss §Design Tokens (loaded later).
+     Dark-mode overrides in _globals.scss [data-theme="dark"]. */
+
+  /* ---------------------------------------------------------------------------
+     §1.2a — Bootstrap → Liquid Elegance colour bridge
+     Ensures any component still referencing --bs-primary picks up the
+     theme colour instead of Bootstrap's default blue.
+     ------------------------------------------------------------------------ */
+  --bs-primary:               var(--le-primary);
+  --bs-primary-rgb:           var(--le-primary-rgb);
+
+  /* ---------------------------------------------------------------------------
+     §1.3 — Spacing Scale
+     ------------------------------------------------------------------------ */
+  --le-spacing-xs:    0.25rem;   /*  4px */
+  --le-spacing-sm:    0.5rem;    /*  8px */
+  --le-spacing-md:    1rem;      /* 16px */
+  --le-spacing-lg:    1.5rem;    /* 24px */
+  --le-spacing-xl:    2rem;      /* 32px */
+  --le-spacing-2xl:   3rem;      /* 48px */
+  --le-spacing-3xl:   4rem;      /* 64px */
+
+  /* ---------------------------------------------------------------------------
+     §1.4 — Border Radius
+     ------------------------------------------------------------------------ */
+  --le-radius-xs:     4px;
+  --le-radius-sm:     8px;
+  --le-radius:        12px;
+  --le-radius-lg:     16px;
+  --le-radius-xl:     24px;
+  --le-radius-2xl:    32px;
+  --le-radius-full:   9999px;
+
+  /* ---------------------------------------------------------------------------
+     §1.5 — Shadows (Depth Levels)
+     ------------------------------------------------------------------------ */
+  --le-shadow-xs:     0 1px 3px  rgba(0, 0, 0, 0.04),
+                      0 1px 1px  rgba(0, 0, 0, 0.03);
+  --le-shadow-sm:     0 2px 6px  rgba(0, 0, 0, 0.05),
+                      0 1px 2px  rgba(0, 0, 0, 0.03);
+  --le-shadow:        0 4px 14px rgba(0, 0, 0, 0.07),
+                      0 2px 5px  rgba(0, 0, 0, 0.04);
+  --le-shadow-md:     0 8px 28px rgba(0, 0, 0, 0.09),
+                      0 4px 10px rgba(0, 0, 0, 0.05);
+  --le-shadow-lg:     0 18px 50px rgba(0, 0, 0, 0.12),
+                      0 8px 18px  rgba(0, 0, 0, 0.06);
+  --le-shadow-xl:     0 28px 70px rgba(0, 0, 0, 0.16),
+                      0 14px 28px rgba(0, 0, 0, 0.08);
+  --le-shadow-inner:  inset 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  /* ---------------------------------------------------------------------------
+     §1.6 — Transitions
+     ------------------------------------------------------------------------ */
+  --le-transition-fast:    150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --le-transition:         250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --le-transition-slow:    400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --le-transition-bounce:  500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --le-spring:             cubic-bezier(0.34, 1.56, 0.64, 1);
+  --le-spring-snappy:      cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ---------------------------------------------------------------------------
+     §1.7 — Typography
+     ------------------------------------------------------------------------ */
+  --le-font-family:        -apple-system, BlinkMacSystemFont, 'SF Pro Display',
+                           'SF Pro Text', 'Segoe UI', Roboto, 'Helvetica Neue',
+                           Arial, sans-serif, 'Apple Color Emoji',
+                           'Segoe UI Emoji';
+  --le-font-mono:          'SF Mono', SFMono-Regular, 'Cascadia Code',
+                           'Fira Code', Consolas, 'Liberation Mono', Menlo,
+                           monospace;
+
+  --le-font-size-xs:       0.6875rem;  /* 11px */
+  --le-font-size-sm:       0.8125rem;  /* 13px */
+  --le-font-size-base:     0.9375rem;  /* 15px */
+  --le-font-size-md:       1rem;       /* 16px */
+  --le-font-size-lg:       1.125rem;   /* 18px */
+  --le-font-size-xl:       1.3125rem;  /* 21px */
+  --le-font-size-2xl:      1.625rem;   /* 26px */
+  --le-font-size-3xl:      2rem;       /* 32px */
+  --le-font-size-4xl:      2.5rem;     /* 40px */
+
+  --le-font-weight-light:      300;
+  --le-font-weight-normal:     400;
+  --le-font-weight-medium:     500;
+  --le-font-weight-semibold:   600;
+  --le-font-weight-bold:       700;
+
+  --le-line-height-tight:  1.25;
+  --le-line-height:        1.5;
+  --le-line-height-loose:  1.75;
+
+  --le-letter-spacing-tight:   -0.02em;
+  --le-letter-spacing:          0;
+  --le-letter-spacing-wide:     0.02em;
+
+  /* ---------------------------------------------------------------------------
+     §1.8 — Z-Index Scale
+     ------------------------------------------------------------------------ */
+  --le-z-base:        1;
+  --le-z-dropdown:    100;
+  --le-z-sticky:      200;
+  --le-z-sidebar:     300;
+  --le-z-topbar:      400;
+  --le-z-overlay:     500;
+  --le-z-modal:       600;
+  --le-z-popover:     700;
+  --le-z-tooltip:     800;
+  --le-z-toast:       900;
+
+  /* ---------------------------------------------------------------------------
+     §1.9 — Reflection & Refraction Tokens
+     ------------------------------------------------------------------------ */
+  --le-reflection-start:     rgba(255, 255, 255, 0.50);
+  --le-reflection-mid:       rgba(255, 255, 255, 0.10);
+  --le-reflection-edge:      rgba(255, 255, 255, 0.04);
+  --le-reflection-end:       rgba(255, 255, 255, 0.00);
+  --le-reflection-peak:      rgba(255, 255, 255, 0.50);
+  --le-reflection-caustic:   rgba(var(--le-primary-rgb), 0.06);
+  --le-refraction-tint:      rgba(var(--le-primary-rgb), 0.06);
+  --le-refraction-shift:     rgba(var(--le-secondary-rgb), 0.04);
+
+  /* ---------------------------------------------------------------------------
+     §1.10 — Semantic / Contextual (set by theme)
+     ------------------------------------------------------------------------ */
+  --le-text-primary:       var(--le-gray-900);
+  --le-text-secondary:     var(--le-gray-600);
+  --le-text-muted:         var(--le-gray-400);
+  --le-text-inverse:       var(--le-white);
+  --le-body-bg:            var(--le-gray-50);
+  --le-surface:            var(--le-white);
+
+  /* ---------------------------------------------------------------------------
+     §1.10a — Semantic Component Tokens
+     ------------------------------------------------------------------------ */
+  --le-text-on-primary:    var(--le-white);
+  --le-overlay-color:      rgba(0, 0, 0, 0.5);
+  --le-dark-surface-rgb:   15, 23, 42;
+  --le-focus-ring:         rgba(var(--le-primary-rgb), 0.40);
+  --le-highlight-bg:       rgba(var(--le-primary-rgb), 0.08);
+  --le-highlight-bg-strong: rgba(var(--le-primary-rgb), 0.15);
+  --le-divider-color:      rgba(0, 0, 0, 0.08);
+  --le-link-color:         var(--le-primary);
+  --le-link-hover-color:   var(--le-primary-dark);
+
+  /* Accent text intended to sit on translucent glass surfaces.
+     Light mode: use the darker primary shade for AA contrast on light glass.
+     Dark mode (overridden in _theme-modes.scss): use the lighter shade for
+     legibility against dark plates. */
+  --le-primary-on-glass:   var(--le-primary-dark);
+  --le-success-on-glass:   var(--le-success-dark, var(--le-success));
+  --le-danger-on-glass:    var(--le-danger-dark,  var(--le-danger));
+  --le-warning-on-glass:   var(--le-warning-dark, var(--le-warning));
+  --le-info-on-glass:      var(--le-info-dark,    var(--le-info));
+
+  /* Theme-driven component tokens (overridden per color scheme) */
+  --le-scrollbar-thumb:          rgba(var(--le-primary-rgb), 0.20);
+  --le-scrollbar-track:          transparent;
+  --le-table-stripe-bg:          rgba(var(--le-primary-rgb), 0.025);
+  --le-progress-bar-bg:          linear-gradient(135deg, var(--le-primary), var(--le-secondary));
+  --le-sidebar-active-indicator: linear-gradient(180deg, rgba(var(--le-primary-rgb), 0.4) 0%, var(--le-primary) 50%, rgba(var(--le-primary-rgb), 0.4) 100%);
+
+  /* Density-aware component tokens */
+  --le-badge-padding-y:    0.2rem;
+  --le-badge-padding-x:    0.6rem;
+  --le-badge-font-size:    var(--le-font-size-xs);
+  --le-input-padding-y:    0.625rem;
+  --le-input-padding-x:    1rem;
+  --le-input-height:       2.5rem;
+  --le-tab-padding-y:      0.5rem;
+  --le-tab-padding-x:      1rem;
+  --le-dot-size:           8px;
+  --le-card-padding:       var(--le-spacing-lg);
+  --le-card-header-padding: var(--le-spacing-md);
+  --le-btn-padding-y:      0.5rem;
+  --le-btn-padding-x:      1.25rem;
+
+  /* Density-aware component tokens */
+  --le-avatar-size:        40px;
+  --le-avatar-size-sm:     32px;
+  --le-avatar-size-lg:     56px;
+  --le-avatar-size-xl:     72px;
+  --le-icon-btn-size:      38px;
+  --le-icon-size:          18px;
+  --le-dropdown-padding:   8px;
+  --le-dropdown-item-py:   0.4375rem;
+  --le-dropdown-item-px:   0.75rem;
+  --le-dropdown-item-font: 0.875rem;
+  --le-metric-value-size:  1.75rem;
+  --le-metric-icon-size:   48px;
+  --le-metric-icon-svg:    22px;
+  --le-table-cell-py:      12px;
+  --le-table-cell-px:      16px;
+  --le-table-head-font:    0.75rem;
+  --le-table-body-font:    0.875rem;
+  --le-accordion-btn-py:   0.875rem;
+  --le-accordion-btn-px:   1.25rem;
+  --le-accordion-body-py:  1rem;
+  --le-accordion-body-px:  1.25rem;
+  --le-context-item-py:    0.4375rem;
+  --le-context-item-px:    0.75rem;
+  --le-context-item-font:  0.8125rem;
+  --le-pagination-py:      6px;
+  --le-pagination-px:      12px;
+  --le-pagination-font:    0.8125rem;
+  --le-feed-gap:           16px;
+  --le-feed-item-padding:  12px;
+
+  /* Component tokens — icon circles, progress, toolbar, nav, forms, customizer */
+  --le-icon-circle-size:       40px;
+  --le-icon-circle-size-xs:    24px;
+  --le-icon-circle-size-sm:    32px;
+  --le-icon-circle-size-lg:    48px;
+  --le-icon-circle-size-xl:    56px;
+  --le-icon-circle-font:       0.8125rem;
+  --le-icon-circle-font-sm:    0.8125rem;
+  --le-icon-circle-font-lg:    1rem;
+  --le-icon-circle-font-xl:    1.125rem;
+  --le-mini-avatar-size:       24px;
+  --le-avatar-group-overlap:   -8px;
+  --le-progress-height:        6px;
+  --le-toolbar-padding:        16px;
+  --le-toolbar-gap:            12px;
+  --le-toolbar-mb:             20px;
+  --le-nav-pill-padding-y:     0.5rem;
+  --le-nav-pill-padding-x:     1rem;
+  --le-nav-pill-font:          0.875rem;
+  --le-nav-pill-gap:           4px;
+  --le-nav-tab-padding-y:      0.625rem;
+  --le-nav-tab-padding-x:      1rem;
+  --le-nav-tab-font:           0.875rem;
+  --le-form-font:              0.875rem;
+  --le-form-label-font:        0.8125rem;
+  --le-form-label-mb:          6px;
+  --le-btn-font:               0.875rem;
+  --le-btn-gap:                6px;
+  --le-breadcrumb-font:        0.8125rem;
+  --le-legend-dot-size:        10px;
+  --le-customizer-body-padding: 1.25rem;
+  --le-customizer-header-py:   1.125rem;
+  --le-customizer-header-px:   1.25rem;
+  --le-customizer-section-mb:  1.5rem;
+  --le-customizer-close-size:  32px;
+  --le-customizer-fab-size:    44px;
+  --le-avatar-group-overlap:   -8px;
+
+  /* Component tokens — alerts, modals, lists, toasts, offcanvas, etc. */
+  --le-alert-py:               0.75rem;
+  --le-alert-px:               1rem;
+  --le-alert-font:             0.875rem;
+  --le-modal-body-py:          1.25rem;
+  --le-modal-body-px:          1.5rem;
+  --le-modal-header-py:        1rem;
+  --le-modal-header-px:        1.25rem;
+  --le-list-item-py:           0.75rem;
+  --le-list-item-px:           1rem;
+  --le-list-item-font:         0.875rem;
+  --le-toast-body-py:          0.75rem;
+  --le-toast-body-px:          1rem;
+  --le-toast-body-font:        0.875rem;
+  --le-toast-header-py:        0.5rem;
+  --le-toast-header-px:        0.875rem;
+  --le-toast-header-font:      0.8125rem;
+  --le-offcanvas-header-py:    1rem;
+  --le-offcanvas-header-px:    1.25rem;
+  --le-offcanvas-body-py:      1rem;
+  --le-offcanvas-body-px:      1.25rem;
+  --le-accordion-item-mb:      8px;
+  --le-tooltip-py:             6px;
+  --le-tooltip-px:             12px;
+  --le-tooltip-font:           0.8125rem;
+  --le-popover-font:           0.8125rem;
+  --le-action-btn-gap:         0.375rem;
+  --le-action-btn-py:          4px;
+  --le-action-btn-px:          8px;
+  --le-action-btn-font:        0.8125rem;
+  --le-metric-label-font:      0.8125rem;
+  --le-metric-label-mb:        4px;
+  --le-metric-change-font:     0.8125rem;
+  --le-metric-change-gap:      4px;
+  --le-card-footer-py:         12px;
+  --le-card-footer-px:         20px;
+  --le-card-footer-font:       0.8125rem;
+  --le-metric-icon-radius:     12px;
+  --le-form-check-font:        0.875rem;
+
+  /* ---------------------------------------------------------------------------
+     §1.11 — Mesh Background Accent RGBs (overridden per theme)
+     ------------------------------------------------------------------------ */
+  --le-mesh-1-rgb: 14, 165, 233;    /* sky blue */
+  --le-mesh-2-rgb: 139, 92, 246;    /* violet */
+  --le-mesh-3-rgb: 34, 197, 94;     /* green */
+  --le-mesh-4-rgb: 245, 158, 11;    /* amber */
+  --le-mesh-5-rgb: 99, 102, 241;    /* indigo */
+}
+
+

@@ -1,0 +1,490 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+            <div class="fm-layout">
+
+                <div class="fm-sidebar-backdrop" id="fmSidebarBackdrop"></div>
+
+                <!-- Left sidebar panel -->
+                <div class="fm-sidebar-panel" id="fmSidebar">
+                    <div class="glass-card">
+                        <div class="glass-card-body">
+
+                            <div class="fm-sidebar-header-mobile">
+                                <span class="fm-sidebar-title">Files</span>
+                                <button class="fm-sidebar-close" id="fmSidebarClose" title="Close"><i data-feather="x"></i></button>
+                            </div>
+
+                            <!-- Storage widget -->
+                            <div class="storage-widget">
+                                <div class="storage-ring">
+                                    <svg viewBox="0 0 90 90">
+                                        <circle class="ring-bg" cx="45" cy="45" r="39"></circle>
+                                        <circle class="ring-fill" cx="45" cy="45" r="39"></circle>
+                                    </svg>
+                                    <div class="ring-text">72%</div>
+                                </div>
+                                <div class="storage-info">
+                                    <div class="storage-used">10.8 GB of 15 GB</div>
+                                    <div class="storage-total">Storage used</div>
+                                    <button class="btn-upgrade">Upgrade Plan</button>
+                                </div>
+                            </div>
+
+                            <div class="glass-divider"></div>
+
+                            <!-- Folder navigation -->
+                            <ul class="fm-nav-list">
+                                <li class="fm-nav-item active" data-folder="my-files">
+                                    <i data-feather="hard-drive"></i>
+                                    <span>My Files</span>
+                                    <span class="fm-nav-count">16</span>
+                                </li>
+                                <li class="fm-nav-item" data-folder="documents">
+                                    <i data-feather="file-text"></i>
+                                    <span>Documents</span>
+                                    <span class="fm-nav-count">42</span>
+                                </li>
+                                <li class="fm-nav-item" data-folder="images">
+                                    <i data-feather="image"></i>
+                                    <span>Images</span>
+                                    <span class="fm-nav-count">128</span>
+                                </li>
+                                <li class="fm-nav-item" data-folder="videos">
+                                    <i data-feather="video"></i>
+                                    <span>Videos</span>
+                                    <span class="fm-nav-count">23</span>
+                                </li>
+                                <li class="fm-nav-item" data-folder="music">
+                                    <i data-feather="music"></i>
+                                    <span>Music</span>
+                                    <span class="fm-nav-count">67</span>
+                                </li>
+                                <li class="fm-nav-item" data-folder="downloads">
+                                    <i data-feather="download"></i>
+                                    <span>Downloads</span>
+                                    <span class="fm-nav-count">14</span>
+                                </li>
+                                <li class="fm-nav-item" data-folder="shared">
+                                    <i data-feather="share-2"></i>
+                                    <span>Shared with me</span>
+                                    <span class="fm-nav-count">8</span>
+                                </li>
+                                <li class="fm-nav-item" data-folder="starred">
+                                    <i data-feather="star"></i>
+                                    <span>Starred</span>
+                                    <span class="fm-nav-count">5</span>
+                                </li>
+                                <li class="fm-nav-item" data-folder="trash">
+                                    <i data-feather="trash-2"></i>
+                                    <span>Trash</span>
+                                    <span class="fm-nav-count">3</span>
+                                </li>
+                            </ul>
+
+                            <div class="glass-divider"></div>
+
+                            <!-- Tags -->
+                            <div class="fm-tags-section">
+                                <div class="fm-tags-title">Tags</div>
+                                <div class="fm-tag-item">
+                                    <span class="fm-tag-dot le-bg-pink"></span>
+                                    <span>Design</span>
+                                </div>
+                                <div class="fm-tag-item">
+                                    <span class="fm-tag-dot le-bg-primary"></span>
+                                    <span>Development</span>
+                                </div>
+                                <div class="fm-tag-item">
+                                    <span class="fm-tag-dot le-bg-success"></span>
+                                    <span>Marketing</span>
+                                </div>
+                                <div class="fm-tag-item">
+                                    <span class="fm-tag-dot le-bg-warning"></span>
+                                    <span>Finance</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main area -->
+                <div class="fm-main">
+                    <div class="glass-card">
+                        <div class="glass-card-body d-flex flex-row">
+
+                            <!-- Content area (file browser) -->
+                            <div class="fm-content-area">
+
+                                <!-- Toolbar -->
+                                <div class="fm-toolbar">
+                                    <div class="fm-toolbar-row">
+                                        <button class="fm-sidebar-toggle" id="fmSidebarToggle" title="Navigation"><i data-feather="menu"></i></button>
+                                        <div class="fm-breadcrumb" id="fmBreadcrumb">
+                                            <span class="fm-breadcrumb-item" data-path="root">My Files</span>
+                                            <span class="fm-breadcrumb-sep"><i data-feather="chevron-right"></i></span>
+                                            <span class="fm-breadcrumb-item" data-path="documents">Documents</span>
+                                            <span class="fm-breadcrumb-sep"><i data-feather="chevron-right"></i></span>
+                                            <span class="fm-breadcrumb-item active" data-path="projects">Projects</span>
+                                        </div>
+                                    </div>
+                                    <div class="fm-toolbar-row">
+                                        <div class="fm-toolbar-actions">
+                                            <div class="fm-search-wrap">
+                                                <i data-feather="search"></i>
+                                                <input type="text" class="fm-search-input" id="fmSearchInput" placeholder="Search files...">
+                                            </div>
+                                            <button class="fm-view-btn active" id="gridViewBtn" title="Grid view">
+                                                <i data-feather="grid"></i>
+                                            </button>
+                                            <button class="fm-view-btn" id="listViewBtn" title="List view">
+                                                <i data-feather="list"></i>
+                                            </button>
+                                            <select class="fm-sort-select" id="fmSortSelect">
+                                                <option value="name">Name</option>
+                                                <option value="date">Date</option>
+                                                <option value="size">Size</option>
+                                                <option value="type">Type</option>
+                                            </select>
+                                            <button class="btn-fm" id="newFolderBtn">
+                                                <i data-feather="folder-plus"></i>
+                                                <span>New folder</span>
+                                            </button>
+                                            <button class="btn-fm btn-fm-primary" id="uploadBtn">
+                                                <i data-feather="upload-cloud"></i>
+                                                <span>Upload</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="glass-divider"></div>
+
+                                <!-- Quick Access -->
+                                <div class="fm-quick-access">
+                                    <h6 class="fm-section-title">Quick Access</h6>
+                                    <div class="fm-quick-items">
+                                        <div class="fm-quick-item glass-inner" data-name="Q4-Report.pdf" data-type="pdf">
+                                            <i data-feather="file-text"></i>
+                                            <span>Q4-Report.pdf</span>
+                                            <small>Opened 2h ago</small>
+                                        </div>
+                                        <div class="fm-quick-item glass-inner" data-name="Dashboard-Mockup.png" data-type="image">
+                                            <i data-feather="image"></i>
+                                            <span>Dashboard-Mockup.png</span>
+                                            <small>Opened yesterday</small>
+                                        </div>
+                                        <div class="fm-quick-item glass-inner" data-name="budget-2024.xlsx" data-type="spreadsheet">
+                                            <i data-feather="grid"></i>
+                                            <span>budget-2024.xlsx</span>
+                                            <small>Opened 3d ago</small>
+                                        </div>
+                                        <div class="fm-quick-item glass-inner" data-name="app.component.ts" data-type="code">
+                                            <i data-feather="code"></i>
+                                            <span>app.component.ts</span>
+                                            <small>Opened 1w ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Grid view (default) -->
+                                <div class="fm-grid fm-grid-view" id="fmGridView">
+                                    <div class="fm-file-card glass-inner" data-name="Projects" data-type="folder" data-size="—" data-date="Dec 15, 2024" data-owner="John Doe">
+                                        <div class="fm-file-icon folder"><i data-feather="folder"></i></div>
+                                        <div class="fm-file-name" title="Projects">Projects</div>
+                                        <div class="fm-file-meta">18 items &middot; Dec 15, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="Archive" data-type="folder" data-size="—" data-date="Dec 10, 2024" data-owner="John Doe">
+                                        <div class="fm-file-icon folder"><i data-feather="folder"></i></div>
+                                        <div class="fm-file-name" title="Archive">Archive</div>
+                                        <div class="fm-file-meta">36 items &middot; Dec 10, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="Resources" data-type="folder" data-size="—" data-date="Dec 8, 2024" data-owner="John Doe">
+                                        <div class="fm-file-icon folder"><i data-feather="folder"></i></div>
+                                        <div class="fm-file-name" title="Resources">Resources</div>
+                                        <div class="fm-file-meta">24 items &middot; Dec 8, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="Dashboard-Mockup.png" data-type="image" data-size="4.2 MB" data-date="Dec 15, 2024" data-owner="John Doe">
+                                        <div class="fm-file-icon image"><i data-feather="image"></i></div>
+                                        <div class="fm-file-name" title="Dashboard-Mockup.png">Dashboard-Mockup.png</div>
+                                        <div class="fm-file-meta">4.2 MB &middot; Dec 15, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="hero-banner.jpg" data-type="image" data-size="2.1 MB" data-date="Dec 14, 2024" data-owner="Sarah Chen">
+                                        <div class="fm-file-icon image"><i data-feather="image"></i></div>
+                                        <div class="fm-file-name" title="hero-banner.jpg">hero-banner.jpg</div>
+                                        <div class="fm-file-meta">2.1 MB &middot; Dec 14, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="logo-dark.svg" data-type="image" data-size="18 KB" data-date="Dec 12, 2024" data-owner="Sarah Chen">
+                                        <div class="fm-file-icon image"><i data-feather="image"></i></div>
+                                        <div class="fm-file-name" title="logo-dark.svg">logo-dark.svg</div>
+                                        <div class="fm-file-meta">18 KB &middot; Dec 12, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="Q4-Report.pdf" data-type="pdf" data-size="2.8 MB" data-date="Dec 15, 2024" data-owner="John Doe">
+                                        <div class="fm-file-icon pdf"><i data-feather="file-text"></i></div>
+                                        <div class="fm-file-name" title="Q4-Report.pdf">Q4-Report.pdf</div>
+                                        <div class="fm-file-meta">2.8 MB &middot; Dec 15, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="meeting-notes.docx" data-type="document" data-size="856 KB" data-date="Dec 13, 2024" data-owner="Alice Kim">
+                                        <div class="fm-file-icon doc"><i data-feather="file"></i></div>
+                                        <div class="fm-file-name" title="meeting-notes.docx">meeting-notes.docx</div>
+                                        <div class="fm-file-meta">856 KB &middot; Dec 13, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="project-brief.pdf" data-type="pdf" data-size="1.4 MB" data-date="Dec 11, 2024" data-owner="John Doe">
+                                        <div class="fm-file-icon pdf"><i data-feather="file-text"></i></div>
+                                        <div class="fm-file-name" title="project-brief.pdf">project-brief.pdf</div>
+                                        <div class="fm-file-meta">1.4 MB &middot; Dec 11, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="app.component.ts" data-type="code" data-size="12 KB" data-date="Dec 15, 2024" data-owner="Bob Martin">
+                                        <div class="fm-file-icon code"><i data-feather="code"></i></div>
+                                        <div class="fm-file-name" title="app.component.ts">app.component.ts</div>
+                                        <div class="fm-file-meta">12 KB &middot; Dec 15, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="styles.min.css" data-type="code" data-size="34 KB" data-date="Dec 14, 2024" data-owner="Bob Martin">
+                                        <div class="fm-file-icon code"><i data-feather="code"></i></div>
+                                        <div class="fm-file-name" title="styles.min.css">styles.min.css</div>
+                                        <div class="fm-file-meta">34 KB &middot; Dec 14, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="index.html" data-type="code" data-size="8 KB" data-date="Dec 13, 2024" data-owner="Bob Martin">
+                                        <div class="fm-file-icon code"><i data-feather="code"></i></div>
+                                        <div class="fm-file-name" title="index.html">index.html</div>
+                                        <div class="fm-file-meta">8 KB &middot; Dec 13, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="config.json" data-type="code" data-size="2 KB" data-date="Dec 12, 2024" data-owner="Bob Martin">
+                                        <div class="fm-file-icon code"><i data-feather="code"></i></div>
+                                        <div class="fm-file-name" title="config.json">config.json</div>
+                                        <div class="fm-file-meta">2 KB &middot; Dec 12, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="budget-2024.xlsx" data-type="spreadsheet" data-size="1.3 MB" data-date="Dec 15, 2024" data-owner="John Doe">
+                                        <div class="fm-file-icon spreadsheet"><i data-feather="grid"></i></div>
+                                        <div class="fm-file-name" title="budget-2024.xlsx">budget-2024.xlsx</div>
+                                        <div class="fm-file-meta">1.3 MB &middot; Dec 15, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="analytics-export.csv" data-type="spreadsheet" data-size="420 KB" data-date="Dec 10, 2024" data-owner="Alice Kim">
+                                        <div class="fm-file-icon spreadsheet"><i data-feather="grid"></i></div>
+                                        <div class="fm-file-name" title="analytics-export.csv">analytics-export.csv</div>
+                                        <div class="fm-file-meta">420 KB &middot; Dec 10, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="release-v2.1.zip" data-type="archive" data-size="48.6 MB" data-date="Dec 9, 2024" data-owner="Bob Martin">
+                                        <div class="fm-file-icon zip"><i data-feather="archive"></i></div>
+                                        <div class="fm-file-name" title="release-v2.1.zip">release-v2.1.zip</div>
+                                        <div class="fm-file-meta">48.6 MB &middot; Dec 9, 2024</div>
+                                    </div>
+                                    <div class="fm-file-card glass-inner" data-name="presentation-recording.mp4" data-type="video" data-size="124.5 MB" data-date="Dec 7, 2024" data-owner="Sarah Chen">
+                                        <div class="fm-file-icon video"><i data-feather="film"></i></div>
+                                        <div class="fm-file-name" title="presentation-recording.mp4">presentation-recording.mp4</div>
+                                        <div class="fm-file-meta">124.5 MB &middot; Dec 7, 2024</div>
+                                    </div>
+                                </div>
+
+                                <!-- List view (hidden by default) -->
+                                <div class="fm-list-view" id="fmListView">
+                                    <table class="fm-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="le-w-32"><input type="checkbox" class="fm-checkbox-input"></th>
+                                                <th>Name</th>
+                                                <th>Size</th>
+                                                <th>Type</th>
+                                                <th>Modified</th>
+                                                <th class="le-w-48">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="fmTableBody">
+                                            <tr data-name="Projects" data-type="folder" data-size="—" data-date="Dec 15, 2024" data-owner="John Doe">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon folder"><i data-feather="folder"></i></div>Projects</div></td>
+                                                <td>18 items</td><td>Folder</td><td>Dec 15, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="Archive" data-type="folder" data-size="—" data-date="Dec 10, 2024" data-owner="John Doe">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon folder"><i data-feather="folder"></i></div>Archive</div></td>
+                                                <td>36 items</td><td>Folder</td><td>Dec 10, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="Resources" data-type="folder" data-size="—" data-date="Dec 8, 2024" data-owner="John Doe">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon folder"><i data-feather="folder"></i></div>Resources</div></td>
+                                                <td>24 items</td><td>Folder</td><td>Dec 8, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="Dashboard-Mockup.png" data-type="image" data-size="4.2 MB" data-date="Dec 15, 2024" data-owner="John Doe">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon image"><i data-feather="image"></i></div>Dashboard-Mockup.png</div></td>
+                                                <td>4.2 MB</td><td>PNG Image</td><td>Dec 15, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="hero-banner.jpg" data-type="image" data-size="2.1 MB" data-date="Dec 14, 2024" data-owner="Sarah Chen">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon image"><i data-feather="image"></i></div>hero-banner.jpg</div></td>
+                                                <td>2.1 MB</td><td>JPEG Image</td><td>Dec 14, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="logo-dark.svg" data-type="image" data-size="18 KB" data-date="Dec 12, 2024" data-owner="Sarah Chen">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon image"><i data-feather="image"></i></div>logo-dark.svg</div></td>
+                                                <td>18 KB</td><td>SVG Image</td><td>Dec 12, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="Q4-Report.pdf" data-type="pdf" data-size="2.8 MB" data-date="Dec 15, 2024" data-owner="John Doe">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon pdf"><i data-feather="file-text"></i></div>Q4-Report.pdf</div></td>
+                                                <td>2.8 MB</td><td>PDF Document</td><td>Dec 15, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="meeting-notes.docx" data-type="document" data-size="856 KB" data-date="Dec 13, 2024" data-owner="Alice Kim">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon doc"><i data-feather="file"></i></div>meeting-notes.docx</div></td>
+                                                <td>856 KB</td><td>Word Document</td><td>Dec 13, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="project-brief.pdf" data-type="pdf" data-size="1.4 MB" data-date="Dec 11, 2024" data-owner="John Doe">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon pdf"><i data-feather="file-text"></i></div>project-brief.pdf</div></td>
+                                                <td>1.4 MB</td><td>PDF Document</td><td>Dec 11, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="app.component.ts" data-type="code" data-size="12 KB" data-date="Dec 15, 2024" data-owner="Bob Martin">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon code"><i data-feather="code"></i></div>app.component.ts</div></td>
+                                                <td>12 KB</td><td>TypeScript</td><td>Dec 15, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="styles.min.css" data-type="code" data-size="34 KB" data-date="Dec 14, 2024" data-owner="Bob Martin">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon code"><i data-feather="code"></i></div>styles.min.css</div></td>
+                                                <td>34 KB</td><td>CSS File</td><td>Dec 14, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="index.html" data-type="code" data-size="8 KB" data-date="Dec 13, 2024" data-owner="Bob Martin">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon code"><i data-feather="code"></i></div>index.html</div></td>
+                                                <td>8 KB</td><td>HTML File</td><td>Dec 13, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="config.json" data-type="code" data-size="2 KB" data-date="Dec 12, 2024" data-owner="Bob Martin">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon code"><i data-feather="code"></i></div>config.json</div></td>
+                                                <td>2 KB</td><td>JSON File</td><td>Dec 12, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="budget-2024.xlsx" data-type="spreadsheet" data-size="1.3 MB" data-date="Dec 15, 2024" data-owner="John Doe">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon spreadsheet"><i data-feather="grid"></i></div>budget-2024.xlsx</div></td>
+                                                <td>1.3 MB</td><td>Spreadsheet</td><td>Dec 15, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="analytics-export.csv" data-type="spreadsheet" data-size="420 KB" data-date="Dec 10, 2024" data-owner="Alice Kim">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon spreadsheet"><i data-feather="grid"></i></div>analytics-export.csv</div></td>
+                                                <td>420 KB</td><td>CSV File</td><td>Dec 10, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="release-v2.1.zip" data-type="archive" data-size="48.6 MB" data-date="Dec 9, 2024" data-owner="Bob Martin">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon zip"><i data-feather="archive"></i></div>release-v2.1.zip</div></td>
+                                                <td>48.6 MB</td><td>ZIP Archive</td><td>Dec 9, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                            <tr data-name="presentation-recording.mp4" data-type="video" data-size="124.5 MB" data-date="Dec 7, 2024" data-owner="Sarah Chen">
+                                                <td><input type="checkbox" class="fm-checkbox-input"></td>
+                                                <td><div class="fm-table-name"><div class="fm-table-icon video"><i data-feather="film"></i></div>presentation-recording.mp4</div></td>
+                                                <td>124.5 MB</td><td>MP4 Video</td><td>Dec 7, 2024</td>
+                                                <td><div class="fm-table-actions"><button class="fm-row-menu" title="More"><i data-feather="more-vertical"></i></button></div></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Bottom bar -->
+                                <div class="fm-bottom-bar">
+                                    17 items, 3 folders, 14 files &mdash; 2.4 GB
+                                </div>
+
+                            </div>
+
+                            <!-- Preview / Details panel -->
+                            <div class="fm-preview-panel" id="fmPreviewPanel">
+                                <div class="fm-preview-header">
+                                    <h6>File Details</h6>
+                                    <button class="fm-preview-close" id="fmPreviewClose"><i data-feather="x"></i></button>
+                                </div>
+                                <div class="fm-preview-body">
+                                    <div class="fm-preview-icon" id="fmPreviewIcon">
+                                        <i data-feather="file"></i>
+                                    </div>
+                                    <h5 class="fm-preview-name" id="fmPreviewName">Select a file</h5>
+                                    <p class="fm-preview-type" id="fmPreviewType"></p>
+                                    <div class="fm-preview-meta">
+                                        <div class="fm-meta-row"><span class="fm-meta-label">Size</span><span class="fm-meta-value" id="fmPreviewSize">&mdash;</span></div>
+                                        <div class="fm-meta-row"><span class="fm-meta-label">Modified</span><span class="fm-meta-value" id="fmPreviewDate">&mdash;</span></div>
+                                        <div class="fm-meta-row"><span class="fm-meta-label">Owner</span><span class="fm-meta-value" id="fmPreviewOwner">&mdash;</span></div>
+                                        <div class="fm-meta-row"><span class="fm-meta-label">Location</span><span class="fm-meta-value" id="fmPreviewLocation">&mdash;</span></div>
+                                    </div>
+                                    <div class="fm-preview-actions">
+                                        <button class="fm-action-btn" data-action="download"><i data-feather="download"></i> Download</button>
+                                        <button class="fm-action-btn" data-action="share"><i data-feather="share-2"></i> Share</button>
+                                        <button class="fm-action-btn" data-action="rename"><i data-feather="edit-2"></i> Rename</button>
+                                        <button class="fm-action-btn danger" data-action="delete"><i data-feather="trash-2"></i> Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    <div class="modal fade modal-glass" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content glass-modal">
+                <div class="modal-header glass-modal-header">
+                    <h5 class="modal-title fw-bold le-fs-3xl" id="uploadModalLabel">Upload Files</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body le-pad-card">
+                    <div class="fm-drop-zone" id="dropZone">
+                        <div class="fm-drop-zone-icon">
+                            <i data-feather="upload-cloud"></i>
+                        </div>
+                        <div class="fm-drop-zone-text">Drag &amp; drop files here</div>
+                        <div class="fm-drop-zone-hint">or click to browse from your computer</div>
+                        <input type="file" id="fileInput" multiple class="d-none">
+                    </div>
+                </div>
+                <div class="modal-footer glass-modal-footer">
+                    <button type="button" class="btn-fm" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn-fm btn-fm-primary">Upload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Folder Modal -->
+    <div class="modal fade modal-glass" id="newFolderModal" tabindex="-1" aria-labelledby="newFolderModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content glass-modal">
+                <div class="modal-header glass-modal-header">
+                    <h5 class="modal-title fw-bold le-fs-3xl" id="newFolderModalLabel">New Folder</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body le-pad-card">
+                    <label for="folderNameInput" class="le-block-label">Folder name</label>
+                    <input type="text" class="form-control glass-input" id="folderNameInput" placeholder="Untitled folder">
+                </div>
+                <div class="modal-footer glass-modal-footer">
+                    <button type="button" class="btn-fm" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn-fm btn-fm-primary" id="createFolderBtn">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/file-manager.js"></script>
+{% endblock %}

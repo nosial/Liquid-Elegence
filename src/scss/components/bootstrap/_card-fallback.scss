@@ -1,0 +1,93 @@
+/* =========================================================================
+   19. BOOTSTRAP CARD FALLBACK
+   ========================================================================= */
+
+.card {
+    position: relative;
+    background:
+      linear-gradient(
+        165deg,
+        var(--le-surface-content-tint-start) 0%,
+        transparent 25%,
+        transparent 75%,
+        var(--le-surface-content-tint-end) 100%
+      ),
+      var(--le-surface-content-fill);
+    border: 1px solid var(--le-surface-content-border);
+    border-radius: var(--le-radius-lg);
+    box-shadow: var(--le-surface-content-shadow), var(--le-meniscus-shadow), 0 1px 0 0 rgba(255, 255, 255, 0.30) inset;
+    -webkit-backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    overflow: hidden;
+    transition:
+        box-shadow var(--le-transition) cubic-bezier(0.22, 0.61, 0.36, 1),
+        filter var(--le-transition) cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.card:hover {
+    box-shadow: var(--le-glass-shadow-lg), var(--le-inner-glow);
+    filter: brightness(1.03);
+}
+
+.card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.card-header {
+    background: transparent;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    padding: 16px 20px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-footer {
+    background: transparent;
+    border-top: 1px solid var(--le-glass-border-subtle);
+    padding: 16px 20px;
+}
+
+
+/* =========================================================================
+   20. SUBTLE BACKGROUND UTILITIES
+   ========================================================================= */
+
+.bg-primary-subtle {
+    background: rgba(var(--le-primary-rgb), 0.12) !important;
+}
+
+.bg-success-subtle {
+    background: rgba(var(--le-success-rgb), 0.12) !important;
+}
+
+.bg-warning-subtle {
+    background: rgba(var(--le-warning-rgb), 0.12) !important;
+}
+
+.bg-danger-subtle {
+    background: rgba(var(--le-danger-rgb), 0.12) !important;
+}
+
+.bg-info-subtle {
+    background: rgba(var(--le-info-rgb), 0.12) !important;
+}
+
+/* Dark mode: increase opacity for subtle backgrounds so icons/elements are visible */
+[data-theme="dark"] .bg-primary-subtle {
+    background: rgba(var(--le-primary-rgb), 0.2) !important;
+}
+[data-theme="dark"] .bg-success-subtle {
+    background: rgba(var(--le-success-rgb), 0.2) !important;
+}
+[data-theme="dark"] .bg-warning-subtle {
+    background: rgba(var(--le-warning-rgb), 0.2) !important;
+}
+[data-theme="dark"] .bg-danger-subtle {
+    background: rgba(var(--le-danger-rgb), 0.2) !important;
+}
+[data-theme="dark"] .bg-info-subtle {
+    background: rgba(var(--le-info-rgb), 0.2) !important;
+}

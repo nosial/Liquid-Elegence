@@ -1,0 +1,270 @@
+/* --------------------------------------------------------------------------
+   20q. Auth pages — mobile styles (phone)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 16px;
+    border-radius: var(--le-radius);
+  }
+
+  .auth-title {
+    font-size: 18px;
+  }
+
+  .auth-subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .auth-social {
+    gap: 8px;
+  }
+
+  .auth-social .btn {
+    padding: 10px;
+    font-size: 0.8125rem;
+    min-height: 44px;
+  }
+
+  .otp-inputs {
+    gap: 6px;
+  }
+
+  .otp-input {
+    width: 36px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .lock-time-display,
+  .lock-time {
+    font-size: 42px;
+  }
+
+  .lock-avatar {
+    width: 56px;
+    height: 56px;
+    font-size: 18px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   23u. Auth pages — responsive layout
+   -------------------------------------------------------------------------- */
+
+/* Tablet & small laptop — slightly tighten card */
+@media (max-width: 767.98px) {
+  .auth-card {
+    border-radius: var(--le-radius-lg);
+  }
+
+  .auth-title {
+    font-size: 1.375rem;
+  }
+
+  .otp-inputs {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Tablet & phone — convert card into a full-page layout (no card chrome).
+   Uses body.auth-page chained selectors so it beats density attribute
+   selectors ([data-density="compact"] .auth-container, etc.) which would
+   otherwise pin max-width and padding. Applies up to 767.98px so there's
+   no awkward in-between range where the card sits oddly on the left. */
+@media (max-width: 767.98px) {
+  body.auth-page,
+  .auth-page {
+    padding: 0 !important;
+    align-items: stretch;
+    justify-content: center;
+  }
+
+  body.auth-page .auth-container,
+  .auth-page .auth-container {
+    max-width: none;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+
+  body.auth-page .auth-card,
+  .auth-page .auth-card {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+    min-height: 100dvh;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    /* Solid-ish surface so contents stay readable on the body mesh */
+    background:
+      linear-gradient(
+        165deg,
+        var(--le-surface-content-tint-start) 0%,
+        transparent 35%,
+        transparent 65%,
+        var(--le-surface-content-tint-end) 100%
+      ),
+      rgba(248, 250, 254, 0.96);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    padding: clamp(20px, 6vw, 32px) clamp(18px, 5vw, 32px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    margin: 0;
+  }
+
+  /* Dark mode — solid dark surface so light mesh doesn't bleed through */
+  [data-theme="dark"] body.auth-page .auth-card,
+  [data-theme="dark"] .auth-page .auth-card {
+    background:
+      linear-gradient(
+        165deg,
+        rgba(var(--le-primary-rgb), 0.04) 0%,
+        transparent 35%,
+        transparent 65%,
+        rgba(var(--le-secondary-rgb), 0.03) 100%
+      ),
+      rgba(15, 21, 36, 0.96);
+  }
+
+  /* Specular highlight + hover effects don't make sense in full-bleed mode */
+  .auth-card::before { display: none; }
+  .auth-card:hover {
+    box-shadow: none;
+    filter: none;
+    border-color: transparent;
+  }
+
+  /* Tighten and re-center common bits */
+  .auth-title {
+    font-size: 1.375rem;
+  }
+
+  .auth-subtitle {
+    font-size: 0.875rem;
+    margin-bottom: 22px;
+  }
+
+  .auth-brand {
+    margin-bottom: 22px;
+  }
+
+  .auth-brand-icon { font-size: 1.625rem; }
+  .auth-brand-text { font-size: 1.0625rem; }
+
+  .auth-form {
+    gap: 14px;
+  }
+
+  .auth-card .form-control {
+    padding: 13px 14px 13px 42px;
+    font-size: 0.9375rem;
+    min-height: 48px;
+  }
+
+  .auth-card .btn-primary,
+  .auth-card .btn-outline-primary {
+    min-height: 48px;
+    font-size: 0.9375rem;
+  }
+
+  .auth-divider { margin: 20px 0; }
+
+  .auth-social {
+    gap: 8px;
+  }
+
+  .auth-social .btn {
+    padding: 11px;
+    font-size: 0.8125rem;
+    min-height: 46px;
+  }
+
+  .auth-icon-circle {
+    width: 64px;
+    height: 64px;
+  }
+
+  .password-requirements {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+
+  /* Footer pinned visually near the bottom of the viewport */
+  .auth-footer,
+  .auth-alt-links,
+  .auth-back-link {
+    margin-top: auto;
+    padding-top: 24px;
+  }
+
+  /* Lock screen */
+  .lock-avatar {
+    width: 72px;
+    height: 72px;
+    font-size: 1.5rem;
+  }
+
+  .lock-name { font-size: 1.0625rem; }
+  .lock-email { font-size: 0.875rem; margin-bottom: 18px; }
+}
+
+/* Constrain content width inside full-bleed mode on tablets so forms aren't
+   uncomfortably wide. Phone keeps it edge-to-edge for thumb reach. */
+@media (min-width: 481px) and (max-width: 767.98px) {
+  body.auth-page .auth-card,
+  .auth-page .auth-card {
+    padding-left: clamp(32px, 12vw, 96px);
+    padding-right: clamp(32px, 12vw, 96px);
+  }
+}
+
+/* Tiny phones — last-resort tightening (full-bleed already applied above) */
+@media (max-width: 380px) {
+  .auth-card {
+    padding: 18px 14px;
+  }
+
+  .auth-title {
+    font-size: 1.1875rem;
+  }
+
+  .auth-subtitle {
+    font-size: 0.8125rem;
+  }
+
+  .auth-social {
+    gap: 6px;
+    flex-direction: column;
+  }
+
+  .auth-social .btn {
+    padding: 10px;
+    font-size: 0.8125rem;
+    min-height: 46px;
+  }
+
+  /* OTP inputs: compact (clamp() in _two-factor.scss already shrinks them,
+     but tighten gap further on the smallest screens) */
+  .otp-inputs {
+    gap: 4px;
+  }
+
+  /* Lock screen */
+  .lock-avatar {
+    width: 64px;
+    height: 64px;
+    font-size: 1.375rem;
+  }
+}
+
+
+

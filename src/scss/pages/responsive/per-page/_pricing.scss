@@ -1,0 +1,85 @@
+/* --------------------------------------------------------------------------
+   23r. Pricing — improved mobile card layout
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .pricing-card {
+    padding: 16px;
+  }
+
+  .plan-name {
+    font-size: 1rem;
+  }
+
+  .plan-price {
+    font-size: 2rem;
+  }
+
+  .plan-price .period {
+    font-size: 0.75rem;
+  }
+
+  .pricing-card .feature-list {
+    padding: 0;
+    text-align: left;
+  }
+
+  .pricing-card .feature-list li {
+    font-size: 0.75rem;
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .pricing-toggle {
+    gap: 0.5rem;
+  }
+
+  .pricing-label {
+    font-size: 0.8125rem;
+  }
+
+  .pricing-card.featured {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   20r. Pricing page — mobile card styles
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .pricing-card {
+    padding: 16px;
+  }
+
+  .plan-name {
+    font-size: 1rem;
+  }
+
+  .plan-price {
+    font-size: 28px;
+  }
+
+  .plan-price .period {
+    font-size: 0.75rem;
+  }
+
+  .pricing-card .feature-list {
+    padding: 0;
+  }
+
+  .pricing-card .feature-list li {
+    font-size: 0.75rem;
+    padding: 5px 0;
+  }
+
+  .pricing-card .btn {
+    width: 100%;
+    min-height: 44px;
+  }
+}

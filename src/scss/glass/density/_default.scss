@@ -1,0 +1,153 @@
+/* ---------------------------------------------------------------------------
+   §14.2 — Default (explicit)
+   ------------------------------------------------------------------------ */
+[data-density="default"] {
+  --le-spacing-xs:    0.25rem;
+  --le-spacing-sm:    0.5rem;
+  --le-spacing-md:    1rem;
+  --le-spacing-lg:    1.5rem;
+  --le-spacing-xl:    2rem;
+  --le-spacing-2xl:   3rem;
+  --le-spacing-3xl:   4rem;
+
+  --le-font-size-base:  0.9375rem;
+  --le-radius:          12px;
+  --le-radius-lg:       16px;
+
+  /* Infrastructure tokens */
+  --le-sidebar-width:     260px;
+  --le-sidebar-collapsed: 70px;
+  --le-sidebar-mini-width: 70px;
+  --le-topbar-height:     64px;
+  --le-hnav-height:       42px;
+  --le-grid-gap:          1.5rem;   /* 24px — Bootstrap g-4 default */
+  --le-section-gap:       1.5rem;   /* 24px */
+  --le-page-header-mb:    1.5rem;   /* 24px */
+
+  /* Component density tokens */
+  --le-badge-padding-y:    0.2rem;
+  --le-badge-padding-x:    0.6rem;
+  --le-badge-font-size:    var(--le-font-size-xs);
+  --le-input-padding-y:    0.625rem;
+  --le-input-padding-x:    1rem;
+  --le-input-height:       2.5rem;
+  --le-tab-padding-y:      0.5rem;
+  --le-tab-padding-x:      1rem;
+  --le-dot-size:           8px;
+  --le-card-padding:       var(--le-spacing-lg);
+  --le-card-header-padding: var(--le-spacing-md);
+  --le-btn-padding-y:      0.5rem;
+  --le-btn-padding-x:      1.25rem;
+
+  /* Component tokens */
+  --le-font-size-md:       1rem;        /* 16px */
+  --le-font-size-lg:       1.125rem;    /* 18px */
+  --le-radius-sm:          8px;
+  --le-radius-xs:          4px;
+  --le-avatar-size:        40px;
+  --le-avatar-size-sm:     32px;
+  --le-avatar-size-lg:     56px;
+  --le-avatar-size-xl:     72px;
+  --le-icon-btn-size:      38px;
+  --le-icon-size:          18px;
+  --le-dropdown-padding:   8px;
+  --le-dropdown-item-py:   0.4375rem;
+  --le-dropdown-item-px:   0.75rem;
+  --le-dropdown-item-font: 0.875rem;
+  --le-metric-value-size:  1.75rem;
+  --le-metric-icon-size:   48px;
+  --le-metric-icon-svg:    22px;
+  --le-table-cell-py:      12px;
+  --le-table-cell-px:      16px;
+  --le-table-head-font:    0.75rem;
+  --le-table-body-font:    0.875rem;
+  --le-accordion-btn-py:   0.875rem;
+  --le-accordion-btn-px:   1.25rem;
+  --le-accordion-body-py:  1rem;
+  --le-accordion-body-px:  1.25rem;
+  --le-context-item-py:    0.4375rem;
+  --le-context-item-px:    0.75rem;
+  --le-context-item-font:  0.8125rem;
+  --le-pagination-py:      6px;
+  --le-pagination-px:      12px;
+  --le-pagination-font:    0.8125rem;
+  --le-feed-gap:           16px;
+  --le-feed-item-padding:  12px;
+
+  /* Component tokens — default */
+  --le-icon-circle-size:       40px;
+  --le-icon-circle-size-xs:    24px;
+  --le-icon-circle-size-sm:    32px;
+  --le-icon-circle-size-lg:    48px;
+  --le-icon-circle-size-xl:    56px;
+  --le-icon-circle-font:       0.8125rem;
+  --le-icon-circle-font-sm:    0.8125rem;
+  --le-icon-circle-font-lg:    1rem;
+  --le-icon-circle-font-xl:    1.125rem;
+  --le-mini-avatar-size:       24px;
+  --le-avatar-group-overlap:   -8px;
+  --le-progress-height:        6px;
+  --le-toolbar-padding:        16px;
+  --le-toolbar-gap:            12px;
+  --le-toolbar-mb:             20px;
+  --le-nav-pill-padding-y:     0.5rem;
+  --le-nav-pill-padding-x:     1rem;
+  --le-nav-pill-font:          0.875rem;
+  --le-nav-pill-gap:           4px;
+  --le-nav-tab-padding-y:      0.625rem;
+  --le-nav-tab-padding-x:      1rem;
+  --le-nav-tab-font:           0.875rem;
+  --le-form-font:              0.875rem;
+  --le-form-label-font:        0.8125rem;
+  --le-form-label-mb:          6px;
+  --le-btn-font:               0.875rem;
+  --le-btn-gap:                6px;
+  --le-breadcrumb-font:        0.8125rem;
+  --le-legend-dot-size:        10px;
+  --le-customizer-body-padding: 1.25rem;
+  --le-customizer-header-py: 1.125rem;
+  --le-customizer-header-px: 1.25rem;
+  --le-customizer-section-mb:  1.5rem;
+  --le-customizer-close-size:  32px;
+  --le-customizer-fab-size:    44px;
+
+  /* Component tokens — default */
+  --le-alert-py:               0.75rem;
+  --le-alert-px:               1rem;
+  --le-alert-font:             0.875rem;
+  --le-modal-body-py:          1.25rem;
+  --le-modal-body-px:          1.5rem;
+  --le-modal-header-py:        1rem;
+  --le-modal-header-px:        1.25rem;
+  --le-list-item-py:           0.75rem;
+  --le-list-item-px:           1rem;
+  --le-list-item-font:         0.875rem;
+  --le-toast-body-py:          0.75rem;
+  --le-toast-body-px:          1rem;
+  --le-toast-body-font:        0.875rem;
+  --le-toast-header-py:        0.5rem;
+  --le-toast-header-px:        0.875rem;
+  --le-toast-header-font:      0.8125rem;
+  --le-offcanvas-header-py:    1rem;
+  --le-offcanvas-header-px:    1.25rem;
+  --le-offcanvas-body-py:      1rem;
+  --le-offcanvas-body-px:      1.25rem;
+  --le-accordion-item-mb:      8px;
+  --le-tooltip-py:             6px;
+  --le-tooltip-px:             12px;
+  --le-tooltip-font:           0.8125rem;
+  --le-popover-font:           0.8125rem;
+  --le-action-btn-gap:         0.375rem;
+  --le-action-btn-py:          4px;
+  --le-action-btn-px:          8px;
+  --le-action-btn-font:        0.8125rem;
+  --le-metric-label-font:      0.8125rem;
+  --le-metric-label-mb:        4px;
+  --le-metric-change-font:     0.8125rem;
+  --le-metric-change-gap:      4px;
+  --le-card-footer-py:         12px;
+  --le-card-footer-px:         20px;
+  --le-card-footer-font:       0.8125rem;
+  --le-metric-icon-radius:     12px;
+  --le-form-check-font:        0.875rem;
+}

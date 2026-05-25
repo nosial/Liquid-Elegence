@@ -1,0 +1,73 @@
+/* ── Footer Aesthetics ── */
+
+/* Footer — glass panel treatment */
+.main-footer {
+  position: relative;
+  background: rgba(255, 255, 255, 0.35);
+  border-top: none;
+}
+
+/* Top gradient divider line */
+.main-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--le-primary-rgb), 0.25) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(var(--le-primary-rgb), 0.25) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+[data-theme="dark"] .main-footer {
+  background: rgba(var(--le-dark-surface-rgb), 0.45);
+}
+
+[data-theme="dark"] .main-footer::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(var(--le-primary-rgb), 0.15) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(var(--le-primary-rgb), 0.15) 75%,
+    transparent 100%
+  );
+}
+
+/* Footer text — subtle glass text effect */
+.main-footer,
+.main-footer * {
+  color: var(--le-text-secondary);
+}
+
+.main-footer strong,
+.main-footer .fw-bold,
+.main-footer .fw-semibold {
+  background: linear-gradient(
+    135deg,
+    var(--le-text-primary) 0%,
+    var(--le-primary) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Footer links — primary color hover */
+.main-footer a {
+  color: var(--le-text-secondary);
+  text-decoration: none;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.main-footer a:hover {
+  color: var(--le-primary);
+  text-shadow: 0 0 12px rgba(var(--le-primary-rgb), 0.2);
+}

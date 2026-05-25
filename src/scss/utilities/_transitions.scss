@@ -1,0 +1,35 @@
+/* ── Transition Utilities ── */
+
+.transition-normal {
+  transition: all 250ms ease;
+}
+
+.transition-spring {
+  transition: all 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.transition-all {
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.transition-visual {
+  transition-property: filter, box-shadow, transform;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.transition-opacity {
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-duration: 250ms;
+  transition-timing-function: ease;
+}
+
+

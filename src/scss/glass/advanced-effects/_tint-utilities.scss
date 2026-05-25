@@ -1,0 +1,48 @@
+/* =============================================================================
+   §20.12 — Glass Tint Utility Classes
+   ============================================================================= */
+
+.glass-tint-primary {
+  background-color: var(--le-glass-tint-primary);
+}
+
+.glass-tint-secondary {
+  background-color: var(--le-glass-tint-secondary);
+}
+
+.glass-tint-success {
+  background-color: var(--le-glass-tint-success);
+}
+
+.glass-tint-warning {
+  background-color: var(--le-glass-tint-warning);
+}
+
+.glass-tint-danger {
+  background-color: var(--le-glass-tint-danger);
+}
+
+.glass-tint-info {
+  background-color: var(--le-glass-tint-info);
+}
+
+/* Glass frosted surface — deep blur with higher opacity */
+.glass-frosted {
+  background: var(--le-glass-frosted-bg);
+  backdrop-filter: blur(var(--le-glass-frosted-blur));
+  -webkit-backdrop-filter: blur(var(--le-glass-frosted-blur));
+  border: 1px solid var(--le-glass-border);
+}
+
+/* Glass depth layers — composable stacking */
+.glass-layer-1 {
+  background-color: var(--le-glass-layer-1);
+}
+
+.glass-layer-2 {
+  background-color: var(--le-glass-layer-2);
+}
+
+.glass-layer-3 {
+  background-color: var(--le-glass-layer-3);
+}

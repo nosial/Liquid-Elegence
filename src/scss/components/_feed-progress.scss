@@ -1,0 +1,125 @@
+/* =========================================================================
+   7. ACTIVITY FEED
+   ========================================================================= */
+
+.activity-feed {
+    display: flex;
+    flex-direction: column;
+    gap: var(--le-feed-gap, 16px);
+}
+
+.activity-item {
+    position: relative;
+    background: var(--le-glass-bg-subtle);
+    border: 1px solid transparent;
+    border-radius: var(--le-radius-sm);
+    padding: var(--le-feed-item-padding, 12px);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    transition:
+        background 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+        border-color 0.2s ease,
+        box-shadow 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+        filter 0.2s ease,
+        transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.activity-item:hover {
+    background: rgba(var(--le-primary-rgb), 0.08);
+    border-color: var(--le-glass-border-subtle);
+    box-shadow: 0 4px 28px rgba(var(--le-primary-rgb), 0.16), var(--le-inner-glow), 0 0 0 1px rgba(var(--le-primary-rgb), 0.05);
+    filter: brightness(1.06);
+    transform: translateX(5px);
+}
+
+[data-theme="dark"] .activity-item {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="dark"] .activity-item:hover {
+    background: rgba(var(--le-primary-rgb), 0.08);
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Optional timeline connector */
+.activity-feed.has-line .activity-item:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 15px;
+    width: 2px;
+    height: calc(100% - 24px);
+    background: linear-gradient(
+        180deg,
+        rgba(var(--le-primary-rgb), 0.2),
+        var(--le-glass-border-subtle)
+    );
+    border-radius: 1px;
+}
+
+/* Timeline dot accent */
+.activity-feed.has-line .activity-item::after {
+    content: "";
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(var(--le-primary-rgb), 0.18);
+    border: 2px solid rgba(var(--le-primary-rgb), 0.35);
+    transition: background var(--le-transition-fast), box-shadow var(--le-transition-fast), transform 0.2s ease;
+}
+
+.activity-feed.has-line .activity-item:hover::after {
+    background: rgba(var(--le-primary-rgb), 0.40);
+    box-shadow: 0 0 14px rgba(var(--le-primary-rgb), 0.45), 0 0 4px rgba(var(--le-primary-rgb), 0.25);
+    transform: scale(1.3);
+}
+
+
+/* =========================================================================
+   8. PROGRESS BARS — flat liquid glass
+   ========================================================================= */
+
+.progress {
+    height: var(--le-progress-height, 6px);
+    background: var(--le-glass-bg-subtle);
+    border-radius: var(--le-radius-full);
+    overflow: hidden;
+    border: 1px solid var(--le-glass-border-subtle);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle));
+    box-shadow: inset 0 1px 0 rgba(var(--le-black-rgb), 0.04);
+}
+
+.progress-bar {
+    border-radius: var(--le-radius-full);
+    transition: width 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    background: var(--le-progress-bar-bg);
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(var(--le-white-rgb), 0.08);
+}
+
+/* Liquid shimmer on progress fill — a light sweep that moves across
+   the filled portion, mimicking light playing on the surface of
+   flowing liquid. Activated via the `.progress-shimmer` class on
+   the parent `.progress` element. */
+.progress-shimmer .progress-bar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.12) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: progress-shimmer 3s ease-in-out infinite;
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+

@@ -1,0 +1,22 @@
+/* ─────────────────────────────────────────────────────────────
+   26. File manager / Tree view
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .le-tree-toggle {
+    margin-left: 0.375rem;
+    margin-right: 0;
+    transform: rotate(180deg);
+}
+
+[dir="rtl"] .le-tree-toggle.open {
+    transform: rotate(90deg);
+}
+
+[dir="rtl"] .le-tree-children {
+    padding-left: 0;
+    padding-right: 1.25rem;
+    border-left: none;
+    border-right: 1px solid var(--le-glass-border);
+}
+
+

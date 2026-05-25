@@ -1,0 +1,289 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Tooltips &amp; Popovers — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Tooltips &amp; Popovers</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Tooltip Directions ──────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Tooltip Placements</h5>
+                <p class="text-muted mb-3 le-fs-body">Hover over each button to see tooltips in four placement directions.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button type="button" class="btn btn-glass btn-glass-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Top</button>
+                    <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">Right</button>
+                    <button type="button" class="btn btn-glass btn-glass-success" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Bottom</button>
+                    <button type="button" class="btn btn-glass btn-glass-warning" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">Left</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Tooltip text"&gt;
+    Hover me
+&lt;/button&gt;
+
+&lt;!-- Initialize all tooltips via JavaScript --&gt;
+&lt;script&gt;
+var tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+tooltips.forEach(el =&gt; new bootstrap.Tooltip(el));
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Tooltip on Elements ─────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Tooltips on Various Elements</h5>
+                <p class="text-muted mb-3 le-fs-body">Tooltips can be applied to links, icons, badges, and more.</p>
+                <div class="d-flex flex-column gap-3">
+                    <div>
+                        <a href="javascript:void(0)" data-bs-toggle="tooltip" title="Click to navigate">Tooltip on a link</a>
+                    </div>
+                    <div>
+                        <span data-bs-toggle="tooltip" title="This is an info icon" class="le-cursor-pointer">
+                            <i data-feather="info" class="le-icon-20 le-text-primary"></i>
+                        </span>
+                        <span class="ms-2 text-muted le-fs-body">Hover the icon</span>
+                    </div>
+                    <div>
+                        <span class="glass-badge glass-badge-primary le-cursor-pointer" data-bs-toggle="tooltip" title="3 unread notifications">3 New</span>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline-secondary btn-sm" disabled data-bs-toggle="tooltip" title="This action is currently disabled">
+                            <span>Disabled Button</span>
+                        </button>
+                        <small class="text-muted ms-2">Tooltip works on disabled buttons via wrapper</small>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- On a link --&gt;
+&lt;a href="javascript:void(0)" data-bs-toggle="tooltip" title="Tip"&gt;Link&lt;/a&gt;
+
+&lt;!-- On an icon --&gt;
+&lt;span data-bs-toggle="tooltip" title="Info"&gt;
+    &lt;i data-feather="info"&gt;&lt;/i&gt;
+&lt;/span&gt;
+
+&lt;!-- On a badge --&gt;
+&lt;span class="glass-badge" data-bs-toggle="tooltip"
+      title="Details"&gt;Badge&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── HTML Tooltips ───────────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">HTML Content Tooltips</h5>
+                <p class="text-muted mb-3 le-fs-body">Tooltips can contain HTML markup when <code>html: true</code> is set.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button type="button" class="btn btn-glass btn-glass-primary" data-bs-toggle="tooltip" data-bs-html="true" title="<strong>Bold</strong> and <em>italic</em> tooltip">HTML Tooltip</button>
+                    <button type="button" class="btn btn-glass btn-glass-info" data-bs-toggle="tooltip" data-bs-html="true" title="Line 1<br>Line 2<br>Line 3">Multi-line</button>
+                    <button type="button" class="btn btn-glass btn-glass-success" data-bs-toggle="tooltip" data-bs-html="true" title="Status: <span style='color:#22c55e;'>● Active</span>">With Status</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button data-bs-toggle="tooltip"
+        data-bs-html="true"
+        title="&lt;strong&gt;Bold&lt;/strong&gt; tooltip"&gt;
+    HTML Tooltip
+&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Popover Placements ──────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Popover Placements</h5>
+                <p class="text-muted mb-3 le-fs-body">Click each button to toggle a popover in four directions.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button type="button" class="btn btn-glass btn-glass-primary" data-bs-toggle="popover" data-bs-placement="top" title="Top Popover" data-bs-content="This is a popover positioned above the trigger element.">Top</button>
+                    <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-toggle="popover" data-bs-placement="right" title="Right Popover" data-bs-content="This popover appears to the right of the trigger.">Right</button>
+                    <button type="button" class="btn btn-glass btn-glass-success" data-bs-toggle="popover" data-bs-placement="bottom" title="Bottom Popover" data-bs-content="Bottom popover content with supporting information.">Bottom</button>
+                    <button type="button" class="btn btn-glass btn-glass-warning" data-bs-toggle="popover" data-bs-placement="left" title="Left Popover" data-bs-content="Left-positioned popover for supplementary context.">Left</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button data-bs-toggle="popover"
+        data-bs-placement="top"
+        title="Popover Title"
+        data-bs-content="Popover body content."&gt;
+    Click me
+&lt;/button&gt;
+
+&lt;!-- Initialize all popovers --&gt;
+&lt;script&gt;
+var popovers = document.querySelectorAll('[data-bs-toggle="popover"]');
+popovers.forEach(el =&gt; new bootstrap.Popover(el));
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Popover Triggers & Dismiss ──────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Popover Triggers</h5>
+                <p class="text-muted mb-3 le-fs-body">Different trigger modes: click, hover, focus.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button type="button" class="btn btn-glass btn-glass-primary" data-bs-toggle="popover" data-bs-trigger="click" title="Click Trigger" data-bs-content="This popover is shown on click.">Click</button>
+                    <button type="button" class="btn btn-glass btn-glass-info" data-bs-toggle="popover" data-bs-trigger="hover" title="Hover Trigger" data-bs-content="This popover is shown on hover.">Hover</button>
+                    <button type="button" class="btn btn-glass btn-glass-success" data-bs-toggle="popover" data-bs-trigger="focus" title="Focus Trigger" data-bs-content="This popover is shown on focus and dismissed on blur.">Focus</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Click (default) --&gt;
+&lt;button data-bs-toggle="popover"
+        data-bs-trigger="click"&gt;Click&lt;/button&gt;
+
+&lt;!-- Hover --&gt;
+&lt;button data-bs-toggle="popover"
+        data-bs-trigger="hover"&gt;Hover&lt;/button&gt;
+
+&lt;!-- Focus --&gt;
+&lt;button data-bs-toggle="popover"
+        data-bs-trigger="focus"&gt;Focus&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Dismissable Popover ─────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Dismissible Popover</h5>
+                <p class="text-muted mb-3 le-fs-body">Click anywhere outside the popover to dismiss it.</p>
+                <a tabindex="0" class="btn btn-glass btn-glass-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Dismissible Popover" data-bs-content="Click anywhere outside to close me. Great for confirming destructive actions.">Dismissible Popover</a>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Use an &lt;a&gt; with tabindex and trigger="focus" --&gt;
+&lt;a tabindex="0" role="button"
+   class="btn btn-glass btn-glass-danger"
+   data-bs-toggle="popover"
+   data-bs-trigger="focus"
+   title="Title"
+   data-bs-content="Dismiss by clicking outside."&gt;
+    Dismissible
+&lt;/a&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Popover with HTML Content ───────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Rich HTML Popovers</h5>
+                <p class="text-muted mb-3 le-fs-body">Popovers support HTML content for richer interactions.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button type="button" class="btn btn-glass btn-glass-primary" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="top" title="User Info" data-bs-content="<div class='d-flex align-items-center gap-2 mb-2'><div style='width:32px;height:32px;border-radius:50%;background:var(--le-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;'>JD</div><div><strong>John Doe</strong><br><small class='text-muted'>Admin</small></div></div><p class='mb-0' style='font-size:0.8125rem;'>Last active 2 minutes ago.</p>">User Card</button>
+                    <button type="button" class="btn btn-glass btn-glass-success" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="top" title="Quick Stats" data-bs-content="<div style='font-size:0.8125rem;'><div class='d-flex justify-content-between mb-1'><span>Revenue</span><strong>$12.4k</strong></div><div class='d-flex justify-content-between mb-1'><span>Orders</span><strong>284</strong></div><div class='d-flex justify-content-between'><span>Growth</span><strong class='text-success'>+8.2%</strong></div></div>">Stats Preview</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button data-bs-toggle="popover"
+        data-bs-html="true"
+        title="Popover Title"
+        data-bs-content="&lt;strong&gt;Rich&lt;/strong&gt; HTML content"&gt;
+    HTML Popover
+&lt;/button&gt;
+
+&lt;!-- Initialize with html option --&gt;
+&lt;script&gt;
+new bootstrap.Popover(el, { html: true });
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    /* ---------- Tooltips ---------- */
+    var tooltipTriggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggers.forEach(function (el) {
+        bootstrap.Tooltip.getOrCreateInstance(el);
+    });
+
+    /* ---------- Popovers ---------- */
+    var popoverTriggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    var popoverInstances = popoverTriggers.map(function (el) {
+        return bootstrap.Popover.getOrCreateInstance(el);
+    });
+
+    function hideAllClickPopovers(except) {
+        popoverTriggers.forEach(function (el, i) {
+            // Only auto-dismiss popovers using the default (click) trigger;
+            // hover/focus popovers manage their own lifecycle.
+            var trigger = (el.getAttribute('data-bs-trigger') || 'click').trim();
+            if (trigger !== 'click') return;
+            if (el === except) return;
+            popoverInstances[i].hide();
+        });
+    }
+
+    // Outside click → dismiss any open click-trigger popover
+    document.addEventListener('click', function (event) {
+        var target = event.target;
+        var trigger = target.closest('[data-bs-toggle="popover"]');
+        var insidePopover = target.closest('.popover');
+        if (insidePopover) return;          // click inside popover content — keep open
+        hideAllClickPopovers(trigger);      // hide everything except the one being clicked
+    });
+
+    // Escape → dismiss
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') hideAllClickPopovers(null);
+    });
+});
+</script>
+{% endblock %}

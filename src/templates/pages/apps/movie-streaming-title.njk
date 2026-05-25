@@ -1,0 +1,267 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    {# ============ Title detail data ============ #}
+    {% set title = {
+        name: "Stellar Drift",
+        year: "2024", maturity: "TV-14", duration: "1 Season · 8 Episodes",
+        match: "97% Match",
+        tags: ["Sci-Fi", "Adventure", "Mystery", "Cineflux Original"],
+        synopsis: "When deep-space cartographer Mira Voss drifts off course into an uncharted nebula, she uncovers a derelict colony ship and a centuries-old transmission still pulsing with light. As her crew unravels the ship's silent history, the line between memory, signal, and survival begins to blur.",
+        director: "Ines Caro",
+        writers: ["Ines Caro", "T. R. Mendel"],
+        cast: ["Maya Reyes", "Jonas Park", "Aria Holloway", "Felix Marchetti", "Olu Adeyemi"],
+        languages: "English [Original], French, Spanish, Japanese",
+        sound: "Dolby Atmos · 5.1",
+        color: "linear-gradient(135deg, #6366f1, #06b6d4)"
+    } %}
+
+    {% set cast = [
+        { name: "Maya Reyes",       role: "Mira Voss",        initials: "MR", color: "linear-gradient(135deg, #6366f1, #ec4899)" },
+        { name: "Jonas Park",       role: "Cmdr. Akela",      initials: "JP", color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+        { name: "Aria Holloway",    role: "Dr. Talen",        initials: "AH", color: "linear-gradient(135deg, #f97316, #ef4444)" },
+        { name: "Felix Marchetti",  role: "Engineer Coda",    initials: "FM", color: "linear-gradient(135deg, #14b8a6, #10b981)" },
+        { name: "Olu Adeyemi",      role: "Lt. Reyes",        initials: "OA", color: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+        { name: "Ines Caro",        role: "Director",         initials: "IC", color: "linear-gradient(135deg, #fb923c, #facc15)" }
+    ] %}
+
+    {% set episodes = [
+        { num: 1, title: "Drift",                desc: "A routine survey turns into a quiet, beautiful disaster when Mira's pod loses contact with the Halcyon.",      duration: "52m" },
+        { num: 2, title: "The Halcyon",          desc: "Boarding the derelict colony ship reveals impossible silence — and a corridor of lights that respond to song.", duration: "48m" },
+        { num: 3, title: "Frequency",            desc: "An old transmission turns out to be a lullaby. Mira's crew traces it back to a sealed observation deck.",       duration: "55m" },
+        { num: 4, title: "Long Sleep",           desc: "Cryo logs reveal the colonists never woke. Cmdr. Akela makes a call that splits the crew.",                     duration: "49m" },
+        { num: 5, title: "Mira's Garden",        desc: "Hydroponics still bloom under amber light. Something has been tending them.",                                   duration: "51m" },
+        { num: 6, title: "The Other Ship",       desc: "A second ship floats inside the nebula's veil — and it answers when called.",                                  duration: "53m" },
+        { num: 7, title: "What Stays Lit",       desc: "Mira makes a choice that bends time and signal alike.",                                                          duration: "57m" },
+        { num: 8, title: "Stellar Drift",        desc: "Season finale. The Halcyon's last broadcast finally reaches home — but home has changed.",                       duration: "1h 04m" }
+    ] %}
+
+    {% set similar = [
+        { id: "polaris-run",          title: "Polaris Run",          year: "2024", maturity: "PG-13", duration: "2h 05m", color: "linear-gradient(135deg, #1e293b, #475569)" },
+        { id: "echoes-of-tomorrow",   title: "Echoes of Tomorrow",   year: "2024", maturity: "PG-13", duration: "1h 58m", color: "linear-gradient(135deg, #6366f1, #ec4899)" },
+        { id: "cipher",               title: "Cipher",               year: "2023", maturity: "TV-14", duration: "S1",     color: "linear-gradient(135deg, #0f172a, #6366f1)" },
+        { id: "letters-from-saturn",  title: "Letters from Saturn",  year: "2024", maturity: "PG",    duration: "1h 22m", color: "linear-gradient(135deg, #1e1b4b, #6366f1)" },
+        { id: "black-comet",          title: "Black Comet",          year: "2022", maturity: "PG-13", duration: "2h 09m", color: "linear-gradient(135deg, #0f172a, #4338ca)" },
+        { id: "the-deep-currents",    title: "The Deep Currents",    year: "2023", maturity: "PG",    duration: "1h 48m", color: "linear-gradient(135deg, #0c4a6e, #06b6d4)" }
+    ] %}
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="movie-streaming.html">Cineflux</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ title.name }}</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+
+        {# ====== Main column ====== #}
+        <div class="col-lg-8">
+
+            {# ====== Title hero ====== #}
+            <div class="glass-card movie-title-card mb-4 animate-fade-in-up">
+                <div class="movie-title-hero">
+                    <div class="movie-title-hero-bg" style="background: {{ title.color }};"></div>
+                    <div class="movie-title-hero-fade"></div>
+                    <div class="movie-title-hero-content">
+                        <h1 class="movie-title-hero-name">{{ title.name }}</h1>
+                        <div class="movie-title-hero-meta">
+                            <span class="movie-pill movie-pill-strong">{{ title.match }}</span>
+                            <span>{{ title.year }}</span>
+                            <span class="movie-pill">{{ title.maturity }}</span>
+                            <span class="movie-dot"></span>
+                            <span>{{ title.duration }}</span>
+                            <span class="movie-pill"><i data-feather="zap" class="le-icon-12"></i>HD</span>
+                        </div>
+                        <div class="movie-title-hero-tags">
+                            {% for t in title.tags %}<span class="movie-genre-tag">{{ t }}</span>{% endfor %}
+                        </div>
+                        <div class="movie-title-hero-actions">
+                            <a href="movie-streaming-watch.html" class="movie-btn movie-btn-play"><i data-feather="play" class="le-icon-16"></i>Play</a>
+                            <button type="button" class="movie-btn movie-btn-ghost movie-mylist-btn"><i data-feather="plus" class="le-icon-16"></i><span>My List</span></button>
+                            <button type="button" class="movie-btn movie-btn-ghost movie-btn-icon movie-rate-btn" data-rate="up" aria-label="Like"><i data-feather="thumbs-up" class="le-icon-16"></i></button>
+                            <button type="button" class="movie-btn movie-btn-ghost movie-btn-icon movie-rate-btn" data-rate="down" aria-label="Dislike"><i data-feather="thumbs-down" class="le-icon-16"></i></button>
+                            <button type="button" class="movie-btn movie-btn-ghost movie-btn-icon movie-share-btn" aria-label="Share"><i data-feather="share-2" class="le-icon-16"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                {# Body: synopsis + facts #}
+                <div class="movie-title-body">
+                    <p class="movie-title-summary">{{ title.synopsis }}</p>
+                    <div class="movie-fact-grid">
+                        <div class="movie-fact-row"><span class="movie-fact-label">Director:</span><span class="movie-fact-value">{{ title.director }}</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Writers:</span><span class="movie-fact-value">{% for w in title.writers %}<a href="javascript:void(0)">{{ w }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Cast:</span><span class="movie-fact-value">{{ title.cast | join(", ") }}</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Genres:</span><span class="movie-fact-value">{{ title.tags | join(", ") }}</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Audio:</span><span class="movie-fact-value">{{ title.sound }}</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Subtitles:</span><span class="movie-fact-value">{{ title.languages }}</span></div>
+                    </div>
+                </div>
+            </div>
+
+            {# ====== Tabs + Sections ====== #}
+            <div class="glass-card animate-fade-in-up stagger-1">
+
+                {# Tabs #}
+                <section class="movie-tabs-card">
+                    <div class="movie-tabs">
+                        <a href="#section-episodes"   class="movie-tab is-active" data-tab="episodes">Episodes</a>
+                        <a href="#section-trailers"   class="movie-tab" data-tab="trailers">Trailers &amp; Extras</a>
+                        <a href="#section-similar"    class="movie-tab" data-tab="similar">More Like This</a>
+                        <a href="#section-details"    class="movie-tab" data-tab="details">Details</a>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                {# ====== Episodes ====== #}
+                <section class="glass-card-body" id="section-episodes">
+                    <div class="movie-season-bar">
+                        <h3 class="movie-rail-title">Episodes</h3>
+                        <select class="movie-season-select" aria-label="Select season">
+                            <option>Season 1 (8 Episodes)</option>
+                        </select>
+                    </div>
+                    {% for ep in episodes %}
+                    <a href="movie-streaming-watch.html" class="movie-episode-row">
+                        <div class="movie-episode-num">{{ ep.num }}</div>
+                        <div class="movie-episode-thumb" style="background: {{ title.color }};">
+                            <span class="movie-card-icon"><i data-feather="play" class="le-icon-16"></i></span>
+                            <span class="movie-card-duration">{{ ep.duration }}</span>
+                        </div>
+                        <div class="movie-episode-info">
+                            <h6 class="movie-episode-title">{{ ep.title }}</h6>
+                            <p class="movie-episode-desc">{{ ep.desc }}</p>
+                        </div>
+                        <button type="button" class="movie-episode-action" aria-label="Download" onclick="event.preventDefault();event.stopPropagation();"><i data-feather="download" class="le-icon-14"></i></button>
+                    </a>
+                    {% endfor %}
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                {# ====== Trailers & Extras ====== #}
+                <section class="glass-card-body" id="section-trailers">
+                    <h3 class="movie-rail-title mb-3">Trailers &amp; Extras</h3>
+                    <div class="row g-3">
+                        {% set extras = [
+                            { title: "Stellar Drift — Official Trailer",    duration: "2:14", color: "linear-gradient(135deg, #6366f1, #06b6d4)" },
+                            { title: "Behind the Drift: Building the Halcyon", duration: "8:12", color: "linear-gradient(135deg, #475569, #94a3b8)" },
+                            { title: "Cast Roundtable",                     duration: "12:04", color: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+                            { title: "The Sound of Saturn",                  duration: "5:48", color: "linear-gradient(135deg, #1e1b4b, #312e81)" }
+                        ] %}
+                        {% for x in extras %}
+                        <div class="col-sm-6">
+                            <a href="movie-streaming-watch.html" class="movie-card">
+                                <div class="movie-card-thumb" style="background: {{ x.color }};">
+                                    <span class="movie-card-thumb-title">{{ x.title }}</span>
+                                    <span class="movie-card-icon"><i data-feather="play" class="le-icon-20"></i></span>
+                                    <span class="movie-card-duration">{{ x.duration }}</span>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                {# ====== More Like This ====== #}
+                <section class="glass-card-body" id="section-similar">
+                    <h3 class="movie-rail-title mb-3">More Like This</h3>
+                    <div class="movie-grid">
+                        {% for v in similar %}
+                        <a href="movie-streaming-title.html" class="movie-card">
+                            <div class="movie-card-thumb" style="background: {{ v.color }};">
+                                <span class="movie-card-thumb-title">{{ v.title }}</span>
+                                <span class="movie-card-icon"><i data-feather="play" class="le-icon-20"></i></span>
+                                <span class="movie-card-duration">{{ v.duration }}</span>
+                            </div>
+                            <div class="movie-card-info">
+                                <h6 class="movie-card-title">{{ v.title }}</h6>
+                                <div class="movie-card-meta"><span class="movie-pill movie-pill-rating">{{ v.maturity }}</span><span>{{ v.year }}</span></div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                {# ====== Details (info dump) ====== #}
+                <section class="glass-card-body" id="section-details">
+                    <h3 class="movie-rail-title mb-3">Details</h3>
+                    <div class="movie-fact-grid">
+                        <div class="movie-fact-row"><span class="movie-fact-label">Original Release:</span><span class="movie-fact-value">{{ title.year }}</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Total Runtime:</span><span class="movie-fact-value">7h 09m</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Maturity Rating:</span><span class="movie-fact-value">{{ title.maturity }} — Some thematic elements; mild peril</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Resolution:</span><span class="movie-fact-value">Up to 4K Ultra HD · HDR10</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Audio:</span><span class="movie-fact-value">{{ title.sound }}</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Subtitles &amp; CC:</span><span class="movie-fact-value">{{ title.languages }}</span></div>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+        {# ====== Sidebar ====== #}
+        <div class="col-lg-4">
+
+            <div class="glass-card animate-fade-in-up stagger-2">
+
+                {# Trailer ====== #}
+                <section class="glass-card-body">
+                    <h6 class="movie-meta-card-title">Watch Trailer</h6>
+                    <a href="movie-streaming-watch.html" class="movie-trailer-thumb d-block" style="background: {{ title.color }};">
+                        <span class="movie-card-icon"><i data-feather="play" class="le-icon-20"></i></span>
+                        <span class="movie-card-duration">2:14</span>
+                    </a>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                {# Cast list ====== #}
+                <section class="glass-card-body">
+                    <h6 class="movie-meta-card-title">Cast &amp; Crew</h6>
+                    <div class="movie-cast-row">
+                        {% for c in cast %}
+                        <div class="movie-cast-item">
+                            <span class="movie-cast-avatar" style="background: {{ c.color }};">{{ c.initials }}</span>
+                            <div>
+                                <h6 class="movie-cast-name">{{ c.name }}</h6>
+                                <span class="movie-cast-role">{{ c.role }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                {# Quick facts ====== #}
+                <section class="glass-card-body">
+                    <h6 class="movie-meta-card-title">Quick Facts</h6>
+                    <div class="d-flex flex-column gap-2">
+                        <div class="movie-fact-row"><span class="movie-fact-label">Episodes:</span><span class="movie-fact-value">8</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Avg. Length:</span><span class="movie-fact-value">53 min</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Status:</span><span class="movie-fact-value">Renewed for S2</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Awards:</span><span class="movie-fact-value">4 nominations</span></div>
+                        <div class="movie-fact-row"><span class="movie-fact-label">Country:</span><span class="movie-fact-value">United States</span></div>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root }}js/apps/movie-streaming.js"></script>
+{% endblock %}

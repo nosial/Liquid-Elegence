@@ -1,0 +1,23 @@
+/* ── Glass Card ── */
+
+.glass-card {
+  box-shadow:
+    var(--le-glass-shadow),
+    var(--le-inner-glow);
+}
+
+/* ::before is already handled by glass/_card.scss — no override needed here */
+
+.glass-card:hover::before {
+  opacity: 0.65;
+}
+
+[data-theme="dark"] .glass-card {
+  box-shadow:
+    var(--le-glass-shadow),
+    var(--le-inner-glow);
+}
+
+/* Metric cards intentionally have no extra glass-language decoration —
+   they share the standard `.glass-card` surface and hover behaviour so
+   they remain visually consistent with the rest of the system. */

@@ -1,0 +1,52 @@
+/* =========================================================================
+   26. FORM CONTROLS (Bootstrap override — liquid focus)
+   ========================================================================= */
+
+.form-control,
+.form-select {
+    border-radius: var(--le-radius-sm);
+    background-color: var(--le-control-bg);
+    border-color: var(--le-control-border);
+    box-shadow: var(--le-control-shadow);
+    transition:
+        border-color 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+        box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+        background-color 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.form-control:hover,
+.form-select:hover {
+    border-color: rgba(var(--le-primary-rgb), 0.22);
+    background-color: var(--le-control-bg-hover);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background-color: rgba(var(--le-primary-rgb), 0.12);
+    border-color: rgba(var(--le-primary-rgb), 0.55);
+    box-shadow:
+        0 0 0 3px rgba(var(--le-primary-rgb), 0.16),
+        0 0 24px rgba(var(--le-primary-rgb), 0.10),
+        var(--le-inner-glow);
+}
+
+.form-check-input {
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-check-input:checked {
+    background-color: rgba(var(--le-primary-rgb), 0.22);
+    border-color: rgba(var(--le-primary-rgb), 0.36);
+    box-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.18);
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.16);
+    border-color: rgba(var(--le-primary-rgb), 0.42);
+}
+
+.form-switch .form-check-input:checked {
+    background-color: rgba(var(--le-primary-rgb), 0.24);
+    border-color: rgba(var(--le-primary-rgb), 0.36);
+    box-shadow: 0 0 18px rgba(var(--le-primary-rgb), 0.20);
+}

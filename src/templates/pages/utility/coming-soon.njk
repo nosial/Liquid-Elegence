@@ -1,0 +1,166 @@
+{% set root = "../../" %}
+{% extends "layouts/error.njk" %}
+
+{% block body_attrs %} class="error-page page-coming-soon"{% endblock %}
+
+{% block body %}
+<div class="mesh-bg"></div>
+    <div class="floating-shapes">
+        <div class="glass-shape"></div>
+        <div class="glass-shape"></div>
+        <div class="glass-shape"></div>
+        <div class="glass-shape"></div>
+        <div class="glass-shape"></div>
+    </div>
+
+    <div class="page-content">
+        <div class="brand"><span>◆</span> Liquid Elegance</div>
+
+        <h1 class="main-heading">Something Amazing Is Coming</h1>
+        <p class="main-subtitle">We're working hard to bring you an incredible new experience.</p>
+
+        <div class="countdown-row">
+            <div class="countdown-card">
+                <div class="countdown-number" id="cd-days">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-card">
+                <div class="countdown-number" id="cd-hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-card">
+                <div class="countdown-number" id="cd-minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-card">
+                <div class="countdown-number" id="cd-seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div class="feature-title">Modern Dashboard</div>
+                <div class="feature-desc">Clean, responsive interface with real-time data visualizations.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                </div>
+                <div class="feature-title">Advanced Analytics</div>
+                <div class="feature-desc">Deep insights with customizable reports and export options.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                </div>
+                <div class="feature-title">Smart Automation</div>
+                <div class="feature-desc">Automate workflows with intelligent triggers and actions.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div class="feature-title">Team Collaboration</div>
+                <div class="feature-desc">Real-time collaboration with role-based access control.</div>
+            </div>
+        </div>
+
+        <div class="subscribe-section">
+            <p>Get notified when we launch</p>
+            <form class="subscribe-form" id="subscribeForm" onsubmit="return false;">
+                <input type="email" placeholder="Enter your email address" id="emailInput" required>
+                <button type="submit" class="btn-glass" id="subscribeBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    Notify Me
+                </button>
+            </form>
+            <div class="success-msg" id="successMsg">🎉 You're on the list! We'll notify you when we launch.</div>
+        </div>
+
+        <div class="social-links">
+            <a href="javascript:void(0)" class="social-link" title="Twitter" aria-label="Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+            <a href="javascript:void(0)" class="social-link" title="GitHub" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </a>
+            <a href="javascript:void(0)" class="social-link" title="LinkedIn" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="javascript:void(0)" class="social-link" title="Instagram" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+        </div>
+
+        <div class="progress-section">
+            <div class="progress-label">
+                <span>Development Progress</span>
+                <span>78%</span>
+            </div>
+            <div class="progress-bar-track">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+        (function() {
+            var target = new Date();
+            target.setDate(target.getDate() + 30);
+
+            var daysEl = document.getElementById('cd-days');
+            var hoursEl = document.getElementById('cd-hours');
+            var minutesEl = document.getElementById('cd-minutes');
+            var secondsEl = document.getElementById('cd-seconds');
+
+            function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+            function animateFlip(el, newVal) {
+                if (el.textContent !== newVal) {
+                    el.textContent = newVal;
+                    el.classList.remove('flip');
+                    void el.offsetWidth;
+                    el.classList.add('flip');
+                }
+            }
+
+            function updateCountdown() {
+                var now = new Date();
+                var diff = target - now;
+                if (diff <= 0) {
+                    daysEl.textContent = '00';
+                    hoursEl.textContent = '00';
+                    minutesEl.textContent = '00';
+                    secondsEl.textContent = '00';
+                    return;
+                }
+                var d = Math.floor(diff / 86400000);
+                var h = Math.floor((diff % 86400000) / 3600000);
+                var m = Math.floor((diff % 3600000) / 60000);
+                var s = Math.floor((diff % 60000) / 1000);
+
+                animateFlip(daysEl, pad(d));
+                animateFlip(hoursEl, pad(h));
+                animateFlip(minutesEl, pad(m));
+                animateFlip(secondsEl, pad(s));
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            document.getElementById('subscribeBtn').addEventListener('click', function() {
+                var email = document.getElementById('emailInput').value;
+                if (email && email.indexOf('@') > 0) {
+                    document.getElementById('successMsg').classList.add('show');
+                    document.getElementById('emailInput').value = '';
+                }
+            });
+        })();
+</script>
+{% endblock %}

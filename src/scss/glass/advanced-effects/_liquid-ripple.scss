@@ -1,0 +1,122 @@
+/* =============================================================================
+   §20.5 — Liquid Ripple Effect
+   ============================================================================= */
+
+@keyframes glass-ripple-expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.35;
+  }
+  60% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+.glass-ripple {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.glass-ripple::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.30) 0%,
+    rgba(255, 255, 255, 0.15) 40%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: none;
+}
+
+.glass-ripple:active::after {
+  animation: glass-ripple-expand 0.6s ease-out forwards;
+}
+
+[data-theme="dark"] .glass-ripple::after {
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    transparent 70%
+  );
+}
+
+
+/* =============================================================================
+   §20.6 — Prismatic Edge Effect
+   ============================================================================= */
+
+/*
+ * Rainbow/prismatic edge lighting — light hitting the edge of glass creates
+ * spectral dispersion. Uses border-image with a rainbow gradient.
+ * Use .glass-prismatic-edge to avoid collision with existing .glass-prismatic.
+ */
+.glass-prismatic-edge {
+  border: 1px solid transparent;
+  border-image: linear-gradient(
+    135deg,
+    rgba(255, 0, 0, 0.12) 0%,
+    rgba(255, 140, 0, 0.12) 16%,
+    rgba(255, 255, 0, 0.10) 32%,
+    rgba(0, 220, 80, 0.10) 48%,
+    rgba(0, 120, 255, 0.12) 64%,
+    rgba(130, 0, 255, 0.12) 80%,
+    rgba(255, 0, 180, 0.10) 100%
+  ) 1;
+  transition: border-image 0.4s ease;
+}
+
+.glass-prismatic-edge:hover {
+  border-image: linear-gradient(
+    135deg,
+    rgba(255, 0, 0, 0.22) 0%,
+    rgba(255, 140, 0, 0.22) 16%,
+    rgba(255, 255, 0, 0.18) 32%,
+    rgba(0, 220, 80, 0.18) 48%,
+    rgba(0, 120, 255, 0.22) 64%,
+    rgba(130, 0, 255, 0.22) 80%,
+    rgba(255, 0, 180, 0.18) 100%
+  ) 1;
+}
+
+@keyframes prismatic-rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Animated variant — slowly rotates the hue of the prismatic border */
+.glass-prismatic-edge-animated {
+  animation: prismatic-rotate 12s linear infinite;
+}
+
+[data-theme="dark"] .glass-prismatic-edge {
+  border-image: linear-gradient(
+    135deg,
+    rgba(255, 80, 80, 0.18) 0%,
+    rgba(255, 180, 60, 0.16) 16%,
+    rgba(255, 255, 80, 0.14) 32%,
+    rgba(80, 255, 140, 0.14) 48%,
+    rgba(80, 160, 255, 0.18) 64%,
+    rgba(170, 80, 255, 0.18) 80%,
+    rgba(255, 80, 200, 0.14) 100%
+  ) 1;
+}

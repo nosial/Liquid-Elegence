@@ -1,0 +1,126 @@
+/* ============================================================
+   LiquidAdmin — Coral Theme
+   Applied via [data-theme-color="coral"]
+   Warm coral primary with a coral-to-peach mesh gradient.
+   ============================================================ */
+
+[data-theme-color="coral"] {
+    /* ── Primary palette ── */
+    --le-primary:       #ef6461;
+    --le-primary-rgb:   239, 100, 97;
+    --bs-primary:       var(--le-primary);
+    --bs-primary-rgb:   var(--le-primary-rgb);
+    --le-primary-light: #f7a1a0;
+    --le-primary-dark:  #d9443f;
+
+    /* ── Secondary accent ── */
+    --le-secondary:     #f7a072;
+    --le-secondary-rgb: 247, 160, 114;
+
+    /* ── Mesh background gradient ── */
+    --le-gradient-start: #ef6461;
+    --le-gradient-mid:   #f7a072;
+    --le-gradient-end:   #f9c784;
+
+    /* ── Mesh background accents ── */
+    --le-mesh-1-rgb: 239, 100, 97;    /* coral — primary */
+    --le-mesh-2-rgb: 247, 160, 114;   /* peach — secondary */
+    --le-mesh-3-rgb: 249, 199, 132;   /* warm gold — light accent */
+    --le-mesh-4-rgb: 244, 114, 128;   /* salmon — warm accent */
+    --le-mesh-5-rgb: 230, 76, 101;    /* deep coral — deep accent */
+
+    /* ── Glass surfaces ── */
+    --le-glass-tint:       rgba(239, 100, 97, 0.06);
+    --le-glass-border:     rgba(239, 100, 97, 0.20);
+    --le-glass-shadow:     rgba(239, 100, 97, 0.10);
+    --le-glass-reflection: rgba(255, 255, 255, 0.46);
+
+    /* ── Interactive glow ── */
+    --le-accent-glow: rgba(239, 100, 97, 0.35);
+
+    /* ── Layout glass backgrounds ── */
+    --le-sidebar-bg: rgba(239, 100, 97, 0.05);
+    --le-topbar-bg:  rgba(239, 100, 97, 0.04);
+
+    /* ── Semantic colours ── */
+    --le-success: #10b981;
+    --le-warning: #f59e0b;
+    --le-danger:  #dc2626;
+    --le-info:    #06b6d4;
+
+    /* ── Chart colors (theme-aware) ── */
+    --le-chart-primary: var(--le-primary);
+    --le-chart-secondary: var(--le-secondary);
+
+    /* ── Form styling ── */
+    --le-input-bg: rgba(255, 255, 255, 0.65);
+    --le-input-border: rgba(0, 0, 0, 0.1);
+    --le-input-focus-border: rgba(var(--le-primary-rgb), 0.5);
+    --le-input-focus-shadow: rgba(var(--le-primary-rgb), 0.12);
+
+    /* ── Card specifics ── */
+    --le-card-bg: var(--le-glass-bg);
+    --le-card-header-bg: rgba(var(--le-primary-rgb), 0.04);
+    --le-card-hover-shadow: 0 0 20px rgba(var(--le-primary-rgb), 0.08);
+
+    /* ── Badge/tag colors ── */
+    --le-badge-bg: rgba(var(--le-primary-rgb), 0.12);
+    --le-badge-color: var(--le-primary);
+
+    /* ── Theme component bindings ── */
+    --le-focus-ring: rgba(239, 100, 97, 0.35);
+    --le-highlight-bg: rgba(239, 100, 97, 0.08);
+    --le-highlight-bg-strong: rgba(239, 100, 97, 0.16);
+    --le-divider-color: rgba(239, 100, 97, 0.08);
+    --le-scrollbar-thumb: rgba(239, 100, 97, 0.22);
+    --le-scrollbar-track: rgba(239, 100, 97, 0.04);
+    --le-table-stripe-bg: rgba(239, 100, 97, 0.025);
+    --le-progress-bar-bg: linear-gradient(135deg, #ef6461, #f7a072);
+    --le-sidebar-active-indicator: linear-gradient(180deg, rgba(239, 100, 97, 0.3) 0%, #ef6461 50%, rgba(247, 160, 114, 0.3) 100%);
+}
+
+/* ── Dark-mode variant ── */
+[data-theme="dark"][data-theme-color="coral"] {
+    --le-gradient-start: #7f1d1d;
+    --le-gradient-mid:   #92400e;
+    --le-gradient-end:   #78350f;
+
+    --le-mesh-1-rgb: 239, 100, 97;
+    --le-mesh-2-rgb: 247, 160, 114;
+    --le-mesh-3-rgb: 249, 199, 132;
+    --le-mesh-4-rgb: 244, 114, 128;
+    --le-mesh-5-rgb: 230, 76, 101;
+
+    --le-glass-tint:       rgba(239, 100, 97, 0.12);
+    --le-glass-border:     rgba(239, 100, 97, 0.24);
+    --le-glass-shadow:     rgba(0, 0, 0, 0.18);
+    --le-glass-reflection: rgba(255, 255, 255, 0.08);
+
+    --le-accent-glow: rgba(239, 100, 97, 0.48);
+
+    --le-sidebar-bg: rgba(239, 100, 97, 0.08);
+    --le-topbar-bg:  rgba(239, 100, 97, 0.06);
+
+    --le-input-bg: rgba(255, 255, 255, 0.06);
+    --le-input-border: rgba(255, 255, 255, 0.1);
+    --le-input-focus-border: rgba(var(--le-primary-rgb), 0.6);
+    --le-input-focus-shadow: rgba(var(--le-primary-rgb), 0.2);
+
+    --le-card-bg: var(--le-glass-bg);
+    --le-card-header-bg: rgba(var(--le-primary-rgb), 0.08);
+    --le-card-hover-shadow: 0 0 24px rgba(var(--le-primary-rgb), 0.15);
+
+    --le-badge-bg: rgba(var(--le-primary-rgb), 0.2);
+    --le-badge-color: var(--le-primary-light);
+
+    /* ── Theme component bindings ── */
+    --le-focus-ring: rgba(239, 100, 97, 0.50);
+    --le-highlight-bg: rgba(239, 100, 97, 0.14);
+    --le-highlight-bg-strong: rgba(239, 100, 97, 0.24);
+    --le-divider-color: rgba(239, 100, 97, 0.10);
+    --le-scrollbar-thumb: rgba(239, 100, 97, 0.28);
+    --le-scrollbar-track: rgba(239, 100, 97, 0.05);
+    --le-table-stripe-bg: rgba(239, 100, 97, 0.04);
+    --le-progress-bar-bg: linear-gradient(135deg, #ef6461, #f7a072);
+    --le-sidebar-active-indicator: linear-gradient(180deg, rgba(239, 100, 97, 0.3) 0%, #ef6461 50%, rgba(247, 160, 114, 0.3) 100%);
+}

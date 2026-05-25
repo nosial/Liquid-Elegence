@@ -1,0 +1,272 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="chirp-feed.html">Chirp</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Post</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+
+        <!-- Main Post Column -->
+        <div class="col-lg-8 chirp-main-col">
+
+            <div class="glass-card">
+
+                <!-- Post Header -->
+                <div class="le-pad-inset-bordered">
+                    <h5 class="fw-bold mb-0 le-fs-4xl">Post</h5>
+                </div>
+
+                <!-- Main Tweet -->
+                <div class="chirp-thread-tweet">
+                    <div class="chirp-tweet-avatar le-bg-gradient-primary">AC</div>
+                    <div class="chirp-tweet-content">
+                        <div class="chirp-tweet-header">
+                            <a href="chirp-profile.html" class="chirp-tweet-name">Alice Chen</a>
+                            <span class="chirp-tweet-verified" title="Verified"><i data-feather="check-circle" class="le-icon-14"></i></span>
+                            <span class="chirp-tweet-handle">@alice_codes</span>
+                        </div>
+                        <div class="chirp-tweet-body">
+                            Just shipped a new feature using vanilla web components. No framework, no build step, just the platform. The future is here and it's beautiful. 🚀<br><br>Sometimes the best tool is the one you already have.<br><br>Here's what I learned building our entire design system with web components:<br><br>1. Shadow DOM gives you true encapsulation — no more CSS leaking<br>2. Custom elements work everywhere — React, Vue, Svelte, vanilla<br>3. The DX has dramatically improved with tools like Lit<br>4. Performance is outstanding — no virtual DOM diffing needed<br><br>The web platform has come so far. Stop reaching for a framework by default. Evaluate your needs first. #WebComponents #VanillaJS
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post Timestamp & Info -->
+                <div class="chirp-thread-meta">
+                    <span>2:34 PM</span>
+                    <span>&middot;</span>
+                    <span>Apr 5, 2026</span>
+                    <span>&middot;</span>
+                    <span><strong class="le-text-body">24.5K</strong> Views</span>
+                </div>
+
+                <!-- Post Stats -->
+                <div class="chirp-thread-stats">
+                    <div>
+                        <span class="chirp-thread-stat-value">234</span>
+                        <span class="chirp-thread-stat-label"> Reposts</span>
+                    </div>
+                    <div>
+                        <span class="chirp-thread-stat-value">47</span>
+                        <span class="chirp-thread-stat-label"> Quotes</span>
+                    </div>
+                    <div>
+                        <span class="chirp-thread-stat-value">1,892</span>
+                        <span class="chirp-thread-stat-label"> Likes</span>
+                    </div>
+                    <div>
+                        <span class="chirp-thread-stat-value">89</span>
+                        <span class="chirp-thread-stat-label"> Bookmarks</span>
+                    </div>
+                </div>
+
+                <!-- Post Actions -->
+                <div class="chirp-thread-actions">
+                    <button class="chirp-action chirp-action-reply" title="Reply"><i data-feather="message-circle" class="le-icon-20"></i></button>
+                    <button class="chirp-action chirp-action-retweet" title="Repost"><i data-feather="repeat" class="le-icon-20"></i></button>
+                    <button class="chirp-action chirp-action-like active" title="Like"><i data-feather="heart" class="le-icon-20"></i></button>
+                    <button class="chirp-action chirp-action-bookmark" title="Bookmark"><i data-feather="bookmark" class="le-icon-20"></i></button>
+                    <button class="chirp-action chirp-action-share" title="Share"><i data-feather="upload" class="le-icon-20"></i></button>
+                </div>
+
+                <!-- Reply Compose -->
+                <div class="chirp-compose">
+                    <div class="chirp-tweet-avatar le-avatar-36 le-avatar-gradient le-fs-base">JD</div>
+                    <div class="chirp-compose-body">
+                        <div class="le-meta-text">
+                            Replying to <a href="chirp-profile.html" class="le-link-primary">@alice_codes</a>
+                        </div>
+                        <textarea class="chirp-compose-input le-min-w-36 le-fs-2xl" placeholder="Post your reply" rows="1"></textarea>
+                        <div class="chirp-compose-toolbar">
+                            <div class="chirp-compose-tools">
+                                <button class="chirp-compose-tool" title="Media"><i data-feather="image" class="le-icon-16"></i></button>
+                                <button class="chirp-compose-tool" title="GIF"><i data-feather="film" class="le-icon-16"></i></button>
+                                <button class="chirp-compose-tool" title="Emoji"><i data-feather="smile" class="le-icon-16"></i></button>
+                            </div>
+                            <button class="btn btn-primary btn-sm le-pill-sm">Reply</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Replies -->
+                {% set replies = [
+                    {
+                        initials: "MR", name: "Marcus Rivera", handle: "@marcusdev", time: "1h",
+                        verified: false,
+                        color: "linear-gradient(135deg, #f59e0b, #d97706)",
+                        body: "This is the way. We migrated our design system to web components last year and it was the best decision we ever made. Works in every framework our teams use.",
+                        replies: 5, retweets: 23, likes: 189, views: "2.1K"
+                    },
+                    {
+                        initials: "SK", name: "Sarah Kim", handle: "@sarahdesigns", time: "1h",
+                        verified: true,
+                        color: "linear-gradient(135deg, #ec4899, #be185d)",
+                        body: "Totally agree on shadow DOM encapsulation! We had so many CSS conflicts before switching. The migration was painful but worth every minute.\n\nOne question though — how do you handle theming across components?",
+                        replies: 12, retweets: 8, likes: 94, views: "1.4K"
+                    },
+                    {
+                        initials: "JW", name: "James Wright", handle: "@jwright_dev", time: "52m",
+                        verified: false,
+                        color: "linear-gradient(135deg, var(--le-success), #059669)",
+                        body: "Counter-point: frameworks provide structure and conventions that help teams move faster. Web components are great for leaf components, but I'd still use a framework for application architecture.\n\nDifferent tools for different problems.",
+                        replies: 34, retweets: 67, likes: 345, views: "5.6K"
+                    },
+                    {
+                        initials: "LP", name: "Luna Park", handle: "@lunapark_ui", time: "45m",
+                        verified: true,
+                        color: "linear-gradient(135deg, #6366f1, #4f46e5)",
+                        body: "@jwright_dev Fair point! I think the sweet spot is using a lightweight framework like Lit for component authoring while keeping the app shell simple. Best of both worlds.",
+                        replies: 8, retweets: 15, likes: 167, views: "1.8K"
+                    },
+                    {
+                        initials: "DK", name: "David Kowalski", handle: "@dkowalski", time: "30m",
+                        verified: false,
+                        color: "linear-gradient(135deg, #dea584, #b7410e)",
+                        body: "Been following your web components journey for a while now. This thread is gold. Saved and sharing with my team on Monday. 🙌\n\nWould love to see a blog post with more details on the DX improvements you mentioned.",
+                        replies: 2, retweets: 5, likes: 78, views: "890"
+                    },
+                    {
+                        initials: "EB", name: "Emma Brooks", handle: "@emma_codes", time: "18m",
+                        verified: true,
+                        color: "linear-gradient(135deg, #06b6d4, #0284c7)",
+                        body: "The performance argument is so underrated. We benchmarked our web component library against the React equivalent:\n\n• 3x faster initial render\n• 40% smaller bundle size\n• No hydration needed\n\nNumbers don't lie. The platform is ready.",
+                        replies: 45, retweets: 234, likes: 1203, views: "18.9K"
+                    },
+                    {
+                        initials: "NP", name: "Nikolai Petrov", handle: "@nikolai_p", time: "8m",
+                        verified: false,
+                        color: "linear-gradient(135deg, #ef4444, #dc2626)",
+                        body: "Great thread! I'm curious about testing though. What's your testing strategy for web components? We've been using @open-wc/testing but it can be a bit finicky with shadow DOM queries.",
+                        replies: 3, retweets: 2, likes: 34, views: "456"
+                    }
+                ] %}
+
+                {% for reply in replies %}
+                <div class="chirp-tweet animate-fade-in-up stagger-{{ loop.index if loop.index <= 8 else 8 }}">
+                    <div class="chirp-tweet-avatar" style="background: {{ reply.color }};">{{ reply.initials }}</div>
+                    <div class="chirp-tweet-content">
+                        <div class="chirp-tweet-header">
+                            <a href="chirp-profile.html" class="chirp-tweet-name">{{ reply.name }}</a>
+                            {% if reply.verified %}
+                            <span class="chirp-tweet-verified" title="Verified"><i data-feather="check-circle" class="le-icon-14"></i></span>
+                            {% endif %}
+                            <span class="chirp-tweet-handle">{{ reply.handle }}</span>
+                            <span class="chirp-tweet-dot">&middot;</span>
+                            <span class="chirp-tweet-time">{{ reply.time }}</span>
+                        </div>
+                        <div class="le-meta-text-sm">
+                            Replying to <a href="chirp-profile.html" class="le-link-primary">@alice_codes</a>
+                        </div>
+                        <div class="chirp-tweet-body">{{ reply.body | replace("\n", "<br>") | safe }}</div>
+                        <div class="chirp-tweet-actions">
+                            <button class="chirp-action chirp-action-reply" title="Reply"><i data-feather="message-circle" class="le-icon-16"></i> {{ reply.replies }}</button>
+                            <button class="chirp-action chirp-action-retweet" title="Repost"><i data-feather="repeat" class="le-icon-16"></i> {{ reply.retweets }}</button>
+                            <button class="chirp-action chirp-action-like" title="Like"><i data-feather="heart" class="le-icon-16"></i> {{ reply.likes }}</button>
+                            <button class="chirp-action chirp-action-share" title="Views"><i data-feather="bar-chart-2" class="le-icon-16"></i> {{ reply.views }}</button>
+                            <button class="chirp-action chirp-action-bookmark" title="Bookmark"><i data-feather="bookmark" class="le-icon-16"></i></button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Sidebar backdrop (mobile) -->
+        <div class="chirp-sidebar-backdrop" id="chirpSidebarBackdrop"></div>
+
+        <!-- Right Sidebar Column -->
+        <div class="col-lg-4 chirp-sidebar-col" id="chirpSidebar">
+
+            <!-- Mobile header with close button -->
+            <div class="chirp-sidebar-mobile-header">
+                <span class="chirp-sidebar-mobile-title">Explore</span>
+                <button class="chirp-sidebar-close" id="chirpSidebarClose" aria-label="Close sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <!-- Search -->
+            <div class="chirp-search mb-3">
+                <i data-feather="search" class="chirp-search-icon le-icon-16"></i>
+                <input type="text" class="chirp-search-input" placeholder="Search Chirp">
+            </div>
+
+            <!-- Author Card + Related Trends -->
+            <div class="glass-card mb-3 stagger-2">
+
+                <section class="glass-card-body">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="chirp-tweet-avatar le-avatar-48 le-avatar-gradient">AC</div>
+                        <div class="flex-grow-1">
+                            <a href="chirp-profile.html" class="chirp-tweet-name d-flex align-items-center gap-1">
+                                Alice Chen
+                                <span class="chirp-tweet-verified"><i data-feather="check-circle" class="le-icon-14"></i></span>
+                            </a>
+                            <span class="chirp-tweet-handle">@alice_codes</span>
+                        </div>
+                        <button class="btn-chirp-follow">Follow</button>
+                    </div>
+                    <p class="le-post-body-spaced">Full-stack developer passionate about web standards and open source. Building tools that make the web better. 🌐</p>
+                    <div class="d-flex gap-3 le-fs-ui">
+                        <div><strong>342</strong> <span class="text-muted">Following</span></div>
+                        <div><strong>12.4K</strong> <span class="text-muted">Followers</span></div>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Related Trends -->
+                <section class="chirp-widget">
+                    <h5 class="chirp-widget-title">Related trends</h5>
+                    {% set relatedTrends = [
+                        { category: "Technology", name: "#WebComponents", count: "12.4K posts" },
+                        { category: "Programming", name: "#VanillaJS", count: "5.6K posts" },
+                        { category: "Technology", name: "Shadow DOM", count: "2.1K posts" }
+                    ] %}
+                    {% for trend in relatedTrends %}
+                    <div class="chirp-trend-item">
+                        <div>
+                            <div class="chirp-trend-category">{{ trend.category }}</div>
+                            <div class="chirp-trend-name">{{ trend.name }}</div>
+                            <div class="chirp-trend-count">{{ trend.count }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <a href="javascript:void(0)" class="chirp-widget-more">Show more</a>
+                </section>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="chirp-footer-links">
+                <a href="javascript:void(0)">Terms</a>
+                <a href="javascript:void(0)">Privacy</a>
+                <a href="javascript:void(0)">Cookies</a>
+                <a href="javascript:void(0)">Accessibility</a>
+                <span>© 2022-2026 Nosial</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Floating sidebar toggle (mobile) -->
+    <button class="chirp-sidebar-toggle-fab" id="chirpSidebarToggle" aria-label="Show sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </button>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/chirp.js"></script>
+{% endblock %}

@@ -1,0 +1,75 @@
+/* ---------------------------------------------------------------------------
+   Search Box
+   --------------------------------------------------------------------------- */
+.chirp-search {
+  position: relative;
+}
+
+.chirp-search-input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  border: 1px solid var(--le-glass-border);
+  border-radius: var(--le-radius-full);
+  background: var(--le-glass-bg-subtle);
+  color: var(--le-text-primary);
+  font-size: 0.88rem;
+  outline: none;
+  transition: all var(--le-transition-fast);
+  font-family: var(--le-font-family);
+}
+
+.chirp-search-input:focus {
+  border-color: var(--le-primary);
+  background: var(--le-glass-bg);
+  box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.12);
+}
+
+.chirp-search-input::placeholder {
+  color: var(--le-text-muted);
+}
+
+.chirp-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--le-text-muted);
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   Pill Button (Follow / Following)
+   --------------------------------------------------------------------------- */
+.btn-chirp-follow {
+  padding: 6px 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--le-radius-full);
+  border: 1px solid var(--le-glass-border-strong);
+  background: var(--le-text-primary);
+  color: var(--le-text-inverse);
+  cursor: pointer;
+  transition: all var(--le-transition-fast);
+}
+
+.btn-chirp-follow:hover {
+  opacity: 0.85;
+}
+
+.btn-chirp-following {
+  padding: 6px 18px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--le-radius-full);
+  border: 1px solid var(--le-glass-border-strong);
+  background: transparent;
+  color: var(--le-text-primary);
+  cursor: pointer;
+  transition: all var(--le-transition-fast);
+}
+
+.btn-chirp-following:hover {
+  border-color: var(--le-danger);
+  color: var(--le-danger);
+  background: rgba(var(--le-danger-rgb), 0.06);
+}

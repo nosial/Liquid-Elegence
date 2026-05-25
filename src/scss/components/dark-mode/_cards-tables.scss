@@ -1,0 +1,250 @@
+/* =========================================================================
+   23. DARK-MODE ADJUSTMENTS
+   ========================================================================= */
+
+[data-theme="dark"] .glass-card,
+[data-theme="dark"] .card {
+    background:
+      radial-gradient(
+        ellipse 120% 90% at 14% 0%,
+        rgba(var(--le-primary-rgb), 0.14) 0%,
+        rgba(var(--le-primary-rgb), 0.05) 26%,
+        transparent 58%
+      ),
+      radial-gradient(
+        ellipse 90% 80% at 88% 100%,
+        rgba(var(--le-secondary-rgb), 0.13) 0%,
+        transparent 62%
+      ),
+      linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.07) 0%,
+        rgba(255, 255, 255, 0.025) 40%,
+        rgba(255, 255, 255, 0.045) 100%
+      ),
+      rgba(var(--le-dark-surface-rgb), 0.12);
+    border-color: rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+}
+
+[data-theme="dark"] .glass-card::before {
+    inset: 0;
+    height: auto;
+    border-radius: inherit;
+    background: linear-gradient(
+        172deg,
+        rgba(255, 255, 255, 0.03) 0%,
+        transparent 20%,
+        transparent 82%,
+        rgba(255, 255, 255, 0.025) 100%
+      ),
+      radial-gradient(
+        ellipse 68% 42% at 26% 10%,
+        rgba(255, 255, 255, 0.08) 0%,
+        rgba(255, 255, 255, 0.025) 34%,
+        transparent 66%
+      ),
+      radial-gradient(
+        ellipse 42% 30% at 78% 88%,
+        rgba(var(--le-primary-rgb), 0.045) 0%,
+        transparent 62%
+      );
+    opacity: 0.28;
+}
+
+[data-theme="dark"] .glass-card:hover::before {
+    opacity: 0.34;
+    background: linear-gradient(
+        172deg,
+        rgba(255, 255, 255, 0.04) 0%,
+        transparent 18%,
+        transparent 80%,
+        rgba(255, 255, 255, 0.03) 100%
+      ),
+      radial-gradient(
+        ellipse 70% 44% at 26% 10%,
+        rgba(255, 255, 255, 0.10) 0%,
+        rgba(255, 255, 255, 0.03) 34%,
+        transparent 66%
+      ),
+      radial-gradient(
+        ellipse 44% 32% at 78% 88%,
+        rgba(var(--le-primary-rgb), 0.055) 0%,
+        transparent 62%
+      );
+}
+
+[data-theme="dark"] .glass-card-header::after {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.05) 18%,
+        rgba(var(--le-primary-rgb), 0.12) 50%,
+        rgba(255, 255, 255, 0.05) 82%,
+        transparent
+    );
+    opacity: 0.5;
+}
+
+[data-theme="dark"] .glass-card-header {
+    border-bottom-color: rgba(255, 255, 255, 0.07);
+}
+
+[data-theme="dark"] .glass-card:hover,
+[data-theme="dark"] .card:hover {
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.34), 0 0 0 1px rgba(var(--le-primary-rgb), 0.08);
+    filter: brightness(1.01);
+}
+
+/* Dark glass shimmer on buttons */
+[data-theme="dark"] .btn-glass::after,
+[data-theme="dark"] .btn-glass-primary::after,
+[data-theme="dark"] .btn-glass-outline::after {
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.07) 35%,
+        rgba(255, 255, 255, 0.12) 50%,
+        rgba(255, 255, 255, 0.07) 65%,
+        transparent 100%
+    );
+}
+
+/* Dark mode table zebra striping */
+[data-theme="dark"] .table-glass tbody tr:nth-child(even),
+[data-theme="dark"] .glass-card .table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.018);
+}
+
+/* Dark glass backgrounds */
+[data-theme="dark"] .glass-table-wrapper,
+[data-theme="dark"] .table-glass-wrapper,
+[data-theme="dark"] .crud-toolbar,
+[data-theme="dark"] .toolbar-glass {
+    background: rgba(var(--le-dark-surface-rgb), 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .table-glass,
+[data-theme="dark"] .glass-card .table {
+    color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .table-glass thead th,
+[data-theme="dark"] .glass-card .table thead th {
+    background: rgba(var(--le-dark-surface-rgb), 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: var(--le-text-secondary);
+}
+
+[data-theme="dark"] .table-glass thead th:hover {
+    background: rgba(255, 255, 255, 0.07) !important;
+}
+
+[data-theme="dark"] .table-glass tbody td,
+[data-theme="dark"] .glass-card .table tbody td {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .table-glass tbody tr:hover,
+[data-theme="dark"] .glass-card .table-hover tbody tr:hover {
+    background: rgba(255, 255, 255, 0.035) !important;
+}
+
+[data-theme="dark"] .pagination-wrapper {
+    background: rgba(var(--le-dark-surface-rgb), 0.4) !important;
+    color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .modal-content.glass-modal,
+[data-theme="dark"] .modal .glass-modal {
+    background: rgba(var(--le-dark-surface-rgb), 0.72) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .toolbar-glass .form-control,
+[data-theme="dark"] .toolbar-glass .form-select,
+[data-theme="dark"] .crud-toolbar .form-control,
+[data-theme="dark"] .crud-toolbar .form-select,
+[data-theme="dark"] .toolbar-glass .search-box input {
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .toolbar-glass .form-control:focus,
+[data-theme="dark"] .toolbar-glass .form-select:focus,
+[data-theme="dark"] .crud-toolbar .form-control:focus {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(var(--le-primary-rgb), 0.4) !important;
+}
+
+/* Dark mode badges in tables */
+[data-theme="dark"] .badge-active {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+}
+
+[data-theme="dark"] .badge-inactive {
+    background: rgba(107, 114, 128, 0.2);
+    color: #9ca3af;
+}
+
+/* Dark mode mobile cards */
+[data-theme="dark"] .mobile-user-card {
+    background: rgba(var(--le-dark-surface-rgb), 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: var(--le-text-primary);
+}
+
+/* Dark mode glass-card overrides for pages with inline styles */
+[data-theme="dark"] .glass-card {
+    background:
+      radial-gradient(
+        ellipse 120% 90% at 14% 0%,
+        rgba(var(--le-primary-rgb), 0.14) 0%,
+        rgba(var(--le-primary-rgb), 0.05) 26%,
+        transparent 58%
+      ),
+      radial-gradient(
+        ellipse 90% 80% at 88% 100%,
+        rgba(var(--le-secondary-rgb), 0.13) 0%,
+        transparent 62%
+      ),
+      linear-gradient(
+        160deg,
+        rgba(255, 255, 255, 0.07) 0%,
+        rgba(255, 255, 255, 0.025) 40%,
+        rgba(255, 255, 255, 0.045) 100%
+      ),
+      rgba(var(--le-dark-surface-rgb), 0.12) !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    color: var(--le-text-primary);
+    -webkit-backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness)) !important;
+    backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness)) !important;
+}
+
+/* Dark mode glass-table-wrapper overrides */
+[data-theme="dark"] .glass-table-wrapper {
+    background: rgba(var(--le-dark-surface-rgb), 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .glass-table-wrapper .table thead th {
+    background: rgba(var(--le-dark-surface-rgb), 0.4) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: var(--le-text-secondary);
+}
+
+[data-theme="dark"] .glass-table-wrapper .table tbody td {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+    color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .glass-table-wrapper .table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}

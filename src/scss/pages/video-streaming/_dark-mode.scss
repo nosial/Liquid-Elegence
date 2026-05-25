@@ -1,0 +1,23 @@
+/* Dark mode tweaks */
+
+[data-theme="dark"] {
+    .video-thumb,
+    .video-hero-thumb {
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.42);
+    }
+
+    .video-chip.is-active {
+        background: #fff;
+        color: #0b0d12;
+        border-color: #fff;
+    }
+
+    .video-subscribe-btn {
+        background: #fff;
+        color: #0b0d12;
+    }
+
+    .video-settings-menu {
+        background: rgba(15, 17, 24, 0.96);
+    }
+}

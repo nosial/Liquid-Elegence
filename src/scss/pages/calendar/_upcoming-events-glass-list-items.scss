@@ -1,0 +1,91 @@
+/* ---------------------------------------------------------------------------
+   Upcoming Events — glass list items with accent border
+   --------------------------------------------------------------------------- */
+
+.upcoming-event {
+    display: flex;
+    gap: var(--le-spacing-md);
+    padding: 0.625rem 0;
+    cursor: pointer;
+    border-radius: var(--le-radius-sm);
+    transition: all var(--le-transition-fast);
+}
+
+.upcoming-event:hover {
+    background: var(--le-glass-bg);
+    padding-left: var(--le-spacing-sm);
+    padding-right: var(--le-spacing-sm);
+    box-shadow: var(--le-shadow-xs);
+}
+
+.upcoming-event-bar {
+    width: 4px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.upcoming-event-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.upcoming-event-title {
+    font-size: 0.8125rem;
+    font-weight: var(--le-font-weight-semibold);
+    margin-bottom: 0.125rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.upcoming-event-meta {
+    font-size: var(--le-font-size-xs);
+    color: var(--le-text-muted);
+}
+
+
+/* ---------------------------------------------------------------------------
+   Calendar Filters — glass circles with colored centers
+   --------------------------------------------------------------------------- */
+
+.cal-filter-item {
+    display: flex;
+    align-items: center;
+    gap: var(--le-spacing-sm);
+    padding: 0.375rem 0;
+    cursor: pointer;
+    font-size: 0.8125rem;
+}
+
+.cal-filter-item input[type="checkbox"] {
+    display: none;
+}
+
+.cal-filter-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--le-glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--le-transition-fast);
+    flex-shrink: 0;
+}
+
+.cal-filter-item input:checked + .cal-filter-check {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.25);
+}
+
+.cal-filter-check svg {
+    width: 12px;
+    height: 12px;
+    color: var(--le-text-inverse);
+    opacity: 0;
+    transition: opacity var(--le-transition-fast);
+}
+
+.cal-filter-item input:checked + .cal-filter-check svg {
+    opacity: 1;
+}

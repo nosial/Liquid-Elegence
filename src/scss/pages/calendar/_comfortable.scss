@@ -1,0 +1,74 @@
+/* ── Comfortable ── */
+[data-density="comfortable"] {
+
+    /* Layout */
+    .calendar-layout  { gap: var(--le-spacing-xl); }
+    .calendar-sidebar { width: 320px; }
+
+    /* Create-event button */
+    .btn-create-event {
+        gap: var(--le-spacing-md);
+        padding: 1rem 1.25rem;
+        font-size: var(--le-font-size-base);
+    }
+
+    /* Mini calendar */
+    .mini-cal-header    { margin-bottom: var(--le-spacing-lg); }
+    .mini-cal-header h6 { font-size: var(--le-font-size-base); }
+    .mini-cal-nav       { padding: var(--le-spacing-sm); }
+    .mini-cal-grid      { gap: 3px; }
+    .mini-cal-day-name  { font-size: var(--le-font-size-sm); padding: var(--le-spacing-sm) 0; }
+    .mini-cal-date      { font-size: 0.875rem; padding: 0.4rem 0; }
+    .mini-cal-date .event-dots .dot { width: 5px; height: 5px; }
+
+    /* Upcoming events */
+    .upcoming-event       { gap: var(--le-spacing-lg); padding: 0.875rem 0; }
+    .upcoming-event-bar   { width: 5px; }
+    .upcoming-event-title { font-size: 0.9375rem; margin-bottom: 0.25rem; }
+    .upcoming-event-meta  { font-size: var(--le-font-size-sm); }
+
+    /* Calendar filters */
+    .cal-filter-item  { gap: var(--le-spacing-md); padding: 0.5rem 0; font-size: 0.9375rem; }
+    .cal-filter-check { width: 22px; height: 22px; }
+    .cal-filter-check svg { width: 14px; height: 14px; }
+
+    /* Main header & navigation */
+    .cal-main-header { gap: var(--le-spacing-lg); }
+    .cal-nav-group   { gap: var(--le-spacing-md); }
+    .cal-header      { padding: 1rem 1.5rem; }
+    .cal-nav-btn     { width: 42px; height: 42px; }
+    .cal-today-btn   { padding: 0.5rem 1rem; font-size: 0.9375rem; }
+
+    /* View tabs */
+    .glass-tabs      { padding: 4px; gap: 3px; }
+    .glass-tabs .btn { padding: 0.5rem 1.125rem; font-size: 0.9375rem; }
+
+    /* Month grid header */
+    .month-grid-header { padding: var(--le-spacing-md); font-size: 0.8125rem; }
+
+    /* Month cells */
+    .month-cell          { min-height: 110px; padding: 0.5rem; }
+    .month-cell .date-num { font-size: 0.8125rem; width: 28px; height: 28px; }
+
+    /* Event pills */
+    .event-pill  { font-size: var(--le-font-size-sm); padding: 2px 8px; margin-bottom: 3px; }
+    .more-events { font-size: var(--le-font-size-sm); padding: 2px 8px; }
+
+    /* Week view */
+    .week-time-label { font-size: var(--le-font-size-sm); height: 56px; padding: var(--le-spacing-sm) var(--le-spacing-md); }
+    .week-day-col    { height: 56px; }
+    .week-day-header { padding: var(--le-spacing-md); font-size: 0.8125rem; }
+
+    /* Day view */
+    .day-time-slot { height: 56px; }
+
+    /* Event modal */
+    #eventModal .modal-body .form-group { margin-bottom: 1.25rem; }
+    #eventModal .modal-body label       { font-size: 0.9375rem; margin-bottom: 0.5rem; }
+    #eventModal .modal-body .form-row   { gap: var(--le-spacing-lg); }
+    .btn-modal-cancel        { padding: 0.625rem 1.25rem; font-size: 0.9375rem; }
+    .btn-modal-save          { padding: 0.625rem 1.5rem; font-size: 0.9375rem; }
+
+    /* Event-pill context button */
+    .event-pill-more-btn { width: 22px; height: 22px; }
+}

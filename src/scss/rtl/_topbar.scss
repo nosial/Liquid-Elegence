@@ -1,0 +1,41 @@
+/* ─────────────────────────────────────────────────────────────
+   3. Topbar / Navbar
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .le-topbar {
+    left: 0;
+    right: var(--le-sidebar-width, 260px);
+}
+
+[dir="rtl"] .le-sidebar-collapsed .le-topbar {
+    right: 0;
+}
+
+[dir="rtl"] .le-sidebar-mini .le-topbar {
+    right: var(--le-sidebar-mini-width, 70px);
+}
+
+/* Topbar toggle button */
+[dir="rtl"] .le-topbar-toggle {
+    margin-left: 0.75rem;
+    margin-right: 0;
+}
+
+/* Topbar actions cluster (notifications, profile, etc.) */
+[dir="rtl"] .le-topbar-actions {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+/* Search bar icon position */
+[dir="rtl"] .le-search-icon {
+    left: auto;
+    right: 0.75rem;
+}
+
+[dir="rtl"] .le-search-input {
+    padding-left: 0.75rem;
+    padding-right: 2.25rem;
+}
+
+

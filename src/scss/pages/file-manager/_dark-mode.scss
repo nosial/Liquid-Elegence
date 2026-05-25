@@ -1,0 +1,76 @@
+/* =============================================================================
+   Dark Mode Overrides
+   ============================================================================= */
+
+[data-theme="dark"] .fm-file-card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .fm-file-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(var(--le-primary-rgb), 0.4);
+    box-shadow: var(--le-glass-shadow-lg), 0 0 24px rgba(var(--le-primary-rgb), 0.12);
+}
+
+[data-theme="dark"] .fm-breadcrumb {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .fm-search-input {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .fm-search-input:focus {
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: var(--le-shadow-inner), 0 0 0 3px rgba(var(--le-primary-rgb), 0.15);
+}
+
+[data-theme="dark"] .fm-drop-zone {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Dark mode: context menu handled by shared .le-context-menu component */
+
+[data-theme="dark"] .fm-view-btn {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .fm-sort-select {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .modal-content.glass-modal {
+    background: rgba(20, 20, 30, 0.92);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .fm-nav-item.active {
+    background: rgba(var(--le-primary-rgb), 0.22);
+}
+
+[data-theme="dark"] .fm-table tbody tr:hover {
+    background: rgba(var(--le-primary-rgb), 0.07);
+}
+
+[data-theme="dark"] .fm-checkbox {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .storage-ring .ring-fill {
+    filter: drop-shadow(0 0 6px rgba(var(--le-primary-rgb), 0.45));
+}
+
+[data-theme="dark"] .btn-fm {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Navigation Elements (hidden on desktop) */
+.fm-sidebar-toggle { display: none; }
+.fm-sidebar-backdrop { display: none; }
+.fm-sidebar-header-mobile { display: none; }

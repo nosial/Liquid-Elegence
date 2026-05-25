@@ -1,0 +1,14 @@
+{% extends "layouts/base.njk" %}
+
+{% block body %}
+    {% include "partials/sidebar.njk" %}
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <div class="main-content">
+        {% include "partials/topbar.njk" %}
+        <div class="page-content">
+            {% block content %}{% endblock %}
+        </div>
+        {% include "partials/footer.njk" %}
+    </div>
+{% endblock %}

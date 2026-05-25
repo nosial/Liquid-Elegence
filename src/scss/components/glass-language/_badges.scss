@@ -1,0 +1,62 @@
+/* ── Badges ── */
+
+.badge,
+.glass-badge {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glass-style Bootstrap bg-* badge color overrides */
+.badge.bg-primary {
+  background: rgba(var(--le-primary-rgb), 0.14) !important;
+  color: var(--le-primary);
+  border-color: rgba(var(--le-primary-rgb), 0.2);
+}
+.badge.bg-success {
+  background: rgba(var(--le-success-rgb), 0.14) !important;
+  color: var(--le-success-dark, var(--le-success));
+  border-color: rgba(var(--le-success-rgb), 0.2);
+}
+.badge.bg-info {
+  background: rgba(var(--le-info-rgb), 0.14) !important;
+  color: var(--le-info-dark, var(--le-info));
+  border-color: rgba(var(--le-info-rgb), 0.2);
+}
+.badge.bg-warning {
+  background: rgba(var(--le-warning-rgb), 0.14) !important;
+  color: var(--le-warning-dark, var(--le-warning));
+  border-color: rgba(var(--le-warning-rgb), 0.2);
+}
+.badge.bg-danger {
+  background: rgba(var(--le-danger-rgb), 0.14) !important;
+  color: var(--le-danger);
+  border-color: rgba(var(--le-danger-rgb), 0.2);
+}
+.badge.bg-secondary {
+  background: var(--le-glass-bg) !important;
+  color: var(--le-text-secondary);
+  border-color: var(--le-glass-border-subtle);
+}
+
+[data-theme="dark"] .badge.bg-primary {
+  background: rgba(var(--le-primary-rgb), 0.18) !important;
+}
+[data-theme="dark"] .badge.bg-success {
+  background: rgba(var(--le-success-rgb), 0.18) !important;
+  color: #34d399;
+}
+[data-theme="dark"] .badge.bg-info {
+  background: rgba(var(--le-info-rgb), 0.18) !important;
+  color: #818cf8;
+}
+[data-theme="dark"] .badge.bg-warning {
+  background: rgba(var(--le-warning-rgb), 0.18) !important;
+  color: #fbbf24;
+}
+[data-theme="dark"] .badge.bg-danger {
+  background: rgba(var(--le-danger-rgb), 0.18) !important;
+  color: #f87171;
+}
+[data-theme="dark"] .badge.bg-secondary {
+  background: rgba(255, 255, 255, 0.08) !important;
+}

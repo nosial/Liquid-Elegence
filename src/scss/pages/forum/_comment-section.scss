@@ -1,0 +1,125 @@
+/* ---------------------------------------------------------------------------
+   Comment Section
+   --------------------------------------------------------------------------- */
+.forum-comments-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+.forum-comments-count {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.forum-comment-compose {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+.forum-comment-compose .forum-compose-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.forum-compose-input {
+  width: 100%;
+  min-height: 80px;
+  background: var(--le-glass-bg-subtle);
+  border: 1px solid var(--le-glass-border);
+  border-radius: var(--le-radius);
+  padding: 10px 14px;
+  color: var(--le-text-primary);
+  font-size: 0.9rem;
+  resize: vertical;
+  transition: all var(--le-transition-fast);
+}
+
+.forum-compose-input:focus {
+  outline: none;
+  background: var(--le-glass-bg);
+  border-color: var(--le-primary);
+  box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.12);
+}
+
+.forum-compose-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Comment thread / tree */
+.forum-comment-list {
+  padding: 0 20px 16px;
+}
+
+.forum-comment {
+  padding: 12px 0;
+}
+
+.forum-comment + .forum-comment {
+  border-top: 1px solid var(--le-glass-border-subtle);
+}
+
+.forum-comment-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.forum-comment-author {
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--le-text-primary);
+  text-decoration: none;
+}
+
+.forum-comment-author:hover {
+  color: var(--le-primary);
+}
+
+.forum-comment-author.op {
+  color: var(--le-primary);
+}
+
+.forum-comment-op-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: var(--le-radius-xs);
+  background: rgba(var(--le-primary-rgb), 0.12);
+  color: var(--le-primary);
+}
+
+.forum-comment-time {
+  font-size: 0.75rem;
+  color: var(--le-text-muted);
+}
+
+.forum-comment-body {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--le-text-secondary);
+  margin-bottom: 6px;
+}
+
+.forum-comment-actions {
+  display: flex;
+  gap: 2px;
+}
+
+/* Nested / reply comments */
+.forum-comment-replies {
+  margin-left: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--le-glass-border-subtle);
+}
+
+.forum-comment-replies .forum-comment:first-child {
+  border-top: none;
+}

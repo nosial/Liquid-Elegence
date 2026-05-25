@@ -1,0 +1,53 @@
+/* ==========================================================================
+   11. PAGE CONTENT & HEADER
+   ========================================================================== */
+
+.page-content {
+    flex: 1;
+    padding: var(--le-spacing-lg, 24px);
+    width: 100%;
+    min-width: 0;
+}
+
+.page-header {
+    margin-bottom: var(--le-page-header-mb, 24px);
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: var(--le-font-weight-bold);
+    color: var(--le-text-primary);
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+
+.page-subtitle {
+    font-size: 0.875rem;
+    color: var(--le-text-muted);
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================================
+   12. FOOTER
+   ========================================================================== */
+
+.main-footer {
+    padding: 16px 24px;
+    font-size: 0.8125rem;
+    color: var(--le-text-muted);
+    border-top: 1px solid var(--le-glass-border);
+    background: var(--le-glass-bg-subtle);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(1.3);
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(1.3);
+    flex-shrink: 0;
+    transition: background var(--le-transition-fast), border-color var(--le-transition-fast);
+}
+
+[data-theme="dark"] .main-footer {
+    background: rgba(255, 255, 255, 0.03);
+    border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+

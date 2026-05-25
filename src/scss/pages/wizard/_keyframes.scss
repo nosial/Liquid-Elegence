@@ -1,0 +1,78 @@
+/* =============================================================================
+   Keyframes
+   ============================================================================= */
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 0 4px rgba(var(--le-primary-rgb), 0.2),
+                    0 0 12px rgba(var(--le-primary-rgb), 0.08);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(var(--le-primary-rgb), 0.1),
+                    0 0 20px rgba(var(--le-primary-rgb), 0.12);
+    }
+}
+
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeSlideOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 1;
+        filter: brightness(1.1);
+    }
+    100% {
+        opacity: 1;
+        filter: brightness(1);
+    }
+}
+
+@keyframes confettiFall {
+    0% {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-200px) rotate(720deg) scale(0);
+    }
+}
+
+@keyframes wiz-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes wiz-check-draw {
+    0% {
+        stroke-dashoffset: 48;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}

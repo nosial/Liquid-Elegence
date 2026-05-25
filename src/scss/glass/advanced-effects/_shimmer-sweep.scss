@@ -1,0 +1,70 @@
+/* =============================================================================
+   §20.4 — Glass Shimmer Sweep Animation
+   ============================================================================= */
+
+/*
+ * Shimmer: a diagonal light streak that sweeps across glass surfaces.
+ * Use .glass-shimmer-sweep to avoid collision with existing .glass-shimmer.
+ */
+@keyframes glass-shimmer-sweep {
+  0% {
+    transform: translateX(-100%) rotate(15deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(15deg);
+  }
+}
+
+.glass-shimmer-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-shimmer-sweep::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 50%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.06) 43%,
+    rgba(255, 255, 255, 0.12) 47%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(255, 255, 255, 0.12) 53%,
+    rgba(255, 255, 255, 0.06) 57%,
+    transparent 60%
+  );
+  animation: glass-shimmer-sweep var(--le-shimmer-duration, 6s) ease-in-out infinite;
+}
+
+[data-theme="dark"] .glass-shimmer-sweep::after {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.03) 43%,
+    rgba(255, 255, 255, 0.06) 47%,
+    rgba(255, 255, 255, 0.10) 50%,
+    rgba(255, 255, 255, 0.06) 53%,
+    rgba(255, 255, 255, 0.03) 57%,
+    transparent 60%
+  );
+}
+
+/* Slower variant for large surfaces */
+.glass-shimmer-sweep-slow::after {
+  animation-duration: 12s;
+}
+
+/* Hover-only shimmer */
+.glass-shimmer-sweep-hover::after {
+  animation-play-state: paused;
+}
+
+.glass-shimmer-sweep-hover:hover::after {
+  animation-play-state: running;
+}

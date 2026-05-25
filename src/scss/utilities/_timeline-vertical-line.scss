@@ -1,0 +1,62 @@
+// ── Timeline vertical line ───────────────────────────────────────────────
+.le-timeline-line {
+  width: 2px;
+  background: var(--le-primary, #6366f1);
+  opacity: 0.15;
+  left: 7px;
+}
+
+// ── Per-user avatar colors (unique hex backgrounds) ──────────────────────
+.le-bg-indigo    { background: #6366f1; }
+.le-bg-cyan-dark { background: #0891b2; }
+.le-bg-rose-dark { background: #e11d48; }
+.le-bg-emerald   { background: #059669; }
+.le-bg-fuchsia   { background: #d946ef; }
+.le-bg-blue      { background: #2563eb; }
+.le-bg-amber     { background: #f59e0b; }
+.le-bg-violet    { background: #7c3aed; }
+.le-bg-pink      { background: #ec4899; }
+.le-bg-teal-dark { background: #0d9488; }
+.le-bg-orange    { background: #ea580c; }
+.le-bg-red       { background: #dc2626; }
+.le-bg-purple    { background: #a855f7; }
+.le-bg-sky       { background: #0284c7; }
+.le-bg-berry     { background: #be185d; }
+.le-bg-blue-std  { background: #3b82f6; }
+
+// ── Chat / badge avatar gradients ────────────────────────────────────────
+.le-bg-grad-pink-rose   { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+.le-bg-grad-teal        { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+.le-bg-grad-amber       { background: linear-gradient(135deg, #f59e0b, #ea580c); }
+.le-bg-grad-blue        { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.le-bg-grad-purple      { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+.le-bg-grad-cyan        { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+.le-bg-grad-indigo      { background: linear-gradient(135deg, #667eea, #764ba2); }
+.le-bg-grad-fuchsia     { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.le-bg-grad-sky         { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.le-bg-grad-green       { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+.le-bg-grad-coral       { background: linear-gradient(135deg, #fa709a, #fee140); }
+.le-bg-grad-lavender    { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+
+// ── Theme selector boxes ─────────────────────────────────────────────────
+.le-theme-card {
+  flex: 1;
+  min-width: 120px;
+  max-width: 180px;
+  padding: 16px;
+  border-radius: var(--le-radius);
+  cursor: pointer;
+  text-align: center;
+}
+.le-theme-light {
+  background: #fff;
+  border: 2px solid var(--le-primary);
+}
+.le-theme-dim {
+  background: #15202b;
+  border: 2px solid transparent;
+}
+.le-theme-dark {
+  background: #000;
+  border: 2px solid transparent;
+}

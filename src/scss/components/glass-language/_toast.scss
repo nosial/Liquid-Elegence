@@ -1,0 +1,55 @@
+/* ── Toast Glass Styling ── */
+
+.toast {
+  background: var(--le-surface, #fff);
+  -webkit-backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  backdrop-filter: blur(var(--le-glass-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  border: 1px solid var(--le-divider-color, rgba(0, 0, 0, 0.06));
+  border-radius: var(--le-radius);
+  box-shadow: var(--le-glass-shadow-lg), var(--le-inner-glow);
+  color: var(--le-text-primary);
+  animation: scale-in 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.toast-header {
+  background: rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid var(--le-divider-color, rgba(0, 0, 0, 0.05));
+}
+
+[data-theme="dark"] .toast {
+  background: rgba(var(--le-dark-surface-rgb), 0.92);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--le-glass-shadow-lg), var(--le-inner-glow);
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .toast-header {
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+
+/* ── Offcanvas Glass Styling ── */
+
+.offcanvas {
+  background: rgba(255, 255, 255, 0.97) !important;
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-strong)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  backdrop-filter: blur(var(--le-glass-blur-strong)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  border-color: var(--le-divider-color, rgba(0, 0, 0, 0.06)) !important;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1), var(--le-inner-glow);
+}
+
+.offcanvas-header {
+  border-bottom: 1px solid var(--le-divider-color, rgba(0, 0, 0, 0.06));
+}
+
+
+[data-theme="dark"] .offcanvas {
+  background: rgba(var(--le-dark-surface-rgb), 0.98) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.35), var(--le-inner-glow);
+}
+
+[data-theme="dark"] .offcanvas-header {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}

@@ -1,0 +1,23 @@
+/* ─────────────────────────────────────────────────────────────
+   8. Buttons & Button groups
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .btn-group > .btn:first-child:not(:last-child) {
+    border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+}
+
+[dir="rtl"] .btn-group > .btn:last-child:not(:first-child) {
+    border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+}
+
+[dir="rtl"] .btn .le-btn-icon-start {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+[dir="rtl"] .btn .le-btn-icon-end {
+    margin-right: 0.5rem;
+    margin-left: 0;
+}
+
+

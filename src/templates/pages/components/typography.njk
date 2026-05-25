@@ -1,0 +1,277 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Typography — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Typography</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Headings ────────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Headings</h5>
+                <h1>Heading 1 <small class="text-muted le-fs-half">h1</small></h1>
+                <h2>Heading 2 <small class="text-muted le-fs-half">h2</small></h2>
+                <h3>Heading 3 <small class="text-muted le-fs-half">h3</small></h3>
+                <h4>Heading 4 <small class="text-muted le-fs-half">h4</small></h4>
+                <h5>Heading 5 <small class="text-muted le-fs-half">h5</small></h5>
+                <h6>Heading 6 <small class="text-muted le-fs-half">h6</small></h6>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;!-- or use classes on any element --&gt;
+&lt;p class="h3"&gt;Heading 3 style&lt;/p&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Display Headings ────────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Display Headings</h5>
+                <p class="display-1 le-lh-tight">Display 1</p>
+                <p class="display-2 le-lh-tight">Display 2</p>
+                <p class="display-3 le-lh-tight">Display 3</p>
+                <p class="display-4 le-lh-tight">Display 4</p>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;h1 class="display-1"&gt;Display 1&lt;/h1&gt;
+&lt;h1 class="display-4"&gt;Display 4&lt;/h1&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Body Text & Lead ────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Body Text &amp; Lead</h5>
+                <p class="lead">Lead paragraph — Use this to make introductory text stand out with a slightly larger, lighter font weight.</p>
+                <p>Regular body text. The quick brown fox jumps over the lazy dog. This is the standard paragraph styling used throughout the application for general content and descriptions.</p>
+                <p class="small text-muted">Small muted text — Perfect for captions, timestamps, and secondary information that needs to be less prominent.</p>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;p class="lead"&gt;Lead paragraph text&lt;/p&gt;
+&lt;p&gt;Regular body text&lt;/p&gt;
+&lt;p class="small text-muted"&gt;Small muted text&lt;/p&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Inline Text Elements ────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Inline Text Elements</h5>
+                <div class="d-flex flex-column gap-2 mb-3">
+                    <p class="mb-0"><strong>Bold text</strong> — Use <code>&lt;strong&gt;</code> or <code>.fw-bold</code></p>
+                    <p class="mb-0"><em>Italic text</em> — Use <code>&lt;em&gt;</code> or <code>.fst-italic</code></p>
+                    <p class="mb-0"><u>Underlined text</u> — Use <code>&lt;u&gt;</code> or <code>.text-decoration-underline</code></p>
+                    <p class="mb-0"><del>Strikethrough text</del> — Use <code>&lt;del&gt;</code> or <code>&lt;s&gt;</code></p>
+                    <p class="mb-0"><mark>Highlighted text</mark> — Use <code>&lt;mark&gt;</code></p>
+                    <p class="mb-0"><small>Small text</small> — Use <code>&lt;small&gt;</code> or <code>.small</code></p>
+                    <p class="mb-0"><abbr title="Abbreviation">Abbr</abbr> — Use <code>&lt;abbr&gt;</code> with title attribute</p>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;strong&gt;Bold&lt;/strong&gt;
+&lt;em&gt;Italic&lt;/em&gt;
+&lt;u&gt;Underline&lt;/u&gt;
+&lt;del&gt;Strikethrough&lt;/del&gt;
+&lt;mark&gt;Highlighted&lt;/mark&gt;
+&lt;small&gt;Small&lt;/small&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Blockquotes ─────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Blockquotes</h5>
+                <blockquote class="blockquote">
+                    <p>"Design is not just what it looks like and feels like. Design is how it works."</p>
+                    <footer class="blockquote-footer">Steve Jobs, <cite title="Source">Apple Inc.</cite></footer>
+                </blockquote>
+                <hr>
+                <blockquote class="blockquote text-center">
+                    <p>"The best way to predict the future is to invent it."</p>
+                    <footer class="blockquote-footer">Alan Kay</footer>
+                </blockquote>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;blockquote class="blockquote"&gt;
+    &lt;p&gt;"Quote text here."&lt;/p&gt;
+    &lt;footer class="blockquote-footer"&gt;
+        Author, &lt;cite&gt;Source&lt;/cite&gt;
+    &lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Code & Keyboard ─────────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Code &amp; Keyboard</h5>
+                <p>Use <code>inline code</code> to reference code within sentences.</p>
+                <p>Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save, or <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> to open the command palette.</p>
+                <pre class="p-3 rounded le-bg-glass le-border-glass"><code>// Code block example
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+console.log(greet('World'));</code></pre>
+                <p class="mt-3 mb-0">Sample output: <samp>Hello, World!</samp></p>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;code&gt;inline code&lt;/code&gt;
+&lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;
+&lt;pre&gt;&lt;code&gt;code block&lt;/code&gt;&lt;/pre&gt;
+&lt;samp&gt;sample output&lt;/samp&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Lists ───────────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-4">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Unordered List</h5>
+                <ul>
+                    <li>Item one</li>
+                    <li>Item two
+                        <ul>
+                            <li>Nested item A</li>
+                            <li>Nested item B</li>
+                        </ul>
+                    </li>
+                    <li>Item three</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Ordered List</h5>
+                <ol>
+                    <li>First step</li>
+                    <li>Second step</li>
+                    <li>Third step
+                        <ol>
+                            <li>Sub-step A</li>
+                            <li>Sub-step B</li>
+                        </ol>
+                    </li>
+                    <li>Fourth step</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Unstyled &amp; Inline</h5>
+                <ul class="list-unstyled mb-3">
+                    <li>Unstyled item 1</li>
+                    <li>Unstyled item 2</li>
+                    <li>Unstyled item 3</li>
+                </ul>
+                <hr>
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">Inline 1</li>
+                    <li class="list-inline-item">Inline 2</li>
+                    <li class="list-inline-item">Inline 3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Description Lists & Text Alignment ──────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Description List</h5>
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Component</dt>
+                    <dd class="col-sm-8">A reusable UI building block</dd>
+                    <dt class="col-sm-4">Template</dt>
+                    <dd class="col-sm-8">A pre-designed page layout</dd>
+                    <dt class="col-sm-4">Utility</dt>
+                    <dd class="col-sm-8 mb-0">A single-purpose CSS utility class</dd>
+                </dl>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;dl class="row"&gt;
+    &lt;dt class="col-sm-4"&gt;Term&lt;/dt&gt;
+    &lt;dd class="col-sm-8"&gt;Definition&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Text Alignment &amp; Transforms</h5>
+                <p class="text-start">Left aligned text (default).</p>
+                <p class="text-center">Centre aligned text.</p>
+                <p class="text-end">Right aligned text.</p>
+                <hr>
+                <p class="text-lowercase">LOWERCASED TEXT.</p>
+                <p class="text-uppercase">uppercased text.</p>
+                <p class="text-capitalize">capitalized text example.</p>
+                <hr>
+                <p class="text-truncate mb-0 le-max-w-250">This is a very long text that will be truncated with an ellipsis when it overflows.</p>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;p class="text-center"&gt;Centred&lt;/p&gt;
+&lt;p class="text-uppercase"&gt;uppercase&lt;/p&gt;
+&lt;p class="text-truncate"&gt;Truncated…&lt;/p&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

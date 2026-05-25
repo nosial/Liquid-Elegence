@@ -1,0 +1,590 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+            <!-- Kanban Header -->
+            <div class="kanban-header">
+                <div class="kanban-header-left">
+                    <h2>Product Launch 2025</h2>
+                    <div class="project-meta">
+                        <div class="kanban-progress">
+                            <div class="kanban-progress-label">62% complete &mdash; 10 of 16 tasks</div>
+                            <div class="kanban-progress-bar-wrap">
+                                <div class="kanban-progress-bar-fill"></div>
+                            </div>
+                        </div>
+                        <div class="team-avatars">
+                            <div class="t-avatar le-bg-gradient-primary" title="Sarah Chen">SC</div>
+                            <div class="t-avatar le-bg-gradient-success" title="Mike Ross">MR</div>
+                            <div class="t-avatar le-bg-gradient-warning" title="Lisa Park">LP</div>
+                            <div class="t-avatar le-bg-gradient-danger" title="James Wu">JW</div>
+                            <div class="t-avatar le-bg-gradient-primary-rev" title="Anna Bell">AB</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kanban-header-right">
+                    <button class="kanban-filter-toggle" id="kanbanFilterToggle" title="Filters"><i data-feather="filter"></i></button>
+                    <button class="kanban-filter-btn active" data-filter="all">All</button>
+                    <button class="kanban-filter-btn" data-filter="my">My Tasks</button>
+                    <button class="kanban-filter-btn" data-filter="high">High Priority</button>
+                    <button class="kanban-add-col-btn" id="addColumnBtn">
+                        <i data-feather="plus"></i> Add Column
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kanban Board -->
+            <div class="kanban-board" id="kanbanBoard">
+
+                <!-- BACKLOG COLUMN -->
+                <div class="kanban-column" data-column="backlog">
+                    <div class="glass-card">
+                        <div class="kanban-col-header">
+                            <div class="kanban-col-dot le-bg-text-muted"></div>
+                            <span class="kanban-col-title">Backlog</span>
+                            <span class="kanban-col-count">4</span>
+                            <div class="kanban-col-actions">
+                                <button class="add-card-top-btn" title="Add card"><i data-feather="plus"></i></button>
+                                <button title="More options"><i data-feather="more-horizontal"></i></button>
+                            </div>
+                        </div>
+                        <div class="kanban-card-list">
+
+                            <div class="kanban-card" draggable="true" data-priority="low" data-assignee="LP" data-card-id="1">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-cover le-bg-primary-30"></div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-feature">Feature</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Research competitor pricing models</h4>
+                                    <p class="kanban-card-desc">Analyze pricing strategies from top 5 competitors and prepare comparison matrix.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-warning">LP</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jul 20</span>
+                                            <span><i data-feather="message-circle"></i> 2</span>
+                                            <span class="kanban-priority">&#x1F7E2;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="medium" data-assignee="JW" data-card-id="2">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-backend">Backend</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Set up staging environment</h4>
+                                    <p class="kanban-card-desc">Configure Docker containers and CI/CD pipeline for staging deployment.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-danger">JW</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jul 25</span>
+                                            <span><i data-feather="message-circle"></i> 5</span>
+                                            <span><i data-feather="paperclip"></i> 1</span>
+                                            <span class="kanban-priority">&#x1F7E1;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="low" data-assignee="AB" data-card-id="3">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-design">Design</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Create brand style guide</h4>
+                                    <p class="kanban-card-desc">Document colors, typography, and component guidelines for the new brand.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-primary-rev">AB</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Aug 1</span>
+                                            <span><i data-feather="message-circle"></i> 0</span>
+                                            <span class="kanban-priority">&#x1F7E2;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="medium" data-assignee="SC" data-card-id="4">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-feature">Feature</span>
+                                        <span class="kanban-label kanban-label-backend">Backend</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Integrate analytics SDK</h4>
+                                    <p class="kanban-card-desc">Add Mixpanel tracking for key user flows and funnel events.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-primary">SC</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Aug 5</span>
+                                            <span><i data-feather="message-circle"></i> 3</span>
+                                            <span><i data-feather="paperclip"></i> 2</span>
+                                            <span class="kanban-priority">&#x1F7E1;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="kanban-col-footer">
+                            <button class="kanban-add-card-btn" data-column="backlog">
+                                <i data-feather="plus"></i> Add a card
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TO DO COLUMN -->
+                <div class="kanban-column" data-column="todo">
+                    <div class="glass-card">
+                        <div class="kanban-col-header">
+                            <div class="kanban-col-dot le-bg-primary"></div>
+                            <span class="kanban-col-title">To Do</span>
+                            <span class="kanban-col-count">5</span>
+                            <div class="kanban-col-actions">
+                                <button class="add-card-top-btn" title="Add card"><i data-feather="plus"></i></button>
+                                <button title="More options"><i data-feather="more-horizontal"></i></button>
+                            </div>
+                        </div>
+                        <div class="kanban-card-list">
+
+                            <div class="kanban-card" draggable="true" data-priority="high" data-assignee="SC,JW" data-card-id="5">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-cover le-bg-danger-40"></div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-urgent">Urgent</span>
+                                        <span class="kanban-label kanban-label-bug">Bug</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Resolve payment gateway timeout</h4>
+                                    <p class="kanban-card-desc">Stripe webhook failing after 30s &mdash; causing order confirmation delays.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-primary">SC</div>
+                                            <div class="kanban-card-assignee le-bg-gradient-danger">JW</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span class="overdue"><i data-feather="calendar"></i> Jun 28</span>
+                                            <span><i data-feather="message-circle"></i> 8</span>
+                                            <span><i data-feather="paperclip"></i> 3</span>
+                                            <span class="kanban-priority">&#x1F534;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="high" data-assignee="MR" data-card-id="6">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-feature">Feature</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Write API documentation</h4>
+                                    <p class="kanban-card-desc">Document all REST endpoints with request/response examples using OpenAPI spec.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-success">MR</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jul 15</span>
+                                            <span><i data-feather="message-circle"></i> 4</span>
+                                            <span class="kanban-priority">&#x1F534;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="medium" data-assignee="LP,AB" data-card-id="7">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-cover le-bg-secondary-30"></div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-design">Design</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Design new onboarding flow</h4>
+                                    <p class="kanban-card-desc">Create wireframes and high-fidelity mockups for the 3-step onboarding wizard.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-warning">LP</div>
+                                            <div class="kanban-card-assignee le-bg-gradient-primary-rev">AB</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jul 18</span>
+                                            <span><i data-feather="message-circle"></i> 6</span>
+                                            <span><i data-feather="paperclip"></i> 5</span>
+                                            <span class="kanban-priority">&#x1F7E1;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="medium" data-assignee="JW" data-card-id="8">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-backend">Backend</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Optimize database queries</h4>
+                                    <p class="kanban-card-desc">Slow queries on the orders table &mdash; add indexes and refactor N+1 calls.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-danger">JW</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jul 22</span>
+                                            <span><i data-feather="message-circle"></i> 2</span>
+                                            <span class="kanban-priority">&#x1F7E1;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="low" data-assignee="AB" data-card-id="9">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-design">Design</span>
+                                        <span class="kanban-label kanban-label-feature">Feature</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Create email notification templates</h4>
+                                    <p class="kanban-card-desc">Design responsive HTML templates for transactional emails.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-primary-rev">AB</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jul 30</span>
+                                            <span><i data-feather="message-circle"></i> 1</span>
+                                            <span class="kanban-priority">&#x1F7E2;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="kanban-col-footer">
+                            <button class="kanban-add-card-btn" data-column="todo">
+                                <i data-feather="plus"></i> Add a card
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IN PROGRESS COLUMN -->
+                <div class="kanban-column" data-column="inprogress">
+                    <div class="glass-card">
+                        <div class="kanban-col-header">
+                            <div class="kanban-col-dot le-bg-warning"></div>
+                            <span class="kanban-col-title">In Progress</span>
+                            <span class="kanban-col-count">3</span>
+                            <div class="kanban-col-actions">
+                                <button class="add-card-top-btn" title="Add card"><i data-feather="plus"></i></button>
+                                <button title="More options"><i data-feather="more-horizontal"></i></button>
+                            </div>
+                        </div>
+                        <div class="kanban-card-list">
+
+                            <div class="kanban-card" draggable="true" data-priority="high" data-assignee="SC,MR" data-card-id="10">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-cover le-bg-warning-35"></div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-feature">Feature</span>
+                                        <span class="kanban-label kanban-label-urgent">Urgent</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Implement user authentication</h4>
+                                    <p class="kanban-card-desc">Build JWT-based auth with social login (Google, GitHub) and 2FA support.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-primary">SC</div>
+                                            <div class="kanban-card-assignee le-bg-gradient-success">MR</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span class="overdue"><i data-feather="calendar"></i> Jul 5</span>
+                                            <span><i data-feather="message-circle"></i> 12</span>
+                                            <span><i data-feather="paperclip"></i> 4</span>
+                                            <span class="kanban-priority">&#x1F534;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="medium" data-assignee="LP" data-card-id="11">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-design">Design</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">User testing round 3</h4>
+                                    <p class="kanban-card-desc">Conduct usability tests with 8 participants on the checkout flow redesign.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-warning">LP</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jul 12</span>
+                                            <span><i data-feather="message-circle"></i> 7</span>
+                                            <span><i data-feather="paperclip"></i> 2</span>
+                                            <span class="kanban-priority">&#x1F7E1;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="medium" data-assignee="MR" data-card-id="12">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-backend">Backend</span>
+                                        <span class="kanban-label kanban-label-bug">Bug</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Resolve data export CSV encoding</h4>
+                                    <p class="kanban-card-desc">UTF-8 characters breaking in exported CSV files for international users.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-success">MR</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jul 10</span>
+                                            <span><i data-feather="message-circle"></i> 3</span>
+                                            <span class="kanban-priority">&#x1F7E1;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="kanban-col-footer">
+                            <button class="kanban-add-card-btn" data-column="inprogress">
+                                <i data-feather="plus"></i> Add a card
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DONE COLUMN -->
+                <div class="kanban-column" data-column="done">
+                    <div class="glass-card">
+                        <div class="kanban-col-header">
+                            <div class="kanban-col-dot le-bg-success"></div>
+                            <span class="kanban-col-title">Done</span>
+                            <span class="kanban-col-count">4</span>
+                            <div class="kanban-col-actions">
+                                <button class="add-card-top-btn" title="Add card"><i data-feather="plus"></i></button>
+                                <button title="More options"><i data-feather="more-horizontal"></i></button>
+                            </div>
+                        </div>
+                        <div class="kanban-card-list">
+
+                            <div class="kanban-card" draggable="true" data-priority="high" data-assignee="JW" data-card-id="13">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-cover le-bg-success-30"></div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-backend">Backend</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Set up project repository</h4>
+                                    <p class="kanban-card-desc">Initialize monorepo with Turborepo, configure ESLint, Prettier, and Husky hooks.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-danger">JW</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jun 15</span>
+                                            <span><i data-feather="message-circle"></i> 4</span>
+                                            <span><i data-feather="paperclip"></i> 1</span>
+                                            <span class="kanban-priority">&#x1F534;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="medium" data-assignee="AB,LP" data-card-id="14">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-design">Design</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Design landing page mockup</h4>
+                                    <p class="kanban-card-desc">High-fidelity Figma mockup for the product launch landing page.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-primary-rev">AB</div>
+                                            <div class="kanban-card-assignee le-bg-gradient-warning">LP</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jun 20</span>
+                                            <span><i data-feather="message-circle"></i> 9</span>
+                                            <span><i data-feather="paperclip"></i> 7</span>
+                                            <span class="kanban-priority">&#x1F7E1;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="low" data-assignee="SC" data-card-id="15">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-feature">Feature</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Configure CI/CD pipeline</h4>
+                                    <p class="kanban-card-desc">GitHub Actions workflow for automated testing, building, and deployment.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-primary">SC</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jun 25</span>
+                                            <span><i data-feather="message-circle"></i> 3</span>
+                                            <span class="kanban-priority">&#x1F7E2;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="kanban-card" draggable="true" data-priority="medium" data-assignee="MR,JW" data-card-id="16">
+                                <div class="kanban-drag-handle">&#x22EE;&#x22EE;</div>
+                                <div class="kanban-card-inner">
+                                    <div class="kanban-labels">
+                                        <span class="kanban-label kanban-label-bug">Bug</span>
+                                        <span class="kanban-label kanban-label-backend">Backend</span>
+                                    </div>
+                                    <h4 class="kanban-card-title">Resolve user session persistence</h4>
+                                    <p class="kanban-card-desc">Sessions expiring prematurely due to Redis TTL misconfiguration.</p>
+                                    <div class="kanban-card-footer">
+                                        <div class="kanban-card-assignees">
+                                            <div class="kanban-card-assignee le-bg-gradient-success">MR</div>
+                                            <div class="kanban-card-assignee le-bg-gradient-danger">JW</div>
+                                        </div>
+                                        <div class="kanban-card-meta">
+                                            <span><i data-feather="calendar"></i> Jun 30</span>
+                                            <span><i data-feather="message-circle"></i> 6</span>
+                                            <span><i data-feather="paperclip"></i> 2</span>
+                                            <span class="kanban-priority">&#x1F7E1;</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="kanban-col-footer">
+                            <button class="kanban-add-card-btn" data-column="done">
+                                <i data-feather="plus"></i> Add a card
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    <div class="modal fade modal-glass kanban-modal" id="cardDetailModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div>
+                        <h5 class="modal-title fw-bold" id="modalCardTitle"></h5>
+                        <div class="modal-detail-labels d-flex gap-2 mt-2" id="modalCardLabels"></div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="kanban-detail-section">
+                                <div class="kanban-detail-label">Description</div>
+                                <textarea class="glass-input w-100 le-textarea" id="modalCardDesc" rows="3"></textarea>
+                            </div>
+                            <div class="kanban-detail-section">
+                                <div class="kanban-detail-label">Checklist</div>
+                                <div class="kanban-progress-bar-wrap mb-2 le-h-6">
+                                    <div class="kanban-progress-bar-fill" id="checklistProgress" style="width:33%;"></div>
+                                </div>
+                                <div id="modalChecklist">
+                                    <div class="kanban-checklist-item">
+                                        <input type="checkbox" id="check1" checked>
+                                        <label for="check1">Research and define requirements</label>
+                                    </div>
+                                    <div class="kanban-checklist-item">
+                                        <input type="checkbox" id="check2">
+                                        <label for="check2">Create implementation plan</label>
+                                    </div>
+                                    <div class="kanban-checklist-item">
+                                        <input type="checkbox" id="check3">
+                                        <label for="check3">Submit for code review</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="kanban-detail-section">
+                                <div class="kanban-detail-label">Comments</div>
+                                <div id="modalComments">
+                                    <div class="kanban-comment">
+                                        <div class="kanban-comment-avatar le-bg-gradient-primary">SC</div>
+                                        <div class="kanban-comment-body">
+                                            <span class="comment-author">Sarah Chen</span>
+                                            <span class="comment-time">2 hours ago</span>
+                                            <p class="comment-text">I've started working on the initial implementation. Will push a draft PR by end of day.</p>
+                                        </div>
+                                    </div>
+                                    <div class="kanban-comment">
+                                        <div class="kanban-comment-avatar le-bg-gradient-success">MR</div>
+                                        <div class="kanban-comment-body">
+                                            <span class="comment-author">Mike Ross</span>
+                                            <span class="comment-time">5 hours ago</span>
+                                            <p class="comment-text">Make sure to check the edge cases we discussed in standup. I'll review once the PR is up.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex gap-2 mt-3">
+                                    <div class="kanban-comment-avatar le-avatar-32 le-avatar-gradient">JD</div>
+                                    <input type="text" class="glass-input flex-grow-1 le-glass-form-input" placeholder="Write a comment...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="kanban-detail-section">
+                                <div class="kanban-detail-label">Assignees</div>
+                                <div class="d-flex gap-2 flex-wrap" id="modalAssignees"></div>
+                            </div>
+                            <div class="kanban-detail-section">
+                                <div class="kanban-detail-label">Due Date</div>
+                                <div id="modalDueDate" class="le-fs-body fw-semibold"></div>
+                            </div>
+                            <div class="kanban-detail-section">
+                                <div class="kanban-detail-label">Priority</div>
+                                <div id="modalPriority" class="le-fs-body fw-semibold"></div>
+                            </div>
+                            <div class="kanban-detail-section">
+                                <div class="kanban-detail-label">Column</div>
+                                <div id="modalColumn" class="le-fs-body fw-semibold"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm le-btn-danger-ghost" data-bs-dismiss="modal">Delete Card</button>
+                    <button type="button" class="btn btn-sm le-btn-primary-solid" data-bs-dismiss="modal">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/kanban.js"></script>
+{% endblock %}

@@ -1,0 +1,584 @@
+/* ============================================================================
+   7. INVOICE
+   ============================================================================ */
+
+.invoice-document {
+  background: var(--le-glass-bg-strong);
+  border: 1px solid var(--le-glass-border);
+  border-radius: var(--le-radius-lg);
+  padding: 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ---- header ---- */
+.invoice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+.invoice-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--le-text-primary);
+}
+
+.invoice-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: right;
+}
+
+.invoice-meta-item {
+  font-size: 13px;
+  color: var(--le-text-muted);
+}
+
+.invoice-meta-item span {
+  font-weight: 500;
+  color: var(--le-text-primary);
+}
+
+.invoice-modal {
+  /* Surface for the modal content is provided by `.modal-glass`. */
+}
+
+/* ---- company / billing ---- */
+.company-details {
+  margin-bottom: 24px;
+}
+
+.company-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--le-text-primary);
+  margin-bottom: 4px;
+}
+
+.bill-to {
+  margin-bottom: 24px;
+}
+
+.bill-to-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--le-text-muted);
+  margin-bottom: 4px;
+}
+
+.bill-to-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--le-text-primary);
+  margin-bottom: 4px;
+}
+
+.bill-to-detail {
+  font-size: 13px;
+  color: var(--le-text-muted);
+  line-height: 1.6;
+}
+
+/* ---- line items ---- */
+.line-items-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.line-items-table th {
+  padding: 12px;
+  background: var(--le-glass-bg-subtle);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--le-text-muted);
+  font-weight: 600;
+  text-align: left;
+}
+
+.line-items-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+  font-size: 13px;
+  color: var(--le-text-secondary);
+}
+
+.invoice-line-item {
+  transition: background var(--le-transition-fast);
+}
+
+.invoice-line-item:hover {
+  background: var(--le-glass-bg-subtle);
+}
+
+/* ---- totals ---- */
+.totals-section {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.totals-table {
+  min-width: 280px;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  font-size: 14px;
+  color: var(--le-text-secondary);
+}
+
+.total-row:last-child {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--le-text-primary);
+  border-top: 1px solid var(--le-glass-border);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+/* ---- payment info ---- */
+.payment-info {
+  margin-top: 24px;
+  padding: 16px;
+  background: var(--le-glass-bg-subtle);
+  border-radius: var(--le-radius);
+  font-size: 13px;
+  color: var(--le-text-secondary);
+  line-height: 1.6;
+}
+
+/* ---- client cell ---- */
+.client-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.client-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--le-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--le-text-on-primary);
+  flex-shrink: 0;
+}
+
+.client-info {
+  line-height: 1.3;
+}
+
+.client-name {
+  font-weight: 500;
+  color: var(--le-text-primary);
+}
+
+.client-email {
+  font-size: 12px;
+  color: var(--le-text-muted);
+}
+
+/* ---- action buttons ---- */
+.btn-download,
+.btn-view {
+  padding: 6px 12px;
+  background: var(--le-glass-bg-subtle);
+  border: 1px solid var(--le-glass-border-subtle);
+  border-radius: var(--le-radius-sm);
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--le-text-secondary);
+  transition: all var(--le-transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-download:hover {
+  color: var(--le-primary);
+  border-color: rgba(var(--le-primary-rgb), 0.3);
+}
+
+.btn-view:hover {
+  color: var(--le-info);
+  border-color: rgba(var(--le-info-rgb), 0.3);
+}
+
+/* ---- status badge ---- */
+.invoice-document .badge {
+  padding: 4px 12px;
+  border-radius: var(--le-radius-full);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.invoice-document .badge.paid {
+  background: rgba(var(--le-success-rgb), 0.12);
+  color: var(--le-success);
+}
+
+.invoice-document .badge.pending {
+  background: rgba(var(--le-warning-rgb), 0.12);
+  color: var(--le-warning);
+}
+
+.invoice-document .badge.overdue {
+  background: rgba(var(--le-danger-rgb), 0.12);
+  color: var(--le-danger);
+}
+
+.invoice-document .badge.draft {
+  background: var(--le-glass-bg-subtle);
+  color: var(--le-text-muted);
+}
+
+
+/* ---- density: compact ---- */
+[data-density="compact"] .invoice-document {
+  padding: 24px;
+}
+
+[data-density="compact"] .invoice-header {
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+}
+
+[data-density="compact"] .invoice-number {
+  font-size: 20px;
+}
+
+[data-density="compact"] .invoice-meta-item {
+  font-size: 12px;
+}
+
+[data-density="compact"] .invoice-modal {
+  padding: 18px;
+}
+
+[data-density="compact"] .company-name {
+  font-size: 16px;
+}
+
+[data-density="compact"] .bill-to-label {
+  font-size: 10px;
+}
+
+[data-density="compact"] .bill-to-name {
+  font-size: 14px;
+}
+
+[data-density="compact"] .bill-to-detail {
+  font-size: 12px;
+}
+
+[data-density="compact"] .line-items-table th {
+  padding: 10px;
+  font-size: 11px;
+}
+
+[data-density="compact"] .line-items-table td {
+  padding: 10px;
+  font-size: 12px;
+}
+
+[data-density="compact"] .total-row {
+  font-size: 13px;
+}
+
+[data-density="compact"] .total-row:last-child {
+  font-size: 14px;
+}
+
+[data-density="compact"] .payment-info {
+  padding: 12px;
+  font-size: 12px;
+}
+
+[data-density="compact"] .client-avatar {
+  width: 28px;
+  height: 28px;
+  font-size: 10px;
+}
+
+[data-density="compact"] .btn-download,
+[data-density="compact"] .btn-view {
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+[data-density="compact"] .invoice-document .badge {
+  padding: 3px 10px;
+  font-size: 11px;
+}
+
+
+/* ---- density: comfortable ---- */
+[data-density="comfortable"] .invoice-document {
+  padding: 40px;
+}
+
+[data-density="comfortable"] .invoice-header {
+  margin-bottom: 40px;
+  padding-bottom: 28px;
+}
+
+[data-density="comfortable"] .invoice-number {
+  font-size: 28px;
+}
+
+[data-density="comfortable"] .invoice-meta-item {
+  font-size: 14px;
+}
+
+[data-density="comfortable"] .invoice-modal {
+  padding: 28px;
+}
+
+[data-density="comfortable"] .company-name {
+  font-size: 20px;
+}
+
+[data-density="comfortable"] .bill-to-name {
+  font-size: 18px;
+}
+
+[data-density="comfortable"] .line-items-table th {
+  padding: 14px;
+  font-size: 13px;
+}
+
+[data-density="comfortable"] .line-items-table td {
+  padding: 14px;
+  font-size: 14px;
+}
+
+[data-density="comfortable"] .total-row {
+  font-size: 15px;
+}
+
+[data-density="comfortable"] .total-row:last-child {
+  font-size: 18px;
+}
+
+[data-density="comfortable"] .payment-info {
+  padding: 20px;
+  font-size: 14px;
+}
+
+[data-density="comfortable"] .client-avatar {
+  width: 36px;
+  height: 36px;
+  font-size: 13px;
+}
+
+[data-density="comfortable"] .invoice-document .badge {
+  padding: 5px 14px;
+  font-size: 13px;
+}
+
+// Migrated from templates/pages/pages/invoices.njk
+// Scoped with :not(.glass-card) so these standalone-card styles do not
+// double up on dashboard cards that combine `.glass-card.metric-card` on
+// the same element (which already supplies background, border, padding
+// via the glass-card system). Without this scope the rules below would
+// stack a second 1.5rem padding + border + background onto every
+// metric card site-wide, inflating their visual size.
+.metric-card:not(.glass-card) {
+            background: var(--le-glass-bg);
+            backdrop-filter: blur(var(--le-glass-blur));
+            border: 1px solid var(--le-glass-border);
+            border-top: 1px solid var(--le-glass-border-strong);
+            border-radius: var(--le-radius-lg);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .metric-card:not(.glass-card):hover {
+            transform: translateY(-2px);
+            box-shadow: var(--le-glass-shadow-lg);
+        }
+        .metric-card:not(.glass-card) .metric-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .metric-card:not(.glass-card) .metric-icon.bg-primary-subtle { background: rgba(var(--le-primary-rgb),0.15); color: var(--le-primary); }
+        .metric-card:not(.glass-card) .metric-icon.bg-success-subtle { background: rgba(var(--le-success-rgb),0.15); color: var(--le-success); }
+        .metric-card:not(.glass-card) .metric-icon.bg-warning-subtle { background: rgba(var(--le-warning-rgb),0.15); color: var(--le-warning); }
+        .metric-card:not(.glass-card) .metric-icon.bg-danger-subtle { background: rgba(var(--le-danger-rgb),0.15); color: var(--le-danger); }
+        .metric-card:not(.glass-card) .metric-value { font-size: 1.75rem; font-weight: 700; margin: 0; color: var(--le-text-primary); }
+        .metric-card:not(.glass-card) .metric-label { font-size: 0.85rem; color: var(--le-text-muted); margin: 0; }
+        .metric-card:not(.glass-card) .badge { font-size: 0.72rem; font-weight: 600; padding: 0.3em 0.65em; border-radius: 6px; }
+
+        .glass-table-card {
+            background: var(--le-glass-bg);
+            backdrop-filter: blur(var(--le-glass-blur));
+            border: 1px solid var(--le-glass-border);
+            border-radius: var(--le-radius-lg);
+            padding: 1.5rem;
+        }
+        .glass-table-card .table { margin-bottom: 0; color: var(--le-text-primary); }
+        .glass-table-card .table thead th {
+            border-bottom: 1px solid var(--le-glass-border);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--le-text-muted);
+            padding: 0.75rem 1rem;
+            white-space: nowrap;
+        }
+        .glass-table-card .table thead th.text-end { text-align: right; }
+        .glass-table-card .table tbody td {
+            padding: 0.85rem 1rem;
+            vertical-align: middle;
+            border-bottom: 1px solid var(--le-glass-border-subtle);
+            color: var(--le-text-secondary);
+        }
+        .glass-table-card .table tbody td.text-end { text-align: right; }
+        .glass-table-card .table tbody tr:hover {
+            background: var(--le-glass-bg);
+        }
+
+        .client-cell { display: flex; align-items: center; gap: 0.75rem; }
+        .client-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .client-info .client-name { font-weight: 600; font-size: 0.9rem; line-height: 1.2; color: var(--le-text-primary); }
+        .client-info .client-email { font-size: 0.78rem; color: var(--le-text-muted); }
+
+        .invoice-document .badge {
+            padding: 0.3em 0.75em;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            min-width: 72px;
+            text-align: center;
+        }
+
+        .btn.btn-sm {
+            background: var(--le-glass-bg);
+            border: 1px solid var(--le-glass-border);
+            border-radius: 8px;
+            padding: 0.35rem 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--le-text-secondary);
+        }
+        .btn.btn-sm:hover { background: var(--le-glass-bg-strong); color: var(--le-primary); }
+        .btn.btn-sm svg { width: 15px; height: 15px; }
+
+        .invoice-modal .modal-content {
+            color: var(--le-text-primary);
+        }
+        .invoice-modal .modal-header {
+            border-bottom: 1px solid var(--le-glass-border-subtle);
+        }
+        .invoice-modal .modal-footer {
+            border-top: 1px solid var(--le-glass-border-subtle);
+        }
+        .invoice-document {
+            background: var(--le-glass-bg-strong);
+            border-radius: 12px;
+            padding: 2rem;
+            color: #1a1a2e;
+        }
+        .invoice-document .invoice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+        .invoice-document .company-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0d6efd;
+            margin-bottom: 0.25rem;
+        }
+        .invoice-document .company-details { font-size: 0.82rem; color: #6c757d; line-height: 1.6; }
+        .invoice-document .invoice-meta { text-align: right; }
+        .invoice-document .invoice-number { font-size: 1.25rem; font-weight: 700; color: #1a1a2e; }
+        .invoice-document .invoice-meta-item { font-size: 0.85rem; color: #6c757d; margin-top: 0.25rem; }
+        .invoice-document .bill-to { margin-bottom: 1.5rem; }
+        .invoice-document .bill-to-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6c757d; font-weight: 600; margin-bottom: 0.25rem; }
+        .invoice-document .bill-to-name { font-weight: 600; font-size: 1rem; }
+        .invoice-document .bill-to-detail { font-size: 0.85rem; color: #6c757d; }
+        .invoice-document .line-items-table { width: 100%; margin-bottom: 1.5rem; }
+        .invoice-document .line-items-table th {
+            background: #f8f9fa;
+            padding: 0.6rem 1rem;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 600;
+            color: #495057;
+            border-bottom: 2px solid #dee2e6;
+        }
+        .invoice-document .line-items-table td {
+            padding: 0.6rem 1rem;
+            font-size: 0.88rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .invoice-document .totals-section { display: flex; justify-content: flex-end; }
+        .invoice-document .totals-table { width: 280px; }
+        .invoice-document .totals-table td { padding: 0.4rem 0; font-size: 0.9rem; }
+        .invoice-document .totals-table .total-row td { font-weight: 700; font-size: 1.1rem; border-top: 2px solid #1a1a2e; padding-top: 0.6rem; }
+        .invoice-document .payment-info {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .invoice-document .payment-info strong { display: block; margin-bottom: 0.35rem; }
+
+        .table-header-actions {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .table-header-actions h5 { margin: 0; font-weight: 600; }
+        .table-header-actions .filter-group { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+        .filter-group .form-select, .filter-group .form-control {
+            background: var(--le-glass-bg);
+            border: 1px solid var(--le-glass-border-strong);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.75rem;
+            color: var(--le-text-primary);
+        }
+        .filter-group .form-select:focus, .filter-group .form-control:focus {
+            border-color: var(--le-primary);
+            box-shadow: 0 0 0 2px rgba(var(--le-primary-rgb), 0.15);
+        }
+
+        @media (max-width: 991.98px) {
+            .glass-table-card { overflow-x: auto; }
+        }

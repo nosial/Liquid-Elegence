@@ -1,0 +1,61 @@
+// ── Glass-bordered box (filter bar / inline input) ───────────────────────
+.le-glass-bordered-input {
+  border-radius: var(--le-radius-md);
+  border: 1px solid var(--le-glass-border-subtle);
+  padding: 0 1rem;
+}
+
+// ── Pill buttons ─────────────────────────────────────────────────────────
+.le-pill-sm {
+  border-radius: var(--le-radius-full);
+  padding: 5px 16px;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+.le-pill-md {
+  border-radius: var(--le-radius-full);
+  padding: 6px 20px;
+  font-weight: 700;
+}
+.le-pill-lg {
+  border-radius: var(--le-radius-full);
+  padding: 8px 24px;
+}
+.le-pill-icon {
+  border-radius: var(--le-radius-full);
+  padding: 6px;
+}
+
+// ── Color-on-white buttons / badges ──────────────────────────────────────
+.le-bg-primary-white  { background: var(--le-primary); color: #fff; }
+.le-bg-secondary-white { background: var(--le-secondary); color: #fff; }
+.le-bg-success-white  { background: var(--le-success); color: #fff; }
+.le-bg-info-white     { background: var(--le-info); color: #fff; }
+.le-bg-warning-black  { background: var(--le-warning); color: #000; }
+.le-bg-danger-white   { background: var(--le-danger); color: #fff; }
+
+// ── Progress-bar-like stacked bar backgrounds ────────────────────────────
+.le-bar-primary { background: var(--le-primary, #6366f1); }
+.le-bar-secondary { background: var(--le-secondary, #94a3b8); }
+.le-bar-success { background: var(--le-success, #10b981); }
+.le-bar-warning { background: var(--le-warning, #f59e0b); }
+.le-bar-danger  { background: var(--le-danger, #ef4444); }
+.le-bar-info    { background: var(--le-info, #06b6d4); }
+
+// ── Timeline dot ─────────────────────────────────────────────────────────
+.le-timeline-dot {
+  width: 12px;
+  height: 12px;
+  left: -2rem;
+  margin-top: 5px;
+  z-index: 1;
+}
+
+// ── Status dot (8px circle) ──────────────────────────────────────────────
+.le-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}

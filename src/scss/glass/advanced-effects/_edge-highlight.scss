@@ -1,0 +1,110 @@
+/* =============================================================================
+   §20.11 — Glass Edge Highlight
+   ============================================================================= */
+
+.glass-edge-top {
+  position: relative;
+}
+
+.glass-edge-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: var(--le-edge-light);
+  border-radius: 1px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Bottom edge variant */
+.glass-edge-bottom {
+  position: relative;
+}
+
+.glass-edge-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: var(--le-edge-light);
+  border-radius: 1px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.5;
+}
+
+/* Left edge — vertical highlight */
+.glass-edge-left {
+  position: relative;
+}
+
+.glass-edge-left::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  bottom: 15%;
+  left: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 10%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 90%
+  );
+  border-radius: 1px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Full surrounding edge glow */
+.glass-edge-all {
+  position: relative;
+}
+
+.glass-edge-all::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 3;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.25) 0%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255, 255, 255, 0.12) 100%
+    ) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+[data-theme="dark"] .glass-edge-top::before,
+[data-theme="dark"] .glass-edge-bottom::after,
+[data-theme="dark"] .glass-edge-left::before {
+  opacity: 0.5;
+}
+
+[data-theme="dark"] .glass-edge-all::before {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255, 255, 255, 0.06) 100%
+    ) border-box;
+}

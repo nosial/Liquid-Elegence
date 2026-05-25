@@ -1,0 +1,177 @@
+/* ---------------------------------------------------------------------------
+   §14.3 — Comfortable
+   Larger visual scale — content dimensions (fonts, icons, avatars, metrics)
+   grow alongside chrome (padding, gaps, margins) for a spacious, easy-to-read
+   interface. ~8-12 % increase for chrome, keeping padding moderate.
+   ------------------------------------------------------------------------ */
+[data-density="comfortable"] {
+  --le-spacing-xs:    0.3125rem;  /*  5px ← 4px default */
+  --le-spacing-sm:    0.625rem;   /* 10px ← 8px default */
+  --le-spacing-md:    1.125rem;   /* 18px ← 16px default */
+  --le-spacing-lg:    1.625rem;   /* 26px ← 24px default */
+  --le-spacing-xl:    2.25rem;    /* 36px ← 32px default */
+  --le-spacing-2xl:   3.375rem;   /* 54px ← 48px default */
+  --le-spacing-3xl:   4.5rem;     /* 72px ← 64px default */
+
+  /* Fonts: scaled up for a generous, readable feel */
+  --le-font-size-base:  1rem;       /* 16px ← 15px default */
+  --le-font-size-sm:    0.875rem;   /* 14px ← 13px default */
+  --le-font-size-xs:    0.75rem;    /* 12px ← 11px default */
+  --le-radius:          14px;
+  --le-radius-lg:       20px;
+
+  /* Infrastructure — moderately spacious shell */
+  --le-sidebar-width:     272px;
+  --le-sidebar-collapsed: 74px;
+  --le-sidebar-mini-width: 74px;
+  --le-topbar-height:     68px;
+  --le-hnav-height:       46px;
+  --le-grid-gap:          1.75rem;   /* 28px ← 24px default */
+  --le-section-gap:       1.75rem;   /* 28px */
+  --le-page-header-mb:    1.75rem;   /* 28px */
+
+  /* Component density — moderate padding increase */
+  --le-badge-padding-y:    0.25rem;
+  --le-badge-padding-x:    0.7rem;
+  --le-badge-font-size:    var(--le-font-size-xs);
+  --le-input-padding-y:    0.6875rem;
+  --le-input-padding-x:    1.125rem;
+  --le-input-height:       2.625rem;  /* 42px ← 40px */
+  --le-tab-padding-y:      0.5625rem;
+  --le-tab-padding-x:      1.125rem;
+  --le-dot-size:           10px;       /* larger indicator */
+  --le-card-padding:       1.625rem;
+  --le-card-header-padding: 1.125rem 1.25rem;
+  --le-btn-padding-y:      0.5625rem;
+  --le-btn-padding-x:      1.375rem;
+
+  /* Content dimensions — genuinely larger */
+  --le-font-size-md:       1.0625rem;   /* 17px ← 16px */
+  --le-font-size-lg:       1.25rem;     /* 20px ← 18px */
+  --le-radius-sm:          10px;
+  --le-radius-xs:          6px;
+  --le-avatar-size:        46px;        /* ← 40px */
+  --le-avatar-size-sm:     34px;        /* ← 32px */
+  --le-avatar-size-lg:     62px;        /* ← 56px */
+  --le-avatar-size-xl:     80px;        /* ← 72px */
+  --le-icon-btn-size:      42px;        /* ← 38px */
+  --le-icon-size:          20px;        /* ← 18px */
+  --le-dropdown-padding:   10px;
+  --le-dropdown-item-py:   0.5rem;
+  --le-dropdown-item-px:   0.875rem;
+  --le-dropdown-item-font: 0.9375rem;   /* 15px ← 14px */
+
+  /* Metric cards — larger for comfortable dashboards */
+  --le-metric-value-size:  2rem;         /* ← 1.75rem */
+  --le-metric-icon-size:   52px;         /* ← 48px */
+  --le-metric-icon-svg:    24px;         /* ← 22px */
+  --le-metric-icon-radius: 13px;         /* ← 12px */
+  --le-metric-label-font:  0.875rem;     /* ← 0.8125rem */
+  --le-metric-label-mb:    5px;
+  --le-metric-change-font: 0.875rem;     /* ← 0.8125rem */
+  --le-metric-change-gap:  5px;
+
+  /* Tables — slightly roomier cells with larger text */
+  --le-table-cell-py:      14px;         /* ← 12px */
+  --le-table-cell-px:      18px;         /* ← 16px */
+  --le-table-head-font:    0.8125rem;    /* ← 0.75rem */
+  --le-table-body-font:    0.9375rem;    /* ← 0.875rem */
+
+  --le-accordion-btn-py:   0.9375rem;
+  --le-accordion-btn-px:   1.375rem;
+  --le-accordion-body-py:  1.125rem;
+  --le-accordion-body-px:  1.375rem;
+  --le-accordion-item-mb:  10px;
+  --le-context-item-py:    0.5rem;
+  --le-context-item-px:    0.875rem;
+  --le-context-item-font:  0.875rem;     /* ← 0.8125rem */
+  --le-pagination-py:      7px;
+  --le-pagination-px:      14px;
+  --le-pagination-font:    0.875rem;     /* ← 0.8125rem */
+  --le-feed-gap:           18px;
+  --le-feed-item-padding:  14px;
+
+  /* Icon circles, avatars, progress — scaled up */
+  --le-icon-circle-size:       44px;     /* ← 40px */
+  --le-icon-circle-size-xs:    26px;     /* ← 24px */
+  --le-icon-circle-size-sm:    34px;     /* ← 32px */
+  --le-icon-circle-size-lg:    52px;     /* ← 48px */
+  --le-icon-circle-size-xl:    62px;     /* ← 56px */
+  --le-icon-circle-font:       0.875rem;    /* ← 0.8125rem */
+  --le-icon-circle-font-sm:    0.875rem;    /* ← 0.8125rem */
+  --le-icon-circle-font-lg:    1.125rem;    /* ← 1rem */
+  --le-icon-circle-font-xl:    1.3125rem;   /* ← 1.125rem */
+  --le-mini-avatar-size:       26px;     /* ← 24px */
+  --le-avatar-group-overlap:   -9px;     /* ← -8px */
+  --le-progress-height:        7px;      /* ← 6px */
+
+  /* Toolbar — slightly spacious */
+  --le-toolbar-padding:        18px;
+  --le-toolbar-gap:            14px;
+  --le-toolbar-mb:             22px;
+
+  /* Nav pills & tabs — larger */
+  --le-nav-pill-padding-y:     0.5625rem;
+  --le-nav-pill-padding-x:     1.125rem;
+  --le-nav-pill-font:          0.9375rem;   /* ← 0.875rem */
+  --le-nav-pill-gap:           5px;
+  --le-nav-tab-padding-y:      0.6875rem;
+  --le-nav-tab-padding-x:      1.125rem;
+  --le-nav-tab-font:           0.9375rem;   /* ← 0.875rem */
+
+  /* Forms — larger */
+  --le-form-font:              0.9375rem;   /* ← 0.875rem */
+  --le-form-label-font:        0.875rem;    /* ← 0.8125rem */
+  --le-form-label-mb:          7px;
+  --le-form-check-font:        0.9375rem;   /* ← 0.875rem */
+
+  /* Buttons — larger */
+  --le-btn-font:               0.9375rem;   /* ← 0.875rem */
+  --le-btn-gap:                7px;
+
+  --le-breadcrumb-font:        0.875rem;    /* ← 0.8125rem */
+  --le-legend-dot-size:        12px;        /* ← 10px */
+
+  /* Customizer panel — slightly spacious */
+  --le-customizer-body-padding: 1.375rem;
+  --le-customizer-header-py:   1.25rem;
+  --le-customizer-header-px:   1.375rem;
+  --le-customizer-section-mb:  1.625rem;
+  --le-customizer-close-size:  34px;
+  --le-customizer-fab-size:    48px;
+
+  /* Alerts, modals, lists, toasts, offcanvas — moderately larger */
+  --le-alert-py:               0.875rem;
+  --le-alert-px:               1.125rem;
+  --le-alert-font:             0.9375rem;   /* ← 0.875rem */
+  --le-modal-body-py:          1.375rem;
+  --le-modal-body-px:          1.625rem;
+  --le-modal-header-py:        1.125rem;
+  --le-modal-header-px:        1.375rem;
+  --le-list-item-py:           0.8125rem;
+  --le-list-item-px:           1.125rem;
+  --le-list-item-font:         0.9375rem;   /* ← 0.875rem */
+  --le-toast-body-py:          0.8125rem;
+  --le-toast-body-px:          1.125rem;
+  --le-toast-body-font:        0.9375rem;   /* ← 0.875rem */
+  --le-toast-header-py:        0.5625rem;
+  --le-toast-header-px:        1rem;
+  --le-toast-header-font:      0.875rem;    /* ← 0.8125rem */
+  --le-offcanvas-header-py:    1.125rem;
+  --le-offcanvas-header-px:    1.375rem;
+  --le-offcanvas-body-py:      1.125rem;
+  --le-offcanvas-body-px:      1.375rem;
+  --le-tooltip-py:             7px;
+  --le-tooltip-px:             13px;
+  --le-tooltip-font:           0.875rem;    /* ← 0.8125rem */
+  --le-popover-font:           0.875rem;    /* ← 0.8125rem */
+  --le-action-btn-gap:         0.4375rem;
+  --le-action-btn-py:          5px;
+  --le-action-btn-px:          10px;
+  --le-action-btn-font:        0.875rem;    /* ← 0.8125rem */
+  --le-card-footer-py:         14px;
+  --le-card-footer-px:         1.25rem;
+  --le-card-footer-font:       0.875rem;    /* ← 0.8125rem */
+}
+
+

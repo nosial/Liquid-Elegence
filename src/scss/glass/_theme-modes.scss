@@ -1,0 +1,201 @@
+/* =============================================================================
+   §2 — Theme Modes
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   §2.1 — Light Theme
+   ------------------------------------------------------------------------ */
+[data-theme="light"] {
+  /* Glass plates — frostier per design §5 ("Reduced Transparency").
+     The plate fill carries a faint cool tint (not pure white) so it reads as
+     a distinct material against the page background instead of blending in. */
+  --le-glass-bg:              rgba(248, 250, 254, 0.55);
+  --le-glass-bg-strong:       rgba(248, 250, 254, 0.74);
+  --le-glass-bg-subtle:       rgba(248, 250, 254, 0.34);
+
+  /* Borders — defined dark hairlines act as the meniscus rim. White-on-light
+     borders disappear on light backgrounds (the cause of the washed-out look);
+     a thin dark stroke gives the glass plate a clear edge while the inset
+     bright sheen (--le-meniscus-shadow / --le-reflection-*) still reads as
+     the wet highlight on top. */
+  --le-glass-border:          rgba(15, 23, 42, 0.10);
+  --le-glass-border-strong:   rgba(15, 23, 42, 0.16);
+  --le-glass-border-subtle:   rgba(15, 23, 42, 0.06);
+  --le-glass-shadow:          0 6px 24px rgba(15, 23, 42, 0.09),
+                              0 1px 3px rgba(15, 23, 42, 0.05);
+  --le-glass-shadow-lg:       0 14px 40px rgba(15, 23, 42, 0.13),
+                              0 2px 6px rgba(15, 23, 42, 0.06);
+
+  --le-reflection-start:      rgba(255, 255, 255, 0.45);
+  --le-reflection-mid:        rgba(255, 255, 255, 0.12);
+  --le-reflection-edge:       rgba(255, 255, 255, 0.05);
+  --le-reflection-end:        rgba(255, 255, 255, 0.00);
+  --le-reflection-peak:       rgba(255, 255, 255, 0.45);
+  --le-reflection-caustic:    rgba(14, 165, 233, 0.07);
+  --le-refraction-tint:       rgba(14, 165, 233, 0.07);
+  --le-refraction-shift:      rgba(139, 92, 246, 0.05);
+
+  --le-text-primary:          var(--le-gray-900);
+  --le-text-secondary:        var(--le-gray-600);
+  --le-text-muted:            var(--le-gray-400);
+  --le-text-inverse:          var(--le-white);
+  --le-text-on-primary:       var(--le-white);
+  --le-body-bg:               var(--le-gray-50);
+  --le-surface:               var(--le-white);
+  --le-overlay-color:         rgba(0, 0, 0, 0.45);
+  --le-divider-color:         rgba(15, 23, 42, 0.08);
+  --le-highlight-bg:          rgba(var(--le-primary-rgb), 0.08);
+  --le-highlight-bg-strong:   rgba(var(--le-primary-rgb), 0.15);
+  --le-shell-bg:              rgba(248, 250, 254, 0.84);
+  --le-shell-border:          rgba(15, 23, 42, 0.08);
+  --le-shell-shadow:          0 18px 40px rgba(15, 23, 42, 0.10),
+                              0 1px 0 rgba(255, 255, 255, 0.55) inset;
+  --le-surface-floating-bg:   rgba(248, 250, 254, 0.86);
+  --le-surface-floating-border: rgba(15, 23, 42, 0.10);
+  --le-surface-floating-shadow: 0 22px 48px rgba(15, 23, 42, 0.16),
+                                0 6px 18px rgba(15, 23, 42, 0.07);
+  --le-surface-content-fill:  rgba(248, 250, 254, 0.74);
+  --le-surface-content-tint-start: rgba(255, 255, 255, 0.24);
+  --le-surface-content-tint-end: rgba(var(--le-primary-rgb), 0.06);
+  --le-surface-content-border: rgba(15, 23, 42, 0.08);
+  --le-surface-content-shadow: 0 14px 32px rgba(15, 23, 42, 0.10),
+                               0 4px 10px rgba(15, 23, 42, 0.05);
+  --le-control-bg:           rgba(248, 250, 254, 0.64);
+  --le-control-bg-hover:     rgba(248, 250, 254, 0.80);
+  --le-control-bg-active:    rgba(var(--le-primary-rgb), 0.16);
+  --le-control-border:       rgba(15, 23, 42, 0.10);
+  --le-control-border-strong: rgba(var(--le-primary-rgb), 0.32);
+  --le-control-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.50),
+                             0 1px 2px rgba(15, 23, 42, 0.05);
+  --le-control-shadow-active: 0 10px 24px rgba(var(--le-primary-rgb), 0.16),
+                              inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  --le-table-head-bg:        rgba(248, 250, 254, 0.50);
+  --le-table-row-hover:      rgba(var(--le-primary-rgb), 0.07);
+  --le-table-row-stripe:     rgba(var(--le-primary-rgb), 0.022);
+
+  color-scheme: light;
+}
+
+/* ---------------------------------------------------------------------------
+   §2.2 — Dark Theme
+   ------------------------------------------------------------------------ */
+[data-theme="dark"] {
+  /* Glass backgrounds — frostier per design §5. Navy-on-dark needs higher
+     alpha than white-on-light to give the same perceptual separation. */
+  --le-glass-bg:              rgba(15, 23, 42, 0.58);
+  --le-glass-bg-strong:       rgba(15, 23, 42, 0.72);
+  --le-glass-bg-subtle:       rgba(15, 23, 42, 0.40);
+
+  /* Borders — clearer edge definition like a refraction meniscus */
+  --le-glass-border:          rgba(255, 255, 255, 0.14);
+  --le-glass-border-strong:   rgba(255, 255, 255, 0.22);
+  --le-glass-border-subtle:   rgba(255, 255, 255, 0.08);
+
+  /* Shadows — soft contact shadows, not heavy drop-shadows.
+     A water droplet sits *on* the surface, it doesn't float above it. */
+  --le-glass-shadow:          0 2px 16px rgba(0, 0, 0, 0.18),
+                              0 1px 3px rgba(0, 0, 0, 0.10);
+  --le-glass-shadow-lg:       0 6px 28px rgba(0, 0, 0, 0.24),
+                              0 2px 6px rgba(0, 0, 0, 0.12);
+
+  /* Edge-highlight intensity (inset 1px sheen, file-grid top-glow, etc.) is
+     kept dim so it reads as a faint surface ridge, not a hot white line. The
+     concentrated lens-peak used by .light-reflection / .glass-card-specular
+     uses a separate, brighter token (--le-reflection-peak) below. */
+  --le-reflection-start:      rgba(255, 255, 255, 0.08);
+  --le-reflection-mid:        rgba(255, 255, 255, 0.03);
+  --le-reflection-edge:       rgba(255, 255, 255, 0.015);
+  --le-reflection-end:        rgba(255, 255, 255, 0.00);
+  --le-reflection-peak:       rgba(255, 255, 255, 0.20);
+  --le-reflection-caustic:    rgba(var(--le-primary-rgb), 0.08);
+  --le-refraction-tint:       rgba(14, 165, 233, 0.08);
+  --le-refraction-shift:      rgba(139, 92, 246, 0.05);
+
+  --le-text-primary:          #e2e8f0;
+  --le-text-secondary:        #cbd5e1;
+  --le-text-muted:            #7bb0c8;
+  --le-text-inverse:          var(--le-white);
+  --le-body-bg:               #070b14;
+  --le-surface:               var(--le-gray-900);
+
+  /* General shadow scale — softened to match the water-droplet aesthetic;
+     heavy shadows make surfaces look like floating plastic panels */
+  --le-shadow-xs:             0 1px 2px  rgba(0, 0, 0, 0.14);
+  --le-shadow-sm:             0 2px 4px  rgba(0, 0, 0, 0.16),
+                              0 1px 2px  rgba(0, 0, 0, 0.10);
+  --le-shadow:                0 4px 12px rgba(0, 0, 0, 0.18),
+                              0 2px 4px  rgba(0, 0, 0, 0.10);
+  --le-shadow-md:             0 8px 24px rgba(0, 0, 0, 0.22),
+                              0 4px 8px  rgba(0, 0, 0, 0.12);
+  --le-shadow-lg:             0 16px 48px rgba(0, 0, 0, 0.28),
+                              0 8px 16px  rgba(0, 0, 0, 0.14);
+  --le-shadow-xl:             0 24px 64px rgba(0, 0, 0, 0.34),
+                              0 12px 24px rgba(0, 0, 0, 0.18);
+
+  /* Bootstrap CSS variable overrides for dark mode */
+  --bs-body-bg: #0f172a;
+  --bs-body-color: #e2e8f0;
+  --bs-card-bg: rgba(15, 23, 42, 0.62);
+  --bs-card-color: #e2e8f0;
+  --bs-card-border-color: rgba(255, 255, 255, 0.06);
+  --bs-table-bg: transparent;
+  --bs-table-color: #e2e8f0;
+  --bs-table-border-color: rgba(255, 255, 255, 0.06);
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.03);
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.05);
+  --bs-table-active-bg: rgba(255, 255, 255, 0.06);
+  --bs-border-color: rgba(255, 255, 255, 0.08);
+  --bs-tertiary-bg: rgba(255, 255, 255, 0.04);
+  --bs-secondary-bg: rgba(255, 255, 255, 0.06);
+  --bs-list-group-bg: transparent;
+  --bs-list-group-border-color: rgba(255, 255, 255, 0.06);
+  --bs-list-group-color: #e2e8f0;
+  --bs-list-group-action-hover-bg: rgba(255, 255, 255, 0.05);
+
+  /* Semantic component tokens — dark mode */
+  --le-text-on-primary:       var(--le-white);
+  --le-overlay-color:         rgba(0, 0, 0, 0.65);
+  --le-divider-color:         rgba(255, 255, 255, 0.08);
+  --le-highlight-bg:          rgba(var(--le-primary-rgb), 0.14);
+  --le-highlight-bg-strong:   rgba(var(--le-primary-rgb), 0.24);
+  --le-link-color:            var(--le-primary-light);
+  --le-link-hover-color:      var(--le-primary);
+
+  /* Dark-mode override: lighter accent reads better on dark glass plates. */
+  --le-primary-on-glass:      var(--le-primary-light);
+  --le-success-on-glass:      var(--le-success-light, var(--le-success));
+  --le-danger-on-glass:       var(--le-danger-light,  var(--le-danger));
+  --le-warning-on-glass:      var(--le-warning-light, var(--le-warning));
+  --le-info-on-glass:         var(--le-info-light,    var(--le-info));
+  --le-scrollbar-thumb:       rgba(var(--le-primary-rgb), 0.28);
+  --le-scrollbar-track:       transparent;
+  --le-shell-bg:              rgba(8, 15, 30, 0.82);
+  --le-shell-border:          rgba(255, 255, 255, 0.12);
+  --le-shell-shadow:          0 22px 56px rgba(0, 0, 0, 0.36),
+                              0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  --le-surface-floating-bg:   rgba(10, 18, 32, 0.88);
+  --le-surface-floating-border: rgba(255, 255, 255, 0.14);
+  --le-surface-floating-shadow: 0 24px 58px rgba(0, 0, 0, 0.42),
+                                0 10px 22px rgba(0, 0, 0, 0.20);
+  --le-surface-content-fill:  rgba(15, 23, 42, 0.62);
+  --le-surface-content-tint-start: rgba(255, 255, 255, 0.06);
+  --le-surface-content-tint-end: rgba(var(--le-primary-rgb), 0.06);
+  --le-surface-content-border: rgba(255, 255, 255, 0.14);
+  --le-surface-content-shadow: 0 16px 40px rgba(0, 0, 0, 0.28),
+                               0 6px 16px rgba(0, 0, 0, 0.14);
+  --le-control-bg:           rgba(255, 255, 255, 0.08);
+  --le-control-bg-hover:     rgba(255, 255, 255, 0.12);
+  --le-control-bg-active:    rgba(var(--le-primary-rgb), 0.22);
+  --le-control-border:       rgba(255, 255, 255, 0.14);
+  --le-control-border-strong: rgba(var(--le-primary-rgb), 0.28);
+  --le-control-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.08),
+                             0 1px 2px rgba(0, 0, 0, 0.18);
+  --le-control-shadow-active: 0 10px 26px rgba(var(--le-primary-rgb), 0.18),
+                              inset 0 1px 0 rgba(255, 255, 255, 0.10);
+  --le-table-head-bg:        rgba(255, 255, 255, 0.05);
+  --le-table-row-hover:      rgba(var(--le-primary-rgb), 0.10);
+  --le-table-row-stripe:     rgba(255, 255, 255, 0.02);
+
+  color-scheme: dark;
+}
+

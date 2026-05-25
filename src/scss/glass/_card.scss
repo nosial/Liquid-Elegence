@@ -1,0 +1,101 @@
+/* =============================================================================
+   §8 — Glass Card (water-droplet refraction & caustics)
+   ============================================================================= */
+
+.glass-card {
+  position: relative;
+  overflow: visible;
+  background:
+    /* Water-droplet color shift — light bends warm-to-cool across the surface */
+    linear-gradient(
+      165deg,
+      rgba(var(--le-primary-rgb), 0.06) 0%,
+      transparent 25%,
+      transparent 75%,
+      rgba(var(--le-secondary-rgb), 0.06) 100%
+    ),
+    var(--le-glass-bg-strong);
+  border: 1px solid var(--le-glass-border);
+  border-radius: var(--le-radius-lg);
+  box-shadow:
+    var(--le-glass-shadow),
+    var(--le-inner-glow),
+    var(--le-meniscus-shadow);
+  -webkit-backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  transform: translateY(0);
+  transition:
+    transform 0.4s var(--le-spring-snappy),
+    box-shadow 0.4s var(--le-spring-snappy),
+    filter 0.4s var(--le-spring-snappy),
+    border-color 0.4s var(--le-spring-snappy);
+  will-change: transform, box-shadow, filter;
+}
+
+/* Water-droplet specular caustic + chromatic dispersion overlay */
+.glass-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background:
+    /* Convex-lens caustic — concentrated light gathering like a water bead */
+    radial-gradient(
+      ellipse 70% 45% at 28% 8%,
+      var(--le-specular-color) 0%,
+      var(--le-reflection-mid) 35%,
+      transparent 65%
+    ),
+    /* Secondary caustic — faint refracted light at bottom-right */
+    radial-gradient(
+      ellipse 40% 30% at 75% 90%,
+      var(--le-reflection-caustic) 0%,
+      transparent 60%
+    ),
+    /* Chromatic dispersion — warm edge top, cool edge bottom */
+    linear-gradient(
+      172deg,
+      var(--le-chroma-red) 0%,
+      transparent 18%,
+      transparent 82%,
+      var(--le-chroma-blue) 100%
+    ),
+    /* Side color fringe — prismatic split at card edges */
+    linear-gradient(
+      90deg,
+      var(--le-chroma-red) 0%,
+      transparent 8%,
+      transparent 92%,
+      var(--le-chroma-blue) 100%
+    );
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.5s var(--le-spring-snappy);
+}
+
+.glass-card:hover::before {
+  opacity: 0.85;
+}
+
+/* Hover: water-bead lift with refracted light spill */
+.glass-card:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.035);
+  box-shadow:
+    var(--le-glass-shadow-lg),
+    0 4px 24px rgba(var(--le-primary-rgb), 0.10),
+    0 0 0 1px rgba(var(--le-primary-rgb), 0.08),
+    var(--le-inner-glow-strong);
+}
+
+/* Ensure card content stays above pseudo-elements */
+.glass-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+

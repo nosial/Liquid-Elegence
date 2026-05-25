@@ -1,0 +1,446 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}SaaS — Liquid Elegance{% endblock %}
+
+{% block scripts_before %}
+<script src="{{ asset_root or root }}vendor/chart.js/chart.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="mb-3">
+  <ol class="breadcrumb mb-0">
+    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboards</a></li>
+    <li class="breadcrumb-item active" aria-current="page">SaaS</li>
+  </ol>
+</nav>
+
+<!-- Page Header -->
+<div class="mb-4">
+  <h1 class="h3 mb-1">SaaS</h1>
+  <p class="text-muted mb-0">Monitor your subscription metrics</p>
+</div>
+
+<!-- Metric Cards -->
+<div class="row g-4 mb-4">
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">MRR</p>
+            <h3 class="metric-value mb-1">$38,450</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +7.2%</span>
+          </div>
+          <div class="metric-icon bg-primary-subtle">
+            <i data-feather="dollar-sign"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="saasSparkMRR" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">Annual Churn</p>
+            <h3 class="metric-value mb-1">4.2%</h3>
+            <span class="metric-change text-success"><i data-feather="trending-down"></i> -0.8%</span>
+          </div>
+          <div class="metric-icon bg-danger-subtle">
+            <i data-feather="user-minus"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="saasSparkChurn" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">Active Subscribers</p>
+            <h3 class="metric-value mb-1">2,847</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +12.3%</span>
+          </div>
+          <div class="metric-icon bg-success-subtle">
+            <i data-feather="users"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="saasSparkSubs" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-xl-3">
+    <div class="glass-card metric-card glass-card-animated">
+      <div class="glass-card-body">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <p class="metric-label text-muted mb-1">ARPU</p>
+            <h3 class="metric-value mb-1">$13.50</h3>
+            <span class="metric-change text-success"><i data-feather="trending-up"></i> +3.1%</span>
+          </div>
+          <div class="metric-icon bg-info-subtle">
+            <i data-feather="bar-chart-2"></i>
+          </div>
+        </div>
+        <div class="chart-wrapper le-chart-60"><canvas id="saasSparkARPU" height="60"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MRR Growth Chart -->
+<div class="row g-4 mb-4">
+  <div class="col-12">
+    <div class="glass-card">
+      <div class="glass-card-header d-flex justify-content-between align-items-center">
+        <h5 class="glass-card-title mb-0">MRR Growth</h5>
+        <div class="btn-group btn-group-sm" role="group">
+          <button type="button" class="btn btn-outline-primary">6M</button>
+          <button type="button" class="btn btn-outline-primary active">12M</button>
+          <button type="button" class="btn btn-outline-primary">All</button>
+        </div>
+      </div>
+      <div class="glass-card-body">
+        <div class="chart-wrapper le-chart-320"><canvas id="mrrChart" height="320"></canvas></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Subscription Breakdown & Churn Analysis -->
+<div class="row g-4 mb-4">
+  <div class="col-lg-6">
+    <div class="glass-card h-100">
+      <div class="glass-card-header">
+        <h5 class="glass-card-title mb-0">Subscription Breakdown</h5>
+      </div>
+      <div class="glass-card-body">
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <i data-feather="gift" class="text-secondary le-icon-18"></i>
+              <span class="fw-medium">Free</span>
+            </div>
+            <div class="text-end">
+              <span class="fw-semibold">1,240</span>
+              <span class="text-muted small ms-1">users</span>
+            </div>
+          </div>
+          <div class="progress le-h-8 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:43.6%;background:var(--le-secondary,#94a3b8);"></div>
+          </div>
+          <p class="text-muted small mt-1 mb-0">43.6% of total subscribers</p>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <i data-feather="zap" class="text-info le-icon-18"></i>
+              <span class="fw-medium">Starter</span>
+              <span class="badge bg-info bg-opacity-10 text-info">$9/mo</span>
+            </div>
+            <div class="text-end">
+              <span class="fw-semibold">820</span>
+              <span class="text-muted small ms-1">users</span>
+            </div>
+          </div>
+          <div class="progress le-h-8 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:28.8%;background:var(--le-info,#06b6d4);"></div>
+          </div>
+          <p class="text-muted small mt-1 mb-0">28.8% of total · $7,380 MRR</p>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <i data-feather="award" class="text-primary le-icon-18"></i>
+              <span class="fw-medium">Pro</span>
+              <span class="badge bg-primary bg-opacity-10 text-primary">$19/mo</span>
+            </div>
+            <div class="text-end">
+              <span class="fw-semibold">580</span>
+              <span class="text-muted small ms-1">users</span>
+            </div>
+          </div>
+          <div class="progress le-h-8 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:20.4%;background:var(--le-primary,#6366f1);"></div>
+          </div>
+          <p class="text-muted small mt-1 mb-0">20.4% of total · $11,020 MRR</p>
+        </div>
+        <div class="mb-0">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <i data-feather="shield" class="text-warning le-icon-18"></i>
+              <span class="fw-medium">Enterprise</span>
+              <span class="badge bg-warning bg-opacity-10 text-warning">$99/mo</span>
+            </div>
+            <div class="text-end">
+              <span class="fw-semibold">207</span>
+              <span class="text-muted small ms-1">users</span>
+            </div>
+          </div>
+          <div class="progress le-h-8 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:7.3%;background:var(--le-warning,#f59e0b);"></div>
+          </div>
+          <p class="text-muted small mt-1 mb-0">7.3% of total · $20,493 MRR</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="glass-card h-100">
+      <div class="glass-card-header">
+        <h5 class="glass-card-title mb-0">Churn Analysis</h5>
+      </div>
+      <div class="glass-card-body">
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="fw-medium">Price</span>
+            <span class="fw-semibold">35%</span>
+          </div>
+          <div class="progress le-h-10 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:35%;background:var(--le-danger,#ef4444);"></div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="fw-medium">Missing Features</span>
+            <span class="fw-semibold">25%</span>
+          </div>
+          <div class="progress le-h-10 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:25%;background:var(--le-warning,#f59e0b);"></div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="fw-medium">Support Quality</span>
+            <span class="fw-semibold">15%</span>
+          </div>
+          <div class="progress le-h-10 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:15%;background:var(--le-primary,#6366f1);"></div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="fw-medium">Competitor</span>
+            <span class="fw-semibold">15%</span>
+          </div>
+          <div class="progress le-h-10 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:15%;background:var(--le-info,#06b6d4);"></div>
+          </div>
+        </div>
+        <div class="mb-0">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <span class="fw-medium">Other</span>
+            <span class="fw-semibold">10%</span>
+          </div>
+          <div class="progress le-h-10 progress-shimmer">
+            <div class="progress-bar" role="progressbar" style="width:10%;background:var(--le-secondary,#94a3b8);"></div>
+          </div>
+        </div>
+        <div class="mt-4 pt-3 border-top">
+          <div class="d-flex align-items-center gap-2">
+            <i data-feather="info" class="text-muted le-icon-16"></i>
+            <span class="text-muted small">Based on 124 exit surveys collected this quarter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent Subscription Events -->
+<div class="row g-4 mb-4">
+  <div class="col-12">
+    <div class="glass-card">
+      <div class="glass-card-header d-flex justify-content-between align-items-center">
+        <h5 class="glass-card-title mb-0">Recent Subscription Events</h5>
+        <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary">View All</a>
+      </div>
+      <div class="glass-card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Event</th>
+                <th>Plan Change</th>
+                <th class="text-end">MRR Impact</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-success">DF</span>
+                    DataFlow Inc
+                  </div>
+                </td>
+                <td><span class="glass-badge glass-badge-success"><i data-feather="arrow-up" class="me-1 le-icon-12"></i>Upgrade</span></td>
+                <td>Pro → Enterprise</td>
+                <td class="text-end fw-semibold text-success">+$80.00</td>
+                <td class="text-muted small">2 hours ago</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-primary">NV</span>
+                    NovaTech Ltd
+                  </div>
+                </td>
+                <td><span class="glass-badge glass-badge-primary"><i data-feather="user-plus" class="me-1 le-icon-12"></i>New Signup</span></td>
+                <td>— → Starter</td>
+                <td class="text-end fw-semibold text-success">+$9.00</td>
+                <td class="text-muted small">4 hours ago</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-warning">BP</span>
+                    BrightPath Co
+                  </div>
+                </td>
+                <td><span class="glass-badge glass-badge-warning"><i data-feather="arrow-down" class="me-1 le-icon-12"></i>Downgrade</span></td>
+                <td>Pro → Starter</td>
+                <td class="text-end fw-semibold text-danger">-$10.00</td>
+                <td class="text-muted small">6 hours ago</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-danger">CX</span>
+                    CloudNine SaaS
+                  </div>
+                </td>
+                <td><span class="glass-badge glass-badge-danger"><i data-feather="user-x" class="me-1 le-icon-12"></i>Cancellation</span></td>
+                <td>Enterprise → —</td>
+                <td class="text-end fw-semibold text-danger">-$99.00</td>
+                <td class="text-muted small">Yesterday</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-success">AW</span>
+                    AppWorks Studio
+                  </div>
+                </td>
+                <td><span class="glass-badge glass-badge-success"><i data-feather="arrow-up" class="me-1 le-icon-12"></i>Upgrade</span></td>
+                <td>Starter → Pro</td>
+                <td class="text-end fw-semibold text-success">+$10.00</td>
+                <td class="text-muted small">Yesterday</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-info">SL</span>
+                    StreamLine AI
+                  </div>
+                </td>
+                <td><span class="glass-badge glass-badge-primary"><i data-feather="user-plus" class="me-1 le-icon-12"></i>New Signup</span></td>
+                <td>— → Pro</td>
+                <td class="text-end fw-semibold text-success">+$19.00</td>
+                <td class="text-muted small">2 days ago</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="icon-circle icon-circle-sm icon-circle-secondary">MK</span>
+                    MarketKing
+                  </div>
+                </td>
+                <td><span class="glass-badge glass-badge-danger"><i data-feather="user-x" class="me-1 le-icon-12"></i>Cancellation</span></td>
+                <td>Starter → —</td>
+                <td class="text-end fw-semibold text-danger">-$9.00</td>
+                <td class="text-muted small">2 days ago</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const leStyles = getComputedStyle(document.documentElement);
+  const lePrimary = leStyles.getPropertyValue('--le-primary').trim() || '#6366f1';
+  const leSuccess = leStyles.getPropertyValue('--le-success').trim() || '#10b981';
+  const leDanger  = leStyles.getPropertyValue('--le-danger').trim()  || '#ef4444';
+  const leInfo    = leStyles.getPropertyValue('--le-info').trim()    || '#06b6d4';
+
+  function createSparkline(id, data, color) {
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    new Chart(ctx, {
+      type: 'line',
+      data: { labels: data.map((_, i) => i), datasets: [{ data, borderColor: color, borderWidth: 2, fill: true, backgroundColor: color + '20', tension: 0.4, pointRadius: 0 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } }
+    });
+  }
+
+  createSparkline('saasSparkMRR', [22, 24, 25, 27, 28, 30, 32, 35], lePrimary);
+  createSparkline('saasSparkChurn', [5.8, 5.5, 5.2, 5.0, 4.8, 4.6, 4.4, 4.2], leDanger);
+  createSparkline('saasSparkSubs', [1800, 1950, 2050, 2180, 2300, 2450, 2600, 2847], leSuccess);
+  createSparkline('saasSparkARPU', [11.2, 11.5, 11.8, 12.1, 12.4, 12.8, 13.1, 13.5], leInfo);
+
+  // MRR Growth chart
+  const mrrCtx = document.getElementById('mrrChart');
+  if (mrrCtx) {
+    new Chart(mrrCtx.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        datasets: [
+          {
+            label: 'MRR',
+            data: [22400,23800,25100,26500,28200,29800,31400,33100,34600,35900,37200,38450],
+            borderColor: lePrimary,
+            backgroundColor: lePrimary + '20',
+            fill: true,
+            tension: 0.4,
+            pointRadius: 4,
+            pointHoverRadius: 7,
+            pointBackgroundColor: lePrimary,
+            borderWidth: 2.5
+          },
+          {
+            label: 'New MRR',
+            data: [1800,2100,1900,2400,2700,2500,2800,3000,2600,2900,3100,3200],
+            borderColor: leSuccess,
+            backgroundColor: 'transparent',
+            borderDash: [5, 5],
+            tension: 0.4,
+            pointRadius: 3,
+            pointHoverRadius: 6,
+            borderWidth: 2
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { position: 'top' } },
+        scales: {
+          x: { grid: { display: false } },
+          y: {
+            beginAtZero: false,
+            grid: { color: 'rgba(148,163,184,0.1)' },
+            ticks: { callback: function(v) { return '$' + (v / 1000) + 'k'; } }
+          }
+        }
+      }
+    });
+  }
+  if (typeof feather !== 'undefined') feather.replace();
+});
+</script>
+{% endblock %}

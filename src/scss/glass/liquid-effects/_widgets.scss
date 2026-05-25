@@ -1,0 +1,138 @@
+/* ---------------------------------------------------------------------------
+   §19.12 — Glass Skeleton Loading
+   ------------------------------------------------------------------------ */
+.glass-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--le-white-rgb), 0.06) 25%,
+    rgba(var(--le-white-rgb), 0.12) 50%,
+    rgba(var(--le-white-rgb), 0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--le-radius-sm);
+}
+
+[data-theme="light"] .glass-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--le-black-rgb), 0.04) 25%,
+    rgba(var(--le-black-rgb), 0.08) 50%,
+    rgba(var(--le-black-rgb), 0.04) 75%
+  );
+  background-size: 200% 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   §19.13 — Inner Glass Panel
+   Inset glass panel within cards — liquid-glass refraction
+   ------------------------------------------------------------------------ */
+.glass-inner {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(var(--le-primary-rgb), 0.03) 0%,
+      transparent 40%,
+      transparent 60%,
+      rgba(var(--le-secondary-rgb), 0.03) 100%
+    ),
+    rgba(var(--le-white-rgb), 0.04);
+  border: 1px solid var(--le-glass-border-subtle);
+  border-radius: var(--le-radius);
+  backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+}
+
+[data-theme="light"] .glass-inner {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(var(--le-primary-rgb), 0.04) 0%,
+      transparent 40%,
+      transparent 60%,
+      rgba(var(--le-secondary-rgb), 0.04) 100%
+    ),
+    rgba(var(--le-white-rgb), 0.40);
+  border-color: rgba(var(--le-white-rgb), 0.50);
+}
+
+/* ---------------------------------------------------------------------------
+   §19.14 — Glass Tab Bar
+   Segmented control / tab bar styling
+   ------------------------------------------------------------------------ */
+.glass-tabs {
+  display: flex;
+  background: rgba(var(--le-white-rgb), 0.06);
+  border: 1px solid rgba(var(--le-white-rgb), 0.1);
+  border-radius: var(--le-radius);
+  padding: 3px;
+  gap: 2px;
+}
+
+[data-theme="light"] .glass-tabs {
+  background: rgba(var(--le-white-rgb), 0.40);
+  border-color: rgba(var(--le-black-rgb), 0.06);
+}
+
+.glass-tab {
+  padding: var(--le-tab-padding-y) var(--le-tab-padding-x);
+  border-radius: calc(var(--le-radius) - 3px);
+  font-size: var(--le-font-size-sm);
+  font-weight: var(--le-font-weight-medium);
+  color: var(--le-text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  filter: brightness(1);
+  transition: all var(--le-transition);
+  white-space: nowrap;
+}
+
+.glass-tab:hover {
+  color: var(--le-text-primary);
+  background: rgba(var(--le-white-rgb), 0.06);
+}
+
+.glass-tab.active {
+  color: var(--le-text-on-primary);
+  background: var(--le-primary);
+  box-shadow: 0 2px 8px rgba(var(--le-primary-rgb), 0.3);
+}
+
+[data-theme="light"] .glass-tab:hover {
+  background: rgba(var(--le-black-rgb), 0.04);
+}
+
+
+/* =============================================================================
+   §18 — Print Styles
+   ============================================================================= */
+
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .glass,
+  .glass-strong,
+  .glass-subtle,
+  .glass-card,
+  .glass-modal {
+    background: #fff !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    border: 1px solid #ddd !important;
+    box-shadow: none !important;
+  }
+
+  .glass-card::before,
+  .glass-card::after,
+  .light-reflection::before,
+  .color-bend::after,
+  .glass-shimmer::before {
+    display: none !important;
+  }
+}
+
+

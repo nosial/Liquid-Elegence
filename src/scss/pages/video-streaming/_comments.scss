@@ -1,0 +1,195 @@
+/* Comments section */
+
+.video-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.video-comments-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.video-comments-count {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--le-text-primary);
+    margin: 0;
+}
+
+.video-comments-sort {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    color: var(--le-text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+
+.video-comments-sort:hover { background: var(--le-glass-bg); }
+
+.video-comments-sort svg { width: 14px; height: 14px; }
+
+.video-comment-compose {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.video-comment-compose-input {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.video-comment-compose textarea {
+    width: 100%;
+    padding: 8px 0;
+    border: none;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    background: transparent;
+    color: var(--le-text-primary);
+    resize: none;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border-color 0.15s ease;
+    min-height: 24px;
+}
+
+.video-comment-compose textarea:focus {
+    outline: none;
+    border-bottom-color: var(--le-text-primary);
+}
+
+.video-comment-compose-actions {
+    display: none;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.video-comment-compose.is-active .video-comment-compose-actions { display: flex; }
+
+.video-comment-btn {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.82rem;
+    font-weight: 600;
+    background: transparent;
+    color: var(--le-text-primary);
+    transition: background 0.15s ease;
+}
+
+.video-comment-btn:hover { background: var(--le-glass-bg); }
+
+.video-comment-btn.primary {
+    background: var(--le-primary);
+    color: #fff;
+}
+
+.video-comment-btn.primary:disabled {
+    background: var(--le-glass-bg);
+    color: var(--le-text-secondary);
+    cursor: not-allowed;
+}
+
+.video-comment-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.video-comment {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.video-comment-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.video-comment-body { flex: 1 1 auto; min-width: 0; }
+
+.video-comment-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
+.video-comment-author {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--le-text-primary);
+}
+
+.video-comment-time {
+    font-size: 0.78rem;
+    color: var(--le-text-secondary);
+}
+
+.video-comment-text {
+    font-size: 0.9rem;
+    color: var(--le-text-primary);
+    line-height: 1.45;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.video-comment-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.video-comment-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: transparent;
+    border: none;
+    color: var(--le-text-secondary);
+    font-size: 0.78rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.video-comment-action:hover { background: var(--le-glass-bg); color: var(--le-text-primary); }
+.video-comment-action.is-active { color: var(--le-primary); }
+.video-comment-action svg { width: 14px; height: 14px; }
+
+.video-comment-pinned {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.7rem;
+    color: var(--le-text-secondary);
+    margin-bottom: 4px;
+}
+
+.video-comment-pinned svg { width: 12px; height: 12px; }

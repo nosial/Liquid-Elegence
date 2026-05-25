@@ -1,0 +1,250 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">ForumBoard</h1>
+        <p class="page-subtitle">Browse posts, join discussions, and engage with communities.</p>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Main Feed Column -->
+        <div class="col-lg-8 forum-main-col">
+
+            <div class="glass-card animate-fade-in-up stagger-1">
+
+            <!-- Create Post Bar -->
+            <section class="forum-create-bar">
+                <div class="avatar avatar-sm le-avatar-36 le-avatar-gradient">JD</div>
+                <input type="text" class="forum-create-input" placeholder="Create a post...">
+                <button class="btn btn-outline-secondary btn-sm" title="Image"><i data-feather="image" class="le-icon-16"></i></button>
+                <button class="btn btn-outline-secondary btn-sm" title="Link"><i data-feather="link" class="le-icon-16"></i></button>
+            </section>
+
+            <div class="glass-divider my-2"></div>
+
+            <!-- Sort Bar -->
+            <section class="forum-sort-bar">
+                <button class="forum-sort-btn active"><i data-feather="trending-up" class="le-icon-14"></i> Hot</button>
+                <button class="forum-sort-btn"><i data-feather="clock" class="le-icon-14"></i> New</button>
+                <button class="forum-sort-btn"><i data-feather="bar-chart-2" class="le-icon-14"></i> Top</button>
+                <button class="forum-sort-btn"><i data-feather="sunrise" class="le-icon-14"></i> Rising</button>
+            </section>
+
+            <div class="glass-divider my-2"></div>
+
+            <!-- Post Feed -->
+            <div class="px-3 pb-3 pt-1">
+            {% set posts = [
+                {
+                    subreddit: "r/webdev", author: "alice_codes", time: "3 hours ago",
+                    flair: "discussion", flair_class: "forum-flair-discussion",
+                    title: "What's your unpopular opinion about modern frontend frameworks?",
+                    preview: "I'll start — I think the React ecosystem has become too complex for most projects. Between server components, suspense boundaries, and the million state management libraries, we've lost sight of simplicity. What are your hot takes?",
+                    votes: 1284, comments: 847, awards: 3
+                },
+                {
+                    subreddit: "r/design", author: "pixel_perfect", time: "5 hours ago",
+                    flair: "showcase", flair_class: "forum-flair-showcase",
+                    title: "I redesigned the entire checkout flow for our e-commerce platform — Conversion up 34%",
+                    preview: "After months of A/B testing and user research, we completely overhauled the checkout experience. Key changes included reducing form fields from 12 to 5, adding a persistent order summary, and implementing a progress indicator. Here are the results and full case study.",
+                    votes: 2891, comments: 312, awards: 7
+                },
+                {
+                    subreddit: "r/programming", author: "rust_evangelist", time: "7 hours ago",
+                    flair: "announcement", flair_class: "forum-flair-announcement",
+                    title: "Rust 2.0 RFC officially accepted — Here's what changes",
+                    preview: "The long-awaited Rust 2.0 edition RFC has been formally accepted after 18 months of discussion. Major changes include simplified lifetime syntax, built-in async runtime, and a new module system. Migration tooling will be available from day one.",
+                    votes: 5672, comments: 1203, awards: 15
+                },
+                {
+                    subreddit: "r/devops", author: "container_king", time: "10 hours ago",
+                    flair: "question", flair_class: "forum-flair-question",
+                    title: "How do you handle secrets management in Kubernetes at scale?",
+                    preview: "We're running 200+ microservices across 5 clusters and our current approach with sealed secrets is becoming unmanageable. Looking for real-world experiences with Vault, SOPS, or external-secrets-operator. What worked for you?",
+                    votes: 456, comments: 189, awards: 1
+                },
+                {
+                    subreddit: "r/webdev", author: "css_wizard", time: "12 hours ago",
+                    flair: "help", flair_class: "forum-flair-help",
+                    title: "Why does my glassmorphism effect look different across browsers?",
+                    preview: "I've been trying to achieve a consistent frosted glass effect but Safari and Firefox render backdrop-filter quite differently. Has anyone found a reliable cross-browser solution that doesn't involve fallbacks for every browser?",
+                    votes: 234, comments: 98, awards: 0
+                },
+                {
+                    subreddit: "r/opensource", author: "foss_contributor", time: "14 hours ago",
+                    flair: "meta", flair_class: "forum-flair-meta",
+                    title: "We need to talk about maintainer burnout in open source",
+                    preview: "After 6 years maintaining a popular npm package with 2M+ weekly downloads, I'm stepping down. This isn't a rage-quit post — it's a reflection on the unsustainable expectations we place on volunteer maintainers and what the community can do better.",
+                    votes: 8934, comments: 2156, awards: 42
+                }
+            ] %}
+
+            {% for post in posts %}
+            <div class="forum-post-card mb-3">
+                <!-- Vote Column -->
+                <div class="forum-vote">
+                    <button class="forum-vote-btn" title="Upvote"><i data-feather="arrow-up" class="le-icon-18"></i></button>
+                    <span class="forum-vote-count">{{ post.votes | string }}</span>
+                    <button class="forum-vote-btn" title="Downvote"><i data-feather="arrow-down" class="le-icon-18"></i></button>
+                </div>
+                <!-- Post Content -->
+                <div class="forum-post-body">
+                    <div class="forum-post-meta">
+                        <a href="forum-feed.html" class="forum-subreddit-link">{{ post.subreddit }}</a>
+                        <span class="forum-meta-dot">&middot;</span>
+                        <span>Posted by <a href="forum-profile.html" class="forum-author-link">u/{{ post.author }}</a></span>
+                        <span class="forum-meta-dot">&middot;</span>
+                        <span>{{ post.time }}</span>
+                        {% if post.flair %}
+                        <span class="forum-flair {{ post.flair_class }}">{{ post.flair | capitalize }}</span>
+                        {% endif %}
+                    </div>
+                    <h3 class="forum-post-title">
+                        <a href="forum-post.html">{{ post.title }}</a>
+                    </h3>
+                    <div class="forum-post-preview">{{ post.preview }}</div>
+                    <div class="forum-post-actions">
+                        <a href="forum-post.html" class="forum-action-btn"><i data-feather="message-square" class="le-icon-14"></i> {{ post.comments }} Comments</a>
+                        <button class="forum-action-btn"><i data-feather="share" class="le-icon-14"></i> Share</button>
+                        <button class="forum-action-btn"><i data-feather="bookmark" class="le-icon-14"></i> Save</button>
+                        {% if post.awards > 0 %}
+                        <button class="forum-action-btn"><i data-feather="award" class="le-icon-14"></i> {{ post.awards }} Awards</button>
+                        {% endif %}
+                        <button class="forum-action-btn"><i data-feather="more-horizontal" class="le-icon-14"></i></button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-4">
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">&laquo;</a></li>
+                        <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">4</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">5</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">&raquo;</a></li>
+                    </ul>
+                </nav>
+            </div><!-- /d-flex pagination -->
+
+            </div><!-- /px-3 pb-3 pt-1 post list -->
+
+            </div><!-- /glass-card main column -->
+
+        </div><!-- /col-lg-8 forum-main-col -->
+
+        <!-- Sidebar backdrop (mobile) -->
+        <div class="forum-sidebar-backdrop" id="forumSidebarBackdrop"></div>
+
+        <!-- Sidebar Column -->
+        <div class="col-lg-4 forum-sidebar-col" id="forumSidebar">
+
+            <!-- Mobile header with close button -->
+            <div class="forum-sidebar-mobile-header">
+                <span class="forum-sidebar-mobile-title">Community</span>
+                <button class="forum-sidebar-close" id="forumSidebarClose" aria-label="Close sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div class="glass-card overflow-hidden animate-fade-in-up stagger-2">
+
+            <!-- Community Info Widget -->
+            <section class="forum-community-header">
+                <div class="forum-community-banner le-h-80"></div>
+                <div class="forum-community-info">
+                    <div class="forum-community-icon le-box-56 le-lifted-avatar le-fs-5xl">W</div>
+                    <h5 class="mt-2 mb-1 fw-bold">r/webdev</h5>
+                    <p class="mb-2 le-fs-lg le-post-body">A community for web developers and designers to share resources, tips, and discussions.</p>
+                    <div class="d-flex gap-3 mb-3 le-fs-ui">
+                        <div><strong>2.4M</strong> <span class="text-muted">Members</span></div>
+                        <div><strong>8.2K</strong> <span class="text-muted">Online</span></div>
+                    </div>
+                    <button class="btn btn-primary btn-sm w-100">Join Community</button>
+                </div>
+            </section>
+
+            <div class="glass-divider my-2"></div>
+
+            <!-- Rules Widget -->
+            <section class="forum-sidebar-widget">
+                <div class="glass-card-body">
+                    <h6>Community Rules</h6>
+                    <ol class="forum-rules-list">
+                        <li>Be respectful and constructive</li>
+                        <li>No self-promotion or spam</li>
+                        <li>Use appropriate flair for posts</li>
+                        <li>No low-effort memes or screenshots</li>
+                        <li>Search before posting duplicate questions</li>
+                    </ol>
+                </div>
+            </section>
+
+            <div class="glass-divider my-2"></div>
+
+            <!-- Trending Communities -->
+            <section class="forum-sidebar-widget">
+                <div class="glass-card-body">
+                    <h6>Trending Communities</h6>
+                    {% set trending = [
+                        { name: "r/typescript", members: "890K", color: "linear-gradient(135deg, #3178c6, #235a97)" },
+                        { name: "r/rust", members: "456K", color: "linear-gradient(135deg, #dea584, #b7410e)" },
+                        { name: "r/machinelearning", members: "2.1M", color: "linear-gradient(135deg, var(--le-success), #059669)" },
+                        { name: "r/devops", members: "780K", color: "linear-gradient(135deg, var(--le-info, #6366f1), var(--le-secondary))" },
+                        { name: "r/gamedev", members: "1.3M", color: "linear-gradient(135deg, var(--le-warning), var(--le-danger))" }
+                    ] %}
+                    {% for t in trending %}
+                    <div class="forum-trending-item">
+                        <div class="forum-trending-icon" style="background:{{ t.color }};">{{ t.name[2] | upper }}</div>
+                        <div class="flex-grow-1">
+                            <a href="javascript:void(0)" class="forum-trending-name d-block">{{ t.name }}</a>
+                            <span class="forum-trending-members">{{ t.members }} members</span>
+                        </div>
+                        <button class="btn btn-outline-secondary btn-sm le-chip-sm">Join</button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <div class="glass-divider my-2"></div>
+
+            <!-- Footer Links -->
+            <section class="forum-sidebar-widget">
+                <div class="glass-card-body text-center le-fs-md le-text-muted">
+                    <div class="d-flex flex-wrap justify-content-center gap-2 mb-2">
+                        <a href="javascript:void(0)" class="le-link-muted">Help</a>
+                        <a href="javascript:void(0)" class="le-link-muted">About</a>
+                        <a href="javascript:void(0)" class="le-link-muted">Careers</a>
+                        <a href="javascript:void(0)" class="le-link-muted">Press</a>
+                        <a href="javascript:void(0)" class="le-link-muted">Terms</a>
+                        <a href="javascript:void(0)" class="le-link-muted">Privacy</a>
+                    </div>
+                    <span>&copy; 2022-2026 Nosial. All rights reserved.</span>
+                </div>
+            </section>
+
+            </div><!-- /glass-card sidebar -->
+
+        </div>
+
+    </div>
+
+    <!-- Floating sidebar toggle (mobile) -->
+    <button class="forum-sidebar-toggle-fab" id="forumSidebarToggle" aria-label="Show sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    </button>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/forum.js"></script>
+{% endblock %}

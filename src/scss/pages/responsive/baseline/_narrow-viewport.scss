@@ -1,0 +1,72 @@
+// pages/responsive/baseline/narrow-viewport.scss
+// Global narrow-viewport rules.
+
+/* --------------------------------------------------------------------------
+   20n. Global mobile text truncation utilities
+   -------------------------------------------------------------------------- */
+@media (max-width: 767.98px) {
+  /* Table cells: prevent overflow */
+  .glass-card .table td,
+  .glass-card .table th {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Card titles truncation on mobile */
+  .glass-card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Page header: allow wrapping */
+  .page-header {
+    gap: 8px;
+  }
+
+  .page-header .d-flex {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Breadcrumb items truncate */
+  .breadcrumb-item {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Dropdown menus: constrain width */
+  .dropdown-menu {
+    max-width: calc(100vw - 1.5rem);
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   20o. Topbar dropdown & notification menus — mobile optimization
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  /* Notification dropdown: full width on mobile */
+  .topbar .dropdown-menu {
+    position: fixed !important;
+    left: 0.5rem !important;
+    right: 0.5rem !important;
+    top: auto !important;
+    width: auto !important;
+    max-width: none;
+    transform: none !important;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+
+  /* User dropdown */
+  .topbar-user .dropdown-menu {
+    min-width: 200px;
+  }
+}

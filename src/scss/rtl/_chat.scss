@@ -1,0 +1,36 @@
+/* ─────────────────────────────────────────────────────────────
+   15. Chat / Messaging
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .le-chat-bubble-sent {
+    margin-left: 0;
+    margin-right: auto;
+    border-radius: 1rem 0.25rem 1rem 1rem;
+}
+
+[dir="rtl"] .le-chat-bubble-received {
+    margin-right: 0;
+    margin-left: auto;
+    border-radius: 0.25rem 1rem 1rem 1rem;
+}
+
+[dir="rtl"] .le-chat-avatar {
+    margin-left: 0.625rem;
+    margin-right: 0;
+}
+
+[dir="rtl"] .le-chat-bubble-sent .le-chat-avatar {
+    margin-right: 0.625rem;
+    margin-left: 0;
+    order: 1;
+}
+
+[dir="rtl"] .le-chat-timestamp {
+    text-align: left;
+}
+
+[dir="rtl"] .le-chat-bubble-sent .le-chat-timestamp {
+    text-align: right;
+}
+
+

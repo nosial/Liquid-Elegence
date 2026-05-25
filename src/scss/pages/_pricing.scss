@@ -1,0 +1,425 @@
+/* ============================================================================
+   9. PRICING
+   ============================================================================ */
+
+.pricing-card {
+  background: var(--le-glass-bg);
+  border: 1px solid var(--le-glass-border);
+  border-radius: var(--le-radius-lg);
+  padding: 32px;
+  text-align: center;
+  transition: filter var(--le-transition), box-shadow var(--le-transition), transform var(--le-transition);
+  position: relative;
+  backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+  -webkit-backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+}
+
+.pricing-card:hover {
+  filter: brightness(1.06);
+  box-shadow: var(--le-glass-shadow-lg);
+  transform: translateY(-2px);
+}
+
+.pricing-card.featured {
+  border-color: var(--le-primary);
+  box-shadow: 0 0 35px rgba(var(--le-primary-rgb), 0.18),
+              0 8px 32px rgba(var(--le-primary-rgb), 0.08);
+  filter: brightness(1.03);
+}
+
+.pricing-card.featured:hover {
+  filter: brightness(1.07);
+  transform: translateY(-3px);
+}
+
+/* ---- toggle ---- */
+.pricing-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  color: var(--le-text-secondary);
+}
+
+/* ---- plan header ---- */
+.plan-header {
+  margin-bottom: 24px;
+}
+
+.plan-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--le-text-primary);
+  margin-bottom: 8px;
+}
+
+.plan-price {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--le-text-primary);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.plan-period {
+  font-size: 14px;
+  color: var(--le-text-muted);
+  margin-top: 4px;
+}
+
+/* ---- features ---- */
+.plan-features {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.plan-features li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--le-text-secondary);
+}
+
+.plan-features li:last-child {
+  border-bottom: none;
+}
+
+
+/* ---- density: compact ---- */
+[data-density="compact"] .pricing-card {
+  padding: 24px;
+}
+
+[data-density="compact"] .pricing-card.featured {
+  filter: brightness(1.01);
+}
+
+[data-density="compact"] .pricing-card.featured:hover {
+  filter: brightness(1.04);
+}
+
+[data-density="compact"] .pricing-toggle {
+  gap: 8px;
+  margin-bottom: 24px;
+  font-size: 13px;
+}
+
+[data-density="compact"] .plan-header {
+  margin-bottom: 18px;
+}
+
+[data-density="compact"] .plan-name {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+[data-density="compact"] .plan-price {
+  font-size: 40px;
+}
+
+[data-density="compact"] .plan-period {
+  font-size: 12px;
+}
+
+[data-density="compact"] .plan-features li {
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+
+/* ---- density: comfortable ---- */
+[data-density="comfortable"] .pricing-card {
+  padding: 40px;
+}
+
+[data-density="comfortable"] .pricing-toggle {
+  gap: 16px;
+  margin-bottom: 40px;
+  font-size: 15px;
+}
+
+[data-density="comfortable"] .plan-header {
+  margin-bottom: 28px;
+}
+
+[data-density="comfortable"] .plan-name {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+[data-density="comfortable"] .plan-price {
+  font-size: 56px;
+}
+
+[data-density="comfortable"] .plan-period {
+  font-size: 15px;
+}
+
+[data-density="comfortable"] .plan-features li {
+  padding: 12px 0;
+  font-size: 15px;
+}
+
+// Migrated from templates/pages/pages/pricing.njk
+/* Billing Toggle */
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+        .pricing-label {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--le-text-muted);
+            transition: color 0.2s;
+        }
+        .pricing-label.active {
+            color: var(--le-text-primary);
+        }
+        .pricing-toggle .form-check {
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        .pricing-toggle .form-check-input {
+            width: 48px;
+            height: 24px;
+            cursor: pointer;
+            margin: 0;
+        }
+        .pricing-toggle .form-check-input:checked {
+            background-color: var(--le-primary);
+            border-color: var(--le-primary);
+        }
+        .pricing-toggle .form-check-input:focus {
+            box-shadow: 0 0 0 0.2rem rgba(var(--le-primary-rgb), 0.25);
+        }
+
+        /* Pricing Cards */
+        .pricing-card {
+            background: var(--le-glass-bg);
+            border: 1px solid var(--le-glass-border);
+            backdrop-filter: blur(var(--le-glass-blur));
+            -webkit-backdrop-filter: blur(var(--le-glass-blur));
+            border-radius: var(--le-radius-xl);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--le-glass-shadow);
+        }
+        .pricing-card.featured {
+            border-color: rgba(var(--le-primary-rgb), 0.4);
+            box-shadow: 0 0 30px rgba(var(--le-primary-rgb), 0.1);
+        }
+        .pricing-card .plan-name {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--le-text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .pricing-card .plan-description {
+            font-size: 0.875rem;
+            color: var(--le-text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .pricing-card .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--le-text-primary);
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+        .pricing-card .plan-price .currency {
+            font-size: 1.25rem;
+            vertical-align: super;
+            font-weight: 600;
+        }
+        .pricing-card .plan-period {
+            font-size: 0.8125rem;
+            color: var(--le-text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .pricing-card .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem;
+            text-align: left;
+            flex-grow: 1;
+        }
+        .pricing-card .plan-features li {
+            padding: 0.5rem 0;
+            font-size: 0.875rem;
+            color: var(--le-text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            border-bottom: 1px solid var(--le-glass-border);
+        }
+        .pricing-card .plan-features li:last-child {
+            border-bottom: none;
+        }
+        .pricing-card .plan-features .check {
+            color: var(--le-success);
+            flex-shrink: 0;
+        }
+        .pricing-card .plan-features .cross {
+            color: var(--le-text-muted);
+            flex-shrink: 0;
+        }
+        .pricing-card .btn-plan {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--le-radius-lg);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            transition: all 0.2s ease;
+        }
+        .pricing-card .btn-plan-outline {
+            background: transparent;
+            border: 1px solid var(--le-glass-border);
+            color: var(--le-text-primary);
+        }
+        .pricing-card .btn-plan-outline:hover {
+            background: var(--le-glass-bg-strong);
+            border-color: rgba(var(--le-primary-rgb), 0.4);
+            color: var(--le-primary);
+        }
+        .pricing-card .btn-plan-primary {
+            background: var(--le-primary);
+            border: 1px solid var(--le-primary);
+            color: #fff;
+        }
+        .pricing-card .btn-plan-primary:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 4px 20px rgba(var(--le-primary-rgb), 0.4);
+        }
+        .pricing-card .featured-badge {
+            display: inline-block;
+            background: rgba(var(--le-primary-rgb), 0.15);
+            color: var(--le-primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--le-radius-sm);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Annual price hidden by default */
+        .price-annual { display: none; }
+        .annual-billing .price-monthly { display: none; }
+        .annual-billing .price-annual { display: inline; }
+
+        /* Comparison Table */
+        .comparison-table {
+            background: var(--le-glass-bg);
+            border: 1px solid var(--le-glass-border);
+            backdrop-filter: blur(var(--le-glass-blur));
+            -webkit-backdrop-filter: blur(var(--le-glass-blur));
+            border-radius: var(--le-radius-xl);
+            overflow: hidden;
+        }
+        .comparison-table table {
+            margin-bottom: 0;
+            color: var(--le-text-secondary);
+        }
+        .comparison-table thead th {
+            background: var(--le-glass-bg-strong);
+            border-bottom: 1px solid var(--le-glass-border);
+            color: var(--le-text-primary);
+            font-weight: 700;
+            font-size: 0.875rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        .comparison-table thead th:first-child {
+            text-align: left;
+        }
+        .comparison-table tbody td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--le-glass-border);
+            font-size: 0.875rem;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .comparison-table tbody td:first-child {
+            text-align: left;
+            font-weight: 500;
+            color: var(--le-text-primary);
+        }
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .comparison-table .icon-check {
+            color: var(--le-success);
+        }
+        .comparison-table .icon-cross {
+            color: var(--le-text-muted);
+        }
+
+        /* FAQ Accordion */
+        .glass-accordion .accordion-item {
+            background: var(--le-glass-bg);
+            border: 1px solid var(--le-glass-border);
+            border-radius: var(--le-radius-md) !important;
+            margin-bottom: 0.5rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        .glass-accordion .accordion-button {
+            background: transparent;
+            color: var(--le-text-primary);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            padding: 1rem 1.25rem;
+            box-shadow: none;
+            border-radius: inherit !important;
+        }
+        .glass-accordion .accordion-button:not(.collapsed) {
+            background: rgba(var(--le-primary-rgb), 0.08);
+            color: var(--le-primary);
+            box-shadow: none;
+        }
+        .glass-accordion .accordion-button:focus {
+            box-shadow: none;
+            border-color: transparent;
+        }
+        .glass-accordion .accordion-button::after {
+            filter: invert(0.5);
+        }
+        .glass-accordion .accordion-body {
+            padding: 0 1.25rem 1rem;
+            color: var(--le-text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.7;
+        }
+
+        /* Section Headers */
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--le-text-primary);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--le-text-muted);
+            text-align: center;
+            margin-bottom: 2rem;
+        }

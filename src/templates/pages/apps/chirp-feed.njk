@@ -1,0 +1,229 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Chirp</h1>
+        <p class="page-subtitle">See what's happening in the world right now.</p>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Main Feed Column -->
+        <div class="col-lg-8 chirp-main-col">
+
+            <div class="glass-card">
+                <!-- Feed Tabs -->
+                <div class="chirp-feed-tabs">
+                    <button class="chirp-feed-tab active">For You</button>
+                    <button class="chirp-feed-tab">Following</button>
+                </div>
+
+                <!-- Compose Box -->
+                <div class="chirp-compose">
+                    <div class="chirp-tweet-avatar le-bg-gradient-primary">JD</div>
+                    <div class="chirp-compose-body">
+                        <textarea class="chirp-compose-input" placeholder="What's happening?" rows="2"></textarea>
+                        <div class="chirp-compose-toolbar">
+                            <div class="chirp-compose-tools">
+                                <button class="chirp-compose-tool" title="Media"><i data-feather="image" class="le-icon-18"></i></button>
+                                <button class="chirp-compose-tool" title="GIF"><i data-feather="film" class="le-icon-18"></i></button>
+                                <button class="chirp-compose-tool" title="Poll"><i data-feather="bar-chart" class="le-icon-18"></i></button>
+                                <button class="chirp-compose-tool" title="Emoji"><i data-feather="smile" class="le-icon-18"></i></button>
+                                <button class="chirp-compose-tool" title="Schedule"><i data-feather="calendar" class="le-icon-18"></i></button>
+                                <button class="chirp-compose-tool" title="Location"><i data-feather="map-pin" class="le-icon-18"></i></button>
+                            </div>
+                            <button class="btn btn-primary btn-sm le-pill-md">Post</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tweet Feed -->
+                {% set tweets = [
+                    {
+                        initials: "AC", name: "Alice Chen", handle: "@alice_codes", time: "2h",
+                        verified: true,
+                        color: "linear-gradient(135deg, var(--le-primary), var(--le-secondary))",
+                        body: "Just shipped a new feature using vanilla web components. No framework, no build step, just the platform. The future is here and it's beautiful. 🚀\n\nSometimes the best tool is the one you already have.",
+                        replies: 47, retweets: 234, likes: 1892, views: "24.5K",
+                        liked: true
+                    },
+                    {
+                        initials: "MR", name: "Marcus Rivera", handle: "@marcusdev", time: "3h",
+                        verified: false,
+                        color: "linear-gradient(135deg, #f59e0b, #d97706)",
+                        body: "Hot take: Most \"senior\" engineers can't explain how DNS works but will argue about state management libraries for hours.\n\nLearn the fundamentals. The frameworks will come and go.",
+                        replies: 312, retweets: 1847, likes: 8934, views: "142K",
+                        liked: false
+                    },
+                    {
+                        initials: "SK", name: "Sarah Kim", handle: "@sarahdesigns", time: "4h",
+                        verified: true,
+                        color: "linear-gradient(135deg, #ec4899, #be185d)",
+                        body: "Redesigned our entire onboarding flow this week. Key insight: every additional step loses ~20% of users.\n\nWe went from 7 steps to 3. Early numbers show a 45% increase in completion rate. 📈\n\nThread on what we learned 👇",
+                        replies: 89, retweets: 567, likes: 3421, views: "67.8K",
+                        liked: false
+                    },
+                    {
+                        initials: "JW", name: "James Wright", handle: "@jwright_dev", time: "5h",
+                        verified: false,
+                        color: "linear-gradient(135deg, var(--le-success), #059669)",
+                        body: "Finally got my Rust HTTP server to handle 1M concurrent connections on a single machine. The secret? io_uring + custom memory allocator + zero-copy parsing.\n\nBlog post coming soon with full benchmarks and source code.",
+                        replies: 156, retweets: 892, likes: 4567, views: "89.2K",
+                        liked: true
+                    },
+                    {
+                        initials: "LP", name: "Luna Park", handle: "@lunapark_ui", time: "6h",
+                        verified: true,
+                        color: "linear-gradient(135deg, #6366f1, #4f46e5)",
+                        body: "CSS container queries just changed everything. I can finally build truly responsive components that adapt to their container, not the viewport.\n\nHere's a before/after of our card component: same markup, completely different layouts. Pure CSS magic. ✨",
+                        replies: 78, retweets: 456, likes: 2345, views: "45.6K",
+                        liked: false
+                    },
+                    {
+                        initials: "DK", name: "David Kowalski", handle: "@dkowalski", time: "8h",
+                        verified: false,
+                        color: "linear-gradient(135deg, #dea584, #b7410e)",
+                        body: "Unpopular opinion: GraphQL is overengineered for 90% of applications. REST with proper API design covers most use cases with far less complexity.\n\nFight me.",
+                        replies: 423, retweets: 1234, likes: 5678, views: "112K",
+                        liked: false
+                    },
+                    {
+                        initials: "EB", name: "Emma Brooks", handle: "@emma_codes", time: "10h",
+                        verified: true,
+                        color: "linear-gradient(135deg, #06b6d4, #0284c7)",
+                        body: "Today marks 5 years since I wrote my first line of code. From a bootcamp grad to leading a team of 12 engineers.\n\nBiggest lesson: your career isn't a sprint. It's not even a marathon. It's a journey with no finish line. Keep learning, keep growing. 🌱",
+                        replies: 234, retweets: 1567, likes: 12345, views: "234K",
+                        liked: true
+                    }
+                ] %}
+
+                {% for tweet in tweets %}
+                <div class="chirp-tweet animate-fade-in-up stagger-{{ loop.index if loop.index <= 8 else 8 }}">
+                    <div class="chirp-tweet-avatar" style="background: {{ tweet.color }};">{{ tweet.initials }}</div>
+                    <div class="chirp-tweet-content">
+                        <div class="chirp-tweet-header">
+                            <a href="chirp-profile.html" class="chirp-tweet-name">{{ tweet.name }}</a>
+                            {% if tweet.verified %}
+                            <span class="chirp-tweet-verified" title="Verified"><i data-feather="check-circle" class="le-icon-14"></i></span>
+                            {% endif %}
+                            <span class="chirp-tweet-handle">{{ tweet.handle }}</span>
+                            <span class="chirp-tweet-dot">&middot;</span>
+                            <span class="chirp-tweet-time">{{ tweet.time }}</span>
+                        </div>
+                        <div class="chirp-tweet-body">{{ tweet.body | replace("\n", "<br>") | safe }}</div>
+                        <div class="chirp-tweet-actions">
+                            <button class="chirp-action chirp-action-reply" title="Reply"><i data-feather="message-circle" class="le-icon-16"></i> {{ tweet.replies }}</button>
+                            <button class="chirp-action chirp-action-retweet" title="Repost"><i data-feather="repeat" class="le-icon-16"></i> {{ tweet.retweets }}</button>
+                            <button class="chirp-action chirp-action-like{% if tweet.liked %} active{% endif %}" title="Like"><i data-feather="heart" class="le-icon-16"></i> {{ tweet.likes }}</button>
+                            <button class="chirp-action chirp-action-share" title="Views"><i data-feather="bar-chart-2" class="le-icon-16"></i> {{ tweet.views }}</button>
+                            <button class="chirp-action chirp-action-bookmark" title="Bookmark"><i data-feather="bookmark" class="le-icon-16"></i></button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Sidebar backdrop (mobile) -->
+        <div class="chirp-sidebar-backdrop" id="chirpSidebarBackdrop"></div>
+
+        <!-- Right Sidebar Column -->
+        <div class="col-lg-4 chirp-sidebar-col" id="chirpSidebar">
+
+            <!-- Mobile header with close button -->
+            <div class="chirp-sidebar-mobile-header">
+                <span class="chirp-sidebar-mobile-title">Explore</span>
+                <button class="chirp-sidebar-close" id="chirpSidebarClose" aria-label="Close sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <!-- Search -->
+            <div class="chirp-search mb-3">
+                <i data-feather="search" class="chirp-search-icon le-icon-16"></i>
+                <input type="text" class="chirp-search-input" placeholder="Search Chirp">
+            </div>
+
+            <div class="glass-card animate-fade-in-up stagger-2">
+
+            <!-- Trending -->
+            <section class="chirp-widget">
+                <h5 class="chirp-widget-title">Trends for you</h5>
+                {% set trends = [
+                    { category: "Technology · Trending", name: "#WebComponents", count: "12.4K posts" },
+                    { category: "Trending in Tech", name: "Rust 2.0", count: "45.2K posts" },
+                    { category: "Programming · Trending", name: "#BuildInPublic", count: "8.9K posts" },
+                    { category: "Technology · Trending", name: "Container Queries", count: "3.2K posts" },
+                    { category: "Trending in Design", name: "#UIDesign", count: "15.7K posts" }
+                ] %}
+                {% for trend in trends %}
+                <div class="chirp-trend-item">
+                    <div>
+                        <div class="chirp-trend-category">{{ trend.category }}</div>
+                        <div class="chirp-trend-name">{{ trend.name }}</div>
+                        <div class="chirp-trend-count">{{ trend.count }}</div>
+                    </div>
+                    <button class="btn btn-outline-secondary btn-sm le-badge-pill"><i data-feather="more-horizontal" class="le-icon-14"></i></button>
+                </div>
+                {% endfor %}
+                <a href="javascript:void(0)" class="chirp-widget-more">Show more</a>
+            </section>
+
+            <div class="glass-divider my-3"></div>
+
+            <!-- Who to Follow -->
+            <section class="chirp-widget">
+                <h5 class="chirp-widget-title">Who to follow</h5>
+                {% set suggestions = [
+                    { initials: "TH", name: "Taylor Hunt", handle: "@taylorhunt_dev", color: "linear-gradient(135deg, #f59e0b, #d97706)" },
+                    { initials: "RG", name: "Rachel Green", handle: "@rachelcodes", color: "linear-gradient(135deg, #10b981, #059669)" },
+                    { initials: "NP", name: "Nikolai Petrov", handle: "@nikolai_p", color: "linear-gradient(135deg, #ef4444, #dc2626)" }
+                ] %}
+                {% for user in suggestions %}
+                <div class="chirp-follow-item">
+                    <div class="chirp-tweet-avatar" style="background:{{ user.color }};">{{ user.initials }}</div>
+                    <div class="chirp-follow-details">
+                        <a href="chirp-profile.html" class="chirp-follow-name">{{ user.name }}</a>
+                        <span class="chirp-follow-handle">{{ user.handle }}</span>
+                    </div>
+                    <button class="btn-chirp-follow">Follow</button>
+                </div>
+                {% endfor %}
+                <a href="javascript:void(0)" class="chirp-widget-more">Show more</a>
+            </section>
+
+            <div class="glass-divider my-3"></div>
+
+            <!-- Footer -->
+            <div class="chirp-footer-links">
+                <a href="javascript:void(0)">Terms</a>
+                <a href="javascript:void(0)">Privacy</a>
+                <a href="javascript:void(0)">Cookies</a>
+                <a href="javascript:void(0)">Accessibility</a>
+                <a href="javascript:void(0)">Ads info</a>
+                <a href="javascript:void(0)">More</a>
+                <span>© 2022-2026 Nosial</span>
+            </div>
+
+            </div><!-- /glass-card sidebar -->
+
+        </div>
+
+    </div>
+
+    <!-- Floating sidebar toggle (mobile) -->
+    <button class="chirp-sidebar-toggle-fab" id="chirpSidebarToggle" aria-label="Show sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </button>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/chirp.js"></script>
+{% endblock %}

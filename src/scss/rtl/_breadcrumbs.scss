@@ -1,0 +1,18 @@
+/* ─────────────────────────────────────────────────────────────
+   4. Breadcrumbs — reverse separator direction
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .breadcrumb-item + .breadcrumb-item::before {
+    content: "\203A";          /* single right-pointing angle — visually "left" in RTL */
+    float: right;
+    padding-left: 0.5rem;
+    padding-right: 0;
+    transform: scaleX(-1);     /* mirror the glyph */
+}
+
+[dir="rtl"] .breadcrumb-item + .breadcrumb-item {
+    padding-left: 0;
+    padding-right: 0.5rem;
+}
+
+

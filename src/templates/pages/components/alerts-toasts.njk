@@ -1,0 +1,424 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Alerts &amp; Toasts — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Alerts &amp; Toasts</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Standard Bootstrap Alerts ────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Standard Bootstrap Alerts</h5>
+                <p class="text-muted mb-3 le-fs-body">Default alert color variants for contextual feedback messages.</p>
+                <div class="alert alert-primary" role="alert">A simple primary alert.</div>
+                <div class="alert alert-secondary" role="alert">A simple secondary alert.</div>
+                <div class="alert alert-success" role="alert">A simple success alert.</div>
+                <div class="alert alert-danger" role="alert">A simple danger alert.</div>
+                <div class="alert alert-warning" role="alert">A simple warning alert.</div>
+                <div class="alert alert-info mb-0" role="alert">A simple info alert.</div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;div class="alert alert-primary" role="alert"&gt;
+    A simple primary alert.
+&lt;/div&gt;
+
+&lt;!-- With icon --&gt;
+&lt;div class="alert alert-success d-flex align-items-center gap-2"&gt;
+    &lt;i data-feather="check-circle"&gt;&lt;/i&gt;
+    &lt;div&gt;Success message&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Dismissible --&gt;
+&lt;div class="alert alert-warning alert-dismissible fade show"&gt;
+    Warning message
+    &lt;button class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Dismissible Alerts ──────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Dismissible Alerts</h5>
+                <p class="text-muted mb-3 le-fs-body">Alerts with close buttons that can be dismissed by the user.</p>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Success!</strong> Your changes have been saved successfully.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong> Something went wrong. Please try again.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>Warning!</strong> Your session will expire in 5 minutes.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <div class="alert alert-info alert-dismissible fade show mb-0" role="alert">
+                    <strong>Info:</strong> A new version is available. Please update.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Alerts with Icons ───────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Alerts with Icons</h5>
+                <p class="text-muted mb-3 le-fs-body">Contextual alerts paired with Feather icons for clearer communication.</p>
+                <div class="alert alert-success d-flex align-items-center gap-2" role="alert">
+                    <i data-feather="check-circle" class="le-icon-20 le-shrink-0"></i>
+                    <div>Operation completed successfully!</div>
+                </div>
+                <div class="alert alert-danger d-flex align-items-center gap-2" role="alert">
+                    <i data-feather="x-circle" class="le-icon-20 le-shrink-0"></i>
+                    <div>Failed to delete the selected record.</div>
+                </div>
+                <div class="alert alert-warning d-flex align-items-center gap-2" role="alert">
+                    <i data-feather="alert-triangle" class="le-icon-20 le-shrink-0"></i>
+                    <div>Disk usage has exceeded 90%. Consider freeing up space.</div>
+                </div>
+                <div class="alert alert-info d-flex align-items-center gap-2 mb-0" role="alert">
+                    <i data-feather="info" class="le-icon-20 le-shrink-0"></i>
+                    <div>Scheduled maintenance is planned for Sunday at 2:00 AM UTC.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Glass Alerts ─────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Alerts</h5>
+                <p class="text-muted mb-3 le-fs-body">Custom glass-styled alerts with icon badges and rich content.</p>
+
+                <div class="alert-glass alert-glass-success mb-3">
+                    <div class="alert-glass-icon le-bg-success-15 le-text-success">
+                        <i data-feather="check-circle" class="le-icon-20"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-1">Payment Successful</h6>
+                        <p class="mb-0 text-muted le-fs-lg">Your payment of $49.99 has been processed successfully.</p>
+                    </div>
+                </div>
+
+                <div class="alert-glass alert-glass-danger mb-3">
+                    <div class="alert-glass-icon le-bg-danger-15 le-text-danger">
+                        <i data-feather="x-circle" class="le-icon-20"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-1">Upload Failed</h6>
+                        <p class="mb-0 text-muted le-fs-lg">The file could not be uploaded. Please check the file size and try again.</p>
+                    </div>
+                </div>
+
+                <div class="alert-glass alert-glass-warning mb-3">
+                    <div class="alert-glass-icon le-bg-warning-15 le-text-warning">
+                        <i data-feather="alert-triangle" class="le-icon-20"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-1">Storage Almost Full</h6>
+                        <p class="mb-0 text-muted le-fs-lg">You have used 95% of your available storage. Upgrade your plan to get more space.</p>
+                    </div>
+                </div>
+
+                <div class="alert-glass alert-glass-info">
+                    <div class="alert-glass-icon le-bg-info-15 le-text-info">
+                        <i data-feather="info" class="le-icon-20"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-bold mb-1">Two-Factor Authentication</h6>
+                        <p class="mb-0 text-muted le-fs-lg">Strengthen your account security by enabling two-factor authentication in settings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Rich Alert Content & Alert with Actions ─────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Rich Alert Content</h5>
+                <p class="text-muted mb-3 le-fs-body">Alerts with headings, paragraphs, and dividers for detailed messages.</p>
+                <div class="alert alert-primary mb-0" role="alert">
+                    <h5 class="alert-heading">Well done!</h5>
+                    <p>You have successfully completed the onboarding process. Your account is now fully set up and ready to use.</p>
+                    <hr>
+                    <p class="mb-0">Need help getting started? Check our documentation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Alert with Actions</h5>
+                <p class="text-muted mb-3 le-fs-body">Alerts containing actionable buttons for immediate user response.</p>
+                <div class="alert alert-warning mb-0" role="alert">
+                    <div class="d-flex align-items-start gap-3">
+                        <i data-feather="alert-triangle" class="le-icon-24 le-shrink-0 mt-1"></i>
+                        <div class="flex-grow-1">
+                            <h6 class="fw-bold">Subscription Expiring</h6>
+                            <p class="mb-2 le-fs-lg">Your subscription will expire in 3 days. Renew now to avoid service interruption.</p>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-warning">Renew Now</button>
+                                <button class="btn btn-sm btn-outline-warning">Remind Later</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Bootstrap Toasts (Static) ───────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Bootstrap Toasts</h5>
+                <p class="text-muted mb-3 le-fs-body">Static toast examples kept visible for demonstration purposes.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <div class="toast show d-block" role="alert">
+                        <div class="toast-header">
+                            <strong class="me-auto">Bootstrap</strong>
+                            <small class="text-muted">just now</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">Hello, world! This is a toast message.</div>
+                    </div>
+
+                    <div class="toast show d-block" role="alert">
+                        <div class="toast-header bg-success text-white">
+                            <i data-feather="check-circle" class="le-icon-16 le-icon-mr-6"></i>
+                            <strong class="me-auto">Success</strong>
+                            <small>2 mins ago</small>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">Record has been created successfully.</div>
+                    </div>
+
+                    <div class="toast show d-block" role="alert">
+                        <div class="toast-header bg-danger text-white">
+                            <i data-feather="x-circle" class="le-icon-16 le-icon-mr-6"></i>
+                            <strong class="me-auto">Error</strong>
+                            <small>5 mins ago</small>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">Unable to connect to the server. Please try again later.</div>
+                    </div>
+
+                    <div class="toast show d-block" role="alert">
+                        <div class="toast-header bg-warning">
+                            <i data-feather="alert-triangle" class="le-icon-16 le-icon-mr-6"></i>
+                            <strong class="me-auto">Warning</strong>
+                            <small>10 mins ago</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">API rate limit is approaching. Reduce request frequency.</div>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Static toast (always visible) --&gt;
+&lt;div class="toast show" role="alert"&gt;
+    &lt;div class="toast-header"&gt;
+        &lt;strong class="me-auto"&gt;Title&lt;/strong&gt;
+        &lt;small&gt;just now&lt;/small&gt;
+        &lt;button class="btn-close" data-bs-dismiss="toast"&gt;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="toast-body"&gt;Toast message.&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Trigger via JavaScript --&gt;
+&lt;script&gt;
+var el = document.getElementById('myToast');
+var toast = new bootstrap.Toast(el, { delay: 4000 });
+toast.show();
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Toast Trigger Buttons ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Toast Trigger Buttons</h5>
+                <p class="text-muted mb-3 le-fs-body">Click a button to trigger a live toast notification in the bottom-right corner.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button class="btn btn-primary" onclick="showToast('toastSuccess')">Success Toast</button>
+                    <button class="btn btn-danger" onclick="showToast('toastError')">Error Toast</button>
+                    <button class="btn btn-warning" onclick="showToast('toastWarning')">Warning Toast</button>
+                    <button class="btn btn-info" onclick="showToast('toastInfo')">Info Toast</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3 le-z-11">
+    <div id="toastSuccess" class="toast" role="alert">
+        <div class="toast-header">
+            <i data-feather="check-circle" class="le-icon-16 le-text-success le-icon-mr-8"></i>
+            <strong class="me-auto">Success</strong>
+            <small>Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">Your changes have been saved.</div>
+    </div>
+    <div id="toastError" class="toast" role="alert">
+        <div class="toast-header">
+            <i data-feather="x-circle" class="le-icon-16 le-text-danger le-icon-mr-8"></i>
+            <strong class="me-auto">Error</strong>
+            <small>Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">Something went wrong. Please try again.</div>
+    </div>
+    <div id="toastWarning" class="toast" role="alert">
+        <div class="toast-header">
+            <i data-feather="alert-triangle" class="le-icon-16 le-text-warning le-icon-mr-8"></i>
+            <strong class="me-auto">Warning</strong>
+            <small>Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">Please review the highlighted fields.</div>
+    </div>
+    <div id="toastInfo" class="toast" role="alert">
+        <div class="toast-header">
+            <i data-feather="info" class="le-icon-16 le-text-info le-icon-mr-8"></i>
+            <strong class="me-auto">Info</strong>
+            <small>Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">A new update is available for download.</div>
+    </div>
+</div>
+
+{# ── Stacked Toast Notifications & Alert Placement Patterns ──────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Stacked Toast Notifications</h5>
+                <p class="text-muted mb-3 le-fs-body">A notification center pattern with multiple stacked toasts.</p>
+                <div class="d-flex flex-column gap-2">
+                    <div class="toast show d-block le-pos-relative" role="alert">
+                        <div class="toast-header">
+                            <i data-feather="mail" class="le-icon-16 le-text-primary le-icon-mr-8"></i>
+                            <strong class="me-auto">New Message</strong>
+                            <small class="text-muted">2 min ago</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">You have a new message from Sarah Connor.</div>
+                    </div>
+                    <div class="toast show d-block le-pos-relative" role="alert">
+                        <div class="toast-header">
+                            <i data-feather="user-plus" class="le-icon-16 le-text-success le-icon-mr-8"></i>
+                            <strong class="me-auto">New Follower</strong>
+                            <small class="text-muted">15 min ago</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">John Doe started following you.</div>
+                    </div>
+                    <div class="toast show d-block le-pos-relative" role="alert">
+                        <div class="toast-header">
+                            <i data-feather="download" class="le-icon-16 le-text-info le-icon-mr-8"></i>
+                            <strong class="me-auto">Download Complete</strong>
+                            <small class="text-muted">1 hr ago</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">report-q4-2024.pdf has been downloaded.</div>
+                    </div>
+                    <div class="toast show d-block le-pos-relative" role="alert">
+                        <div class="toast-header">
+                            <i data-feather="shield" class="le-icon-16 le-text-warning le-icon-mr-8"></i>
+                            <strong class="me-auto">Security Alert</strong>
+                            <small class="text-muted">3 hrs ago</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">A new login was detected from an unknown device.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Alert Placement Patterns</h5>
+                <p class="text-muted mb-3 le-fs-body">Common patterns for positioning alerts in different contexts.</p>
+
+                <h6 class="mb-2">Top Banner Alert</h6>
+                <div class="alert alert-info alert-dismissible fade show d-flex align-items-center gap-2 le-stretch-card" role="alert">
+                    <i data-feather="globe" class="le-icon-18 le-shrink-0"></i>
+                    <div class="flex-grow-1">System maintenance scheduled for tonight at 11:00 PM.</div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+
+                <h6 class="mb-2 mt-3">Inline Form Validation</h6>
+                <div class="alert alert-danger le-fs-lg" role="alert">
+                    <strong>Please correct the following errors:</strong>
+                    <ul class="mb-0 mt-1">
+                        <li>Email address is required.</li>
+                        <li>Password must be at least 8 characters.</li>
+                    </ul>
+                </div>
+
+                <h6 class="mb-2 mt-3">Floating Notification</h6>
+                <div class="le-placeholder">
+                    <div class="alert alert-success alert-dismissible fade show mb-0 le-floating-bar" role="alert">
+                        <i data-feather="bell" class="le-icon-16 le-icon-mr-6 le-valign-3"></i>
+                        You have 3 unread notifications.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showToast(id) {
+    var el = document.getElementById(id);
+    if (el) {
+        var toast = new bootstrap.Toast(el, { delay: 4000 });
+        toast.show();
+    }
+}
+</script>
+{% endblock %}

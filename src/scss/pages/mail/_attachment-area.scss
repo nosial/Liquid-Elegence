@@ -1,0 +1,68 @@
+/* ── Attachment area ── */
+.compose-attachments {
+    margin-top: 0.75rem;
+}
+
+.compose-drop-zone {
+    position: relative;
+    border: 2px dashed var(--le-glass-border);
+    border-radius: var(--le-radius);
+    padding: 1rem;
+    text-align: center;
+    transition: all var(--le-transition-fast);
+    cursor: pointer;
+}
+
+.compose-drop-zone:hover,
+.compose-drop-zone.drag-over {
+    border-color: var(--le-primary);
+    background: rgba(var(--le-primary-rgb), 0.04);
+}
+
+.compose-drop-zone.drag-over {
+    box-shadow: inset 0 0 0 2px rgba(var(--le-primary-rgb), 0.12);
+}
+
+.compose-drop-zone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--le-text-muted);
+    pointer-events: none;
+}
+
+.compose-drop-zone-content i,
+.compose-drop-zone-content svg {
+    width: 28px;
+    height: 28px;
+    color: var(--le-text-muted);
+    opacity: 0.6;
+}
+
+.compose-drop-zone-content span {
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+.compose-drop-zone-content small {
+    font-size: 0.6875rem;
+    opacity: 0.6;
+}
+
+.compose-browse-link {
+    color: var(--le-primary);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    pointer-events: auto;
+}
+
+.compose-file-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}

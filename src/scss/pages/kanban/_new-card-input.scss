@@ -1,0 +1,83 @@
+/* -----------------------------------------------------------------------------
+   New Card Input
+   -------------------------------------------------------------------------- */
+
+.kanban-new-card-input {
+    width: 100%;
+    border: 1px solid rgba(var(--le-primary-rgb), 0.3);
+    border-radius: var(--le-radius-md);
+    padding: 0.625rem 0.75rem;
+    font-size: 0.8125rem;
+    background: var(--le-glass-bg);
+    color: var(--le-text);
+    outline: none;
+    font-family: inherit;
+}
+
+.kanban-new-card-input:focus {
+    border-color: var(--le-primary);
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.1);
+}
+
+.kanban-new-card-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.kanban-new-card-actions button {
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--le-radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.kanban-new-card-save {
+    background: var(--le-primary);
+    color: var(--le-text-on-primary);
+}
+
+.kanban-new-card-cancel {
+    background: rgba(var(--le-primary-rgb), 0.08);
+    color: var(--le-text-muted);
+}
+
+
+/* -----------------------------------------------------------------------------
+   Modal — Card Detail
+   Surface is provided by `.modal-glass`. Only padding / divider tweaks here.
+   -------------------------------------------------------------------------- */
+
+.kanban-modal .modal-header {
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    padding: 1.25rem 1.5rem;
+}
+
+.kanban-modal .modal-body {
+    padding: 1.5rem;
+}
+
+.kanban-modal .modal-footer {
+    border-top: 1px solid var(--le-glass-border-subtle);
+    padding: 1rem 1.5rem;
+}
+
+.kanban-detail-section {
+    margin-bottom: 1.25rem;
+}
+
+.kanban-detail-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--le-text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.modal-detail-labels .kanban-label {
+    font-size: 0.6875rem;
+    padding: 0.2rem 0.625rem;
+}

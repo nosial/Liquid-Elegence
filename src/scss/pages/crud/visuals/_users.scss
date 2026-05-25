@@ -1,0 +1,98 @@
+// Migrated from templates/pages/crud/users.njk
+.avatar-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .avatar-circle.bg-avatar-1 { background: linear-gradient(135deg, #6366f1, #818cf8); }
+        .avatar-circle.bg-avatar-2 { background: linear-gradient(135deg, #ec4899, #f472b6); }
+        .avatar-circle.bg-avatar-3 { background: linear-gradient(135deg, #14b8a6, #2dd4bf); }
+        .avatar-circle.bg-avatar-4 { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .avatar-circle.bg-avatar-5 { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+        .user-info { display: flex; align-items: center; gap: 10px; }
+        .user-info .user-details { display: flex; flex-direction: column; }
+        .user-info .user-name { font-weight: 600; font-size: 0.875rem; }
+        .user-info .user-email { font-size: 0.75rem; opacity: 0.7; }
+        .crud-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            background: var(--glass-bg, var(--le-glass-bg-strong));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border, var(--le-glass-border-strong));
+        }
+        .crud-toolbar .search-box { position: relative; flex: 1; min-width: 200px; }
+        .crud-toolbar .search-box input { padding-left: 2.25rem; }
+        .crud-toolbar .search-box .search-icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); opacity: 0.5; width: 16px; height: 16px; }
+        .table-glass {
+            background: var(--glass-bg, var(--le-glass-bg-strong));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border, var(--le-glass-border-strong));
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .table-glass table { margin-bottom: 0; }
+        .table-glass th {
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
+        }
+        .table-glass th:hover { opacity: 1; }
+        .table-glass th .sort-icon { margin-left: 4px; font-size: 0.7rem; }
+        .table-actions { display: flex; gap: 4px; }
+        .table-actions .btn { padding: 0.25rem 0.45rem; }
+        .pagination-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .pagination-info { font-size: 0.85rem; opacity: 0.7; }
+        .modal .glass-modal {
+            background: var(--glass-bg, var(--le-glass-bg-strong));
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border, var(--le-glass-border-strong));
+            border-radius: 16px;
+        }
+        @media (max-width: 767.98px) {
+            .table-desktop { display: none !important; }
+            .card-mobile { display: block !important; }
+            .crud-toolbar { flex-direction: column; }
+            .crud-toolbar .search-box { width: 100%; }
+        }
+        @media (min-width: 768px) {
+            .card-mobile { display: none !important; }
+        }
+        .mobile-user-card {
+            background: var(--glass-bg, var(--le-glass-bg-strong));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border, var(--le-glass-border-strong));
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .mobile-user-card .card-header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+        .mobile-user-card .card-field { display: flex; justify-content: space-between; padding: 0.3rem 0; font-size: 0.85rem; }
+        .mobile-user-card .card-field .label { opacity: 0.6; }

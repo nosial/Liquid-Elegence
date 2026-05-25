@@ -1,0 +1,269 @@
+/* ---- Comfortable: ~115-120% of default, more padding/gaps, larger fonts ---- */
+[data-density="comfortable"] {
+
+  /* Tweet Card */
+  .chirp-tweet {
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .chirp-tweet-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .chirp-tweet-header {
+    gap: 8px;
+  }
+
+  .chirp-tweet-name {
+    font-size: 1rem;
+  }
+
+  .chirp-tweet-handle {
+    font-size: 0.9rem;
+  }
+
+  .chirp-tweet-body {
+    font-size: 1.02rem;
+    margin-bottom: 13px;
+  }
+
+  .chirp-action {
+    gap: 8px;
+    padding: 8px 13px;
+    font-size: 0.88rem;
+  }
+
+  /* Compose Box */
+  .chirp-compose {
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .chirp-compose-input {
+    font-size: 1.25rem;
+    min-height: 68px;
+  }
+
+  .chirp-compose-toolbar {
+    margin-top: 13px;
+    padding-top: 13px;
+  }
+
+  .chirp-compose-tool {
+    padding: 8px;
+  }
+
+  /* Feed Tabs */
+  .chirp-feed-tab {
+    padding: 18px 20px;
+    font-size: 0.98rem;
+  }
+
+  .chirp-feed-tab.active::after {
+    width: 66px;
+    height: 4px;
+  }
+
+  /* Profile Header */
+  .chirp-profile-banner {
+    height: 240px;
+  }
+
+  .chirp-profile-info {
+    padding: 0 26px 26px;
+  }
+
+  .chirp-profile-avatar {
+    width: 140px;
+    height: 140px;
+    font-size: 2.8rem;
+    border: 5px;
+    margin-top: -76px;
+  }
+
+  .chirp-profile-actions {
+    top: 16px;
+    right: 26px;
+    gap: 10px;
+  }
+
+  .chirp-profile-name {
+    font-size: 1.5rem;
+    margin: 8px 0 0;
+  }
+
+  .chirp-profile-handle {
+    font-size: 0.98rem;
+    margin-bottom: 13px;
+  }
+
+  .chirp-profile-bio {
+    font-size: 1.02rem;
+    margin-bottom: 15px;
+  }
+
+  .chirp-profile-meta {
+    gap: 18px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+  }
+
+  .chirp-profile-stats {
+    gap: 26px;
+    font-size: 0.98rem;
+  }
+
+  /* Profile Tabs */
+  .chirp-profile-tab {
+    padding: 18px 20px;
+    font-size: 0.95rem;
+  }
+
+  /* Thread / Detail */
+  .chirp-thread-tweet {
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .chirp-thread-meta {
+    padding: 15px 20px;
+    font-size: 0.9rem;
+  }
+
+  .chirp-thread-stats {
+    gap: 26px;
+    padding: 15px 20px;
+    font-size: 0.98rem;
+  }
+
+  .chirp-thread-actions {
+    padding: 6px 20px;
+  }
+
+  /* User Card */
+  .chirp-user-item {
+    gap: 15px;
+    padding: 18px 20px;
+  }
+
+  .chirp-user-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .chirp-user-name {
+    font-size: 1rem;
+  }
+
+  .chirp-user-handle {
+    font-size: 0.9rem;
+  }
+
+  .chirp-user-bio {
+    font-size: 0.95rem;
+    margin-top: 6px;
+  }
+
+  /* Sidebar Widgets */
+  .chirp-widget-title {
+    font-size: 1.3rem;
+    padding: 18px 20px;
+  }
+
+  .chirp-trend-item {
+    padding: 13px 20px;
+  }
+
+  .chirp-trend-category {
+    font-size: 0.82rem;
+  }
+
+  .chirp-trend-name {
+    font-size: 1rem;
+  }
+
+  .chirp-trend-count {
+    font-size: 0.82rem;
+  }
+
+  .chirp-widget-more {
+    padding: 18px 20px;
+    font-size: 0.98rem;
+  }
+
+  .chirp-follow-item {
+    gap: 15px;
+    padding: 15px 20px;
+  }
+
+  .chirp-follow-name {
+    font-size: 0.98rem;
+  }
+
+  .chirp-follow-handle {
+    font-size: 0.86rem;
+  }
+
+  /* Settings */
+  .chirp-settings-nav .nav-link {
+    gap: 13px;
+    padding: 13px 18px;
+    font-size: 0.98rem;
+  }
+
+  .chirp-setting-group {
+    padding-bottom: 26px;
+    margin-bottom: 26px;
+  }
+
+  .chirp-setting-group h6 {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .chirp-setting-group p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
+
+  .chirp-setting-row {
+    padding: 13px 0;
+    gap: 20px;
+  }
+
+  .chirp-setting-label strong {
+    font-size: 0.98rem;
+  }
+
+  .chirp-setting-label span {
+    font-size: 0.88rem;
+  }
+
+  /* Search */
+  .chirp-search-input {
+    padding: 13px 20px 13px 48px;
+    font-size: 0.98rem;
+  }
+
+  /* Buttons */
+  .btn-chirp-follow {
+    padding: 8px 22px;
+    font-size: 0.9rem;
+  }
+
+  .btn-chirp-following {
+    padding: 8px 22px;
+    font-size: 0.9rem;
+  }
+
+  /* Footer */
+  .chirp-footer-links {
+    gap: 13px;
+    padding: 20px;
+    font-size: 0.82rem;
+  }
+}

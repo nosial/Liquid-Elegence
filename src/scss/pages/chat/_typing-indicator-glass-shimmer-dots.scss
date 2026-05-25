@@ -1,0 +1,106 @@
+/* ---------------------------------------------------------------------------
+   Typing Indicator — glass shimmer dots
+   --------------------------------------------------------------------------- */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0.5rem 0.875rem;
+}
+
+.typing-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--le-text-muted);
+    animation: typingBounce 1.4s infinite;
+    box-shadow:
+        0 0 4px rgba(var(--le-primary-rgb), 0.3),
+        inset 0 0.5px 0 rgba(255, 255, 255, 0.20);
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingBounce {
+    0%, 60%, 100% { filter: brightness(1); opacity: 0.5; }
+    30%           { filter: brightness(1.15); opacity: 1; }
+}
+
+/* ---------------------------------------------------------------------------
+   Chat Input Area
+   --------------------------------------------------------------------------- */
+.chat-input-area {
+    padding: 0.875rem 1.25rem;
+    border-top: 1px solid var(--le-glass-border-subtle);
+    display: flex;
+    align-items: flex-end;
+    gap: 0.375rem;
+    flex-shrink: 0;
+}
+
+.chat-input-area .glass-input {
+    flex: 1;
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: var(--le-radius) 0 0 var(--le-radius);
+    min-height: 40px;
+    max-height: 120px;
+    overflow-y: auto;
+    resize: none;
+    background: var(--le-glass-bg);
+    transition: border-color var(--le-transition-fast), box-shadow var(--le-transition-fast);
+}
+
+.chat-input-area .glass-input:focus {
+    border-color: rgba(var(--le-primary-rgb), 0.4);
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.1);
+    outline: none;
+}
+
+.chat-input-area button {
+    background: none;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--le-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--le-text-secondary);
+    transition: all var(--le-transition-fast);
+}
+
+.chat-input-area button:hover {
+    color: var(--le-primary);
+    background: rgba(var(--le-primary-rgb), 0.08);
+}
+
+/* Send button — anchored to input with connected border radius */
+.chat-input-area .send-btn {
+    background: linear-gradient(135deg, var(--le-primary), var(--le-primary-dark, var(--le-primary)));
+    color: var(--le-text-inverse);
+    border-radius: 0 var(--le-radius) var(--le-radius) 0;
+    box-shadow:
+        0 2px 8px rgba(var(--le-primary-rgb), 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 42px;
+    height: 40px;
+}
+
+.chat-input-area .send-btn:hover {
+    color: var(--le-text-inverse);
+    box-shadow:
+        0 4px 14px rgba(var(--le-primary-rgb), 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    filter: brightness(1.05);
+}
+
+.chat-input-area button i,
+.chat-input-area button svg {
+    width: 18px;
+    height: 18px;
+}

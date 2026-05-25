@@ -1,0 +1,228 @@
+// Migrated from templates/pages/utility/404.njk
+body.error-page.page-404 {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            overflow: hidden;
+            position: relative;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: #fff;
+
+        .mesh-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(255, 119, 198, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 40% 80%, rgba(74, 144, 226, 0.25) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(99, 220, 210, 0.15) 0%, transparent 50%);
+        }
+
+        .glass-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%,
+                rgba(255, 255, 255, 0.15),
+                rgba(255, 255, 255, 0.05) 50%,
+                transparent 70%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: floatOrb404 var(--duration, 8s) ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .glass-orb:nth-child(1) { width: 120px; height: 120px; top: 10%; left: 10%; --duration: 7s; animation-delay: 0s; }
+        .glass-orb:nth-child(2) { width: 80px; height: 80px; top: 60%; right: 15%; --duration: 9s; animation-delay: -2s; }
+        .glass-orb:nth-child(3) { width: 60px; height: 60px; bottom: 20%; left: 20%; --duration: 6s; animation-delay: -4s; }
+        .glass-orb:nth-child(4) { width: 150px; height: 150px; top: 20%; right: 8%; --duration: 11s; animation-delay: -1s; }
+        .glass-orb:nth-child(5) { width: 40px; height: 40px; top: 45%; left: 5%; --duration: 8s; animation-delay: -3s; }
+        .glass-orb:nth-child(6) { width: 100px; height: 100px; bottom: 10%; right: 30%; --duration: 10s; animation-delay: -5s; }
+
+        @keyframes floatOrb404 {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+            25% { transform: translateY(-20px) translateX(10px) scale(1.05); opacity: 0.8; }
+            50% { transform: translateY(-10px) translateX(-15px) scale(0.95); opacity: 0.5; }
+            75% { transform: translateY(-30px) translateX(5px) scale(1.02); opacity: 0.7; }
+        }
+
+        .error-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 560px;
+            padding: 2rem;
+        }
+
+        .error-code {
+            font-size: clamp(8rem, 20vw, 14rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.9) 0%,
+                rgba(255, 255, 255, 0.4) 40%,
+                rgba(200, 200, 255, 0.6) 60%,
+                rgba(255, 255, 255, 0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 4px 30px rgba(120, 119, 198, 0.4));
+            animation: floatText404 4s ease-in-out infinite;
+            position: relative;
+        }
+
+        .error-code::after {
+            content: '404';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer404 3s ease-in-out infinite;
+        }
+
+        @keyframes floatText404 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes shimmer404 {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .error-subtitle {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .error-description {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.65);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .search-wrapper {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 0.85rem 1.25rem 0.85rem 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-wrapper input::placeholder { color: rgba(255, 255, 255, 0.4); }
+        .search-wrapper input:focus {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 30px rgba(120, 119, 198, 0.2);
+        }
+
+        .search-wrapper .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.4);
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-glass {
+            padding: 0.75rem 2rem;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .btn-glass-primary {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-glass-primary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+
+        .btn-glass-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .btn-glass-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: #fff;
+        }
+
+        .btn-group-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1rem;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .quick-link:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .quick-link svg { flex-shrink: 0; color: rgba(120, 119, 198, 0.8); }
+}

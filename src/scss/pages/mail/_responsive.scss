@@ -1,0 +1,421 @@
+/* ---- Mobile: touch targets and compact layout ----
+   Mail responsive rules consolidated from:
+     - pages/mail/_responsive.scss (original)
+     - pages/responsive/per-page/_mail.scss (moved here)
+     - pages/responsive/_adjustments.scss §21g (moved here)
+   ------------------------------------------------------------------------ */
+@media (max-width: 767.98px) {
+    .mail-container {
+        height: calc(100dvh - 120px);
+        height: calc(100vh - 120px);
+    }
+
+    /* ---- Touch-friendly toolbar ---- */
+    .mail-toolbar {
+        padding: 0.5rem 0.75rem;
+        gap: 0.25rem;
+        flex-wrap: wrap;
+    }
+    .mail-toolbar-btn {
+        width: 44px;
+        height: 44px;
+    }
+    .mail-toolbar-btn i,
+    .mail-toolbar-btn svg {
+        width: 18px;
+        height: 18px;
+    }
+    .mail-toolbar > input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+    }
+
+    .mail-search-wrap .glass-input {
+        font-size: 1rem;
+        min-height: 44px;
+    }
+
+    /* ---- Touch-friendly mail items ---- */
+    .mail-item {
+        padding: 0.75rem;
+        min-height: 60px;
+        gap: 0.5rem;
+    }
+    .mail-item-check input {
+        width: 20px;
+        height: 20px;
+    }
+    .mail-item-sender {
+        font-size: 0.875rem;
+    }
+    .mail-item-subject {
+        font-size: 0.8125rem;
+    }
+
+    /* ---- Reading pane content ---- */
+    .reading-actions {
+        padding: 0.5rem 0.75rem;
+        gap: 0.375rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        scrollbar-width: none;
+    }
+    .reading-actions::-webkit-scrollbar {
+        display: none;
+    }
+    .reading-action-btn {
+        min-height: 40px;
+        min-width: 40px;
+        padding: 0.375rem 0.625rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+    .reading-action-btn i,
+    .reading-action-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .reading-header {
+        padding: 0.875rem;
+    }
+    .reading-subject {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+    .reading-meta {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    .reading-date {
+        margin-left: 0;
+        width: 100%;
+        text-align: left;
+    }
+
+    .reading-body {
+        padding: 0.875rem;
+    }
+    .reading-body p {
+        font-size: 0.875rem;
+        line-height: 1.65;
+    }
+
+    /* Attachments */
+    .reading-attachments {
+        padding: 0.75rem;
+    }
+    .attachment-card {
+        padding: 0.75rem;
+    }
+    .attachment-download {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    /* ---- Compose modal full-screen ---- */
+    .compose-modal .modal-dialog {
+        margin: 0;
+        max-width: 100%;
+        min-height: 100dvh;
+        min-height: 100vh;
+    }
+    .compose-modal .modal-content {
+        border-radius: 0;
+        min-height: 100dvh;
+        min-height: 100vh;
+    }
+    .compose-modal .modal-body {
+        flex: 1;
+    }
+    .compose-field .glass-input {
+        font-size: 1rem;
+        min-height: 44px;
+    }
+
+    .compose-editor {
+        font-size: 1rem;
+        min-height: 160px;
+    }
+
+    /* Toolbar: show overflow toggle, collapse extra groups */
+    .compose-toolbar {
+        flex-wrap: nowrap;
+        overflow: hidden;
+    }
+    .compose-toolbar-overflow {
+        display: flex;
+    }
+    .compose-toolbar.expanded {
+        flex-wrap: wrap;
+    }
+    .compose-toolbar.expanded .compose-toolbar-overflow i,
+    .compose-toolbar.expanded .compose-toolbar-overflow svg {
+        transform: rotate(90deg);
+    }
+
+    .compose-tool-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Attachment zone touch-friendly */
+    .compose-drop-zone {
+        padding: 1.25rem;
+    }
+    .compose-file-remove {
+        width: 34px;
+        height: 34px;
+    }
+
+    /* Header actions: hide minimize/expand on mobile */
+    .compose-minimize-btn,
+    .compose-expand-btn {
+        display: none;
+    }
+
+    /* Footer touch-friendly */
+    .compose-footer-btn {
+        width: 44px;
+        height: 44px;
+    }
+
+    /* Sidebar folder items touch-friendly */
+    .mail-folder-item {
+        min-height: 44px;
+        padding: 0.625rem 0.75rem;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+    }
+    .mail-label-item {
+        min-height: 44px;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+    }
+    .compose-btn {
+        min-height: 48px;
+        font-size: 0.9375rem;
+        padding: 0.875rem 1rem;
+    }
+
+    /* Make room for the absolutely-positioned more-actions button so it
+       doesn't overlap the timestamp / attachment meta column */
+    .mail-item-meta {
+        padding-right: 44px;
+    }
+}
+
+/* ==========================================================================
+   Mail — per-page responsive sections (consolidated from
+   pages/responsive/per-page/_mail.scss)
+   ========================================================================== */
+
+/* Mail toolbar, reading pane, list items */
+@media (max-width: 767.98px) {
+  /* Mail toolbar wrapping */
+  .mail-toolbar {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .mail-toolbar-left,
+  .mail-toolbar-right {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .mail-search-bar {
+    width: 100%;
+    order: -1;
+  }
+
+  .mail-search-bar .glass-input {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  /* Mail item labels truncated */
+  .mail-item-label {
+    max-width: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Mail item from name truncated */
+  .mail-item-from {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Mail item subject truncated */
+  .mail-item-subject {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Reading pane tighter */
+  .reading-header {
+    padding: 10px 12px;
+  }
+
+  .reading-subject {
+    font-size: 0.875rem;
+  }
+
+  .reading-meta {
+    font-size: 0.6875rem;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .reading-body {
+    padding: 10px 12px;
+    font-size: 0.875rem;
+  }
+
+  /* Attachment cards stack */
+  .attachment-list {
+    gap: 8px;
+  }
+
+  .attachment-card {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+
+  .mail-item {
+    padding: 8px 10px;
+  }
+
+  .mail-item-checkbox {
+    min-width: 20px;
+  }
+}
+
+/* Mobile list and reading pane */
+@media (max-width: 575.98px) {
+  .mail-container {
+    height: calc(100dvh - 120px);
+    height: calc(100vh - 120px);
+    min-height: 350px;
+  }
+
+  .mail-sidebar {
+    width: 100%;
+  }
+
+  .mail-list-panel {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Compose button compact */
+  .compose-btn {
+    padding: 0.625rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  /* Mail list items touch-optimized */
+  .mail-item {
+    padding: 10px;
+    gap: 8px;
+    min-height: 56px;
+  }
+
+  .mail-item-checkbox {
+    min-width: 18px;
+  }
+
+  .mail-item-avatar {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .mail-item-content {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .mail-item-sender {
+    font-size: 0.8125rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mail-item-subject {
+    font-size: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mail-item-preview {
+    font-size: 0.6875rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Reading pane attachment cards */
+  .attachment-card {
+    flex: 1 1 100%;
+  }
+
+  .attachment-list {
+    flex-direction: column;
+    gap: 6px;
+  }
+}
+
+/* Extra small phone drawer + list (from adjustments §21g) */
+@media (max-width: 380px) {
+  .mail-sidebar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .mail-item {
+    padding: 0.5rem 0.625rem;
+    gap: 0.375rem;
+  }
+
+  .mail-item-sender {
+    font-size: 0.8125rem;
+  }
+
+  .mail-item-subject {
+    font-size: 0.75rem;
+  }
+
+  .mail-item-preview {
+    font-size: 0.6875rem;
+  }
+
+  .reading-header {
+    padding: 8px 10px;
+  }
+
+  .reading-subject {
+    font-size: 0.8125rem;
+  }
+
+  .reading-body {
+    padding: 8px 10px;
+    font-size: 0.8125rem;
+  }
+}

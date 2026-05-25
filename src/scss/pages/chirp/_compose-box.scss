@@ -1,0 +1,62 @@
+/* ---------------------------------------------------------------------------
+   Compose Box
+   --------------------------------------------------------------------------- */
+.chirp-compose {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+.chirp-compose-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.chirp-compose-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--le-text-primary);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  resize: none;
+  min-height: 56px;
+  outline: none;
+  font-family: var(--le-font-family);
+}
+
+.chirp-compose-input::placeholder {
+  color: var(--le-text-muted);
+}
+
+.chirp-compose-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--le-glass-border-subtle);
+}
+
+.chirp-compose-tools {
+  display: flex;
+  gap: 2px;
+}
+
+.chirp-compose-tool {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--le-primary);
+  padding: 6px;
+  border-radius: var(--le-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--le-transition-fast);
+}
+
+.chirp-compose-tool:hover {
+  background: rgba(var(--le-primary-rgb), 0.08);
+}

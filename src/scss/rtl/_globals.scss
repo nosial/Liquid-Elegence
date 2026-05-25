@@ -1,0 +1,17 @@
+/* ============================================================
+   Liquid Elegance — RTL (Right-to-Left) Support
+   Loaded when [dir="rtl"] is set on the <html> element.
+   Mirrors every directional property so the entire UI flips.
+   ============================================================ */
+
+
+/* ─────────────────────────────────────────────────────────────
+   1. Global text & direction defaults
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+

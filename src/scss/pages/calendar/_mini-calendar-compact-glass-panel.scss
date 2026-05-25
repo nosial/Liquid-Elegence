@@ -1,0 +1,103 @@
+/* ---------------------------------------------------------------------------
+   Mini Calendar — compact glass panel
+   --------------------------------------------------------------------------- */
+
+.mini-calendar {
+    user-select: none;
+}
+
+.mini-cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--le-spacing-md);
+}
+
+.mini-cal-header h6 {
+    margin: 0;
+    font-weight: var(--le-font-weight-bold);
+    font-size: var(--le-font-size-sm);
+}
+
+.mini-cal-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--le-spacing-xs);
+    border-radius: 50%;
+    color: var(--le-text-secondary);
+    display: flex;
+    align-items: center;
+    transition: all var(--le-transition-fast);
+}
+
+.mini-cal-nav:hover {
+    background: var(--le-glass-bg);
+    box-shadow: var(--le-glass-shadow);
+}
+
+.mini-cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 2px;
+}
+
+.mini-cal-day-name {
+    font-size: var(--le-font-size-xs);
+    font-weight: var(--le-font-weight-semibold);
+    color: var(--le-text-muted);
+    padding: var(--le-spacing-xs) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.mini-cal-date {
+    font-size: 0.75rem;
+    padding: 0.3rem 0;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all var(--le-transition-fast);
+}
+
+.mini-cal-date:hover {
+    background: var(--le-glass-bg);
+    box-shadow: var(--le-shadow-xs);
+}
+
+.mini-cal-date.today {
+    background: linear-gradient(135deg, var(--le-primary), rgba(var(--le-primary-rgb), 0.8));
+    color: var(--le-text-inverse);
+    font-weight: var(--le-font-weight-bold);
+    box-shadow: 0 2px 8px rgba(var(--le-primary-rgb), 0.35);
+}
+
+.mini-cal-date.selected {
+    outline: 2px solid var(--le-primary);
+    outline-offset: -2px;
+    box-shadow: 0 0 0 4px rgba(var(--le-primary-rgb), 0.15);
+}
+
+.mini-cal-date.other-month {
+    color: var(--le-text-muted);
+    opacity: 0.4;
+}
+
+.mini-cal-date .event-dots {
+    display: flex;
+    gap: 2px;
+    position: absolute;
+    bottom: 2px;
+}
+
+.mini-cal-date .event-dots .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+}

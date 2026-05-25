@@ -1,0 +1,552 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Overview — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Dashboards</a></li>
+<li class="breadcrumb-item active">Overview</li>
+{% endblock %}
+
+
+{% block scripts_before %}
+<script src="{{ asset_root or root }}vendor/chart.js/chart.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<!-- Metric Cards -->
+<div class="row g-4 mb-4">
+    <div class="col-sm-6 col-xl-3">
+        <div class="glass-card metric-card glass-card-animated">
+            <div class="glass-card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <p class="metric-label text-muted mb-1">Total Revenue</p>
+                        <h3 class="metric-value mb-1">$48,295</h3>
+                        <span class="metric-change text-success"><i data-feather="trending-up"></i> +12.5%</span>
+                    </div>
+                    <div class="metric-icon bg-primary-subtle">
+                        <i data-feather="dollar-sign"></i>
+                    </div>
+                </div>
+                <div class="chart-wrapper le-chart-60"><canvas id="sparkRevenue" height="60"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="glass-card metric-card glass-card-animated">
+            <div class="glass-card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <p class="metric-label text-muted mb-1">Total Orders</p>
+                        <h3 class="metric-value mb-1">1,847</h3>
+                        <span class="metric-change text-success"><i data-feather="trending-up"></i> +8.2%</span>
+                    </div>
+                    <div class="metric-icon bg-success-subtle">
+                        <i data-feather="shopping-cart"></i>
+                    </div>
+                </div>
+                <div class="chart-wrapper le-chart-60"><canvas id="sparkOrders" height="60"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="glass-card metric-card glass-card-animated">
+            <div class="glass-card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <p class="metric-label text-muted mb-1">Active Users</p>
+                        <h3 class="metric-value mb-1">12,459</h3>
+                        <span class="metric-change text-success"><i data-feather="trending-up"></i> +15.3%</span>
+                    </div>
+                    <div class="metric-icon bg-info-subtle">
+                        <i data-feather="users"></i>
+                    </div>
+                </div>
+                <div class="chart-wrapper le-chart-60"><canvas id="sparkUsers" height="60"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="glass-card metric-card glass-card-animated">
+            <div class="glass-card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <p class="metric-label text-muted mb-1">Conversion Rate</p>
+                        <h3 class="metric-value mb-1">3.24%</h3>
+                        <span class="metric-change text-danger"><i data-feather="trending-down"></i> -0.4%</span>
+                    </div>
+                    <div class="metric-icon bg-warning-subtle">
+                        <i data-feather="percent"></i>
+                    </div>
+                </div>
+                <div class="chart-wrapper le-chart-60"><canvas id="sparkConversion" height="60"></canvas></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Revenue Chart + Traffic Sources -->
+<div class="row g-4 mb-4">
+    <div class="col-lg-8 col-xl-8">
+        <div class="glass-card">
+            <div class="glass-card-header d-flex justify-content-between align-items-center">
+                <h5 class="glass-card-title mb-0">Revenue Overview</h5>
+                <div class="btn-group btn-group-sm" role="group">
+                    <button type="button" class="btn btn-outline-primary active" id="btnRevenue">Revenue</button>
+                    <button type="button" class="btn btn-outline-primary" id="btnProfit">Profit</button>
+                </div>
+            </div>
+            <div class="glass-card-body">
+                <div class="chart-wrapper le-chart-300"><canvas id="revenueChart" height="300"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-xl-4">
+        <div class="glass-card h-100">
+            <div class="glass-card-header">
+                <h5 class="glass-card-title mb-0">Traffic Sources</h5>
+            </div>
+            <div class="glass-card-body d-flex flex-column align-items-center">
+                <div class="chart-wrapper le-chart-220"><canvas id="trafficChart" height="220"></canvas></div>
+                <div class="w-100 mt-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span><span class="legend-dot le-bg-primary"></span> Direct</span>
+                        <span class="fw-semibold">42%</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span><span class="legend-dot le-bg-success"></span> Organic</span>
+                        <span class="fw-semibold">28%</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span><span class="legend-dot le-bg-warning"></span> Referral</span>
+                        <span class="fw-semibold">18%</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span><span class="legend-dot le-bg-info"></span> Social</span>
+                        <span class="fw-semibold">12%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Monthly Goals + Recent Orders -->
+<div class="row g-4 mb-4">
+    <div class="col-lg-4 col-xl-4">
+        <div class="glass-card h-100">
+            <div class="glass-card-header">
+                <h5 class="glass-card-title mb-0">Monthly Goals</h5>
+            </div>
+            <div class="glass-card-body">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="small fw-semibold">Revenue Target</span>
+                        <span class="small text-muted">$42,500 / $55,000</span>
+                    </div>
+                    <div class="progress le-h-8 progress-shimmer">
+                        <div class="progress-bar bg-primary" style="width: 77%"></div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="small fw-semibold">New Customers</span>
+                        <span class="small text-muted">340 / 500</span>
+                    </div>
+                    <div class="progress le-h-8 progress-shimmer">
+                        <div class="progress-bar bg-success" style="width: 68%"></div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="small fw-semibold">Orders Fulfilled</span>
+                        <span class="small text-muted">1,580 / 2,000</span>
+                    </div>
+                    <div class="progress le-h-8 progress-shimmer">
+                        <div class="progress-bar bg-info" style="width: 79%"></div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="small fw-semibold">Support Tickets Resolved</span>
+                        <span class="small text-muted">89 / 100</span>
+                    </div>
+                    <div class="progress le-h-8 progress-shimmer">
+                        <div class="progress-bar bg-warning" style="width: 89%"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="small fw-semibold">User Engagement</span>
+                        <span class="small text-muted">72%</span>
+                    </div>
+                    <div class="progress le-h-8 progress-shimmer">
+                        <div class="progress-bar bg-danger" style="width: 72%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-xl-8">
+        <div class="glass-card">
+            <div class="glass-card-header d-flex justify-content-between align-items-center">
+                <h5 class="glass-card-title mb-0">Recent Orders</h5>
+                <a href="{{ root }}pages/crud/orders.html" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="glass-card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Product</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="fw-semibold">#ORD-4820</span></td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="avatar avatar-xs"><div class="avatar-placeholder">SC</div></div>
+                                        <span>Sarah Connor</span>
+                                    </div>
+                                </td>
+                                <td>Pro Plan License</td>
+                                <td>$299.00</td>
+                                <td><span class="glass-badge glass-badge-success">Completed</span></td>
+                                <td>Dec 15, 2024</td>
+                            </tr>
+                            <tr>
+                                <td><span class="fw-semibold">#ORD-4819</span></td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="avatar avatar-xs"><div class="avatar-placeholder">JW</div></div>
+                                        <span>James Wilson</span>
+                                    </div>
+                                </td>
+                                <td>Enterprise Suite</td>
+                                <td>$1,250.00</td>
+                                <td><span class="glass-badge glass-badge-warning">Processing</span></td>
+                                <td>Dec 14, 2024</td>
+                            </tr>
+                            <tr>
+                                <td><span class="fw-semibold">#ORD-4818</span></td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="avatar avatar-xs"><div class="avatar-placeholder">EL</div></div>
+                                        <span>Emma Lopez</span>
+                                    </div>
+                                </td>
+                                <td>Starter Kit</td>
+                                <td>$49.00</td>
+                                <td><span class="glass-badge glass-badge-success">Completed</span></td>
+                                <td>Dec 14, 2024</td>
+                            </tr>
+                            <tr>
+                                <td><span class="fw-semibold">#ORD-4817</span></td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="avatar avatar-xs"><div class="avatar-placeholder">MJ</div></div>
+                                        <span>Marcus Johnson</span>
+                                    </div>
+                                </td>
+                                <td>Pro Plan License</td>
+                                <td>$299.00</td>
+                                <td><span class="glass-badge glass-badge-info">Shipped</span></td>
+                                <td>Dec 13, 2024</td>
+                            </tr>
+                            <tr>
+                                <td><span class="fw-semibold">#ORD-4816</span></td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="avatar avatar-xs"><div class="avatar-placeholder">AK</div></div>
+                                        <span>Alice Kim</span>
+                                    </div>
+                                </td>
+                                <td>Team Bundle</td>
+                                <td>$599.00</td>
+                                <td><span class="glass-badge glass-badge-danger">Cancelled</span></td>
+                                <td>Dec 12, 2024</td>
+                            </tr>
+                            <tr>
+                                <td><span class="fw-semibold">#ORD-4815</span></td>
+                                <td>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <div class="avatar avatar-xs"><div class="avatar-placeholder">RP</div></div>
+                                        <span>Robert Patel</span>
+                                    </div>
+                                </td>
+                                <td>Enterprise Suite</td>
+                                <td>$1,250.00</td>
+                                <td><span class="glass-badge glass-badge-success">Completed</span></td>
+                                <td>Dec 11, 2024</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Activity Feed + Server Status + Top Products -->
+<div class="row g-4 mb-4">
+    <div class="col-md-6 col-xl-4">
+        <div class="glass-card h-100">
+            <div class="glass-card-header">
+                <h5 class="glass-card-title mb-0">Activity Feed</h5>
+            </div>
+            <div class="glass-card-body">
+                <div class="activity-feed">
+                    <div class="activity-item">
+                        <div class="activity-dot bg-primary"></div>
+                        <div class="activity-content">
+                            <p class="mb-0 small"><span class="fw-semibold">Sarah Connor</span> placed a new order</p>
+                            <small class="text-muted">2 minutes ago</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot bg-success"></div>
+                        <div class="activity-content">
+                            <p class="mb-0 small"><span class="fw-semibold">System</span> deployed v2.4.1 to production</p>
+                            <small class="text-muted">28 minutes ago</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot bg-warning"></div>
+                        <div class="activity-content">
+                            <p class="mb-0 small"><span class="fw-semibold">Server Alert</span> CPU usage exceeded 90%</p>
+                            <small class="text-muted">45 minutes ago</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot bg-info"></div>
+                        <div class="activity-content">
+                            <p class="mb-0 small"><span class="fw-semibold">Marcus Johnson</span> registered a new account</p>
+                            <small class="text-muted">1 hour ago</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot bg-danger"></div>
+                        <div class="activity-content">
+                            <p class="mb-0 small"><span class="fw-semibold">Alice Kim</span> cancelled order #4816</p>
+                            <small class="text-muted">2 hours ago</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot bg-primary"></div>
+                        <div class="activity-content">
+                            <p class="mb-0 small"><span class="fw-semibold">Robert Patel</span> upgraded to Enterprise</p>
+                            <small class="text-muted">3 hours ago</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-dot bg-success"></div>
+                        <div class="activity-content">
+                            <p class="mb-0 small"><span class="fw-semibold">Support</span> resolved 12 tickets</p>
+                            <small class="text-muted">5 hours ago</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-4">
+        <div class="glass-card h-100">
+            <div class="glass-card-header">
+                <h5 class="glass-card-title mb-0">Server Status</h5>
+            </div>
+            <div class="glass-card-body">
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="small fw-semibold">CPU Usage</span>
+                        <span class="small text-warning fw-bold">78%</span>
+                    </div>
+                    <div class="progress le-h-6 progress-shimmer">
+                        <div class="progress-bar bg-warning" style="width: 78%"></div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="small fw-semibold">Memory Usage</span>
+                        <span class="small text-success fw-bold">54%</span>
+                    </div>
+                    <div class="progress le-h-6 progress-shimmer">
+                        <div class="progress-bar bg-success" style="width: 54%"></div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="small fw-semibold">Disk Usage</span>
+                        <span class="small text-info fw-bold">62%</span>
+                    </div>
+                    <div class="progress le-h-6 progress-shimmer">
+                        <div class="progress-bar bg-info" style="width: 62%"></div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="small fw-semibold">Bandwidth</span>
+                        <span class="small text-primary fw-bold">41%</span>
+                    </div>
+                    <div class="progress le-h-6 progress-shimmer">
+                        <div class="progress-bar bg-primary" style="width: 41%"></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between small">
+                    <span class="text-muted">Uptime</span>
+                    <span class="fw-semibold text-success">99.98%</span>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                    <span class="text-muted">Response Time</span>
+                    <span class="fw-semibold">142ms</span>
+                </div>
+                <div class="d-flex justify-content-between small mt-2">
+                    <span class="text-muted">Active Connections</span>
+                    <span class="fw-semibold">2,847</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 col-xl-4">
+        <div class="glass-card h-100">
+            <div class="glass-card-header d-flex justify-content-between align-items-center">
+                <h5 class="glass-card-title mb-0">Top Products</h5>
+                <a href="{{ root }}pages/crud/products.html" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="glass-card-body">
+                <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
+                    <div class="product-thumb bg-primary-subtle rounded d-flex align-items-center justify-content-center le-box-48">
+                        <i data-feather="monitor"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0 small fw-semibold">Enterprise Suite</h6>
+                        <small class="text-muted">482 sales</small>
+                    </div>
+                    <span class="fw-bold">$602,500</span>
+                </div>
+                <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
+                    <div class="product-thumb bg-success-subtle rounded d-flex align-items-center justify-content-center le-box-48">
+                        <i data-feather="zap"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0 small fw-semibold">Pro Plan License</h6>
+                        <small class="text-muted">1,205 sales</small>
+                    </div>
+                    <span class="fw-bold">$360,295</span>
+                </div>
+                <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
+                    <div class="product-thumb bg-warning-subtle rounded d-flex align-items-center justify-content-center le-box-48">
+                        <i data-feather="package"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0 small fw-semibold">Team Bundle</h6>
+                        <small class="text-muted">340 sales</small>
+                    </div>
+                    <span class="fw-bold">$203,660</span>
+                </div>
+                <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom">
+                    <div class="product-thumb bg-info-subtle rounded d-flex align-items-center justify-content-center le-box-48">
+                        <i data-feather="star"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0 small fw-semibold">Starter Kit</h6>
+                        <small class="text-muted">2,180 sales</small>
+                    </div>
+                    <span class="fw-bold">$106,820</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="product-thumb bg-danger-subtle rounded d-flex align-items-center justify-content-center le-box-48">
+                        <i data-feather="book-open"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0 small fw-semibold">Training Course</h6>
+                        <small class="text-muted">890 sales</small>
+                    </div>
+                    <span class="fw-bold">$71,110</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chartColors = {
+        primary: getComputedStyle(document.documentElement).getPropertyValue('--le-primary').trim() || '#6366f1',
+        success: getComputedStyle(document.documentElement).getPropertyValue('--le-success').trim() || '#10b981',
+        warning: getComputedStyle(document.documentElement).getPropertyValue('--le-warning').trim() || '#f59e0b',
+        info: getComputedStyle(document.documentElement).getPropertyValue('--le-info').trim() || '#06b6d4',
+        danger: getComputedStyle(document.documentElement).getPropertyValue('--le-danger').trim() || '#ef4444'
+    };
+
+    function createSparkline(id, data, color) {
+        const ctx = document.getElementById(id);
+        if (!ctx) return;
+        new Chart(ctx, {
+            type: 'line',
+            data: { labels: data.map((_, i) => i), datasets: [{ data, borderColor: color, borderWidth: 2, fill: true, backgroundColor: color + '20', tension: 0.4, pointRadius: 0 }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } }
+        });
+    }
+
+    createSparkline('sparkRevenue', [28, 35, 32, 40, 38, 45, 42, 48], chartColors.primary);
+    createSparkline('sparkOrders', [120, 145, 135, 160, 155, 170, 165, 185], chartColors.success);
+    createSparkline('sparkUsers', [8200, 8800, 9100, 9600, 10200, 11000, 11800, 12459], chartColors.info);
+    createSparkline('sparkConversion', [3.8, 3.6, 3.5, 3.4, 3.3, 3.28, 3.26, 3.24], chartColors.warning);
+
+    // Revenue Chart
+    const revenueCtx = document.getElementById('revenueChart');
+    if (revenueCtx) {
+        new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [18500, 22300, 19800, 25400, 28100, 24600, 31200, 29800, 35400, 38200, 42100, 48295],
+                    backgroundColor: chartColors.primary + '80',
+                    borderColor: chartColors.primary,
+                    borderWidth: 1,
+                    borderRadius: 6
+                }, {
+                    label: 'Profit',
+                    data: [8200, 10500, 9100, 12800, 13200, 11400, 15600, 14200, 17800, 19500, 21200, 24100],
+                    backgroundColor: chartColors.success + '80',
+                    borderColor: chartColors.success,
+                    borderWidth: 1,
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'top' } },
+                scales: { y: { beginAtZero: true, ticks: { callback: v => '$' + (v/1000) + 'k' } } }
+            }
+        });
+    }
+
+    // Traffic Chart
+    const trafficCtx = document.getElementById('trafficChart');
+    if (trafficCtx) {
+        new Chart(trafficCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Direct', 'Organic', 'Referral', 'Social'],
+                datasets: [{ data: [42, 28, 18, 12], backgroundColor: [chartColors.primary, chartColors.success, chartColors.warning, chartColors.info], borderWidth: 0 }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { display: false } } }
+        });
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% set root = "../../" %}
+{% extends "layouts/auth.njk" %}
+
+{% block body_attrs %} class="auth-page page-email-verification"{% endblock %}
+
+{% block auth_content %}
+<div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-brand">
+                <span class="auth-brand-icon">◆</span>
+                <span class="auth-brand-text">Liquid Elegance</span>
+            </div>
+
+            <div class="auth-icon-circle">
+                <i data-feather="mail" width="36" height="36"></i>
+                <div class="check-badge">
+                    <i data-feather="check" width="14" height="14"></i>
+                </div>
+            </div>
+
+            <h2 class="auth-title">Verify Your Email</h2>
+            <p class="auth-subtitle">We've sent a verification link to</p>
+            <div class="email-address">john.doe@example.com</div>
+
+            <div class="envelope-illustration">
+                <div class="envelope-flap-border"></div>
+                <div class="envelope-body"></div>
+                <div class="envelope-inner-v"></div>
+                <div class="envelope-flap"></div>
+                <div class="envelope-paper"></div>
+            </div>
+
+            <div class="d-flex flex-column gap-sm mt-3">
+                <a href="mailto:" class="btn btn-primary w-100 text-center text-decoration-none">Open Email App</a>
+
+                <button type="button" class="btn btn-outline-primary w-100" id="resendBtn" disabled>
+                    Resend Verification Email
+                </button>
+
+                <div class="resend-timer" id="resendTimer">You can resend in <span id="countdown">59</span>s</div>
+            </div>
+
+            <div class="auth-alt-links">
+                <div>
+                    <span class="le-fs-base le-text-muted">Wrong email? </span>
+                    <a href="javascript:void(0)" class="primary-link">Change it</a>
+                </div>
+            </div>
+
+            <a href="signin.html" class="auth-back-link">
+                <i data-feather="arrow-left" width="16" height="16"></i>
+                Back to Sign In
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') feather.replace();
+
+            var resendBtn = document.getElementById('resendBtn');
+            var resendTimer = document.getElementById('resendTimer');
+            var countdown = document.getElementById('countdown');
+            var seconds = 59;
+
+            function startCountdown() {
+                seconds = 59;
+                resendBtn.disabled = true;
+                resendTimer.style.display = 'block';
+                countdown.textContent = seconds;
+
+                var interval = setInterval(function() {
+                    seconds--;
+                    countdown.textContent = seconds;
+
+                    if (seconds <= 0) {
+                        clearInterval(interval);
+                        resendBtn.disabled = false;
+                        resendTimer.style.display = 'none';
+                    }
+                }, 1000);
+            }
+
+            // Start initial countdown
+            startCountdown();
+
+            resendBtn.addEventListener('click', function() {
+                if (!this.disabled) {
+                    this.textContent = 'Sending...';
+                    var self = this;
+                    setTimeout(function() {
+                        self.textContent = 'Resend Verification Email';
+                        startCountdown();
+                    }, 1500);
+                }
+            });
+        });
+</script>
+{% endblock %}

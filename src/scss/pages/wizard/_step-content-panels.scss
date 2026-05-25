@@ -1,0 +1,105 @@
+/* =============================================================================
+   Step Content Panels
+   ============================================================================= */
+
+.step-content {
+    display: none;
+    animation: fadeSlideIn 0.4s ease both;
+}
+
+.step-content.active {
+    display: block;
+}
+
+/* Staggered child animations */
+.step-content.active .form-group:nth-child(1) { animation-delay: 0ms; }
+.step-content.active .form-group:nth-child(2) { animation-delay: 50ms; }
+.step-content.active .form-group:nth-child(3) { animation-delay: 100ms; }
+.step-content.active .form-group:nth-child(4) { animation-delay: 150ms; }
+.step-content.active .form-group:nth-child(5) { animation-delay: 200ms; }
+.step-content.active .form-group:nth-child(6) { animation-delay: 250ms; }
+.step-content.active .form-group:nth-child(7) { animation-delay: 300ms; }
+.step-content.active .form-group:nth-child(8) { animation-delay: 350ms; }
+
+.step-content.active .form-group {
+    animation: fadeSlideIn 0.35s ease both;
+}
+
+
+/* =============================================================================
+   Form Elements
+   ============================================================================= */
+
+.form-group {
+    margin-bottom: var(--le-spacing-lg);
+}
+
+.form-group label {
+    display: block;
+    font-size: var(--le-font-size-sm);
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+    color: var(--le-text-primary);
+}
+
+.form-group .glass-input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.625rem 0.875rem;
+    border-radius: var(--le-radius);
+    border: 1px solid var(--le-glass-border);
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+    font-size: var(--le-font-size-sm);
+    transition: border-color var(--le-transition-fast), box-shadow var(--le-transition-fast);
+    box-shadow: var(--le-shadow-inner);
+}
+
+.form-group .glass-input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--le-primary);
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.15), var(--le-shadow-inner);
+}
+
+/* Glass select with custom arrow */
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.25rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Validation states */
+.form-group .error {
+    border-color: var(--le-danger) !important;
+    box-shadow: 0 0 0 3px rgba(var(--le-danger-rgb), 0.15) !important;
+}
+
+.error-msg {
+    color: var(--le-danger);
+    font-size: var(--le-font-size-xs);
+    margin-top: 0.25rem;
+    display: none;
+    font-weight: 500;
+}
+
+.error-msg.visible {
+    display: block;
+}
+
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--le-spacing-md);
+}

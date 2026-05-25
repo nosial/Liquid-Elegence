@@ -1,0 +1,134 @@
+/* ==========================================================================
+   7. MAIN CONTENT AREA
+   Offset by sidebar width. Works with both <div> and <main> tags.
+   ========================================================================== */
+
+.main-content {
+    margin-left: var(--le-sidebar-width, 260px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    max-width: 100%;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* When page has full-bleed app content, use viewport height but allow overflow */
+.main-content:has(.page-content-full) {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Mobile: no sidebar offset — handled in responsive/_breakpoints.scss */
+
+
+/* ==========================================================================
+    8. TOPBAR — Shell
+   Sticky glass panel at the top of the main content area.
+   ========================================================================== */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    height: var(--le-topbar-height, 64px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--le-spacing-lg, 24px);
+    /* Low-alpha glassy surface (matches Music's original look) + subtle
+       intrinsic mesh for cross-page consistency when backdrop-filter is
+       silently downgraded by mobile renderers. Bottom-edge highlight
+       asserts a uniform tone independent of page content scrolling under it. */
+    background-color: rgba(255, 255, 255, 0.62);
+    background-image:
+        linear-gradient(180deg, transparent 0%, transparent 88%, rgba(255, 255, 255, 0.28) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0) 100%),
+        radial-gradient(ellipse at 10% 20%, rgba(var(--le-mesh-1-rgb), 0.020) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 15%, rgba(var(--le-mesh-2-rgb), 0.020) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 80%, rgba(var(--le-mesh-3-rgb), 0.015) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 60%, rgba(var(--le-mesh-4-rgb), 0.015) 0%, transparent 40%),
+        radial-gradient(ellipse at 20% 70%, rgba(var(--le-mesh-5-rgb), 0.015) 0%, transparent 45%);
+    background-attachment: scroll, scroll, fixed, fixed, fixed, fixed, fixed;
+    background-size: 100% 100%, 100% 100%, 50% 50%, 45% 45%, 50% 50%, 40% 40%, 45% 45%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    backdrop-filter: blur(28px) saturate(1.15) brightness(1.30);
+    -webkit-backdrop-filter: blur(28px) saturate(1.15) brightness(1.30);
+    border-bottom: 1px solid var(--le-shell-border);
+    box-shadow: var(--le-shell-shadow);
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+/* Ensure dropdown menus inside topbar render above everything */
+.topbar .dropdown-menu {
+    z-index: 1050;
+}
+
+/* Add spacing so dropdowns appear clearly below trigger buttons */
+.topbar .dropdown-menu[data-bs-popper] {
+    margin-top: 12px !important;
+}
+
+/* Also add top offset for non-popper dropdowns */
+.topbar .dropdown-menu.show {
+    top: 100% !important;
+    margin-top: 12px !important;
+}
+
+/* Override Bootstrap popper transform to ensure dropdown is below */
+.topbar .dropdown-menu[style*="position: absolute"] {
+    inset: auto !important;
+    top: 100% !important;
+    right: 0 !important;
+    margin-top: 12px !important;
+    transform: none !important;
+}
+
+/* Bottom edge light line */
+.topbar::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    right: 5%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(var(--le-white-rgb), 0.2),
+        transparent
+    );
+    pointer-events: none;
+}
+
+[data-theme="dark"] .topbar::after {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(var(--le-white-rgb), 0.08),
+        transparent
+    );
+}
+
+[data-theme="light"] .topbar::after {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 0, 0, 0.05),
+        transparent
+    );
+}
+
+/* Dropdown entrance animation */
+.topbar .dropdown-menu {
+    animation: dropdown-glass-enter 0.2s ease both;
+}
+
+/* Notification badge pulse */
+.notification-badge {
+    animation: badge-pulse 2s ease-in-out infinite;
+}

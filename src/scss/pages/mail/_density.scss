@@ -1,0 +1,40 @@
+/* ── Density: Mail ── */
+[data-density="compact"] .mail-sidebar { width: 200px; }
+[data-density="compact"] .mail-item { padding: 0.5rem 0.75rem; }
+[data-density="compact"] .mail-item-subject { font-size: var(--le-font-size-sm); }
+[data-density="compact"] .mail-toolbar { padding: 0.4rem 0.75rem; }
+
+[data-density="comfortable"] .mail-sidebar { width: 260px; }
+[data-density="comfortable"] .mail-item { padding: 0.75rem 1rem; }
+[data-density="comfortable"] .mail-item-subject { font-size: var(--le-font-size-base); }
+[data-density="comfortable"] .mail-toolbar { padding: 0.7rem 1rem; }
+
+/* ── Mobile context menu button ── */
+.mail-item-more-btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: var(--le-radius-sm);
+    background: var(--le-glass-bg);
+    color: var(--le-text-muted);
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.15s, color 0.15s;
+
+    i, svg { width: 16px; height: 16px; }
+    &:hover, &:active {
+        background: rgba(var(--le-primary-rgb), 0.12);
+        color: var(--le-primary);
+    }
+}
+
+@media (max-width: 767.98px) {
+    .mail-item-more-btn { display: flex; }
+}

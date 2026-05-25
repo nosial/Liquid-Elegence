@@ -1,0 +1,49 @@
+// -- Glass Divider --
+.glass-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--le-glass-border), transparent);
+  border: none;
+  margin: var(--le-spacing-md) 0;
+}
+
+.glass-divider-vertical {
+  width: 1px;
+  background: linear-gradient(180deg, transparent, var(--le-glass-border), transparent);
+  border: none;
+  align-self: stretch;
+}
+
+// -- Custom Scrollbar for Panels --
+.custom-scroll {
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--le-glass-border);
+    border-radius: var(--le-radius-full);
+  }
+}
+
+.custom-scroll-x {
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--le-glass-border);
+    border-radius: var(--le-radius-full);
+  }
+}

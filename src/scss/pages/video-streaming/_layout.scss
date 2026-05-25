@@ -1,0 +1,582 @@
+/* =============================================================================
+   Streamflix — chips, hero grid, sidebar widgets, channel layout, library bits
+   (everything that's not cards / player / comments / watch / responsive)
+   ============================================================================= */
+
+/* =====================================================
+   CATEGORY CHIPS  (home page, top of page)
+   ===================================================== */
+.video-chip-card .glass-card-body,
+.video-chip-card { padding-block: 0; }
+
+.video-chip-card {
+    padding: 10px 14px;
+}
+
+.video-chip-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 2px;
+}
+
+.video-chip-row::-webkit-scrollbar { display: none; }
+
+.video-chip {
+    flex-shrink: 0;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.video-chip:hover {
+    background: var(--le-glass-bg-strong);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    color: var(--le-text-primary);
+}
+
+.video-chip.is-active {
+    background: rgba(var(--le-primary-rgb), 0.18);
+    color: var(--le-primary);
+    border-color: rgba(var(--le-primary-rgb), 0.55);
+    font-weight: 600;
+}
+
+/* =====================================================
+   SECTION TITLE / LINK
+   ===================================================== */
+.video-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.video-section-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--le-text-primary);
+    letter-spacing: -0.01em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.video-section-title svg { color: var(--le-primary); }
+
+.video-section-link {
+    color: var(--le-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0.85;
+    transition: opacity 0.15s ease;
+}
+
+.video-section-link:hover { opacity: 1; color: var(--le-primary); }
+
+/* =====================================================
+   LIVE PULSE INDICATOR (in section title)
+   ===================================================== */
+.video-live-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--le-danger, #ef4444);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    animation: vidLivePulse 1.6s infinite;
+    display: inline-block;
+}
+
+@keyframes vidLivePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.65); }
+    70%  { box-shadow: 0 0 0 8px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* =====================================================
+   HERO  (browse/home featured area)
+   ===================================================== */
+.video-hero {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.video-hero-feature {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+}
+
+.video-hero-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--le-vid-thumb-radius);
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.6), rgba(var(--le-primary-rgb), 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.video-hero-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.45) 100%);
+    pointer-events: none;
+}
+
+.video-hero-feature:hover .video-hero-thumb {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+}
+
+.video-hero-thumb svg {
+    width: 64px; height: 64px;
+    opacity: 0.95;
+    position: relative; z-index: 1;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.video-hero-thumb .video-thumb-duration {
+    position: absolute;
+    right: 10px; bottom: 10px;
+    z-index: 2;
+}
+
+.video-hero-feature .video-meta-title {
+    font-size: 1.05rem;
+    line-height: 1.35;
+}
+
+.video-hero-side {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-self: start;
+}
+
+.video-hero-side .video-card-h {
+    grid-template-columns: 156px 1fr;
+}
+
+/* =====================================================
+   GRIDS
+   ===================================================== */
+.video-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.video-card-grid-dense {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 14px;
+}
+
+/* =====================================================
+   SIDEBAR WIDGETS (search, top channels, subs, links)
+   ===================================================== */
+.video-sidebar-col .glass-card { border-radius: var(--le-vid-radius); }
+
+.video-widget-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--le-text-primary);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+/* Search inside sidebar */
+.video-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.video-search-icon {
+    position: absolute;
+    left: 12px;
+    color: var(--le-text-secondary);
+    pointer-events: none;
+}
+
+.video-search-input {
+    width: 100%;
+    padding: 9px 14px 9px 36px;
+    border-radius: 999px;
+    border: 1px solid var(--le-glass-border-subtle);
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+    font-size: 0.88rem;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.video-search-input:focus {
+    outline: none;
+    border-color: rgba(var(--le-primary-rgb), 0.55);
+    background: var(--le-glass-bg-strong);
+}
+
+/* Channel list row (sidebar widgets, related channels) */
+.video-channel-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 6px;
+    border-radius: 10px;
+    color: inherit;
+    text-decoration: none;
+    transition: background 0.15s ease;
+}
+
+.video-channel-row + .video-channel-row { margin-top: 2px; }
+
+.video-channel-row:hover {
+    background: var(--le-glass-bg);
+    color: inherit;
+}
+
+.video-channel-row-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.85), rgba(var(--le-primary-rgb), 0.4));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+}
+
+.video-channel-row-info {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-channel-row-name {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--le-text-primary);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video-channel-row-meta {
+    font-size: 0.74rem;
+    color: var(--le-text-secondary);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video-row-action.is-subscribed {
+    background: var(--le-glass-bg-strong);
+    color: var(--le-text-secondary);
+    border-color: var(--le-glass-border-subtle);
+}
+
+/* Default (not-yet-subscribed) state for the channel-row Subscribe
+   chip. The markup uses Bootstrap's `btn btn-outline-secondary
+   btn-sm le-chip-sm` because that's how every other row-level chip
+   action in the template is wired, but Bootstrap's outline-secondary
+   paints a flat grey border and grey text that clashes with the
+   surrounding glass surface. Override the surface only — keep
+   Bootstrap's sizing, hit area, focus ring, and pill geometry — so
+   the chip reads as a glass-tinted action consistent with
+   `.video-chip`, `.video-action-btn`, and `.movie-genre-tag`.
+   `!important` is required to beat Bootstrap's own `.btn-outline-*`
+   declarations which are themselves emitted from a mixin and so sit
+   at the same specificity as ours. */
+.video-row-action {
+    background: var(--le-glass-bg) !important;
+    border-color: var(--le-glass-border-subtle) !important;
+    color: var(--le-text-primary) !important;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.video-row-action:hover {
+    background: var(--le-glass-bg-strong) !important;
+    border-color: rgba(var(--le-primary-rgb), 0.35) !important;
+    color: var(--le-primary) !important;
+}
+
+.video-row-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.video-row-badge-live {
+    background: var(--le-danger, #ef4444);
+    color: #fff;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.18);
+}
+
+/* Library link row (icon + label) */
+.video-link-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 10px;
+    color: var(--le-text-primary);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.video-link-row:hover {
+    background: var(--le-glass-bg);
+    color: var(--le-primary);
+}
+
+.video-link-row svg { color: var(--le-text-secondary); }
+
+/* =====================================================
+   CHANNEL PAGE LARGE HEADER
+   ===================================================== */
+.video-channel-card-large { overflow: hidden; padding: 0; }
+
+.video-channel-banner {
+    height: 140px;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(var(--le-primary-rgb), 0.45), transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(var(--le-primary-rgb), 0.25), transparent 55%),
+        linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.4), rgba(var(--le-primary-rgb), 0.15));
+}
+
+.video-channel-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 0 24px 22px;
+    margin-top: -40px;
+    flex-wrap: wrap;
+}
+
+.video-channel-header-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.85), rgba(var(--le-primary-rgb), 0.4));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    border: 4px solid var(--le-bg-primary, #fff);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+.video-channel-header-info {
+    flex: 1 1 320px;
+    min-width: 0;
+    padding-top: 44px;
+}
+
+.video-channel-header-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: var(--le-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.video-channel-header-stats {
+    font-size: 0.85rem;
+    color: var(--le-text-secondary);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.video-channel-header-stats .dot { opacity: 0.5; margin: 0 2px; }
+
+.video-channel-header-desc {
+    margin-top: 8px;
+    color: var(--le-text-secondary);
+    font-size: 0.88rem;
+    max-width: 600px;
+}
+
+.video-channel-header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 44px;
+    flex-wrap: wrap;
+}
+
+/* =====================================================
+   CHANNEL / LIBRARY PILL TABS
+   ===================================================== */
+.video-tabs-card {
+    padding: 6px 8px;
+}
+
+.video-channel-tabs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 2px;
+}
+
+.video-channel-tabs::-webkit-scrollbar { display: none; }
+
+.video-channel-tab {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border-radius: 999px;
+    color: var(--le-text-secondary);
+    font-size: 0.86rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.video-channel-tab:hover {
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+}
+
+.video-channel-tab.is-active {
+    background: rgba(var(--le-primary-rgb), 0.18);
+    color: var(--le-primary);
+}
+
+/* Channel sidebar stats list */
+.video-channel-stat-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-size: 0.85rem;
+    border-bottom: 1px dashed var(--le-glass-border-subtle);
+}
+
+.video-channel-stat-row:last-child { border-bottom: none; }
+.video-channel-stat-row strong { color: var(--le-text-primary); font-weight: 600; }
+
+/* =====================================================
+   PLAYLIST THUMB STYLE (overlap effect)
+   ===================================================== */
+.video-thumb-playlist {
+    position: relative;
+}
+
+.video-thumb-playlist::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.55) 100%);
+    z-index: 0;
+}
+
+.video-thumb-playlist .video-thumb-icon { z-index: 1; }
+.video-thumb-playlist .video-thumb-duration {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 4px 9px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* =====================================================
+   SUGGESTIONS TABS (watch sidebar)
+   ===================================================== */
+.video-suggestions-tabs {
+    display: flex;
+    width: 100%;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: 999px;
+    padding: 4px;
+}
+
+.video-suggestions-tab {
+    flex: 1 1 0;
+    text-align: center;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: transparent;
+    border: none;
+    color: var(--le-text-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.video-suggestions-tab.is-active {
+    background: rgba(var(--le-primary-rgb), 0.18);
+    color: var(--le-primary);
+}
+
+.video-suggestions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.video-suggestions-list .video-card-h { grid-template-columns: 140px 1fr; gap: 10px; }
+.video-suggestions-list .video-meta-title { font-size: 0.86rem; -webkit-line-clamp: 2; }
+
+/* =====================================================
+   LIBRARY THUMBNAIL PROGRESS BAR
+   ===================================================== */
+.video-thumb-progress {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.video-thumb-progress-fill {
+    height: 100%;
+    background: var(--le-danger, #ef4444);
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.55);
+}

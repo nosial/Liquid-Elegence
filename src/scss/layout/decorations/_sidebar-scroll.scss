@@ -1,0 +1,76 @@
+/* ── Sidebar Scroll ── */
+
+/* Custom thin scrollbar matching glass theme */
+.sidebar-body {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+  overflow-y: auto;
+  position: relative;
+}
+
+.sidebar-body:hover {
+  scrollbar-color: rgba(var(--le-primary-rgb), 0.25) transparent;
+}
+
+/* WebKit scrollbar styling */
+.sidebar-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-body::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 100px;
+  transition: background 0.3s ease;
+}
+
+.sidebar-body:hover::-webkit-scrollbar-thumb {
+  background: rgba(var(--le-primary-rgb), 0.25);
+}
+
+.sidebar-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--le-primary-rgb), 0.4);
+}
+
+[data-theme="dark"] .sidebar-body:hover {
+  scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+}
+
+[data-theme="dark"] .sidebar-body:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .sidebar-body::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Gradient fade at bottom — indicates more scrollable content */
+.sidebar-body::after {
+  content: '';
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 40px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+  margin-top: -40px;
+}
+
+[data-theme="dark"] .sidebar-body::after {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(var(--le-dark-surface-rgb), 0.4) 100%
+  );
+}

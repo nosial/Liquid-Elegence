@@ -1,0 +1,59 @@
+/* ---- Avatars: smaller on mobile ---- */
+@media (max-width: 480px) {
+  .avatar-xl {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  .avatar-lg {
+    width: 36px;
+    height: 36px;
+    font-size: 0.8125rem;
+  }
+}
+
+
+/* ============================================================================
+   MOBILE COMPONENT OPTIMIZATIONS
+   Additional responsive adjustments for common component patterns.
+   ============================================================================ */
+
+/* ---- Card stat rows: stack on mobile ---- */
+@media (max-width: 575.98px) {
+  .glass-card-body > .d-flex.align-items-center.gap-4 {
+    flex-direction: column;
+    gap: 0.75rem !important;
+    align-items: stretch !important;
+  }
+
+  .glass-card-body > .d-flex.align-items-center.gap-3 {
+    gap: 0.5rem !important;
+  }
+
+  /* Table action buttons: row layout */
+  .glass-card .table .btn-sm {
+    padding: 4px 6px;
+    font-size: 0.6875rem;
+    min-height: 30px;
+    min-width: 30px;
+  }
+
+  /* Button groups in cards: wrap */
+  .glass-card-header .btn-group {
+    flex-wrap: wrap;
+  }
+}
+
+/* ---- Form layouts: stack columns on mobile ---- */
+@media (max-width: 575.98px) {
+  .glass-card .row > [class*="col-md-6"],
+  .glass-card .row > [class*="col-md-4"],
+  .glass-card .row > [class*="col-md-3"],
+  .modal-glass .row > [class*="col-md-6"],
+  .modal-glass .row > [class*="col-md-4"],
+  .modal-glass .row > [class*="col-md-3"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

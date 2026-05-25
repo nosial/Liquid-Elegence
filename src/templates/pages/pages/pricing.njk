@@ -1,0 +1,194 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="text-center mb-4">
+        <h1 class="section-title">Simple, Transparent Pricing</h1>
+        <p class="section-subtitle">Choose the plan that's right for your team. All plans include a 14-day free trial.</p>
+    </div>
+
+    <div class="pricing-toggle">
+        <span class="pricing-label active" id="monthlyLabel">Monthly</span>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="billingToggle">
+        </div>
+        <span class="pricing-label" id="annualLabel">Annual</span>
+        <span class="badge le-bg-primary-15 le-text-primary">Save 20%</span>
+    </div>
+
+    <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+            <div class="pricing-card">
+                <div class="plan-name">Starter</div>
+                <p class="plan-description">Perfect for individuals and small projects</p>
+                <div class="plan-price">
+                    <span class="currency">$</span><span class="price-monthly">15</span><span class="price-annual">12</span>
+                </div>
+                <div class="plan-period">per month</div>
+                <ul class="plan-features">
+                    <li><i data-feather="check" class="check"></i> Up to 5 users</li>
+                    <li><i data-feather="check" class="check"></i> 10 GB storage</li>
+                    <li><i data-feather="check" class="check"></i> 5 projects</li>
+                    <li><i data-feather="check" class="check"></i> Basic API access</li>
+                    <li><i data-feather="check" class="check"></i> Email support</li>
+                    <li><i data-feather="x" class="cross"></i> Advanced analytics</li>
+                    <li><i data-feather="x" class="cross"></i> Custom domain</li>
+                    <li><i data-feather="x" class="cross"></i> SSO</li>
+                    <li><i data-feather="x" class="cross"></i> Audit logs</li>
+                </ul>
+                <button class="btn btn-plan btn-plan-outline w-100">Get Started</button>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="pricing-card featured">
+                <span class="featured-badge">Most Popular</span>
+                <div class="plan-name">Professional</div>
+                <p class="plan-description">Best for growing teams and businesses</p>
+                <div class="plan-price">
+                    <span class="currency">$</span><span class="price-monthly">29</span><span class="price-annual">23</span>
+                </div>
+                <div class="plan-period">per month</div>
+                <ul class="plan-features">
+                    <li><i data-feather="check" class="check"></i> Up to 25 users</li>
+                    <li><i data-feather="check" class="check"></i> 100 GB storage</li>
+                    <li><i data-feather="check" class="check"></i> Unlimited projects</li>
+                    <li><i data-feather="check" class="check"></i> Full API access</li>
+                    <li><i data-feather="check" class="check"></i> Priority support</li>
+                    <li><i data-feather="check" class="check"></i> Advanced analytics</li>
+                    <li><i data-feather="check" class="check"></i> Custom domain</li>
+                    <li><i data-feather="x" class="cross"></i> SSO</li>
+                    <li><i data-feather="x" class="cross"></i> Audit logs</li>
+                </ul>
+                <button class="btn btn-plan btn-plan-primary w-100">Get Started</button>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="pricing-card">
+                <div class="plan-name">Enterprise</div>
+                <p class="plan-description">For large organizations and advanced needs</p>
+                <div class="plan-price">
+                    <span class="currency">$</span><span class="price-monthly">79</span><span class="price-annual">63</span>
+                </div>
+                <div class="plan-period">per month</div>
+                <ul class="plan-features">
+                    <li><i data-feather="check" class="check"></i> Unlimited users</li>
+                    <li><i data-feather="check" class="check"></i> 1 TB storage</li>
+                    <li><i data-feather="check" class="check"></i> Unlimited projects</li>
+                    <li><i data-feather="check" class="check"></i> Full API access</li>
+                    <li><i data-feather="check" class="check"></i> 24/7 dedicated support</li>
+                    <li><i data-feather="check" class="check"></i> Advanced analytics</li>
+                    <li><i data-feather="check" class="check"></i> Custom domain</li>
+                    <li><i data-feather="check" class="check"></i> SSO</li>
+                    <li><i data-feather="check" class="check"></i> Audit logs</li>
+                </ul>
+                <button class="btn btn-plan btn-plan-outline w-100">Contact Sales</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <h2 class="section-title le-fs-7xl">Feature Comparison</h2>
+        <p class="section-subtitle">See exactly what you get with each plan</p>
+        <div class="comparison-table">
+            <table class="table table-borderless mb-0">
+                <thead>
+                    <tr>
+                        <th style="width:30%;">Feature</th>
+                        <th>Starter</th>
+                        <th>Professional</th>
+                        <th>Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Users</td><td>Up to 5</td><td>Up to 25</td><td>Unlimited</td></tr>
+                    <tr><td>Storage</td><td>10 GB</td><td>100 GB</td><td>1 TB</td></tr>
+                    <tr><td>Projects</td><td>5</td><td>Unlimited</td><td>Unlimited</td></tr>
+                    <tr><td>API Access</td><td>Basic</td><td>Full</td><td>Full</td></tr>
+                    <tr><td>Support</td><td>Email</td><td>Priority</td><td>24/7 Dedicated</td></tr>
+                    <tr><td>Analytics</td><td><i data-feather="x" class="icon-cross"></i></td><td><i data-feather="check" class="icon-check"></i></td><td><i data-feather="check" class="icon-check"></i></td></tr>
+                    <tr><td>Custom Domain</td><td><i data-feather="x" class="icon-cross"></i></td><td><i data-feather="check" class="icon-check"></i></td><td><i data-feather="check" class="icon-check"></i></td></tr>
+                    <tr><td>SSO</td><td><i data-feather="x" class="icon-cross"></i></td><td><i data-feather="x" class="icon-cross"></i></td><td><i data-feather="check" class="icon-check"></i></td></tr>
+                    <tr><td>Audit Logs</td><td><i data-feather="x" class="icon-cross"></i></td><td><i data-feather="x" class="icon-cross"></i></td><td><i data-feather="check" class="icon-check"></i></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <h2 class="section-title le-fs-7xl">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about our pricing</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion glass-accordion" id="pricingFAQ">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">Can I switch plans at any time?</button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#pricingFAQ">
+                            <div class="accordion-body">Yes, you can upgrade or downgrade your plan at any time. When upgrading, you'll be charged the prorated difference for the remaining billing period. When downgrading, the credit will be applied to your next billing cycle.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">Is there a free trial available?</button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                            <div class="accordion-body">Absolutely! All plans come with a 14-day free trial. No credit card required to start. You can explore all the features of your chosen plan before committing to a subscription.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">What payment methods do you accept?</button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                            <div class="accordion-body">We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual Enterprise plans. All payments are securely processed through Stripe.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">What happens when I exceed my plan limits?</button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                            <div class="accordion-body">We'll notify you when you're approaching your plan limits. You won't lose access to any data, but you may need to upgrade your plan to add more users, storage, or projects. We provide a 7-day grace period to make adjustments.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">Can I cancel my subscription at any time?</button>
+                        </h2>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                            <div class="accordion-body">Yes, you can cancel anytime from your account settings. Your access will continue until the end of your current billing period. We also offer a 30-day money-back guarantee for new subscribers.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var toggle = document.getElementById('billingToggle');
+            var monthlyLabel = document.getElementById('monthlyLabel');
+            var annualLabel = document.getElementById('annualLabel');
+
+            toggle.addEventListener('change', function() {
+                if (this.checked) {
+                    document.body.classList.add('annual-billing');
+                    monthlyLabel.classList.remove('active');
+                    annualLabel.classList.add('active');
+                } else {
+                    document.body.classList.remove('annual-billing');
+                    monthlyLabel.classList.add('active');
+                    annualLabel.classList.remove('active');
+                }
+            });
+        });
+</script>
+{% endblock %}

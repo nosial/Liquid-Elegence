@@ -1,0 +1,62 @@
+/* ── Invoice ──────────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] .invoice-document {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .invoice-modal {
+  background: rgba(var(--le-dark-surface-rgb), 0.80);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .invoice-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .line-items-table th {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .line-items-table td {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .invoice-line-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .total-row:last-child {
+  border-top-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .payment-info {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .btn-download,
+[data-theme="dark"] .btn-view {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .invoice-document .badge.draft {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+
+/* ── Billing ──────────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] .billing-icon {
+  background: rgba(var(--le-primary-rgb), 0.18);
+}
+
+[data-theme="dark"] .payment-card {
+  background: rgba(var(--le-dark-surface-rgb), 0.55);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .status-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}

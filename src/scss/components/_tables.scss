@@ -1,0 +1,177 @@
+/* =========================================================================
+   5. TABLES
+   ========================================================================= */
+
+/* ---- Glass Table ---- */
+.glass-table-wrapper,
+.table-glass-wrapper {
+    overflow-x: auto;
+    border-radius: var(--le-radius-lg);
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-glass {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-glass thead th {
+    background: var(--le-table-head-bg);
+    color: var(--le-text-secondary);
+    font-size: var(--le-table-head-font, 0.75rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: var(--le-table-cell-py, 12px) var(--le-table-cell-px, 16px);
+    border-bottom: 1px solid var(--le-surface-content-border);
+    white-space: nowrap;
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    position: relative;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.10) 0%, transparent 100%);
+    transition: background 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.2s ease;
+}
+
+/* Subtle column separator */
+.table-glass thead th:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    right: 0;
+    bottom: 25%;
+    width: 1px;
+    background: var(--le-glass-border-subtle);
+    opacity: 0.5;
+}
+
+/* Sortable column hover indicator */
+.table-glass thead th:hover {
+    color: var(--le-text-primary);
+    background: rgba(var(--le-primary-rgb), 0.07);
+    text-shadow: 0 0 8px rgba(var(--le-primary-rgb), 0.10);
+}
+
+.table-glass tbody td {
+    padding: var(--le-table-cell-py, 12px) var(--le-table-cell-px, 16px);
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-primary);
+    vertical-align: middle;
+    font-size: var(--le-table-body-font, 0.875rem);
+    transition:
+        background 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+        box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+        color 0.2s ease;
+}
+
+/* Subtle zebra striping with glass tint */
+.table-glass tbody tr:nth-child(even) {
+    background: var(--le-table-row-stripe);
+}
+
+.table-glass tbody tr {
+    transition: background 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.table-glass tbody tr:hover {
+    background: var(--le-table-row-hover);
+    box-shadow: inset 2px 0 0 rgba(var(--le-primary-rgb), 0.28),
+                inset 0 0 0 1px rgba(var(--le-primary-rgb), 0.05),
+                0 8px 18px rgba(var(--le-primary-rgb), 0.05);
+}
+
+.table-glass tbody tr:hover td {
+    color: var(--le-text-primary);
+}
+
+.table-glass tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Sticky table header support */
+.table-glass.table-sticky thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ---- Responsive card table wrapper ---- */
+.table-responsive-card {
+    overflow-x: auto;
+    border-radius: var(--le-radius-lg);
+}
+
+/* Bootstrap .table inside glass-cards */
+.glass-card .table {
+    margin-bottom: 0;
+    color: var(--le-text-primary);
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.glass-card .table thead th {
+    background: var(--le-table-head-bg);
+    color: var(--le-text-secondary);
+    font-size: var(--le-table-head-font, 0.75rem);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid var(--le-surface-content-border);
+    border-top: none;
+    padding: var(--le-table-cell-py, 12px) var(--le-table-cell-px, 16px);
+    white-space: nowrap;
+    position: relative;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 100%);
+    transition: background 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), color 0.2s ease;
+}
+
+/* Column separator for glass-card tables */
+.glass-card .table thead th:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    right: 0;
+    bottom: 25%;
+    width: 1px;
+    background: var(--le-glass-border-subtle);
+    opacity: 0.4;
+}
+
+.glass-card .table thead th:hover {
+    background: rgba(var(--le-primary-rgb), 0.09);
+    color: var(--le-text-primary);
+    text-shadow: 0 0 8px rgba(var(--le-primary-rgb), 0.10);
+}
+
+.glass-card .table tbody td {
+    border-color: var(--le-glass-border-subtle);
+    padding: var(--le-table-cell-py, 12px) var(--le-table-cell-px, 16px);
+    vertical-align: middle;
+    font-size: var(--le-table-body-font, 0.875rem);
+    transition:
+        background 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+        box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Subtle zebra striping for glass-card tables */
+.glass-card .table tbody tr:nth-child(even) {
+    background: var(--le-table-row-stripe);
+}
+
+.glass-card .table-hover tbody tr:hover {
+    background: var(--le-table-row-hover);
+    box-shadow: inset 3px 0 0 rgba(var(--le-primary-rgb), 0.30),
+                inset 0 0 0 1px rgba(var(--le-primary-rgb), 0.06),
+                0 8px 18px rgba(var(--le-primary-rgb), 0.05);
+}
+
+.glass-card .table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.glass-card .table .badge {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+

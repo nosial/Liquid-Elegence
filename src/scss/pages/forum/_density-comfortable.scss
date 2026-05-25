@@ -1,0 +1,375 @@
+[data-density="comfortable"] {
+  /* Post card */
+  .forum-vote {
+    gap: 3px;
+    padding: 16px 12px;
+    min-width: 54px;
+  }
+
+  .forum-vote-btn {
+    padding: 5px;
+  }
+
+  .forum-vote-count {
+    font-size: 0.92rem;
+  }
+
+  .forum-post-body {
+    padding: 16px 20px;
+  }
+
+  .forum-post-meta {
+    gap: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+
+  .forum-post-title {
+    font-size: 1.2rem;
+    margin: 0 0 8px;
+  }
+
+  .forum-post-preview {
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+  }
+
+  .forum-post-image {
+    max-height: 480px;
+    margin-bottom: 14px;
+  }
+
+  .forum-flair {
+    padding: 3px 12px;
+    font-size: 0.78rem;
+  }
+
+  .forum-post-actions {
+    gap: 3px;
+  }
+
+  .forum-action-btn {
+    gap: 6px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  /* Community header */
+  .forum-community-banner {
+    height: 170px;
+  }
+
+  .forum-community-info {
+    padding: 0 1.85rem 1.6rem;
+  }
+
+  .forum-community-icon {
+    width: 96px;
+    height: 96px;
+    margin-top: -48px;
+    font-size: 2.1rem;
+  }
+
+  .forum-community-details {
+    gap: 1.25rem;
+  }
+
+  .forum-community-name {
+    font-size: 1.7rem;
+  }
+
+  .forum-community-handle {
+    font-size: 0.92rem;
+  }
+
+  .forum-community-description {
+    font-size: 0.95rem;
+  }
+
+  .forum-community-stats {
+    gap: 1.85rem;
+  }
+
+  .forum-community-stat-value {
+    font-size: 1.25rem;
+  }
+
+  .forum-community-stat-label {
+    font-size: 0.8rem;
+  }
+
+  /* Sort / filter bar */
+  .forum-sort-bar {
+    gap: 6px;
+    padding: 10px 16px;
+  }
+
+  .forum-sort-btn {
+    gap: 6px;
+    padding: 8px 18px;
+    font-size: 0.88rem;
+  }
+
+  /* Post detail view */
+  .forum-detail-body {
+    padding: 20px 24px;
+    font-size: 1rem;
+  }
+
+  /* Comment section */
+  .forum-comments-header {
+    padding: 14px 24px;
+  }
+
+  .forum-comments-count {
+    font-size: 1rem;
+  }
+
+  .forum-comment-compose {
+    padding: 20px 24px;
+  }
+
+  .forum-comment-compose .forum-compose-row {
+    gap: 16px;
+  }
+
+  .forum-compose-input {
+    min-height: 100px;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+
+  .forum-compose-actions {
+    gap: 10px;
+  }
+
+  .forum-comment-list {
+    padding: 0 24px 20px;
+  }
+
+  .forum-comment {
+    padding: 16px 0;
+  }
+
+  .forum-comment-header {
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .forum-comment-author {
+    font-size: 0.88rem;
+  }
+
+  .forum-comment-op-badge {
+    font-size: 0.72rem;
+    padding: 2px 8px;
+  }
+
+  .forum-comment-time {
+    font-size: 0.8rem;
+  }
+
+  .forum-comment-body {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .forum-comment-replies {
+    margin-left: 24px;
+    padding-left: 20px;
+  }
+
+  /* Profile page */
+  .forum-profile-banner {
+    height: 190px;
+  }
+
+  .forum-profile-info {
+    padding: 0 1.85rem 1.6rem;
+  }
+
+  .forum-profile-avatar {
+    width: 118px;
+    height: 118px;
+    margin-top: -59px;
+    font-size: 2.35rem;
+  }
+
+  .forum-profile-row {
+    gap: 1.25rem;
+  }
+
+  .forum-profile-username {
+    font-size: 1.55rem;
+  }
+
+  .forum-profile-handle {
+    font-size: 0.92rem;
+  }
+
+  .forum-profile-bio {
+    font-size: 0.95rem;
+    margin: 0 0 1rem;
+  }
+
+  .forum-profile-stats {
+    gap: 1.85rem;
+  }
+
+  .forum-profile-stat-value {
+    font-size: 1.1rem;
+  }
+
+  .forum-profile-stat-label {
+    font-size: 0.8rem;
+  }
+
+  .forum-profile-actions {
+    gap: 0.65rem;
+  }
+
+  .forum-profile-tab {
+    padding: 12px 24px;
+    font-size: 0.92rem;
+  }
+
+  /* Karma card */
+  .forum-karma-value {
+    font-size: 2rem;
+  }
+
+  .forum-karma-label {
+    font-size: 0.88rem;
+  }
+
+  .forum-karma-breakdown {
+    gap: 2.5rem;
+  }
+
+  .forum-karma-type-value {
+    font-size: 1.1rem;
+  }
+
+  .forum-karma-type-label {
+    font-size: 0.78rem;
+  }
+
+  /* Trophy grid */
+  .forum-trophy-grid {
+    gap: 16px;
+  }
+
+  .forum-trophy-item {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .forum-trophy-icon {
+    font-size: 1.75rem;
+  }
+
+  .forum-trophy-name {
+    font-size: 0.85rem;
+  }
+
+  /* Followers / following */
+  .forum-user-item {
+    gap: 18px;
+    padding: 18px 24px;
+  }
+
+  .forum-user-avatar {
+    width: 52px;
+    height: 52px;
+    font-size: 1rem;
+  }
+
+  .forum-user-name {
+    font-size: 1rem;
+  }
+
+  .forum-user-bio {
+    font-size: 0.85rem;
+  }
+
+  .forum-user-karma {
+    font-size: 0.8rem;
+    gap: 5px;
+  }
+
+  /* Settings */
+  .forum-settings-nav .nav-link {
+    gap: 12px;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+
+  .forum-setting-group {
+    padding-bottom: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .forum-setting-group h6 {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .forum-setting-group p {
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+  }
+
+  .forum-setting-row {
+    padding: 12px 0;
+  }
+
+  .forum-setting-label strong {
+    font-size: 0.95rem;
+  }
+
+  .forum-setting-label span {
+    font-size: 0.85rem;
+  }
+
+  /* Sidebar widgets */
+  .forum-sidebar-widget h6 {
+    font-size: 0.92rem;
+    margin-bottom: 1rem;
+  }
+
+  .forum-rules-list li {
+    padding: 10px 0;
+    font-size: 0.92rem;
+    gap: 10px;
+  }
+
+  .forum-trending-item {
+    gap: 12px;
+    padding: 10px 0;
+  }
+
+  .forum-trending-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 0.78rem;
+  }
+
+  .forum-trending-name {
+    font-size: 0.92rem;
+  }
+
+  .forum-trending-members {
+    font-size: 0.78rem;
+  }
+
+  /* Create post bar */
+  .forum-create-bar {
+    gap: 16px;
+    padding: 14px 20px;
+  }
+
+  .forum-create-input {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+}

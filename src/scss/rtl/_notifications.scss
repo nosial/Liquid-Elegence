@@ -1,0 +1,15 @@
+/* ─────────────────────────────────────────────────────────────
+   24. Notification / Toast positioning
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .le-toast-container-end {
+    left: 1rem;
+    right: auto;
+}
+
+[dir="rtl"] .le-toast-container-start {
+    right: 1rem;
+    left: auto;
+}
+
+

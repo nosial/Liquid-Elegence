@@ -1,0 +1,711 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Glass Effects — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Glass Effects</li>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card le-bg-glass-subtle">
+            <div class="glass-card-body py-2 px-3">
+                <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Quick Reference</h6>
+                <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Glass card --&gt;
+&lt;div class="glass-card"&gt;...&lt;/div&gt;
+
+&lt;!-- Glass effects --&gt;
+&lt;div class="glass-reflection"&gt;...&lt;/div&gt;
+&lt;div class="glass-prismatic-edge"&gt;...&lt;/div&gt;
+&lt;div class="glass-halo"&gt;...&lt;/div&gt;
+
+&lt;!-- CSS variable customization --&gt;
+&lt;style&gt;
+:root {
+    --le-glass-bg: rgba(255, 255, 255, 0.08);
+    --le-glass-bg-subtle: rgba(255, 255, 255, 0.04);
+    --le-glass-blur: 12px;
+    --le-glass-border: rgba(255, 255, 255, 0.12);
+}
+&lt;/style&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   1. Glass Surface Variants
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="layers"></i> Glass Surface Variants</h5>
+                <p class="text-muted text-sm mb-3">Three core surface opacities. Shown over a gradient so the transparency and blur differences are visible.</p>
+
+                <div class="demo-backdrop">
+                    <div class="demo-shapes">
+                        <span class="s1"></span>
+                        <span class="s2"></span>
+                        <span class="s3"></span>
+                        <span class="s4"></span>
+                    </div>
+                    <div class="row g-3 demo-stacked">
+                        <div class="col-md-4">
+                            <div class="glass rounded p-4">
+                                <h6 class="demo-text mb-2">.glass</h6>
+                                <p class="demo-text-sm mb-2">Standard surface — balanced translucency with 20px backdrop blur.</p>
+                                <button class="btn btn-sm btn-light">Action</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="glass-strong rounded p-4">
+                                <h6 class="demo-text mb-2">.glass-strong</h6>
+                                <p class="demo-text-sm mb-2">Stronger opacity with heavier 40px blur for prominent surfaces.</p>
+                                <button class="btn btn-sm btn-light">Action</button>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="glass-subtle rounded p-4">
+                                <h6 class="demo-text mb-2">.glass-subtle</h6>
+                                <p class="demo-text-sm mb-2">Barely-there surface with minimal 10px blur for background layers.</p>
+                                <button class="btn btn-sm btn-light">Action</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   2. Light Reflection & Color Bending
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="sun"></i> Light Reflection</h5>
+                <p class="text-muted text-sm mb-3">Adds a radial gradient highlight simulating light bouncing off glass.</p>
+
+                <div class="demo-backdrop-warm">
+                    <div class="demo-shapes">
+                        <span class="s1"></span>
+                        <span class="s3"></span>
+                    </div>
+                    <div class="glass light-reflection rounded p-4 demo-stacked">
+                        <h6 class="demo-text mb-2">Reflected Surface</h6>
+                        <p class="demo-text-sm mb-0">Notice the soft highlight in the upper-left corner. Hover to see it shift and intensify.</p>
+                    </div>
+                    <div class="demo-label mt-2">.light-reflection</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="aperture"></i> Color Bending</h5>
+                <p class="text-muted text-sm mb-3">A subtle multi-color gradient overlay that simulates light refraction through glass.</p>
+
+                <div class="demo-backdrop-cool">
+                    <div class="demo-shapes">
+                        <span class="s2"></span>
+                        <span class="s4"></span>
+                    </div>
+                    <div class="glass color-bend rounded p-4 demo-stacked">
+                        <h6 class="demo-text mb-2">Color Bent Surface</h6>
+                        <p class="demo-text-sm mb-0">The color gradient bends from one end to the other, creating depth. Hover to intensify.</p>
+                    </div>
+                    <div class="demo-label mt-2">.color-bend</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   3. Glass Depth Layers
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="copy"></i> Glass Depth Layers</h5>
+                <p class="text-muted text-sm mb-3">Composable stacking layers with increasing opacity — build layered glass UIs.</p>
+
+                <div class="demo-backdrop-mesh le-min-h-220">
+                    <div class="demo-shapes">
+                        <span class="s1"></span>
+                        <span class="s2"></span>
+                        <span class="s3"></span>
+                    </div>
+                    <div class="demo-stacked">
+                        <div class="glass-layer-1 rounded p-3 mb-0 demo-layer le-max-w-90p">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="demo-text-sm fw-semibold">Layer 1 — Background</span>
+                                <span class="demo-label mb-0 mt-0">.glass-layer-1</span>
+                            </div>
+                            <div class="glass-layer-2 rounded p-3 mb-0 demo-layer ms-auto le-max-w-95p">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="demo-text-sm fw-semibold">Layer 2 — Middle</span>
+                                    <span class="demo-label mb-0 mt-0">.glass-layer-2</span>
+                                </div>
+                                <div class="glass-layer-3 rounded p-3 demo-layer ms-auto le-max-w-95p">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="demo-text-sm fw-semibold">Layer 3 — Foreground</span>
+                                        <span class="demo-label mb-0 mt-0">.glass-layer-3</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   4. Shimmer Effects
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="zap"></i> Shimmer Effects</h5>
+                <p class="text-muted text-sm mb-3">Animated light sweeps that bring glass surfaces to life. Each variant has different speed and trigger behavior.</p>
+
+                <div class="demo-backdrop-ocean">
+                    <div class="demo-shapes">
+                        <span class="s1"></span>
+                        <span class="s2"></span>
+                        <span class="s4"></span>
+                    </div>
+                    <div class="row g-3 demo-stacked">
+                        <div class="col-md-3">
+                            <div class="glass glass-shimmer rounded p-4 text-center demo-cell">
+                                <i data-feather="loader" class="demo-icon"></i>
+                                <h6 class="demo-text-title mb-1">Shimmer</h6>
+                                <div class="demo-label">.glass-shimmer</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="glass glass-shimmer-sweep rounded p-4 text-center demo-cell">
+                                <i data-feather="wind" class="demo-icon"></i>
+                                <h6 class="demo-text-title mb-1">Diagonal Sweep</h6>
+                                <div class="demo-label">.glass-shimmer-sweep</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="glass glass-shimmer-sweep glass-shimmer-sweep-slow rounded p-4 text-center demo-cell">
+                                <i data-feather="clock" class="demo-icon"></i>
+                                <h6 class="demo-text-title mb-1">Slow Sweep</h6>
+                                <div class="demo-label">.glass-shimmer-sweep-slow</div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="glass glass-shimmer-sweep glass-shimmer-sweep-hover rounded p-4 text-center demo-cell le-cursor-pointer">
+                                <i data-feather="mouse-pointer" class="demo-icon"></i>
+                                <h6 class="demo-text-title mb-1">Hover Only</h6>
+                                <p class="demo-text-xs mb-0">Hover me!</p>
+                                <div class="demo-label">.glass-shimmer-sweep-hover</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   5. Glow & Float Animations
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="sunrise"></i> Glow &amp; Float Animations</h5>
+                <p class="text-muted text-sm mb-3">Continuous ambient animations for decorative or attention-drawing elements.</p>
+
+                <div class="demo-backdrop-dark le-min-h-200">
+                    <div class="row g-3 demo-stacked">
+                        <div class="col-6 text-center">
+                            <div class="glass glass-glow rounded p-4 d-inline-block le-min-w-160">
+                                <i data-feather="star" class="demo-icon-lg le-text-warning"></i>
+                                <h6 class="demo-text-title mb-0">Pulsing Glow</h6>
+                            </div>
+                            <div class="demo-label mt-2">.glass-glow</div>
+                        </div>
+                        <div class="col-6 text-center">
+                            <div class="glass glass-float rounded p-4 d-inline-block le-min-w-160">
+                                <i data-feather="cloud" class="demo-icon-lg le-text-info"></i>
+                                <h6 class="demo-text-title mb-0">Gentle Float</h6>
+                            </div>
+                            <div class="demo-label mt-2">.glass-float</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Entrance Animations ── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="play"></i> Entrance Animations</h5>
+                <p class="text-muted text-sm mb-3">One-shot entrance effects with staggered delays. Reload the page to replay.</p>
+
+                <div class="demo-backdrop le-min-h-200">
+                    <div class="demo-stacked">
+                        <div class="glass rounded p-3 mb-2 animate-fade-in-up stagger-1 d-flex align-items-center gap-2">
+                            <i data-feather="arrow-up" class="demo-icon-sm"></i>
+                            <span class="demo-text-title">.animate-fade-in-up</span>
+                            <span class="demo-label mb-0 ms-auto mt-0">.stagger-1</span>
+                        </div>
+                        <div class="glass rounded p-3 mb-2 animate-scale-in stagger-2 d-flex align-items-center gap-2">
+                            <i data-feather="maximize" class="demo-icon-sm"></i>
+                            <span class="demo-text-title">.animate-scale-in</span>
+                            <span class="demo-label mb-0 ms-auto mt-0">.stagger-2</span>
+                        </div>
+                        <div class="glass rounded p-3 animate-slide-in-right stagger-3 d-flex align-items-center gap-2">
+                            <i data-feather="arrow-right" class="demo-icon-sm"></i>
+                            <span class="demo-text-title">.animate-slide-in-right</span>
+                            <span class="demo-label mb-0 ms-auto mt-0">.stagger-3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   6. Glass Ripple & Prismatic Edges
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="droplet"></i> Glass Ripple</h5>
+                <p class="text-muted text-sm mb-3">Click/tap to trigger a liquid ripple animation expanding from center.</p>
+
+                <div class="demo-backdrop-ocean le-min-h-160">
+                    <div class="demo-stacked">
+                        <div class="glass glass-ripple rounded p-4 text-center le-cursor-pointer">
+                            <i data-feather="target" class="demo-icon-xl"></i>
+                            <h6 class="demo-text mb-1">Click Me</h6>
+                            <p class="demo-text-xs mb-0">Press and hold to see the ripple expand</p>
+                        </div>
+                        <div class="demo-label mt-2">.glass-ripple</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="triangle"></i> Prismatic Edges</h5>
+                <p class="text-muted text-sm mb-3">Rainbow spectral borders that simulate light dispersion through glass edges.</p>
+
+                <div class="demo-backdrop-dark le-min-h-160">
+                    <div class="row g-3 demo-stacked">
+                        <div class="col-6">
+                            <div class="glass glass-prismatic-edge rounded p-4 text-center">
+                                <i data-feather="hexagon" class="demo-icon-lg"></i>
+                                <h6 class="demo-text-title mb-1">Prismatic Edge</h6>
+                                <p class="demo-text-xs mb-0">Hover to intensify</p>
+                            </div>
+                            <div class="demo-label mt-2">.glass-prismatic-edge</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="glass glass-prismatic-edge glass-prismatic-edge-animated rounded p-4 text-center">
+                                <i data-feather="refresh-cw" class="demo-icon-lg"></i>
+                                <h6 class="demo-text-title mb-1">Animated</h6>
+                                <p class="demo-text-xs mb-0">Continuously shifting</p>
+                            </div>
+                            <div class="demo-label mt-2">+ .glass-prismatic-edge-animated</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   7. Glow Halos
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="circle"></i> Glow Halos</h5>
+                <p class="text-muted text-sm mb-3">Colored ambient glow that radiates behind elements. Hover to intensify the halo.</p>
+
+                <div class="row g-3">
+                    <div class="col-md-4 col-lg-2">
+                        <div class="halo-demo-item">
+                            <div class="halo-circle glow-halo">
+                                <i data-feather="zap" class="demo-icon le-text-primary"></i>
+                            </div>
+                            <span class="demo-label demo-label-dark">.glow-halo</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="halo-demo-item">
+                            <div class="halo-circle glow-halo-secondary">
+                                <i data-feather="star" class="demo-icon le-text-secondary"></i>
+                            </div>
+                            <span class="demo-label demo-label-dark">.glow-halo-secondary</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="halo-demo-item">
+                            <div class="halo-circle glow-halo-success">
+                                <i data-feather="check-circle" class="demo-icon le-text-success"></i>
+                            </div>
+                            <span class="demo-label demo-label-dark">.glow-halo-success</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="halo-demo-item">
+                            <div class="halo-circle glow-halo-warning">
+                                <i data-feather="alert-triangle" class="demo-icon le-text-warning"></i>
+                            </div>
+                            <span class="demo-label demo-label-dark">.glow-halo-warning</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="halo-demo-item">
+                            <div class="halo-circle glow-halo-danger">
+                                <i data-feather="x-circle" class="demo-icon le-text-danger"></i>
+                            </div>
+                            <span class="demo-label demo-label-dark">.glow-halo-danger</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-2">
+                        <div class="halo-demo-item">
+                            <div class="halo-circle glow-halo-info">
+                                <i data-feather="info" class="demo-icon le-text-info"></i>
+                            </div>
+                            <span class="demo-label demo-label-dark">.glow-halo-info</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   8. Glass Text Effects
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="type"></i> Glass Text Effects</h5>
+                <p class="text-muted text-sm mb-4">Typographic effects that elevate headings and labels with glass-inspired treatments.</p>
+
+                <div class="demo-backdrop-dark p-5">
+                    <div class="demo-stacked">
+                        <div class="mb-4">
+                            <div class="demo-label mb-2">.text-glass-frost</div>
+                            <h2 class="text-glass-frost mb-0" class="display-6 fw-bold">Frosted Glass Heading</h2>
+                        </div>
+                        <div class="mb-4">
+                            <div class="demo-label mb-2">.text-glow-neon</div>
+                            <h3 class="text-glow-neon mb-0" class="fw-bold demo-text">Neon Glow Text — Hover Me</h3>
+                        </div>
+                        <div class="mb-4">
+                            <div class="demo-label mb-2">.text-glow-neon-success</div>
+                            <h4 class="text-glow-neon-success mb-0 fw-bold le-text-success">Green Neon Glow</h4>
+                        </div>
+                        <div class="mb-4">
+                            <div class="demo-label mb-2">.text-glow-neon-danger</div>
+                            <h4 class="text-glow-neon-danger mb-0 fw-bold le-text-danger">Red Neon Glow</h4>
+                        </div>
+                        <div>
+                            <div class="demo-label mb-2">.text-shimmer</div>
+                            <h3 class="text-shimmer mb-0" class="fw-bold">Animated Shimmer Text</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   9. Edge Highlights
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Edge Highlights</h5>
+                <p class="text-muted text-sm mb-3">Subtle luminous edge lines that simulate light catching the edge of glass.</p>
+
+                <div class="demo-backdrop-dark">
+                    <div class="row g-3 demo-stacked">
+                        <div class="col-6">
+                            <div class="glass glass-edge-top rounded p-3 text-center">
+                                <span class="demo-text-sm">Top Edge</span>
+                            </div>
+                            <div class="demo-label mt-1">.glass-edge-top</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="glass glass-edge-bottom rounded p-3 text-center">
+                                <span class="demo-text-sm">Bottom Edge</span>
+                            </div>
+                            <div class="demo-label mt-1">.glass-edge-bottom</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="glass glass-edge-left rounded p-3 text-center">
+                                <span class="demo-text-sm">Left Edge</span>
+                            </div>
+                            <div class="demo-label mt-1">.glass-edge-left</div>
+                        </div>
+                        <div class="col-6">
+                            <div class="glass glass-edge-all rounded p-3 text-center">
+                                <span class="demo-text-sm">All Edges</span>
+                            </div>
+                            <div class="demo-label mt-1">.glass-edge-all</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Glass Tints ── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Tints</h5>
+                <p class="text-muted text-sm mb-3">Colored tint overlays that subtly shift the glass surface color.</p>
+
+                <div class="demo-backdrop-dark">
+                    <div class="row g-2 demo-stacked">
+                        <div class="col-4">
+                            <div class="glass glass-tint-primary rounded p-3 text-center">
+                                <span class="demo-text-sm">Primary</span>
+                            </div>
+                            <div class="demo-label mt-1">.glass-tint-primary</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="glass glass-tint-secondary rounded p-3 text-center">
+                                <span class="demo-text-sm">Secondary</span>
+                            </div>
+                            <div class="demo-label mt-1">.glass-tint-secondary</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="glass glass-tint-success rounded p-3 text-center">
+                                <span class="demo-text-sm">Success</span>
+                            </div>
+                            <div class="demo-label mt-1">.glass-tint-success</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="glass glass-tint-warning rounded p-3 text-center">
+                                <span class="demo-text-sm">Warning</span>
+                            </div>
+                            <div class="demo-label mt-1">.glass-tint-warning</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="glass glass-tint-danger rounded p-3 text-center">
+                                <span class="demo-text-sm">Danger</span>
+                            </div>
+                            <div class="demo-label mt-1">.glass-tint-danger</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="glass glass-tint-info rounded p-3 text-center">
+                                <span class="demo-text-sm">Info</span>
+                            </div>
+                            <div class="demo-label mt-1">.glass-tint-info</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   10. Background Patterns
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="grid"></i> Background Patterns</h5>
+                <p class="text-muted text-sm mb-3">Subtle repeating patterns for visual texture on glass surfaces.</p>
+
+                <div class="row g-3">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="bg-dots rounded p-4 text-center bg-glass border-glass le-min-h-160">
+                            <i data-feather="more-horizontal" class="demo-icon le-opacity-50"></i>
+                            <h6 class="mb-1 demo-text-title">Dot Grid</h6>
+                            <span class="demo-label demo-label-dark">.bg-dots</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="bg-grid rounded p-4 text-center bg-glass border-glass le-min-h-160">
+                            <i data-feather="hash" class="demo-icon le-opacity-50"></i>
+                            <h6 class="mb-1 demo-text-title">Line Grid</h6>
+                            <span class="demo-label demo-label-dark">.bg-grid</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="bg-diagonal rounded p-4 text-center bg-glass border-glass le-min-h-160">
+                            <i data-feather="slash" class="demo-icon le-opacity-50"></i>
+                            <h6 class="mb-1 demo-text-title">Diagonal Lines</h6>
+                            <span class="demo-label demo-label-dark">.bg-diagonal</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="bg-dots-wide rounded p-4 text-center bg-glass border-glass le-min-h-160">
+                            <i data-feather="more-horizontal" class="demo-icon le-opacity-50"></i>
+                            <h6 class="mb-1 demo-text-title">Wide Dots</h6>
+                            <span class="demo-label demo-label-dark">.bg-dots-wide</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   11. Glass Frosted & Utility Classes
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="wind"></i> Glass Frosted Surface</h5>
+                <p class="text-muted text-sm mb-3">A heavily frosted glass surface — deep blur with higher opacity.</p>
+
+                <div class="demo-backdrop-warm">
+                    <div class="demo-shapes">
+                        <span class="s1"></span>
+                        <span class="s2"></span>
+                        <span class="s3"></span>
+                    </div>
+                    <div class="glass-frosted rounded p-4 demo-stacked">
+                        <h6 class="demo-text mb-2">Frosted Surface</h6>
+                        <p class="demo-text-sm mb-0">This surface uses a deep blur creating a highly frosted appearance that heavily obscures the background.</p>
+                    </div>
+                    <div class="demo-label mt-2">.glass-frosted</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="tool"></i> Quick-Apply Utilities</h5>
+                <p class="text-muted text-sm mb-3">Composable single-purpose classes for glass backgrounds, borders, and shadows.</p>
+
+                <div class="demo-backdrop-cool p-4">
+                    <div class="demo-shapes"><span class="s1"></span><span class="s4"></span></div>
+                    <div class="demo-stacked">
+                        <p class="demo-text-sm fw-semibold mb-2">Backgrounds</p>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <div class="bg-glass rounded px-3 py-2"><span class="demo-text-sm">.bg-glass</span></div>
+                            <div class="bg-glass-strong rounded px-3 py-2"><span class="demo-text-sm">.bg-glass-strong</span></div>
+                            <div class="bg-glass-subtle rounded px-3 py-2"><span class="demo-text-sm">.bg-glass-subtle</span></div>
+                        </div>
+                        <p class="demo-text-sm fw-semibold mb-2">Borders</p>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <div class="border-glass rounded px-3 py-2"><span class="demo-text-sm">.border-glass</span></div>
+                            <div class="border-glass-strong rounded px-3 py-2"><span class="demo-text-sm">.border-glass-strong</span></div>
+                            <div class="border-glass-subtle rounded px-3 py-2"><span class="demo-text-sm">.border-glass-subtle</span></div>
+                        </div>
+                        <p class="demo-text-sm fw-semibold mb-2">Shadows</p>
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <div class="shadow-glass bg-glass rounded px-3 py-2"><span class="demo-text-sm">.shadow-glass</span></div>
+                            <div class="shadow-glass-lg bg-glass rounded px-3 py-2"><span class="demo-text-sm">.shadow-glass-lg</span></div>
+                        </div>
+                        <p class="demo-text-sm fw-semibold mb-2">Blur</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <div class="blur-bg bg-glass rounded px-3 py-2"><span class="demo-text-sm">.blur-bg</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ──────────────────────────────────────────────
+   12. Combined Effects Showcase
+   ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1"><i data-feather="package"></i> Combined Effects Showcase</h5>
+                <p class="text-muted text-sm mb-3">Multiple effects composed together to show how they layer in a realistic UI.</p>
+
+                <div class="demo-backdrop-mesh le-min-h-280 p-5">
+                    <div class="demo-shapes">
+                        <span class="s1"></span>
+                        <span class="s2"></span>
+                        <span class="s3"></span>
+                        <span class="s4"></span>
+                    </div>
+                    <div class="row g-3 demo-stacked">
+                        <div class="col-md-4">
+                            <div class="glass light-reflection glass-edge-top glass-shimmer-sweep glass-shimmer-sweep-hover rounded p-4 text-center le-cursor-pointer">
+                                <div class="glow-halo d-inline-block mb-2">
+                                    <div class="demo-halo-orb bg-gradient le-bg-gradient-primary">
+                                        <i data-feather="cpu" class="demo-icon"></i>
+                                    </div>
+                                </div>
+                                <h6 class="demo-text mb-1">Analytics Engine</h6>
+                                <p class="demo-text-xs mb-0">Reflection + Edge + Halo + Shimmer on hover</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="glass color-bend glass-prismatic-edge glass-glow glass-tint-success rounded p-4 text-center">
+                                <div class="glow-halo-success d-inline-block mb-2">
+                                    <div class="demo-halo-orb bg-gradient le-bg-gradient-success-mono">
+                                        <i data-feather="shield" class="demo-icon"></i>
+                                    </div>
+                                </div>
+                                <h6 class="demo-text mb-1">Security Hub</h6>
+                                <p class="demo-text-xs mb-0">Color bend + Prismatic + Glow + Tint</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="glass glass-frosted glass-edge-all glass-float glass-ripple rounded p-4 text-center le-cursor-pointer">
+                                <div class="glow-halo-warning d-inline-block mb-2">
+                                    <div class="demo-halo-orb bg-gradient le-bg-gradient-warning-mono">
+                                        <i data-feather="activity" class="demo-icon"></i>
+                                    </div>
+                                </div>
+                                <h6 class="demo-text mb-1">Monitoring</h6>
+                                <p class="demo-text-xs mb-0">Frosted + Edge-all + Float + Ripple</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

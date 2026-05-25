@@ -1,0 +1,173 @@
+{% set root = "../../" %}
+{% extends "layouts/auth.njk" %}
+
+
+{% block auth_content %}
+<div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-brand">
+                <span class="auth-brand-icon">◆</span>
+                <span class="auth-brand-text">Liquid Elegance</span>
+            </div>
+
+            <div class="auth-icon-circle">
+                <i data-feather="smartphone" width="32" height="32"></i>
+            </div>
+
+            <h2 class="auth-title">Two-Factor Authentication</h2>
+            <p class="auth-subtitle">Enter the 6-digit code from your authenticator app</p>
+
+            <form id="otpForm" novalidate>
+                <div class="otp-inputs" id="otpInputs">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="one-time-code" autofocus>
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                    <input type="text" class="otp-input" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                </div>
+
+                <div class="otp-timer">
+                    Code expires in <span id="timerDisplay">4:59</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100" id="verifyBtn">Verify</button>
+            </form>
+
+            <div class="auth-alt-links">
+                <div>
+                    <span class="le-fs-base le-text-muted">Didn't receive a code? </span>
+                    <a href="javascript:void(0)" class="primary-link" id="resendLink">Resend</a>
+                </div>
+                <a href="javascript:void(0)">Use backup code instead</a>
+            </div>
+
+            <a href="signin.html" class="auth-back-link">
+                <i data-feather="arrow-left" width="16" height="16"></i>
+                Back to Sign In
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') feather.replace();
+
+            var inputs = document.querySelectorAll('.otp-input');
+            var form = document.getElementById('otpForm');
+            var timerDisplay = document.getElementById('timerDisplay');
+
+            // Auto-advance, backspace navigation, and paste support
+            inputs.forEach(function(input, index) {
+                input.addEventListener('input', function(e) {
+                    var value = this.value.replace(/[^0-9]/g, '');
+                    this.value = value;
+
+                    if (value && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
+                    }
+
+                    // Update filled state
+                    this.classList.toggle('filled', value.length > 0);
+                });
+
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && !this.value && index > 0) {
+                        inputs[index - 1].focus();
+                        inputs[index - 1].value = '';
+                        inputs[index - 1].classList.remove('filled');
+                    }
+                    // Arrow key navigation
+                    if (e.key === 'ArrowLeft' && index > 0) {
+                        e.preventDefault();
+                        inputs[index - 1].focus();
+                    }
+                    if (e.key === 'ArrowRight' && index < inputs.length - 1) {
+                        e.preventDefault();
+                        inputs[index + 1].focus();
+                    }
+                });
+
+                input.addEventListener('focus', function() {
+                    this.select();
+                });
+
+                // Paste support
+                input.addEventListener('paste', function(e) {
+                    e.preventDefault();
+                    var paste = (e.clipboardData || window.clipboardData).getData('text').replace(/[^0-9]/g, '');
+                    if (paste.length > 0) {
+                        for (var i = 0; i < Math.min(paste.length, inputs.length); i++) {
+                            inputs[i].value = paste[i];
+                            inputs[i].classList.add('filled');
+                        }
+                        var focusIndex = Math.min(paste.length, inputs.length) - 1;
+                        if (focusIndex < inputs.length - 1) focusIndex++;
+                        inputs[focusIndex].focus();
+                    }
+                });
+            });
+
+            // Countdown timer
+            var totalSeconds = 299; // 4:59
+            var timerInterval = setInterval(function() {
+                totalSeconds--;
+                if (totalSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.textContent = '0:00';
+                    timerDisplay.style.color = 'var(--le-danger)';
+                    return;
+                }
+                var minutes = Math.floor(totalSeconds / 60);
+                var seconds = totalSeconds % 60;
+                timerDisplay.textContent = minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+
+                if (totalSeconds < 60) {
+                    timerDisplay.style.color = 'var(--le-danger)';
+                }
+            }, 1000);
+
+            // Form submit
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var code = '';
+                inputs.forEach(function(input) { code += input.value; });
+
+                if (code.length === 6) {
+                    var btn = document.getElementById('verifyBtn');
+                    btn.textContent = 'Verifying...';
+                    btn.disabled = true;
+                    setTimeout(function() {
+                        btn.textContent = 'Verify';
+                        btn.disabled = false;
+                    }, 2000);
+                } else {
+                    // Shake empty inputs
+                    inputs.forEach(function(input) {
+                        if (!input.value) {
+                            input.style.borderColor = 'var(--le-danger)';
+                            setTimeout(function() { input.style.borderColor = ''; }, 1500);
+                        }
+                    });
+                }
+            });
+
+            // Resend link
+            document.getElementById('resendLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                this.textContent = 'Sent!';
+                this.style.pointerEvents = 'none';
+                var self = this;
+                // Reset timer
+                totalSeconds = 299;
+                timerDisplay.style.color = '';
+                setTimeout(function() {
+                    self.textContent = 'Resend';
+                    self.style.pointerEvents = '';
+                }, 3000);
+            });
+        });
+</script>
+{% endblock %}

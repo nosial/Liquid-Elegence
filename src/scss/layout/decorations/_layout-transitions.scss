@@ -1,0 +1,103 @@
+/* ── Layout Transitions ── */
+
+/* Sidebar collapse / expand — smoother easing with subtle bounce */
+.sidebar {
+  transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Content area shift on sidebar toggle — smooth margin transition */
+.main-content {
+  transition: margin-left 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Disable sidebar startup transitions so restored state renders immediately. */
+body:not(.le-sidebar-ready) .sidebar,
+body:not(.le-sidebar-ready) .main-content,
+body:not(.le-sidebar-ready) .sidebar-menu,
+body:not(.le-sidebar-ready) .sidebar-nav-label,
+body:not(.le-sidebar-ready) .sidebar-nav-label::after,
+body:not(.le-sidebar-ready) .brand-text,
+body:not(.le-sidebar-ready) .sidebar-link span,
+body:not(.le-sidebar-ready) .sidebar-toggle-btn svg,
+body:not(.le-sidebar-ready) .sidebar-toggle-btn i {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Dropdown menus — glass entrance animation (scale from 0.95 + fade) */
+@keyframes glass-dropdown-enter {
+  from {
+    opacity: 0;
+    box-shadow: 0 0 20px rgba(var(--le-primary-rgb), 0.15);
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    box-shadow: none;
+    backdrop-filter: blur(var(--le-glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-strong));
+  }
+}
+
+.dropdown-menu.show,
+.topbar .dropdown-menu.show {
+  animation: glass-dropdown-enter 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown-menu.show,
+  .topbar .dropdown-menu.show {
+    animation: none;
+  }
+}
+
+/* Mobile sidebar slide-in — spring-like animation */
+@keyframes sidebar-slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0.6;
+  }
+  60% {
+    transform: translateX(3%);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(-1%);
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes sidebar-slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .sidebar.show,
+  .sidebar.active {
+    animation: sidebar-slide-in 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  .sidebar.hiding {
+    animation: sidebar-slide-out 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+
+@media (max-width: 991.98px) and (prefers-reduced-motion: reduce) {
+  .sidebar.show,
+  .sidebar.active,
+  .sidebar.hiding {
+    animation: none;
+  }
+}

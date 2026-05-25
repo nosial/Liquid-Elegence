@@ -1,0 +1,103 @@
+/* ==========================================================================
+   17d. MOBILE LAYOUT ADJUSTMENTS
+   ========================================================================== */
+
+/* ---- XS Phones (<480px): extra compact page chrome ---- */
+@media (max-width: 480px) {
+    .page-content {
+        padding: 10px;
+    }
+
+    .page-title {
+        font-size: 1.125rem;
+    }
+
+    .page-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .page-header {
+        margin-bottom: 12px;
+    }
+
+    /* Glass cards: minimal padding */
+    .glass-card-body {
+        --le-body-pad: 12px;
+        padding: var(--le-body-pad);
+    }
+
+    .glass-card-header {
+        padding: 8px 12px;
+    }
+
+    /* Glass card footer */
+    .glass-card-footer {
+        padding: 8px 12px;
+    }
+
+    /* Row gutters tighter */
+    .row.g-4 {
+        --bs-gutter-y: 0.75rem;
+        --bs-gutter-x: 0.75rem;
+    }
+
+    .row.g-3 {
+        --bs-gutter-y: 0.5rem;
+        --bs-gutter-x: 0.5rem;
+    }
+
+    /* Topbar: tightest spacing */
+    .topbar {
+        padding: 0 10px;
+        gap: 4px;
+    }
+
+    .topbar-right {
+        gap: 4px;
+    }
+
+    /* Topbar user: hide name on XS */
+    .topbar-user .user-name {
+        display: none;
+    }
+
+    /* Footer minimal */
+    .main-footer {
+        padding: 8px 10px;
+        font-size: 0.6875rem;
+    }
+}
+
+/* ---- Viewport height corrections for mobile browsers ---- */
+@supports (height: 100dvh) {
+    @media (max-width: 991.98px) {
+        .main-content {
+            min-height: 100dvh;
+        }
+    }
+}
+
+/* ---- Touch optimization: prevent double-tap zoom ---- */
+@media (max-width: 991.98px) {
+    .btn,
+    .nav-link,
+    .sidebar-link,
+    .topbar-icon-btn,
+    .topbar-toggle-btn,
+    a {
+        touch-action: manipulation;
+    }
+}
+
+/* ---- Smooth scrolling on touch devices ---- */
+@media (max-width: 991.98px) {
+    .page-content {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Horizontal overflow is already prevented by .app-wrapper { overflow-x: hidden }.
+       Setting it on .main-content as well would implicitly compute overflow-y to
+       `auto`, turning .main-content into a scroll container. Combined with
+       overscroll-behavior: contain (set elsewhere) that traps wheel events and
+       prevents the page from scrolling. */
+}

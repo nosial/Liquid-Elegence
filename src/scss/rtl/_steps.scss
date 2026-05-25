@@ -1,0 +1,13 @@
+/* ─────────────────────────────────────────────────────────────
+   23. Steps / Wizard
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .le-steps {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .le-step-connector {
+    transform: scaleX(-1);
+}
+
+

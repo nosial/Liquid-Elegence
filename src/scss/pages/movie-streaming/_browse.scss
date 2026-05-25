@@ -1,0 +1,98 @@
+/* =============================================================================
+   Movie Streaming — Browse / Genre Page
+   ============================================================================= */
+
+.movie-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.movie-filter-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.movie-filter-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--le-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.movie-filter-select {
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-primary);
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.movie-filter-select:focus {
+    outline: none;
+    border-color: rgba(var(--le-primary-rgb), 0.5);
+}
+
+.movie-chip-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.movie-chip {
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-primary);
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.movie-chip:hover {
+    background: var(--le-glass-bg-strong);
+    border-color: rgba(var(--le-primary-rgb), 0.32);
+    color: var(--le-text-primary);
+}
+
+.movie-chip.is-active {
+    background: rgba(var(--le-primary-rgb), 0.18);
+    color: var(--le-primary);
+    border-color: rgba(var(--le-primary-rgb), 0.5);
+    font-weight: 600;
+}
+
+/* Browse grid */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.movie-grid .movie-card { width: 100%; }
+.movie-grid .movie-card-thumb { box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18); }
+
+.movie-grid-portrait {
+    grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+    gap: 16px;
+}
+
+.movie-grid-portrait .movie-card-thumb { aspect-ratio: 2 / 3; }
+
+/* Empty state for filtered grid */
+.movie-grid-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--le-text-secondary);
+    font-size: 0.95rem;
+}

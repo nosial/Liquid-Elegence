@@ -1,0 +1,141 @@
+// pages/responsive/baseline/narrow-tweaks.scss
+// Narrow-viewport rules.
+
+/* ---- mobile (≤ 480px) ---- */
+@media (max-width: 480px) {
+
+  /* chat */
+  .chat-input-area {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .chat-messages {
+    padding: 12px;
+  }
+  .message-row {
+    max-width: 85%;
+  }
+  .chat-header {
+    padding: 12px 14px;
+  }
+
+  /* otp */
+  .otp-inputs {
+    gap: 8px;
+  }
+  .otp-input {
+    width: 40px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  /* lock screen */
+  .lock-time-display,
+  .lock-time {
+    font-size: 48px;
+  }
+  .lock-avatar {
+    width: 64px;
+    height: 64px;
+    font-size: 22px;
+  }
+
+  /* auth */
+  .auth-card {
+    padding: 20px;
+    border-radius: var(--le-radius-lg);
+  }
+  .auth-social {
+    flex-direction: column;
+  }
+
+  /* error */
+  .error-code {
+    font-size: 4rem;
+  }
+  .error-subtitle {
+    font-size: 18px;
+  }
+  .error-description {
+    font-size: 14px;
+  }
+
+  /* countdown */
+  .countdown-row {
+    gap: 8px;
+  }
+  .countdown-card {
+    padding: 10px 12px;
+    min-width: 60px;
+  }
+  .countdown-number {
+    font-size: 22px;
+  }
+  .countdown-label {
+    font-size: 10px;
+  }
+
+  /* wizard */
+  .wizard-container {
+    padding: 0 4px;
+  }
+  .wizard-step-label {
+    display: none;
+  }
+
+  /* file manager */
+  .fm-grid {
+    gap: 10px;
+  }
+  .fm-card {
+    padding: 14px 10px;
+  }
+  .fm-card-icon {
+    font-size: 30px;
+  }
+
+  /* subscribe */
+  .subscribe-form {
+    flex-direction: column;
+  }
+  .subscribe-form button {
+    width: 100%;
+  }
+
+  /* pricing */
+  .plan-price {
+    font-size: 32px;
+  }
+
+  /* calendar */
+  .cal-grid .day {
+    min-height: 45px;
+  }
+  .cal-month-title {
+    font-size: 15px;
+  }
+
+  /* kanban */
+  .kanban-column {
+    min-width: 240px;
+  }
+
+  /* invoice */
+  .totals-table {
+    min-width: auto;
+    width: 100%;
+  }
+  .line-items-table th,
+  .line-items-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  /* headings */
+  .main-heading {
+    font-size: 26px;
+  }
+  .page-heading {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,73 @@
+/* ============================================================================
+   17. DARK-MODE OVERRIDES
+   ============================================================================ */
+
+
+/* ── Auth ─────────────────────────────────────────────────────────────────── */
+
+[data-theme="dark"] .auth-card {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+[data-theme="dark"] .auth-card .form-control {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.11);
+}
+
+[data-theme="dark"] .auth-card .form-control:focus {
+  border-color: var(--le-primary);
+  box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.22),
+              0 0 14px rgba(var(--le-primary-rgb), 0.08);
+}
+
+[data-theme="dark"] .auth-social .btn {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.09);
+}
+
+[data-theme="dark"] .auth-social .btn:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+[data-theme="dark"] .auth-divider::before,
+[data-theme="dark"] .auth-divider::after {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .lock-time-display,
+[data-theme="dark"] .lock-time {
+  color: var(--le-text-inverse);
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .lock-date-display {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .otp-input {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--le-glass-border-strong);
+}
+
+[data-theme="dark"] .otp-input:focus {
+  border-color: var(--le-primary);
+}
+
+[data-theme="dark"] .envelope-paper {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .envelope-inner-v {
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .envelope-body {
+  background: var(--le-glass-bg);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .auth-icon-circle {
+  background: rgba(var(--le-primary-rgb), 0.18);
+}

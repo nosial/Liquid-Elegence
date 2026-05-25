@@ -1,0 +1,122 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Scrollspy — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Scrollspy</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Scrollspy with Nav Tabs ─────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Scrollspy with Nav Tabs</h5>
+                <p class="text-muted mb-3 le-fs-body">Automatically update nav links based on scroll position using <code>data-bs-spy="scroll"</code>. Scroll the content area below to see the active tab change.</p>
+
+                <div class="row">
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <nav id="scrollspyNav" class="nav nav-pills-glass flex-column">
+                            <a class="nav-link active" href="#scrollSection1">Section One</a>
+                            <a class="nav-link" href="#scrollSection2">Section Two</a>
+                            <a class="nav-link" href="#scrollSection3">Section Three</a>
+                            <a class="nav-link" href="#scrollSection4">Section Four</a>
+                        </nav>
+                    </div>
+                    <div class="col-md-9">
+                        <div data-bs-spy="scroll" data-bs-target="#scrollspyNav" data-bs-smooth-scroll="true" class="scrollspy-example le-bg-glass p-3 rounded-4" tabindex="0" style="max-height:320px;overflow-y:auto;">
+                            <h4 id="scrollSection1">Section One</h4>
+                            <p>This is the first section. The scrollspy component automatically updates the navigation links based on the current scroll position within this scrollable container. As you scroll, the corresponding nav item becomes active.</p>
+                            <p>Liquid Elegance leverages Bootstrap's scrollspy with glassmorphic navigation pills for a visually cohesive experience. The active state is highlighted with the primary colour and subtle glow effects.</p>
+                            <p>Scrollspy works with both <code>nav-tabs</code> and <code>nav-pills</code> variants, and supports nested navigation structures for complex documentation layouts.</p>
+
+                            <h4 id="scrollSection2" class="mt-5">Section Two</h4>
+                            <p>This section demonstrates how the nav pill updates as you scroll past different content areas. The glass pill navigation uses backdrop-filter blur and translucent backgrounds that adapt to the theme.</p>
+                            <p>The <code>data-bs-spy="scroll"</code> attribute is placed on the scrollable container, while <code>data-bs-target</code> points to the nav element's ID. The <code>data-bs-smooth-scroll="true"</code> attribute enables smooth scrolling when nav items are clicked.</p>
+                            <p>You can also use the <code>data-bs-offset</code> attribute to adjust the offset from the top when calculating scroll positions, useful when working with fixed headers.</p>
+
+                            <h4 id="scrollSection3" class="mt-5">Section Three</h4>
+                            <p>Scrollspy is ideal for documentation pages, help centres, terms of service, and any long-form content where you want to provide visual orientation to the reader.</p>
+                            <p>The template includes custom glassmorphic styling for the scrollspy's active state, with the active pill receiving a vibrant primary background and subtle box-shadow.</p>
+                            <p>Bootstrap's scrollspy works by monitoring the scroll event on the specified container and comparing the current scroll position against the offsets of each target element. The appropriate nav link is then activated based on which section is currently in view.</p>
+
+                            <h4 id="scrollSection4" class="mt-5">Section Four</h4>
+                            <p>This final section wraps up the scrollspy demonstration. You can combine scrollspy with any nav style — standard Bootstrap tabs, pills, or the glass nav pills shown here.</p>
+                            <p>To initialise scrollspy via JavaScript: <code>new bootstrap.ScrollSpy(element, { target: '#navId' })</code>. The component also supports refreshing via <code>refresh()</code> method when content is dynamically loaded.</p>
+                            <p>Scrollspy supports both <code>body</code>-level scrolling (just omit the <code>data-bs-spy</code> container and add it to <code>body</code>) and container-level scrolling as demonstrated here. Container-level is useful for modal bodies or custom scrollable panels.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Navigation --&gt;
+&lt;nav id="navId" class="nav nav-pills-glass flex-column"&gt;
+    &lt;a class="nav-link" href="#section1"&gt;Section 1&lt;/a&gt;
+    &lt;a class="nav-link" href="#section2"&gt;Section 2&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;!-- Scrollable content with scrollspy --&gt;
+&lt;div data-bs-spy="scroll" data-bs-target="#navId"
+     data-bs-smooth-scroll="true" tabindex="0"
+     style="max-height:300px;overflow-y:auto;"&gt;
+    &lt;h4 id="section1"&gt;Section 1&lt;/h4&gt;
+    &lt;p&gt;Content here...&lt;/p&gt;
+    &lt;h4 id="section2"&gt;Section 2&lt;/h4&gt;
+    &lt;p&gt;More content...&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Scrollspy with List Group ──────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Scrollspy with List Group</h5>
+                <p class="text-muted mb-3 le-fs-body">Scrollspy also works with <code>.list-group</code> for an alternative navigation style.</p>
+
+                <div class="row">
+                    <div class="col-md-3 mb-3 mb-md-0">
+                        <div id="scrollspyListGroup" class="list-group le-scrollspy-list">
+                            <a class="list-group-item list-group-item-action active" href="#listItem1">Getting Started</a>
+                            <a class="list-group-item list-group-item-action" href="#listItem2">Installation</a>
+                            <a class="list-group-item list-group-item-action" href="#listItem3">Configuration</a>
+                            <a class="list-group-item list-group-item-action" href="#listItem4">Deployment</a>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div data-bs-spy="scroll" data-bs-target="#scrollspyListGroup" data-bs-smooth-scroll="true" class="scrollspy-example le-bg-glass p-3 rounded-4" tabindex="0" style="max-height:300px;overflow-y:auto;">
+                            <h4 id="listItem1">Getting Started</h4>
+                            <p>Welcome to Liquid Elegance. This documentation covers the essentials for getting up and running with the template. The template includes a comprehensive component library, app pages, and utility pages out of the box.</p>
+                            <p>To begin, familiarise yourself with the project structure. All source files are organised under <code>src/</code> with separate directories for SCSS, JavaScript, and Nunjucks templates.</p>
+
+                            <h4 id="listItem2" class="mt-5">Installation</h4>
+                            <p>Clone the repository and install dependencies using npm. The template uses Sass for stylesheet compilation, Nunjucks for HTML templating, and a build pipeline for production optimisation.</p>
+                            <p>Run <code>npm install</code> to install all required packages. Development workflows are available via npm scripts including watch mode for real-time SCSS compilation.</p>
+
+                            <h4 id="listItem3" class="mt-5">Configuration</h4>
+                            <p>Key configuration files include the SCSS variables for theming and the build scripts for customising the output. The template supports multiple colour themes, dark mode, and three density levels.</p>
+                            <p>The customizer panel (accessible via the floating button in the bottom-right corner) allows you to preview different theme combinations in real time without modifying source files.</p>
+
+                            <h4 id="listItem4" class="mt-5">Deployment</h4>
+                            <p>Run <code>npm run build</code> to compile all assets for production. The output is generated in the <code>dist/</code> directory, organised into a full build and individual variant builds for each theme combination.</p>
+                            <p>The production build includes optimised CSS, JavaScript, and HTML. All styles are autoprefixed and minified. The variant builds are self-contained HTML files with inline assets for each theme configuration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

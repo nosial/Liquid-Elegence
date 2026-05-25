@@ -1,0 +1,676 @@
+/* =============================================================================
+   Chat — Call Modals (voice + video)
+   Built on top of `.modal-glass` so surface treatment matches the rest of the
+   project. This file only adds the call-specific stage, identity, controls,
+   keypad, and animations.
+   ============================================================================= */
+
+/* ---- shared ------------------------------------------------------------- */
+
+.call-modal .modal-content {
+    overflow: hidden;
+    color: var(--le-text-primary);
+}
+
+.call-modal .modal-body {
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* generic call control button */
+.call-modal .call-btn {
+    appearance: none;
+    border: 1px solid var(--le-glass-border-subtle);
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+    border-radius: var(--le-radius-lg);
+    padding: 12px 10px;
+    min-width: 68px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease,
+                transform 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+.call-modal .call-btn svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+}
+
+.call-modal .call-btn:hover {
+    background: var(--le-glass-bg-strong);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    transform: translateY(-1px);
+}
+
+.call-modal .call-btn[aria-pressed="true"] {
+    background: rgba(var(--le-primary-rgb), 0.20);
+    border-color: rgba(var(--le-primary-rgb), 0.55);
+    color: var(--le-primary);
+    box-shadow: 0 0 0 1px rgba(var(--le-primary-rgb), 0.15) inset,
+                0 4px 14px rgba(var(--le-primary-rgb), 0.18);
+}
+
+.call-modal .call-btn-end {
+    background: var(--le-danger, #ef4444);
+    border-color: rgba(0, 0, 0, 0.10);
+    color: #fff;
+    box-shadow: 0 6px 22px rgba(239, 68, 68, 0.40);
+}
+
+.call-modal .call-btn-end:hover {
+    background: #dc2626;
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #fff;
+    transform: translateY(-1px) scale(1.03);
+}
+
+.call-modal .call-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--le-success, #22c55e);
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18);
+    display: inline-block;
+    animation: callPulseDot 1.6s ease-in-out infinite;
+}
+
+@keyframes callPulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.55; transform: scale(0.85); }
+}
+
+.call-modal .call-timer {
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--le-text-primary);
+    margin-left: 6px;
+}
+
+/* ============================================================================
+   Voice call modal
+   ============================================================================ */
+
+.voice-call-modal .modal-dialog { max-width: 460px; }
+
+.call-stage-voice {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 28px 28px 24px;
+    min-height: 560px;
+    text-align: center;
+    isolation: isolate;
+}
+
+/* ambient background orbs */
+.call-bg-orbs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.call-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.55;
+    will-change: transform;
+}
+
+.call-orb-1 {
+    width: 320px; height: 320px;
+    background: rgba(var(--le-primary-rgb), 0.45);
+    top: -80px; left: -90px;
+    animation: callOrbDrift 18s ease-in-out infinite;
+}
+
+.call-orb-2 {
+    width: 260px; height: 260px;
+    background: rgba(139, 92, 246, 0.40);
+    bottom: -70px; right: -60px;
+    animation: callOrbDrift 22s ease-in-out infinite reverse;
+}
+
+.call-orb-3 {
+    width: 220px; height: 220px;
+    background: rgba(14, 165, 233, 0.30);
+    top: 45%; left: 45%;
+    transform: translate(-50%, -50%);
+    animation: callOrbDrift 26s ease-in-out infinite;
+}
+
+@keyframes callOrbDrift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(8%, -6%) scale(1.05); }
+    66%      { transform: translate(-6%, 8%) scale(0.95); }
+}
+
+[data-theme="dark"] .call-orb { opacity: 0.45; }
+
+.call-stage-voice > * { position: relative; z-index: 1; }
+
+.call-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.call-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--le-text-secondary);
+    padding: 4px 10px;
+    border-radius: var(--le-radius-full, 999px);
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+}
+
+.call-quality {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px;
+}
+
+.call-quality-bar {
+    display: inline-block;
+    width: 3px;
+    background: var(--le-success, #22c55e);
+    border-radius: 2px;
+    opacity: 0.85;
+}
+.call-quality-bar:nth-child(1) { height: 4px; }
+.call-quality-bar:nth-child(2) { height: 7px; }
+.call-quality-bar:nth-child(3) { height: 10px; }
+.call-quality-bar:nth-child(4) { height: 13px; }
+
+.call-identity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 14px;
+    padding: 24px 0;
+}
+
+.call-avatar-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.call-avatar {
+    position: relative;
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25),
+                0 0 0 4px rgba(255, 255, 255, 0.35) inset;
+    z-index: 2;
+}
+
+.call-pulse-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(var(--le-primary-rgb), 0.45);
+    animation: callPulseRing 2.4s ease-out infinite;
+    opacity: 0;
+}
+
+.call-pulse-ring.delay-1 { animation-delay: 0.8s; }
+.call-pulse-ring.delay-2 { animation-delay: 1.6s; }
+
+@keyframes callPulseRing {
+    0%   { transform: scale(0.85); opacity: 0; }
+    20%  { opacity: 0.85; }
+    100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* When the call is connected, calm the ringing pulse */
+.call-modal.is-connected .call-pulse-ring { animation-duration: 4s; opacity: 0.4; }
+
+.call-name {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--le-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.call-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--le-text-secondary);
+}
+
+/* Controls grid for voice call (4 cols, end + switch wrap to bottom) */
+.voice-call-modal .call-controls {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.voice-call-modal .call-btn-end,
+.voice-call-modal .call-btn-switch {
+    grid-column: span 2;
+    flex-direction: row;
+    gap: 10px;
+    padding: 14px;
+    font-size: 0.875rem;
+}
+
+/* Keypad (revealed when "Keypad" toggled on) */
+.call-keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 16px;
+    padding: 12px;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: var(--le-radius-lg);
+    animation: callKeypadIn 0.25s ease;
+}
+
+.call-keypad button {
+    appearance: none;
+    border: 1px solid var(--le-glass-border-subtle);
+    background: var(--le-glass-bg-strong);
+    color: var(--le-text-primary);
+    border-radius: var(--le-radius);
+    padding: 10px 0 8px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    transition: background 0.15s ease, transform 0.1s ease;
+    font-variant-numeric: tabular-nums;
+}
+
+.call-keypad button small {
+    font-size: 0.6rem;
+    color: var(--le-text-muted);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.call-keypad button:hover { background: var(--le-glass-bg); }
+.call-keypad button:active { transform: scale(0.96); }
+
+@keyframes callKeypadIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================================
+   Video call modal
+   ============================================================================ */
+
+.video-call-modal .modal-dialog { max-width: 880px; }
+
+.call-stage-video {
+    display: flex;
+    flex-direction: column;
+    background: #0b0d12;
+    color: #fff;
+    min-height: 540px;
+    padding: 0;
+}
+
+/* Video stage = the "remote" feed simulation */
+.video-stage {
+    position: relative;
+    flex: 1;
+    min-height: 380px;
+    background:
+        radial-gradient(ellipse at 30% 20%, rgba(var(--le-primary-rgb), 0.45) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 75%, rgba(139, 92, 246, 0.40) 0%, transparent 55%),
+        linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #0b0d12 100%);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Subtle grid overlay to suggest a camera feed */
+.video-stage-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.video-stage-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0.45) 0%,
+        transparent 22%,
+        transparent 70%,
+        rgba(0, 0, 0, 0.55) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.video-remote-avatar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45),
+                0 0 0 6px rgba(255, 255, 255, 0.10);
+    z-index: 2;
+    animation: videoAvatarFloat 6s ease-in-out infinite;
+}
+
+@keyframes videoAvatarFloat {
+    0%, 100% { transform: translate(-50%, -50%); }
+    50%      { transform: translate(-50%, calc(-50% - 6px)); }
+}
+
+/* Top bar */
+.video-top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 3;
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    color: #fff;
+}
+
+.video-caller-name {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+.video-caller-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 4px;
+}
+
+.video-caller-status .call-timer { color: #fff; }
+
+.video-top-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.video-quality-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: var(--le-radius-full, 999px);
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #fff;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.video-icon-btn {
+    appearance: none;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.10);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.video-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.20);
+    transform: translateY(-1px);
+}
+
+.video-icon-btn svg { width: 16px; height: 16px; }
+
+/* Self preview (PIP) */
+.video-self-pip {
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    width: 140px;
+    height: 100px;
+    border-radius: 14px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.10), transparent 60%),
+        linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    transition: transform 0.2s ease;
+}
+
+.video-self-pip:hover { transform: translateY(-2px) scale(1.02); }
+
+.video-self-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
+}
+
+.video-self-label {
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.video-self-mic {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.video-self-mic svg { width: 12px; height: 12px; }
+.video-self-mic.is-muted { background: var(--le-danger, #ef4444); }
+
+/* When camera off, fade the remote stage to a calmer state */
+.video-call-modal.camera-off .video-stage {
+    background:
+        radial-gradient(circle at 50% 40%, #1f2937 0%, #0b0d12 70%);
+}
+.video-call-modal.camera-off .video-self-pip { opacity: 0.55; }
+
+/* Controls bar */
+.video-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.55);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+}
+
+.video-controls .call-btn {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #fff;
+    min-width: 76px;
+}
+
+.video-controls .call-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.video-controls .call-btn[aria-pressed="true"] {
+    background: rgba(var(--le-primary-rgb), 0.30);
+    border-color: rgba(var(--le-primary-rgb), 0.65);
+    color: #fff;
+}
+
+.video-controls .call-btn-end {
+    background: var(--le-danger, #ef4444);
+    border-color: rgba(0, 0, 0, 0.20);
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+
+@media (max-width: 575.98px) {
+    .voice-call-modal .modal-dialog,
+    .video-call-modal .modal-dialog {
+        margin: 0;
+        max-width: 100%;
+        min-height: 100dvh;
+        min-height: 100vh;
+    }
+    .voice-call-modal .modal-content,
+    .video-call-modal .modal-content {
+        border-radius: 0;
+        min-height: 100dvh;
+        min-height: 100vh;
+    }
+
+    .call-stage-voice {
+        min-height: 100dvh;
+        min-height: 100vh;
+        padding: 20px 18px 22px;
+    }
+
+    .call-avatar-wrap { width: 124px; height: 124px; }
+    .call-avatar { width: 108px; height: 108px; font-size: 2rem; }
+    .call-name { font-size: 1.25rem; }
+
+    .voice-call-modal .call-controls {
+        gap: 8px;
+    }
+    .voice-call-modal .call-btn { min-width: 0; padding: 10px 6px; font-size: 0.6875rem; }
+    .voice-call-modal .call-btn svg { width: 20px; height: 20px; }
+
+    .call-stage-video { min-height: 100dvh; min-height: 100vh; }
+    .video-stage { min-height: 0; flex: 1; }
+    .video-remote-avatar { width: 110px; height: 110px; font-size: 2rem; }
+    .video-self-pip { width: 100px; height: 72px; bottom: 12px; right: 12px; }
+    .video-self-avatar { width: 36px; height: 36px; font-size: 0.8125rem; }
+
+    .video-top-bar { padding: 12px 14px; }
+    .video-caller-name { font-size: 0.9375rem; }
+    .video-icon-btn { width: 32px; height: 32px; }
+
+    .video-controls { padding: 12px 10px; gap: 6px; }
+    .video-controls .call-btn { min-width: 0; flex: 1 1 0; padding: 10px 4px; font-size: 0.6875rem; }
+    .video-controls .call-btn svg { width: 20px; height: 20px; }
+}
+
+/* ============================================================================
+   Dark mode tweaks
+   ============================================================================ */
+
+[data-theme="dark"] .call-modal .call-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.10);
+}
+
+[data-theme="dark"] .call-modal .call-btn:hover {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(var(--le-primary-rgb), 0.45);
+}
+
+[data-theme="dark"] .call-keypad,
+[data-theme="dark"] .call-label {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .call-keypad button {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.10);
+}
+[data-theme="dark"] .call-keypad button:hover { background: rgba(255, 255, 255, 0.10); }

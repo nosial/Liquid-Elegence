@@ -1,0 +1,139 @@
+/* =============================================================================
+   Streamflix — Responsive
+   =============================================================================
+
+   Layout strategy
+   ---------------
+   The browse page uses `col-xxl-8` + `col-xxl-4` (not `col-lg-*`) so the
+   side-by-side split only kicks in once the viewport is wide enough to
+   actually accommodate it (≥1400px, where `main-content` is still ~1140px
+   after the 260px dashboard sidebar). Below that, the sidebar column
+   drops under the main column as one consolidated glass panel — the
+   internal sub-sections (search / channels / subscriptions / library)
+   are separated by `.glass-divider` so the page doesn't degrade into a
+   long stack of repeating glass cards.
+
+   The hero / grid densities are then tuned per breakpoint so the featured
+   card and rail thumbnails always have room for legible titles regardless
+   of viewport width or sidebar state.
+   ============================================================================= */
+
+/* =====================================================
+   NARROW DESKTOP — XL RANGE (1200–1399px)
+   Main column is now full-width thanks to col-xxl stacking. Keep the 2-up
+   hero but balance the ratio and tighten the side-card thumb width so the
+   metadata text always has comfortable room.
+   ===================================================== */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .video-hero {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 20px;
+    }
+
+    .video-hero-side .video-card-h {
+        grid-template-columns: 180px 1fr;
+        gap: 12px;
+    }
+
+    .video-card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    }
+
+    .video-card-grid-dense {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+/* =====================================================
+   TABLET / NARROW DESKTOP — LG RANGE (992–1199px)
+   Main column is full width but still relatively narrow. Stack the hero
+   into a single full-width feature with horizontal side cards underneath
+   so neither half feels squeezed.
+   ===================================================== */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .video-hero {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .video-hero-side {
+        grid-template-rows: none;
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .video-hero-side .video-card-h {
+        grid-template-columns: 200px 1fr;
+        gap: 14px;
+    }
+
+    .video-card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 16px;
+    }
+
+    .video-card-grid-dense {
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 14px;
+    }
+}
+
+/* =====================================================
+   TABLET (≤991.98px)
+   ===================================================== */
+@media (max-width: 991.98px) {
+    .video-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .video-hero-side {
+        grid-template-rows: none;
+        grid-template-columns: 1fr;
+    }
+
+    .video-hero-side .video-card-h {
+        grid-template-columns: 180px 1fr;
+    }
+
+    .video-card-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+/* =====================================================
+   PHONE LANDSCAPE / SMALL TABLET (≤767.98px)
+   ===================================================== */
+@media (max-width: 767.98px) {
+    .video-watch-title { font-size: 1.05rem; }
+    .video-watch-meta-row { flex-direction: column; align-items: flex-start; }
+    .video-watch-actions { flex-wrap: wrap; }
+    .video-card-grid,
+    .video-card-grid-dense {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+    }
+    .video-channel-header { flex-direction: column; align-items: flex-start; padding-bottom: 18px; }
+    .video-channel-header-info,
+    .video-channel-header-actions { padding-top: 0; }
+    .video-channel-header-avatar { width: 72px; height: 72px; font-size: 1.6rem; }
+    .video-card-h {
+        grid-template-columns: 140px 1fr;
+        gap: 10px;
+    }
+}
+
+/* =====================================================
+   PHONE PORTRAIT (≤575.98px)
+   ===================================================== */
+@media (max-width: 575.98px) {
+    .video-card-h {
+        grid-template-columns: 120px 1fr;
+    }
+    .video-card-grid,
+    .video-card-grid-dense {
+        grid-template-columns: 1fr 1fr;
+    }
+    .video-volume:hover .video-volume-slider,
+    .video-volume.is-active .video-volume-slider { width: 0; }
+    .video-time { font-size: 0.72rem; }
+}

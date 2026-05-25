@@ -1,0 +1,28 @@
+/* --------------------------------------------------------------------------
+   23v. Error pages — improved mobile layout
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .error-code {
+    font-size: 3.5rem;
+  }
+
+  .error-subtitle {
+    font-size: 1rem;
+  }
+
+  .error-description {
+    font-size: 0.8125rem;
+    padding: 0 0.5rem;
+  }
+
+  .error-actions {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .error-actions .btn {
+    width: 100%;
+    min-height: 44px;
+  }
+}

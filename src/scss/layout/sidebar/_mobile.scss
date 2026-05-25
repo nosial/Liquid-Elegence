@@ -1,0 +1,39 @@
+/* ==========================================================================
+   6. SIDEBAR — Mobile & Backdrop
+   Below 992px the sidebar slides off-screen and overlays on toggle.
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+        touch-action: pan-y;
+    }
+
+    .sidebar-open .sidebar {
+        transform: translateX(0);
+        box-shadow: var(--le-glass-shadow-lg);
+    }
+}
+
+/* Backdrop overlay */
+.sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--le-overlay-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1039;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.sidebar-open .sidebar-backdrop {
+    opacity: 1;
+    pointer-events: all;
+}
+
+

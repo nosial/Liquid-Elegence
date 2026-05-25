@@ -1,0 +1,259 @@
+/* Sidebar (library) */
+
+.music-sidebar-inner {
+    overflow: visible;
+    max-height: none;
+}
+
+.music-sidebar-header-mobile {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.music-sidebar-title {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--le-text-primary);
+}
+
+.music-sidebar-close {
+    background: transparent;
+    border: none;
+    color: var(--le-text-secondary);
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.music-sidebar-close:hover {
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+}
+
+.music-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.music-brand-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.85), rgba(var(--le-primary-rgb), 0.55));
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(var(--le-primary-rgb), 0.30);
+}
+
+.music-brand-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+}
+
+.music-brand-title {
+    font-weight: 600;
+    color: var(--le-text-primary);
+    line-height: 1.2;
+}
+
+.music-brand-sub {
+    font-size: 0.75rem;
+    color: var(--le-text-secondary);
+}
+
+.music-search {
+    position: relative;
+}
+
+.music-search > svg {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: var(--le-text-secondary);
+    pointer-events: none;
+}
+
+.music-search > .glass-input {
+    padding-left: 36px;
+}
+
+.music-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.music-nav-label {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--le-text-tertiary, var(--le-text-secondary));
+    margin-bottom: 6px;
+    padding-left: 4px;
+}
+
+.music-nav-item {
+    appearance: none;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--le-text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+
+.music-nav-item svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+    flex-shrink: 0;
+}
+
+.music-nav-item:hover {
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+    border-color: var(--le-glass-border-subtle);
+}
+
+.music-nav-item.active {
+    background: rgba(var(--le-primary-rgb), 0.16);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    color: var(--le-primary);
+    box-shadow: 0 0 0 1px rgba(var(--le-primary-rgb), 0.10) inset;
+}
+
+.music-nav-count {
+    margin-left: auto;
+    font-size: 0.7rem;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-secondary);
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.music-playlists-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 4px;
+    margin-bottom: 6px;
+}
+
+.music-playlist-add {
+    appearance: none;
+    border: 1px solid var(--le-glass-border-subtle);
+    background: var(--le-glass-bg);
+    color: var(--le-text-secondary);
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease;
+}
+
+.music-playlist-add:hover {
+    background: rgba(var(--le-primary-rgb), 0.18);
+    color: var(--le-primary);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+}
+
+.music-playlist-add svg { width: 14px; height: 14px; }
+
+.music-playlists {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.music-playlist-item {
+    appearance: none;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.music-playlist-item:hover {
+    background: var(--le-glass-bg);
+    border-color: var(--le-glass-border-subtle);
+}
+
+.music-playlist-item.active {
+    background: rgba(var(--le-primary-rgb), 0.14);
+    border-color: rgba(var(--le-primary-rgb), 0.32);
+}
+
+.music-playlist-cover {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.music-playlist-cover svg { width: 16px; height: 16px; }
+
+.music-playlist-meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.music-playlist-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--le-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.music-playlist-info {
+    font-size: 0.7rem;
+    color: var(--le-text-secondary);
+}
+
+/* Cover gradient palette */
+.music-cover-grad-1 { background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+.music-cover-grad-2 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+.music-cover-grad-3 { background: linear-gradient(135deg, #10b981, #06b6d4); }
+.music-cover-grad-4 { background: linear-gradient(135deg, #1e293b, #475569); }
+.music-cover-grad-5 { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+.music-cover-grad-6 { background: linear-gradient(135deg, #0ea5e9, #6366f1); }
+.music-cover-grad-7 { background: linear-gradient(135deg, #14b8a6, #84cc16); }
+.music-cover-grad-8 { background: linear-gradient(135deg, #a855f7, #ec4899); }
+.music-cover-grad-liked { background: linear-gradient(135deg, #ef4444, #f97316); }

@@ -1,0 +1,281 @@
+/* ---- mobile cards ---- */
+.mobile-cards,
+.cards-container {
+  display: none;
+}
+
+.mobile-card,
+.card-mobile,
+.mobile-user-card {
+  background: var(--le-glass-bg-subtle);
+  border: 1px solid var(--le-glass-border-subtle);
+  border-radius: var(--le-radius);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-header-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--le-text-primary);
+}
+
+.card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.card-field {
+  padding: 4px 0;
+}
+
+.card-field-label {
+  font-size: 11px;
+  color: var(--le-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-info {
+  flex: 1;
+}
+
+.card-name {
+  font-weight: 600;
+  color: var(--le-text-primary);
+}
+
+.card-icon {
+  flex-shrink: 0;
+}
+
+.card-actions,
+.mc-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.crud-actions .btn.btn-sm {
+  background: var(--le-glass-bg-subtle);
+  border-color: var(--le-glass-border-subtle);
+  color: var(--le-text-secondary);
+}
+
+.crud-actions .btn.btn-sm:hover {
+  background: var(--le-glass-bg);
+}
+
+.crud-actions .btn.edit:hover {
+  color: var(--le-primary);
+  border-color: rgba(var(--le-primary-rgb), 0.3);
+}
+
+.crud-actions .btn.delete:hover {
+  color: var(--le-danger);
+  border-color: rgba(var(--le-danger-rgb), 0.3);
+}
+
+.crud-actions .btn.view:hover {
+  color: var(--le-info);
+  border-color: rgba(var(--le-info-rgb), 0.3);
+}
+
+.action-btns,
+.actions-cell {
+  display: flex;
+  gap: 4px;
+}
+
+/* ---- mobile card parts ---- */
+.mc-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.mc-body {
+  padding: 8px 0;
+}
+
+.mc-label {
+  font-size: 11px;
+  color: var(--le-text-muted);
+}
+
+/* ---- pagination ---- */
+.pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pagination-info {
+  font-size: 13px;
+  color: var(--le-text-muted);
+}
+
+/* Generic table header bar (title + filters + action buttons).
+   Layout uses flex + gap, NOT justify-content: space-between — the latter
+   only behaves correctly with exactly 2 children. Pages should use Bootstrap's
+   `ms-auto` utility on the action group to push it to the right. */
+.table-header-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+
+/* ---- density: compact ---- */
+[data-density="compact"] .crud-toolbar,
+[data-density="compact"] .toolbar-glass {
+  padding: 10px;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+[data-density="compact"] .toolbar-left {
+  gap: 8px;
+}
+
+[data-density="compact"] .toolbar-right {
+  gap: 6px;
+}
+
+[data-density="compact"] .toolbar-search input,
+[data-density="compact"] .search-box input {
+  padding: 6px 10px 6px 32px;
+  font-size: 12px;
+}
+
+[data-density="compact"] .toolbar-filter {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+[data-density="compact"] .toolbar-date {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+[data-density="compact"] .table-desktop th {
+  padding: 8px 12px;
+  font-size: 11px;
+}
+
+[data-density="compact"] .table-desktop td {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+[data-density="compact"] .mobile-card,
+[data-density="compact"] .card-mobile,
+[data-density="compact"] .mobile-user-card {
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+[data-density="compact"] .card-header-title {
+  font-size: 13px;
+}
+
+[data-density="compact"] .card-field-label {
+  font-size: 10px;
+}
+
+[data-density="compact"] .crud-actions .btn.btn-sm {
+  padding: 4px 10px;
+  font-size: 11px;
+}
+
+[data-density="compact"] .pagination-wrapper {
+  padding: 10px;
+  gap: 8px;
+}
+
+[data-density="compact"] .pagination-info {
+  font-size: 12px;
+}
+
+[data-density="compact"] .table-header-actions {
+  padding: 10px;
+}
+
+
+/* ---- density: comfortable ---- */
+[data-density="comfortable"] .crud-toolbar,
+[data-density="comfortable"] .toolbar-glass {
+  padding: 16px;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+[data-density="comfortable"] .toolbar-left {
+  gap: 14px;
+}
+
+[data-density="comfortable"] .toolbar-right {
+  gap: 10px;
+}
+
+[data-density="comfortable"] .toolbar-search input,
+[data-density="comfortable"] .search-box input {
+  padding: 10px 14px 10px 40px;
+  font-size: 14px;
+}
+
+[data-density="comfortable"] .toolbar-filter {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+[data-density="comfortable"] .toolbar-date {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+[data-density="comfortable"] .table-desktop th {
+  padding: 13px 18px;
+  font-size: 13px;
+}
+
+[data-density="comfortable"] .table-desktop td {
+  padding: 13px 18px;
+  font-size: 14px;
+}
+
+[data-density="comfortable"] .mobile-card,
+[data-density="comfortable"] .card-mobile,
+[data-density="comfortable"] .mobile-user-card {
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+[data-density="comfortable"] .crud-actions .btn.btn-sm {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+[data-density="comfortable"] .pagination-wrapper {
+  padding: 16px;
+  gap: 14px;
+}
+
+[data-density="comfortable"] .table-header-actions {
+  padding: 16px;
+}

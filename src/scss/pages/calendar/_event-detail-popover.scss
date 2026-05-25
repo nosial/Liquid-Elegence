@@ -1,0 +1,155 @@
+/* ---------------------------------------------------------------------------
+   Event Detail Popover
+   --------------------------------------------------------------------------- */
+
+.le-event-popover {
+    position: fixed;
+    z-index: 10001;
+    width: 300px;
+    max-width: calc(100vw - 16px);
+    border-radius: var(--le-radius-md);
+    border: 1px solid var(--le-glass-border);
+    background: rgba(var(--le-glass-bg-rgb, 255, 255, 255), 0.92);
+    backdrop-filter: blur(24px) saturate(1.4);
+    -webkit-backdrop-filter: blur(24px) saturate(1.4);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.16),
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.le-event-popover.visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
+
+.le-event-popover-header {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+.le-event-popover-cat {
+    width: 4px;
+    height: 24px;
+    border-radius: 2px;
+    flex-shrink: 0;
+}
+
+.le-event-popover-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    flex-grow: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.le-event-popover-close {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    color: var(--le-text-muted);
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all var(--le-transition-fast);
+    flex-shrink: 0;
+}
+
+.le-event-popover-close:hover {
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+}
+
+.le-event-popover-body {
+    padding: 0.75rem 1rem;
+}
+
+.le-event-popover-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    font-size: 0.8125rem;
+    color: var(--le-text-secondary);
+}
+
+.le-event-popover-row i,
+.le-event-popover-row svg {
+    width: 14px;
+    height: 14px;
+    color: var(--le-text-muted);
+    flex-shrink: 0;
+}
+
+.le-event-popover-desc {
+    margin-top: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--le-text-secondary);
+    line-height: 1.5;
+}
+
+.le-event-popover-actions {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    border-top: 1px solid var(--le-glass-border-subtle);
+}
+
+.le-event-popover-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.4375rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--le-radius-sm);
+    cursor: pointer;
+    transition: all var(--le-transition-fast);
+    background: transparent;
+    color: var(--le-text-secondary);
+}
+
+.le-event-popover-btn:hover {
+    background: var(--le-glass-bg);
+}
+
+.le-event-popover-btn.edit:hover {
+    background: rgba(var(--le-primary-rgb), 0.1);
+    color: var(--le-primary);
+}
+
+.le-event-popover-btn.duplicate:hover {
+    background: rgba(var(--le-primary-rgb), 0.1);
+    color: var(--le-primary);
+}
+
+.le-event-popover-btn.delete:hover {
+    background: rgba(var(--le-danger-rgb), 0.1);
+    color: var(--le-danger);
+}
+
+.le-event-popover-btn i,
+.le-event-popover-btn svg {
+    width: 14px;
+    height: 14px;
+}

@@ -1,0 +1,174 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="video-streaming.html">Streamflix</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Library</li>
+        </ol>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Your library</h1>
+        <p class="page-subtitle">Everything you've watched, saved, and liked — all in one place.</p>
+    </div>
+
+    <!-- Library Section Tabs -->
+    <div class="glass-card mb-4 video-tabs-card">
+        <div class="video-channel-tabs">
+            <a href="#section-history" class="video-channel-tab is-active"><i data-feather="clock" class="le-icon-14"></i> History</a>
+            <a href="#section-watchlater" class="video-channel-tab"><i data-feather="bookmark" class="le-icon-14"></i> Watch later</a>
+            <a href="#section-liked" class="video-channel-tab"><i data-feather="thumbs-up" class="le-icon-14"></i> Liked</a>
+            <a href="#section-playlists" class="video-channel-tab"><i data-feather="list" class="le-icon-14"></i> Playlists</a>
+        </div>
+    </div>
+
+    <!-- Layered library panel: history / watch later / liked / playlists
+         all live inside one outer glass-card, separated by .glass-divider
+         blocks. The four section anchors stay (links from the tabs above)
+         but are now plain <section> elements inside the panel. -->
+    <div class="glass-card glass-card-body video-library-panel animate-fade-in-up">
+
+        <!-- History -->
+        <section class="video-section" id="section-history">
+            <div class="video-section-header mb-3">
+                <h5 class="video-section-title"><i data-feather="clock" class="le-icon-18 me-1"></i> History</h5>
+                <button class="btn btn-outline-secondary btn-sm le-pill-md"><i data-feather="trash-2" class="le-icon-14"></i> Clear all</button>
+            </div>
+            {% set history = [
+                { title: "Big Buck Bunny — A Cinematic Open Movie Demo", channel: "Wild Frames", duration: "9:56", views: "12M", age: "Watched 2 hours ago", progress: 78, color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                { title: "Building a Glassmorphism Dashboard from Scratch", channel: "CodeCraft Daily", duration: "30:42", views: "540K", age: "Watched yesterday", progress: 45, color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+                { title: "Aurora — A 4K Cinematic Time-Lapse", channel: "Wild Frames", duration: "6:52", views: "2.4M", age: "Watched 2 days ago", progress: 100, color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                { title: "Why Async Doesn't Mean Parallel", channel: "CodeCraft Daily", duration: "15:24", views: "312K", age: "Watched 3 days ago", progress: 62, color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+                { title: "The Easiest Pasta You'll Ever Make", channel: "TasteBud Kitchen", duration: "12:18", views: "412K", age: "Watched 4 days ago", progress: 100, color: "linear-gradient(135deg, #eab308, #f97316)" },
+                { title: "Iceland in 4K — A Travel Diary", channel: "Atlas Wandering", duration: "22:00", views: "980K", age: "Watched last week", progress: 28, color: "linear-gradient(135deg, #0ea5e9, #22c55e)" }
+            ] %}
+            <div class="video-card-grid">
+                {% for v in history %}
+                <a href="video-streaming-watch.html" class="video-card animate-fade-in-up stagger-{{ loop.index if loop.index <= 6 else 6 }}">
+                    <div class="video-thumb" style="background:{{ v.color }};">
+                        <i data-feather="film" class="video-thumb-icon"></i>
+                        <span class="video-thumb-duration">{{ v.duration }}</span>
+                        <div class="video-thumb-progress"><div class="video-thumb-progress-fill" style="width:{{ v.progress }}%;"></div></div>
+                    </div>
+                    <div class="video-meta">
+                        <div class="video-meta-text">
+                            <h6 class="video-meta-title">{{ v.title }}</h6>
+                            <span class="video-meta-channel">{{ v.channel }}</span>
+                            <div class="video-meta-stats"><span>{{ v.views }} views</span><span class="dot">·</span><span>{{ v.age }}</span></div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <div class="glass-divider my-4"></div>
+
+        <!-- Watch Later -->
+        <section class="video-section" id="section-watchlater">
+            <div class="video-section-header mb-3">
+                <h5 class="video-section-title"><i data-feather="bookmark" class="le-icon-18 me-1"></i> Watch later</h5>
+                <span class="le-text-muted le-fs-md">4 videos</span>
+            </div>
+            {% set watchLater = [
+                { title: "How They Made That Shot — Cinematography Breakdown", channel: "Wild Frames", duration: "14:44", views: "412K", age: "Saved 2 days ago", color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                { title: "Modular SCSS at Scale: One Architecture, Many Themes", channel: "CodeCraft Daily", duration: "24:48", views: "184K", age: "Saved 5 days ago", color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+                { title: "Photoshop Plugins That Actually Save Time in 2026", channel: "Pixel Perfect Studios", duration: "11:56", views: "96K", age: "Saved 1 week ago", color: "linear-gradient(135deg, #6366f1, #8b5cf6)" },
+                { title: "10-Minute Tabata: Full Body Sweat", channel: "Pixel Perfect Studios", duration: "10:12", views: "220K", age: "Saved 1 week ago", color: "linear-gradient(135deg, #6366f1, #8b5cf6)" }
+            ] %}
+            <div class="video-card-grid-dense">
+                {% for v in watchLater %}
+                <a href="video-streaming-watch.html" class="video-card">
+                    <div class="video-thumb" style="background:{{ v.color }};">
+                        <i data-feather="film" class="video-thumb-icon"></i>
+                        <span class="video-thumb-duration">{{ v.duration }}</span>
+                    </div>
+                    <div class="video-meta">
+                        <div class="video-meta-text">
+                            <h6 class="video-meta-title">{{ v.title }}</h6>
+                            <span class="video-meta-channel">{{ v.channel }}</span>
+                            <div class="video-meta-stats"><span>{{ v.views }} views</span><span class="dot">·</span><span>{{ v.age }}</span></div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <div class="glass-divider my-4"></div>
+
+        <!-- Liked -->
+        <section class="video-section" id="section-liked">
+            <div class="video-section-header mb-3">
+                <h5 class="video-section-title"><i data-feather="thumbs-up" class="le-icon-18 me-1"></i> Liked videos</h5>
+                <span class="le-text-muted le-fs-md">3 videos</span>
+            </div>
+            {% set liked = [
+                { title: "Synthwave Live Mix — Driving Through Neon City", channel: "Synthwave Sundays", duration: "1:30:00", views: "1.2M", age: "Liked 1 week ago", color: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+                { title: "Pixel Art Animation: Day to Night Cycle", channel: "Pixel Perfect Studios", duration: "10:12", views: "740K", age: "Liked 2 weeks ago", color: "linear-gradient(135deg, #6366f1, #8b5cf6)" },
+                { title: "Stand-Up: 7 Minutes That Will Make You Smile", channel: "Pixel Perfect Studios", duration: "7:06", views: "880K", age: "Liked 3 weeks ago", color: "linear-gradient(135deg, #6366f1, #8b5cf6)" }
+            ] %}
+            <div class="video-card-grid-dense">
+                {% for v in liked %}
+                <a href="video-streaming-watch.html" class="video-card">
+                    <div class="video-thumb" style="background:{{ v.color }};">
+                        <i data-feather="film" class="video-thumb-icon"></i>
+                        <span class="video-thumb-duration">{{ v.duration }}</span>
+                    </div>
+                    <div class="video-meta">
+                        <div class="video-meta-text">
+                            <h6 class="video-meta-title">{{ v.title }}</h6>
+                            <span class="video-meta-channel">{{ v.channel }}</span>
+                            <div class="video-meta-stats"><span>{{ v.views }} views</span><span class="dot">·</span><span>{{ v.age }}</span></div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <div class="glass-divider my-4"></div>
+
+        <!-- Playlists -->
+        <section class="video-section" id="section-playlists">
+            <div class="video-section-header mb-3">
+                <h5 class="video-section-title"><i data-feather="list" class="le-icon-18 me-1"></i> Your playlists</h5>
+                <button class="btn btn-primary btn-sm le-pill-md"><i data-feather="plus" class="le-icon-14"></i> New playlist</button>
+            </div>
+            {% set playlists = [
+                { title: "Coding Background Music", count: "24 videos", color: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+                { title: "Travel Inspiration", count: "12 videos", color: "linear-gradient(135deg, #0ea5e9, #22c55e)" },
+                { title: "Web Dev Tutorials", count: "18 videos", color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+                { title: "Cinematic Shorts", count: "8 videos", color: "linear-gradient(135deg, #10b981, #06b6d4)" }
+            ] %}
+            <div class="video-card-grid-dense">
+                {% for p in playlists %}
+                <a href="javascript:void(0)" class="video-card">
+                    <div class="video-thumb video-thumb-playlist" style="background:{{ p.color }};">
+                        <i data-feather="list" class="video-thumb-icon"></i>
+                        <span class="video-thumb-duration"><i data-feather="play" class="le-icon-12"></i> {{ p.count }}</span>
+                    </div>
+                    <div class="video-meta">
+                        <div class="video-meta-text">
+                            <h6 class="video-meta-title">{{ p.title }}</h6>
+                            <span class="video-meta-channel">View playlist</span>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </section>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/video-streaming.js"></script>
+{% endblock %}

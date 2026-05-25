@@ -1,0 +1,54 @@
+/* ── Hover Effects ── */
+
+.hover-pop {
+  transition: filter 250ms ease, box-shadow 250ms ease, transform 250ms ease;
+
+  &:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 0 10px rgba(var(--le-primary-rgb), 0.10);
+    transform: translateY(-1px);
+  }
+}
+
+.hover-glass {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(0);
+    -webkit-backdrop-filter: blur(0);
+    transition: all 300ms ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &:hover::after {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
+
+.hover-bright {
+  transition: filter 250ms ease;
+
+  &:hover {
+    filter: brightness(1.15);
+  }
+}
+
+.hover-tilt {
+  transition: filter 300ms ease, box-shadow 300ms ease, transform 300ms ease;
+
+  &:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 2px 14px rgba(var(--le-primary-rgb), 0.10);
+    transform: translateY(-1px);
+  }
+}
+
+

@@ -1,0 +1,73 @@
+/* ---------------------------------------------------------------------------
+   Main Chat Area
+   --------------------------------------------------------------------------- */
+.chat-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.chat-main .glass-card {
+    border-radius: 0;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ---------------------------------------------------------------------------
+   Info Panel (right sidebar) — glass card is the scroll container
+   --------------------------------------------------------------------------- */
+.chat-info-panel {
+    width: 240px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;                   /* panel itself never scrolls */
+    border-radius: 0 var(--le-radius-lg) var(--le-radius-lg) 0;
+}
+
+.chat-info-panel .glass-card {
+    border-radius: 0 var(--le-radius-lg) var(--le-radius-lg) 0;
+    height: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    overflow-y: auto;                   /* glass-card scrolls internally */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ---------------------------------------------------------------------------
+   Search
+   --------------------------------------------------------------------------- */
+.chat-search {
+    padding: 1rem;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+.chat-search .glass-input {
+    width: 100%;
+    padding: 0.5rem 0.75rem 0.5rem 2.25rem;
+    font-size: 0.8125rem;
+}
+
+.chat-search-wrap {
+    position: relative;
+}
+
+.chat-search-wrap i,
+.chat-search-wrap svg {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px;
+    height: 14px;
+    color: var(--le-text-muted);
+    pointer-events: none;
+}

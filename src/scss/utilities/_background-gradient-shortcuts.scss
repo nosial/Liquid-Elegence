@@ -1,0 +1,62 @@
+// ── Background – gradient shortcuts ──────────────────────────────────────
+.le-bg-gradient-primary {
+  background: linear-gradient(135deg, var(--le-primary), var(--le-secondary));
+}
+.le-bg-gradient-primary-rev {
+  background: linear-gradient(135deg, var(--le-secondary), var(--le-primary));
+}
+.le-bg-gradient-success {
+  background: linear-gradient(135deg, var(--le-success), #059669);
+}
+.le-bg-gradient-success-mono {
+  background: linear-gradient(135deg, var(--le-success), var(--le-success));
+}
+.le-bg-gradient-warning {
+  background: linear-gradient(135deg, var(--le-warning), #d97706);
+}
+.le-bg-gradient-warning-mono {
+  background: linear-gradient(135deg, var(--le-warning), var(--le-warning));
+}
+.le-bg-gradient-danger {
+  background: linear-gradient(135deg, var(--le-danger), #dc2626);
+}
+
+// ── Color shortcuts ──────────────────────────────────────────────────────
+.le-text-primary    { color: var(--le-primary); }
+.le-text-secondary  { color: var(--le-secondary); }
+.le-text-success    { color: var(--le-success); }
+.le-text-warning    { color: var(--le-warning); }
+.le-text-danger     { color: var(--le-danger); }
+.le-text-info       { color: var(--le-info); }
+.le-text-muted      { color: var(--le-text-muted); }
+.le-text-body       { color: var(--le-text-primary); }
+
+// ── Text muted + no-decoration link ──────────────────────────────────────
+.le-link-muted {
+  color: var(--le-text-muted);
+  text-decoration: none;
+}
+.le-link-primary {
+  color: var(--le-primary);
+  text-decoration: none;
+}
+
+// ── Opacity values ───────────────────────────────────────────────────────
+.le-opacity-50 { opacity: 0.5; }
+.le-opacity-60 { opacity: 0.6; }
+.le-opacity-65 { opacity: 0.65; }
+.le-opacity-70 { opacity: 0.7; }
+
+// ── Cursor ───────────────────────────────────────────────────────────────
+.le-cursor-pointer { cursor: pointer; }
+
+// ── White-space ──────────────────────────────────────────────────────────
+.le-ws-pre-wrap { white-space: pre-wrap; }
+.le-ws-nowrap   { white-space: nowrap; }
+
+// ── Overflow values ──────────────────────────────────────────────────────
+.le-overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

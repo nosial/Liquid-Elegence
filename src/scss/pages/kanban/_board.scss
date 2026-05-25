@@ -1,0 +1,163 @@
+/* -----------------------------------------------------------------------------
+   Board
+   -------------------------------------------------------------------------- */
+
+.kanban-board {
+    display: flex;
+    gap: 1.25rem;
+    overflow-x: auto;
+    padding-bottom: 1.5rem;
+    min-height: calc(100vh - 180px);
+    align-items: flex-start;
+}
+
+.kanban-board::-webkit-scrollbar {
+    height: 6px;
+}
+
+.kanban-board::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.kanban-board::-webkit-scrollbar-thumb {
+    background: rgba(var(--le-primary-rgb), 0.18);
+    border-radius: 99px;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Columns
+   -------------------------------------------------------------------------- */
+
+.kanban-column {
+    flex: 0 0 310px;
+    min-width: 310px;
+    max-height: calc(100vh - 190px);
+    display: flex;
+    flex-direction: column;
+}
+
+.kanban-column .glass-card {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    padding: 0;
+}
+
+.kanban-col-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    position: relative;
+}
+
+/* Column accent bar */
+.kanban-col-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: var(--le-radius-lg) var(--le-radius-lg) 0 0;
+    background: inherit;
+    opacity: 0;
+}
+
+.kanban-column[data-column="backlog"] .kanban-col-header::before {
+    background: linear-gradient(90deg, var(--le-secondary), rgba(var(--le-secondary-rgb), 0.4));
+    opacity: 1;
+}
+
+.kanban-column[data-column="todo"] .kanban-col-header::before {
+    background: linear-gradient(90deg, var(--le-primary), rgba(var(--le-primary-rgb), 0.4));
+    opacity: 1;
+}
+
+.kanban-column[data-column="inprogress"] .kanban-col-header::before {
+    background: linear-gradient(90deg, var(--le-warning), rgba(var(--le-warning-rgb), 0.4));
+    opacity: 1;
+}
+
+.kanban-column[data-column="done"] .kanban-col-header::before {
+    background: linear-gradient(90deg, var(--le-success), rgba(var(--le-success-rgb), 0.4));
+    opacity: 1;
+}
+
+.kanban-col-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.kanban-col-title {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--le-text);
+    flex: 1;
+}
+
+.kanban-col-count {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    padding: 0.125rem 0.5rem;
+    border-radius: 99px;
+    background: rgba(var(--le-primary-rgb), 0.1);
+    color: var(--le-primary);
+    border: 1px solid var(--le-glass-border-subtle);
+}
+
+.kanban-col-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.kanban-col-actions button {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: var(--le-text-muted);
+    border-radius: var(--le-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+}
+
+.kanban-col-actions button:hover {
+    background: rgba(var(--le-primary-rgb), 0.1);
+    color: var(--le-primary);
+}
+
+.kanban-col-actions button svg {
+    width: 16px;
+    height: 16px;
+}
+
+.kanban-card-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.kanban-card-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.kanban-card-list::-webkit-scrollbar-thumb {
+    background: rgba(var(--le-primary-rgb), 0.15);
+    border-radius: 99px;
+}
+
+.kanban-col-footer {
+    padding: 0.625rem 1rem;
+    border-top: 1px solid var(--le-glass-border-subtle);
+}

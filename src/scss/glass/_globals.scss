@@ -1,0 +1,123 @@
+
+/* ── Design Tokens ── */
+
+:root {
+  /* Chromatic aberration — color fringing at glass edges (water-droplet dispersion) */
+  --le-chroma-red:        rgba(255, 90, 60, 0.14);
+  --le-chroma-blue:       rgba(60, 110, 255, 0.14);
+  --le-chroma-green:      rgba(60, 235, 140, 0.10);
+
+  /* Specular highlight — convex water-droplet caustic on glass surface */
+  --le-specular-color:    rgba(255, 255, 255, 0.30);
+  --le-specular-size:     60%;
+  --le-specular-warm:     rgba(255, 248, 235, 0.14);
+
+  /* Water-droplet surface tension — meniscus edge darkening */
+  --le-meniscus-shadow:   inset 0 0 18px 3px rgba(0, 0, 0, 0.045);
+  --le-meniscus-highlight: inset 0 -1px 10px 0 rgba(255, 255, 255, 0.10);
+
+  /* Iridescent border */
+  --le-iridescent-1:      rgba(255, 100, 100, 0.35);
+  --le-iridescent-2:      rgba(255, 200, 80, 0.28);
+  --le-iridescent-3:      rgba(80, 220, 120, 0.28);
+  --le-iridescent-4:      rgba(80, 160, 255, 0.35);
+  --le-iridescent-5:      rgba(160, 100, 255, 0.35);
+
+  /* Inner glow — water-bead surface tension light wrap */
+  --le-inner-glow:        inset 0 1px 4px 0 rgba(255, 255, 255, 0.24),
+                          inset 0 -1px 2px 0 rgba(0, 0, 0, 0.03),
+                          inset 1px 0 3px 0 rgba(255, 255, 255, 0.06),
+                          var(--le-meniscus-highlight);
+  --le-inner-glow-strong: inset 0 1px 6px 0 rgba(255, 255, 255, 0.32),
+                          inset 0 -1px 4px 0 rgba(0, 0, 0, 0.05),
+                          inset 1px 0 4px 0 rgba(255, 255, 255, 0.10),
+                          var(--le-meniscus-highlight);
+
+  /* Caustic light pattern — water-lens light gathering */
+  --le-caustic-color:     rgba(255, 255, 255, 0.07);
+  --le-caustic-speed:     18s;
+
+  /* Liquid-glass backdrop-filter composition */
+  --le-liquid-blur:            22px;
+  --le-liquid-saturate:        2.0;
+  --le-liquid-saturate-strong: 1.85;
+  --le-liquid-saturate-subtle: 1.5;
+  --le-liquid-brightness:      1.10;
+}
+
+[data-theme="dark"] {
+  /* Chromatic fringing — softer on dark backgrounds to avoid glossy artifacting */
+  --le-chroma-red:        rgba(160, 120, 220, 0.07);
+  --le-chroma-blue:       rgba(80, 140, 255, 0.08);
+  --le-chroma-green:      rgba(90, 235, 160, 0.05);
+
+  /* Specular — gentler so highlight reads as refracted light, not glare */
+  --le-specular-color:    rgba(255, 255, 255, 0.12);
+  --le-specular-size:     50%;
+  --le-specular-warm:     rgba(200, 210, 255, 0.06);
+
+  /* Meniscus — thinner, subtler edge darkening (water-bead contact ring) */
+  --le-meniscus-shadow:   inset 0 0 12px 2px rgba(0, 0, 0, 0.05);
+  --le-meniscus-highlight: inset 0 -1px 8px 0 rgba(255, 255, 255, 0.04);
+
+  /* Inner glow — soft surface-tension light wrap; less dark contrast */
+  --le-inner-glow:        inset 0 1px 3px 0 rgba(255, 255, 255, 0.11),
+                          inset 0 -1px 2px 0 rgba(0, 0, 0, 0.05),
+                          inset 1px 0 3px 0 rgba(255, 255, 255, 0.04),
+                          var(--le-meniscus-highlight);
+  --le-inner-glow-strong: inset 0 1px 5px 0 rgba(255, 255, 255, 0.16),
+                          inset 0 -1px 4px 0 rgba(0, 0, 0, 0.07),
+                          inset 1px 0 4px 0 rgba(255, 255, 255, 0.05),
+                          var(--le-meniscus-highlight);
+
+  --le-caustic-color:     rgba(255, 255, 255, 0.03);
+
+  /* Liquid-glass composition — water droplets refract light *upward*,
+     so brightness must stay above 1.0 even in dark mode.
+     Saturate is lowered to avoid the oversaturated glossy look. */
+  --le-liquid-blur:            22px;
+  --le-liquid-saturate:        1.4;
+  --le-liquid-saturate-strong: 1.3;
+  --le-liquid-saturate-subtle: 1.2;
+  --le-liquid-brightness:      1.05;
+}
+
+/* ── Body Background ── */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(ellipse 600px 600px at 20% 30%, rgba(var(--le-primary-rgb), 0.06) 0%, transparent 100%),
+    radial-gradient(ellipse 500px 500px at 75% 70%, rgba(var(--le-secondary-rgb), 0.05) 0%, transparent 100%);
+  animation: ambient-shift 45s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes ambient-shift {
+  0%   { opacity: 0.85; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+/* ── Scrollbar & Selection ── */
+/* Defined in glass/_base.scss (§5–§6) — single source of truth */
+
+/* ── Focus Rings ── */
+
+:focus-visible {
+  outline: 2px solid rgba(var(--le-primary-rgb), 0.4);
+  outline-offset: 2px;
+  border-radius: var(--le-radius-sm, 4px);
+}
+
+/* ── Links ── */
+
+a:not(.btn):not(.nav-link):not(.sidebar-link):not(.dropdown-item):not(.breadcrumb-item a) {
+  text-decoration: none;
+  transition: color var(--le-transition-fast);
+}
+
+

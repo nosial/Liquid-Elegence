@@ -1,0 +1,256 @@
+/* =============================================================================
+   Liquid Glass Effects
+   Flat liquid-on-glass feel: subtle refractive edges, theme-tinted surfaces,
+   material-like transitions. Not bubbly — controlled, elegant.
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   Material Transitions
+   Physics-based easing for all interactive glass elements.
+   ------------------------------------------------------------------------ */
+.glass,
+.glass-strong,
+.glass-subtle,
+.glass-card,
+.glass-modal,
+.glass-badge,
+.glass-input,
+.glass-tab,
+.glass-tabs {
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.glass-tab:active,
+.glass-badge:active {
+  filter: brightness(0.96);
+  transition-duration: 0.08s;
+}
+
+/* ---------------------------------------------------------------------------
+   Glass Modal Effects
+   ------------------------------------------------------------------------ */
+.glass-modal {
+  box-shadow:
+    var(--le-shadow-xl),
+    0 0 40px rgba(var(--le-primary-rgb), 0.06);
+}
+
+.glass-modal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      ellipse 70% 40% at 30% 0%,
+      var(--le-specular-color) 0%,
+      rgba(255, 255, 255, 0.04) 45%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 30% at 75% 90%,
+      var(--le-reflection-caustic) 0%,
+      transparent 60%
+    ),
+    linear-gradient(
+      175deg,
+      var(--le-chroma-red) 0%,
+      transparent 16%,
+      transparent 84%,
+      var(--le-chroma-blue) 100%
+    ),
+    linear-gradient(
+      90deg,
+      var(--le-chroma-red) 0%,
+      transparent 6%,
+      transparent 94%,
+      var(--le-chroma-blue) 100%
+    );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+[data-theme="dark"] .glass-modal {
+  box-shadow:
+    var(--le-shadow-xl),
+    0 0 48px rgba(var(--le-primary-rgb), 0.10);
+}
+
+[data-theme="dark"] .glass-modal::before {
+  opacity: 0.5;
+}
+
+/* ---------------------------------------------------------------------------
+   Glass Input Liquid Focus
+   Focus state with water-droplet refraction ring and chromatic dispersion.
+   ------------------------------------------------------------------------ */
+.glass-input:focus {
+  outline: none;
+  border-color: rgba(var(--le-primary-rgb), 0.50);
+  box-shadow:
+    0 0 0 3px rgba(var(--le-primary-rgb), 0.12),
+    0 0 16px rgba(var(--le-primary-rgb), 0.08),
+    0 2px 8px rgba(var(--le-primary-rgb), 0.05),
+    inset 0 1px 2px rgba(0, 0, 0, 0.04);
+  background: rgba(var(--le-white-rgb), 0.16);
+}
+
+[data-theme="light"] .glass-input:focus {
+  background: rgba(var(--le-white-rgb), 0.90);
+  box-shadow:
+    0 0 0 3px rgba(var(--le-primary-rgb), 0.14),
+    0 0 20px rgba(var(--le-primary-rgb), 0.06),
+    0 2px 8px rgba(var(--le-primary-rgb), 0.04),
+    inset 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* Chromatic refraction ring on glass-input focus */
+.glass-input-focus-ring {
+  position: relative;
+}
+
+.glass-input-focus-ring::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      135deg,
+      var(--le-chroma-red) 0%,
+      transparent 30%,
+      transparent 70%,
+      var(--le-chroma-blue) 100%
+    );
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.glass-input-focus-ring:focus-within::after {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   Density-Aware Glass Card Padding
+   ------------------------------------------------------------------------ */
+.glass-card-body,
+.glass-card > .card-body {
+  padding: var(--le-card-padding);
+}
+
+.glass-card-header,
+.glass-card > .card-header {
+  padding: var(--le-card-header-padding);
+}
+
+.glass-card-footer,
+.glass-card > .card-footer {
+  padding: var(--le-card-header-padding);
+}
+
+/* ---------------------------------------------------------------------------
+   Liquid Glass Buttons
+   btn-glass-primary liquid-effect additions.
+   ------------------------------------------------------------------------ */
+.btn-glass-primary {
+  box-shadow: 0 2px 8px rgba(var(--le-primary-rgb), 0.25);
+  filter: brightness(1);
+  transition:
+    box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background 0.2s ease;
+}
+
+.btn-glass-primary:hover {
+  box-shadow:
+    0 4px 14px rgba(var(--le-primary-rgb), 0.35),
+    0 0 20px rgba(var(--le-primary-rgb), 0.10);
+  filter: brightness(1.06);
+}
+
+.btn-glass-primary:active {
+  box-shadow: 0 1px 4px rgba(var(--le-primary-rgb), 0.20);
+  filter: brightness(0.95);
+  transition-duration: 0.08s;
+}
+
+/* ---------------------------------------------------------------------------
+   Badge Theme Integration
+   ------------------------------------------------------------------------ */
+[data-theme="dark"] .glass-badge {
+  background: rgba(var(--le-primary-rgb), 0.22);
+  color: var(--le-primary-on-glass);
+  border-color: rgba(var(--le-primary-rgb), 0.30);
+}
+
+[data-theme="dark"] .glass-badge-success {
+  background: rgba(var(--le-success-rgb), 0.22);
+  color: var(--le-success-light);
+  border-color: rgba(var(--le-success-rgb), 0.30);
+}
+
+[data-theme="dark"] .glass-badge-warning {
+  background: rgba(var(--le-warning-rgb), 0.22);
+  color: var(--le-warning-light);
+  border-color: rgba(var(--le-warning-rgb), 0.30);
+}
+
+[data-theme="dark"] .glass-badge-danger {
+  background: rgba(var(--le-danger-rgb), 0.22);
+  color: var(--le-danger-light);
+  border-color: rgba(var(--le-danger-rgb), 0.30);
+}
+
+[data-theme="dark"] .glass-badge-info {
+  background: rgba(var(--le-info-rgb), 0.22);
+  color: var(--le-info-light);
+  border-color: rgba(var(--le-info-rgb), 0.30);
+}
+
+/* ---------------------------------------------------------------------------
+   Glass Badge Hover Glow
+   Subtle light-collection effect on hover, as if the badge is a tiny
+   droplet gathering ambient light.
+   ------------------------------------------------------------------------ */
+.glass-badge {
+  transition: box-shadow 0.3s var(--le-spring-snappy),
+              filter 0.3s var(--le-spring-snappy);
+  filter: brightness(1);
+}
+
+.glass-badge:hover {
+  box-shadow: 0 0 12px rgba(var(--le-primary-rgb), 0.12),
+              0 2px 6px rgba(var(--le-primary-rgb), 0.06);
+  filter: brightness(1.06);
+}
+
+.glass-badge-success:hover {
+  box-shadow: 0 0 12px rgba(var(--le-success-rgb), 0.12),
+              0 2px 6px rgba(var(--le-success-rgb), 0.06);
+}
+
+.glass-badge-warning:hover {
+  box-shadow: 0 0 12px rgba(var(--le-warning-rgb), 0.12),
+              0 2px 6px rgba(var(--le-warning-rgb), 0.06);
+}
+
+.glass-badge-danger:hover {
+  box-shadow: 0 0 12px rgba(var(--le-danger-rgb), 0.12),
+              0 2px 6px rgba(var(--le-danger-rgb), 0.06);
+}
+
+.glass-badge-info:hover {
+  box-shadow: 0 0 12px rgba(var(--le-info-rgb), 0.12),
+              0 2px 6px rgba(var(--le-info-rgb), 0.06);
+}
+
+.glass-badge:active {
+  filter: brightness(0.95);
+  transition-duration: 0.08s;
+}

@@ -1,0 +1,143 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    {% set genres = ["All", "Action", "Adventure", "Comedy", "Drama", "Sci-Fi", "Thriller", "Horror", "Romance", "Documentary", "Mystery", "Animation", "Family", "Kids"] %}
+
+    {# Big static catalog used for the grid (each card has data-genre for client-side filtering) #}
+    {% set catalog = [
+        { id: "stellar-drift",        title: "Stellar Drift",         genre: "Sci-Fi",      year: "2024", maturity: "TV-14", duration: "S1",     badge: "CINEFLUX", color: "linear-gradient(135deg, #6366f1, #06b6d4)" },
+        { id: "neon-wolves",          title: "Neon Wolves",           genre: "Action",      year: "2023", maturity: "TV-MA", duration: "S2",     badge: "TOP 10",   color: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+        { id: "the-glass-detective",  title: "The Glass Detective",   genre: "Mystery",     year: "2024", maturity: "TV-14", duration: "S1",     badge: "NEW",      color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+        { id: "polaris-run",          title: "Polaris Run",           genre: "Sci-Fi",      year: "2024", maturity: "PG-13", duration: "2h 05m", badge: "4K",       color: "linear-gradient(135deg, #1e293b, #475569)" },
+        { id: "velvet-dawn",          title: "Velvet Dawn",           genre: "Drama",       year: "2023", maturity: "TV-14", duration: "S3",                        color: "linear-gradient(135deg, #be123c, #f97316)" },
+        { id: "deep-ember",           title: "Deep Ember",            genre: "Thriller",    year: "2024", maturity: "R",     duration: "1h 47m", badge: "HD",       color: "linear-gradient(135deg, #7c2d12, #b91c1c)" },
+        { id: "paper-cities",         title: "Paper Cities",          genre: "Drama",       year: "2023", maturity: "PG",    duration: "2h 02m",                    color: "linear-gradient(135deg, #475569, #94a3b8)" },
+        { id: "voltage",              title: "Voltage",               genre: "Action",      year: "2024", maturity: "PG-13", duration: "1h 51m", badge: "NEW",      color: "linear-gradient(135deg, #facc15, #ea580c)" },
+        { id: "atlas-burning",        title: "Atlas Burning",         genre: "Thriller",    year: "2023", maturity: "TV-MA", duration: "S2",                        color: "linear-gradient(135deg, #b91c1c, #1f2937)" },
+        { id: "moonshade",            title: "Moonshade",             genre: "Horror",      year: "2024", maturity: "TV-MA", duration: "S1",     badge: "NEW",      color: "linear-gradient(135deg, #1e1b4b, #312e81)" },
+        { id: "ghost-frequency",      title: "Ghost Frequency",       genre: "Horror",      year: "2023", maturity: "TV-MA", duration: "S1",                        color: "linear-gradient(135deg, #581c87, #ec4899)" },
+        { id: "cipher",               title: "Cipher",                genre: "Mystery",     year: "2023", maturity: "TV-14", duration: "S1",                        color: "linear-gradient(135deg, #0f172a, #6366f1)" },
+        { id: "saffron-sky",          title: "Saffron Sky",           genre: "Romance",     year: "2024", maturity: "PG-13", duration: "1h 58m",                    color: "linear-gradient(135deg, #f59e0b, #ef4444)" },
+        { id: "wildflower-country",   title: "Wildflower Country",    genre: "Drama",       year: "2024", maturity: "PG",    duration: "S2",                        color: "linear-gradient(135deg, #84cc16, #14b8a6)" },
+        { id: "iron-garden",          title: "Iron Garden",           genre: "Drama",       year: "2022", maturity: "TV-MA", duration: "S3",     badge: "CINEFLUX", color: "linear-gradient(135deg, #ea580c, #78350f)" },
+        { id: "echoes-of-tomorrow",   title: "Echoes of Tomorrow",    genre: "Sci-Fi",      year: "2024", maturity: "PG-13", duration: "1h 58m", badge: "NEW",      color: "linear-gradient(135deg, #6366f1, #ec4899)" },
+        { id: "the-lighthouse-keeper",title: "The Lighthouse Keeper", genre: "Mystery",     year: "2025", maturity: "PG",    duration: "2h 24m", badge: "NEW",      color: "linear-gradient(135deg, #0c4a6e, #0ea5e9)" },
+        { id: "northwind",            title: "Northwind",             genre: "Adventure",   year: "2025", maturity: "PG-13", duration: "1h 52m", badge: "NEW",      color: "linear-gradient(135deg, #14b8a6, #0f172a)" },
+        { id: "embers-and-ash",       title: "Embers & Ash",          genre: "Drama",       year: "2025", maturity: "R",     duration: "2h 03m", badge: "NEW",      color: "linear-gradient(135deg, #b91c1c, #4c1d95)" },
+        { id: "the-gilded-cage",      title: "The Gilded Cage",       genre: "Thriller",    year: "2025", maturity: "TV-MA", duration: "S1",     badge: "NEW",      color: "linear-gradient(135deg, #ca8a04, #78350f)" },
+        { id: "starboard",            title: "Starboard",             genre: "Adventure",   year: "2025", maturity: "PG",    duration: "1h 44m", badge: "NEW",      color: "linear-gradient(135deg, #0ea5e9, #14b8a6)" },
+        { id: "violet-hours",         title: "Violet Hours",          genre: "Drama",       year: "2025", maturity: "TV-14", duration: "1h 39m", badge: "NEW",      color: "linear-gradient(135deg, #8b5cf6, #ec4899)" },
+        { id: "cobalt-hour",          title: "Cobalt Hour",           genre: "Thriller",    year: "2025", maturity: "TV-MA", duration: "S1",     badge: "NEW",      color: "linear-gradient(135deg, #1e40af, #0891b2)" },
+        { id: "quantum-heist",        title: "Quantum Heist",         genre: "Action",      year: "2025", maturity: "PG-13", duration: "2h 11m", badge: "NEW",      color: "linear-gradient(135deg, #0ea5e9, #6366f1)" },
+        { id: "midnight-metro",       title: "Midnight Metro",        genre: "Thriller",    year: "2023", maturity: "TV-14", duration: "S2",                        color: "linear-gradient(135deg, #1e3a8a, #06b6d4)" },
+        { id: "black-comet",          title: "Black Comet",           genre: "Sci-Fi",      year: "2022", maturity: "PG-13", duration: "2h 09m",                    color: "linear-gradient(135deg, #0f172a, #4338ca)" },
+        { id: "solar-bloom",          title: "Solar Bloom",           genre: "Documentary", year: "2024", maturity: "G",     duration: "1h 32m",                    color: "linear-gradient(135deg, #fb923c, #fde047)" },
+        { id: "the-deep-currents",    title: "The Deep Currents",     genre: "Documentary", year: "2023", maturity: "PG",    duration: "1h 48m",                    color: "linear-gradient(135deg, #0c4a6e, #06b6d4)" },
+        { id: "letters-from-saturn",  title: "Letters from Saturn",   genre: "Documentary", year: "2024", maturity: "PG",    duration: "1h 22m", badge: "HD",       color: "linear-gradient(135deg, #1e1b4b, #6366f1)" },
+        { id: "city-of-glass",        title: "City of Glass",         genre: "Documentary", year: "2022", maturity: "PG",    duration: "1h 15m",                    color: "linear-gradient(135deg, #475569, #cbd5e1)" }
+    ] %}
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Browse Movies &amp; Shows</h1>
+        <p class="page-subtitle">Filter by genre, year, language and maturity rating to find your next pick.</p>
+    </div>
+
+    <div class="glass-card animate-fade-in-up">
+
+        {# ====== Filter chips ====== #}
+        <section class="movie-tabs-card">
+            <div class="movie-chip-bar">
+                {% for g in genres %}
+                <a href="javascript:void(0)" class="movie-chip{% if loop.first %} is-active{% endif %}" data-filter-genre="{{ g }}">{{ g }}</a>
+                {% endfor %}
+            </div>
+        </section>
+
+        <div class="glass-divider my-3"></div>
+
+        {# ====== Filter dropdowns ====== #}
+        <section class="glass-card-body">
+            <div class="movie-filter-bar">
+                <div class="movie-filter-group">
+                    <span class="movie-filter-label">Sort</span>
+                    <select class="movie-filter-select">
+                        <option>Suggested</option>
+                        <option>Year (newest)</option>
+                        <option>Year (oldest)</option>
+                        <option>A — Z</option>
+                        <option>Z — A</option>
+                    </select>
+                </div>
+                <div class="movie-filter-group">
+                    <span class="movie-filter-label">Year</span>
+                    <select class="movie-filter-select">
+                        <option>Any</option>
+                        <option>2025</option>
+                        <option>2024</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                    </select>
+                </div>
+                <div class="movie-filter-group">
+                    <span class="movie-filter-label">Maturity</span>
+                    <select class="movie-filter-select">
+                        <option>All ratings</option>
+                        <option>Family (G, PG)</option>
+                        <option>Teen (PG-13, TV-14)</option>
+                        <option>Adult (R, TV-MA)</option>
+                    </select>
+                </div>
+                <div class="movie-filter-group">
+                    <span class="movie-filter-label">Language</span>
+                    <select class="movie-filter-select">
+                        <option>Any</option>
+                        <option>English</option>
+                        <option>Spanish</option>
+                        <option>French</option>
+                        <option>Japanese</option>
+                    </select>
+                </div>
+                <div class="movie-filter-group ms-auto">
+                    <span class="le-text-muted le-fs-md" id="movGridCount">{{ catalog | length }} titles</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="glass-divider my-3"></div>
+
+        {# ====== Grid ====== #}
+        <section class="glass-card-body">
+            <div class="movie-grid" id="movGrid">
+                {% for v in catalog %}
+                <a href="movie-streaming-title.html" class="movie-card" data-genre="{{ v.genre }}">
+                    <div class="movie-card-thumb" style="background: {{ v.color }};">
+                        <span class="movie-card-thumb-title">{{ v.title }}</span>
+                        <span class="movie-card-icon"><i data-feather="play" class="le-icon-20"></i></span>
+                        {% if v.badge %}<div class="movie-card-badges"><span class="movie-card-badge{% if v.badge == 'NEW' %} is-new{% elif v.badge == 'HD' %} is-hd{% elif v.badge == '4K' %} is-4k{% elif v.badge == 'CINEFLUX' %} is-cf{% endif %}">{{ v.badge }}</span></div>{% endif %}
+                        <span class="movie-card-duration">{{ v.duration }}</span>
+                    </div>
+                    <div class="movie-card-info">
+                        <h6 class="movie-card-title">{{ v.title }}</h6>
+                        <div class="movie-card-meta">
+                            <span class="movie-pill movie-pill-rating">{{ v.maturity }}</span>
+                            <span>{{ v.year }}</span>
+                            <span class="movie-dot"></span>
+                            <span>{{ v.genre }}</span>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+                <div class="movie-grid-empty" id="movGridEmpty" hidden>No titles match your filters.</div>
+            </div>
+        </section>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root }}js/apps/movie-streaming.js"></script>
+{% endblock %}

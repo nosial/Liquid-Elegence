@@ -1,0 +1,77 @@
+/* =============================================================================
+   Quick Access
+   ============================================================================= */
+
+.fm-quick-access {
+    padding: 1.25rem 1.25rem 0;
+    margin-bottom: 0;
+}
+.fm-section-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--le-text-muted);
+    margin-bottom: 0.75rem;
+}
+.fm-quick-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+}
+.fm-quick-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--le-radius);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.fm-quick-item:hover {
+    background: rgba(var(--le-primary-rgb), 0.06);
+    filter: brightness(1.04);
+}
+.fm-quick-item i,
+.fm-quick-item svg {
+    width: 20px;
+    height: 20px;
+    color: var(--le-primary);
+    flex-shrink: 0;
+}
+.fm-quick-item span {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--le-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.fm-quick-item small {
+    font-size: 0.6875rem;
+    color: var(--le-text-muted);
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+/* Context menu active state */
+.fm-file-card.ctx-active {
+    box-shadow: 0 0 0 2px rgba(var(--le-primary-rgb), 0.25);
+}
+
+/* Context menu header */
+.le-context-menu-header {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--le-text-muted);
+    padding: 0.375rem 0.75rem 0.25rem;
+}
+
+.le-context-menu-item i,
+.le-context-menu-item svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+}

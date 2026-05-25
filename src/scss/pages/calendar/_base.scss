@@ -1,0 +1,98 @@
+/* =============================================================================
+   Liquid Elegance — Calendar App Styles
+   Modular liquid glass design for the calendar interface.
+   ============================================================================= */
+
+
+/* ---------------------------------------------------------------------------
+   Keyframes
+   --------------------------------------------------------------------------- */
+
+@keyframes cal-today-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(var(--le-primary-rgb), 0.45); }
+    70%  { box-shadow: 0 0 0 8px rgba(var(--le-primary-rgb), 0); }
+    100% { box-shadow: 0 0 0 0 rgba(var(--le-primary-rgb), 0); }
+}
+
+@keyframes cal-ripple {
+    from { transform: scale(0); opacity: 0.55; }
+    to   { transform: scale(2.5); opacity: 0; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   Layout
+   --------------------------------------------------------------------------- */
+
+.calendar-layout {
+    display: flex;
+    gap: var(--le-spacing-lg);
+    min-height: 500px;
+    /* Fill the viewport on tall/wide screens so the calendar grid can stretch
+       into the available height instead of leaving a gap below it. The
+       subtracted constant accounts for topbar (~64px) + page-content padding
+       (~48px top+bottom) + footer (~48px). Hard-cap with `min-height` only
+       (no `height`) so it can still grow on very small viewports if needed. */
+    min-height: calc(100vh - 160px);
+}
+
+.calendar-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.calendar-main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Create Event Button — gradient glass FAB with ripple
+   --------------------------------------------------------------------------- */
+
+.btn-create-event {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--le-spacing-sm);
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(135deg, var(--le-primary), rgba(var(--le-primary-rgb), 0.8));
+    color: var(--le-text-inverse);
+    border: none;
+    border-radius: var(--le-radius);
+    font-weight: var(--le-font-weight-semibold);
+    font-size: var(--le-font-size-sm);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--le-transition);
+    box-shadow: 0 4px 16px rgba(var(--le-primary-rgb), 0.3);
+}
+
+.btn-create-event::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 10%, transparent 60%);
+    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: none;
+}
+
+.btn-create-event:active::after {
+    animation: cal-ripple 0.5s ease-out forwards;
+}
+
+.btn-create-event:hover {
+    box-shadow: 0 6px 20px rgba(var(--le-primary-rgb), 0.45);
+    filter: brightness(1.05);
+}

@@ -1,0 +1,292 @@
+/* =============================================================================
+   Movie Streaming — Title Detail Page
+   ============================================================================= */
+
+.movie-title-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Suppress the glass-card specular highlight on the title hero card so the
+   backdrop artwork reads cleanly underneath. */
+.movie-title-card::before { content: none !important; display: none !important; }
+
+/* Title-page hero needs the same `--le-radius-lg` as `.glass-card`
+   so the rounded corners line up with the rest of the page surfaces
+   (the card sets its own radius via the glass-card class; the hero
+   `overflow: hidden` was clipping square because no radius was being
+   inherited through `.movie-title-card { padding: 0; overflow: hidden }`). */
+.movie-title-card { border-radius: var(--le-radius-lg); }
+
+.movie-title-hero {
+    position: relative;
+    aspect-ratio: 21 / 9;
+    min-height: 280px;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.movie-title-hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.7), rgba(var(--le-primary-rgb), 0.22));
+    z-index: 0;
+}
+
+.movie-title-hero-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 25% 30%, rgba(255, 255, 255, 0.18), transparent 45%),
+        radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.34), transparent 55%);
+}
+
+.movie-title-hero-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 35%, rgba(0, 0, 0, 0.62) 100%);
+    z-index: 1;
+}
+
+.movie-title-hero-content {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 28px 32px;
+    z-index: 2;
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+    max-width: 720px;
+}
+
+.movie-title-hero-name {
+    font-size: clamp(1.5rem, 2.6vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+    color: #fff;
+}
+
+.movie-title-hero-meta {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 0.86rem;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.movie-title-hero-meta .movie-pill {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #fff;
+}
+
+.movie-title-hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.movie-title-hero-tags .movie-genre-tag {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.22);
+    color: #fff;
+}
+
+.movie-title-hero-actions {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Body content area */
+.movie-title-body {
+    padding: 24px 28px;
+}
+
+.movie-title-summary {
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: var(--le-text-primary);
+    margin: 0 0 18px;
+}
+
+.movie-fact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 24px;
+}
+
+.movie-fact-row {
+    font-size: 0.86rem;
+    line-height: 1.55;
+    display: flex;
+    gap: 6px;
+}
+
+.movie-fact-label {
+    color: var(--le-text-secondary);
+    font-weight: 500;
+    flex: 0 0 auto;
+}
+
+.movie-fact-value {
+    color: var(--le-text-primary);
+    font-weight: 500;
+}
+
+.movie-fact-value a { color: var(--le-primary); text-decoration: none; }
+.movie-fact-value a:hover { text-decoration: underline; }
+
+/* Cast strip */
+.movie-cast-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 18px;
+}
+
+.movie-cast-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 0 0 auto;
+}
+
+.movie-cast-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.85), rgba(var(--le-primary-rgb), 0.4));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.movie-cast-name {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--le-text-primary);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.movie-cast-role {
+    font-size: 0.76rem;
+    color: var(--le-text-secondary);
+    line-height: 1.2;
+}
+
+/* Tabs */
+.movie-tabs-card { padding: 6px 8px; }
+
+.movie-tabs {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 2px;
+}
+
+.movie-tabs::-webkit-scrollbar { display: none; }
+
+.movie-tab {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border-radius: 999px;
+    color: var(--le-text-secondary);
+    font-size: 0.86rem;
+    font-weight: 600;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.movie-tab:hover { background: var(--le-glass-bg); color: var(--le-text-primary); }
+
+.movie-tab.is-active {
+    background: rgba(var(--le-primary-rgb), 0.18);
+    color: var(--le-primary);
+}
+
+/* Season selector */
+.movie-season-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.movie-season-select {
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-primary);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.movie-season-select:focus {
+    outline: none;
+    border-color: rgba(var(--le-primary-rgb), 0.5);
+}
+
+/* Sidebar facts widget */
+.movie-meta-card .glass-card-body { padding: 16px 18px; }
+
+/* Watch page sidebar: prevent episode rows from bleeding out */
+.col-lg-4 .glass-card { overflow-x: hidden; }
+.col-lg-4 .glass-card-body { overflow: hidden; }
+
+.movie-meta-card-title {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--le-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 10px;
+}
+
+.movie-trailer-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--le-mov-card-radius);
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.6), rgba(var(--le-primary-rgb), 0.2));
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.movie-trailer-thumb:hover {
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.movie-trailer-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.movie-trailer-thumb .movie-card-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}

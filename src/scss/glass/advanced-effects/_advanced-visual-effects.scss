@@ -1,0 +1,87 @@
+/* =============================================================================
+   Advanced Visual Effects
+   =============================================================================
+   Additional glassmorphism visual effects: noise textures, aurora backgrounds,
+   shimmer sweeps, liquid ripples, prismatic edges, glow halos, custom
+   scrollbars, background patterns, and typography effects.
+   ============================================================================= */
+
+
+/* =============================================================================
+   Advanced Glass Surface Variables
+   ============================================================================= */
+
+:root {
+  /* Frosted glass — higher blur for a deeply frosted look */
+  --le-glass-frosted-bg:       rgba(255, 255, 255, 0.14);
+  --le-glass-frosted-blur:     48px;
+
+  /* Tinted glass variants — subtle color wash over glass surfaces */
+  --le-glass-tint-primary:     rgba(var(--le-primary-rgb), 0.05);
+  --le-glass-tint-secondary:   rgba(var(--le-secondary-rgb), 0.05);
+  --le-glass-tint-success:     rgba(var(--le-success-rgb), 0.05);
+  --le-glass-tint-warning:     rgba(var(--le-warning-rgb), 0.05);
+  --le-glass-tint-danger:      rgba(var(--le-danger-rgb), 0.05);
+  --le-glass-tint-info:        rgba(var(--le-info-rgb), 0.05);
+
+  /* Refraction intensity controls */
+  --le-refraction-intensity:   1;
+  --le-refraction-hue-shift:   5deg;
+
+  /* Edge light — organic chromatic fringe at glass edges */
+  --le-edge-light:             linear-gradient(
+                                 90deg,
+                                 transparent 5%,
+                                 var(--le-chroma-red) 30%,
+                                 rgba(255, 255, 255, 0.25) 50%,
+                                 var(--le-chroma-blue) 70%,
+                                 transparent 95%
+                               );
+  --le-edge-light-width:       80%;
+
+  /* Glass depth layers — progressively more opaque */
+  --le-glass-layer-1:          rgba(255, 255, 255, 0.06);
+  --le-glass-layer-2:          rgba(255, 255, 255, 0.12);
+  --le-glass-layer-3:          rgba(255, 255, 255, 0.20);
+
+  /* Noise texture opacity */
+  --le-noise-opacity:          0.03;
+
+  /* Aurora effect opacity */
+  --le-aurora-opacity:         0.06;
+
+  /* Shimmer sweep speed */
+  --le-shimmer-duration:       6s;
+}
+
+[data-theme="dark"] {
+  --le-glass-frosted-bg:       rgba(0, 0, 0, 0.28);
+  --le-glass-frosted-blur:     48px;
+
+  --le-glass-tint-primary:     rgba(var(--le-primary-rgb), 0.06);
+  --le-glass-tint-secondary:   rgba(var(--le-secondary-rgb), 0.06);
+  --le-glass-tint-success:     rgba(var(--le-success-rgb), 0.06);
+  --le-glass-tint-warning:     rgba(var(--le-warning-rgb), 0.06);
+  --le-glass-tint-danger:      rgba(var(--le-danger-rgb), 0.06);
+  --le-glass-tint-info:        rgba(var(--le-info-rgb), 0.06);
+
+  --le-refraction-intensity:   0.8;
+  --le-refraction-hue-shift:   3deg;
+
+  --le-edge-light:             linear-gradient(
+                                 90deg,
+                                 transparent 5%,
+                                 var(--le-chroma-red) 30%,
+                                 rgba(255, 255, 255, 0.04) 50%,
+                                 var(--le-chroma-blue) 70%,
+                                 transparent 95%
+                               );
+  --le-edge-light-width:       80%;
+
+  --le-glass-layer-1:          rgba(255, 255, 255, 0.03);
+  --le-glass-layer-2:          rgba(255, 255, 255, 0.07);
+  --le-glass-layer-3:          rgba(255, 255, 255, 0.12);
+
+  --le-noise-opacity:          0.04;
+  --le-aurora-opacity:         0.04;
+}

@@ -1,0 +1,82 @@
+/* Section headings & tabs */
+
+.music-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.music-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.music-section-title {
+    margin: 0;
+    font-weight: 600;
+    color: var(--le-text-primary);
+    font-size: 1.05rem;
+}
+
+.music-section-link {
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: var(--le-text-secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.18s ease;
+}
+
+.music-section-link:hover { color: var(--le-primary); }
+
+.music-section-tools {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.music-tabs .glass-tab { font-size: 0.78rem; }
+
+.music-live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    /* Solid danger fill (mirrors `.video-thumb-live` in the video
+       streaming app) so the badge reads at a glance instead of the
+       previous low-contrast outline of red text on a faint red tint.
+       White foreground on a solid red pill provides the same
+       contrast in both light and dark themes without needing a
+       per-theme override. */
+    color: #fff;
+    background: var(--le-danger, #ef4444);
+    border: 1px solid transparent;
+    padding: 4px 10px;
+    border-radius: 999px;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
+.music-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    /* Pulse against the solid red badge background — switch the dot
+       and its halo to white so it stays visible on the new fill. */
+    background: #fff;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    animation: musicLivePulse 1.6s ease-out infinite;
+}
+
+@keyframes musicLivePulse {
+    0%   { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6); }
+    70%  { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+

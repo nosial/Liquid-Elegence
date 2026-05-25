@@ -1,0 +1,117 @@
+/* =========================================================================
+   Dark-mode overrides — buttons & form controls
+
+   Tinted buttons keep their RGBA fills (which work over any plate); only
+   the *text* swaps to the *-light variant for legibility on dark glass.
+   Neutral buttons (.btn-glass, .btn-glass-secondary) swap to white-on-dark
+   translucency.
+
+   NOTE: .btn-* (Bootstrap) dark-mode adjustments live in
+         components/bootstrap/_buttons.scss to keep them
+         co-located with their light-mode rules. This file handles only the
+         custom .btn-glass-* set and dark-mode form inputs.
+   ========================================================================= */
+
+[data-theme="dark"] {
+    /* ---- Glass inputs ----------------------------------------------------- */
+    .glass-input {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border-color:     rgba(255, 255, 255, 0.10) !important;
+        color:            var(--le-text-primary);
+    }
+    .glass-input:focus {
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        border-color:     rgba(var(--le-primary-rgb), 0.45) !important;
+    }
+    .glass-input::placeholder { color: var(--le-text-muted); }
+
+    /* Dark-mode chevron — lighter stroke for legibility on dark glass */
+    .glass-select,
+    .form-select.glass-select {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba(226,232,240,0.85)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    }
+
+    .settings-card .nav-pills .nav-link:hover { background-color: rgba(255, 255, 255, 0.06); }
+
+    .progress { background-color: rgba(255, 255, 255, 0.08); }
+    .progress-bar { opacity: 0.92; }
+
+    .bg-success,
+    .progress-bar.bg-success { background-color: var(--le-success) !important; }
+    .bg-danger,
+    .progress-bar.bg-danger  { background-color: var(--le-danger)  !important; }
+    .bg-warning,
+    .progress-bar.bg-warning { background-color: var(--le-warning) !important; }
+    .bg-info,
+    .progress-bar.bg-info    { background-color: var(--le-info)    !important; }
+
+    /* ---- Custom glass buttons -------------------------------------------- */
+    .btn-glass {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color:     rgba(255, 255, 255, 0.10);
+        color:            var(--le-text-primary);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    .btn-glass:hover {
+        background-color: rgba(255, 255, 255, 0.09);
+        border-color:     rgba(255, 255, 255, 0.16);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    }
+    .btn-glass:active {
+        background-color: rgba(255, 255, 255, 0.14);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.10),
+                          inset 0 0 12px rgba(255, 255, 255, 0.04);
+    }
+
+    .btn-glass-primary  { color: var(--le-primary-light); }
+    .btn-glass-success  { color: var(--le-success-light); }
+    .btn-glass-danger   { color: var(--le-danger-light);  }
+    .btn-glass-warning  { color: var(--le-warning-light); }
+    .btn-glass-info     { color: var(--le-info-light);    }
+
+    .btn-glass-secondary {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color:     rgba(255, 255, 255, 0.10);
+        color:            var(--le-text-secondary);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+    .btn-glass-secondary:hover {
+        background-color: rgba(255, 255, 255, 0.09);
+        border-color:     rgba(255, 255, 255, 0.16);
+        color:            var(--le-text-primary);
+    }
+
+    .btn-tool {
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color:     rgba(255, 255, 255, 0.10);
+    }
+
+    .btn-glass-outline {
+        border-color: rgba(255, 255, 255, 0.12);
+    }
+    .btn-glass-outline:hover {
+        background-color: rgba(255, 255, 255, 0.06);
+        border-color:     rgba(255, 255, 255, 0.20);
+    }
+
+    /* ---- Form inputs in glass containers --------------------------------- */
+    .glass-input,
+    .glass-select,
+    .glass-search,
+    .glass-card .form-control,
+    .glass-card .form-select,
+    .modal-glass .form-control,
+    .modal-glass .form-select {
+        background-color: rgba(var(--le-dark-surface-rgb), 0.46);
+        border-color:     rgba(255, 255, 255, 0.08);
+    }
+    .glass-input:focus,
+    .glass-select:focus,
+    .glass-search:focus,
+    .glass-card .form-control:focus,
+    .glass-card .form-select:focus,
+    .modal-glass .form-control:focus,
+    .modal-glass .form-select:focus {
+        background-color: rgba(var(--le-dark-surface-rgb), 0.58);
+    }
+}

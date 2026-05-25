@@ -1,0 +1,33 @@
+.customizer-label {
+    display: block;
+    font-size: .8125rem;
+    font-weight: 600;
+    margin-bottom: .5rem;
+    opacity: .85;
+}
+
+.customizer-colors {
+    display: flex;
+    gap: .5rem;
+    flex-wrap: wrap;
+    max-width: 260px;
+}
+
+.customizer-color-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform .15s, border-color .15s;
+    padding: 0;
+}
+
+.customizer-color-btn:hover {
+    transform: scale(1.15);
+}
+
+.customizer-color-btn.active {
+    border-color: rgba(255,255,255,.85);
+    box-shadow: 0 0 0 2px currentColor;
+}

@@ -1,0 +1,312 @@
+/* =========================================================================
+   26. COMPONENT RESPONSIVE — Mobile & Tablet Optimizations
+   Touch-friendly sizing, horizontal-scroll behavior, and layout
+   adjustments for components below the lg (992 px) breakpoint.
+
+   Breakpoints used:
+     768 px  — tablet / small desktop
+     576 px  — mobile portrait
+     480 px  — small mobile
+   Additional:
+     landscape with short viewport (≤ 500 px height)
+   ========================================================================= */
+
+
+/* ---- Tablet (≤ 768 px) ------------------------------------------------ */
+@media (max-width: 768px) {
+
+  /* -- Buttons: ensure minimum 44 px touch target -- */
+  .btn-glass,
+  .btn-glass-primary,
+  .btn-glass-outline {
+    padding: 10px 16px;
+    min-height: 44px;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+
+  .btn-sm {
+    min-height: 36px;
+    padding: 7px 14px;
+  }
+
+  .btn-lg {
+    min-height: 48px;
+  }
+
+  /* -- Forms: touch-friendly inputs, prevent iOS zoom (≥ 16 px) -- */
+  .glass-input,
+  .glass-select {
+    padding: 10px 14px;
+    min-height: 44px;
+    font-size: 1rem;
+  }
+
+  .glass-card .form-control,
+  .glass-card .form-select,
+  .modal-glass .form-control,
+  .modal-glass .form-select {
+    min-height: 44px;
+    font-size: 1rem;
+  }
+
+  .glass-card .form-control-sm {
+    min-height: 36px;
+    font-size: 0.875rem;
+  }
+
+  .glass-card .form-check-input {
+    width: 1.25em;
+    height: 1.25em;
+  }
+  /* -- Pagination: larger tap targets -- */
+  .pagination .page-link {
+    padding: 8px 12px;
+    min-height: 38px;
+    min-width: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* -- Nav: horizontal scroll for tabs & pills on narrow screens -- */
+  .nav-tabs,
+  .nav-pills,
+  .glass-nav-pills {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .nav-tabs::-webkit-scrollbar,
+  .nav-pills::-webkit-scrollbar,
+  .glass-nav-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-tabs .nav-link,
+  .nav-pills .nav-link,
+  .glass-nav-pills .nav-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* -- Tables inside cards: ensure horizontal scroll works -- */
+  .glass-card .table {
+    white-space: nowrap;
+  }
+
+  .glass-card .table thead th,
+  .glass-card .table tbody td {
+    padding: 10px 12px;
+    font-size: 0.8125rem;
+  }
+
+  /* -- Modals: near full-width on tablets -- */
+  .modal-glass .modal-dialog {
+    margin: 1rem;
+    max-width: calc(100% - 2rem);
+  }
+
+  /* -- Accordion: reduced padding -- */
+  .glass-accordion .accordion-button {
+    padding: 12px 16px;
+    font-size: 0.875rem;
+  }
+
+  .glass-accordion .accordion-body {
+    padding: 12px 16px;
+  }
+  /* -- Breadcrumbs: smaller on tablets -- */
+  .breadcrumb-nav .breadcrumb {
+    font-size: 0.75rem;
+  }
+
+  /* -- Cards: disable hover lift on touch (prevents tap-jump) -- */
+  .glass-card:hover,
+  .card:hover {
+    transform: none;
+  }
+
+  /* -- Buttons: disable hover lift on touch -- */
+  .btn:hover,
+  .btn-glass:hover,
+  .btn-glass-primary:hover,
+  .btn-glass-outline:hover {
+    transform: none;
+  }
+
+  /* -- Disable hover transforms for nav, pagination, badges -- */
+  .glass-nav-pills .nav-link:hover,
+  .nav-pills .nav-link:hover,
+  .pagination .page-link:hover,
+  .badge-status:hover,
+  .glass-card .badge:hover,
+  .topbar-icon-btn:hover {
+    transform: none;
+  }
+
+  /* -- Activity feed: disable slide on touch -- */
+  .activity-item:hover {
+    transform: none;
+  }
+
+  /* -- List group: disable slide on touch -- */
+  .list-group-item:hover {
+    transform: none;
+  }
+
+  /* -- Sidebar: disable link slide on touch -- */
+  .sidebar-link:hover {
+    transform: none;
+  }
+
+  /* -- Avatars: disable scale on touch -- */
+  .avatar:hover {
+    transform: none;
+  }
+
+  .avatar-group .avatar:hover,
+  .avatar-group .mini-avatar:hover {
+    transform: none;
+  }
+
+  /* -- Reduce progress bar shimmer animation on mobile to save battery -- */
+  .progress-bar::after {
+    animation-duration: 4s;
+  }
+
+  /* -- Dropdown menus: constrain to viewport -- */
+  .dropdown-menu {
+    max-width: calc(100vw - 2rem);
+  }
+  /* -- Popovers: constrain -- */
+  .popover {
+    max-width: calc(100vw - 2rem);
+  }
+}
+
+
+/* ---- Mobile portrait (≤ 576 px) --------------------------------------- */
+@media (max-width: 576px) {
+
+  /* -- Buttons: slightly smaller text but keep touch target -- */
+  .btn-glass,
+  .btn-glass-primary,
+  .btn-glass-outline {
+    padding: 10px 14px;
+    font-size: 0.8125rem;
+  }
+
+  /* -- Forms: maintain zoom prevention -- */
+  .glass-input,
+  .glass-select,
+  .glass-card .form-control,
+  .glass-card .form-select,
+  .modal-glass .form-control,
+  .modal-glass .form-select {
+    font-size: 1rem;
+  }
+
+  /* -- Form labels: tighter -- */
+  .glass-card .form-label,
+  .modal-glass .form-label {
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+  }
+
+  /* -- Modals: near full-screen -- */
+  .modal-glass .modal-dialog {
+    margin: 0.5rem;
+    max-width: calc(100% - 1rem);
+  }
+
+  .modal-glass .modal-header,
+  .modal-glass .modal-footer {
+    padding: 12px 16px;
+  }
+
+  .modal-glass .modal-body {
+    padding: 14px 16px;
+  }
+
+  /* -- Breadcrumb: hide on very small screens -- */
+  .breadcrumb-nav {
+    display: none;
+  }
+
+  /* -- Cards: remove hover effects entirely -- */
+  .glass-card:hover {
+    transform: none;
+    box-shadow: var(--le-glass-shadow);
+  }
+  /* -- Tables inside cards: tighter cells -- */
+  .glass-card .table thead th,
+  .glass-card .table tbody td {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* -- Metric cards: compact layout -- */
+  .metric-label {
+    font-size: 0.75rem;
+  }
+
+  .metric-change {
+    font-size: 0.75rem;
+  }
+
+  /* -- Accordion: tighter -- */
+  .glass-accordion .accordion-button {
+    padding: 10px 14px;
+    font-size: 0.8125rem;
+  }
+
+  .glass-accordion .accordion-body {
+    padding: 10px 14px;
+    font-size: 0.8125rem;
+  }
+
+  /* -- Badges: ensure readable minimum size -- */
+  .badge {
+    font-size: 0.6875rem;
+    padding: 0.3em 0.55em;
+  }
+
+  /* -- Activity feed: tighter -- */
+  .activity-feed {
+    gap: 12px;
+  }
+}
+
+
+/* ---- Small mobile (≤ 480 px) ------------------------------------------ */
+@media (max-width: 480px) {
+
+  /* -- Tables: minimum comfortable cell padding -- */
+  .table-glass thead th,
+  .table-glass tbody td {
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* -- Pagination: compact -- */
+  .pagination .page-link {
+    padding: 6px 10px;
+    min-width: 34px;
+    min-height: 34px;
+    font-size: 0.75rem;
+  }
+
+  /* -- Nav pills/tabs: slightly smaller links -- */
+  .nav-tabs .nav-link,
+  .nav-pills .nav-link,
+  .glass-nav-pills .nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8125rem;
+  }
+}

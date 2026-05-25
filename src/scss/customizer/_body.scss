@@ -1,0 +1,37 @@
+/* ─────────────────────────────────────────────────────────────
+   5. Scrollable body
+   ───────────────────────────────────────────────────────────── */
+
+.customizer-body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: var(--le-customizer-body-padding, 1.25rem);
+    overscroll-behavior: contain;
+}
+
+/* Thin custom scrollbar */
+.customizer-body::-webkit-scrollbar {
+    width: 4px;
+}
+
+.customizer-body::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+[data-theme="dark"] .customizer-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   6. Section / group
+   ───────────────────────────────────────────────────────────── */
+
+.customizer-section {
+    margin-bottom: var(--le-customizer-section-mb, 1.5rem);
+}
+
+.customizer-section:last-child {
+    margin-bottom: 0;
+}

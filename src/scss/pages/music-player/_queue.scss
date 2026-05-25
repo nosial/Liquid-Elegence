@@ -1,0 +1,73 @@
+/* Queue panel */
+
+.music-queue {
+    display: none;
+}
+
+.music-layout.queue-open .music-queue { display: block; }
+
+.music-queue-inner { overflow: visible; }
+
+.music-queue-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.music-queue-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.music-queue-now-row,
+.music-queue-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.music-queue-row:hover {
+    background: var(--le-glass-bg);
+    border-color: var(--le-glass-border-subtle);
+}
+
+.music-queue-now-row {
+    background: rgba(var(--le-primary-rgb), 0.10);
+    border-color: rgba(var(--le-primary-rgb), 0.30);
+}
+
+.music-queue-cover {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.music-queue-meta {
+    min-width: 0;
+    flex: 1;
+}
+
+.music-queue-title {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--le-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.music-queue-artist {
+    font-size: 0.72rem;
+    color: var(--le-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

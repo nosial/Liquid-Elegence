@@ -1,0 +1,223 @@
+/* ============================================================================
+   19. MOBILE PAGE-SPECIFIC STYLES
+   ============================================================================ */
+
+/* ---- Settings: nav pills → horizontal scroll on mobile ---- */
+@media (max-width: 767.98px) {
+  .settings-card .row > .col-md-3,
+  .settings-card .row > .col-lg-3 {
+    margin-bottom: 1rem;
+  }
+
+  .settings-card .nav.nav-pills {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 4px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    margin-bottom: 0.5rem;
+  }
+
+  .settings-card .nav.nav-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .settings-card .nav-pills .nav-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  /* Theme mode cards: tighter */
+  .theme-mode-card {
+    padding: 1rem 0.75rem;
+  }
+
+  .theme-mode-card i,
+  .theme-mode-card svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .theme-mode-card .mode-label {
+    font-size: 0.8rem;
+  }
+
+  /* Color presets smaller */
+  .color-preset {
+    width: 34px;
+    height: 34px;
+  }
+
+  /* Integration items: compact */
+  .integration-item {
+    padding: 0.875rem;
+    gap: 0.75rem;
+  }
+
+  .integration-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  /* 2FA section */
+  .tfa-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-card .nav-pills .nav-link {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .integration-item {
+    flex-wrap: wrap;
+  }
+
+  .integration-item .form-check.form-switch {
+    flex-basis: 100%;
+    margin-top: 4px;
+    padding-left: 2.5em;
+  }
+}
+
+
+/* ---- Profile: mobile styles ---- */
+@media (max-width: 767.98px) {
+  .profile-cover {
+    height: 60px;
+  }
+
+  .profile-avatar {
+    width: 60px;
+    height: 60px;
+    margin-top: -30px;
+  }
+
+  .profile-avatar-initials {
+    font-size: 1.25rem;
+  }
+
+  .profile-info-section {
+    padding: 0 1rem 0.75rem;
+  }
+
+  .profile-info-section h3 {
+    font-size: 1.1rem;
+  }
+
+  .social-link {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Activity items: tighter */
+  .profile-activity .list-group-item {
+    padding: 0.5rem 0;
+  }
+
+  .profile-activity-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Team avatars */
+  .profile-team-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 0.65rem;
+  }
+}
+
+
+/* ---- Billing: mobile styles ---- */
+@media (max-width: 767.98px) {
+  .payment-card {
+    padding: 18px;
+  }
+
+  .billing-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .billing-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .status-card {
+    padding: 12px;
+  }
+
+  .status-card-title {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .payment-card {
+    padding: 14px;
+  }
+
+  .usage-label,
+  .usage-value {
+    font-size: 12px;
+  }
+}
+
+
+/* ---- FAQ: mobile styles ---- */
+@media (max-width: 575.98px) {
+  .faq-search-input {
+    font-size: 1rem;
+    min-height: 44px;
+  }
+}
+
+
+/* ---- Notifications: mobile styles ---- */
+@media (max-width: 575.98px) {
+  .notif-item {
+    padding: 12px;
+  }
+
+  .notif-item .d-flex {
+    flex-wrap: wrap;
+  }
+
+  .notif-actions {
+    width: 100%;
+    margin-top: 8px;
+    justify-content: flex-start;
+  }
+
+  .notif-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+
+/* ---- Pricing: mobile card stack ---- */
+@media (max-width: 575.98px) {
+  .pricing-card {
+    padding: 20px;
+  }
+
+  .pricing-card .feature-list li {
+    font-size: 0.8125rem;
+    padding: 6px 0;
+  }
+}
+
+

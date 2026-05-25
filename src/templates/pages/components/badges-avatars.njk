@@ -1,0 +1,451 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Badges &amp; Avatars — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Badges &amp; Avatars</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Standard Bootstrap Badges / Glass Badges ────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Standard Bootstrap Badges</h5>
+                <p class="text-muted mb-3 le-fs-body">All contextual badge colours available in Bootstrap 5.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+                    <span class="badge bg-primary">Primary</span>
+                    <span class="badge bg-secondary">Secondary</span>
+                    <span class="badge bg-success">Success</span>
+                    <span class="badge bg-danger">Danger</span>
+                    <span class="badge bg-warning text-dark">Warning</span>
+                    <span class="badge bg-info">Info</span>
+                    <span class="badge bg-light text-dark">Light</span>
+                    <span class="badge bg-dark">Dark</span>
+                </div>
+
+                <h5 class="mb-1">Pill Badges</h5>
+                <p class="text-muted mb-3 le-fs-body">Rounded pill variant using <code>.rounded-pill</code>.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <span class="badge rounded-pill bg-primary">Primary</span>
+                    <span class="badge rounded-pill bg-secondary">Secondary</span>
+                    <span class="badge rounded-pill bg-success">Success</span>
+                    <span class="badge rounded-pill bg-danger">Danger</span>
+                    <span class="badge rounded-pill bg-warning text-dark">Warning</span>
+                    <span class="badge rounded-pill bg-info">Info</span>
+                    <span class="badge rounded-pill bg-light text-dark">Light</span>
+                    <span class="badge rounded-pill bg-dark">Dark</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Badges</h5>
+                <p class="text-muted mb-3 le-fs-body">Translucent glass-effect badge variants.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <span class="badge badge-glass">Default Glass</span>
+                    <span class="badge badge-glass-primary">Primary</span>
+                    <span class="badge badge-glass-success">Success</span>
+                    <span class="badge badge-glass-danger">Danger</span>
+                    <span class="badge badge-glass-warning">Warning</span>
+                    <span class="badge badge-glass-info">Info</span>
+                    <span class="badge badge-glass-secondary">Secondary</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card mt-3 le-bg-glass-subtle">
+            <div class="glass-card-body py-2 px-3">
+                <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Standard badge --&gt;
+&lt;span class="badge bg-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="badge bg-success"&gt;Success&lt;/span&gt;
+
+&lt;!-- Glass badge --&gt;
+&lt;span class="badge badge-glass"&gt;Default Glass&lt;/span&gt;
+&lt;span class="badge badge-glass-primary"&gt;Primary&lt;/span&gt;
+
+&lt;!-- Pill badge --&gt;
+&lt;span class="badge rounded-pill bg-primary"&gt;Primary&lt;/span&gt;
+&lt;span class="badge rounded-pill bg-danger"&gt;Danger&lt;/span&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Special Badge Effects ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Special Badge Effects</h5>
+                <p class="text-muted mb-3 le-fs-body">Glow, pulse animation, and larger status badges.</p>
+
+                <h6 class="mb-2">Glow Badge</h6>
+                <p class="text-muted mb-3 le-fs-body"><code>.badge-glow</code> — Adds a soft glow around the badge.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+                    <span class="badge badge-glow bg-primary">Glow Badge</span>
+                    <span class="badge badge-glow bg-success">Glow Success</span>
+                    <span class="badge badge-glow bg-danger">Glow Danger</span>
+                    <span class="badge badge-glow bg-info">Glow Info</span>
+                </div>
+
+                <h6 class="mb-2">Pulse Badge</h6>
+                <p class="text-muted mb-3 le-fs-body"><code>.badge-pulse</code> — Animated pulse effect for notification-style badges.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+                    <span class="badge badge-pulse bg-danger">3</span>
+                    <span class="badge badge-pulse bg-primary">7</span>
+                    <span class="badge badge-pulse bg-warning text-dark">!</span>
+                </div>
+
+                <h6 class="mb-2">Status Badges</h6>
+                <p class="text-muted mb-3 le-fs-body"><code>.badge-status</code> — Larger badges for status indicators.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <span class="badge badge-status bg-success">Active</span>
+                    <span class="badge badge-status bg-warning">Pending</span>
+                    <span class="badge badge-status bg-danger">Inactive</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{# ── Badges in Context ───────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Badges in Context</h5>
+                <p class="text-muted mb-3 le-fs-body">Badges used in real UI patterns — buttons, headings, list items, and icons.</p>
+
+                <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+                    <button class="btn btn-primary">Notifications <span class="badge bg-light text-dark ms-1">4</span></button>
+                    <button class="btn btn-outline-secondary">Messages <span class="badge bg-danger ms-1">12</span></button>
+                    <button class="btn btn-success">Updates <span class="badge bg-dark ms-1">New</span></button>
+                </div>
+
+                <h5>Messages <span class="badge badge-glass-primary ms-2">12</span></h5>
+                <h6>Alerts <span class="badge badge-glass-danger ms-2">5</span></h6>
+
+                <div class="mt-3 mb-4">
+                    <ul class="list-group le-max-w-400">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Inbox
+                            <span class="badge bg-primary rounded-pill">14</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Drafts
+                            <span class="badge bg-secondary rounded-pill">2</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Spam
+                            <span class="badge bg-danger rounded-pill">99+</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <h6 class="mb-2">Notification Dot on Icon</h6>
+                <div class="d-flex flex-wrap gap-4 align-items-center">
+                    <span class="position-relative d-inline-block">
+                        <i class="bi bi-bell le-fs-7xl"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger le-fs-xxs">9</span>
+                    </span>
+                    <span class="position-relative d-inline-block">
+                        <i class="bi bi-envelope le-fs-7xl"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
+                            <span class="visually-hidden">New messages</span>
+                        </span>
+                    </span>
+                    <span class="position-relative d-inline-block">
+                        <i class="bi bi-chat-dots le-fs-7xl"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary le-fs-xxs">3</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{# ── Avatar Sizes / Avatar with Status ───────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Avatar Sizes</h5>
+                <p class="text-muted mb-3 le-fs-body">All available sizes from extra-small to extra-large using the <code>.avatar</code> wrapper.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-end">
+                    <div class="text-center">
+                        <div class="avatar avatar-xs"><div class="avatar-placeholder">XS</div></div>
+                        <div class="mt-1 le-fs-xs">xs</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar avatar-sm"><div class="avatar-placeholder">SM</div></div>
+                        <div class="mt-1 le-fs-xs">sm</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar"><div class="avatar-placeholder">MD</div></div>
+                        <div class="mt-1 le-fs-xs">md</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar avatar-lg"><div class="avatar-placeholder">LG</div></div>
+                        <div class="mt-1 le-fs-xs">lg</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar avatar-xl"><div class="avatar-placeholder">XL</div></div>
+                        <div class="mt-1 le-fs-xs">xl</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Avatar with Status</h5>
+                <p class="text-muted mb-3 le-fs-body">Combine avatars with <code>.status-dot</code> for presence indicators.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <div class="text-center">
+                        <div class="avatar">
+                            <div class="avatar-placeholder">JD</div>
+                            <span class="status-dot online"></span>
+                        </div>
+                        <div class="mt-1 le-fs-xs">Online</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar">
+                            <div class="avatar-placeholder">AK</div>
+                            <span class="status-dot away"></span>
+                        </div>
+                        <div class="mt-1 le-fs-xs">Away</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar">
+                            <div class="avatar-placeholder">MR</div>
+                            <span class="status-dot busy"></span>
+                        </div>
+                        <div class="mt-1 le-fs-xs">Busy</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar">
+                            <div class="avatar-placeholder">TW</div>
+                            <span class="status-dot offline"></span>
+                        </div>
+                        <div class="mt-1 le-fs-xs">Offline</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card mt-3 le-bg-glass-subtle">
+            <div class="glass-card-body py-2 px-3">
+                <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Avatar with image --&gt;
+&lt;div class="avatar"&gt;
+    &lt;img src="path/to/photo.jpg" alt="User"&gt;
+&lt;/div&gt;
+
+&lt;!-- Avatar with status indicator --&gt;
+&lt;div class="avatar"&gt;
+    &lt;div class="avatar-placeholder"&gt;JD&lt;/div&gt;
+    &lt;span class="status-dot online"&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Avatar sizing: avatar-xs | avatar-sm | (default) | avatar-lg | avatar-xl --&gt;
+&lt;div class="avatar avatar-xs"&gt;...&lt;/div&gt;
+&lt;div class="avatar avatar-sm"&gt;...&lt;/div&gt;
+&lt;div class="avatar"&gt;...&lt;/div&gt;
+&lt;div class="avatar avatar-lg"&gt;...&lt;/div&gt;
+&lt;div class="avatar avatar-xl"&gt;...&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Avatar Ring / Avatar Status Ring ─────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Avatar Ring Effect</h5>
+                <p class="text-muted mb-3 le-fs-body">Gradient ring around avatars using <code>.avatar-ring</code>.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-end">
+                    <div class="text-center">
+                        <div class="avatar avatar-xs avatar-ring"><div class="avatar-placeholder">XS</div></div>
+                        <div class="mt-1 le-fs-xs">xs</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar avatar-sm avatar-ring"><div class="avatar-placeholder">SM</div></div>
+                        <div class="mt-1 le-fs-xs">sm</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar avatar-ring"><div class="avatar-placeholder">AR</div></div>
+                        <div class="mt-1 le-fs-xs">md</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar avatar-lg avatar-ring"><div class="avatar-placeholder">LG</div></div>
+                        <div class="mt-1 le-fs-xs">lg</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar avatar-xl avatar-ring"><div class="avatar-placeholder">XL</div></div>
+                        <div class="mt-1 le-fs-xs">xl</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Avatar Status Ring</h5>
+                <p class="text-muted mb-3 le-fs-body">Animated online status ring using <code>.avatar-status-ring</code>.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-end">
+                    <div class="text-center">
+                        <div class="avatar avatar-sm avatar-status-ring"><div class="avatar-placeholder">SM</div></div>
+                        <div class="mt-1 le-fs-xs">sm</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar avatar-status-ring"><div class="avatar-placeholder">SR</div></div>
+                        <div class="mt-1 le-fs-xs">md</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar avatar-lg avatar-status-ring"><div class="avatar-placeholder">LG</div></div>
+                        <div class="mt-1 le-fs-xs">lg</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar avatar-xl avatar-status-ring"><div class="avatar-placeholder">XL</div></div>
+                        <div class="mt-1 le-fs-xs">xl</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{# ── Avatar Groups ────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Avatar Groups</h5>
+                <p class="text-muted mb-3 le-fs-body">Overlapping avatar stacks using <code>.avatar-group</code> in multiple sizes.</p>
+
+                <h6 class="mb-2">Small</h6>
+                <div class="avatar-group mb-4">
+                    <div class="avatar avatar-sm"><div class="avatar-placeholder">A</div></div>
+                    <div class="avatar avatar-sm"><div class="avatar-placeholder">B</div></div>
+                    <div class="avatar avatar-sm"><div class="avatar-placeholder">C</div></div>
+                    <div class="avatar avatar-sm"><div class="avatar-placeholder">D</div></div>
+                    <div class="avatar avatar-sm"><div class="avatar-placeholder">+5</div></div>
+                </div>
+
+                <h6 class="mb-2">Default</h6>
+                <div class="avatar-group mb-4">
+                    <div class="avatar"><div class="avatar-placeholder">JD</div></div>
+                    <div class="avatar"><div class="avatar-placeholder">AK</div></div>
+                    <div class="avatar"><div class="avatar-placeholder">MR</div></div>
+                    <div class="avatar"><div class="avatar-placeholder">TW</div></div>
+                    <div class="avatar"><div class="avatar-placeholder">+3</div></div>
+                </div>
+
+                <h6 class="mb-2">Large</h6>
+                <div class="avatar-group">
+                    <div class="avatar avatar-lg"><div class="avatar-placeholder">JD</div></div>
+                    <div class="avatar avatar-lg"><div class="avatar-placeholder">AK</div></div>
+                    <div class="avatar avatar-lg"><div class="avatar-placeholder">MR</div></div>
+                    <div class="avatar avatar-lg"><div class="avatar-placeholder">+2</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{# ── Glass Avatar Placeholders / Avatar Circle ───────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Avatar Placeholders</h5>
+                <p class="text-muted mb-3 le-fs-body">Standalone glass-style placeholders using <code>.avatar-glass-placeholder</code>.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-end">
+                    <div class="text-center">
+                        <div class="avatar-glass-placeholder avatar-xs">A</div>
+                        <div class="mt-1 le-fs-xs">xs</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar-glass-placeholder avatar-sm">B</div>
+                        <div class="mt-1 le-fs-xs">sm</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar-glass-placeholder avatar-md">C</div>
+                        <div class="mt-1 le-fs-xs">md</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar-glass-placeholder avatar-lg">D</div>
+                        <div class="mt-1 le-fs-xs">lg</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="avatar-glass-placeholder avatar-xl">E</div>
+                        <div class="mt-1 le-fs-xs">xl</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Avatar Circle</h5>
+                <p class="text-muted mb-3 le-fs-body">Standalone <code>.avatar-circle</code> with custom gradient backgrounds.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <div class="avatar-circle le-bg-grad-indigo">AB</div>
+                    <div class="avatar-circle le-bg-grad-fuchsia">CD</div>
+                    <div class="avatar-circle le-bg-grad-sky">EF</div>
+                    <div class="avatar-circle le-bg-grad-green">GH</div>
+                    <div class="avatar-circle le-bg-grad-coral">IJ</div>
+                    <div class="avatar-circle le-bg-grad-lavender">KL</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{# ── Mini Avatars ─────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Mini Avatars</h5>
+                <p class="text-muted mb-3 le-fs-body">Tiny inline avatars using <code>.mini-avatar</code> for mentions and assignments.</p>
+                <p>Assigned to <span class="mini-avatar">JD</span> John Doe and <span class="mini-avatar">AK</span> Alice Kim</p>
+                <p>Reviewed by <span class="mini-avatar">MR</span> Mike Ross, <span class="mini-avatar">TW</span> Tom Wilson, and <span class="mini-avatar">SL</span> Sara Lee</p>
+                <p>Last edited by <span class="mini-avatar">NP</span> Nina Patel</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

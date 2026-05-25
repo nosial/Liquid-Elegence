@@ -1,0 +1,231 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+
+{% block content %}
+<div class="billing-page">
+<div class="page-header"><h1 class="page-title">Billing</h1></div>
+
+<!-- Current Plan & Payment Method -->
+<div class="row g-4 mb-4">
+    <!-- Current Plan -->
+    <div class="col-lg-7">
+        <div class="glass-card h-100">
+            <div class="plan-header">
+                <div>
+                    <h4>Professional Plan</h4>
+                    <span class="text-muted">Billed monthly</span>
+                </div>
+                <div class="plan-price">$29<span class="le-fs-half fw-normal le-opacity-70">/month</span></div>
+            </div>
+            <div class="card-header-title">Usage This Period</div>
+            <div class="usage-stat">
+                <div class="d-flex justify-content-between">
+                    <span class="usage-label">API Calls</span>
+                    <span class="usage-value">8,420 / 10,000</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 84.2%" aria-valuenow="84.2" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="usage-stat">
+                <div class="d-flex justify-content-between">
+                    <span class="usage-label">Storage</span>
+                    <span class="usage-value">3.2 GB / 5 GB</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 64%" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="usage-stat">
+                <div class="d-flex justify-content-between">
+                    <span class="usage-label">Team Members</span>
+                    <span class="usage-value">8 / 10</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="d-flex gap-2 mt-4">
+                <button class="btn btn-primary">Upgrade Plan</button>
+                <button class="btn btn-outline-danger">Cancel Subscription</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Method -->
+    <div class="col-lg-5">
+        <div class="glass-card h-100">
+            <div class="card-header-title">Payment Methods</div>
+            <div class="payment-card">
+                <div class="card-icon"><i data-feather="credit-card"></i></div>
+                <div class="card-details">
+                    <div class="card-name">Visa ending in 4242</div>
+                    <div class="card-info">Expires 12/28</div>
+                </div>
+                <span class="badge bg-primary default-badge">Default</span>
+            </div>
+            <div class="payment-card">
+                <div class="card-icon"><i data-feather="link"></i></div>
+                <div class="card-details">
+                    <div class="card-name">PayPal</div>
+                    <div class="card-info">john.doe@email.com</div>
+                </div>
+                <span class="badge bg-secondary default-badge">Backup</span>
+            </div>
+            <div class="d-flex gap-2 mt-4">
+                <button class="btn btn-primary">Update Card</button>
+                <button class="btn btn-outline-secondary">Add New Method</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Billing History -->
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card p-0">
+            <div class="le-pad-card-top">
+                <div class="card-header-title mb-0">Billing History</div>
+            </div>
+            <div class="glass-table-wrapper border-0 le-rounded-bottom-12">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mar 15, 2024</td>
+                                <td>Professional Plan — Monthly</td>
+                                <td>$29.00</td>
+                                <td><span class="badge bg-success badge-status">Paid</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Feb 15, 2024</td>
+                                <td>Professional Plan — Monthly</td>
+                                <td>$29.00</td>
+                                <td><span class="badge bg-success badge-status">Paid</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Jan 15, 2024</td>
+                                <td>Professional Plan — Monthly</td>
+                                <td>$29.00</td>
+                                <td><span class="badge bg-success badge-status">Paid</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Dec 15, 2023</td>
+                                <td>API Add-on Package</td>
+                                <td>$15.00</td>
+                                <td><span class="badge bg-success badge-status">Paid</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Nov 15, 2023</td>
+                                <td>Professional Plan — Monthly</td>
+                                <td>$29.00</td>
+                                <td><span class="badge bg-info badge-status">Refunded</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Oct 15, 2023</td>
+                                <td>Professional Plan — Monthly</td>
+                                <td>$29.00</td>
+                                <td><span class="badge bg-success badge-status">Paid</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Sep 15, 2023</td>
+                                <td>Storage Upgrade (5GB)</td>
+                                <td>$10.00</td>
+                                <td><span class="badge bg-success badge-status">Paid</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Aug 15, 2023</td>
+                                <td>Professional Plan — Monthly</td>
+                                <td>$29.00</td>
+                                <td><span class="badge bg-success badge-status">Paid</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Jul 15, 2023</td>
+                                <td>Professional Plan — Monthly</td>
+                                <td>$29.00</td>
+                                <td><span class="badge bg-danger badge-status">Failed</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Jun 15, 2023</td>
+                                <td>Team Member Add-on</td>
+                                <td>$5.00</td>
+                                <td><span class="badge bg-success badge-status">Paid</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>May 15, 2023</td>
+                                <td>Professional Plan — Monthly</td>
+                                <td>$29.00</td>
+                                <td><span class="badge bg-success badge-status">Paid</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Apr 15, 2023</td>
+                                <td>Annual Discount Applied</td>
+                                <td class="text-success">-$34.80</td>
+                                <td><span class="badge bg-success badge-status">Paid</span></td>
+                                <td class="text-end"><button class="btn btn-sm btn-outline-secondary btn-download"><i data-feather="download" class="le-icon-14"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Upcoming Invoice -->
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="card-header-title">Upcoming Invoice</div>
+            <div class="next-billing">
+                <div class="billing-icon">
+                    <i data-feather="calendar" class="le-icon-20 le-text-primary"></i>
+                </div>
+                <div>
+                    <div class="fw-semibold">Next Billing Date</div>
+                    <div class="le-opacity-70 le-fs-2xl">April 15, 2024</div>
+                </div>
+            </div>
+            <div class="invoice-line-item">
+                <span>Professional Plan</span>
+                <span>$29.00</span>
+            </div>
+            <div class="invoice-line-item">
+                <span>API Add-on <span class="item-note">(included)</span></span>
+                <span>$0.00</span>
+            </div>
+            <div class="invoice-line-item">
+                <span>Storage <span class="item-note">(included)</span></span>
+                <span>$0.00</span>
+            </div>
+            <div class="invoice-total">
+                <span>Estimated Total</span>
+                <span>$29.00</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+{% endblock %}

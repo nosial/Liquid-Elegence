@@ -1,0 +1,261 @@
+/* Video cards: standard (vertical) and horizontal (list).
+   Each card is a self-contained glass tile (transparent surface + subtle
+   border) so it sits as a frosted sub-card inside the page's outer glass
+   panel — matches the layered Music Player / Calendar treatment and reads
+   richer in dark mode than a bare-thumbnail tile. */
+
+.video-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: var(--le-radius-lg, 14px);
+    padding: 10px;
+    text-align: left;
+    color: inherit;
+    text-decoration: none;
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.video-card:hover {
+    background: var(--le-glass-bg-strong);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+}
+.video-card:hover .video-thumb { box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28); }
+
+.video-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--le-vid-thumb-radius);
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.55), rgba(var(--le-primary-rgb), 0.18));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    /* Subtle glass frame around the thumbnail — matches the same
+       `--le-glass-border-subtle` token as `.music-card-cover` siblings
+       so every poster/thumb in the demo apps shares one consistent
+       border treatment. */
+    border: 1px solid var(--le-glass-border-subtle);
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.video-thumb::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.35) 100%);
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+.video-thumb svg.video-thumb-icon {
+    width: 40px;
+    height: 40px;
+    opacity: 0.92;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+}
+
+.video-thumb-duration {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    background: rgba(0, 0, 0, 0.82);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 7px;
+    border-radius: 4px;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+}
+
+.video-thumb-live {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    background: var(--le-danger, #ef4444);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
+.video-thumb-live::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    animation: videoLivePulse 1.2s ease-in-out infinite;
+}
+
+@keyframes videoLivePulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.4; }
+}
+
+.video-meta {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    min-width: 0;
+}
+
+.video-meta-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.85), rgba(var(--le-primary-rgb), 0.45));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.78rem;
+    flex-shrink: 0;
+}
+
+.video-meta-text {
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.video-meta-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--le-text-primary);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.video-meta-channel {
+    font-size: 0.82rem;
+    color: var(--le-text-secondary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.video-meta-channel:hover { color: var(--le-text-primary); }
+
+.video-meta-stats {
+    font-size: 0.78rem;
+    color: var(--le-text-secondary);
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.video-meta-stats .dot { opacity: 0.5; }
+
+/* Horizontal card (used in suggestions / hero side / search results).
+   Same glass-tile treatment as `.video-card` but with a side-by-side
+   layout for narrow rails. */
+.video-card-h {
+    display: grid;
+    grid-template-columns: 168px 1fr;
+    gap: 12px;
+    align-items: flex-start;
+    cursor: pointer;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    padding: 10px;
+    text-align: left;
+    color: inherit;
+    text-decoration: none;
+    border-radius: var(--le-vid-row-radius);
+    transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.video-card-h:hover {
+    background: var(--le-glass-bg-strong);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.video-card-h .video-thumb {
+    aspect-ratio: 16 / 9;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.16);
+}
+
+.video-card-h .video-meta {
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 2px;
+}
+
+.video-card-h .video-meta-title {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 2;
+}
+
+.video-card-h .video-meta-channel { font-size: 0.78rem; }
+.video-card-h .video-meta-stats { font-size: 0.74rem; }
+
+/* Channel mini card */
+.video-channel-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 8px;
+    border-radius: var(--le-vid-row-radius);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: inherit;
+    text-align: center;
+    transition: background 0.15s ease;
+}
+
+.video-channel-card:hover { background: var(--le-glass-bg); }
+
+.video-channel-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.85), rgba(var(--le-primary-rgb), 0.4));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.video-channel-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--le-text-primary);
+    margin: 0;
+}
+
+.video-channel-subs {
+    font-size: 0.74rem;
+    color: var(--le-text-secondary);
+}

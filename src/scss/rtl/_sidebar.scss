@@ -1,0 +1,57 @@
+/* ─────────────────────────────────────────────────────────────
+   2. Sidebar — move to the right side
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .le-sidebar {
+    left: auto;
+    right: 0;
+    border-left: 1px solid var(--le-glass-border);
+    border-right: none;
+}
+
+/* Main content offset mirrors */
+[dir="rtl"] .le-main {
+    margin-left: 0;
+    margin-right: var(--le-sidebar-width, 260px);
+}
+
+/* Collapsed sidebar */
+[dir="rtl"] .le-sidebar-collapsed .le-sidebar {
+    transform: translateX(100%);
+}
+
+[dir="rtl"] .le-sidebar-collapsed .le-main {
+    margin-right: 0;
+}
+
+/* Mini sidebar variant */
+[dir="rtl"] .le-sidebar-mini .le-sidebar {
+    width: var(--le-sidebar-mini-width, 70px);
+}
+
+[dir="rtl"] .le-sidebar-mini .le-main {
+    margin-right: var(--le-sidebar-mini-width, 70px);
+}
+
+/* Sidebar submenu arrows */
+[dir="rtl"] .le-sidebar .le-nav-arrow {
+    transform: rotate(180deg);
+}
+
+[dir="rtl"] .le-sidebar .le-nav-item.open > .le-nav-link .le-nav-arrow {
+    transform: rotate(90deg);
+}
+
+/* Sidebar nav icon spacing */
+[dir="rtl"] .le-sidebar .le-nav-icon {
+    margin-left: 0.625rem;
+    margin-right: 0;
+}
+
+/* Sidebar nested submenu indent */
+[dir="rtl"] .le-sidebar .le-submenu {
+    padding-left: 0;
+    padding-right: 2.25rem;
+}
+
+

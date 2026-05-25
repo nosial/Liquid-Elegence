@@ -1,0 +1,70 @@
+/* ---- Landscape with short viewport (phone on its side) ---------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+
+  /* Reduce topbar height to reclaim vertical space */
+  .topbar {
+    height: 48px;
+    min-height: 48px;
+  }
+
+  .sidebar-header {
+    height: 48px;
+    min-height: 48px;
+  }
+
+  /* Tighter content padding */
+  .page-content {
+    padding: 10px 16px;
+  }
+
+  /* Smaller card internals */
+  .glass-card-body {
+    padding: 12px;
+  }
+
+  .glass-card-header {
+    padding: 8px 14px;
+  }
+
+  /* Modals: constrain to viewport and scroll */
+  .modal-glass .modal-dialog {
+    margin: 0.25rem auto;
+    max-height: calc(100vh - 0.5rem);
+  }
+
+  .modal-glass .modal-body {
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+  }
+
+  /* Sidebar: limit width so content isn't fully hidden */
+  .sidebar {
+    max-width: 240px;
+  }
+
+  /* Match main-content offset to the narrower sidebar */
+  .main-content {
+    margin-left: 240px;
+  }
+
+  /* Metric cards: inline compact */
+  .metric-value {
+    font-size: 1.25rem;
+  }
+
+  .metric-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .metric-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Reduce spacing globally */
+  .main-footer {
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,113 @@
+/* =========================================================================
+   6. CUSTOM GLASS BUTTONS — .btn-glass / .btn-glass-primary / .btn-glass-outline
+
+   These are the project's bespoke glass-button utilities (not Bootstrap).
+   They follow the same flat lensing rules as the .btn-* overrides:
+
+     • Translucent fill, never opaque
+     • Hairline 1px edge, no top-white gloss gradient
+     • No translateY raise, no heavy drop shadow
+     • Hover  → brighter tint + soft inner glow (energising)
+     • Active → stronger tint + inner glow pulse (no inset darken)
+     • Focus  → halo ring in accent colour
+   ========================================================================= */
+
+.btn-glass,
+.btn-glass-primary,
+.btn-glass-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--le-btn-gap, 6px);
+    padding: var(--le-btn-padding-y, 8px) var(--le-btn-padding-x, 16px);
+    border-radius: var(--le-radius-sm);
+    font-size: var(--le-btn-font, 0.875rem);
+    font-weight: 500;
+    cursor: pointer;
+    line-height: 1.5;
+    border: 1px solid transparent;
+    text-shadow: none;
+    transition:
+        background-color 0.25s var(--le-spring-snappy),
+        color            0.2s  var(--le-spring-snappy),
+        border-color     0.2s  var(--le-spring-snappy),
+        box-shadow       0.3s  var(--le-spring-snappy);
+    letter-spacing: 0.01em;
+}
+
+/* ---- Default neutral glass ---------------------------------------------- */
+.btn-glass {
+    background-color: var(--le-control-bg);
+    border-color:     var(--le-control-border);
+    color:            var(--le-text-primary);
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.30);
+}
+.btn-glass:hover {
+    background-color: var(--le-control-bg-hover);
+    border-color:     var(--le-control-border);
+    color:            var(--le-text-primary);
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.40);
+}
+.btn-glass:active {
+    background-color: var(--le-control-bg-active);
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.34),
+                      inset 0 0 10px rgba(0, 0, 0, 0.04);
+}
+.btn-glass:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.22),
+                inset 0 1px 0 rgba(255, 255, 255, 0.30);
+}
+
+/* ---- Primary action glass ----------------------------------------------- */
+.btn-glass-primary {
+    background-color: rgba(var(--le-primary-rgb), 0.14);
+    border-color:     rgba(var(--le-primary-rgb), 0.22);
+    color:            var(--le-primary);
+    font-weight: 600;
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.btn-glass-primary:hover {
+    background-color: rgba(var(--le-primary-rgb), 0.20);
+    border-color:     rgba(var(--le-primary-rgb), 0.30);
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.32),
+                      0 0 0 1px rgba(var(--le-primary-rgb), 0.04);
+}
+.btn-glass-primary:active {
+    background-color: rgba(var(--le-primary-rgb), 0.28);
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.36),
+                      inset 0 0 12px rgba(var(--le-primary-rgb), 0.10);
+}
+.btn-glass-primary:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.28),
+                inset 0 1px 0 rgba(255, 255, 255, 0.30);
+}
+
+/* ---- Outline glass ------------------------------------------------------ */
+.btn-glass-outline {
+    background-color: transparent;
+    color:            var(--le-text-secondary);
+    border-color:     var(--le-control-border);
+}
+.btn-glass-outline:hover {
+    background-color: var(--le-control-bg);
+    color:            var(--le-text-primary);
+    border-color:     var(--le-control-border-strong);
+}
+.btn-glass-outline:active {
+    background-color: var(--le-control-bg-active);
+    color:            var(--le-text-primary);
+    box-shadow:       inset 0 0 8px rgba(0, 0, 0, 0.04);
+}
+
+/* ---- Disabled state ----------------------------------------------------- */
+.btn-glass:disabled,
+.btn-glass-primary:disabled,
+.btn-glass-outline:disabled,
+.btn-glass.disabled,
+.btn-glass-primary.disabled,
+.btn-glass-outline.disabled {
+    opacity: 0.45;
+    pointer-events: none;
+    box-shadow: none;
+}

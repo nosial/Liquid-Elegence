@@ -1,0 +1,190 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+
+{% block content %}
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Profile</h1>
+        <p class="page-subtitle">Manage your personal information and account details.</p>
+    </div>
+
+    <!-- Profile Header Card (LinkedIn-style) -->
+    <div class="glass-card mb-4 profile-header-card">
+        <!-- Cover / Banner -->
+        <div class="profile-cover"></div>
+        <!-- Profile Info Section -->
+        <div class="profile-info-section">
+            <!-- Avatar -->
+            <div class="profile-avatar">
+                <span class="profile-avatar-initials">JD</span>
+            </div>
+            <!-- Main content row: info + actions -->
+            <div class="profile-info-row">
+                <div class="profile-info-details">
+                    <h3 class="profile-name">John Doe</h3>
+                    <p class="profile-headline">Senior Full-Stack Developer at TechCorp</p>
+                    <p class="profile-location">
+                        <i data-feather="map-pin" class="le-icon-14 le-valign-2"></i>
+                        San Francisco, CA
+                    </p>
+                    <!-- Inline stats -->
+                    <div class="profile-stats-inline">
+                        <a href="javascript:void(0)" class="profile-stat-link"><strong>47</strong> projects</a>
+                        <span class="profile-stat-dot">&middot;</span>
+                        <a href="javascript:void(0)" class="profile-stat-link"><strong>1,248</strong> following</a>
+                        <span class="profile-stat-dot">&middot;</span>
+                        <a href="javascript:void(0)" class="profile-stat-link"><strong>8,394</strong> followers</a>
+                    </div>
+                    <!-- Social Links -->
+                    <div class="social-links mt-2">
+                        <a href="javascript:void(0)" class="social-link" title="GitHub"><i data-feather="github" class="le-icon-16"></i></a>
+                        <a href="javascript:void(0)" class="social-link" title="Twitter / X"><i data-feather="twitter" class="le-icon-16"></i></a>
+                        <a href="javascript:void(0)" class="social-link" title="LinkedIn"><i data-feather="linkedin" class="le-icon-16"></i></a>
+                        <a href="javascript:void(0)" class="social-link" title="Dribbble"><i data-feather="dribbble" class="le-icon-16"></i></a>
+                    </div>
+                </div>
+                <!-- Action buttons -->
+                <div class="profile-actions">
+                    <a href="../pages/settings.html" class="btn btn-primary btn-sm">
+                        <i data-feather="edit-2" class="le-icon-14 le-valign-2"></i> Edit Profile
+                    </a>
+                    <button class="btn btn-outline-secondary btn-sm">
+                        <i data-feather="share-2" class="le-icon-14 le-valign-2"></i> Share
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm">
+                        <i data-feather="more-horizontal" class="le-icon-14 le-valign-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Two-Column Layout -->
+    <div class="row g-4">
+
+        <!-- Left Column -->
+        <div class="col-lg-8">
+
+            <!-- Profile Info & Activity Section -->
+            <div class="glass-card glass-card-body d-flex flex-column gap-0">
+                <!-- About -->
+                <div>
+                    <h5 class="mb-3">About</h5>
+                    <p class="mb-4 le-lh-relaxed">Passionate full-stack developer with over 8 years of experience building scalable web applications. Currently leading the frontend architecture team at TechCorp, focusing on React and Node.js ecosystems. Open source contributor and tech community speaker.</p>
+                    <h6 class="mb-3">Skills</h6>
+                    <div class="profile-skills d-flex flex-wrap gap-2">
+                        <span class="badge">JavaScript</span>
+                        <span class="badge">TypeScript</span>
+                        <span class="badge">React</span>
+                        <span class="badge">Vue.js</span>
+                        <span class="badge">Node.js</span>
+                        <span class="badge">Python</span>
+                        <span class="badge">PostgreSQL</span>
+                        <span class="badge">MongoDB</span>
+                        <span class="badge">AWS</span>
+                        <span class="badge">Docker</span>
+                        <span class="badge">GraphQL</span>
+                        <span class="badge">Redis</span>
+                    </div>
+                </div>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Recent Activity -->
+                <div>
+                    <h5 class="mb-3">Recent Activity</h5>
+                    <div class="profile-activity list-group">
+                        {% set activities = [
+                            { icon: "git-commit", text: 'Pushed 3 commits to <strong>project-alpha</strong>', time: "2 hours ago" },
+                            { icon: "message-circle", text: 'Commented on issue <strong>#142</strong> in <strong>dashboard-redesign</strong>', time: "5 hours ago" },
+                            { icon: "git-merge", text: 'Merged pull request <strong>#89</strong> in <strong>api-gateway</strong>', time: "Yesterday" },
+                            { icon: "plus-circle", text: 'Created new repository <strong>mobile-app-v2</strong>', time: "Yesterday" },
+                            { icon: "tag", text: 'Released <strong>v2.4.0</strong> of <strong>analytics-engine</strong>', time: "2 days ago" },
+                            { icon: "eye", text: 'Reviewed pull request <strong>#76</strong> in <strong>auth-service</strong>', time: "3 days ago" },
+                            { icon: "users", text: 'Joined team <strong>Cloud Infrastructure</strong>', time: "4 days ago" },
+                            { icon: "edit", text: 'Updated profile picture and bio', time: "1 week ago" }
+                        ] %}
+                        {% for act in activities %}
+                        <div class="d-flex align-items-start gap-3 list-group-item{% if not loop.last %} border-bottom-subtle{% endif %}">
+                            <div class="profile-activity-icon">
+                                <i data-feather="{{ act.icon }}" class="le-icon-16"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <p class="mb-0">{{ act.text | safe }}</p>
+                                <small class="text-muted">{{ act.time }}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-lg-4">
+
+            <!-- Contact & Teams Section -->
+            <div class="glass-card glass-card-body d-flex flex-column gap-0">
+                <!-- Contact Info -->
+                <div>
+                    <h5 class="mb-3">Contact Info</h5>
+                    <div class="d-flex flex-column gap-3">
+                        <div class="d-flex align-items-center gap-3">
+                            <i data-feather="mail" class="text-muted le-icon-18 le-shrink-0"></i>
+                            <span>john.doe@techcorp.com</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i data-feather="phone" class="text-muted le-icon-18 le-shrink-0"></i>
+                            <span>+1 (415) 555-0142</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i data-feather="globe" class="text-muted le-icon-18 le-shrink-0"></i>
+                            <a href="javascript:void(0)" class="le-text-primary">johndoe.dev</a>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i data-feather="map-pin" class="text-muted le-icon-18 le-shrink-0"></i>
+                            <span>San Francisco, CA</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <i data-feather="calendar" class="text-muted le-icon-18 le-shrink-0"></i>
+                            <span>Joined March 2019</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Teams -->
+                <div>
+                    <h5 class="mb-3">Teams</h5>
+                    <div class="d-flex flex-column gap-3">
+                        {% set teams = [
+                            { initials: "FC", name: "Frontend Core", role: "Lead", color: "var(--le-primary)" },
+                            { initials: "AS", name: "API Services", role: "Member", color: "var(--le-success)" },
+                            { initials: "DO", name: "DevOps", role: "Member", color: "var(--le-warning)" },
+                            { initials: "DS", name: "Design System", role: "Contributor", color: "var(--le-danger)" }
+                        ] %}
+                        {% for team in teams %}
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="profile-team-avatar" style="background: rgba(var(--le-primary-rgb), 0.15);">{{ team.initials }}</div>
+                            <div class="flex-grow-1">
+                                <div class="fw-semibold le-fs-2xl">{{ team.name }}</div>
+                                <small class="text-muted">{{ team.role }}</small>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+<!-- Footer -->
+
+<!-- Scripts -->
+{% endblock %}

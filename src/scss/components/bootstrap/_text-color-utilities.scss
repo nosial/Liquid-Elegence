@@ -1,0 +1,30 @@
+/* =========================================================================
+   21. TEXT COLOR UTILITIES
+   ========================================================================= */
+
+.text-primary {
+    color: var(--le-primary) !important;
+}
+
+.text-success {
+    color: var(--le-success) !important;
+}
+
+.text-danger {
+    color: var(--le-danger) !important;
+}
+
+.text-warning {
+    color: var(--le-warning) !important;
+}
+
+.text-info {
+    color: var(--le-info) !important;
+}
+
+.text-muted {
+    color: var(--le-text-muted) !important;
+}
+
+// .progress / .progress-bar live in components/_feed-progress.scss
+// (single source of truth — do not redefine here).

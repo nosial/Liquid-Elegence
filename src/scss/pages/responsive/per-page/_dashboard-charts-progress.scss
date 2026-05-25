@@ -1,0 +1,64 @@
+/* ============================================================================
+   23. RESPONSIVE — DEMO PAGES & COMPONENT GALLERIES
+   Compaction rules for dashboards, apps, demos, and component showcases
+   at smaller breakpoints. Selectors target the canonical .le-* utility
+   classes set by the templates (post inline-style migration).
+   ============================================================================ */
+
+
+/* --------------------------------------------------------------------------
+   23a. Dashboard progress bars — compact .le-bar-100x6 (100×6) tracks
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .progress.le-bar-100x6 {
+    width: 72px;
+    height: 5px;
+  }
+}
+
+@media (max-width: 380px) {
+  .progress.le-bar-100x6 {
+    width: 56px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   23b. Chart containers — height scaling for 260px charts (component demos)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767.98px) {
+  .chart-wrapper.le-chart-260 {
+    height: 200px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .chart-wrapper.le-chart-260 {
+    height: 180px;
+  }
+}
+
+@media (max-width: 380px) {
+  .chart-wrapper.le-chart-260 {
+    height: 150px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   23c. Doughnut / Pie chart containers — stack vertically on mobile and
+   shrink the canvas wrapper (.le-max-w-220.le-shrink-0).
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .glass-card-body > .d-flex:has(.le-max-w-220) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .le-max-w-220.le-shrink-0 {
+    max-width: 180px;
+    flex-shrink: 1;
+    margin: 0 auto;
+  }
+}

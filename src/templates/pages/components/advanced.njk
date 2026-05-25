@@ -1,0 +1,348 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Advanced Components — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Advanced</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Typography ───────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Typography — Headings</h5>
+                <h1>Heading 1 <small class="text-muted le-fs-half">h1</small></h1>
+                <h2>Heading 2 <small class="text-muted le-fs-half">h2</small></h2>
+                <h3>Heading 3 <small class="text-muted le-fs-half">h3</small></h3>
+                <h4>Heading 4 <small class="text-muted le-fs-half">h4</small></h4>
+                <h5>Heading 5 <small class="text-muted le-fs-half">h5</small></h5>
+                <h6>Heading 6 <small class="text-muted le-fs-half">h6</small></h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Typography — Body Text</h5>
+                <p class="lead">Lead paragraph: Emphasize introductory text with a slightly larger, lighter font.</p>
+                <p>Regular body text. The quick brown fox jumps over the lazy dog. This is standard paragraph text used throughout the application.</p>
+                <p class="small text-muted">Small muted text for captions and secondary information.</p>
+                <hr>
+                <p><strong>Bold text</strong> | <em>Italic text</em> | <u>Underlined text</u> | <del>Strikethrough</del></p>
+                <p><mark>Highlighted text</mark> | <code>Inline code</code> | <kbd>Ctrl + S</kbd></p>
+                <blockquote class="blockquote mt-3">
+                    <p class="mb-0 le-fs-xl">"Design is not just what it looks like. Design is how it works."</p>
+                    <footer class="blockquote-footer mt-1">Steve Jobs</footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Display Headings ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Display Headings</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="display-1 le-lh-tight">Display 1</p>
+                        <p class="display-2 le-lh-tight">Display 2</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="display-3 le-lh-tight">Display 3</p>
+                        <p class="display-4 le-lh-tight">Display 4</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Feather Icons Gallery ────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Feather Icons</h5>
+                <p class="text-muted mb-3 le-fs-body">A selection of Feather icons used throughout the template.</p>
+                <div class="row g-3" id="iconGallery">
+                    {% set icons = [
+                        'activity', 'airplay', 'alert-circle', 'alert-triangle', 'archive',
+                        'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up', 'at-sign',
+                        'bar-chart', 'bell', 'bluetooth', 'book', 'bookmark',
+                        'box', 'briefcase', 'calendar', 'camera', 'check',
+                        'check-circle', 'chevron-down', 'chevron-right', 'clipboard', 'clock',
+                        'cloud', 'code', 'coffee', 'command', 'copy',
+                        'cpu', 'credit-card', 'database', 'download', 'edit',
+                        'eye', 'feather', 'file', 'file-text', 'filter',
+                        'flag', 'folder', 'gift', 'globe', 'grid',
+                        'hard-drive', 'hash', 'headphones', 'heart', 'home',
+                        'image', 'inbox', 'info', 'key', 'layers',
+                        'layout', 'life-buoy', 'link', 'list', 'lock',
+                        'log-in', 'log-out', 'mail', 'map', 'map-pin',
+                        'maximize', 'menu', 'message-circle', 'message-square', 'mic',
+                        'monitor', 'moon', 'more-horizontal', 'more-vertical', 'move',
+                        'music', 'navigation', 'package', 'paperclip', 'pause',
+                        'phone', 'pie-chart', 'play', 'plus', 'power',
+                        'printer', 'radio', 'refresh-cw', 'save', 'scissors',
+                        'search', 'send', 'server', 'settings', 'share',
+                        'shield', 'shopping-bag', 'shopping-cart', 'sidebar', 'sliders',
+                        'smartphone', 'speaker', 'star', 'sun', 'tag',
+                        'terminal', 'thermometer', 'thumbs-up', 'toggle-left', 'trash',
+                        'trending-up', 'truck', 'tv', 'type', 'umbrella',
+                        'unlock', 'upload', 'user', 'users', 'video',
+                        'voicemail', 'volume-2', 'wifi', 'x', 'zap'
+                    ] %}
+                    {% for icon in icons %}
+                    <div class="col-4 col-sm-3 col-md-2 col-lg-1">
+                        <div class="text-center p-2 rounded le-cursor-pointer" onmouseenter="this.style.background='rgba(var(--le-primary-rgb),0.08)'" onmouseleave="this.style.background='transparent'">
+                            <i data-feather="{{ icon }}" class="le-icon-20"></i>
+                            <div class="text-muted mt-1 le-fs-3xs le-overflow-ellipsis">{{ icon }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card mt-3 le-bg-glass-subtle">
+            <div class="glass-card-body py-2 px-3">
+                <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;i data-feather="icon-name"&gt;&lt;/i&gt;
+
+&lt;!-- Custom size --&gt;
+&lt;i data-feather="home" style="width:24px;height:24px;"&gt;&lt;/i&gt;
+
+&lt;!-- Initialize icons --&gt;
+&lt;script&gt;feather.replace();&lt;/script&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Toasts ───────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Toasts</h5>
+                <p class="text-muted mb-3 le-fs-body">Click to trigger toast notifications.</p>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                    <button class="btn btn-glass btn-glass-primary btn-sm" onclick="showDemoToast('primary')">Primary Toast</button>
+                    <button class="btn btn-glass btn-glass-secondary btn-sm" onclick="showDemoToast('success')">Success Toast</button>
+                    <button class="btn btn-glass btn-sm le-bg-danger-15 le-text-danger" onclick="showDemoToast('danger')">Danger Toast</button>
+                    <button class="btn btn-glass btn-sm le-bg-warning-15 le-text-warning" onclick="showDemoToast('warning')">Warning Toast</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Offcanvas ─────────────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Offcanvas Panels</h5>
+                <p class="text-muted mb-3 le-fs-body">Slide-in panels from all four directions.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-glass btn-glass-primary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStart">Start (Left)</button>
+                    <button class="btn btn-glass btn-glass-secondary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd">End (Right)</button>
+                    <button class="btn btn-glass btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop">Top</button>
+                    <button class="btn btn-glass btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom">Bottom</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{# Offcanvas panels — placed at page level so they overlay the full viewport #}
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasStart">
+    <div class="offcanvas-header"><h5 class="offcanvas-title">Left Panel</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body"><p>This is a left-side offcanvas panel. Use it for navigation, filters, or settings.</p></div>
+</div>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd">
+    <div class="offcanvas-header"><h5 class="offcanvas-title">Right Panel</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body"><p>Right-side panel for details, actions, or secondary content.</p></div>
+</div>
+<div class="offcanvas offcanvas-top le-h-200" tabindex="-1" id="offcanvasTop">
+    <div class="offcanvas-header"><h5 class="offcanvas-title">Top Panel</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body"><p>Top panel for search bars, announcements, or global actions.</p></div>
+</div>
+<div class="offcanvas offcanvas-bottom le-h-200" tabindex="-1" id="offcanvasBottom">
+    <div class="offcanvas-header"><h5 class="offcanvas-title">Bottom Panel</h5><button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button></div>
+    <div class="offcanvas-body"><p>Bottom panel for action sheets or quick actions.</p></div>
+</div>
+
+{# ── Utility Colors & Backgrounds ─────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Color Utilities</h5>
+                <p class="text-muted mb-3 le-fs-body">Theme-aware text and background color classes.</p>
+                <div class="d-flex flex-column gap-2">
+                    <span class="text-primary">text-primary — Primary brand color</span>
+                    <span class="text-secondary">text-secondary — Secondary color</span>
+                    <span class="text-success">text-success — Success / positive</span>
+                    <span class="text-danger">text-danger — Danger / error</span>
+                    <span class="text-warning">text-warning — Warning / caution</span>
+                    <span class="text-info">text-info — Information</span>
+                    <span class="text-muted">text-muted — Muted / de-emphasized</span>
+                </div>
+                <hr>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="badge bg-primary">bg-primary</span>
+                    <span class="badge bg-secondary">bg-secondary</span>
+                    <span class="badge bg-success">bg-success</span>
+                    <span class="badge bg-danger">bg-danger</span>
+                    <span class="badge bg-warning text-dark">bg-warning</span>
+                    <span class="badge bg-info">bg-info</span>
+                    <span class="badge bg-dark">bg-dark</span>
+                    <span class="badge bg-light text-dark">bg-light</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Shadows & Borders ─────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Shadows & Borders</h5>
+                <p class="text-muted mb-3 le-fs-body">Glass-friendly shadow and border combinations.</p>
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="p-3 rounded text-center shadow-sm le-bg-glass">shadow-sm</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3 rounded text-center shadow le-bg-glass">shadow</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3 rounded text-center shadow-lg le-bg-glass">shadow-lg</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3 rounded text-center border le-bg-glass">border</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3 rounded text-center le-bg-glass le-border-glass">glass-border</div>
+                    </div>
+                    <div class="col-6">
+                        <div class="p-3 text-center le-bg-glass rounded-glass-lg">radius-lg</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Spinners & Placeholders ──────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Spinners & Loading States</h5>
+                <div class="d-flex flex-wrap align-items-center gap-4 mb-3">
+                    <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-border text-success" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-border text-danger spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-grow text-warning spinner-grow-sm" role="status"><span class="visually-hidden">Loading...</span></div>
+                </div>
+                <button class="btn btn-glass btn-glass-primary btn-sm" disabled>
+                    <span class="spinner-border spinner-border-sm me-1"></span> Loading…
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Placeholder / Skeleton Loading</h5>
+                <p class="text-muted mb-3 le-fs-body">Skeleton placeholders for content loading states.</p>
+                <div class="d-flex align-items-start gap-3">
+                    <div class="placeholder-glow">
+                        <span class="placeholder rounded-circle le-box-48 d-block"></span>
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="placeholder-glow mb-2">
+                            <span class="placeholder col-6 rounded"></span>
+                        </p>
+                        <p class="placeholder-glow mb-2">
+                            <span class="placeholder col-8 rounded"></span>
+                        </p>
+                        <p class="placeholder-glow mb-0">
+                            <span class="placeholder col-4 rounded"></span>
+                        </p>
+                    </div>
+                </div>
+                <hr>
+                <div class="placeholder-wave">
+                    <span class="placeholder col-12 rounded mb-2"></span>
+                    <span class="placeholder col-10 rounded mb-2"></span>
+                    <span class="placeholder col-8 rounded"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Popovers & Tooltips Grid ─────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Tooltips & Popovers</h5>
+                <div class="d-flex flex-wrap gap-3">
+                    <button type="button" class="btn btn-glass btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Top Tooltip</button>
+                    <button type="button" class="btn btn-glass btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">Bottom Tooltip</button>
+                    <button type="button" class="btn btn-glass btn-sm" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">Left Tooltip</button>
+                    <button type="button" class="btn btn-glass btn-sm" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">Right Tooltip</button>
+                    <span class="mx-2 align-self-center text-muted">|</span>
+                    <button type="button" class="btn btn-glass btn-glass-primary btn-sm" data-bs-toggle="popover" data-bs-placement="top" title="Popover Title" data-bs-content="This is a popover with some content text. Click anywhere to dismiss.">Top Popover</button>
+                    <button type="button" class="btn btn-glass btn-glass-primary btn-sm" data-bs-toggle="popover" data-bs-placement="bottom" title="Bottom Popover" data-bs-content="Content appears below the trigger element.">Bottom Popover</button>
+                    <button type="button" class="btn btn-glass btn-glass-primary btn-sm" data-bs-toggle="popover" data-bs-placement="right" title="Right Popover" data-bs-content="Popovers can contain longer content and are more visible than tooltips.">Right Popover</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function(el) { new bootstrap.Tooltip(el); });
+
+    // Initialize popovers
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.forEach(function(el) { new bootstrap.Popover(el, { trigger: 'click' }); });
+});
+
+function showDemoToast(type) {
+    var messages = {
+        primary: 'This is a <strong>primary</strong> toast notification.',
+        success: 'Action completed <strong>successfully</strong>!',
+        danger: '<strong>Error:</strong> Something went wrong.',
+        warning: '<strong>Warning:</strong> Please check your input.'
+    };
+    if (window.LiquidElegance && LiquidElegance.showToast) {
+        LiquidElegance.showToast(messages[type] || messages.primary, type, 4000);
+    }
+}
+</script>
+{% endblock %}

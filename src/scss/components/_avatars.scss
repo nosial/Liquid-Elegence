@@ -1,0 +1,359 @@
+/* =========================================================================
+   3. AVATAR SYSTEM
+   ========================================================================= */
+
+.avatar {
+    width: var(--le-avatar-size, 40px);
+    height: var(--le-avatar-size, 40px);
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-flex;
+    position: relative;
+    transition:
+        box-shadow 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
+        filter 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.avatar:hover {
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.16),
+                0 4px 24px rgba(var(--le-primary-rgb), 0.22),
+                var(--le-inner-glow);
+    filter: brightness(1.10);
+    transform: scale(1.08);
+}
+
+.avatar-sm {
+    width: var(--le-avatar-size-sm, 32px);
+    height: var(--le-avatar-size-sm, 32px);
+}
+
+.avatar-xs {
+    width: 24px;
+    height: 24px;
+}
+
+.avatar-lg {
+    width: var(--le-avatar-size-lg, 56px);
+    height: var(--le-avatar-size-lg, 56px);
+}
+
+.avatar-xl {
+    width: var(--le-avatar-size-xl, 72px);
+    height: var(--le-avatar-size-xl, 72px);
+}
+
+.avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: rgba(var(--le-primary-rgb), 0.14);
+    color: var(--le-primary);
+    border-radius: 50%;
+    border: 1px solid rgba(var(--le-primary-rgb), 0.20);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+    transition: background 0.25s cubic-bezier(0.22, 0.61, 0.36, 1), border-color 0.2s ease, box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+    text-shadow: 0 1px 3px rgba(var(--le-primary-rgb), 0.14);
+}
+
+.avatar-sm .avatar-placeholder {
+    font-size: 0.65rem;
+}
+
+.avatar-xs .avatar-placeholder {
+    font-size: 0.55rem;
+}
+
+.avatar-lg .avatar-placeholder {
+    font-size: 1rem;
+}
+
+.avatar-xl .avatar-placeholder {
+    font-size: 1.25rem;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Status dot indicator */
+.status-dot {
+    position: absolute;
+    bottom: 1px;
+    right: 1px;
+    width: var(--le-dot-size, 12px);
+    height: var(--le-dot-size, 12px);
+    border-radius: 50%;
+    border: 2px solid var(--le-glass-bg-strong, #fff);
+    z-index: 2;
+    transition:
+        box-shadow var(--le-transition-fast),
+        filter var(--le-transition-fast);
+}
+
+.status-dot.online {
+    background: var(--le-success, #10b981);
+    box-shadow: 0 0 10px rgba(var(--le-success-rgb), 0.55);
+    animation: status-pulse 2s ease-in-out infinite;
+}
+
+.status-dot.away {
+    background: var(--le-warning, #f59e0b);
+    box-shadow: 0 0 10px rgba(var(--le-warning-rgb), 0.55);
+}
+
+.status-dot.busy {
+    background: var(--le-danger, #ef4444);
+    box-shadow: 0 0 10px rgba(var(--le-danger-rgb), 0.55);
+}
+
+.status-dot.offline {
+    background: var(--le-text-muted, #94a3b8);
+}
+
+@keyframes status-pulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(var(--le-success-rgb), 0.55); }
+    50% { box-shadow: 0 0 18px rgba(var(--le-success-rgb), 0.80), 0 0 6px rgba(var(--le-success-rgb), 0.40); }
+}
+
+.avatar-lg .status-dot,
+.avatar-xl .status-dot {
+    width: 16px;
+    height: 16px;
+    border-width: 2.5px;
+}
+
+.avatar-sm .status-dot {
+    width: 10px;
+    height: 10px;
+    border-width: 2px;
+}
+
+.avatar-xs .status-dot {
+    width: 8px;
+    height: 8px;
+    border-width: 1.5px;
+}
+
+[data-theme="dark"] .status-dot {
+    border-color: var(--le-gray-900, #0f172a);
+}
+
+[data-theme="dark"] .avatar-placeholder {
+    background: rgba(var(--le-primary-rgb), 0.15);
+    border-color: rgba(var(--le-primary-rgb), 0.25);
+}
+
+/* Standalone avatar circle (no wrapper) */
+.avatar-circle {
+    width: var(--le-avatar-size, 40px);
+    height: var(--le-avatar-size, 40px);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.75rem;
+    background: var(--le-glass-bg-strong);
+    color: var(--le-text-primary);
+    flex-shrink: 0;
+    border: 1px solid var(--le-glass-border-subtle);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    transition: box-shadow var(--le-transition-fast), filter var(--le-transition-fast);
+}
+
+
+/* =========================================================================
+   ICON CIRCLE — reusable icon/initials container
+   Replaces long utility chains like:
+     d-inline-flex align-items-center justify-content-center rounded-circle
+     bg-primary bg-opacity-10
+   Usage: <span class="icon-circle icon-circle-primary">...</span>
+   ========================================================================= */
+
+.icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--le-icon-circle-size, 40px);
+    height: var(--le-icon-circle-size, 40px);
+    border-radius: 50%;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: var(--le-icon-circle-font, 0.8125rem);
+    line-height: 1;
+}
+
+/* Size variants */
+.icon-circle-xs {
+    width: var(--le-icon-circle-size-xs, 24px);
+    height: var(--le-icon-circle-size-xs, 24px);
+    font-size: 0.625rem;
+}
+
+.icon-circle-sm {
+    width: var(--le-icon-circle-size-sm, 32px);
+    height: var(--le-icon-circle-size-sm, 32px);
+    font-size: var(--le-icon-circle-font-sm, 0.8125rem);
+}
+
+.icon-circle-lg {
+    width: var(--le-icon-circle-size-lg, 48px);
+    height: var(--le-icon-circle-size-lg, 48px);
+    font-size: var(--le-icon-circle-font-lg, 1rem);
+}
+
+.icon-circle-xl {
+    width: var(--le-icon-circle-size-xl, 56px);
+    height: var(--le-icon-circle-size-xl, 56px);
+    font-size: var(--le-icon-circle-font-xl, 1.125rem);
+}
+
+/* Color variants — soft background + matching text color */
+.icon-circle-primary {
+    background: rgba(var(--le-primary-rgb), 0.12);
+    color: var(--le-primary);
+    border: 1px solid rgba(var(--le-primary-rgb), 0.15);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    transition: box-shadow var(--le-transition-fast), filter var(--le-transition-fast), background var(--le-transition-fast), transform 0.2s ease;
+}
+
+.icon-circle-success {
+    background: rgba(var(--le-success-rgb), 0.12);
+    color: var(--le-success);
+    border: 1px solid rgba(var(--le-success-rgb), 0.15);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    transition: box-shadow var(--le-transition-fast), filter var(--le-transition-fast), background var(--le-transition-fast), transform 0.2s ease;
+}
+
+.icon-circle-danger {
+    background: rgba(var(--le-danger-rgb), 0.12);
+    color: var(--le-danger);
+    border: 1px solid rgba(var(--le-danger-rgb), 0.15);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    transition: box-shadow var(--le-transition-fast), filter var(--le-transition-fast), background var(--le-transition-fast), transform 0.2s ease;
+}
+
+.icon-circle-warning {
+    background: rgba(var(--le-warning-rgb), 0.12);
+    color: var(--le-warning);
+    border: 1px solid rgba(var(--le-warning-rgb), 0.15);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    transition: box-shadow var(--le-transition-fast), filter var(--le-transition-fast), background var(--le-transition-fast), transform 0.2s ease;
+}
+
+.icon-circle-info {
+    background: rgba(var(--le-info-rgb), 0.12);
+    color: var(--le-info);
+    border: 1px solid rgba(var(--le-info-rgb), 0.15);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    transition: box-shadow var(--le-transition-fast), filter var(--le-transition-fast), background var(--le-transition-fast), transform 0.2s ease;
+}
+
+.icon-circle-secondary {
+    background: rgba(var(--le-gray-500), 0.12);
+    color: var(--le-gray-500);
+    border: 1px solid rgba(var(--le-gray-500), 0.10);
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    transition: box-shadow var(--le-transition-fast), filter var(--le-transition-fast), background var(--le-transition-fast), transform 0.2s ease;
+}
+
+/* Dark mode — slightly stronger backgrounds for visibility */
+[data-theme="dark"] .icon-circle-primary   { background: rgba(var(--le-primary-rgb), 0.18); }
+[data-theme="dark"] .icon-circle-success   { background: rgba(var(--le-success-rgb), 0.18); }
+[data-theme="dark"] .icon-circle-danger    { background: rgba(var(--le-danger-rgb), 0.18); }
+[data-theme="dark"] .icon-circle-warning   { background: rgba(var(--le-warning-rgb), 0.18); }
+[data-theme="dark"] .icon-circle-info      { background: rgba(var(--le-info-rgb), 0.18); }
+[data-theme="dark"] .icon-circle-secondary { background: rgba(255, 255, 255, 0.10); }
+
+/* Mini avatar - inline mentions, stacked lists */
+.mini-avatar {
+    width: var(--le-mini-avatar-size, 24px);
+    height: var(--le-mini-avatar-size, 24px);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--le-text-on-primary);
+    border: 2px solid var(--le-glass-bg-strong);
+    flex-shrink: 0;
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle));
+    transition: box-shadow var(--le-transition-fast), filter var(--le-transition-fast);
+}
+
+/* Avatar group (overlapping stack) */
+.avatar-group {
+    display: flex;
+}
+
+.avatar-group .avatar,
+.avatar-group .mini-avatar {
+    margin-left: var(--le-avatar-group-overlap, -8px);
+    border: 2px solid var(--le-glass-bg);
+    transition:
+        transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        z-index 0s,
+        box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.avatar-group .avatar:hover,
+.avatar-group .mini-avatar:hover {
+    transform: scale(1.18) translateY(-4px);
+    z-index: 10;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.20), 0 0 0 2px rgba(var(--le-primary-rgb), 0.16), 0 0 20px rgba(var(--le-primary-rgb), 0.12);
+}
+
+.avatar-group .avatar:first-child,
+.avatar-group .mini-avatar:first-child {
+    margin-left: 0;
+}
+
+
+/* =========================================================================
+   4. STATUS DOTS
+   ========================================================================= */
+
+.status-dot {
+    width: var(--le-dot-size, 8px);
+    height: var(--le-dot-size, 8px);
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+    transition: box-shadow var(--le-transition-fast);
+}
+
+.status-online {
+    background: var(--le-success);
+    box-shadow: 0 0 10px rgba(var(--le-success-rgb), 0.45);
+}
+
+.status-offline {
+    background: var(--le-gray-400);
+}
+
+.status-away {
+    background: var(--le-warning);
+    box-shadow: 0 0 10px rgba(var(--le-warning-rgb), 0.45);
+}
+
+

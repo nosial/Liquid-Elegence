@@ -1,0 +1,291 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="forum-feed.html">ForumBoard</a></li>
+            <li class="breadcrumb-item"><a href="forum-feed.html">r/webdev</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Post</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+
+        <!-- Main Post Column -->
+        <div class="col-lg-8 forum-main-col">
+
+            <div class="glass-card animate-fade-in-up">
+
+                <!-- Post Header -->
+                <section class="d-flex p-3 gap-3">
+                    <div class="forum-vote">
+                        <button class="forum-vote-btn upvoted" title="Upvote"><i data-feather="arrow-up" class="le-icon-18"></i></button>
+                        <span class="forum-vote-count le-text-primary">1,284</span>
+                        <button class="forum-vote-btn" title="Downvote"><i data-feather="arrow-down" class="le-icon-18"></i></button>
+                    </div>
+                    <div class="forum-post-body pb-0">
+                        <div class="forum-post-meta">
+                            <a href="forum-feed.html" class="forum-subreddit-link">r/webdev</a>
+                            <span class="forum-meta-dot">&middot;</span>
+                            <span>Posted by <a href="forum-profile.html" class="forum-author-link">u/alice_codes</a></span>
+                            <span class="forum-meta-dot">&middot;</span>
+                            <span>3 hours ago</span>
+                            <span class="forum-flair forum-flair-discussion">Discussion</span>
+                        </div>
+                        <h2 class="forum-post-title le-fs-6xl">What's your unpopular opinion about modern frontend frameworks?</h2>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Post Full Body -->
+                <section>
+                    <div class="forum-detail-body">
+                        <p>I'll start with mine — I think the React ecosystem has become <strong>too complex</strong> for most projects. Between server components, suspense boundaries, and the million state management libraries, we've lost sight of simplicity.</p>
+
+                        <p>I've been building web applications for over 10 years, and I remember when jQuery was king. While I don't want to go back to those days, I feel like we've swung the pendulum too far in the other direction. Today, a simple CRUD app requires you to understand:</p>
+
+                        <blockquote>Server components, client components, hydration, streaming SSR, edge runtimes, middleware, API routes, server actions, caching strategies, revalidation patterns...</blockquote>
+
+                        <p>Whatever happened to just writing some HTML, CSS, and JavaScript? I recently tried building a small project with vanilla JS and modern browser APIs, and I was shocked at how capable the platform has become without any framework at all.</p>
+
+                        <p>I'd love to hear your unpopular opinions. What hills are you willing to die on when it comes to frontend development?</p>
+
+                        <p><strong>Edit:</strong> Wow, this blew up! Thanks for all the thoughtful responses. I'm reading through every comment.</p>
+                    </div>
+
+                    <!-- Post Actions -->
+                    <div class="forum-post-actions px-4 pb-3 pt-0">
+                        <button class="forum-action-btn"><i data-feather="message-square" class="le-icon-14"></i> 847 Comments</button>
+                        <button class="forum-action-btn"><i data-feather="share" class="le-icon-14"></i> Share</button>
+                        <button class="forum-action-btn"><i data-feather="bookmark" class="le-icon-14"></i> Save</button>
+                        <button class="forum-action-btn"><i data-feather="award" class="le-icon-14"></i> 3 Awards</button>
+                        <button class="forum-action-btn"><i data-feather="flag" class="le-icon-14"></i> Report</button>
+                        <button class="forum-action-btn" aria-label="More options"><i data-feather="more-horizontal" class="le-icon-14"></i></button>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Comment Compose -->
+                <section>
+                    <div class="forum-comment-compose">
+                        <div class="forum-compose-row">
+                            <div class="le-avatar-36 le-avatar-gradient">JD</div>
+                            <div class="flex-grow-1">
+                                <textarea class="forum-compose-input" placeholder="What are your thoughts?"></textarea>
+                                <div class="forum-compose-actions">
+                                    <button class="btn btn-outline-secondary btn-sm" aria-label="Bold"><i data-feather="bold" class="le-icon-14"></i></button>
+                                    <button class="btn btn-outline-secondary btn-sm" aria-label="Italic"><i data-feather="italic" class="le-icon-14"></i></button>
+                                    <button class="btn btn-outline-secondary btn-sm" aria-label="Insert link"><i data-feather="link" class="le-icon-14"></i></button>
+                                    <button class="btn btn-outline-secondary btn-sm" aria-label="Code"><i data-feather="code" class="le-icon-14"></i></button>
+                                    <button class="btn btn-primary btn-sm ms-auto">Comment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Comments Section -->
+                <section>
+                    <div class="forum-comments-header">
+                        <span class="forum-comments-count">847 Comments</span>
+                        <div class="d-flex gap-1">
+                            <button class="forum-sort-btn active le-fs-md">Best</button>
+                            <button class="forum-sort-btn le-fs-md">Top</button>
+                            <button class="forum-sort-btn le-fs-md">New</button>
+                            <button class="forum-sort-btn le-fs-md">Old</button>
+                        </div>
+                    </div>
+
+                    <div class="forum-comment-list">
+
+                        {% set comments = [
+                            {
+                                author: "functional_phil", op: false, time: "2 hours ago", votes: 892,
+                                body: "My unpopular opinion: TypeScript is overkill for most small-to-medium projects. The cognitive overhead of maintaining types, dealing with generics hell, and the compilation step just isn't worth it when you're building a landing page or a simple internal tool.",
+                                replies: [
+                                    {
+                                        author: "type_safety_sam", op: false, time: "1 hour ago", votes: 345,
+                                        body: "Hard disagree. TypeScript has saved me countless hours of debugging. The 'overhead' becomes invisible once you're fluent in it, and the autocompletion alone makes it worth the investment.",
+                                        replies: [
+                                            {
+                                                author: "functional_phil", op: false, time: "45 min ago", votes: 78,
+                                                body: "Fair point about autocompletion. I think my frustration is more with how the community treats it as a requirement rather than a tool to evaluate per project.",
+                                                replies: []
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        author: "alice_codes", op: true, time: "1 hour ago", votes: 156,
+                                        body: "This is a great one! I actually love TypeScript, but I completely agree that the community sometimes pushes it as the only acceptable option. Context matters.",
+                                        replies: []
+                                    }
+                                ]
+                            },
+                            {
+                                author: "vanilla_dev", op: false, time: "2 hours ago", votes: 634,
+                                body: "CSS-in-JS was a mistake. We had a perfectly good separation of concerns, and then we decided to mix everything together. Tailwind is just inline styles with extra steps. Give me a well-organized SCSS architecture any day.",
+                                replies: [
+                                    {
+                                        author: "tailwind_fan", op: false, time: "1 hour ago", votes: 234,
+                                        body: "I used to think the same thing until I tried Tailwind on a large team project. The consistency and speed of development was incredible. No more arguing about class names or dealing with specificity wars.",
+                                        replies: []
+                                    }
+                                ]
+                            },
+                            {
+                                author: "svelte_stan", op: false, time: "1 hour ago", votes: 423,
+                                body: "Here's mine: Svelte got it right from the beginning. The idea that the framework should disappear at compile time is brilliant, and I think every other framework will eventually move in that direction. The fact that React is now pushing RSC basically proves this.",
+                                replies: []
+                            },
+                            {
+                                author: "backend_bob", op: false, time: "55 min ago", votes: 567,
+                                body: "Unpopular opinion: Most SPAs should just be server-rendered multi-page applications. We've been building complex client-side architectures for apps that would work perfectly fine with traditional request-response cycles and a sprinkle of vanilla JS for interactivity.",
+                                replies: [
+                                    {
+                                        author: "alice_codes", op: true, time: "40 min ago", votes: 89,
+                                        body: "YES! This is exactly what I was getting at. Not every project needs a virtual DOM and client-side routing. The pendulum is swinging back, and I think that's healthy for the ecosystem.",
+                                        replies: []
+                                    },
+                                    {
+                                        author: "spa_defender", op: false, time: "35 min ago", votes: 45,
+                                        body: "Depends on the use case though. Try building a real-time collaborative editor or a complex dashboard with MPA. Sometimes SPAs are the right tool for the job.",
+                                        replies: []
+                                    }
+                                ]
+                            }
+                        ] %}
+
+                        {# Recursive comment rendering macro #}
+                        {% macro renderComment(comment) %}
+                        <div class="forum-comment">
+                            <div class="forum-comment-header">
+                                <div class="le-avatar-24 le-avatar-gradient">{{ comment.author[0] | upper }}</div>
+                                <a href="forum-profile.html" class="forum-comment-author{% if comment.op %} op{% endif %}">{{ comment.author }}</a>
+                                {% if comment.op %}
+                                <span class="forum-comment-op-badge">OP</span>
+                                {% endif %}
+                                <span class="forum-comment-time">&middot; {{ comment.time }}</span>
+                            </div>
+                            <div class="forum-comment-body">{{ comment.body }}</div>
+                            <div class="forum-comment-actions">
+                                <button class="forum-action-btn"><i data-feather="arrow-up" class="le-icon-12"></i> {{ comment.votes }}</button>
+                                <button class="forum-action-btn"><i data-feather="arrow-down" class="le-icon-12"></i></button>
+                                <button class="forum-action-btn"><i data-feather="message-square" class="le-icon-12"></i> Reply</button>
+                                <button class="forum-action-btn"><i data-feather="award" class="le-icon-12"></i> Award</button>
+                                <button class="forum-action-btn"><i data-feather="more-horizontal" class="le-icon-12"></i></button>
+                            </div>
+                            {% if comment.replies and comment.replies | length > 0 %}
+                            <div class="forum-comment-replies">
+                                {% for reply in comment.replies %}
+                                    {{ renderComment(reply) }}
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endmacro %}
+
+                        {% for comment in comments %}
+                            {{ renderComment(comment) }}
+                        {% endfor %}
+
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+        <!-- Sidebar backdrop (mobile) -->
+        <div class="forum-sidebar-backdrop" id="forumSidebarBackdrop"></div>
+
+        <!-- Sidebar Column -->
+        <div class="col-lg-4 forum-sidebar-col" id="forumSidebar">
+
+            <!-- Mobile header with close button -->
+            <div class="forum-sidebar-mobile-header">
+                <span class="forum-sidebar-mobile-title">Community</span>
+                <button class="forum-sidebar-close" id="forumSidebarClose" aria-label="Close sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div class="glass-card overflow-hidden">
+
+                <!-- Community Widget -->
+                <section class="forum-community-header">
+                    <div class="forum-community-banner le-h-80"></div>
+                    <div class="forum-community-info">
+                        <div class="forum-community-icon le-box-56 le-lifted-avatar le-fs-5xl">W</div>
+                        <h5 class="mt-2 mb-1 fw-bold">r/webdev</h5>
+                        <p class="mb-2 le-fs-lg le-post-body">A community for web developers and designers.</p>
+                        <div class="d-flex gap-3 mb-3 le-fs-ui">
+                            <div><strong>2.4M</strong> <span class="text-muted">Members</span></div>
+                            <div><strong>8.2K</strong> <span class="text-muted">Online</span></div>
+                        </div>
+                        <button class="btn btn-primary btn-sm w-100">Joined</button>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Post Author -->
+                <section class="glass-card-body">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <div class="le-avatar-48 le-avatar-gradient">AC</div>
+                        <div>
+                            <a href="forum-profile.html" class="fw-semibold d-block le-fs-2xl le-text-body text-decoration-none">u/alice_codes</a>
+                            <span class="text-muted le-fs-md">Post author &middot; 24.5K karma</span>
+                        </div>
+                    </div>
+                    <p class="mb-3 le-post-body">Full-stack developer passionate about web standards. Writing code since '14.</p>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-secondary btn-sm flex-fill"><i data-feather="user-plus" class="le-icon-14 le-valign-2"></i> Follow</button>
+                        <button class="btn btn-outline-secondary btn-sm flex-fill"><i data-feather="mail" class="le-icon-14 le-valign-2"></i> Message</button>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Related Posts -->
+                <section class="glass-card-body forum-sidebar-widget">
+                    <h6>Related Posts</h6>
+                    {% set related = [
+                        { title: "Is Next.js overengineered for simple websites?", votes: 456, comments: 123 },
+                        { title: "Why I switched from React to Solid.js", votes: 789, comments: 234 },
+                        { title: "The state of CSS in 2026", votes: 1234, comments: 345 },
+                        { title: "HTMX vs SPA frameworks — a real comparison", votes: 567, comments: 189 }
+                    ] %}
+                    {% for r in related %}
+                    <div class="d-flex gap-3 align-items-start{% if not loop.last %} mb-3 pb-3{% endif %}" {% if not loop.last %}style="border-bottom:1px solid var(--le-glass-border-subtle);"{% endif %}>
+                        <div class="flex-grow-1">
+                            <a href="javascript:void(0)" class="le-link-title-multiline">{{ r.title }}</a>
+                            <span class="text-muted le-fs-sm">{{ r.votes }} votes &middot; {{ r.comments }} comments</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Floating sidebar toggle (mobile) -->
+    <button class="forum-sidebar-toggle-fab" id="forumSidebarToggle" aria-label="Show sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    </button>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/forum.js"></script>
+{% endblock %}

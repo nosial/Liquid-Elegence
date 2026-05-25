@@ -1,0 +1,20 @@
+/* ─────────────────────────────────────────────────────────────
+   12. Alerts
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .alert-dismissible {
+    padding-left: 3rem;
+    padding-right: 1rem;
+}
+
+[dir="rtl"] .alert-dismissible .btn-close {
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .le-alert-icon {
+    margin-left: 0.75rem;
+    margin-right: 0;
+}
+
+

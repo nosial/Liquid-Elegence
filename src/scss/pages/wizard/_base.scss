@@ -1,0 +1,142 @@
+/* =============================================================================
+   Liquid Elegance — Wizard App Styles
+   Modular liquid glass design for the wizard interface.
+   ============================================================================= */
+
+
+/* =============================================================================
+   Page Header & Container
+   ============================================================================= */
+
+.wizard-page-header {
+    text-align: center;
+    margin-bottom: var(--le-spacing-xl);
+}
+
+.wizard-page-header h3 {
+    font-weight: var(--le-font-weight-bold);
+    margin-bottom: var(--le-spacing-xs);
+    color: var(--le-text-primary);
+}
+
+.wizard-page-header p {
+    color: var(--le-text-muted);
+    font-size: var(--le-font-size-sm);
+}
+
+.wizard-container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.step-content .form-group.ctx-active {
+    box-shadow: 0 0 0 2px rgba(var(--le-primary-rgb), 0.15);
+    border-radius: var(--le-radius);
+}
+
+
+/* =============================================================================
+   Progress Indicator
+   ============================================================================= */
+
+.wizard-progress {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: var(--le-spacing-2xl);
+    padding: 0 var(--le-spacing-md);
+}
+
+.wizard-progress::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: calc(12.5% + 10px);
+    right: calc(12.5% + 10px);
+    height: 3px;
+    background: var(--le-glass-border);
+    border-radius: 2px;
+    z-index: 0;
+}
+
+.progress-line-fill {
+    position: absolute;
+    top: 20px;
+    left: calc(12.5% + 10px);
+    height: 3px;
+    background: linear-gradient(90deg, var(--le-primary), rgba(var(--le-primary-rgb), 0.7));
+    border-radius: 2px;
+    z-index: 1;
+    transition: width var(--le-transition-slow) ease;
+    width: 0%;
+    animation: wiz-shimmer 2s linear infinite;
+    background-size: 200% 100%;
+}
+
+.wizard-step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    cursor: default;
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--le-font-weight-bold);
+    font-size: var(--le-font-size-sm);
+    transition: all var(--le-transition);
+    margin-bottom: var(--le-spacing-xs);
+}
+
+.step-circle.upcoming {
+    background: var(--le-glass-bg-subtle);
+    border: 2px solid var(--le-glass-border);
+    color: var(--le-text-muted);
+}
+
+.step-circle.current {
+    background: transparent;
+    border: 2px solid var(--le-primary);
+    color: var(--le-primary);
+    box-shadow: 0 0 0 4px rgba(var(--le-primary-rgb), 0.2);
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.step-circle.completed {
+    background: linear-gradient(135deg, var(--le-primary), rgba(var(--le-primary-rgb), 0.8));
+    border: 2px solid var(--le-primary);
+    color: var(--le-text-inverse);
+    box-shadow: 0 2px 8px rgba(var(--le-primary-rgb), 0.3);
+}
+
+.step-circle.completed svg {
+    width: 18px;
+    height: 18px;
+}
+
+.step-label {
+    font-size: var(--le-font-size-xs);
+    font-weight: 600;
+    color: var(--le-text-muted);
+    text-align: center;
+    transition: color var(--le-transition);
+}
+
+.wizard-step-indicator.active .step-label {
+    color: var(--le-primary);
+}
+
+.wizard-step-indicator.done .step-label {
+    color: var(--le-text-primary);
+}

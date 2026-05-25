@@ -1,0 +1,20 @@
+// pages/auth/visuals/_signin.scss
+// Rules unique to the signin template.
+
+.auth-remember-row .form-check-label {
+            color: var(--le-text-secondary);
+        }
+
+.auth-remember-row a {
+            color: var(--le-primary);
+            text-decoration: none;
+            transition: opacity var(--le-transition-fast);
+        }
+
+.auth-remember-row a:hover {
+            opacity: 0.8;
+        }
+
+.auth-footer a:hover {
+            text-decoration: underline;
+        }

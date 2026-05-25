@@ -1,0 +1,128 @@
+/* ==========================================================================
+   4. SIDEBAR — Collapsed State
+   body.sidebar-collapsed shrinks sidebar to 70px icon-only rail.
+   ========================================================================== */
+
+.sidebar-collapsed .sidebar {
+    width: var(--le-sidebar-collapsed, 70px);
+}
+
+/* Hide text elements */
+.sidebar-collapsed .brand-text {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.sidebar-collapsed .sidebar-nav-label {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* When sidebar is collapsed, force menus open (icon-only mode) */
+.sidebar-collapsed .sidebar-menu {
+    max-height: 2000px;
+}
+
+.sidebar-collapsed .sidebar-link span {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Center icons when collapsed */
+.sidebar-collapsed .sidebar-link {
+    justify-content: center;
+    padding: 10px 0;
+    gap: 0;
+}
+
+/* Rotate the toggle chevron icon */
+.sidebar-collapsed .sidebar-toggle-btn svg,
+.sidebar-collapsed .sidebar-toggle-btn i {
+    transform: rotate(180deg);
+}
+
+/* Adjust header spacing */
+.sidebar-collapsed .sidebar-header {
+    justify-content: center;
+    padding: 0 8px;
+}
+
+.sidebar-collapsed .sidebar-brand {
+    justify-content: center;
+}
+
+.sidebar-collapsed .sidebar-toggle-btn {
+    display: none;
+}
+
+/* Shift main content */
+.sidebar-collapsed .main-content {
+    margin-left: var(--le-sidebar-collapsed, 70px);
+}
+
+
+/* ==========================================================================
+   5. SIDEBAR — Hover Expand (Collapsed)
+   When sidebar is collapsed, hovering expands it temporarily.
+   ========================================================================== */
+
+@media (min-width: 992px) {
+    .sidebar-collapsed .sidebar:hover {
+        width: var(--le-sidebar-width, 260px);
+        box-shadow: var(--le-glass-shadow-lg);
+    }
+
+    .sidebar-collapsed .sidebar:hover .brand-text {
+        opacity: 1;
+        width: auto;
+    }
+
+    .sidebar-collapsed .sidebar:hover .sidebar-nav-label {
+        opacity: 1;
+        height: auto;
+        padding: var(--le-spacing-xs) var(--le-spacing-md) var(--le-spacing-xs) 20px;
+        margin-bottom: 4px;
+        pointer-events: auto;
+    }
+
+    /* Restore expand/collapse when hovering over collapsed sidebar */
+    .sidebar-collapsed .sidebar:hover .sidebar-menu {
+        max-height: 0;
+    }
+
+    .sidebar-collapsed .sidebar:hover .sidebar-nav-section.section-open > .sidebar-menu {
+        max-height: 2000px;
+    }
+
+    .sidebar-collapsed .sidebar:hover .sidebar-link span {
+        opacity: 1;
+        width: auto;
+    }
+
+    .sidebar-collapsed .sidebar:hover .sidebar-link {
+        justify-content: flex-start;
+        padding: 10px 12px;
+        gap: 12px;
+    }
+
+    .sidebar-collapsed .sidebar:hover .sidebar-header {
+        justify-content: space-between;
+        padding: 0 16px;
+    }
+
+    .sidebar-collapsed .sidebar:hover .sidebar-brand {
+        justify-content: flex-start;
+    }
+
+    .sidebar-collapsed .sidebar:hover .sidebar-toggle-btn {
+        display: flex;
+    }
+}

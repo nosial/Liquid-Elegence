@@ -1,0 +1,186 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    {% set title = {
+        name: "Stellar Drift",
+        episode: "S1:E1 — Drift",
+        year: "2024", maturity: "TV-14", duration: "52m",
+        synopsis: "A routine survey turns into a quiet, beautiful disaster when Mira's pod loses contact with the Halcyon. Boarding the derelict ship reveals impossible silence — and a corridor of lights that responds to song.",
+        color: "linear-gradient(135deg, #6366f1, #06b6d4)"
+    } %}
+
+    {% set upNext = [
+        { num: 2, title: "The Halcyon",       desc: "Boarding the derelict colony ship reveals impossible silence.",   duration: "48m" },
+        { num: 3, title: "Frequency",         desc: "An old transmission turns out to be a lullaby.",                  duration: "55m" },
+        { num: 4, title: "Long Sleep",        desc: "Cryo logs reveal the colonists never woke.",                       duration: "49m" },
+        { num: 5, title: "Mira's Garden",     desc: "Hydroponics still bloom under amber light.",                       duration: "51m" }
+    ] %}
+
+    {% set similar = [
+        { id: "polaris-run",         title: "Polaris Run",         year: "2024", maturity: "PG-13", duration: "2h 05m", color: "linear-gradient(135deg, #1e293b, #475569)" },
+        { id: "echoes-of-tomorrow",  title: "Echoes of Tomorrow",  year: "2024", maturity: "PG-13", duration: "1h 58m", color: "linear-gradient(135deg, #6366f1, #ec4899)" },
+        { id: "cipher",              title: "Cipher",              year: "2023", maturity: "TV-14", duration: "S1",     color: "linear-gradient(135deg, #0f172a, #6366f1)" }
+    ] %}
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="movie-streaming.html">Cineflux</a></li>
+            <li class="breadcrumb-item"><a href="movie-streaming-title.html">{{ title.name }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Watch</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+
+        {# ====== Main column ====== #}
+        <div class="col-lg-8">
+
+            {# Player (reuses video-streaming player engine) #}
+            <div class="glass-card mb-3 video-player-card animate-fade-in-up"
+                 data-video-src="{{ asset_root or root }}assets/media/big_buck_bunny_720p_h264.mov">
+                <div class="video-player-frame" id="vidPlayerFrame">
+                    <video id="vidVideo" preload="metadata" playsinline></video>
+
+                    <div class="video-player-poster" id="vidPoster" style="background: {{ title.color }};">
+                        <span class="video-poster-play"><i data-feather="play"></i></span>
+                    </div>
+
+                    <div class="video-player-flash" id="vidPlayerFlash"><i data-feather="play"></i></div>
+
+                    <div class="video-player-controls" id="vidPlayerControls">
+                        <div class="video-progress" id="vidProgress">
+                            <div class="video-progress-track">
+                                <div class="video-progress-buffer" id="vidProgressBuffer"></div>
+                                <div class="video-progress-fill" id="vidProgressFill"></div>
+                                <div class="video-progress-thumb" id="vidProgressThumb"></div>
+                            </div>
+                        </div>
+                        <div class="video-controls-row">
+                            <button class="video-ctrl video-ctrl-play" id="vidPlay" title="Play / Pause">
+                                <i data-feather="play" class="video-icon-play"></i>
+                                <i data-feather="pause" class="video-icon-pause"></i>
+                            </button>
+                            <button class="video-ctrl" id="vidSkipBack" title="Back 10s"><i data-feather="rotate-ccw"></i></button>
+                            <button class="video-ctrl" id="vidSkipFwd" title="Forward 10s"><i data-feather="rotate-cw"></i></button>
+                            <div class="video-volume" id="vidVolumeBox">
+                                <button class="video-ctrl" id="vidMute" title="Mute"><i data-feather="volume-2" id="vidVolIcon"></i></button>
+                                <div class="video-volume-slider">
+                                    <div class="video-volume-bar" id="vidVolBar">
+                                        <div class="video-volume-fill" id="vidVolFill"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="video-time"><span id="vidTimeCur">0:00</span><span class="sep">/</span><span id="vidTimeTot">0:00</span></span>
+                            <span class="video-controls-spacer"></span>
+                            <button class="video-ctrl" id="vidCaptions" title="Captions"><i data-feather="message-square"></i></button>
+                            <button class="video-ctrl" id="vidSettings" title="Settings"><i data-feather="settings"></i></button>
+                            <button class="video-ctrl" id="vidPip" title="Picture-in-picture"><i data-feather="copy"></i></button>
+                            <button class="video-ctrl" id="vidFullscreen" title="Fullscreen"><i data-feather="maximize"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="video-settings-menu" id="vidSettingsMenu">
+                        <div class="video-settings-label">Playback speed</div>
+                        <button class="video-settings-item" data-speed="0.5"><span>0.5x</span><i data-feather="check" class="check"></i></button>
+                        <button class="video-settings-item" data-speed="0.75"><span>0.75x</span><i data-feather="check" class="check"></i></button>
+                        <button class="video-settings-item is-selected" data-speed="1"><span>Normal</span><i data-feather="check" class="check"></i></button>
+                        <button class="video-settings-item" data-speed="1.25"><span>1.25x</span><i data-feather="check" class="check"></i></button>
+                        <button class="video-settings-item" data-speed="1.5"><span>1.5x</span><i data-feather="check" class="check"></i></button>
+                        <button class="video-settings-item" data-speed="2"><span>2x</span><i data-feather="check" class="check"></i></button>
+                        <div class="video-settings-section">
+                            <div class="video-settings-label">Quality</div>
+                            <button class="video-settings-item is-selected" data-quality="auto"><span>Auto (720p)</span><i data-feather="check" class="check"></i></button>
+                            <button class="video-settings-item" data-quality="1080p"><span>1080p</span><i data-feather="check" class="check"></i></button>
+                            <button class="video-settings-item" data-quality="720p"><span>720p</span><i data-feather="check" class="check"></i></button>
+                            <button class="video-settings-item" data-quality="480p"><span>480p</span><i data-feather="check" class="check"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {# Title meta + actions #}
+            <div class="glass-card mb-4 animate-fade-in-up stagger-1">
+                <div class="glass-card-body">
+                    <div class="d-flex align-items-start justify-content-between flex-wrap gap-3 mb-2">
+                        <div>
+                            <h1 class="movie-title-hero-name h3 mb-1" style="text-shadow:none; color: var(--le-text-primary);">{{ title.name }}</h1>
+                            <div class="text-muted le-fs-md">{{ title.episode }}</div>
+                        </div>
+                        <div class="d-inline-flex align-items-center gap-2 flex-wrap">
+                            <button type="button" class="movie-btn movie-btn-ghost movie-mylist-btn"><i data-feather="plus" class="le-icon-16"></i><span>My List</span></button>
+                            <button type="button" class="movie-btn movie-btn-ghost movie-btn-icon movie-rate-btn" data-rate="up" aria-label="Like"><i data-feather="thumbs-up" class="le-icon-16"></i></button>
+                            <button type="button" class="movie-btn movie-btn-ghost movie-btn-icon movie-share-btn" aria-label="Share"><i data-feather="share-2" class="le-icon-16"></i></button>
+                        </div>
+                    </div>
+                    <div class="movie-billboard-meta mb-2">
+                        <span>{{ title.year }}</span>
+                        <span class="movie-dot"></span>
+                        <span>{{ title.duration }}</span>
+                        <span class="movie-pill movie-pill-rating">{{ title.maturity }}</span>
+                        <span class="movie-pill"><i data-feather="zap" class="le-icon-12"></i>4K HDR</span>
+                    </div>
+                    <p class="mb-0 le-text-muted le-fs-md">{{ title.synopsis }}</p>
+                </div>
+            </div>
+
+        </div>
+
+        {# ====== Sidebar ====== #}
+        <div class="col-lg-4">
+
+            <div class="glass-card animate-fade-in-up stagger-2">
+
+                {# Up next episodes #}
+                <section class="glass-card-body">
+                    <h6 class="movie-meta-card-title">Up Next</h6>
+                    {% for ep in upNext %}
+                    <a href="movie-streaming-watch.html" class="movie-episode-row">
+                        <div class="movie-episode-num">{{ ep.num }}</div>
+                        <div class="movie-episode-thumb" style="background: {{ title.color }};">
+                            <span class="movie-card-icon"><i data-feather="play" class="le-icon-14"></i></span>
+                            <span class="movie-card-duration">{{ ep.duration }}</span>
+                        </div>
+                        <div class="movie-episode-info">
+                            <h6 class="movie-episode-title">{{ ep.title }}</h6>
+                            <p class="movie-episode-desc">{{ ep.desc }}</p>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                {# Similar titles #}
+                <section class="glass-card-body">
+                    <h6 class="movie-meta-card-title">More Like This</h6>
+                    <div class="d-flex flex-column gap-3">
+                        {% for v in similar %}
+                        <a href="movie-streaming-title.html" class="movie-episode-row" style="grid-template-columns: 140px 1fr;">
+                            <div class="movie-episode-thumb" style="background: {{ v.color }};">
+                                <span class="movie-card-icon"><i data-feather="play" class="le-icon-14"></i></span>
+                                <span class="movie-card-duration">{{ v.duration }}</span>
+                            </div>
+                            <div class="movie-episode-info">
+                                <h6 class="movie-episode-title">{{ v.title }}</h6>
+                                <div class="movie-card-meta"><span class="movie-pill movie-pill-rating">{{ v.maturity }}</span><span>{{ v.year }}</span></div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ root }}js/apps/video-streaming.js"></script>
+<script src="{{ root }}js/apps/movie-streaming.js"></script>
+{% endblock %}

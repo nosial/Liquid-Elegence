@@ -1,0 +1,34 @@
+/* Playlist / album list hero */
+
+.music-list-hero {
+    display: flex;
+    gap: 24px;
+    align-items: end;
+    padding: 8px 0 16px;
+}
+
+.music-list-hero-cover {
+    width: clamp(140px, 22vw, 200px);
+    aspect-ratio: 1;
+    border-radius: var(--le-music-cover-radius);
+    flex-shrink: 0;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.music-list-hero-cover svg { width: 38%; height: 38%; opacity: 0.95; }
+
+.music-list-hero-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.music-list-hero-meta .music-hero-title { margin: 0; }
+.music-list-hero-meta .music-hero-sub { margin: 0; }
+

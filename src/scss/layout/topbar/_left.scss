@@ -1,0 +1,71 @@
+/* ==========================================================================
+   9. TOPBAR — Left (Toggle + Breadcrumb)
+   ========================================================================== */
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: var(--le-spacing-md, 12px);
+    flex-shrink: 0;
+}
+
+/* Mobile sidebar toggle inside topbar */
+.topbar-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: var(--le-radius-sm);
+    color: var(--le-text-muted);
+    cursor: pointer;
+    transition: var(--le-transition-fast);
+}
+
+.topbar-toggle-btn:hover {
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+}
+
+.topbar-toggle-btn svg,
+.topbar-toggle-btn i {
+    width: 20px;
+    height: 20px;
+}
+
+/* Breadcrumb navigation */
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-nav .breadcrumb {
+    margin-bottom: 0;
+    padding: 0;
+    background: transparent;
+    font-size: 0.8125rem;
+}
+
+.breadcrumb-nav .breadcrumb-item a {
+    color: var(--le-text-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.breadcrumb-nav .breadcrumb-item a:hover {
+    color: var(--le-primary);
+}
+
+.breadcrumb-nav .breadcrumb-item.active {
+    color: var(--le-text-primary);
+    font-weight: var(--le-font-weight-medium);
+}
+
+.breadcrumb-nav .breadcrumb-item + .breadcrumb-item::before {
+    color: var(--le-text-muted);
+    opacity: 0.5;
+}
+

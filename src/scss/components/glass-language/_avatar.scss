@@ -1,0 +1,54 @@
+/* ── Avatar ── */
+
+.avatar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.avatar-placeholder {
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ── Status Dots ── */
+
+.status-online {
+  position: relative;
+}
+
+.status-online::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: inherit;
+  animation: status-pulse 2s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes status-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 0.6; }
+  50%      { box-shadow: 0 0 0 6px currentColor; opacity: 0; }
+}
+
+/* ── Glass Dividers ── */
+
+.glass-divider,
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--le-glass-border),
+    rgba(var(--le-primary-rgb), 0.1),
+    var(--le-glass-border),
+    transparent
+  );
+}
+
+/* ── Tooltip ── */
+/* Tooltip styling lives in components/_tooltips.scss (solid dark plate so
+   text is always legible). Do not override .tooltip-inner here — a glass
+   translucent surface fails the legibility bar required for tooltips. */

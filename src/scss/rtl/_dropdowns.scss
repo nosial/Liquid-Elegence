@@ -1,0 +1,20 @@
+/* ─────────────────────────────────────────────────────────────
+   9. Dropdowns
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .dropdown-menu {
+    text-align: right;
+}
+
+[dir="rtl"] .dropdown-menu-end {
+    --bs-position: start;
+    right: auto;
+    left: 0;
+}
+
+[dir="rtl"] .dropdown-item .le-dropdown-icon {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+

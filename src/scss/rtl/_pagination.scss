@@ -1,0 +1,17 @@
+/* ─────────────────────────────────────────────────────────────
+   10. Pagination
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .pagination {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .page-item:first-child .page-link {
+    border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+}
+
+[dir="rtl"] .page-item:last-child .page-link {
+    border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+}
+
+

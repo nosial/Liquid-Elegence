@@ -1,0 +1,437 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+            <div class="chat-container">
+                <div class="chat-sidebar-backdrop" id="chatSidebarBackdrop"></div>
+
+                <!-- Left Panel: Conversations -->
+                <div class="chat-sidebar" id="chatSidebar">
+                    <div class="glass-card">
+                        <div class="chat-sidebar-header-mobile">
+                            <span class="chat-sidebar-title">Chats</span>
+                            <button class="chat-sidebar-close" id="chatSidebarClose" title="Close"><i data-feather="x"></i></button>
+                        </div>
+                        <div class="chat-search">
+                            <div class="chat-search-wrap">
+                                <i data-feather="search"></i>
+                                <input type="text" class="glass-input" placeholder="Search conversations..." id="chatSearch">
+                            </div>
+                        </div>
+                        <div class="chat-filter">
+                            <div class="glass-tabs le-fs-base">
+                                <button class="glass-tab active" data-filter="all">All</button>
+                                <button class="glass-tab" data-filter="unread">Unread</button>
+                                <button class="glass-tab" data-filter="groups">Groups</button>
+                            </div>
+                        </div>
+                        <div class="conversation-list" id="conversationList">
+                            <div class="conversation-item active" data-name="Sarah Connor" data-unread="2">
+                                <div class="conv-avatar le-bg-gradient-primary">SC<span class="status-dot status-online"></span></div>
+                                <div class="conv-info"><div class="conv-name">Sarah Connor</div><div class="conv-last-msg">Sure, I'll send the files shortly!</div></div>
+                                <div class="conv-meta"><span class="conv-time">2m</span><span class="conv-unread">2</span></div>
+                            </div>
+                            <div class="conversation-item" data-name="Design Team" data-unread="5" data-group="true">
+                                <div class="conv-avatar le-bg-gradient-success">DT</div>
+                                <div class="conv-info"><div class="conv-name">Design Team</div><div class="conv-last-msg">Alice: Updated the wireframes 🎨</div></div>
+                                <div class="conv-meta"><span class="conv-time">15m</span><span class="conv-unread">5</span></div>
+                            </div>
+                            <div class="conversation-item" data-name="Marcus Johnson">
+                                <div class="conv-avatar le-bg-gradient-warning">MJ<span class="status-dot status-online"></span></div>
+                                <div class="conv-info"><div class="conv-name">Marcus Johnson</div><div class="conv-last-msg">The deployment went smoothly 🚀</div></div>
+                                <div class="conv-meta"><span class="conv-time">32m</span></div>
+                            </div>
+                            <div class="conversation-item" data-name="Emily Zhang" data-unread="1">
+                                <div class="conv-avatar le-bg-gradient-primary">EZ<span class="status-dot status-away"></span></div>
+                                <div class="conv-info"><div class="conv-name">Emily Zhang</div><div class="conv-last-msg">Can we reschedule tomorrow's meeting?</div></div>
+                                <div class="conv-meta"><span class="conv-time">1h</span><span class="conv-unread">1</span></div>
+                            </div>
+                            <div class="conversation-item" data-name="Dev Ops" data-group="true">
+                                <div class="conv-avatar le-bg-grad-pink-rose">DO</div>
+                                <div class="conv-info"><div class="conv-name">Dev Ops</div><div class="conv-last-msg">Server migration completed</div></div>
+                                <div class="conv-meta"><span class="conv-time">2h</span></div>
+                            </div>
+                            <div class="conversation-item" data-name="Alex Rivera">
+                                <div class="conv-avatar le-bg-grad-teal">AR<span class="status-dot status-online"></span></div>
+                                <div class="conv-info"><div class="conv-name">Alex Rivera</div><div class="conv-last-msg">Thanks for the code review!</div></div>
+                                <div class="conv-meta"><span class="conv-time">3h</span></div>
+                            </div>
+                            <div class="conversation-item" data-name="Priya Patel">
+                                <div class="conv-avatar le-bg-grad-amber">PP<span class="status-dot status-offline"></span></div>
+                                <div class="conv-info"><div class="conv-name">Priya Patel</div><div class="conv-last-msg">The client approved the proposal!</div></div>
+                                <div class="conv-meta"><span class="conv-time">5h</span></div>
+                            </div>
+                            <div class="conversation-item" data-name="James Wilson" data-unread="3">
+                                <div class="conv-avatar le-bg-grad-blue">JW</div>
+                                <div class="conv-info"><div class="conv-name">James Wilson</div><div class="conv-last-msg">Hey, are you free for a quick call?</div></div>
+                                <div class="conv-meta"><span class="conv-time">6h</span><span class="conv-unread">3</span></div>
+                            </div>
+                            <div class="conversation-item" data-name="Marketing" data-group="true">
+                                <div class="conv-avatar le-bg-grad-purple">MK</div>
+                                <div class="conv-info"><div class="conv-name">Marketing</div><div class="conv-last-msg">Clara: Campaign metrics are in 📊</div></div>
+                                <div class="conv-meta"><span class="conv-time">1d</span></div>
+                            </div>
+                            <div class="conversation-item" data-name="Lena Müller">
+                                <div class="conv-avatar le-bg-grad-cyan">LM<span class="status-dot status-offline"></span></div>
+                                <div class="conv-info"><div class="conv-name">Lena Müller</div><div class="conv-last-msg">See you at the conference next week!</div></div>
+                                <div class="conv-meta"><span class="conv-time">2d</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center Panel: Chat -->
+                <div class="chat-main">
+                    <div class="glass-card">
+                        <div class="chat-header">
+                            <button class="chat-sidebar-toggle" id="chatSidebarToggle" title="Conversations"><i data-feather="message-square"></i></button>
+                            <div class="chat-header-user">
+                                <div class="chat-header-avatar le-bg-gradient-primary">SC</div>
+                                <div class="chat-header-info">
+                                    <div class="chat-header-name">Sarah Connor</div>
+                                    <div class="chat-header-status">Online</div>
+                                </div>
+                            </div>
+                            <div class="chat-header-actions">
+                                <button id="voiceCallBtn" data-bs-toggle="modal" data-bs-target="#voiceCallModal" title="Voice Call"><i data-feather="phone"></i></button>
+                                <button id="videoCallBtn" data-bs-toggle="modal" data-bs-target="#videoCallModal" title="Video Call"><i data-feather="video"></i></button>
+                                <button class="d-md-none" id="toggleInfoPanel" title="Contact Info"><i data-feather="info"></i></button>
+                                <button title="More Options"><i data-feather="more-vertical"></i></button>
+                            </div>
+                        </div>
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message-row received">
+                                <div class="msg-avatar le-bg-gradient-primary">SC</div>
+                                <div>
+                                    <div class="message-bubble">Hey! How's the project coming along?</div>
+                                    <div class="msg-time">9:15 AM</div>
+                                </div>
+                            </div>
+                            <div class="message-row sent">
+                                <div>
+                                    <div class="message-bubble">Going great! Almost done with the dashboard components.</div>
+                                    <div class="msg-time">9:17 AM <span class="msg-read-receipt"><i data-feather="check-circle"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="message-row received">
+                                <div class="msg-avatar le-bg-gradient-primary">SC</div>
+                                <div>
+                                    <div class="message-bubble">Awesome! Can you share a preview?</div>
+                                    <div class="msg-time">9:18 AM</div>
+                                </div>
+                            </div>
+                            <div class="message-row sent">
+                                <div>
+                                    <div class="message-bubble">Sure, here's a screenshot of the overview page:</div>
+                                    <div class="msg-image">
+                                        <div class="msg-image-placeholder"><i data-feather="image"></i></div>
+                                    </div>
+                                    <div class="msg-time">9:20 AM <span class="msg-read-receipt"><i data-feather="check-circle"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="message-row received">
+                                <div class="msg-avatar le-bg-gradient-primary">SC</div>
+                                <div>
+                                    <div class="message-bubble">That looks incredible! The glass effect is beautiful 😍</div>
+                                    <div class="msg-time">9:21 AM</div>
+                                </div>
+                            </div>
+                            <div class="message-row sent">
+                                <div>
+                                    <div class="message-bubble">Thanks! Check out the live demo here:</div>
+                                    <div class="message-bubble"><a href="javascript:void(0)" class="msg-link"><i data-feather="external-link" class="le-icon-12"></i> liquidadmin-demo.vercel.app</a></div>
+                                    <div class="msg-time">9:22 AM <span class="msg-read-receipt"><i data-feather="check-circle"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="message-row received">
+                                <div class="msg-avatar le-bg-gradient-primary">SC</div>
+                                <div>
+                                    <div class="message-bubble">I just checked it — the dark mode transition is so smooth!</div>
+                                    <div class="msg-time">9:25 AM</div>
+                                </div>
+                            </div>
+                            <div class="message-row sent">
+                                <div>
+                                    <div class="message-bubble emoji-msg">🙌</div>
+                                    <div class="msg-time">9:25 AM <span class="msg-read-receipt"><i data-feather="check-circle"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="message-row received">
+                                <div class="msg-avatar le-bg-gradient-primary">SC</div>
+                                <div>
+                                    <div class="message-bubble">Can you send me the Figma file too? I want to review the component library.</div>
+                                    <div class="msg-time">9:28 AM</div>
+                                </div>
+                            </div>
+                            <div class="message-row sent">
+                                <div>
+                                    <div class="message-bubble">Of course! Let me grab the latest version.</div>
+                                    <div class="msg-time">9:30 AM <span class="msg-read-receipt"><i data-feather="check-circle"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="message-row received">
+                                <div class="msg-avatar le-bg-gradient-primary">SC</div>
+                                <div>
+                                    <div class="message-bubble">Also, the client wants to see a progress update by Friday. Should I schedule a call?</div>
+                                    <div class="msg-time">9:32 AM</div>
+                                </div>
+                            </div>
+                            <div class="message-row sent">
+                                <div>
+                                    <div class="message-bubble">Friday works! How about 2pm? I'll have the chat and mail pages done by then.</div>
+                                    <div class="msg-time">9:33 AM <span class="msg-read-receipt"><i data-feather="check-circle"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="message-row received">
+                                <div class="msg-avatar le-bg-gradient-primary">SC</div>
+                                <div>
+                                    <div class="message-bubble">Perfect, 2pm it is! I'll set up the Zoom link.</div>
+                                    <div class="msg-time">9:34 AM</div>
+                                </div>
+                            </div>
+                            <div class="message-row sent">
+                                <div>
+                                    <div class="message-bubble">Sounds good. I'll also prepare a list of remaining tasks for the meeting.</div>
+                                    <div class="msg-time">9:35 AM <span class="msg-read-receipt"><i data-feather="check-circle"></i></span></div>
+                                </div>
+                            </div>
+                            <div class="message-row received">
+                                <div class="msg-avatar le-bg-gradient-primary">SC</div>
+                                <div>
+                                    <div class="message-bubble">Great, thanks! Let me know if you need anything from my side.</div>
+                                    <div class="msg-time">9:36 AM</div>
+                                </div>
+                            </div>
+                            <div class="message-row sent">
+                                <div>
+                                    <div class="message-bubble">Will do! Talk soon 👋</div>
+                                    <div class="msg-time">9:37 AM <span class="msg-read-receipt"><i data-feather="check"></i></span></div>
+                                </div>
+                            </div>
+                            <!-- Typing indicator -->
+                            <div class="message-row received d-none" id="typingIndicator">
+                                <div class="msg-avatar le-bg-gradient-primary">SC</div>
+                                <div>
+                                    <div class="message-bubble">
+                                        <div class="typing-indicator">
+                                            <div class="typing-dot"></div>
+                                            <div class="typing-dot"></div>
+                                            <div class="typing-dot"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-input-area">
+                            <button title="Emoji"><i data-feather="smile"></i></button>
+                            <button title="Attach File"><i data-feather="paperclip"></i></button>
+                            <textarea class="glass-input" placeholder="Type a message..." id="chatInput" rows="1"></textarea>
+                            <button class="send-btn" id="sendBtn" title="Send"><i data-feather="send"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Contact Info -->
+                <div class="chat-info-panel" id="chatInfoPanel">
+                    <div class="glass-card">
+                        <div class="chat-info-close-wrap">
+                            <button class="chat-info-close" id="chatInfoClose" title="Close"><i data-feather="x"></i></button>
+                        </div>
+                        <div class="info-header">
+                            <div class="info-avatar le-bg-gradient-primary">SC</div>
+                            <div class="info-name">Sarah Connor</div>
+                            <div class="info-status">Online</div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-section-title">Contact Details</div>
+                            <div class="info-detail"><i data-feather="mail"></i> sarah.connor@company.com</div>
+                            <div class="info-detail"><i data-feather="phone"></i> +1 (555) 234-5678</div>
+                            <div class="info-detail"><i data-feather="map-pin"></i> San Francisco, CA</div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-section-title">Shared Media</div>
+                            <div class="shared-media-grid">
+                                <div class="shared-media-item"><i data-feather="image"></i></div>
+                                <div class="shared-media-item"><i data-feather="image"></i></div>
+                                <div class="shared-media-item"><i data-feather="play-circle"></i></div>
+                                <div class="shared-media-item"><i data-feather="image"></i></div>
+                                <div class="shared-media-item"><i data-feather="image"></i></div>
+                                <div class="shared-media-item"><i data-feather="play-circle"></i></div>
+                            </div>
+                        </div>
+                        <div class="info-section">
+                            <div class="info-section-title">Shared Files</div>
+                            <div class="shared-file">
+                                <div class="shared-file-icon"><i data-feather="file-text"></i></div>
+                                <div class="shared-file-info"><div class="shared-file-name">Project-Brief.pdf</div><div class="shared-file-size">2.4 MB</div></div>
+                            </div>
+                            <div class="shared-file">
+                                <div class="shared-file-icon"><i data-feather="image"></i></div>
+                                <div class="shared-file-info"><div class="shared-file-name">Dashboard-Mockup.png</div><div class="shared-file-size">1.8 MB</div></div>
+                            </div>
+                            <div class="shared-file">
+                                <div class="shared-file-icon"><i data-feather="file"></i></div>
+                                <div class="shared-file-info"><div class="shared-file-name">Component-Specs.docx</div><div class="shared-file-size">540 KB</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====================================================== -->
+            <!-- Voice Call Modal                                        -->
+            <!-- ====================================================== -->
+            <div class="modal fade modal-glass call-modal voice-call-modal" id="voiceCallModal" tabindex="-1" aria-hidden="true" aria-labelledby="voiceCallTitle">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-body call-stage call-stage-voice">
+                            <div class="call-bg-orbs" aria-hidden="true">
+                                <span class="call-orb call-orb-1"></span>
+                                <span class="call-orb call-orb-2"></span>
+                                <span class="call-orb call-orb-3"></span>
+                            </div>
+
+                            <div class="call-top">
+                                <span class="call-label"><i data-feather="phone-call" class="le-icon-14"></i> Voice Call</span>
+                                <span class="call-quality" title="Connection quality">
+                                    <span class="call-quality-bar"></span>
+                                    <span class="call-quality-bar"></span>
+                                    <span class="call-quality-bar"></span>
+                                    <span class="call-quality-bar"></span>
+                                </span>
+                            </div>
+
+                            <div class="call-identity">
+                                <div class="call-avatar-wrap">
+                                    <span class="call-pulse-ring"></span>
+                                    <span class="call-pulse-ring delay-1"></span>
+                                    <span class="call-pulse-ring delay-2"></span>
+                                    <div class="call-avatar le-bg-gradient-primary" id="voiceCallAvatar">SC</div>
+                                </div>
+                                <h3 class="call-name" id="voiceCallName">Sarah Connor</h3>
+                                <div class="call-status">
+                                    <span class="call-status-dot"></span>
+                                    <span class="call-status-text" id="voiceCallStatus">Ringing…</span>
+                                    <span class="call-timer" id="voiceCallTimer" hidden>00:00</span>
+                                </div>
+                            </div>
+
+                            <div class="call-controls">
+                                <button class="call-btn" data-call-toggle="mute" title="Mute" aria-pressed="false">
+                                    <i data-feather="mic"></i>
+                                    <span>Mute</span>
+                                </button>
+                                <button class="call-btn" data-call-toggle="keypad" title="Keypad" aria-pressed="false">
+                                    <i data-feather="grid"></i>
+                                    <span>Keypad</span>
+                                </button>
+                                <button class="call-btn" data-call-toggle="speaker" title="Speaker" aria-pressed="false">
+                                    <i data-feather="volume-2"></i>
+                                    <span>Speaker</span>
+                                </button>
+                                <button class="call-btn" data-call-toggle="hold" title="Hold" aria-pressed="false">
+                                    <i data-feather="pause"></i>
+                                    <span>Hold</span>
+                                </button>
+                                <button class="call-btn" title="Add person">
+                                    <i data-feather="user-plus"></i>
+                                    <span>Add</span>
+                                </button>
+                                <button class="call-btn call-btn-switch" data-call-switch="video" title="Switch to video call">
+                                    <i data-feather="video"></i>
+                                    <span>Video</span>
+                                </button>
+                                <button class="call-btn call-btn-end" data-bs-dismiss="modal" title="End call">
+                                    <i data-feather="phone-off"></i>
+                                    <span>End</span>
+                                </button>
+                            </div>
+
+                            <div class="call-keypad" id="voiceCallKeypad" hidden>
+                                <button>1</button><button>2<small>ABC</small></button><button>3<small>DEF</small></button>
+                                <button>4<small>GHI</small></button><button>5<small>JKL</small></button><button>6<small>MNO</small></button>
+                                <button>7<small>PQRS</small></button><button>8<small>TUV</small></button><button>9<small>WXYZ</small></button>
+                                <button>*</button><button>0<small>+</small></button><button>#</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ====================================================== -->
+            <!-- Video Call Modal                                        -->
+            <!-- ====================================================== -->
+            <div class="modal fade modal-glass call-modal video-call-modal" id="videoCallModal" tabindex="-1" aria-hidden="true" aria-labelledby="videoCallTitle">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-body call-stage call-stage-video">
+                            <!-- Remote video stage -->
+                            <div class="video-stage" id="videoCallStage">
+                                <div class="video-stage-grid" aria-hidden="true"></div>
+                                <div class="video-stage-overlay" aria-hidden="true"></div>
+
+                                <div class="video-remote-avatar le-bg-gradient-primary" id="videoCallAvatar">SC</div>
+
+                                <!-- Top bar -->
+                                <div class="video-top-bar">
+                                    <div class="video-caller">
+                                        <div class="video-caller-name" id="videoCallName">Sarah Connor</div>
+                                        <div class="video-caller-status">
+                                            <span class="call-status-dot"></span>
+                                            <span class="video-caller-status-text" id="videoCallStatus">Connecting…</span>
+                                            <span class="call-timer" id="videoCallTimer" hidden>00:00</span>
+                                        </div>
+                                    </div>
+                                    <div class="video-top-actions">
+                                        <span class="video-quality-pill" title="HD"><i data-feather="zap" class="le-icon-12"></i> HD</span>
+                                        <button class="video-icon-btn" title="Add participant"><i data-feather="user-plus"></i></button>
+                                        <button class="video-icon-btn" title="Open chat"><i data-feather="message-square"></i></button>
+                                        <button class="video-icon-btn" title="More"><i data-feather="more-vertical"></i></button>
+                                    </div>
+                                </div>
+
+                                <!-- Self preview (PIP) -->
+                                <div class="video-self-pip" id="videoSelfPip">
+                                    <div class="video-self-avatar le-bg-grad-purple">YO</div>
+                                    <span class="video-self-label">You</span>
+                                    <span class="video-self-mic" id="videoSelfMic" title="Mic on"><i data-feather="mic"></i></span>
+                                </div>
+                            </div>
+
+                            <!-- Controls -->
+                            <div class="video-controls">
+                                <button class="call-btn" data-call-toggle="mute" title="Mute" aria-pressed="false">
+                                    <i data-feather="mic"></i>
+                                    <span>Mute</span>
+                                </button>
+                                <button class="call-btn" data-call-toggle="camera" title="Stop video" aria-pressed="false">
+                                    <i data-feather="video"></i>
+                                    <span>Camera</span>
+                                </button>
+                                <button class="call-btn" data-call-toggle="share" title="Share screen" aria-pressed="false">
+                                    <i data-feather="monitor"></i>
+                                    <span>Share</span>
+                                </button>
+                                <button class="call-btn" data-call-toggle="effects" title="Effects" aria-pressed="false">
+                                    <i data-feather="aperture"></i>
+                                    <span>Effects</span>
+                                </button>
+                                <button class="call-btn" title="Switch camera">
+                                    <i data-feather="refresh-cw"></i>
+                                    <span>Flip</span>
+                                </button>
+                                <button class="call-btn call-btn-end" data-bs-dismiss="modal" title="End call">
+                                    <i data-feather="phone-off"></i>
+                                    <span>End</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/chat.js"></script>
+{% endblock %}

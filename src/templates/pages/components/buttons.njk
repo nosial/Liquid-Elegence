@@ -1,0 +1,381 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Buttons — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Buttons</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Glass Buttons ────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Buttons</h5>
+                <p class="text-muted mb-3 le-fs-body">Primary glass button styles with backdrop-filter blur and hover effects.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button class="btn btn-glass btn-glass-primary">Primary</button>
+                    <button class="btn btn-glass btn-glass-secondary">Secondary</button>
+                    <button class="btn btn-glass btn-glass-success">Success</button>
+                    <button class="btn btn-glass btn-glass-danger">Danger</button>
+                    <button class="btn btn-glass btn-glass-warning">Warning</button>
+                    <button class="btn btn-glass btn-glass-info">Info</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button class="btn btn-glass btn-glass-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-glass btn-glass-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="btn btn-glass btn-glass-success"&gt;Success&lt;/button&gt;
+&lt;button class="btn btn-glass btn-glass-danger"&gt;Danger&lt;/button&gt;
+&lt;button class="btn btn-glass btn-glass-warning"&gt;Warning&lt;/button&gt;
+&lt;button class="btn btn-glass btn-glass-info"&gt;Info&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Bootstrap Solid Buttons ─────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Bootstrap Solid Buttons</h5>
+                <p class="text-muted mb-3 le-fs-body">Standard Bootstrap filled buttons.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-secondary">Secondary</button>
+                    <button class="btn btn-success">Success</button>
+                    <button class="btn btn-danger">Danger</button>
+                    <button class="btn btn-warning">Warning</button>
+                    <button class="btn btn-info">Info</button>
+                    <button class="btn btn-light">Light</button>
+                    <button class="btn btn-dark">Dark</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Success&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Outline Buttons ─────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Outline Buttons</h5>
+                <p class="text-muted mb-3 le-fs-body">Bootstrap outline buttons with transparent fill and coloured borders.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button class="btn btn-outline-primary">Primary</button>
+                    <button class="btn btn-outline-secondary">Secondary</button>
+                    <button class="btn btn-outline-success">Success</button>
+                    <button class="btn btn-outline-danger">Danger</button>
+                    <button class="btn btn-outline-warning">Warning</button>
+                    <button class="btn btn-outline-info">Info</button>
+                    <button class="btn btn-outline-dark">Dark</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button class="btn btn-outline-primary"&gt;Primary&lt;/button&gt;
+&lt;button class="btn btn-outline-danger"&gt;Danger&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Button Sizes ────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Button Sizes</h5>
+                <p class="text-muted mb-3 le-fs-body">Small, default, and large button sizes.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <button class="btn btn-glass btn-glass-primary btn-sm">Small</button>
+                    <button class="btn btn-glass btn-glass-primary">Default</button>
+                    <button class="btn btn-glass btn-glass-primary btn-lg">Large</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button class="btn btn-glass btn-glass-primary btn-sm"&gt;Small&lt;/button&gt;
+&lt;button class="btn btn-glass btn-glass-primary"&gt;Default&lt;/button&gt;
+&lt;button class="btn btn-glass btn-glass-primary btn-lg"&gt;Large&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Button States ───────────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Button States</h5>
+                <p class="text-muted mb-3 le-fs-body">Active, disabled, and loading states.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <button class="btn btn-glass btn-glass-primary">Normal</button>
+                    <button class="btn btn-glass btn-glass-primary active">Active</button>
+                    <button class="btn btn-glass btn-glass-primary" disabled>Disabled</button>
+                    <button class="btn btn-glass btn-glass-primary" disabled>
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>Loading…
+                    </button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Active state --&gt;
+&lt;button class="btn btn-glass btn-glass-primary active"&gt;Active&lt;/button&gt;
+
+&lt;!-- Disabled state --&gt;
+&lt;button class="btn btn-glass btn-glass-primary" disabled&gt;Disabled&lt;/button&gt;
+
+&lt;!-- Loading state --&gt;
+&lt;button class="btn btn-glass btn-glass-primary" disabled&gt;
+    &lt;span class="spinner-border spinner-border-sm me-2"&gt;&lt;/span&gt;Loading…
+&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Icon Buttons ────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Icon Buttons</h5>
+                <p class="text-muted mb-3 le-fs-body">Buttons with leading icons for visual context.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button class="btn btn-glass btn-glass-primary">
+                        <i data-feather="download" class="le-icon-16 le-icon-mr-6"></i> Download
+                    </button>
+                    <button class="btn btn-glass btn-glass-success">
+                        <i data-feather="check" class="le-icon-16 le-icon-mr-6"></i> Confirm
+                    </button>
+                    <button class="btn btn-glass btn-glass-danger">
+                        <i data-feather="trash-2" class="le-icon-16 le-icon-mr-6"></i> Delete
+                    </button>
+                    <button class="btn btn-glass btn-glass-secondary">
+                        <i data-feather="edit" class="le-icon-16 le-icon-mr-6"></i> Edit
+                    </button>
+                    <button class="btn btn-glass btn-glass-warning">
+                        <i data-feather="star" class="le-icon-16 le-icon-mr-6"></i> Favourite
+                    </button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button class="btn btn-glass btn-glass-primary"&gt;
+    &lt;i data-feather="download"&gt;&lt;/i&gt; Download
+&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Icon-Only Buttons ───────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Icon-Only Buttons</h5>
+                <p class="text-muted mb-3 le-fs-body">Compact square buttons with only an icon.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button class="btn btn-glass btn-glass-primary le-action-btn">
+                        <i data-feather="plus" class="le-icon-18"></i>
+                    </button>
+                    <button class="btn btn-glass btn-glass-secondary le-action-btn">
+                        <i data-feather="search" class="le-icon-18"></i>
+                    </button>
+                    <button class="btn btn-glass btn-glass-success le-action-btn">
+                        <i data-feather="check" class="le-icon-18"></i>
+                    </button>
+                    <button class="btn btn-glass btn-glass-danger le-action-btn">
+                        <i data-feather="x" class="le-icon-18"></i>
+                    </button>
+                    <button class="btn btn-glass btn-glass-warning le-action-btn">
+                        <i data-feather="bell" class="le-icon-18"></i>
+                    </button>
+                    <button class="btn btn-outline-primary le-action-btn">
+                        <i data-feather="heart" class="le-icon-18"></i>
+                    </button>
+                    <button class="btn btn-outline-danger le-action-btn">
+                        <i data-feather="trash-2" class="le-icon-18"></i>
+                    </button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button class="btn btn-glass btn-glass-primary"
+    style="width:38px;height:38px;padding:0;
+           display:inline-flex;align-items:center;
+           justify-content:center;"&gt;
+    &lt;i data-feather="plus"&gt;&lt;/i&gt;
+&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Button Groups ───────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Button Groups</h5>
+                <p class="text-muted mb-3 le-fs-body">Group related buttons together in a single line.</p>
+                <div class="btn-group mb-3" role="group">
+                    <button type="button" class="btn btn-primary">Left</button>
+                    <button type="button" class="btn btn-primary">Middle</button>
+                    <button type="button" class="btn btn-primary">Right</button>
+                </div>
+                <br>
+                <div class="btn-group mb-3" role="group">
+                    <button type="button" class="btn btn-outline-secondary">
+                        <i data-feather="align-left" class="le-icon-16"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary active">
+                        <i data-feather="align-center" class="le-icon-16"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary">
+                        <i data-feather="align-right" class="le-icon-16"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary">
+                        <i data-feather="align-justify" class="le-icon-16"></i>
+                    </button>
+                </div>
+                <br>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-glass btn-glass-primary">Day</button>
+                    <button type="button" class="btn btn-glass btn-glass-primary">Week</button>
+                    <button type="button" class="btn btn-glass btn-glass-primary">Month</button>
+                    <button type="button" class="btn btn-glass btn-glass-primary">Year</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;div class="btn-group" role="group"&gt;
+    &lt;button type="button" class="btn btn-primary"&gt;Left&lt;/button&gt;
+    &lt;button type="button" class="btn btn-primary"&gt;Middle&lt;/button&gt;
+    &lt;button type="button" class="btn btn-primary"&gt;Right&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Vertical Button Group & Toolbar ──────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Vertical Group &amp; Toolbar</h5>
+                <p class="text-muted mb-3 le-fs-body">Vertical stacking and combined toolbar layouts.</p>
+                <div class="d-flex flex-wrap gap-4 align-items-start">
+                    <div class="btn-group-vertical" role="group">
+                        <button type="button" class="btn btn-outline-primary">Top</button>
+                        <button type="button" class="btn btn-outline-primary">Middle</button>
+                        <button type="button" class="btn btn-outline-primary">Bottom</button>
+                    </div>
+                    <div class="btn-toolbar gap-2" role="toolbar">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-glass btn-glass-primary btn-sm">
+                                <i data-feather="bold" class="le-icon-14"></i>
+                            </button>
+                            <button type="button" class="btn btn-glass btn-glass-primary btn-sm">
+                                <i data-feather="italic" class="le-icon-14"></i>
+                            </button>
+                            <button type="button" class="btn btn-glass btn-glass-primary btn-sm">
+                                <i data-feather="underline" class="le-icon-14"></i>
+                            </button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-glass btn-glass-secondary btn-sm">
+                                <i data-feather="link" class="le-icon-14"></i>
+                            </button>
+                            <button type="button" class="btn btn-glass btn-glass-secondary btn-sm">
+                                <i data-feather="image" class="le-icon-14"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Vertical button group --&gt;
+&lt;div class="btn-group-vertical" role="group"&gt;
+    &lt;button class="btn btn-outline-primary"&gt;Top&lt;/button&gt;
+    &lt;button class="btn btn-outline-primary"&gt;Middle&lt;/button&gt;
+    &lt;button class="btn btn-outline-primary"&gt;Bottom&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Button toolbar --&gt;
+&lt;div class="btn-toolbar gap-2" role="toolbar"&gt;
+    &lt;div class="btn-group" role="group"&gt;…&lt;/div&gt;
+    &lt;div class="btn-group" role="group"&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Block / Full-Width Buttons ──────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Block / Full-Width Buttons</h5>
+                <p class="text-muted mb-3 le-fs-body">Buttons that span the full width of their container.</p>
+                <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-glass btn-glass-primary">Full-Width Glass Button</button>
+                    <button class="btn btn-primary">Full-Width Solid Button</button>
+                </div>
+                <div class="d-grid gap-2 d-md-flex">
+                    <button class="btn btn-glass btn-glass-success flex-fill">Accept</button>
+                    <button class="btn btn-glass btn-glass-danger flex-fill">Decline</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Full-width stacked --&gt;
+&lt;div class="d-grid gap-2"&gt;
+    &lt;button class="btn btn-glass btn-glass-primary"&gt;Full-Width&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Side-by-side equal-width (responsive) --&gt;
+&lt;div class="d-grid gap-2 d-md-flex"&gt;
+    &lt;button class="btn btn-glass btn-glass-success flex-fill"&gt;Accept&lt;/button&gt;
+    &lt;button class="btn btn-glass btn-glass-danger flex-fill"&gt;Decline&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,231 @@
+/* Watch view: title, channel info, actions, description, tags */
+
+.video-watch-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--le-text-primary);
+    margin: 0;
+}
+
+.video-watch-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.video-watch-channel {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.video-watch-channel-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.video-watch-channel-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--le-text-primary);
+    margin: 0;
+}
+
+.video-watch-channel-subs {
+    font-size: 0.78rem;
+    color: var(--le-text-secondary);
+}
+
+.video-watch-channel-avatar {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.85), rgba(var(--le-primary-rgb), 0.45));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+}
+
+.video-watch-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.video-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    color: var(--le-text-primary);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.video-action-btn:hover { background: var(--le-glass-bg-strong); }
+
+.video-action-btn.is-active {
+    background: rgba(var(--le-primary-rgb), 0.18);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    color: var(--le-primary);
+}
+
+.video-action-btn svg { width: 16px; height: 16px; }
+
+.video-action-group {
+    display: inline-flex;
+    align-items: center;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.video-action-group .video-action-btn {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+.video-action-group .video-action-btn + .video-action-btn {
+    border-left: 1px solid var(--le-glass-border-subtle);
+}
+
+.video-subscribe-btn {
+    padding: 8px 18px;
+    border-radius: 999px;
+    /* Use the brand primary fill (matches `.music-btn-primary`,
+       Bootstrap's `.btn-primary`, and every other "primary CTA"
+       across the demo apps) instead of the previous near-black /
+       near-white `--le-text-primary` swatch, which clashed with the
+       glass surfaces around it and was the only "solid text-color"
+       button in the whole template. White foreground + a soft
+       primary-tinted shadow mirror the music app's recipe so the
+       subscribe button reads as a first-class brand action on both
+       light and dark themes. */
+    background: var(--le-primary);
+    color: #fff;
+    border: 1px solid rgba(var(--le-primary-rgb), 0.55);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(var(--le-primary-rgb), 0.35);
+    transition: background 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.video-subscribe-btn:hover {
+    background: var(--le-primary-hover, var(--le-primary));
+    box-shadow: 0 10px 26px rgba(var(--le-primary-rgb), 0.45);
+    opacity: 1;
+}
+
+.video-subscribe-btn.is-subscribed {
+    /* Subscribed state drops back to the standard glass chip recipe
+       used by `.video-chip` and `.video-action-btn`. */
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+    border: 1px solid var(--le-glass-border-subtle);
+    box-shadow: none;
+}
+
+.video-subscribe-btn.is-subscribed:hover {
+    background: var(--le-glass-bg-strong);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    box-shadow: none;
+}
+
+/* Description card */
+.video-watch-desc {
+    padding: 14px 16px;
+    /* Breathing room above the description card so it doesn't kiss
+       the channel-row (avatar / channel name / Subscribe / action
+       group) directly above it. The meta row uses
+       `flex-wrap: wrap`, so on narrow viewports the action group
+       drops onto its own line and the visual gap to the description
+       collapses to nothing — this margin guarantees a consistent
+       separation regardless of how the meta row wraps. */
+    margin-top: 16px;
+    border-radius: var(--le-vid-row-radius);
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+}
+
+.video-watch-desc-stats {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--le-text-primary);
+    margin-bottom: 6px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.video-watch-desc-text {
+    font-size: 0.88rem;
+    color: var(--le-text-primary);
+    line-height: 1.5;
+    white-space: pre-wrap;
+    max-height: 64px;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+}
+
+.video-watch-desc.is-expanded .video-watch-desc-text { max-height: 600px; }
+
+.video-watch-desc-toggle {
+    margin-top: 6px;
+    background: none;
+    border: none;
+    color: var(--le-text-secondary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+}
+
+.video-watch-desc-toggle:hover { color: var(--le-primary); }
+
+.video-watch-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.video-watch-tag {
+    font-size: 0.78rem;
+    color: var(--le-text-secondary);
+    padding: 3px 10px;
+    /* Aligned with the canonical glass-chip recipe used elsewhere in
+       the template (`.video-chip`, `.movie-genre-tag`, `.music-card`
+       surface) — a translucent `--le-glass-bg` fill plus a subtle
+       `--le-glass-border-subtle` hairline. The previous version used
+       only `--le-glass-bg-strong` with no border, which read as a
+       solid grey blob against the glass card behind it instead of a
+       transparent tag. */
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.video-watch-tag:hover {
+    background: var(--le-glass-bg-strong);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    color: var(--le-primary);
+}

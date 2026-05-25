@@ -1,0 +1,64 @@
+{% set root = "../../" %}
+{% extends "layouts/error.njk" %}
+
+{% block body_attrs %} class="error-page page-403"{% endblock %}
+
+{% block error_content %}
+<div class="mesh-bg"></div>
+    <div class="glass-orb"></div>
+    <div class="glass-orb"></div>
+    <div class="glass-orb"></div>
+    <div class="glass-orb"></div>
+    <div class="glass-orb"></div>
+
+    <div class="error-content">
+        <div class="shield-icon">
+            <div class="shield-glass">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    <circle cx="12" cy="16" r="1"/>
+                </svg>
+            </div>
+        </div>
+
+        <div class="error-code">403</div>
+        <h1 class="error-subtitle">Access Forbidden</h1>
+        <p class="error-description">You don't have permission to access this resource. Please contact your administrator if you believe this is an error.</p>
+
+        <div class="btn-group-actions">
+            <a href="../../index.html" class="btn-glass btn-glass-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Go Home
+            </a>
+            <a href="mailto:admin@example.com?subject=Access%20Request&body=I%20would%20like%20to%20request%20access%20to%20a%20restricted%20resource." class="btn-glass btn-glass-outline">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Request Access
+            </a>
+        </div>
+
+        <div class="help-section">
+            <div class="help-title">Need help gaining access?</div>
+            <div class="help-tips">
+                <div class="help-tip">
+                    <div class="help-tip-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <span>Ensure you're signed in with the correct account</span>
+                </div>
+                <div class="help-tip">
+                    <div class="help-tip-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <span>Check if you need specific permissions for this resource</span>
+                </div>
+                <div class="help-tip">
+                    <div class="help-tip-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <span>Contact your administrator to request access rights</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

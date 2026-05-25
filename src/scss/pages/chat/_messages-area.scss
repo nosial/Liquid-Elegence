@@ -1,0 +1,137 @@
+/* ---------------------------------------------------------------------------
+   Messages Area
+   --------------------------------------------------------------------------- */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.message-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+    max-width: 70%;
+}
+
+.message-row.sent {
+    margin-left: auto;
+    flex-direction: row-reverse;
+}
+
+.message-row.received {
+    margin-right: auto;
+}
+
+.msg-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--le-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.625rem;
+    color: var(--le-text-inverse);
+    flex-shrink: 0;
+}
+
+/* Message Bubbles */
+.message-bubble {
+    padding: 0.625rem 0.875rem;
+    border-radius: 16px;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    position: relative;
+    word-wrap: break-word;
+    font-weight: 450;
+    transition: filter var(--le-transition-fast), box-shadow var(--le-transition-fast);
+}
+
+/* Received bubble — glass */
+.message-row.received .message-bubble {
+    background: var(--le-glass-bg-strong);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-bottom-left-radius: var(--le-radius-xs);
+    color: var(--le-text-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Sent bubble — darkened gradient for WCAG contrast */
+.message-row.sent .message-bubble {
+    background: linear-gradient(135deg, var(--le-primary-dark, var(--le-primary)), var(--le-primary-darker, var(--le-primary-dark, var(--le-primary))));
+    color: var(--le-text-inverse);
+    border-bottom-right-radius: var(--le-radius-xs);
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow:
+        0 2px 8px rgba(var(--le-primary-rgb), 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Time / receipt */
+.msg-time {
+    font-size: 0.6875rem;
+    color: var(--le-text-muted);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.message-row.sent .msg-time {
+    justify-content: flex-end;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.msg-read-receipt {
+    display: inline-flex;
+}
+
+.msg-read-receipt i,
+.msg-read-receipt svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* Images & links in messages */
+.msg-image {
+    border-radius: var(--le-radius);
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.msg-image-placeholder {
+    width: 200px;
+    height: 140px;
+    background: rgba(var(--le-primary-rgb), 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--le-radius);
+}
+
+.msg-image-placeholder i,
+.msg-image-placeholder svg {
+    width: 32px;
+    height: 32px;
+    color: var(--le-primary);
+}
+
+.msg-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: underline;
+}
+
+.message-row.sent .msg-link     { color: rgba(255, 255, 255, 0.9); }
+.message-row.received .msg-link { color: var(--le-primary); }
+
+.emoji-msg {
+    font-size: 2rem;
+    line-height: 1.2;
+}

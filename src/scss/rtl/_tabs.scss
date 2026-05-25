@@ -1,0 +1,15 @@
+/* ─────────────────────────────────────────────────────────────
+   17. Tabs & Nav pills
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .nav-tabs,
+[dir="rtl"] .nav-pills {
+    padding-right: 0;
+}
+
+[dir="rtl"] .le-tab-icon {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+

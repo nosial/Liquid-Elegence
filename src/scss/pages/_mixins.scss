@@ -1,0 +1,111 @@
+// Shared responsive patterns used across app pages
+
+// Sidebar drawer — slide-over from the left
+@mixin sidebar-drawer-left($width: 300px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1040;
+    width: $width;
+    max-width: 85vw;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+    transform: translateX(-100%);
+    transition: transform 0.28s cubic-bezier(.4, 0, .2, 1);
+    overscroll-behavior: contain;
+}
+
+// Sidebar drawer — slide-over from the right
+@mixin sidebar-drawer-right($width: 320px) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1040;
+    width: $width;
+    max-width: 85vw;
+    background: var(--le-glass-bg-strong);
+    backdrop-filter: blur(var(--le-glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-strong));
+    border-radius: 0;
+    overflow-y: auto;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    transition: transform 0.28s cubic-bezier(.4, 0, .2, 1);
+}
+
+// Sidebar backdrop — overlay that dims the page
+@mixin sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1039;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease;
+}
+
+@mixin sidebar-backdrop-show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+// Sidebar toggle button — inline toolbar (44x44)
+@mixin sidebar-toggle-inline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border: none;
+    background: transparent;
+    color: var(--le-text-secondary);
+    border-radius: var(--le-radius-md);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+@mixin sidebar-toggle-hover {
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+}
+
+// Sidebar close button (40x40)
+@mixin sidebar-close-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--le-text-secondary);
+    border-radius: var(--le-radius-md);
+    cursor: pointer;
+}
+
+@mixin sidebar-close-hover {
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+}
+
+// Mobile header — title + close button row
+@mixin sidebar-mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--le-glass-border);
+}
+
+@mixin sidebar-mobile-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--le-text-primary);
+}

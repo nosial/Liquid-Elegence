@@ -1,0 +1,112 @@
+/* MD and below (<768px): dashboard metric & chart mobile styles */
+@media (max-width: 767.98px) {
+    .metric-value {
+        font-size: 1.4rem;
+    }
+
+    .metric-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .metric-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Reduce chart heights on mobile */
+    .chart-wrapper.le-chart-300 {
+        height: 220px;
+    }
+
+    .chart-wrapper.le-chart-220 {
+        height: 180px;
+    }
+
+    /* Glass card headers: allow wrapping on mobile */
+    .glass-card-header {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .glass-card-header .btn-group {
+        flex-shrink: 0;
+    }
+
+    /* Glass card body: tighter padding */
+    .glass-card-body {
+        --le-body-pad: 16px;
+        padding: var(--le-body-pad);
+    }
+
+    .glass-card-header {
+        padding: 12px 16px;
+    }
+}
+
+/* SM and below (<576px): further metric & card compaction */
+@media (max-width: 575.98px) {
+    .metric-value {
+        font-size: 1.25rem;
+    }
+
+    .metric-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+    }
+
+    .metric-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .metric-change {
+        font-size: 0.75rem;
+    }
+
+    /* Further reduce chart heights */
+    .chart-wrapper.le-chart-300 {
+        height: 180px;
+    }
+
+    .chart-wrapper.le-chart-220 {
+        height: 160px;
+    }
+
+    /* Sparklines can be shorter */
+    .chart-wrapper.le-chart-60 {
+        height: 45px;
+    }
+
+    /* Glass card body: minimal padding */
+    .glass-card-body {
+        --le-body-pad: 14px;
+        padding: var(--le-body-pad);
+    }
+
+    .glass-card-header {
+        padding: 10px 14px;
+    }
+
+    /* Card titles slightly smaller */
+    .glass-card-title {
+        font-size: 0.9rem;
+    }
+
+    /* Page header compact on mobile */
+    .page-header {
+        margin-bottom: 16px;
+    }
+
+    .page-subtitle {
+        font-size: 0.8125rem;
+    }
+
+    /* Legend dots and list text: tighter */
+    .legend-dot {
+        width: 8px;
+        height: 8px;
+    }
+}

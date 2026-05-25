@@ -1,0 +1,141 @@
+/* -----------------------------------------------------------------------------
+   File Icons — glass circle with gradient background
+   -------------------------------------------------------------------------- */
+
+.fm-file-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    border: 1px solid var(--le-glass-border-subtle);
+    box-shadow: var(--le-shadow-xs);
+}
+
+.fm-file-icon i,
+.fm-file-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.fm-file-icon.folder { background: rgba(var(--le-warning-rgb), 0.12); color: var(--le-warning); }
+.fm-file-icon.image { background: rgba(var(--le-success-rgb), 0.12); color: var(--le-success); }
+.fm-file-icon.pdf { background: rgba(var(--le-danger-rgb), 0.12); color: var(--le-danger); }
+.fm-file-icon.doc { background: rgba(var(--le-primary-rgb), 0.12); color: var(--le-primary); }
+.fm-file-icon.spreadsheet { background: rgba(var(--le-success-rgb), 0.12); color: var(--le-success); }
+.fm-file-icon.code { background: rgba(var(--le-secondary-rgb), 0.12); color: var(--le-secondary); }
+.fm-file-icon.zip { background: rgba(var(--le-info-rgb), 0.12); color: var(--le-info); }
+.fm-file-icon.video { background: rgba(236, 72, 153, 0.12); color: rgb(236, 72, 153); }
+
+/* -----------------------------------------------------------------------------
+   File Meta
+   -------------------------------------------------------------------------- */
+
+.fm-file-name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--le-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    margin-bottom: 0.25rem;
+}
+
+.fm-file-meta {
+    font-size: 0.6875rem;
+    color: var(--le-text-muted);
+}
+
+/* -----------------------------------------------------------------------------
+   List / Table View
+   -------------------------------------------------------------------------- */
+
+.fm-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.fm-table thead th {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--le-text-muted);
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    text-align: left;
+}
+
+.fm-table tbody tr {
+    transition: background 0.15s;
+    cursor: pointer;
+}
+
+.fm-table tbody tr:hover {
+    background: rgba(var(--le-primary-rgb), 0.04);
+}
+
+.fm-table td {
+    padding: 0.625rem 1rem;
+    font-size: 0.8125rem;
+    color: var(--le-text-secondary);
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    vertical-align: middle;
+}
+
+.fm-table .fm-table-name {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-weight: 600;
+    color: var(--le-text-primary);
+}
+
+.fm-table .fm-table-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--le-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.fm-table .fm-table-icon i,
+.fm-table .fm-table-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+.fm-table-actions {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.fm-table-actions button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--le-radius-sm);
+    border: none;
+    background: transparent;
+    color: var(--le-text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.fm-table-actions button:hover {
+    background: rgba(var(--le-primary-rgb), 0.1);
+    color: var(--le-primary);
+}
+
+.fm-table-actions button i,
+.fm-table-actions button svg {
+    width: 14px;
+    height: 14px;
+}

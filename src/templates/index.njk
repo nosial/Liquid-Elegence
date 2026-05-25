@@ -1,0 +1,13 @@
+{% set root = "./" %}
+{% extends "layouts/base.njk" %}
+{% block title %}Liquid Elegance — Bootstrap 5 Admin Template{% endblock %}
+{% block body_attrs %} class="auth-page"{% endblock %}
+{% block body %}
+<meta http-equiv="refresh" content="0; url=pages/dashboards/overview.html">
+<div class="text-center text-white pt-5">
+    <div class="le-fs-8xl mb-3">◆</div>
+    <h1 class="le-fs-7xl fw-semibold mb-2">Liquid Elegance</h1>
+    <p class="text-white le-opacity-60 mb-4"><a href="pages/dashboards/overview.html" class="text-white">Loading dashboard...</a></p>
+    <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+</div>
+{% endblock %}

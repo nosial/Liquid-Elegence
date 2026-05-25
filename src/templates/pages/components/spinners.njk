@@ -1,0 +1,256 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Spinners — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Spinners</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Border Spinners ────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Border Spinners</h5>
+                <p class="text-muted mb-3 le-fs-body">Rotating border spinners in all colour variants.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+                    <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-border text-secondary" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-border text-success" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-border text-danger" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-border text-warning" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-border text-info" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-border text-dark" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-border text-light" role="status"><span class="visually-hidden">Loading...</span></div>
+                </div>
+                <div class="glass-card le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;div class="spinner-border text-primary" role="status"&gt;
+    &lt;span class="visually-hidden"&gt;Loading...&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Growing Spinners ────────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Growing Spinners</h5>
+                <p class="text-muted mb-3 le-fs-body">Pulsating grow-style spinners as an alternative to border spinners.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center mb-4">
+                    <div class="spinner-grow text-primary" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-grow text-secondary" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-grow text-success" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-grow text-danger" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-grow text-warning" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-grow text-info" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-grow text-dark" role="status"><span class="visually-hidden">Loading...</span></div>
+                    <div class="spinner-grow text-light" role="status"><span class="visually-hidden">Loading...</span></div>
+                </div>
+                <div class="glass-card le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;div class="spinner-grow text-primary" role="status"&gt;
+    &lt;span class="visually-hidden"&gt;Loading...&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Spinner Sizes ──────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Spinner Sizes</h5>
+                <p class="text-muted mb-3 le-fs-body">Border spinners in small, default, and custom large sizes.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <div class="text-center">
+                        <div class="spinner-border spinner-border-sm text-primary mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">sm</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="spinner-border text-primary mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">default</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="spinner-border text-primary le-box-3r mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">3rem</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="spinner-border text-primary mb-1" role="status" style="width:4rem;height:4rem;"></div>
+                        <div class="le-fs-xs text-muted">4rem</div>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Small --&gt;
+&lt;div class="spinner-border spinner-border-sm"&gt;&lt;/div&gt;
+
+&lt;!-- Custom size --&gt;
+&lt;div class="spinner-border" style="width:3rem;height:3rem;"&gt;&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Grow Spinner Sizes ────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Grow Spinner Sizes</h5>
+                <p class="text-muted mb-3 le-fs-body">Growing spinners in small, default, and custom large sizes.</p>
+                <div class="d-flex flex-wrap gap-3 align-items-center">
+                    <div class="text-center">
+                        <div class="spinner-grow spinner-grow-sm text-success mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">sm</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="spinner-grow text-success mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">default</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="spinner-grow text-success le-box-3r mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">3rem</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="spinner-grow text-success mb-1" role="status" style="width:4rem;height:4rem;"></div>
+                        <div class="le-fs-xs text-muted">4rem</div>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;div class="spinner-grow spinner-grow-sm"&gt;&lt;/div&gt;
+&lt;div class="spinner-grow" style="width:3rem;height:3rem;"&gt;&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Spinners in Buttons ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Spinners in Buttons</h5>
+                <p class="text-muted mb-3 le-fs-body">Indicate loading state by placing spinners inside buttons.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <button class="btn btn-glass btn-glass-primary" disabled>
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>Loading…
+                    </button>
+                    <button class="btn btn-primary" disabled>
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>Saving…
+                    </button>
+                    <button class="btn btn-glass btn-glass-success" disabled>
+                        <span class="spinner-grow spinner-grow-sm me-2" role="status"></span>Processing…
+                    </button>
+                    <button class="btn btn-outline-danger" disabled>
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>Deleting…
+                    </button>
+                    <button class="btn btn-link" disabled>
+                        <span class="spinner-border spinner-border-sm me-2" role="status"></span>Loading…
+                    </button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button class="btn btn-glass btn-glass-primary" disabled&gt;
+    &lt;span class="spinner-border spinner-border-sm me-2"&gt;&lt;/span&gt;
+    Loading…
+&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Alignment & Flex ───────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Alignment</h5>
+                <p class="text-muted mb-3 le-fs-body">Use flexbox utilities to centre spinners within containers.</p>
+                <div class="d-flex justify-content-center mb-3">
+                    <div class="spinner-border text-primary" role="status"></div>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <strong class="text-muted">Loading...</strong>
+                    <div class="spinner-grow text-info ms-auto" role="status"></div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;div class="d-flex justify-content-center"&gt;
+    &lt;div class="spinner-border"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Spinner Colour Swatches ───────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Colour Swatches</h5>
+                <p class="text-muted mb-3 le-fs-body">Quick reference of all spinner colour variants side by side.</p>
+                <div class="row g-3">
+                    <div class="col-4 col-sm-3 text-center">
+                        <div class="spinner-border text-primary mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">primary</div>
+                    </div>
+                    <div class="col-4 col-sm-3 text-center">
+                        <div class="spinner-border text-secondary mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">secondary</div>
+                    </div>
+                    <div class="col-4 col-sm-3 text-center">
+                        <div class="spinner-border text-success mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">success</div>
+                    </div>
+                    <div class="col-4 col-sm-3 text-center">
+                        <div class="spinner-border text-danger mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">danger</div>
+                    </div>
+                    <div class="col-4 col-sm-3 text-center">
+                        <div class="spinner-grow text-warning mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">warning</div>
+                    </div>
+                    <div class="col-4 col-sm-3 text-center">
+                        <div class="spinner-grow text-info mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">info</div>
+                    </div>
+                    <div class="col-4 col-sm-3 text-center">
+                        <div class="spinner-grow text-dark mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">dark</div>
+                    </div>
+                    <div class="col-4 col-sm-3 text-center">
+                        <div class="spinner-grow text-light mb-1" role="status"></div>
+                        <div class="le-fs-xs text-muted">light</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

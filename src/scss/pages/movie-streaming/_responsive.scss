@@ -1,0 +1,275 @@
+/* =============================================================================
+   Movie Streaming — Responsive
+   ============================================================================= */
+
+/* ------------------------------------------------------------------
+   ≤ 1399px  — Large tablet / narrow desktop
+   Sidebar narrows → shrink sidebar episode thumbnails
+   ------------------------------------------------------------------ */
+@media (max-width: 1399.98px) {
+    :root {
+        --le-mov-card-w: 240px;
+        --le-mov-card-w-portrait: 152px;
+    }
+    .movie-card-rank { font-size: 9rem; min-width: 70px; }
+    .movie-card-rank[data-rank="10"] { min-width: 116px; font-size: 8rem; }
+
+    .movie-episode-row {
+        grid-template-columns: 32px 160px 1fr auto;
+        gap: 12px;
+        padding: 10px;
+    }
+    .movie-episode-thumb { min-width: 0; }
+    .movie-episode-title { font-size: 0.88rem; }
+    .movie-episode-desc { -webkit-line-clamp: 1; font-size: 0.78rem; }
+}
+
+/* ------------------------------------------------------------------
+   ≤ 1199px  — Medium tablet landscape
+   Sidebar gets tighter → compress episode rows further
+   ------------------------------------------------------------------ */
+@media (max-width: 1199.98px) {
+    :root {
+        --le-mov-card-w: 220px;
+        --le-mov-card-w-portrait: 144px;
+    }
+    .movie-billboard { min-height: clamp(360px, 50vw, 480px); }
+    .movie-billboard-content { padding: 0 36px; max-width: 540px; }
+    .movie-rail { padding: 0 36px; }
+
+    .movie-episode-row {
+        grid-template-columns: 28px 130px 1fr;
+        gap: 10px;
+        padding: 8px;
+    }
+    .movie-episode-action { display: none; }
+    .movie-episode-num { font-size: 1rem; }
+    .movie-episode-title { font-size: 0.82rem; }
+    .movie-episode-desc { -webkit-line-clamp: 1; font-size: 0.74rem; line-height: 1.3; }
+}
+
+/* ------------------------------------------------------------------
+   ≤ 991px  — Tablet portrait (sidebar stacks below player)
+   The col-lg-4 Up Next panel goes full-width → switch from a
+   cramped 4-column list to a horizontal rail of episode cards.
+   Also tighten billboard + rail side padding.
+   ------------------------------------------------------------------ */
+@media (max-width: 991.98px) {
+    :root {
+        --le-mov-card-w: 220px;
+        --le-mov-card-w-portrait: 140px;
+    }
+    .movie-billboard { min-height: 340px; }
+    .movie-billboard-content { padding: 0 28px; bottom: 16%; max-width: none; }
+    .movie-billboard-extras { right: 14px; bottom: 16%; }
+    .movie-billboard-title { font-size: 2rem; }
+    .movie-billboard-desc { -webkit-line-clamp: 2; }
+    .movie-rail { padding: 0 28px; margin-bottom: 30px; }
+    .movie-rail-title { font-size: 1.25rem; }
+
+    .movie-title-hero { aspect-ratio: 16 / 9; min-height: 220px; }
+    .movie-title-hero-content { padding: 20px 22px; }
+    .movie-title-body { padding: 18px 22px; }
+    .movie-fact-grid { grid-template-columns: 1fr; }
+    .movie-title-hero-name { font-size: 1.8rem; }
+
+    .movie-card-rank { font-size: 7.5rem; min-width: 60px; -webkit-text-stroke-width: 2.5px; }
+    .movie-card-rank[data-rank="10"] { min-width: 100px; font-size: 6.8rem; }
+    .movie-card.is-top10 .movie-card-thumb { margin-left: -20px; }
+
+    /* Watch-page "Up Next" / "More Like This": horizontal scroll rail
+       instead of stacked list rows — mirrors the main-browse rails. */
+    .col-lg-4 .movie-episode-row {
+        display: inline-flex;
+        flex-direction: column;
+        width: 260px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        border-radius: var(--le-mov-card-radius);
+        overflow: visible;
+        min-width: 0;
+        margin-top: 0;
+    }
+    .col-lg-4 .movie-episode-row + .movie-episode-row { margin-top: 0; }
+    .col-lg-4 .movie-episode-row:hover {
+        background: transparent;
+        border-color: transparent;
+    }
+    .col-lg-4 .movie-episode-row .movie-episode-num { display: none; }
+    .col-lg-4 .movie-episode-row .movie-episode-thumb {
+        width: 100%;
+        max-width: none;
+        aspect-ratio: 16 / 9;
+        border-radius: var(--le-mov-card-radius);
+    }
+    .col-lg-4 .movie-episode-row .movie-episode-info {
+        padding: 8px 4px 0;
+    }
+    .col-lg-4 .movie-episode-row .movie-episode-title {
+        font-size: 0.88rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .col-lg-4 .movie-episode-row .movie-episode-desc {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+    }
+    .col-lg-4 .movie-episode-row .movie-episode-action { display: none; }
+
+    /* Wrap the sidebar glass-card body in a scrollable rail */
+    .col-lg-4 .glass-card-body {
+        display: flex;
+        flex-direction: column;
+    }
+    .col-lg-4 .glass-card-body > .movie-episode-row {
+        /* Keep list-style for "More Like This" (inline-styled overrides) */
+    }
+
+    /* When the Up Next / Similar section is inside a card that still
+       uses the stacked-row pattern, provide a scroll container. */
+    .movie-upnext-scroll {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+        scrollbar-width: none;
+        padding: 4px 0 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+    .movie-upnext-scroll::-webkit-scrollbar { display: none; }
+    .movie-upnext-scroll > * {
+        scroll-snap-align: start;
+    }
+}
+
+/* ------------------------------------------------------------------
+   ≤ 767px  — Phones
+   Tighten everything. Episode rows go back to stacked layout.
+   ------------------------------------------------------------------ */
+@media (max-width: 767.98px) {
+    :root {
+        --le-mov-card-w: 190px;
+        --le-mov-card-w-portrait: 124px;
+    }
+    .movie-billboard { min-height: 280px; }
+    .movie-billboard-content { padding: 0 20px; bottom: 14%; }
+    .movie-billboard-title { font-size: 1.6rem; }
+    .movie-billboard-desc { -webkit-line-clamp: 2; font-size: 0.88rem; }
+    .movie-billboard-extras { display: none; }
+    .movie-billboard-actions { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .movie-btn-play,
+    .movie-btn-ghost { width: 100%; justify-content: center; }
+    .movie-btn-icon { width: 38px; height: 38px; }
+    .movie-rail { padding: 0 20px; }
+    .movie-rail-title { font-size: 1.1rem; }
+    .movie-rail-link { opacity: 1; transform: translateX(0); }
+
+    .movie-title-hero { min-height: 180px; }
+    .movie-title-hero-name { font-size: 1.4rem; }
+    .movie-title-hero-content { padding: 16px 18px; }
+    .movie-title-body { padding: 16px 18px; }
+
+    .movie-card-rank { font-size: 6rem; min-width: 48px; -webkit-text-stroke-width: 2px; }
+    .movie-card-rank[data-rank="10"] { min-width: 80px; font-size: 5.4rem; }
+    .movie-card.is-top10 .movie-card-thumb { margin-left: -14px; }
+
+    /* Episode rows: compact stacked layout for full-width context */
+    .col-lg-4 .movie-episode-row {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        grid-template-areas:
+            "thumb info";
+        gap: 10px;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--le-glass-border-subtle);
+        background: var(--le-glass-bg);
+        border-radius: var(--le-mov-card-radius);
+        overflow: hidden;
+        min-width: 0;
+    }
+    .col-lg-4 .movie-episode-row + .col-lg-4 .movie-episode-row {
+        margin-top: 8px;
+    }
+    .col-lg-4 .movie-episode-row:hover {
+        background: var(--le-glass-bg-strong);
+        border-color: rgba(var(--le-primary-rgb), 0.25);
+    }
+    .col-lg-4 .movie-episode-row .movie-episode-thumb {
+        grid-area: thumb;
+        width: 100%;
+        max-width: none;
+        aspect-ratio: 16 / 9;
+    }
+    .col-lg-4 .movie-episode-row .movie-episode-info {
+        grid-area: info;
+        padding: 0;
+    }
+    .col-lg-4 .movie-episode-row .movie-episode-title {
+        font-size: 0.85rem;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .col-lg-4 .movie-episode-row .movie-episode-desc {
+        font-size: 0.73rem;
+        -webkit-line-clamp: 1;
+    }
+    .col-lg-4 .movie-episode-row .movie-episode-num { display: none; }
+    .col-lg-4 .movie-episode-row .movie-episode-action { display: none; }
+
+    .movie-upnext-scroll {
+        gap: 6px;
+        padding: 4px 0 6px;
+    }
+
+    .movie-episode-row {
+        grid-template-columns: 28px 1fr;
+        grid-template-areas:
+            "num thumb"
+            "info info";
+        gap: 8px 10px;
+    }
+    .movie-episode-row .movie-episode-num   { grid-area: num; align-self: center; font-size: 1.1rem; }
+    .movie-episode-row .movie-episode-thumb { grid-area: thumb; max-width: none; }
+    .movie-episode-row .movie-episode-info  { grid-area: info; }
+    .movie-episode-row .movie-episode-action{ display: none; }
+    .movie-episode-thumb .movie-card-duration { font-size: 0.6rem; padding: 1px 4px; }
+
+    .movie-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+    .movie-grid-portrait { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+
+    .movie-rail-nav { width: 34px; height: 34px; }
+    .movie-rail-nav svg { width: 18px; height: 18px; }
+    .movie-rail-nav.is-prev { left: 4px; }
+    .movie-rail-nav.is-next { right: 4px; }
+
+    .movie-tabs { gap: 2px; }
+    .movie-tab { padding: 6px 10px; font-size: 0.8rem; }
+    .movie-chip { padding: 4px 10px; font-size: 0.75rem; }
+}
+
+/* ------------------------------------------------------------------
+   ≤ 575px  — Small phones
+   ------------------------------------------------------------------ */
+@media (max-width: 575.98px) {
+    :root {
+        --le-mov-card-w: 170px;
+        --le-mov-card-w-portrait: 116px;
+    }
+    .movie-billboard { min-height: 260px; border-radius: 6px; }
+    .movie-billboard-content { padding: 0 16px; }
+    .movie-billboard-title { font-size: 1.35rem; }
+    .movie-billboard-desc { font-size: 0.82rem; -webkit-line-clamp: 2; }
+    .movie-btn { padding: 9px 16px; font-size: 0.88rem; }
+    .movie-rail { padding: 0 16px; }
+    .movie-rail-nav { display: none; }
+    .movie-card:hover { transform: scale(1.04); }
+    .movie-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .movie-grid-portrait { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .movie-card-thumb-title { font-size: 0.9rem; padding: 10px; padding-top: 28px; }
+    .movie-card-hover-meta { font-size: 0.72rem; gap: 4px; }
+}

@@ -1,0 +1,328 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Forms — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Forms</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Text Inputs ─────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Text Inputs</h5>
+                <div class="mb-3">
+                    <label class="form-label">Default Input</label>
+                    <input type="text" class="form-control glass-input" placeholder="Enter text...">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">With Helper Text</label>
+                    <input type="email" class="form-control glass-input" placeholder="you@example.com">
+                    <div class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Disabled</label>
+                    <input type="text" class="form-control glass-input" placeholder="Disabled input" disabled>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Readonly</label>
+                    <input type="text" class="form-control glass-input" value="Readonly value" readonly>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">With Icon</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i data-feather="search" class="le-icon-16"></i></span>
+                        <input type="text" class="form-control glass-input" placeholder="Search...">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control glass-input" value="secretpassword">
+                </div>
+                <div class="glass-card le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;label class="form-label"&gt;Email&lt;/label&gt;
+&lt;input type="email" class="form-control glass-input"
+       placeholder="you@example.com"&gt;
+&lt;div class="form-text"&gt;Helper text&lt;/div&gt;
+
+&lt;!-- With icon prefix --&gt;
+&lt;div class="input-group"&gt;
+    &lt;span class="input-group-text"&gt;
+        &lt;i data-feather="search"&gt;&lt;/i&gt;
+    &lt;/span&gt;
+    &lt;input type="text" class="form-control glass-input"&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Validation States ──────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Validation States</h5>
+                <div class="mb-3">
+                    <label class="form-label">Valid Input</label>
+                    <input type="text" class="form-control glass-input is-valid" value="Looks good!">
+                    <div class="valid-feedback">This input is valid.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Invalid Input</label>
+                    <input type="text" class="form-control glass-input is-invalid" value="">
+                    <div class="invalid-feedback">Please provide a valid value.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Floating Label</label>
+                    <div class="form-floating">
+                        <input type="text" class="form-control glass-input" id="floatingDemo" placeholder="Name">
+                        <label for="floatingDemo">Full Name</label>
+                    </div>
+                </div>
+
+                <h6 class="mb-2 mt-4">Input Sizes</h6>
+                <div class="mb-2">
+                    <input type="text" class="form-control form-control-sm glass-input" placeholder="Small input">
+                </div>
+                <div class="mb-2">
+                    <input type="text" class="form-control glass-input" placeholder="Default input">
+                </div>
+                <div class="mb-3">
+                    <input type="text" class="form-control form-control-lg glass-input" placeholder="Large input">
+                </div>
+                <div class="glass-card le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Validation --&gt;
+&lt;input class="form-control glass-input is-valid"&gt;
+&lt;div class="valid-feedback"&gt;Looks good!&lt;/div&gt;
+
+&lt;input class="form-control glass-input is-invalid"&gt;
+&lt;div class="invalid-feedback"&gt;Required.&lt;/div&gt;
+
+&lt;!-- Floating label --&gt;
+&lt;div class="form-floating"&gt;
+    &lt;input class="form-control glass-input" id="name"
+           placeholder="Name"&gt;
+    &lt;label for="name"&gt;Full Name&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Select & Textarea ──────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Selects</h5>
+                <div class="mb-3">
+                    <label class="form-label">Default Select</label>
+                    <select class="form-select glass-input">
+                        <option selected>Choose an option...</option>
+                        <option value="1">Option One</option>
+                        <option value="2">Option Two</option>
+                        <option value="3">Option Three</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Small Select</label>
+                    <select class="form-select form-select-sm glass-input">
+                        <option selected>Small select</option>
+                        <option value="1">Alpha</option>
+                        <option value="2">Beta</option>
+                    </select>
+                </div>
+                <div class="mb-0">
+                    <label class="form-label">Multi-select</label>
+                    <select class="form-select glass-input" multiple size="4">
+                        <option>Design</option>
+                        <option>Development</option>
+                        <option>Marketing</option>
+                        <option>Sales</option>
+                        <option>Support</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Textarea & Range</h5>
+                <div class="mb-3">
+                    <label class="form-label">Textarea</label>
+                    <textarea class="form-control glass-input" rows="4" placeholder="Write your message here..."></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Range</label>
+                    <input type="range" class="form-range" min="0" max="100" value="65">
+                    <div class="d-flex justify-content-between"><small class="text-muted">0</small><small class="text-muted">100</small></div>
+                </div>
+                <div class="mb-0">
+                    <label class="form-label">Color Picker</label>
+                    <input type="color" class="form-control form-control-color" value="#6366f1" title="Choose a color">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Checkboxes, Radios, Switches ───────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-4">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Checkboxes</h5>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="check1" checked>
+                    <label class="form-check-label" for="check1">Checked</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="check2">
+                    <label class="form-check-label" for="check2">Unchecked</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="check3" disabled checked>
+                    <label class="form-check-label" for="check3">Disabled checked</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="check4" disabled>
+                    <label class="form-check-label" for="check4">Disabled unchecked</label>
+                </div>
+
+                <h6 class="mt-3 mb-2">Inline Checkboxes</h6>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inCheck1" checked>
+                    <label class="form-check-label" for="inCheck1">One</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inCheck2">
+                    <label class="form-check-label" for="inCheck2">Two</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inCheck3">
+                    <label class="form-check-label" for="inCheck3">Three</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Radio Buttons</h5>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="radioGroup" id="radio1" checked>
+                    <label class="form-check-label" for="radio1">Option One</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="radioGroup" id="radio2">
+                    <label class="form-check-label" for="radio2">Option Two</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="radioGroup" id="radio3">
+                    <label class="form-check-label" for="radio3">Option Three</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="radioGroup" id="radio4" disabled>
+                    <label class="form-check-label" for="radio4">Disabled</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Switches</h5>
+                <div class="form-check form-switch mb-2">
+                    <input class="form-check-input" type="checkbox" id="switch1" checked>
+                    <label class="form-check-label" for="switch1">Enabled</label>
+                </div>
+                <div class="form-check form-switch mb-2">
+                    <input class="form-check-input" type="checkbox" id="switch2">
+                    <label class="form-check-label" for="switch2">Disabled state</label>
+                </div>
+                <div class="form-check form-switch mb-2">
+                    <input class="form-check-input" type="checkbox" id="switch3" disabled checked>
+                    <label class="form-check-label" for="switch3">Disabled on</label>
+                </div>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" id="switch4" disabled>
+                    <label class="form-check-label" for="switch4">Disabled off</label>
+                </div>
+                <div class="glass-card le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Checkbox --&gt;
+&lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" type="checkbox" id="c1"&gt;
+    &lt;label class="form-check-label" for="c1"&gt;Check&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Switch --&gt;
+&lt;div class="form-check form-switch"&gt;
+    &lt;input class="form-check-input" type="checkbox" id="s1"&gt;
+    &lt;label class="form-check-label" for="s1"&gt;Toggle&lt;/label&gt;
+&lt;/div&gt;
+
+&lt;!-- Radio --&gt;
+&lt;div class="form-check"&gt;
+    &lt;input class="form-check-input" type="radio" name="r" id="r1"&gt;
+    &lt;label class="form-check-label" for="r1"&gt;Option&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Input Groups ────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-3">Input Groups</h5>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">With Prefix</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="text" class="form-control glass-input" placeholder="Amount">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">With Suffix</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control glass-input" placeholder="Username">
+                            <span class="input-group-text">@site.com</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">With Button</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control glass-input" placeholder="Search...">
+                            <button class="btn btn-glass btn-glass-primary" type="button">Go</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+/* Now-playing modal (mobile fullscreen) */
+
+.music-now-playing-modal .modal-dialog {
+    max-width: 460px;
+}
+
+.music-now-playing-source {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--le-text-secondary);
+}
+
+.btn-close-glass {
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: var(--le-text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-close-glass:hover { background: var(--le-glass-bg); color: var(--le-text-primary); }
+
+.music-now-playing-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    padding: 24px;
+}
+
+.music-now-art {
+    width: min(280px, 60vw);
+    aspect-ratio: 1;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(var(--le-primary-rgb), 0.85), rgba(var(--le-primary-rgb), 0.45));
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.30);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 4rem;
+}
+
+.music-now-meta {
+    width: 100%;
+    text-align: center;
+}
+
+.music-now-title {
+    margin: 0 0 4px;
+    font-weight: 700;
+    color: var(--le-text-primary);
+}
+
+.music-now-artist {
+    color: var(--le-text-secondary);
+    font-size: 0.9rem;
+}
+
+.music-now-progress { width: 100%; }
+
+.music-now-controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+

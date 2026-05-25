@@ -1,0 +1,126 @@
+/* =============================================================================
+   §10 — Light Reflection Effect (Water-Droplet Caustic)
+   ============================================================================= */
+
+.light-reflection {
+  position: relative;
+  overflow: hidden;
+}
+
+.light-reflection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    /* Primary caustic — convex water-lens light concentration */
+    radial-gradient(
+      ellipse 65% 40% at 22% 8%,
+      var(--le-reflection-start) 0%,
+      var(--le-reflection-mid) 35%,
+      var(--le-reflection-end) 60%
+    ),
+    /* Water-bead bright ring — edge surface tension highlight */
+    radial-gradient(
+      ellipse 90% 80% at 50% 50%,
+      transparent 55%,
+      var(--le-reflection-edge) 70%,
+      transparent 80%
+    ),
+    /* Secondary caustic — refracted light splash at bottom */
+    radial-gradient(
+      ellipse 45% 30% at 72% 88%,
+      var(--le-reflection-caustic) 0%,
+      transparent 55%
+    );
+  opacity: 0.65;
+  pointer-events: none;
+  z-index: 1;
+  transition:
+    opacity var(--le-transition),
+    background var(--le-transition-slow);
+}
+
+.light-reflection:hover::before {
+  opacity: 0.9;
+  background:
+    radial-gradient(
+      ellipse 70% 45% at 26% 12%,
+      var(--le-reflection-start) 0%,
+      var(--le-reflection-mid) 35%,
+      var(--le-reflection-end) 55%
+    ),
+    radial-gradient(
+      ellipse 90% 80% at 50% 50%,
+      transparent 50%,
+      var(--le-reflection-edge) 68%,
+      transparent 78%
+    ),
+    radial-gradient(
+      ellipse 50% 35% at 68% 82%,
+      var(--le-reflection-caustic) 0%,
+      transparent 50%
+    );
+}
+
+/* Ensure content stays above */
+.light-reflection > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =============================================================================
+   §11 — Color Bending Effect (Water-Droplet Chromatic Dispersion)
+   ============================================================================= */
+
+.color-bend {
+  position: relative;
+  overflow: hidden;
+}
+
+.color-bend::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    /* Warm dispersion fringe at top-left — like light splitting through a water bead */
+    linear-gradient(
+      140deg,
+      var(--le-chroma-red) 0%,
+      transparent 22%
+    ),
+    /* Cool dispersion fringe at bottom-right */
+    linear-gradient(
+      320deg,
+      var(--le-chroma-blue) 0%,
+      transparent 22%
+    ),
+    /* Green-channel mid-fringe — secondary dispersion band */
+    linear-gradient(
+      230deg,
+      var(--le-chroma-green) 0%,
+      transparent 18%
+    ),
+    /* Cross-surface spectral sweep — full chromatic dispersion across the lens */
+    linear-gradient(
+      155deg,
+      transparent 0%,
+      rgba(var(--le-primary-rgb), 0.06) 25%,
+      rgba(var(--le-secondary-rgb), 0.05) 45%,
+      rgba(var(--le-info-rgb), 0.05) 65%,
+      rgba(var(--le-success-rgb), 0.03) 80%,
+      transparent 100%
+    );
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity var(--le-transition);
+}
+
+.color-bend:hover::after {
+  opacity: 0.8;
+}
+
+

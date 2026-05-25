@@ -1,0 +1,299 @@
+/* ---------------------------------------------------------------------------
+   Footer links
+   --------------------------------------------------------------------------- */
+.chirp-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 16px;
+  font-size: 0.75rem;
+  color: var(--le-text-muted);
+}
+
+.chirp-footer-links a {
+  color: var(--le-text-muted);
+  text-decoration: none;
+}
+
+.chirp-footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile sidebar elements — hidden by default on desktop */
+.chirp-sidebar-toggle-fab { display: none; }
+.chirp-sidebar-backdrop { display: none; }
+.chirp-sidebar-mobile-header { display: none; }
+
+/* ---------------------------------------------------------------------------
+   Density Overrides
+   --------------------------------------------------------------------------- */
+
+/* ---- Compact: ~80-85% of default, tighter padding/gaps, smaller fonts ---- */
+[data-density="compact"] {
+
+  /* Tweet Card */
+  .chirp-tweet {
+    gap: 9px;
+    padding: 11px;
+  }
+
+  .chirp-tweet-avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 0.75rem;
+  }
+
+  .chirp-tweet-header {
+    gap: 4px;
+  }
+
+  .chirp-tweet-name {
+    font-size: 0.82rem;
+  }
+
+  .chirp-tweet-handle {
+    font-size: 0.75rem;
+  }
+
+  .chirp-tweet-body {
+    font-size: 0.84rem;
+    margin-bottom: 7px;
+  }
+
+  .chirp-action {
+    gap: 4px;
+    padding: 4px 7px;
+    font-size: 0.72rem;
+  }
+
+  /* Compose Box */
+  .chirp-compose {
+    gap: 9px;
+    padding: 11px;
+  }
+
+  .chirp-compose-input {
+    font-size: 0.95rem;
+    min-height: 44px;
+  }
+
+  .chirp-compose-toolbar {
+    margin-top: 7px;
+    padding-top: 7px;
+  }
+
+  .chirp-compose-tool {
+    padding: 4px;
+  }
+
+  /* Feed Tabs */
+  .chirp-feed-tab {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+
+  .chirp-feed-tab.active::after {
+    width: 44px;
+    height: 2px;
+  }
+
+  /* Profile Header */
+  .chirp-profile-banner {
+    height: 160px;
+  }
+
+  .chirp-profile-info {
+    padding: 0 14px 14px;
+  }
+
+  .chirp-profile-avatar {
+    width: 96px;
+    height: 96px;
+    font-size: 2rem;
+    border: 3px;
+    margin-top: -52px;
+  }
+
+  .chirp-profile-actions {
+    top: 8px;
+    right: 14px;
+    gap: 6px;
+  }
+
+  .chirp-profile-name {
+    font-size: 1.12rem;
+    margin: 4px 0 0;
+  }
+
+  .chirp-profile-handle {
+    font-size: 0.8rem;
+    margin-bottom: 7px;
+  }
+
+  .chirp-profile-bio {
+    font-size: 0.84rem;
+    margin-bottom: 8px;
+  }
+
+  .chirp-profile-meta {
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 0.75rem;
+  }
+
+  .chirp-profile-stats {
+    gap: 14px;
+    font-size: 0.8rem;
+  }
+
+  /* Profile Tabs */
+  .chirp-profile-tab {
+    padding: 10px 12px;
+    font-size: 0.78rem;
+  }
+
+  /* Thread / Detail */
+  .chirp-thread-tweet {
+    gap: 9px;
+    padding: 11px;
+  }
+
+  .chirp-thread-meta {
+    padding: 8px 11px;
+    font-size: 0.75rem;
+  }
+
+  .chirp-thread-stats {
+    gap: 14px;
+    padding: 8px 11px;
+    font-size: 0.8rem;
+  }
+
+  .chirp-thread-actions {
+    padding: 2px 11px;
+  }
+
+  /* User Card */
+  .chirp-user-item {
+    gap: 9px;
+    padding: 10px 11px;
+  }
+
+  .chirp-user-avatar {
+    width: 34px;
+    height: 34px;
+    font-size: 0.75rem;
+  }
+
+  .chirp-user-name {
+    font-size: 0.82rem;
+  }
+
+  .chirp-user-handle {
+    font-size: 0.75rem;
+  }
+
+  .chirp-user-bio {
+    font-size: 0.78rem;
+    margin-top: 3px;
+  }
+
+  /* Sidebar Widgets */
+  .chirp-widget-title {
+    font-size: 1rem;
+    padding: 10px 11px;
+  }
+
+  .chirp-trend-item {
+    padding: 7px 11px;
+  }
+
+  .chirp-trend-category {
+    font-size: 0.68rem;
+  }
+
+  .chirp-trend-name {
+    font-size: 0.82rem;
+  }
+
+  .chirp-trend-count {
+    font-size: 0.68rem;
+  }
+
+  .chirp-widget-more {
+    padding: 10px 11px;
+    font-size: 0.8rem;
+  }
+
+  .chirp-follow-item {
+    gap: 9px;
+    padding: 8px 11px;
+  }
+
+  .chirp-follow-name {
+    font-size: 0.8rem;
+  }
+
+  .chirp-follow-handle {
+    font-size: 0.7rem;
+  }
+
+  /* Settings */
+  .chirp-settings-nav .nav-link {
+    gap: 7px;
+    padding: 7px 10px;
+    font-size: 0.8rem;
+  }
+
+  .chirp-setting-group {
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+  }
+
+  .chirp-setting-group h6 {
+    font-size: 0.87rem;
+    margin-bottom: 6px;
+  }
+
+  .chirp-setting-group p {
+    font-size: 0.78rem;
+    margin-bottom: 8px;
+  }
+
+  .chirp-setting-row {
+    padding: 7px 0;
+    gap: 12px;
+  }
+
+  .chirp-setting-label strong {
+    font-size: 0.8rem;
+  }
+
+  .chirp-setting-label span {
+    font-size: 0.72rem;
+  }
+
+  /* Search */
+  .chirp-search-input {
+    padding: 7px 12px 7px 34px;
+    font-size: 0.8rem;
+  }
+
+  /* Buttons */
+  .btn-chirp-follow {
+    padding: 4px 14px;
+    font-size: 0.75rem;
+  }
+
+  .btn-chirp-following {
+    padding: 4px 14px;
+    font-size: 0.75rem;
+  }
+
+  /* Footer */
+  .chirp-footer-links {
+    gap: 7px;
+    padding: 11px;
+    font-size: 0.68rem;
+  }
+}

@@ -1,0 +1,258 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="chirp-feed.html">Chirp</a></li>
+            <li class="breadcrumb-item"><a href="chirp-profile.html">@alice_codes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Followers</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+
+        <!-- Main Content Column -->
+        <div class="col-lg-8 chirp-main-col">
+
+            <!-- Profile Header + Tabs + Search + Followers -->
+            <div class="glass-card animate-fade-in-up">
+
+                <!-- Mini Profile Header -->
+                <section class="d-flex align-items-center gap-3 p-3">
+                    <div class="chirp-tweet-avatar le-avatar-48 le-avatar-gradient">AC</div>
+                    <div>
+                        <div class="d-flex align-items-center gap-1">
+                            <a href="chirp-profile.html" class="chirp-tweet-name le-fs-3xl">Alice Chen</a>
+                            <span class="chirp-tweet-verified"><i data-feather="check-circle" class="le-icon-14"></i></span>
+                        </div>
+                        <span class="chirp-tweet-handle">@alice_codes</span>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Tabs -->
+                <section>
+                    <div class="chirp-profile-tabs">
+                        <button class="chirp-profile-tab active">Followers</button>
+                        <button class="chirp-profile-tab">Following</button>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Search -->
+                <section>
+                    <div class="chirp-search le-pad-inset">
+                        <i data-feather="search" class="chirp-search-icon le-icon-16"></i>
+                        <input type="text" class="chirp-search-input" placeholder="Search people">
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Followers List -->
+                <div class="chirp-user-list">
+
+                    {% set followers = [
+                        {
+                            initials: "MR", name: "Marcus Rivera", handle: "@marcusdev",
+                            bio: "Full-stack engineer at CloudScale. Opinions are my own. Building better developer tools. 🛠️",
+                            color: "linear-gradient(135deg, #f59e0b, #d97706)",
+                            following: false
+                        },
+                        {
+                            initials: "SK", name: "Sarah Kim", handle: "@sarahdesigns",
+                            bio: "UX/UI Designer → Frontend Dev. Design systems enthusiast. Making the web prettier one component at a time. ✨",
+                            color: "linear-gradient(135deg, #ec4899, #be185d)",
+                            following: true
+                        },
+                        {
+                            initials: "JW", name: "James Wright", handle: "@jwright_dev",
+                            bio: "Systems programmer. Rust 🦀 | Go | Performance optimization. Writing about low-level programming.",
+                            color: "linear-gradient(135deg, var(--le-success), #059669)",
+                            following: true
+                        },
+                        {
+                            initials: "LP", name: "Luna Park", handle: "@lunapark_ui",
+                            bio: "Design Engineer at DesignCo. CSS Art | Creative Coding | Web Animations. She/Her 🌙",
+                            color: "linear-gradient(135deg, #6366f1, #4f46e5)",
+                            following: false
+                        },
+                        {
+                            initials: "DK", name: "David Kowalski", handle: "@dkowalski",
+                            bio: "Backend architect. Distributed systems at scale. Former @BigTech. Writing a book on system design.",
+                            color: "linear-gradient(135deg, #dea584, #b7410e)",
+                            following: true
+                        },
+                        {
+                            initials: "EB", name: "Emma Brooks", handle: "@emma_codes",
+                            bio: "Engineering Manager | Speaker | Mentor. Passionate about growing engineers and building inclusive teams.",
+                            color: "linear-gradient(135deg, #06b6d4, #0284c7)",
+                            following: false
+                        },
+                        {
+                            initials: "NP", name: "Nikolai Petrov", handle: "@nikolai_p",
+                            bio: "Open source contributor. TypeScript wizard. Working on developer tooling. 🧙‍♂️",
+                            color: "linear-gradient(135deg, #ef4444, #dc2626)",
+                            following: false
+                        },
+                        {
+                            initials: "TH", name: "Taylor Hunt", handle: "@taylorhunt_dev",
+                            bio: "DevRel at Vercel. Conference speaker. Writing about the future of web development. #BuildInPublic",
+                            color: "linear-gradient(135deg, #f59e0b, #d97706)",
+                            following: true
+                        },
+                        {
+                            initials: "RG", name: "Rachel Green", handle: "@rachelcodes",
+                            bio: "Mobile & web developer. React Native | Flutter | SwiftUI. Building apps people love. 📱",
+                            color: "linear-gradient(135deg, #10b981, #059669)",
+                            following: false
+                        },
+                        {
+                            initials: "AM", name: "Alex Martinez", handle: "@alex_m",
+                            bio: "Cloud architect at AWS. Kubernetes, Terraform, serverless. Helping teams build reliable infrastructure. ☁️",
+                            color: "linear-gradient(135deg, #326ce5, #1a3f7a)",
+                            following: true
+                        },
+                        {
+                            initials: "CL", name: "Chris Lee", handle: "@chrislee_dev",
+                            bio: "Indie hacker. Building SaaS products. $12K MRR and growing. Documenting the journey. 📈",
+                            color: "linear-gradient(135deg, var(--le-secondary), #7c3aed)",
+                            following: false
+                        },
+                        {
+                            initials: "JP", name: "Julia Petersen", handle: "@juliap",
+                            bio: "Security researcher. Finding bugs in production since 2018. Bug bounty hunter. 🔒",
+                            color: "linear-gradient(135deg, var(--le-warning), var(--le-danger))",
+                            following: false
+                        }
+                    ] %}
+
+                    {% for user in followers %}
+                    <div class="chirp-user-item animate-fade-in-up stagger-{{ loop.index if loop.index <= 8 else 8 }}">
+                        <div class="chirp-user-avatar" style="background:{{ user.color }};">{{ user.initials }}</div>
+                        <div class="chirp-user-details">
+                            <div class="d-flex align-items-start justify-content-between gap-2">
+                                <div>
+                                    <a href="chirp-profile.html" class="chirp-user-name">{{ user.name }}</a>
+                                    <div class="chirp-user-handle">{{ user.handle }}</div>
+                                </div>
+                                <div class="chirp-user-action">
+                                    {% if user.following %}
+                                    <button class="btn-chirp-following">Following</button>
+                                    {% else %}
+                                    <button class="btn-chirp-follow">Follow</button>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="chirp-user-bio">{{ user.bio }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-4">
+                <button class="btn btn-outline-secondary le-pill-lg">Show more</button>
+            </div>
+
+        </div>
+
+        <!-- Sidebar backdrop (mobile) -->
+        <div class="chirp-sidebar-backdrop" id="chirpSidebarBackdrop"></div>
+
+        <!-- Right Sidebar Column -->
+        <div class="col-lg-4 chirp-sidebar-col" id="chirpSidebar">
+
+            <!-- Mobile header with close button -->
+            <div class="chirp-sidebar-mobile-header">
+                <span class="chirp-sidebar-mobile-title">Explore</span>
+                <button class="chirp-sidebar-close" id="chirpSidebarClose" aria-label="Close sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <!-- Search -->
+            <div class="chirp-search mb-3">
+                <i data-feather="search" class="chirp-search-icon le-icon-16"></i>
+                <input type="text" class="chirp-search-input" placeholder="Search Chirp">
+            </div>
+
+            <!-- Suggested Users + Trending -->
+            <div class="glass-card mb-3 stagger-2">
+
+                <section class="chirp-widget">
+                    <h5 class="chirp-widget-title">You might like</h5>
+                    {% set suggested = [
+                        { initials: "KW", name: "Karen Wu", handle: "@karenwu_design", color: "linear-gradient(135deg, #f59e0b, #d97706)" },
+                        { initials: "BT", name: "Ben Torres", handle: "@bentorres", color: "linear-gradient(135deg, #10b981, #059669)" },
+                        { initials: "YS", name: "Yuki Sato", handle: "@yukisato_dev", color: "linear-gradient(135deg, #ef4444, #dc2626)" }
+                    ] %}
+                    {% for user in suggested %}
+                    <div class="chirp-follow-item">
+                        <div class="chirp-tweet-avatar" style="background:{{ user.color }};">{{ user.initials }}</div>
+                        <div class="chirp-follow-details">
+                            <a href="chirp-profile.html" class="chirp-follow-name">{{ user.name }}</a>
+                            <span class="chirp-follow-handle">{{ user.handle }}</span>
+                        </div>
+                        <button class="btn-chirp-follow">Follow</button>
+                    </div>
+                    {% endfor %}
+                    <a href="javascript:void(0)" class="chirp-widget-more">Show more</a>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Trending -->
+                <section class="chirp-widget">
+                    <h5 class="chirp-widget-title">Trends for you</h5>
+                    {% set trends = [
+                        { category: "Technology · Trending", name: "#WebComponents", count: "12.4K posts" },
+                        { category: "Programming · Trending", name: "#BuildInPublic", count: "8.9K posts" },
+                        { category: "Trending in Design", name: "#UIDesign", count: "15.7K posts" }
+                    ] %}
+                    {% for trend in trends %}
+                    <div class="chirp-trend-item">
+                        <div>
+                            <div class="chirp-trend-category">{{ trend.category }}</div>
+                            <div class="chirp-trend-name">{{ trend.name }}</div>
+                            <div class="chirp-trend-count">{{ trend.count }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <a href="javascript:void(0)" class="chirp-widget-more">Show more</a>
+                </section>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="chirp-footer-links">
+                <a href="javascript:void(0)">Terms</a>
+                <a href="javascript:void(0)">Privacy</a>
+                <a href="javascript:void(0)">Cookies</a>
+                <a href="javascript:void(0)">Accessibility</a>
+                <span>© 2022-2026 Nosial</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Floating sidebar toggle (mobile) -->
+    <button class="chirp-sidebar-toggle-fab" id="chirpSidebarToggle" aria-label="Show sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </button>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/chirp.js"></script>
+{% endblock %}

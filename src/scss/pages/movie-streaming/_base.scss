@@ -1,0 +1,135 @@
+/* =============================================================================
+   Liquid Elegance — Movie Streaming (Cineflux) — Netflix-style
+   §1 Tokens & primitives
+   ============================================================================= */
+
+:root {
+    /* Movie-streaming "brand" tokens — historically held Netflix's red
+       (#e50914) and 4px sharp corners. Re-routed to the template's
+       own `--le-primary` and `--le-radius-*` tokens so cards, badges,
+       progress bars, eyebrow accents, top-10 outlines, and every
+       other "brand-coloured" or "rounded" surface in the movie app
+       inherits the user's chosen primary swatch and the template's
+       softer corner radius automatically — keeping the cinematic
+       layout intact while making the app stop looking like a
+       reskinned Netflix glued onto Liquid Elegance.
+
+       The `--le-mov-*` names are kept (rather than ripped out and
+       replaced everywhere) so per-page overrides, customizer rules,
+       and any future demo content can still target them. */
+    --le-mov-radius: var(--le-radius-sm);
+    --le-mov-card-radius: var(--le-radius-sm);
+    --le-mov-rail-gap: 6px;
+    --le-mov-rail-section-gap: 38px;
+    /* Horizontal padding inside `.movie-rail` (title gutter + nav
+       button hit-area). Was hardcoded `padding: 0 56px` in
+       `_rails.scss`; lifted to a token so density modes can shrink
+       it on compact and grow it on comfortable. */
+    --le-mov-rail-side-pad: 56px;
+    /* Vertical padding for `.movie-rail-track` (and matching negative
+       margin) — controls the headroom hovered cards have to scale
+       up into without being clipped. */
+    --le-mov-rail-track-pad-y: 30px;
+    /* Billboard hero min/max height clamp — was hardcoded
+       `clamp(420px, 56vw, 640px)` in `_billboard.scss`. */
+    --le-mov-billboard-min: 420px;
+    --le-mov-billboard-max: 640px;
+    --le-mov-billboard-pad-x: 56px;
+    --le-mov-card-w: 280px;
+    --le-mov-card-w-portrait: 168px;
+    --le-mov-brand: var(--le-primary);
+    --le-mov-brand-rgb: var(--le-primary-rgb);
+    --le-mov-overlay: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.85) 100%);
+    /* Page bg fade target — fall back to the template's body bg so
+       the billboard's bottom fade dissolves into whatever the active
+       theme uses, not a hard-coded Netflix dark grey. */
+    --le-mov-page-bg: var(--le-bg-primary, #141414);
+}
+
+/* ---------------------------------------------------------------------------
+   Density overrides — without these, toggling compact/comfortable in the
+   customizer left the movie app visually identical because every chrome
+   measurement in `_rails.scss`, `_billboard.scss`, `_cards.scss`, and
+   `_title.scss` resolves through the `--le-mov-*` tokens above (or
+   hardcoded values lifted to tokens for this purpose). Compact shrinks
+   card widths, rail gaps, billboard height, and gutters by ~15-20 %;
+   comfortable expands them by the same amount, matching the philosophy
+   of the global density modes in `glass/density/_compact.scss`.
+   ------------------------------------------------------------------------ */
+[data-density="compact"] {
+    --le-mov-rail-gap: 4px;
+    --le-mov-rail-section-gap: 26px;
+    --le-mov-rail-side-pad: 36px;
+    --le-mov-rail-track-pad-y: 22px;
+    --le-mov-billboard-min: 340px;
+    --le-mov-billboard-max: 520px;
+    --le-mov-billboard-pad-x: 36px;
+    --le-mov-card-w: 220px;
+    --le-mov-card-w-portrait: 140px;
+}
+
+[data-density="comfortable"] {
+    --le-mov-rail-gap: 10px;
+    --le-mov-rail-section-gap: 52px;
+    --le-mov-rail-side-pad: 72px;
+    --le-mov-rail-track-pad-y: 38px;
+    --le-mov-billboard-min: 480px;
+    --le-mov-billboard-max: 720px;
+    --le-mov-billboard-pad-x: 72px;
+    --le-mov-card-w: 320px;
+    --le-mov-card-w-portrait: 188px;
+}
+
+/* Pull the page content edge-to-edge on the movie streaming pages so the
+   billboard and rails can bleed past the standard page-content padding,
+   mimicking Netflix's edge-to-edge layout. */
+body[data-page="movie-streaming"] .page-content { padding-top: 0; }
+
+.movie-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+
+.movie-pill-strong {
+    background: transparent;
+    border-color: transparent;
+    color: #46d369;
+    font-weight: 700;
+    padding-left: 0;
+}
+
+.movie-pill-rating {
+    background: var(--le-glass-bg-strong);
+    color: var(--le-text-primary);
+    font-weight: 700;
+    font-size: 0.68rem;
+}
+
+.movie-genre-tag {
+    font-size: 0.78rem;
+    color: var(--le-text-secondary);
+    padding: 3px 10px;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: 999px;
+}
+
+.movie-dot {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.55;
+    margin: 0 6px;
+}

@@ -1,0 +1,89 @@
+/* ---- envelope illustration ---- */
+.envelope-illustration {
+  width: 120px;
+  height: 80px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.envelope-body {
+  position: absolute;
+  bottom: 0;
+  width: 120px;
+  height: 72px;
+  background: rgba(var(--le-primary-rgb), 0.08);
+  border: 2px solid rgba(var(--le-primary-rgb), 0.25);
+  border-radius: 4px 4px 8px 8px;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 58px solid transparent;
+  border-right: 58px solid transparent;
+  border-top: 40px solid rgba(var(--le-primary-rgb), 0.15);
+}
+
+.envelope-flap-border {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 60px solid transparent;
+  border-right: 60px solid transparent;
+  border-top: 42px solid rgba(var(--le-primary-rgb), 0.25);
+  z-index: -1;
+}
+
+.envelope-paper {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 50px;
+  background: rgba(var(--le-primary-rgb), 0.05);
+  border: 1.5px dashed rgba(var(--le-primary-rgb), 0.2);
+  border-radius: 3px;
+  animation: paperFloat 3s ease-in-out infinite;
+}
+
+.envelope-paper::before {
+  content: "";
+  position: absolute;
+  top: 12px; left: 12px; right: 12px;
+  height: 3px;
+  background: rgba(var(--le-primary-rgb), 0.15);
+  border-radius: 2px;
+  box-shadow:
+    0 10px 0 rgba(var(--le-primary-rgb), 0.1),
+    0 20px 0 rgba(var(--le-primary-rgb), 0.08);
+}
+
+@keyframes auth-float {
+  0%, 100% { transform: translateX(-50%); opacity: 0.85; }
+  50% { transform: translateX(-50%); opacity: 1; }
+}
+
+@keyframes paperFloat {
+  0%, 100% { transform: translateX(-50%); opacity: 0.85; }
+  50% { transform: translateX(-50%); opacity: 1; }
+}
+
+.envelope-inner-v {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 58px solid transparent;
+  border-right: 58px solid transparent;
+  border-bottom: 36px solid rgba(var(--le-primary-rgb), 0.06);
+}

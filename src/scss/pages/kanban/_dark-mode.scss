@@ -1,0 +1,100 @@
+/* -----------------------------------------------------------------------------
+   Dark Mode Overrides
+   -------------------------------------------------------------------------- */
+
+[data-theme="dark"] .kanban-card {
+    background: var(--le-glass-bg);
+    border-color: var(--le-glass-border-subtle);
+}
+
+[data-theme="dark"] .kanban-card:hover {
+    background: var(--le-glass-bg-strong);
+    border-color: rgba(var(--le-primary-rgb), 0.32);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .kanban-card-cover {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent);
+}
+
+[data-theme="dark"] .kanban-drag-handle {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+}
+
+[data-theme="dark"] .kanban-card-desc {
+    color: var(--le-text-secondary);
+}
+
+[data-theme="dark"] .kanban-card-meta span {
+    color: var(--le-text-muted);
+}
+
+[data-theme="dark"] .kanban-col-header {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .kanban-col-actions button {
+    color: var(--le-text-muted);
+}
+[data-theme="dark"] .kanban-col-actions button:hover {
+    color: var(--le-text-primary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .kanban-card-list.drag-over {
+    background: rgba(var(--le-primary-rgb), 0.06);
+    border-color: rgba(var(--le-primary-rgb), 0.3);
+}
+
+[data-theme="dark"] .kanban-filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .kanban-add-card-btn {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .kanban-add-card-btn:hover {
+    background: rgba(var(--le-primary-rgb), 0.12);
+}
+
+[data-theme="dark"] .kanban-col-count {
+    background: rgba(var(--le-primary-rgb), 0.15);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .kanban-new-card-input {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme="dark"] .kanban-modal .modal-content {
+    /* Surface (background, border, shadow) comes from .modal-glass dark-mode rules. */
+}
+
+[data-theme="dark"] .kanban-card-assignee {
+    border-color: rgba(30, 30, 40, 0.9);
+}
+
+[data-theme="dark"] .kanban-card-meta .overdue {
+    background: rgba(var(--le-danger-rgb), 0.12);
+    box-shadow: 0 0 8px rgba(var(--le-danger-rgb), 0.18);
+}
+
+[data-theme="dark"] .kanban-progress-bar-wrap {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .team-avatars .t-avatar {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .kanban-comment {
+    border-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .kanban-checklist-item input[type="checkbox"] {
+    border-color: rgba(255, 255, 255, 0.2);
+}

@@ -1,0 +1,217 @@
+/* ---------------------------------------------------------------------------
+   §19.5 — Liquid Ripple (on click)
+   ------------------------------------------------------------------------ */
+@keyframes liquid-ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+.liquid-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-ripple .ripple-effect {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(var(--le-primary-rgb), 0.3) 0%, transparent 70%);
+  animation: liquid-ripple 0.7s ease-out forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ---------------------------------------------------------------------------
+   §19.6 — Frosted Glass Input
+   Special glass styling for form inputs
+   ------------------------------------------------------------------------ */
+.glass-input {
+  background: rgba(var(--le-white-rgb), 0.08);
+  backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+  border: 1px solid var(--le-glass-border-subtle);
+  border-radius: var(--le-radius);
+  color: var(--le-text-primary);
+  padding: var(--le-input-padding-y) var(--le-input-padding-x);
+  min-height: var(--le-input-height);
+  transition: all var(--le-transition);
+}
+
+.glass-input::placeholder {
+  color: var(--le-text-muted);
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: rgba(var(--le-primary-rgb), 0.5);
+  box-shadow:
+    0 0 0 3px rgba(var(--le-primary-rgb), 0.12),
+    inset 0 1px 2px rgba(0, 0, 0, 0.06);
+  background: rgba(var(--le-white-rgb), 0.12);
+}
+
+[data-theme="light"] .glass-input {
+  background: rgba(var(--le-white-rgb), 0.50);
+  border-color: rgba(var(--le-black-rgb), 0.08);
+}
+
+[data-theme="light"] .glass-input:focus {
+  background: rgba(var(--le-white-rgb), 0.65);
+  border-color: rgba(var(--le-primary-rgb), 0.4);
+}
+
+/* ---------------------------------------------------------------------------
+   §19.7 — Glass Divider
+   ------------------------------------------------------------------------ */
+.glass-divider {
+  height: 1px;
+  border: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--le-glass-border) 20%,
+    var(--le-glass-border) 80%,
+    transparent
+  );
+  margin: var(--le-spacing-md) 0;
+}
+
+.glass-divider-vertical {
+  width: 1px;
+  height: 100%;
+  border: none;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--le-glass-border) 20%,
+    var(--le-glass-border) 80%,
+    transparent
+  );
+  margin: 0 var(--le-spacing-md);
+}
+
+/* ---------------------------------------------------------------------------
+   §19.8 — Glass Badge with Glow
+   ------------------------------------------------------------------------ */
+.glass-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--le-badge-padding-y) var(--le-badge-padding-x);
+  font-size: var(--le-badge-font-size);
+  font-weight: var(--le-font-weight-semibold);
+  border-radius: var(--le-radius-full);
+  background: rgba(var(--le-primary-rgb), 0.15);
+  color: var(--le-primary);
+  border: 1px solid rgba(var(--le-primary-rgb), 0.2);
+  backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+  filter: brightness(1);
+  box-shadow: var(--le-meniscus-highlight);
+}
+
+.glass-badge::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      ellipse 60% 100% at 30% 0%,
+      var(--le-specular-color) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.glass-badge-success {
+  background: rgba(var(--le-success-rgb), 0.15);
+  color: var(--le-success);
+  border-color: rgba(var(--le-success-rgb), 0.2);
+}
+
+.glass-badge-warning {
+  background: rgba(var(--le-warning-rgb), 0.15);
+  color: var(--le-warning);
+  border-color: rgba(var(--le-warning-rgb), 0.2);
+}
+
+.glass-badge-danger {
+  background: rgba(var(--le-danger-rgb), 0.15);
+  color: var(--le-danger);
+  border-color: rgba(var(--le-danger-rgb), 0.2);
+}
+
+.glass-badge-info {
+  background: rgba(var(--le-info-rgb), 0.15);
+  color: var(--le-info);
+  border-color: rgba(var(--le-info-rgb), 0.2);
+}
+
+/* ---------------------------------------------------------------------------
+   §19.9 — Mesh Gradient Animation
+   Defined in _keyframes.scss — single source of truth
+   ------------------------------------------------------------------------ */
+
+/* ---------------------------------------------------------------------------
+   Glass Hover Lift  (visual-only — glow + shadow, no repositioning)
+   ------------------------------------------------------------------------ */
+.glass-hover-lift {
+  transition:
+    box-shadow var(--le-transition) cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    filter var(--le-transition);
+  filter: brightness(1);
+}
+
+.glass-hover-lift:hover {
+  box-shadow:
+    var(--le-glass-shadow-lg),
+    0 0 12px rgba(var(--le-primary-rgb), 0.05);
+  filter: brightness(1.04);
+}
+
+/* ---------------------------------------------------------------------------
+   §19.11 — Glass Dot Indicator (online status, etc.)
+   ------------------------------------------------------------------------ */
+.glass-dot {
+  display: inline-block;
+  width: var(--le-dot-size);
+  height: var(--le-dot-size);
+  border-radius: 50%;
+  background: var(--le-success);
+  box-shadow: 0 0 6px rgba(var(--le-success-rgb), 0.5);
+  position: relative;
+}
+
+.glass-dot::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid var(--le-glass-bg);
+}
+
+.glass-dot-warning {
+  background: var(--le-warning);
+  box-shadow: 0 0 6px rgba(var(--le-warning-rgb), 0.5);
+}
+
+.glass-dot-danger {
+  background: var(--le-danger);
+  box-shadow: 0 0 6px rgba(var(--le-danger-rgb), 0.5);
+}
+
+.glass-dot-muted {
+  background: var(--le-text-muted);
+  box-shadow: none;
+}

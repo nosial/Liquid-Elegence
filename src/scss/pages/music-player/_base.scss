@@ -1,0 +1,118 @@
+/* =============================================================================
+   Liquid Elegance — Music Player
+   §1 Tokens, §2 Layout shell — flex flow, no fixed-height calcs.
+   ============================================================================= */
+
+:root {
+    --le-music-sidebar-w: 280px;
+    --le-music-queue-w: 320px;
+    --le-music-player-h: 92px;
+    --le-music-cover-radius: 14px;
+    --le-music-row-radius: 10px;
+    /* Vertical layout-shell gap (between sidebar/main/queue and the
+       player bar, and within the layout grid). Hardcoded to 16px in
+       `.music-shell` and `.music-layout` below; lifted so density
+       modes can tighten or relax the gestalt. */
+    --le-music-layout-gap: 16px;
+    --le-music-layout-min-h: 560px;
+}
+
+/* ---------------------------------------------------------------------------
+   Density overrides — without these, toggling compact/comfortable did
+   nothing visible in the music app because every chrome dimension above
+   was hardcoded into `:root`. Compact narrows the side rails, shortens
+   the player bar, and tightens the layout gap; comfortable widens the
+   sidebar/queue and grows the player bar to give larger artwork & text
+   more breathing room. The cover/row radii ride the global
+   `--le-radius-*` token deltas via the body of the app's components.
+   ------------------------------------------------------------------------ */
+[data-density="compact"] {
+    --le-music-sidebar-w: 240px;
+    --le-music-queue-w: 280px;
+    --le-music-player-h: 76px;
+    --le-music-cover-radius: 10px;
+    --le-music-row-radius: 8px;
+    --le-music-layout-gap: 10px;
+    --le-music-layout-min-h: 480px;
+}
+
+[data-density="comfortable"] {
+    --le-music-sidebar-w: 320px;
+    --le-music-queue-w: 360px;
+    --le-music-player-h: 108px;
+    --le-music-cover-radius: 18px;
+    --le-music-row-radius: 14px;
+    --le-music-layout-gap: 22px;
+    --le-music-layout-min-h: 640px;
+}
+
+/* Outer wrapper holds the layout grid + the player bar in normal flow,
+   so the player bar never overlaps the page footer. */
+.music-shell {
+    display: flex;
+    flex-direction: column;
+    gap: var(--le-music-layout-gap);
+    min-height: calc(100vh - 220px);
+}
+
+.music-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: var(--le-music-layout-gap);
+    align-items: stretch;
+    flex: 1 1 auto;
+    min-height: var(--le-music-layout-min-h);
+    width: 100%;
+    position: relative;
+}
+
+.music-layout.queue-open .music-queue { display: flex; }
+
+.music-sidebar {
+    flex: 0 0 var(--le-music-sidebar-w);
+    width: var(--le-music-sidebar-w);
+    max-width: var(--le-music-sidebar-w);
+}
+
+.music-main {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.music-queue {
+    flex: 0 0 var(--le-music-queue-w);
+    width: var(--le-music-queue-w);
+    display: none;
+}
+
+.music-sidebar,
+.music-main,
+.music-queue {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mobile drawer backdrop — hidden by default on all viewports */
+.music-sidebar-backdrop {
+    display: none;
+}
+
+.music-sidebar > .glass-card,
+.music-main > .glass-card,
+.music-queue > .glass-card {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.music-sidebar-inner,
+.music-main-inner,
+.music-queue-inner {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}

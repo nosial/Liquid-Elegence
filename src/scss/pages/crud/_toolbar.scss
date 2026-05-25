@@ -1,0 +1,118 @@
+/* ============================================================================
+   6. CRUD TABLES
+   ============================================================================ */
+
+.crud-toolbar,
+.toolbar-glass {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--le-glass-bg);
+  border: 1px solid var(--le-glass-border);
+  border-radius: var(--le-radius-lg);
+  margin-bottom: 16px;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---- search ----
+   Stretch by default; pages can override `max-width` if they need a tight
+   pill. Capping here was forcing every search box (CRUD toolbars, etc.) to
+   sit at ~300px even on wide viewports — leaving empty space between the
+   search and any right-pushed action buttons. */
+.toolbar-search,
+.search-box {
+  flex: 1 1 240px;
+  min-width: 200px;
+}
+
+.toolbar-search input,
+.search-box input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  background: var(--le-glass-bg-subtle);
+  border: 1px solid var(--le-glass-border-subtle);
+  border-radius: var(--le-radius-sm);
+  font-size: 13px;
+  color: var(--le-text-primary);
+  transition: border-color var(--le-transition-fast);
+}
+
+.toolbar-search input:focus,
+.search-box input:focus {
+  border-color: var(--le-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.1);
+}
+
+.search-wrapper {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--le-text-muted);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* ---- filters ---- */
+/* When .toolbar-filters is the only/main child of a flex .toolbar-glass it
+   must stretch to occupy the full toolbar width — otherwise it collapses to
+   its intrinsic content width and `ms-auto` on inner action groups has no
+   space to push them to the right. */
+.toolbar-filters {
+  display: flex;
+  gap: 8px;
+  flex: 1 1 100%;
+  min-width: 0;
+}
+
+.toolbar-filter {
+  padding: 8px 12px;
+  background: var(--le-glass-bg-subtle);
+  border: 1px solid var(--le-glass-border-subtle);
+  border-radius: var(--le-radius-sm);
+  font-size: 13px;
+  color: var(--le-text-secondary);
+  cursor: pointer;
+  transition: background var(--le-transition-fast);
+}
+
+.toolbar-filter:hover {
+  background: var(--le-glass-bg);
+}
+
+.toolbar-date {
+  padding: 8px 12px;
+  background: var(--le-glass-bg-subtle);
+  border: 1px solid var(--le-glass-border-subtle);
+  border-radius: var(--le-radius-sm);
+  font-size: 13px;
+  color: var(--le-text-secondary);
+  max-width: 160px;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+

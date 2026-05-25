@@ -1,0 +1,62 @@
+// ── Badge pill (small rounded pill) ──────────────────────────────────────
+.le-badge-pill {
+  border-radius: var(--le-radius-full);
+  padding: 2px 6px;
+}
+
+// ── Glass input (filter / tag style) ─────────────────────────────────────
+.le-glass-input {
+  background: var(--le-glass-bg);
+  color: var(--le-text-secondary);
+  border: 1px solid var(--le-glass-border);
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  border-radius: var(--le-radius-full);
+}
+
+// ── Glass tag (muted filter style) ───────────────────────────────────────
+.le-glass-tag {
+  background: var(--le-glass-bg-subtle);
+  border-color: var(--le-glass-border);
+  color: var(--le-text-muted);
+  font-size: 0.82rem;
+}
+
+// ── Action button (icon button, no padding) ──────────────────────────────
+.le-action-btn {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// ── Inline icon with margin-right ────────────────────────────────────────
+.le-icon-mr-4 { margin-right: 4px; }
+.le-icon-mr-6 { margin-right: 6px; }
+.le-icon-mr-8 { margin-right: 8px; }
+
+// ── Vertical align corrections for inline icons ──────────────────────────
+.le-valign-1 { vertical-align: -1px; }
+.le-valign-2 { vertical-align: -2px; }
+.le-valign-3 { vertical-align: -3px; }
+
+// ── Border utilities ─────────────────────────────────────────────────────
+.le-border-bottom-subtle { border-bottom: 1px solid var(--le-glass-border-subtle); }
+.le-border-sides-subtle {
+  border-left: 1px solid var(--le-glass-border-subtle);
+  border-right: 1px solid var(--le-glass-border-subtle);
+}
+.le-border-glass { border: 1px solid var(--le-glass-border); }
+
+// ── Border-radius utilities ──────────────────────────────────────────────
+.le-rounded-0       { border-radius: 0; }
+.le-rounded-8       { border-radius: 8px; }
+.le-rounded-sm      { border-radius: var(--le-radius-sm); }
+.le-rounded-md      { border-radius: var(--le-radius-md); }
+.le-rounded-start-8 { border-radius: 8px 0 0 8px; }
+.le-rounded-end-8   { border-radius: 0 8px 8px 0; }
+.le-rounded-bottom-12 { border-radius: 0 0 12px 12px; }
+.le-rounded-12       { border-radius: 12px; }

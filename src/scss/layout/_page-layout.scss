@@ -1,0 +1,108 @@
+/* ==========================================================================
+   19. UTILITY CLASSES & ANIMATIONS
+   ========================================================================== */
+
+/* Page-content entrance animation removed to prevent flash-of-invisible
+   content on pages whose direct children aren't glass-cards (social, etc.). */
+
+/* Prevent layout shift from scrollbar appearance */
+html {
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+/* Full-bleed app pages (chat, mail, kanban) - prevent body scroll */
+html.no-scroll {
+    overflow: hidden;
+}
+.page-content-full {
+    padding: 0 !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* Ensure main-content fills the viewport when sidebar is hidden */
+[data-layout="horizontal"] .main-content,
+.no-sidebar .main-content {
+    margin-left: 0;
+}
+
+
+/* ── Sidebar ── */
+
+.sidebar {
+  box-shadow:
+    var(--le-glass-shadow),
+    inset -20px 0 60px -20px rgba(var(--le-primary-rgb), 0.03);
+}
+
+.sidebar-footer {
+  border-top: 1px solid var(--le-glass-border-subtle);
+  background: rgba(var(--le-primary-rgb), 0.02);
+}
+
+/* ── Topbar ── */
+
+.topbar {
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.1),
+    0 4px 20px -4px rgba(0, 0, 0, 0.06);
+}
+
+.topbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--le-glass-border) 30%,
+    rgba(var(--le-primary-rgb), 0.2) 50%,
+    var(--le-glass-border) 70%,
+    transparent 100%
+  );
+}
+
+.notification-badge {
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--le-danger-rgb), 0.4); }
+  50%      { box-shadow: 0 0 0 4px rgba(var(--le-danger-rgb), 0); }
+}
+
+/* ── Page Content Transitions ── */
+/* Automatic load-time content animations are disabled so cards render
+   immediately. Use explicit animation utility classes where needed. */
+
+/* ── Page Header ── */
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  background: linear-gradient(
+    135deg,
+    var(--le-text-primary) 0%,
+    var(--le-primary-dark) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-subtitle {
+  color: var(--le-text-secondary);
+  font-size: 0.9rem;
+}
+
+

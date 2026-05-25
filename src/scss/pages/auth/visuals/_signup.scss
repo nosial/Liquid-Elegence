@@ -1,0 +1,18 @@
+// pages/auth/visuals/_signup.scss
+// Rules unique to the signup template.
+
+/* .auth-page background is themed in _shared.scss — do not override here. */
+
+.auth-checkbox {
+            font-size: var(--le-font-size-sm);
+            color: var(--le-text-secondary);
+        }
+
+.auth-checkbox a {
+            color: var(--le-primary);
+            text-decoration: none;
+        }
+
+.auth-checkbox a:hover {
+            text-decoration: underline;
+        }

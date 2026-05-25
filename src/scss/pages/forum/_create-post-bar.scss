@@ -1,0 +1,103 @@
+/* ---------------------------------------------------------------------------
+   Create Post Bar
+   --------------------------------------------------------------------------- */
+.forum-create-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+}
+
+.forum-create-input {
+  flex: 1;
+  background: var(--le-glass-bg-subtle);
+  border: 1px solid var(--le-glass-border);
+  border-radius: var(--le-radius-full);
+  padding: 8px 16px;
+  color: var(--le-text-primary);
+  font-size: 0.88rem;
+  transition: all var(--le-transition-fast);
+}
+
+.forum-create-input:focus {
+  outline: none;
+  background: var(--le-glass-bg);
+  border-color: var(--le-primary);
+  box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.1);
+}
+
+.forum-create-input::placeholder {
+  color: var(--le-text-muted);
+}
+
+/* Mobile sidebar elements — hidden by default on desktop */
+.forum-sidebar-toggle-fab { display: none; }
+.forum-sidebar-backdrop { display: none; }
+.forum-sidebar-mobile-header { display: none; }
+
+/* ---------------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+  .forum-feed {
+    max-width: 100%;
+  }
+
+  .forum-community-details {
+    flex-direction: column;
+  }
+
+  .forum-profile-row {
+    flex-direction: column;
+  }
+
+  .forum-profile-actions {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .forum-vote {
+    padding: 8px 6px;
+    min-width: 38px;
+  }
+
+  .forum-post-body {
+    padding: 10px 12px;
+  }
+
+  .forum-post-title {
+    font-size: 0.95rem;
+  }
+
+  .forum-community-banner {
+    height: 100px;
+  }
+
+  .forum-community-icon {
+    width: 60px;
+    height: 60px;
+    margin-top: -30px;
+    font-size: 1.25rem;
+  }
+
+  .forum-community-name {
+    font-size: 1.2rem;
+  }
+
+  .forum-profile-banner {
+    height: 120px;
+  }
+
+  .forum-profile-avatar {
+    width: 80px;
+    height: 80px;
+    margin-top: -40px;
+    font-size: 1.5rem;
+  }
+
+  .forum-comment-replies {
+    margin-left: 12px;
+    padding-left: 10px;
+  }
+}

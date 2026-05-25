@@ -1,0 +1,136 @@
+// pages/responsive/per-page/_settings.scss
+// Responsive settings page rules across breakpoints.
+
+/* --------------------------------------------------------------------------
+   20p. Settings page — mobile layout
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  /* Settings: integration items compact */
+  .integration-item {
+    padding: 10px;
+    gap: 8px;
+  }
+
+  .integration-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .integration-name {
+    font-size: 0.8125rem;
+  }
+
+  .integration-desc {
+    font-size: 0.6875rem;
+  }
+
+  /* Settings: color presets tighter */
+  .color-preset {
+    width: 30px;
+    height: 30px;
+  }
+
+  /* Theme mode cards: stack */
+  .theme-mode-options {
+    flex-direction: column;
+  }
+
+  .theme-mode-card {
+    padding: 12px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+    23p. Settings — improved mobile form and nav
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .settings-card {
+    border-radius: var(--le-radius);
+  }
+
+  /* Nav pills horizontal scroll */
+  .settings-card .nav.nav-pills {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 4px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    margin-bottom: 0.75rem;
+  }
+
+  .settings-card .nav.nav-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .settings-card .nav-pills .nav-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+
+  .settings-card .nav-pills .nav-link svg,
+  .settings-card .nav-pills .nav-link i {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Form group stacking */
+  .settings-card .row.g-3 [class*="col-md-"],
+  .settings-card .row.g-3 [class*="col-lg-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* Integration items: stack vertically */
+  .integration-item {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .integration-item .form-check.form-switch {
+    flex-basis: 100%;
+    padding-left: 2.5em;
+  }
+
+  /* Theme mode: single column */
+  .theme-mode-options {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .theme-mode-card {
+    padding: 12px;
+  }
+
+  /* Color presets: smaller */
+  .color-preset {
+    width: 28px;
+    height: 28px;
+  }
+
+  /* Session/device items: stack */
+  .session-item,
+  .device-item {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .session-item .btn,
+  .device-item .btn {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  /* 2FA: stack */
+  .tfa-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

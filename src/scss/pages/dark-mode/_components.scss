@@ -1,0 +1,404 @@
+/* ── Additional Component Dark Mode ──────────────────────────────────────── */
+
+/* Progress bars */
+[data-theme="dark"] .progress {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .progress-bar {
+  background-color: var(--le-primary);
+}
+
+/* Breadcrumbs */
+[data-theme="dark"] .breadcrumb {
+  --bs-breadcrumb-divider-color: var(--le-text-muted);
+}
+
+[data-theme="dark"] .breadcrumb-item + .breadcrumb-item::before {
+  color: var(--le-text-muted);
+}
+
+[data-theme="dark"] .breadcrumb-item a {
+  color: var(--le-text-secondary);
+}
+
+[data-theme="dark"] .breadcrumb-item a:hover {
+  color: var(--le-primary-light);
+}
+
+[data-theme="dark"] .breadcrumb-item.active {
+  color: var(--le-text-muted);
+}
+
+/* Form switch / toggle */
+[data-theme="dark"] .form-check-input {
+  background-color: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .form-check-input:checked {
+  background-color: var(--le-primary);
+  border-color: var(--le-primary);
+}
+
+[data-theme="dark"] .form-check-input:focus {
+  box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.25);
+  border-color: var(--le-primary);
+}
+
+[data-theme="dark"] .form-check-label {
+  color: var(--le-text-primary);
+}
+
+/* Form floating labels */
+[data-theme="dark"] .form-floating > label {
+  color: var(--le-text-muted);
+}
+
+[data-theme="dark"] .form-floating > .form-control:focus ~ label,
+[data-theme="dark"] .form-floating > .form-control:not(:placeholder-shown) ~ label {
+  color: var(--le-text-secondary);
+}
+
+/* Input groups */
+[data-theme="dark"] .input-group-text {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--le-text-secondary);
+}
+
+/* Pagination */
+[data-theme="dark"] .page-link {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--le-text-secondary);
+}
+
+[data-theme="dark"] .page-link:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .page-item.active .page-link {
+  background-color: var(--le-primary);
+  border-color: var(--le-primary);
+  color: var(--le-text-on-primary);
+}
+
+[data-theme="dark"] .page-item.disabled .page-link {
+  background-color: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.04);
+  color: var(--le-text-muted);
+}
+
+/* Offcanvas */
+[data-theme="dark"] .offcanvas {
+  background-color: rgba(var(--le-dark-surface-rgb), 0.95);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .offcanvas-header {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .offcanvas-header .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Toast */
+[data-theme="dark"] .toast {
+  background-color: rgba(var(--le-dark-surface-rgb), 0.92);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--le-text-primary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .toast-header {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .toast-header .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Alert dark mode overrides */
+[data-theme="dark"] .alert {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .alert-primary {
+  background-color: rgba(var(--le-primary-rgb), 0.12);
+  color: var(--le-primary-light);
+  border-color: rgba(var(--le-primary-rgb), 0.25);
+}
+
+[data-theme="dark"] .alert-success {
+  background-color: rgba(var(--le-success-rgb, 34, 197, 94), 0.12);
+  color: var(--le-success-light, #4ade80);
+  border-color: rgba(var(--le-success-rgb, 34, 197, 94), 0.25);
+}
+
+[data-theme="dark"] .alert-warning {
+  background-color: rgba(var(--le-warning-rgb, 245, 158, 11), 0.12);
+  color: var(--le-warning-light, #fbbf24);
+  border-color: rgba(var(--le-warning-rgb, 245, 158, 11), 0.25);
+}
+
+[data-theme="dark"] .alert-danger {
+  background-color: rgba(var(--le-danger-rgb, 239, 68, 68), 0.12);
+  color: var(--le-danger-light, #f87171);
+  border-color: rgba(var(--le-danger-rgb, 239, 68, 68), 0.25);
+}
+
+[data-theme="dark"] .alert-info {
+  background-color: rgba(var(--le-info-rgb, 99, 102, 241), 0.12);
+  color: var(--le-info-light, #818cf8);
+  border-color: rgba(var(--le-info-rgb, 99, 102, 241), 0.25);
+}
+
+[data-theme="dark"] .alert .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Spinner */
+[data-theme="dark"] .spinner-border {
+  color: var(--le-primary-light);
+}
+
+/* Accordion dark mode overrides */
+[data-theme="dark"] .accordion-body {
+  background: transparent;
+  color: var(--le-text-secondary);
+}
+
+[data-theme="dark"] .accordion-button:not(.collapsed) {
+  background: rgba(var(--le-primary-rgb), 0.08);
+  color: var(--le-primary-light);
+}
+
+/* Dropdown divider */
+[data-theme="dark"] .dropdown-divider {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .dropdown-item {
+  color: var(--le-text-secondary);
+}
+
+[data-theme="dark"] .dropdown-item:hover,
+[data-theme="dark"] .dropdown-item:focus {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .dropdown-item.active,
+[data-theme="dark"] .dropdown-item:active {
+  background: rgba(var(--le-primary-rgb), 0.15);
+  color: var(--le-primary-light);
+}
+
+[data-theme="dark"] .dropdown-header {
+  color: var(--le-text-muted);
+}
+
+/* Nav tabs dark mode */
+[data-theme="dark"] .nav-tabs {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .nav-tabs .nav-link {
+  color: var(--le-text-secondary);
+}
+
+[data-theme="dark"] .nav-tabs .nav-link:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .nav-tabs .nav-link.active {
+  background: rgba(var(--le-dark-surface-rgb), 0.6);
+  border-color: rgba(255, 255, 255, 0.12) rgba(255, 255, 255, 0.12) transparent;
+  color: var(--le-text-primary);
+}
+
+/* Nav pills dark mode */
+[data-theme="dark"] .nav-pills .nav-link {
+  color: var(--le-text-secondary);
+}
+
+[data-theme="dark"] .nav-pills .nav-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .nav-pills .nav-link.active {
+  background: var(--le-primary);
+  color: var(--le-text-on-primary);
+}
+
+/* Tab content */
+[data-theme="dark"] .tab-content {
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] .tab-pane {
+  color: var(--le-text-secondary);
+}
+
+/* Close buttons throughout */
+[data-theme="dark"] .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+/* Carousel dark variant — overrides hardcoded light slide backgrounds */
+[data-theme="dark"] .carousel-dark .le-carousel-slide {
+    background: rgba(var(--le-dark-surface-rgb), 0.7) !important;
+}
+
+[data-theme="dark"] .carousel-dark .le-carousel-slide .text-dark,
+[data-theme="dark"] .carousel-dark .le-carousel-slide span {
+    color: var(--le-text-primary) !important;
+}
+
+[data-theme="dark"] .carousel-dark .carousel-control-prev-icon,
+[data-theme="dark"] .carousel-dark .carousel-control-next-icon {
+    filter: brightness(0) invert(1);
+}
+
+/* Placeholder / empty state text */
+[data-theme="dark"] .text-body-secondary {
+  color: var(--le-text-secondary) !important;
+}
+
+[data-theme="dark"] .text-body-tertiary {
+  color: var(--le-text-muted) !important;
+}
+
+/* Horizontal rules */
+[data-theme="dark"] hr {
+  border-color: rgba(255, 255, 255, 0.08);
+  opacity: 1;
+}
+
+/* Card subtle backgrounds */
+[data-theme="dark"] .bg-light {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: rgba(var(--le-dark-surface-rgb), 0.6) !important;
+}
+
+[data-theme="dark"] .bg-body-secondary {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+[data-theme="dark"] .bg-body-tertiary {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Border utilities */
+[data-theme="dark"] .border {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .border-top,
+[data-theme="dark"] .border-bottom,
+[data-theme="dark"] .border-start,
+[data-theme="dark"] .border-end {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Code blocks */
+[data-theme="dark"] code {
+  color: var(--le-primary-light);
+  background: rgba(var(--le-primary-rgb), 0.08);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] pre {
+  background: rgba(var(--le-dark-surface-rgb), 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--le-text-primary);
+}
+
+[data-theme="dark"] pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* Popover arrow — dark mode.
+   Bootstrap colors only ONE side of the arrow (the rest are transparent) to
+   form a triangle. Using the `border-color` shorthand colors all four sides
+   and turns the triangle into a square. The .popover already sets
+   --bs-popover-bg for the inner ::after triangle in dark mode, so we only
+   need to nudge the outer ::before (the border ring) here. */
+[data-theme="dark"] .bs-popover-top > .popover-arrow::before,
+[data-theme="dark"] .bs-popover-auto[data-popper-placement^="top"] > .popover-arrow::before {
+    border-top-color: rgba(255, 255, 255, 0.10);
+}
+[data-theme="dark"] .bs-popover-bottom > .popover-arrow::before,
+[data-theme="dark"] .bs-popover-auto[data-popper-placement^="bottom"] > .popover-arrow::before {
+    border-bottom-color: rgba(255, 255, 255, 0.10);
+}
+[data-theme="dark"] .bs-popover-end > .popover-arrow::before,
+[data-theme="dark"] .bs-popover-auto[data-popper-placement^="right"] > .popover-arrow::before {
+    border-right-color: rgba(255, 255, 255, 0.10);
+}
+[data-theme="dark"] .bs-popover-start > .popover-arrow::before,
+[data-theme="dark"] .bs-popover-auto[data-popper-placement^="left"] > .popover-arrow::before {
+    border-left-color: rgba(255, 255, 255, 0.10);
+}
+
+/* Figure captions */
+[data-theme="dark"] .figure-caption {
+  color: var(--le-text-muted);
+}
+
+/* Subtle background colors for contextual classes */
+[data-theme="dark"] .bg-primary-subtle {
+  background-color: rgba(var(--le-primary-rgb), 0.10) !important;
+}
+
+[data-theme="dark"] .bg-success-subtle {
+  background-color: rgba(var(--le-success-rgb, 34, 197, 94), 0.10) !important;
+}
+
+[data-theme="dark"] .bg-warning-subtle {
+  background-color: rgba(var(--le-warning-rgb, 245, 158, 11), 0.10) !important;
+}
+
+[data-theme="dark"] .bg-danger-subtle {
+  background-color: rgba(var(--le-danger-rgb, 239, 68, 68), 0.10) !important;
+}
+
+[data-theme="dark"] .bg-info-subtle {
+  background-color: rgba(var(--le-info-rgb, 99, 102, 241), 0.10) !important;
+}
+
+
+/* Text on subtle backgrounds */
+[data-theme="dark"] .text-primary-emphasis {
+  color: var(--le-primary-light) !important;
+}
+
+[data-theme="dark"] .text-success-emphasis {
+  color: var(--le-success-light, #4ade80) !important;
+}
+
+[data-theme="dark"] .text-warning-emphasis {
+  color: var(--le-warning-light, #fbbf24) !important;
+}
+
+[data-theme="dark"] .text-danger-emphasis {
+  color: var(--le-danger-light, #f87171) !important;
+}
+
+[data-theme="dark"] .text-info-emphasis {
+  color: var(--le-info-light, #818cf8) !important;
+}

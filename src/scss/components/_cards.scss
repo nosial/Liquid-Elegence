@@ -1,0 +1,441 @@
+/* =========================================================================
+   Liquid Elegance - Component Styles
+   Bootstrap 5 overrides & custom components with liquid-glass aesthetic
+   Depends on custom properties defined in liquid-glass.css / theme variables
+   =========================================================================
+   Table of Contents
+   -----------------
+   1.  Glass Card System
+   2.  Metric / Stats Cards
+   3.  Avatar System
+   4.  Status Dots
+   5.  Tables (glass + Bootstrap overrides)
+   6.  Buttons (glass)
+   7.  Activity Feed
+   8.  Progress Bars
+   9.  Badges
+   10. Form Controls (glass)
+   11. Pagination
+   12. Toolbar (CRUD pages)
+   13. Modals (glass)
+   14. Accordion (glass)
+   15. Nav Pills (glass)
+   16. Dropdown Overrides
+   17. Breadcrumb Overrides
+   18. Bootstrap Button Overrides
+   19. Bootstrap Card Fallback
+   20. Subtle Background Utilities
+   21. Text Color Utilities
+   22. Tooltips & Popovers (glass)
+   23. Dark-Mode Adjustments
+   24. Density Variants
+   25. Responsive Overrides
+   ========================================================================= */
+
+
+/* =========================================================================
+   1. GLASS CARD SYSTEM
+   ========================================================================= */
+
+.glass-card {
+    position: relative;
+    background:
+      linear-gradient(
+        165deg,
+        var(--le-surface-content-tint-start) 0%,
+        transparent 25%,
+        transparent 75%,
+        var(--le-surface-content-tint-end) 100%
+      ),
+      var(--le-surface-content-fill);
+    border: 1px solid var(--le-surface-content-border);
+    border-radius: var(--le-radius-lg);
+    box-shadow: var(--le-surface-content-shadow),
+                var(--le-inner-glow),
+                var(--le-meniscus-shadow),
+                0 1px 0 0 rgba(255, 255, 255, 0.45) inset;
+    -webkit-backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-liquid-blur)) saturate(var(--le-liquid-saturate)) brightness(var(--le-liquid-brightness));
+    overflow: visible;
+    filter: brightness(1);
+    transform: translateY(0);
+    transition: transform 0.4s var(--le-spring-snappy),
+                box-shadow 0.4s var(--le-spring-snappy),
+                filter 0.4s var(--le-spring-snappy),
+                border-color 0.4s var(--le-spring-snappy);
+}
+
+/* Specular highlight — top-left light catch with warm tint */
+.glass-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    border-radius: var(--le-radius-lg) var(--le-radius-lg) 0 0;
+    background: linear-gradient(
+        175deg,
+        rgba(255, 255, 255, 0.25) 0%,
+        var(--le-specular-warm, rgba(255, 248, 235, 0.10)) 12%,
+        rgba(255, 255, 255, 0.08) 25%,
+        transparent 50%
+    );
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.75;
+    transition: opacity 0.5s var(--le-spring-snappy);
+}
+
+.glass-card:hover::before {
+    opacity: 1;
+    background: linear-gradient(
+        175deg,
+        rgba(255, 255, 255, 0.30) 0%,
+        var(--le-specular-warm, rgba(255, 248, 235, 0.14)) 12%,
+        rgba(255, 255, 255, 0.10) 25%,
+        transparent 50%
+    );
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--le-glass-shadow-lg),
+                var(--le-inner-glow-strong),
+                0 0 0 1px rgba(var(--le-primary-rgb), 0.10),
+                0 4px 24px rgba(var(--le-primary-rgb), 0.08),
+                0 1px 0 0 rgba(255, 255, 255, 0.50) inset;
+    filter: brightness(1.03);
+    border-color: rgba(var(--le-primary-rgb), 0.16);
+}
+
+/* Ensure content sits above the refraction layer */
+.glass-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Header */
+.glass-card-header {
+    display: flex;
+    align-items: center;
+    padding: var(--le-card-header-padding, 16px 20px);
+    border-bottom: 1px solid var(--le-surface-content-border);
+    transition: background var(--le-transition), border-color var(--le-transition);
+    position: relative;
+}
+
+/* Frosted separator line under header — prismatic edge */
+.glass-card-header::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 6%;
+    right: 6%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.20) 10%,
+        rgba(255, 255, 255, 0.42) 50%,
+        rgba(255, 255, 255, 0.20) 90%,
+        transparent
+    );
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.glass-card:hover .glass-card-header::after {
+    opacity: 1;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(var(--le-primary-rgb), 0.12) 10%,
+        rgba(255, 255, 255, 0.50) 50%,
+        rgba(var(--le-primary-rgb), 0.12) 90%,
+        transparent
+    );
+}
+
+.glass-card-footer {
+    padding: var(--le-card-footer-py, 12px) var(--le-card-footer-px, 20px);
+    border-top: 1px solid var(--le-surface-content-border);
+    font-size: var(--le-card-footer-font, 0.8125rem);
+    color: var(--le-text-muted);
+    transition: border-color var(--le-transition);
+}
+
+[data-theme="dark"] .glass-card-footer {
+    border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+.glass-card-title {
+    font-size: 1rem;
+    font-weight: var(--le-font-weight-semibold, 600);
+    color: var(--le-text-primary);
+    margin: 0;
+    line-height: var(--le-line-height-tight, 1.3);
+    letter-spacing: -0.01em;
+}
+
+/* Body */
+.glass-card-body {
+    --le-body-pad: var(--le-card-padding, 20px);
+    padding: var(--le-body-pad);
+}
+
+/* Bootstrap padding utilities applied directly to a glass-card-body
+   (e.g. `<div class="glass-card-body p-0">`) override the visual
+   padding via `!important`, but the `--le-body-pad` token still
+   reports the default. Mirror the utility's effective padding into
+   the token so child rules that key off it (chart-wrapper bleed,
+   responsive table-responsive bleed, etc.) compute the right
+   negative margin and don't overshoot the card edge. */
+.glass-card-body.p-0 { --le-body-pad: 0; }
+.glass-card-body.p-1 { --le-body-pad: 0.25rem; }
+.glass-card-body.p-2 { --le-body-pad: 0.5rem; }
+.glass-card-body.p-3 { --le-body-pad: 1rem; }
+.glass-card-body.p-4 { --le-body-pad: 1.5rem; }
+.glass-card-body.p-5 { --le-body-pad: 3rem; }
+
+/* Disable hover lift for static wrappers */
+.glass-card.no-hover:hover {
+    filter: brightness(1);
+    box-shadow: var(--le-surface-content-shadow),
+                var(--le-inner-glow),
+                var(--le-meniscus-shadow);
+}
+
+
+/* =========================================================================
+   2. METRIC / STATS CARDS
+   ========================================================================= */
+
+/* `.metric-card` is purely a layout marker — it inherits all surface,
+   border, shadow, specular highlight, and hover behaviour from `.glass-card`
+   so chart and non-chart metric cards look and feel identical to the
+   regular `glass-card p-4` cards used elsewhere in the dashboards. The
+   rules below only style the inner metric primitives (label, value,
+   change indicator, icon); no extra decoration or hover overrides are
+   applied to `.metric-card` itself.
+
+   A `min-height` floor is applied so that compact metric tiles
+   (label + value + change stacked in a single column, with the icon
+   alongside) line up vertically with the taller layouts used by
+   `.glass-card.p-4` stat cards on the analytics / ecommerce / saas
+   dashboards (where the icon row, the value, and the change badge are
+   spread across three rows). The floor can be overridden per surface
+   via the `--le-metric-card-min-height` custom property. */
+.metric-card {
+    min-height: var(--le-metric-card-min-height, 9.25rem);
+    /* Clip the inner sparkline (chart-wrapper:last-child below uses
+       negative side/bottom margins to bleed flush with the card edge)
+       to the card's rounded border-box. `.glass-card` itself sets
+       `overflow: visible` so its hover shadow and Chart.js tooltips on
+       full-size chart cards aren't clipped — but on metric cards the
+       sparkline must not escape past the rounded border on the sides
+       or bottom, and the tiny inline graph has no tooltip worth
+       preserving. `clip` (with `visible` fallback for older engines)
+       is preferred over `hidden` so it never establishes a scroll
+       container or a new formatting context that could interfere with
+       the card's specular ::before overlay. The card's own box-shadow
+       paints outside the border-box and is unaffected by this. */
+    overflow: hidden;
+    overflow: clip;
+}
+
+/* Lay the body out as a column so the metric block sits at the top and
+   any optional sparkline (handled further below) drops to the bottom
+   edge. `min-height: 100%` (rather than `height: 100%`) lets the body
+   honour the card's min-height floor for compact no-chart tiles while
+   still growing to fit a sparkline if the metric content + gap + chart
+   exceeds that floor — preventing the chart from overflowing below
+   the card's bottom border (the card itself uses `overflow: visible`
+   for its hover shadow, so a fixed body height would let the sparkline
+   bleed out past the rounded bottom edge). */
+.metric-card > .glass-card-body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.metric-label {
+    font-size: var(--le-metric-label-font, 0.8125rem);
+    color: var(--le-text-muted);
+    margin-bottom: var(--le-metric-label-mb, 4px);
+    letter-spacing: 0.01em;
+}
+
+.metric-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--le-text-primary);
+    margin-bottom: 4px;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+}
+
+.metric-change {
+    font-size: var(--le-metric-change-font, 0.8125rem);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--le-metric-change-gap, 4px);
+}
+
+.metric-change svg {
+    width: 14px;
+    height: 14px;
+}
+
+.metric-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--le-metric-icon-radius, 12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 60%);
+    box-shadow:
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.30),
+        inset 0 -1px 2px 0 rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.metric-icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(
+        175deg,
+        rgba(255, 255, 255, 0.30) 0%,
+        rgba(255, 255, 255, 0.08) 40%,
+        transparent 100%
+    );
+    pointer-events: none;
+    border-radius: var(--le-metric-icon-radius, 12px) var(--le-metric-icon-radius, 12px) 0 0;
+}
+
+.metric-icon svg {
+    width: 22px;
+    height: 22px;
+    position: relative;
+    z-index: 1;
+}
+
+.metric-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* Chart containers — constrain Chart.js canvases to their wrapper.
+   The wrapper supplies an explicit height (via .le-chart-* utilities); the
+   canvas absolutely fills it so Chart.js (responsive: true, maintainAspectRatio:
+   false) sizes the backing buffer to match the box exactly. Without this,
+   the canvas's intrinsic `height` attribute can leave whitespace below the
+   plotted area, which reads as unwanted padding inside the card. */
+.chart-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.chart-wrapper canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100%;
+}
+
+.glass-card-body canvas {
+    display: block;
+    max-width: 100%;
+}
+
+.glass-card-body .chart-container {
+    position: relative;
+}
+
+/* Edge-bleed pattern: when a .chart-wrapper is the last child of a card body,
+   it sits flush with the bottom and side edges of the card so the chart fills
+   the card's real estate instead of being inset by the body padding (which
+   reads as unwanted whitespace around the graph). The body becomes a flex
+   column so the content above (header text, metric block, etc.) keeps its
+   normal padding via the auto-margin push. Scoped via :has() so it only
+   activates on chart cards — non-chart bodies keep their default block flow. */
+/* Drop the body-level overflow clip — instead clip on the chart-wrapper
+   itself so we don't depend on `:has()` and we round only the bottom
+   corners (which is what actually meets the card edge when there's a
+   header above). The body keeps its default overflow so absolutely-
+   positioned tooltips/legends/etc. above the chart area still escape
+   normally. */
+.glass-card-body:has(> .chart-wrapper:last-child) {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.glass-card-body > .chart-wrapper:last-child {
+    margin: auto calc(var(--le-body-pad, var(--le-card-padding, 20px)) * -1) calc(var(--le-body-pad, var(--le-card-padding, 20px)) * -1);
+    width: calc(100% + (var(--le-body-pad, var(--le-card-padding, 20px)) * 2));
+    overflow: hidden;
+    border-bottom-left-radius: calc(var(--le-radius-lg) - 1px);
+    border-bottom-right-radius: calc(var(--le-radius-lg) - 1px);
+}
+
+/* Metric-card sparkline pattern: the chart-wrapper inside a metric card
+   participates in normal flow (so it adds real height to the card,
+   matching the proportions of regular `.glass-card` chart cards used
+   elsewhere in the dashboards) and bleeds flush with the card's side
+   and bottom edges (so there is no leftover body padding showing as
+   empty space around the graph). The `margin-top: auto` push works
+   because `.metric-card > .glass-card-body` is a flex column above, so
+   the sparkline is anchored to the bottom regardless of how tall the
+   card grows. The rule is `:has()`-free so it works in engines that
+   don't yet evaluate `:has()`, and side/bottom negative margins use
+   the same `--le-card-padding` token as the body padding to neutralise
+   it exactly. */
+.metric-card .glass-card-body > .chart-wrapper:last-child {
+    margin: auto calc(var(--le-body-pad, var(--le-card-padding, 20px)) * -1) calc(var(--le-body-pad, var(--le-card-padding, 20px)) * -1);
+    width: calc(100% + (var(--le-body-pad, var(--le-card-padding, 20px)) * 2));
+    overflow: hidden;
+    border-bottom-left-radius: calc(var(--le-radius-lg) - 1px);
+    border-bottom-right-radius: calc(var(--le-radius-lg) - 1px);
+}
+
+/* On tablet-and-below viewports, the chart-wrapper bleed pattern above
+   (negative side/bottom margins matched to the body padding token, so
+   the chart sits flush with the card's rounded edge) can leak the chart
+   a few pixels past the card border on small screens. The cause is a
+   compounding mismatch between the `--le-body-pad` token and the
+   actual rendered body padding: several responsive layers
+   (`layout/responsive/_dashboard.scss`, `pages/responsive/_adjustments.scss`,
+   density themes, Bootstrap utility classes) update the token and/or
+   the padding at slightly different breakpoints, and sub-pixel
+   rounding on smaller viewports magnifies any drift into a visible
+   bleed past the card's rounded bottom corners.
+
+   Rather than chase every responsive override into agreement, scope a
+   safety clip to the bleed pattern itself. `:has()` keeps it surgical
+   — only chart cards using the bleed layout get clipped; regular
+   non-chart `.glass-card`s keep their default `overflow: visible` so
+   hover shadows, dropdown menus in card headers, and Chart.js HTML
+   tooltips on full-size desktop charts are all unaffected. The clip
+   is also gated to `<= 767.98px` so the desktop/tablet rendering
+   (which the user confirmed is correct) stays untouched, and any
+   header dropdowns on chart cards keep working at the breakpoints
+   where they're actually used.
+
+   The card's own `box-shadow` (hover lift, glass shadow stack) paints
+   outside the border-box and is not affected by overflow clipping on
+   the element itself, so the glass aesthetic is preserved.
+
+    `overflow: hidden` is listed first as a fallback for engines that
+    don't recognise `overflow: clip`. */
+

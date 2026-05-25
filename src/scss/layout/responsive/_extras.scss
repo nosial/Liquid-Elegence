@@ -1,0 +1,6 @@
+/* d-lg-none utility: show only below lg */
+@media (min-width: 992px) {
+    .d-lg-none {
+        display: none !important;
+    }
+}

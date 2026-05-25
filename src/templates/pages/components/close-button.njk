@@ -1,0 +1,134 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Close Button — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Close Button</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Close Button Variants ───────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Close Button Default</h5>
+                <p class="text-muted mb-3 le-fs-body">The standard <code>.btn-close</code> used in modals, alerts, toasts, and offcanvas panels.</p>
+                <div class="d-flex flex-wrap gap-4 align-items-center">
+                    <button type="button" class="btn-close" aria-label="Close"></button>
+                    <button type="button" class="btn-close" aria-label="Close" disabled></button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button type="button" class="btn-close" aria-label="Close"&gt;&lt;/button&gt;
+&lt;button type="button" class="btn-close" disabled&gt;&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── White Variant ───────────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">White Close Button</h5>
+                <p class="text-muted mb-3 le-fs-body">Use <code>.btn-close-white</code> on dark backgrounds for proper contrast.</p>
+                <div class="p-4 rounded-4" style="background:#1e293b;">
+                    <div class="d-flex flex-wrap gap-4 align-items-center">
+                        <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+                        <button type="button" class="btn-close btn-close-white" aria-label="Close" disabled></button>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;button type="button" class="btn-close btn-close-white"
+        aria-label="Close"&gt;&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Close Button Sizes ─────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Close Button Sizes</h5>
+                <p class="text-muted mb-3 le-fs-body">Customise the size using <code>fs-*</code> utilities or inline styles.</p>
+                <div class="d-flex flex-wrap gap-4 align-items-center">
+                    <div class="text-center">
+                        <button type="button" class="btn-close le-fs-xs" aria-label="Close"></button>
+                        <div class="le-fs-xs text-muted mt-1">xs</div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn-close le-fs-sm" aria-label="Close"></button>
+                        <div class="le-fs-xs text-muted mt-1">sm</div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn-close" aria-label="Close"></button>
+                        <div class="le-fs-xs text-muted mt-1">default</div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn-close le-fs-lg" aria-label="Close"></button>
+                        <div class="le-fs-xs text-muted mt-1">lg</div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn-close le-fs-xl" aria-label="Close"></button>
+                        <div class="le-fs-xs text-muted mt-1">xl</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── In Context ─────────────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">In Context</h5>
+                <p class="text-muted mb-3 le-fs-body">The close button used inside common Bootstrap components.</p>
+
+                <div class="d-flex flex-column gap-3">
+                    <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
+                        Dismissible alert
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+
+                    <div class="toast show d-block" role="alert">
+                        <div class="toast-header">
+                            <strong class="me-auto">Notification</strong>
+                            <small>now</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">Toast with a close button.</div>
+                    </div>
+
+                    <div class="modal modal-glass" tabindex="-1" style="position:relative;display:block;z-index:0;min-height:auto;">
+                        <div class="modal-dialog m-0">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h6 class="modal-title">Modal Title</h6>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="mb-0 le-fs-sm">Modal header with close button — the most common usage pattern.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

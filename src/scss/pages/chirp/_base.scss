@@ -1,0 +1,197 @@
+/* =============================================================================
+   Liquid Elegance — Chirp Styles
+   Twitter-inspired microblogging interface with liquid glass design.
+   ============================================================================= */
+
+/* ---------------------------------------------------------------------------
+   Tweet Card
+   --------------------------------------------------------------------------- */
+/* Each tweet renders as an inline glass tile so the chirp surface reads as a
+   layered glass panel (matches the forum / kanban / mail tile aesthetic). The
+   outer .glass-card panel still provides the frosted base; the tile adds a
+   subtle inset surface + hairline border so individual tweets feel like
+   distinct glass slabs. */
+.chirp-tweet {
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  margin: 0 12px 8px;
+  background: var(--le-glass-bg-subtle);
+  border: 1px solid var(--le-glass-border-subtle);
+  border-radius: var(--le-radius);
+  transition: background var(--le-transition-fast),
+              border-color var(--le-transition-fast),
+              transform var(--le-transition-fast),
+              box-shadow var(--le-transition-fast);
+  cursor: pointer;
+}
+
+.chirp-tweet:first-of-type {
+  margin-top: 12px;
+}
+
+.chirp-tweet:last-child {
+  margin-bottom: 12px;
+}
+
+.chirp-tweet:hover {
+  background: var(--le-glass-bg);
+  border-color: rgba(var(--le-primary-rgb), 0.22);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.chirp-tweet-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--le-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--le-text-inverse);
+  flex-shrink: 0;
+}
+
+.chirp-tweet-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.chirp-tweet-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
+}
+
+.chirp-tweet-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--le-text-primary);
+  text-decoration: none;
+  line-height: 1.3;
+}
+
+.chirp-tweet-name:hover {
+  text-decoration: underline;
+}
+
+.chirp-tweet-handle {
+  font-size: 0.82rem;
+  color: var(--le-text-muted);
+}
+
+.chirp-tweet-dot {
+  color: var(--le-text-muted);
+  font-size: 0.78rem;
+}
+
+.chirp-tweet-time {
+  font-size: 0.82rem;
+  color: var(--le-text-muted);
+}
+
+.chirp-tweet-verified {
+  color: var(--le-primary);
+  display: inline-flex;
+  align-items: center;
+}
+
+.chirp-tweet-body {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--le-text-primary);
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.chirp-tweet-body a {
+  color: var(--le-primary);
+  text-decoration: none;
+}
+
+.chirp-tweet-body a:hover {
+  text-decoration: underline;
+}
+
+/* Tweet image grid */
+.chirp-tweet-media {
+  border-radius: var(--le-radius);
+  overflow: hidden;
+  margin-bottom: 10px;
+  border: 1px solid var(--le-glass-border-subtle);
+}
+
+.chirp-tweet-media img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Tweet actions row */
+.chirp-tweet-actions {
+  display: flex;
+  justify-content: space-between;
+  max-width: 420px;
+}
+
+.chirp-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--le-text-muted);
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: var(--le-radius-full);
+  transition: all var(--le-transition-fast);
+  line-height: 1;
+}
+
+.chirp-action:hover {
+  background: rgba(var(--le-primary-rgb), 0.08);
+  color: var(--le-primary);
+}
+
+.chirp-action-reply:hover {
+  background: rgba(var(--le-primary-rgb), 0.08);
+  color: var(--le-primary);
+}
+
+.chirp-action-retweet:hover {
+  background: rgba(var(--le-success-rgb), 0.08);
+  color: var(--le-success);
+}
+
+.chirp-action-retweet.active {
+  color: var(--le-success);
+}
+
+.chirp-action-like:hover {
+  background: rgba(var(--le-danger-rgb), 0.08);
+  color: var(--le-danger);
+}
+
+.chirp-action-like.active {
+  color: var(--le-danger);
+}
+
+.chirp-action-share:hover {
+  background: rgba(var(--le-primary-rgb), 0.08);
+  color: var(--le-primary);
+}
+
+.chirp-action-bookmark:hover {
+  background: rgba(var(--le-primary-rgb), 0.08);
+  color: var(--le-primary);
+}
+
+.chirp-action-bookmark.active {
+  color: var(--le-primary);
+}

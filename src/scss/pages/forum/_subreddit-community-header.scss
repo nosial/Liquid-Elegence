@@ -1,0 +1,89 @@
+/* ---------------------------------------------------------------------------
+   Subreddit / Community Header
+   --------------------------------------------------------------------------- */
+.forum-community-header {
+  border-radius: var(--le-radius-lg) var(--le-radius-lg) 0 0;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.forum-community-banner {
+  height: 140px;
+  background: linear-gradient(135deg, var(--le-primary), var(--le-secondary, var(--le-primary-dark)));
+  position: relative;
+}
+
+.forum-community-info {
+  padding: 0 1.5rem 1.25rem;
+  position: relative;
+}
+
+.forum-community-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--le-radius-full);
+  background: linear-gradient(135deg, var(--le-primary), var(--le-secondary));
+  border: 4px solid var(--le-glass-bg-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -40px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--le-text-inverse);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.forum-community-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.forum-community-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.15rem;
+}
+
+.forum-community-handle {
+  font-size: 0.85rem;
+  color: var(--le-text-muted);
+  margin: 0 0 0.35rem;
+}
+
+.forum-community-description {
+  font-size: 0.9rem;
+  color: var(--le-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+  max-width: 600px;
+}
+
+.forum-community-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+.forum-community-stat {
+  text-align: center;
+}
+
+.forum-community-stat-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--le-text-primary);
+  display: block;
+}
+
+.forum-community-stat-label {
+  font-size: 0.75rem;
+  color: var(--le-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}

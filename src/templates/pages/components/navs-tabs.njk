@@ -1,0 +1,567 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Navs &amp; Tabs — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Navs &amp; Tabs</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Glass Nav Pills ─────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Nav Pills</h5>
+                <p class="text-muted mb-3 le-fs-body">Custom glassmorphic pill navigation with smooth animated transitions.</p>
+
+                <ul class="nav nav-pills-glass" id="glassPills" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="pillsTab1-tab" href="#pillsTab1" data-bs-toggle="pill" role="tab" aria-controls="pillsTab1" aria-selected="true">Home</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pillsTab2-tab" href="#pillsTab2" data-bs-toggle="pill" role="tab" aria-controls="pillsTab2" aria-selected="false">Profile</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="pillsTab3-tab" href="#pillsTab3" data-bs-toggle="pill" role="tab" aria-controls="pillsTab3" aria-selected="false">Messages</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content tab-content-glass mt-3" id="glassPillsContent">
+                    <div class="tab-pane fade show active" id="pillsTab1" role="tabpanel" aria-labelledby="pillsTab1-tab">
+                        <p class="mb-0">Welcome to the Home tab. This is a glass-styled pill navigation that blends seamlessly with the glassmorphic design system. Content transitions smoothly between panes.</p>
+                    </div>
+                    <div class="tab-pane fade" id="pillsTab2" role="tabpanel" aria-labelledby="pillsTab2-tab">
+                        <p class="mb-0">Your profile information lives here. Glass nav pills provide a modern, frosted-glass appearance that adapts to both light and dark themes automatically.</p>
+                    </div>
+                    <div class="tab-pane fade" id="pillsTab3" role="tabpanel" aria-labelledby="pillsTab3-tab">
+                        <p class="mb-0">You have 3 new messages waiting. The pill navigation highlights the active tab with a subtle glass accent, providing clear visual feedback to the user.</p>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;ul class="nav nav-pills-glass" id="myPills" role="tablist"&gt;
+  &lt;li class="nav-item" role="presentation"&gt;
+    &lt;a class="nav-link active" href="#tab1" data-bs-toggle="pill" role="tab"&gt;Tab 1&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class="nav-item" role="presentation"&gt;
+    &lt;a class="nav-link" href="#tab2" data-bs-toggle="pill" role="tab"&gt;Tab 2&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="tab-content tab-content-glass mt-3"&gt;
+  &lt;div class="tab-pane fade show active" id="tab1" role="tabpanel"&gt;Tab 1 content&lt;/div&gt;
+  &lt;div class="tab-pane fade" id="tab2" role="tabpanel"&gt;Tab 2 content&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Glass Underline Tabs ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Underline Tabs</h5>
+                <p class="text-muted mb-3 le-fs-body">Sleek underline-style tabs with a glowing active indicator.</p>
+
+                <ul class="nav nav-underline-glass" id="glassUnderlineTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="underlineTab1-tab" href="#underlineTab1" data-bs-toggle="tab" role="tab" aria-controls="underlineTab1" aria-selected="true">Overview</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="underlineTab2-tab" href="#underlineTab2" data-bs-toggle="tab" role="tab" aria-controls="underlineTab2" aria-selected="false">Analytics</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="underlineTab3-tab" href="#underlineTab3" data-bs-toggle="tab" role="tab" aria-controls="underlineTab3" aria-selected="false">Reports</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="underlineTab4-tab" href="#underlineTab4" data-bs-toggle="tab" role="tab" aria-controls="underlineTab4" aria-selected="false">Settings</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content tab-content-glass mt-3" id="glassUnderlineContent">
+                    <div class="tab-pane fade show active" id="underlineTab1" role="tabpanel" aria-labelledby="underlineTab1-tab">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="glass-card">
+                                    <div class="glass-card-body text-center py-3">
+                                        <p class="text-muted mb-1 le-fs-base">Total Users</p>
+                                        <h4 class="mb-0">12,840</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="glass-card">
+                                    <div class="glass-card-body text-center py-3">
+                                        <p class="text-muted mb-1 le-fs-base">Revenue</p>
+                                        <h4 class="mb-0">$48,290</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="glass-card">
+                                    <div class="glass-card-body text-center py-3">
+                                        <p class="text-muted mb-1 le-fs-base">Growth</p>
+                                        <h4 class="mb-0">+24.5%</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="underlineTab2" role="tabpanel" aria-labelledby="underlineTab2-tab">
+                        <p class="mb-0">Analytics data for the current period. Track page views, session duration, bounce rate, and user engagement metrics across all your dashboard pages.</p>
+                    </div>
+                    <div class="tab-pane fade" id="underlineTab3" role="tabpanel" aria-labelledby="underlineTab3-tab">
+                        <p class="mb-0">Generated reports are available for download. Export weekly, monthly, or custom date-range reports in PDF, CSV, or Excel format.</p>
+                    </div>
+                    <div class="tab-pane fade" id="underlineTab4" role="tabpanel" aria-labelledby="underlineTab4-tab">
+                        <p class="mb-0">Configure your dashboard preferences, notification settings, and data retention policies from this panel.</p>
+                    </div>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;ul class="nav nav-underline-glass" id="myTabs" role="tablist"&gt;
+  &lt;li class="nav-item" role="presentation"&gt;
+    &lt;a class="nav-link active" href="#uTab1" data-bs-toggle="tab" role="tab"&gt;Tab 1&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class="nav-item" role="presentation"&gt;
+    &lt;a class="nav-link" href="#uTab2" data-bs-toggle="tab" role="tab"&gt;Tab 2&lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="tab-content tab-content-glass mt-3"&gt;
+  &lt;div class="tab-pane fade show active" id="uTab1" role="tabpanel"&gt;...&lt;/div&gt;
+  &lt;div class="tab-pane fade" id="uTab2" role="tabpanel"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Standard Bootstrap Tabs & Pills ─────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Standard Bootstrap Nav Tabs</h5>
+                <p class="text-muted mb-3 le-fs-body">Default Bootstrap tab navigation component.</p>
+
+                <ul class="nav nav-tabs" id="standardTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="stdTab1-tab" href="#stdTab1" data-bs-toggle="tab" role="tab" aria-controls="stdTab1" aria-selected="true">Home</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="stdTab2-tab" href="#stdTab2" data-bs-toggle="tab" role="tab" aria-controls="stdTab2" aria-selected="false">Profile</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="stdTab3-tab" href="#stdTab3" data-bs-toggle="tab" role="tab" aria-controls="stdTab3" aria-selected="false">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content mt-3" id="standardTabsContent">
+                    <div class="tab-pane fade show active" id="stdTab1" role="tabpanel" aria-labelledby="stdTab1-tab">
+                        <p class="mb-0">Standard Bootstrap tabs use the default styling and are ideal for simpler interfaces that don't require the glassmorphic effect.</p>
+                    </div>
+                    <div class="tab-pane fade" id="stdTab2" role="tabpanel" aria-labelledby="stdTab2-tab">
+                        <p class="mb-0">Profile settings and personal information can be managed from this tab panel.</p>
+                    </div>
+                    <div class="tab-pane fade" id="stdTab3" role="tabpanel" aria-labelledby="stdTab3-tab">
+                        <p class="mb-0">Reach out via the contact form or find our support channels listed here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Standard Bootstrap Nav Pills</h5>
+                <p class="text-muted mb-3 le-fs-body">Default Bootstrap pill navigation component.</p>
+
+                <ul class="nav nav-pills" id="standardPills" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="stdPill1-tab" href="#stdPill1" data-bs-toggle="pill" role="tab" aria-controls="stdPill1" aria-selected="true">Active</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="stdPill2-tab" href="#stdPill2" data-bs-toggle="pill" role="tab" aria-controls="stdPill2" aria-selected="false">Pending</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="stdPill3-tab" href="#stdPill3" data-bs-toggle="pill" role="tab" aria-controls="stdPill3" aria-selected="false">Archived</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content mt-3" id="standardPillsContent">
+                    <div class="tab-pane fade show active" id="stdPill1" role="tabpanel" aria-labelledby="stdPill1-tab">
+                        <p class="mb-0">Active items are displayed here. Standard pills offer a clean, rounded navigation style out of the box.</p>
+                    </div>
+                    <div class="tab-pane fade" id="stdPill2" role="tabpanel" aria-labelledby="stdPill2-tab">
+                        <p class="mb-0">Pending items awaiting review or approval will appear in this section.</p>
+                    </div>
+                    <div class="tab-pane fade" id="stdPill3" role="tabpanel" aria-labelledby="stdPill3-tab">
+                        <p class="mb-0">Archived items are stored here for future reference and historical tracking.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Vertical Nav Pills & Nav with Icons ──────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Vertical Nav Pills</h5>
+                <p class="text-muted mb-3 le-fs-body">Glass-styled vertical pill navigation alongside tab content.</p>
+
+                <div class="d-flex gap-3">
+                    <ul class="nav nav-pills-glass flex-column flex-shrink-0 le-min-w-120" id="verticalPills" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="vertPill1-tab" href="#vertPill1" data-bs-toggle="pill" role="tab" aria-controls="vertPill1" aria-selected="true">Dashboard</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="vertPill2-tab" href="#vertPill2" data-bs-toggle="pill" role="tab" aria-controls="vertPill2" aria-selected="false">Orders</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="vertPill3-tab" href="#vertPill3" data-bs-toggle="pill" role="tab" aria-controls="vertPill3" aria-selected="false">Products</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="vertPill4-tab" href="#vertPill4" data-bs-toggle="pill" role="tab" aria-controls="vertPill4" aria-selected="false">Customers</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content tab-content-glass flex-grow-1" id="verticalPillsContent">
+                        <div class="tab-pane fade show active" id="vertPill1" role="tabpanel" aria-labelledby="vertPill1-tab">
+                            <p class="mb-0">Dashboard overview with key metrics and recent activity summaries.</p>
+                        </div>
+                        <div class="tab-pane fade" id="vertPill2" role="tabpanel" aria-labelledby="vertPill2-tab">
+                            <p class="mb-0">Manage and track your orders, shipments, and delivery statuses.</p>
+                        </div>
+                        <div class="tab-pane fade" id="vertPill3" role="tabpanel" aria-labelledby="vertPill3-tab">
+                            <p class="mb-0">View your product catalog, manage inventory levels, and update pricing.</p>
+                        </div>
+                        <div class="tab-pane fade" id="vertPill4" role="tabpanel" aria-labelledby="vertPill4-tab">
+                            <p class="mb-0">Customer database with contact details, purchase history, and segmentation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Nav with Icons</h5>
+                <p class="text-muted mb-3 le-fs-body">Glass nav pills with Feather icons for visual clarity.</p>
+
+                <ul class="nav nav-pills-glass" id="iconPills" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="iconTab1-tab" href="#iconTab1" data-bs-toggle="pill" role="tab" aria-controls="iconTab1" aria-selected="true"><i data-feather="home" class="le-icon-16"></i> Home</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="iconTab2-tab" href="#iconTab2" data-bs-toggle="pill" role="tab" aria-controls="iconTab2" aria-selected="false"><i data-feather="user" class="le-icon-16"></i> Profile</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="iconTab3-tab" href="#iconTab3" data-bs-toggle="pill" role="tab" aria-controls="iconTab3" aria-selected="false"><i data-feather="mail" class="le-icon-16"></i> Messages</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="iconTab4-tab" href="#iconTab4" data-bs-toggle="pill" role="tab" aria-controls="iconTab4" aria-selected="false"><i data-feather="settings" class="le-icon-16"></i> Settings</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content tab-content-glass mt-3" id="iconPillsContent">
+                    <div class="tab-pane fade show active" id="iconTab1" role="tabpanel" aria-labelledby="iconTab1-tab">
+                        <p class="mb-0">Home dashboard with icons making navigation more intuitive and visually appealing.</p>
+                    </div>
+                    <div class="tab-pane fade" id="iconTab2" role="tabpanel" aria-labelledby="iconTab2-tab">
+                        <p class="mb-0">User profile and account management section with icon-based navigation.</p>
+                    </div>
+                    <div class="tab-pane fade" id="iconTab3" role="tabpanel" aria-labelledby="iconTab3-tab">
+                        <p class="mb-0">Messages inbox — read, compose, and manage your conversations.</p>
+                    </div>
+                    <div class="tab-pane fade" id="iconTab4" role="tabpanel" aria-labelledby="iconTab4-tab">
+                        <p class="mb-0">Application settings, preferences, and configuration options.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Justified & Fill Tabs ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Justified &amp; Fill Tabs</h5>
+                <p class="text-muted mb-3 le-fs-body">Nav items that proportionally fill the available width.</p>
+
+                <h6 class="mb-2">Nav Fill</h6>
+                <p class="text-muted mb-2 le-fs-base">Each nav item takes proportional width based on its content.</p>
+                <ul class="nav nav-pills-glass nav-fill mb-3" id="fillPills" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="fillTab1-tab" href="#fillTab1" data-bs-toggle="pill" role="tab" aria-controls="fillTab1" aria-selected="true">Active</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="fillTab2-tab" href="#fillTab2" data-bs-toggle="pill" role="tab" aria-controls="fillTab2" aria-selected="false">Much Longer Nav Link</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="fillTab3-tab" href="#fillTab3" data-bs-toggle="pill" role="tab" aria-controls="fillTab3" aria-selected="false">Link</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content tab-content-glass mb-4" id="fillPillsContent">
+                    <div class="tab-pane fade show active" id="fillTab1" role="tabpanel" aria-labelledby="fillTab1-tab">
+                        <p class="mb-0">Active tab content for the nav-fill example. Each item takes proportional space.</p>
+                    </div>
+                    <div class="tab-pane fade" id="fillTab2" role="tabpanel" aria-labelledby="fillTab2-tab">
+                        <p class="mb-0">Longer link content — this tab item takes more space due to its wider label.</p>
+                    </div>
+                    <div class="tab-pane fade" id="fillTab3" role="tabpanel" aria-labelledby="fillTab3-tab">
+                        <p class="mb-0">Short link content for the third tab.</p>
+                    </div>
+                </div>
+
+                <h6 class="mb-2">Nav Justified</h6>
+                <p class="text-muted mb-2 le-fs-base">All nav items fill the full width with equal spacing.</p>
+                <ul class="nav nav-pills-glass nav-justified mb-3" id="justifiedPills" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="justTab1-tab" href="#justTab1" data-bs-toggle="pill" role="tab" aria-controls="justTab1" aria-selected="true">Active</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="justTab2-tab" href="#justTab2" data-bs-toggle="pill" role="tab" aria-controls="justTab2" aria-selected="false">Longer Link</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="justTab3-tab" href="#justTab3" data-bs-toggle="pill" role="tab" aria-controls="justTab3" aria-selected="false">Link</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content tab-content-glass" id="justifiedPillsContent">
+                    <div class="tab-pane fade show active" id="justTab1" role="tabpanel" aria-labelledby="justTab1-tab">
+                        <p class="mb-0">Active tab content for the nav-justified example. All items share equal width.</p>
+                    </div>
+                    <div class="tab-pane fade" id="justTab2" role="tabpanel" aria-labelledby="justTab2-tab">
+                        <p class="mb-0">Justified navigation ensures a balanced, uniform layout across all items.</p>
+                    </div>
+                    <div class="tab-pane fade" id="justTab3" role="tabpanel" aria-labelledby="justTab3-tab">
+                        <p class="mb-0">Third tab content in the justified navigation example.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Breadcrumbs & Pagination ─────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Breadcrumbs</h5>
+                <p class="text-muted mb-3 le-fs-body">Indicate the current page location within a navigational hierarchy.</p>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item active" aria-current="page">Home</li>
+                    </ol>
+                </nav>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Library</li>
+                    </ol>
+                </nav>
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Library</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Pagination</h5>
+                <p class="text-muted mb-3 le-fs-body">Navigation for paged content with multiple size variants.</p>
+
+                <h6 class="mb-2">Default</h6>
+                <nav aria-label="Default pagination">
+                    <ul class="pagination mb-3">
+                        <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+                        <li class="page-item active" aria-current="page"><a class="page-link" href="javascript:void(0)">2</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">Next</a></li>
+                    </ul>
+                </nav>
+
+                <h6 class="mb-2">Large</h6>
+                <nav aria-label="Large pagination">
+                    <ul class="pagination pagination-lg mb-3">
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+                        <li class="page-item active" aria-current="page"><a class="page-link" href="javascript:void(0)">2</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                    </ul>
+                </nav>
+
+                <h6 class="mb-2">Small</h6>
+                <nav aria-label="Small pagination">
+                    <ul class="pagination pagination-sm mb-0">
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+                        <li class="page-item active" aria-current="page"><a class="page-link" href="javascript:void(0)">2</a></li>
+                        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Tabs with Practical Content ──────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">User Profile</h5>
+                <p class="text-muted mb-3 le-fs-body">A real-world example combining glass underline tabs with practical content panels.</p>
+
+                <ul class="nav nav-underline-glass" id="profileTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="profileActivity-tab" href="#profileActivity" data-bs-toggle="tab" role="tab" aria-controls="profileActivity" aria-selected="true"><i data-feather="activity" class="le-icon-16"></i> Activity</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="profileProjects-tab" href="#profileProjects" data-bs-toggle="tab" role="tab" aria-controls="profileProjects" aria-selected="false"><i data-feather="folder" class="le-icon-16"></i> Projects</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="profileSettings-tab" href="#profileSettings" data-bs-toggle="tab" role="tab" aria-controls="profileSettings" aria-selected="false"><i data-feather="settings" class="le-icon-16"></i> Settings</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content tab-content-glass mt-3" id="profileTabsContent">
+                    {# Activity Tab #}
+                    <div class="tab-pane fade show active" id="profileActivity" role="tabpanel" aria-labelledby="profileActivity-tab">
+                        <div class="activity-feed">
+                            <div class="activity-item d-flex gap-3 mb-3 pb-3 border-bottom">
+                                <div class="flex-shrink-0">
+                                    <span class="badge bg-primary rounded-circle p-2"><i data-feather="check-circle" class="le-icon-14"></i></span>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-1"><strong>Completed task</strong> — Dashboard redesign sprint</p>
+                                    <small class="text-muted">2 minutes ago</small>
+                                </div>
+                            </div>
+                            <div class="activity-item d-flex gap-3 mb-3 pb-3 border-bottom">
+                                <div class="flex-shrink-0">
+                                    <span class="badge bg-success rounded-circle p-2"><i data-feather="git-commit" class="le-icon-14"></i></span>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-1"><strong>Pushed commit</strong> — Adjusted nav bar alignment on mobile</p>
+                                    <small class="text-muted">1 hour ago</small>
+                                </div>
+                            </div>
+                            <div class="activity-item d-flex gap-3 mb-3 pb-3 border-bottom">
+                                <div class="flex-shrink-0">
+                                    <span class="badge bg-warning rounded-circle p-2"><i data-feather="message-square" class="le-icon-14"></i></span>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-1"><strong>New comment</strong> — on "API Integration Plan"</p>
+                                    <small class="text-muted">3 hours ago</small>
+                                </div>
+                            </div>
+                            <div class="activity-item d-flex gap-3">
+                                <div class="flex-shrink-0">
+                                    <span class="badge bg-info rounded-circle p-2"><i data-feather="user-plus" class="le-icon-14"></i></span>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="mb-1"><strong>New team member</strong> — Sarah joined the project</p>
+                                    <small class="text-muted">Yesterday</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {# Projects Tab #}
+                    <div class="tab-pane fade" id="profileProjects" role="tabpanel" aria-labelledby="profileProjects-tab">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Project</th>
+                                        <th>Status</th>
+                                        <th>Due Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Liquid Elegance Dashboard</td>
+                                        <td><span class="badge bg-success">Completed</span></td>
+                                        <td>Jan 15, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>API Gateway v2</td>
+                                        <td><span class="badge bg-primary">In Progress</span></td>
+                                        <td>Mar 01, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile App Redesign</td>
+                                        <td><span class="badge bg-warning text-dark">Planning</span></td>
+                                        <td>Apr 20, 2025</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Analytics Module</td>
+                                        <td><span class="badge bg-danger">Delayed</span></td>
+                                        <td>Feb 10, 2025</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    {# Settings Tab #}
+                    <div class="tab-pane fade" id="profileSettings" role="tabpanel" aria-labelledby="profileSettings-tab">
+                        <form>
+                            <div class="mb-3">
+                                <label for="settingsName" class="form-label">Display Name</label>
+                                <input type="text" class="form-control glass-input" id="settingsName" placeholder="Enter your name" value="John Doe">
+                            </div>
+                            <div class="mb-3">
+                                <label for="settingsEmail" class="form-label">Email Address</label>
+                                <input type="email" class="form-control glass-input" id="settingsEmail" placeholder="Enter your email" value="john@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="settingsBio" class="form-label">Bio</label>
+                                <textarea class="form-control glass-input" id="settingsBio" rows="3" placeholder="Write a short bio...">Full-stack developer passionate about clean UI design.</textarea>
+                            </div>
+                            <button type="button" class="btn btn-glass btn-glass-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

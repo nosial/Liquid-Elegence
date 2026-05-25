@@ -1,0 +1,62 @@
+// ── Avatar utility (gradient circle with centered text) ──────────────────
+// Base avatar
+.le-avatar {
+  border-radius: var(--le-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.le-avatar-24 {
+  @extend .le-avatar;
+  width: 24px;
+  height: 24px;
+  font-size: 0.55rem;
+}
+.le-avatar-32 {
+  @extend .le-avatar;
+  width: 32px;
+  height: 32px;
+  font-size: 0.625rem;
+}
+.le-avatar-36 {
+  @extend .le-avatar;
+  width: 36px;
+  height: 36px;
+  font-size: 0.8rem;
+}
+.le-avatar-48 {
+  @extend .le-avatar;
+  width: 48px;
+  height: 48px;
+  font-size: 1rem;
+}
+.le-avatar-64 {
+  @extend .le-avatar;
+  width: 64px;
+  height: 64px;
+  font-size: 1.5rem;
+}
+
+.le-avatar-gradient {
+  background: linear-gradient(135deg, var(--le-primary), var(--le-secondary));
+  color: var(--le-text-inverse);
+}
+.le-avatar-glass {
+  background: var(--le-glass-bg);
+  color: var(--le-text-muted);
+}
+.le-avatar-gradient-success {
+  background: linear-gradient(135deg, var(--le-success), #059669);
+  color: #fff;
+}
+.le-avatar-gradient-warning {
+  background: linear-gradient(135deg, var(--le-warning), #d97706);
+  color: #fff;
+}
+.le-avatar-gradient-danger {
+  background: linear-gradient(135deg, var(--le-danger), #dc2626);
+  color: #fff;
+}

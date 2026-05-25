@@ -1,0 +1,30 @@
+/* =============================================================================
+   §15 — Theme Transitions
+   ============================================================================= */
+
+/*
+  Transitions only apply when [data-transitioning] is set on the root element.
+  This prevents flash-of-transition on initial page load.
+  JS should add this attribute before switching themes, then remove it after.
+*/
+[data-transitioning] *,
+[data-transitioning] *::before,
+[data-transitioning] *::after {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    opacity 0.4s ease !important;
+}
+
+/* Specific theme-transition class for elements that always animate */
+.theme-transition {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+

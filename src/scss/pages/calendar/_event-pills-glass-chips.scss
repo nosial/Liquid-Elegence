@@ -1,0 +1,67 @@
+/* ---------------------------------------------------------------------------
+   Event Pills — glass chips with left-border accent
+   --------------------------------------------------------------------------- */
+
+.event-pill {
+    font-size: var(--le-font-size-xs);
+    padding: 1px 6px;
+    border-radius: var(--le-radius-xs);
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    font-weight: var(--le-font-weight-semibold);
+    border-left: 4px solid;
+    color: var(--le-text-primary);
+    transition: all var(--le-transition-fast);
+}
+
+.event-pill:hover {
+    filter: brightness(1.04);
+    box-shadow: var(--le-shadow-xs);
+}
+
+.event-pill.cat-work {
+    border-left-color: var(--le-primary);
+    background: rgba(var(--le-primary-rgb), 0.08);
+    color: var(--le-text-primary);
+}
+
+.event-pill.cat-personal {
+    border-left-color: var(--le-success);
+    background: rgba(var(--le-success-rgb), 0.08);
+    color: var(--le-text-primary);
+}
+
+.event-pill.cat-meetings {
+    border-left-color: rgb(99, 102, 241);
+    background: rgba(99, 102, 241, 0.08);
+    color: var(--le-text-primary);
+}
+
+.event-pill.cat-holidays {
+    border-left-color: var(--le-warning);
+    background: rgba(var(--le-warning-rgb), 0.08);
+    color: var(--le-text-primary);
+}
+
+.event-pill.cat-danger {
+    border-left-color: var(--le-danger);
+    background: rgba(var(--le-danger-rgb), 0.08);
+    color: var(--le-text-primary);
+}
+
+
+.more-events {
+    font-size: var(--le-font-size-xs);
+    color: var(--le-text-muted);
+    cursor: pointer;
+    padding: 1px 6px;
+    font-weight: var(--le-font-weight-semibold);
+    transition: color var(--le-transition-fast);
+}
+
+.more-events:hover {
+    color: var(--le-primary);
+}

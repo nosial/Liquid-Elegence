@@ -1,0 +1,103 @@
+/* ---- OTP ---- */
+.otp-inputs {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.otp-input {
+  width: 48px;
+  height: 56px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  background: var(--le-glass-bg-subtle);
+  border: 2px solid var(--le-glass-border);
+  border-radius: var(--le-radius);
+  color: var(--le-text-primary);
+  transition: border-color var(--le-transition-fast), box-shadow var(--le-transition-fast);
+}
+
+.otp-input:focus {
+  border-color: var(--le-primary);
+  box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.12);
+  outline: none;
+}
+
+.otp-timer,
+.resend-timer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--le-text-muted);
+  margin-bottom: 16px;
+}
+
+/* ---- lock screen ---- */
+.lock-screen-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  gap: 24px;
+}
+
+.lock-time-display,
+.lock-time {
+  font-size: 64px;
+  font-weight: 200;
+  color: var(--le-text-inverse);
+  text-align: center;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.lock-date-display {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
+.lock-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--le-radius-full);
+  background: var(--le-primary);
+  color: var(--le-text-inverse);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 auto 12px;
+}
+
+.lock-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--le-text-primary);
+  text-align: center;
+}
+
+.lock-email {
+  font-size: 13px;
+  color: var(--le-text-muted);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.lock-alt-link {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--le-text-muted);
+  text-decoration: none;
+  transition: color var(--le-transition-fast);
+}
+
+.lock-alt-link:hover {
+  color: var(--le-primary);
+}
+
+

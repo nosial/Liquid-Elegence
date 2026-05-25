@@ -1,0 +1,106 @@
+/* --------------------------------------------------------------------------
+   20g. Kanban — scroll indicators, card titles, header
+   -------------------------------------------------------------------------- */
+@media (max-width: 767.98px) {
+  /* Kanban column title truncation */
+  .kanban-col-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 180px;
+  }
+
+  /* Card title truncation */
+  .kanban-card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Assignees smaller */
+  .kanban-assignees .t-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 0.5625rem;
+  }
+
+  /* Due date tag */
+  .kanban-due {
+    font-size: 0.6875rem;
+  }
+
+  .kanban-tag {
+    font-size: 0.625rem;
+    padding: 2px 6px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  /* Scroll hint: fading edge on board container */
+  .kanban-board {
+    mask-image: linear-gradient(90deg, black calc(100% - 24px), transparent);
+    -webkit-mask-image: linear-gradient(90deg, black calc(100% - 24px), transparent);
+  }
+
+  .kanban-board::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .kanban-board::-webkit-scrollbar-thumb {
+    background: rgba(var(--le-primary-rgb), 0.3);
+    border-radius: 2px;
+  }
+
+  /* Modal fullscreen on small phones */
+  .kanban-modal .modal-dialog {
+    margin: 0.25rem;
+    max-width: calc(100% - 0.5rem);
+  }
+
+  .kanban-modal .modal-body {
+    max-height: calc(100dvh - 120px);
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   23f. Kanban — reduced column min-width on small phones
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .kanban-column {
+    min-width: 220px;
+  }
+
+  .kanban-card {
+    padding: 0;
+  }
+
+  .kanban-card-inner {
+    padding: 0.625rem;
+  }
+
+  .kanban-card-title {
+    font-size: 0.8125rem;
+  }
+
+  .kanban-card-desc {
+    font-size: 0.6875rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .kanban-col-title {
+    max-width: 140px;
+  }
+}
+
+@media (max-width: 380px) {
+  .kanban-column {
+    min-width: 200px;
+  }
+
+  .kanban-board {
+    gap: 8px;
+    padding-bottom: 8px;
+  }
+}

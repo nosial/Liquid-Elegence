@@ -1,0 +1,138 @@
+/* ── Alert & Toast Glass ── */
+
+/* Standard Bootstrap alerts — liquid glass style */
+.alert {
+  border-radius: var(--le-radius, 0.5rem);
+  border: none;
+  border-left: 4px solid transparent;
+  font-size: 0.875rem;
+  padding: 0.875rem 1rem;
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+  backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+  box-shadow: var(--le-inner-glow);
+  transition: background var(--le-transition-fast),
+              border-color var(--le-transition-fast),
+              box-shadow var(--le-transition-fast);
+}
+
+.alert-primary {
+  background: rgba(var(--le-primary-rgb), 0.08);
+  color: var(--le-primary);
+  border-left-color: var(--le-primary);
+}
+
+.alert-success {
+  background: rgba(var(--le-success-rgb, 16,185,129), 0.08);
+  color: var(--le-success, #10b981);
+  border-left-color: var(--le-success, #10b981);
+}
+
+.alert-warning {
+  background: rgba(var(--le-warning-rgb, 245,158,11), 0.08);
+  color: var(--le-warning, #f59e0b);
+  border-left-color: var(--le-warning, #f59e0b);
+}
+
+.alert-danger {
+  background: rgba(var(--le-danger-rgb, 239,68,68), 0.08);
+  color: var(--le-danger, #ef4444);
+  border-left-color: var(--le-danger, #ef4444);
+}
+
+.alert-info {
+  background: rgba(var(--le-info-rgb, 14,165,233), 0.08);
+  color: var(--le-info, #0ea5e9);
+  border-left-color: var(--le-info, #0ea5e9);
+}
+
+.alert-secondary {
+  background: var(--le-highlight-bg, rgba(0, 0, 0, 0.04));
+  color: var(--le-text-secondary);
+  border-left-color: var(--le-text-muted);
+}
+
+.alert .btn-close {
+  opacity: 0.4;
+  filter: none;
+}
+
+/* Dark mode alerts */
+[data-theme="dark"] .alert-primary {
+  background: rgba(var(--le-primary-rgb), 0.12);
+}
+
+[data-theme="dark"] .alert-success {
+  background: rgba(var(--le-success-rgb, 16,185,129), 0.12);
+}
+
+[data-theme="dark"] .alert-warning {
+  background: rgba(var(--le-warning-rgb, 245,158,11), 0.12);
+}
+
+[data-theme="dark"] .alert-danger {
+  background: rgba(var(--le-danger-rgb, 239,68,68), 0.12);
+}
+
+[data-theme="dark"] .alert-info {
+  background: rgba(var(--le-info-rgb, 14,165,233), 0.12);
+}
+
+[data-theme="dark"] .alert-secondary {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+[data-theme="dark"] .alert .btn-close {
+  filter: invert(1);
+}
+
+/* Compact mode alerts */
+[data-density="compact"] .alert {
+  padding: 0.625rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+/* Glass alerts (premium variant) */
+.alert-glass {
+  position: relative;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--le-divider-color, rgba(0, 0, 0, 0.06));
+  border-radius: var(--le-radius-md, 0.5rem);
+  padding: 1rem 1rem 1rem 1.25rem;
+  color: var(--le-text-primary);
+  border-left: 4px solid var(--le-primary);
+  -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+  backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+  box-shadow: var(--le-inner-glow);
+  transition: background var(--le-transition-fast),
+              border-color var(--le-transition-fast),
+              box-shadow var(--le-transition-fast);
+
+  &.alert-glass-success { border-left-color: var(--le-success); }
+  &.alert-glass-warning { border-left-color: var(--le-warning); }
+  &.alert-glass-danger  { border-left-color: var(--le-danger); }
+  &.alert-glass-info    { border-left-color: var(--le-info); }
+}
+
+/* Alert icon */
+.alert-glass-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+
+  .alert-glass-success & { background: rgba(var(--le-success-rgb), 0.12); color: var(--le-success); }
+  .alert-glass-warning & { background: rgba(var(--le-warning-rgb), 0.12); color: var(--le-warning); }
+  .alert-glass-danger &  { background: rgba(var(--le-danger-rgb), 0.12);  color: var(--le-danger); }
+  .alert-glass-info &    { background: rgba(var(--le-info-rgb), 0.12);    color: var(--le-info); }
+}
+
+
+[data-theme="dark"] .alert-glass {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.06);
+}

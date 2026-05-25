@@ -1,0 +1,236 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Navbar — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Navbar</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Glass Navbar ────────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Navbar</h5>
+                <p class="text-muted mb-3 le-fs-body">A full-width glassmorphic navbar with backdrop blur, brand, nav links, and search.</p>
+
+                <nav class="navbar navbar-glass rounded-4 px-3 py-2">
+                    <div class="container-fluid px-0">
+                        <a class="navbar-brand d-flex align-items-center gap-2" href="javascript:void(0)">
+                            <span class="brand-icon d-inline-flex align-items-center justify-content-center le-fs-sm le-bg-primary-20 le-rounded-8" style="width:28px;height:28px;">◆</span>
+                            <span class="fw-bold">Liquid</span>
+                        </a>
+                        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#glassNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="glassNavbar">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item"><a class="nav-link active" href="javascript:void(0)">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Features</a></li>
+                                <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Pricing</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-bs-toggle="dropdown">Dropdown</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="javascript:void(0)">Action</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0)">Another action</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0)">Separated link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <form class="d-flex" role="search">
+                                <input class="form-control glass-input me-2" type="search" placeholder="Search...">
+                                <button class="btn btn-glass btn-glass-primary btn-sm" type="submit"><i data-feather="search" class="le-icon-14"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;nav class="navbar navbar-glass"&gt;
+    &lt;div class="container-fluid"&gt;
+        &lt;a class="navbar-brand" href="javascript:void(0)"&gt;Brand&lt;/a&gt;
+        &lt;ul class="navbar-nav"&gt;
+            &lt;li class="nav-item"&gt;
+                &lt;a class="nav-link active" href="javascript:void(0)"&gt;Home&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Bootstrap Standard Navbar ──────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Solid Background Navbar</h5>
+                <p class="text-muted mb-3 le-fs-body">Standard Bootstrap navbar using <code>bg-primary</code> with brand and navigation links.</p>
+
+                <nav class="navbar navbar-expand-lg navbar-dark bg-primary le-rounded-12 px-3 py-2">
+                    <div class="container-fluid px-0">
+                        <a class="navbar-brand fw-bold" href="javascript:void(0)">Brand</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#solidNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="solidNavbar">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item"><a class="nav-link active" href="javascript:void(0)">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="javascript:void(0)">About</a></li>
+                                <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Services</a></li>
+                                <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    {# ── Dark & Light Theme Navbars ───────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Dark &amp; Light Theme Navbars</h5>
+                <p class="text-muted mb-3 le-fs-body">Use <code>navbar-dark</code> with dark backgrounds and <code>navbar-light</code> with light backgrounds.</p>
+
+                <nav class="navbar navbar-expand navbar-dark bg-dark le-rounded-12 px-3 py-2 mb-3">
+                    <a class="navbar-brand fw-bold" href="javascript:void(0)">Dark</a>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="javascript:void(0)">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Profile</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="navbar navbar-expand navbar-light bg-light le-rounded-12 px-3 py-2">
+                    <a class="navbar-brand fw-bold" href="javascript:void(0)">Light</a>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="javascript:void(0)">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Profile</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Navbar with Icons & Utilities ──────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Navbar with Icons &amp; Utilities</h5>
+                <p class="text-muted mb-3 le-fs-body">A feature-rich navbar with icons, badges, user avatar, and search. Common in dashboard layouts.</p>
+
+                <nav class="navbar navbar-glass rounded-4 px-3 py-2">
+                    <div class="container-fluid px-0">
+                        <a class="navbar-brand d-flex align-items-center gap-2" href="javascript:void(0)">
+                            <i data-feather="grid" class="le-icon-20"></i>
+                            <span class="fw-bold">Dashboard</span>
+                        </a>
+                        <div class="d-flex align-items-center gap-2">
+                            <form class="d-none d-md-block" role="search">
+                                <input class="form-control form-control-sm glass-input" type="search" placeholder="Search..." style="width:200px;">
+                            </form>
+                            <button class="btn btn-glass btn-glass-secondary le-action-btn position-relative">
+                                <i data-feather="bell" class="le-icon-16"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger le-fs-3xs">3</span>
+                            </button>
+                            <button class="btn btn-glass btn-glass-secondary le-action-btn">
+                                <i data-feather="mail" class="le-icon-16"></i>
+                            </button>
+                            <div class="dropdown">
+                                <button class="btn btn-glass btn-glass-secondary d-flex align-items-center gap-2 py-1" data-bs-toggle="dropdown">
+                                    <div class="avatar avatar-xs"><div class="avatar-placeholder le-fs-3xs">JD</div></div>
+                                    <span class="d-none d-md-inline le-fs-sm">John Doe</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="user" class="le-icon-14 le-icon-mr-8"></i>Profile</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings" class="le-icon-14 le-icon-mr-8"></i>Settings</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="javascript:void(0)"><i data-feather="log-out" class="le-icon-14 le-icon-mr-8"></i>Sign Out</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Placement & Sticky ────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Sticky Top</h5>
+                <p class="text-muted mb-3 le-fs-body">Add <code>.sticky-top</code> to keep the navbar fixed at the top during scroll.</p>
+                <nav class="navbar navbar-glass rounded-4 px-3 py-2 sticky-top">
+                    <a class="navbar-brand fw-bold" href="javascript:void(0)"><i data-feather="anchor" class="le-icon-16 le-icon-mr-6"></i>Sticky Navbar</a>
+                    <span class="badge badge-glass">.sticky-top</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    {# ── Responsive Behaviour ─────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Responsive Toggler</h5>
+                <p class="text-muted mb-3 le-fs-body">Use <code>.navbar-expand-*</code> to control at which breakpoint the nav collapses.</p>
+
+                <nav class="navbar navbar-glass rounded-4 px-3 py-2">
+                    <a class="navbar-brand fw-bold" href="javascript:void(0)">Brand</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#responsiveNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="responsiveNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link active" href="javascript:void(0)">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="javascript:void(0)">Link</a></li>
+                            <li class="nav-item"><a class="nav-link disabled" href="javascript:void(0)">Disabled</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Responsive breakpoints: navbar-expand-sm / -md / -lg / -xl --&gt;
+&lt;nav class="navbar navbar-expand-lg navbar-glass"&gt;
+    &lt;a class="navbar-brand"&gt;Brand&lt;/a&gt;
+    &lt;button class="navbar-toggler" data-bs-toggle="collapse"
+            data-bs-target="#nav"&gt;
+        &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="collapse navbar-collapse" id="nav"&gt;
+        &lt;ul class="navbar-nav"&gt;
+            &lt;li class="nav-item"&gt;
+                &lt;a class="nav-link active"&gt;Home&lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;!-- Sticky --&gt;
+&lt;nav class="navbar sticky-top navbar-glass"&gt;…&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

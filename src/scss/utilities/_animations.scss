@@ -1,0 +1,130 @@
+// ==========================================================================
+// Liquid Elegance - Utilities & Helpers
+// ==========================================================================
+
+// -- Page Transition --
+@keyframes pageLoad {
+  from {
+    opacity: 0;
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.le-page-loaded {
+  animation: pageLoad 300ms ease;
+}
+
+// -- Fade In Up --
+// NOTE: .animate-fade-in-up and .stagger-* are defined in _glass.scss (§13.4)
+// Do NOT redefine here — _utilities.scss loads last and would override with
+// conflicting values (opacity:0 base state breaks rendering).
+
+// -- Fade In --
+// NOTE: .animate-fade-in is now transition-based in _glass.scss (§19.4).
+// Do NOT redefine here — _utilities.scss loads last and would override.
+
+// -- Scale In --
+// NOTE: .animate-scale-in is now transition-based in _glass.scss (§13.4).
+// Do NOT redefine here — see .animate-fade-in-up note above.
+
+// -- Slide In --
+@keyframes slideInFromLeft {
+  from { opacity: 0; box-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.10); }
+  to { opacity: 1; box-shadow: none; }
+}
+
+@keyframes slideInFromRight {
+  from { opacity: 0; box-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.10); }
+  to { opacity: 1; box-shadow: none; }
+}
+
+@keyframes slideInFromBottom {
+  from { opacity: 0; box-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.10); }
+  to { opacity: 1; box-shadow: none; }
+}
+
+.animate-slide-left {
+  animation: slideInFromLeft 400ms ease forwards;
+  opacity: 0;
+}
+
+.animate-slide-right {
+  animation: slideInFromRight 400ms ease forwards;
+  opacity: 0;
+}
+
+.animate-slide-bottom {
+  animation: slideInFromBottom 400ms ease forwards;
+  opacity: 0;
+}
+
+// -- Card Fade In --
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    box-shadow: 0 0 20px rgba(var(--le-primary-rgb), 0.12);
+  }
+  to {
+    opacity: 1;
+    box-shadow: none;
+  }
+}
+
+.animate-card-fade-in {
+  animation: cardFadeIn 400ms ease forwards;
+  opacity: 0;
+}
+
+// -- Gradient Shift --
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+// -- Mesh Float --
+@keyframes meshFloat {
+  0%, 100% { opacity: 1; }
+  25% { opacity: 0.85; }
+  50% { opacity: 0.92; }
+  75% { opacity: 0.88; }
+}
+
+// -- Float Orb --
+@keyframes floatOrb {
+  0%, 100% { opacity: 1; filter: brightness(1); }
+  50% { opacity: 0.8; filter: brightness(1.1); }
+}
+
+// -- Pulse --
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(var(--le-primary-rgb), 0.15);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(var(--le-primary-rgb), 0);
+    filter: brightness(1.08);
+  }
+}
+
+// -- Float — defined in glass/_keyframes.scss --
+
+// -- Slide In --
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    box-shadow: 0 0 14px rgba(var(--le-primary-rgb), 0.08);
+  }
+  to {
+    opacity: 1;
+    box-shadow: none;
+  }
+}
+
+// -- Shimmer — defined in glass/_keyframes.scss --
+

@@ -1,0 +1,451 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-2">
+    <div>
+        <h2 class="mb-1">Products Management</h2>
+        <p class="text-muted mb-0">Manage your product catalog</p>
+    </div>
+</div>
+
+<div class="toolbar-glass">
+    <div class="d-flex flex-wrap gap-2 align-items-center toolbar-filters">
+        <div class="position-relative flex-grow-1 le-min-w-200 le-max-w-320">
+            <i data-feather="search" class="le-search-icon"></i>
+            <input type="text" class="form-control ps-5" id="searchInput" placeholder="Search products...">
+        </div>
+        <select class="form-select le-min-w-150" id="categoryFilter">
+            <option value="">All Categories</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
+            <option value="Home">Home</option>
+            <option value="Books">Books</option>
+            <option value="Sports">Sports</option>
+        </select>
+        <select class="form-select le-min-w-140" id="statusFilter">
+            <option value="">All Status</option>
+            <option value="Active">Active</option>
+            <option value="Draft">Draft</option>
+            <option value="Out of Stock">Out of Stock</option>
+        </select>
+        <div class="ms-auto d-flex gap-2">
+            <button class="btn btn-outline-secondary" id="exportBtn"><i data-feather="download" class="le-icon-16"></i> Export CSV</button>
+            <button class="btn btn-primary" id="addProductBtn" data-bs-toggle="modal" data-bs-target="#productModal"><i data-feather="plus" class="le-icon-16"></i> Add Product</button>
+        </div>
+    </div>
+</div>
+
+<div class="glass-card p-0">
+    <div class="table-glass-wrapper">
+        <div class="table-responsive">
+            <table class="table table-glass table-responsive-card" id="productsTable">
+                <thead>
+                    <tr>
+                        <th data-sort="name">Product <span class="sort-icon">↕</span></th>
+                        <th data-sort="category">Category <span class="sort-icon">↕</span></th>
+                        <th data-sort="price">Price <span class="sort-icon">↕</span></th>
+                        <th data-sort="stock">Stock <span class="sort-icon">↕</span></th>
+                        <th data-sort="status">Status <span class="sort-icon">↕</span></th>
+                        <th data-sort="rating">Rating <span class="sort-icon">↕</span></th>
+                        <th data-sort="sales">Sales <span class="sort-icon">↕</span></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTableBody"></tbody>
+            </table>
+        </div>
+        <div class="pagination-wrapper d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <span class="text-muted" id="paginationInfo">Showing 1-10 of 20 products</span>
+            <nav>
+                <ul class="pagination pagination-sm mb-0" id="paginationNav"></ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Product Modal -->
+<div class="modal fade modal-glass" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content glass-modal">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="productModalLabel">Add Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <input type="hidden" id="editProductId">
+                    <div class="row g-3">
+                        <div class="col-md-8">
+                            <label for="productName" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="productName" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="productSku" class="form-label">SKU</label>
+                            <input type="text" class="form-control" id="productSku" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="productCategory" class="form-label">Category</label>
+                            <select class="form-select" id="productCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Clothing">Clothing</option>
+                                <option value="Home">Home</option>
+                                <option value="Books">Books</option>
+                                <option value="Sports">Sports</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="productPrice" class="form-label">Price ($)</label>
+                            <input type="number" class="form-control" id="productPrice" step="0.01" min="0" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="productStock" class="form-label">Stock</label>
+                            <input type="number" class="form-control" id="productStock" min="0" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="productStatus" class="form-label">Status</label>
+                            <select class="form-select" id="productStatus" required>
+                                <option value="Active">Active</option>
+                                <option value="Draft">Draft</option>
+                                <option value="Out of Stock">Out of Stock</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="productRating" class="form-label">Rating</label>
+                            <input type="number" class="form-control" id="productRating" step="0.1" min="0" max="5" value="0">
+                        </div>
+                        <div class="col-12">
+                            <label for="productDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="productDescription" rows="3"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="saveProductBtn">Save Product</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade modal-glass" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content glass-modal">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="mb-3"><i data-feather="alert-triangle" class="le-icon-48 le-text-danger"></i></div>
+                <p>Are you sure you want to delete <strong id="deleteProductName"></strong>?</p>
+                <p class="text-muted small">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer border-0 justify-content-center">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- View Product Modal -->
+<div class="modal fade modal-glass" id="viewModal" tabindex="-1" aria-labelledby="viewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content glass-modal">
+            <div class="modal-header border-0">
+                <h5 class="modal-title" id="viewModalLabel">Product Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="viewModalBody"></div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    (function() {
+        const categoryIcons = {
+            Electronics: 'cpu',
+            Clothing: 'scissors',
+            Home: 'home',
+            Books: 'book-open',
+            Sports: 'activity'
+        };
+
+        const categoryBadge = {
+            Electronics: 'primary',
+            Clothing: 'info',
+            Home: 'warning',
+            Books: 'success',
+            Sports: 'danger'
+        };
+
+        const statusBadge = {
+            'Active': 'success',
+            'Draft': 'secondary',
+            'Out of Stock': 'danger'
+        };
+
+        let productsData = [
+            { id: 1, sku: 'SKU-001', name: 'Wireless Bluetooth Headphones', category: 'Electronics', price: 79.99, stock: 145, status: 'Active', rating: 4.5, sales: 1234, description: 'Premium wireless headphones with noise cancellation and 30-hour battery life.' },
+            { id: 2, sku: 'SKU-002', name: 'Classic Cotton T-Shirt', category: 'Clothing', price: 24.99, stock: 523, status: 'Active', rating: 4.2, sales: 3456, description: 'Soft 100% cotton t-shirt available in multiple colors and sizes.' },
+            { id: 3, sku: 'SKU-003', name: 'Smart Home Speaker', category: 'Electronics', price: 129.99, stock: 67, status: 'Active', rating: 4.7, sales: 892, description: 'Voice-controlled smart speaker with premium sound quality.' },
+            { id: 4, sku: 'SKU-004', name: 'Yoga Mat Premium', category: 'Sports', price: 39.99, stock: 0, status: 'Out of Stock', rating: 4.4, sales: 2100, description: 'Extra thick non-slip yoga mat for all skill levels.' },
+            { id: 5, sku: 'SKU-005', name: 'Stainless Steel Water Bottle', category: 'Sports', price: 19.99, stock: 312, status: 'Active', rating: 4.1, sales: 5678, description: 'Double-walled insulated bottle that keeps drinks cold for 24 hours.' },
+            { id: 6, sku: 'SKU-006', name: 'Leather Wallet Bifold', category: 'Clothing', price: 49.99, stock: 89, status: 'Active', rating: 4.6, sales: 1567, description: 'Genuine leather bifold wallet with RFID blocking technology.' },
+            { id: 7, sku: 'SKU-007', name: 'Programming Fundamentals Book', category: 'Books', price: 34.99, stock: 234, status: 'Active', rating: 4.8, sales: 3210, description: 'Comprehensive guide to programming concepts for beginners.' },
+            { id: 8, sku: 'SKU-008', name: 'Ceramic Coffee Mug Set', category: 'Home', price: 29.99, stock: 0, status: 'Out of Stock', rating: 4.3, sales: 4321, description: 'Set of 4 handcrafted ceramic mugs in assorted colors.' },
+            { id: 9, sku: 'SKU-009', name: 'Running Shoes Pro', category: 'Sports', price: 89.99, stock: 156, status: 'Active', rating: 4.5, sales: 2345, description: 'Lightweight running shoes with responsive cushioning.' },
+            { id: 10, sku: 'SKU-010', name: 'Wireless Charging Pad', category: 'Electronics', price: 24.99, stock: 445, status: 'Active', rating: 4.0, sales: 6789, description: 'Fast wireless charger compatible with all Qi-enabled devices.' },
+            { id: 11, sku: 'SKU-011', name: 'Organic Green Tea Box', category: 'Home', price: 14.99, stock: 678, status: 'Active', rating: 4.4, sales: 8901, description: 'Premium organic green tea with 50 individually wrapped bags.' },
+            { id: 12, sku: 'SKU-012', name: 'Denim Jacket Classic', category: 'Clothing', price: 69.99, stock: 34, status: 'Draft', rating: 4.3, sales: 567, description: 'Classic denim jacket with vintage wash and button closure.' },
+            { id: 13, sku: 'SKU-013', name: 'USB-C Hub Adapter', category: 'Electronics', price: 44.99, stock: 201, status: 'Active', rating: 4.6, sales: 3456, description: '7-in-1 USB-C hub with HDMI, USB 3.0, and SD card reader.' },
+            { id: 14, sku: 'SKU-014', name: 'Scented Candle Collection', category: 'Home', price: 22.99, stock: 167, status: 'Active', rating: 4.2, sales: 2890, description: 'Set of 3 luxury scented candles with natural soy wax.' },
+            { id: 15, sku: 'SKU-015', name: 'Basketball Official Size', category: 'Sports', price: 29.99, stock: 0, status: 'Out of Stock', rating: 4.1, sales: 1234, description: 'Official size and weight basketball for indoor and outdoor play.' },
+            { id: 16, sku: 'SKU-016', name: 'Mystery Novel Bestseller', category: 'Books', price: 16.99, stock: 412, status: 'Active', rating: 4.7, sales: 7654, description: 'Award-winning mystery thriller that keeps you on the edge.' },
+            { id: 17, sku: 'SKU-017', name: 'Silk Pillowcase Set', category: 'Home', price: 54.99, stock: 78, status: 'Draft', rating: 4.5, sales: 890, description: 'Set of 2 pure mulberry silk pillowcases for hair and skin.' },
+            { id: 18, sku: 'SKU-018', name: 'Fitness Tracker Band', category: 'Electronics', price: 59.99, stock: 289, status: 'Active', rating: 4.3, sales: 4567, description: 'Water-resistant fitness tracker with heart rate and sleep monitoring.' },
+            { id: 19, sku: 'SKU-019', name: 'Cookbook Mediterranean', category: 'Books', price: 27.99, stock: 156, status: 'Active', rating: 4.6, sales: 2345, description: 'Over 200 authentic Mediterranean recipes for healthy living.' },
+            { id: 20, sku: 'SKU-020', name: 'Winter Beanie Hat', category: 'Clothing', price: 17.99, stock: 567, status: 'Draft', rating: 4.0, sales: 1890, description: 'Warm knitted beanie hat with fleece lining for winter.' }
+        ];
+
+        let currentPage = 1;
+        const perPage = 10;
+        let sortField = null;
+        let sortDir = 'asc';
+        let deleteTargetId = null;
+        let nextId = 21;
+
+        function getFiltered() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const cat = document.getElementById('categoryFilter').value;
+            const status = document.getElementById('statusFilter').value;
+            return productsData.filter(function(p) {
+                const matchSearch = !search || p.name.toLowerCase().includes(search) || p.sku.toLowerCase().includes(search);
+                const matchCat = !cat || p.category === cat;
+                const matchStatus = !status || p.status === status;
+                return matchSearch && matchCat && matchStatus;
+            });
+        }
+
+        function getSorted(data) {
+            if (!sortField) return data;
+            var sorted = data.slice();
+            sorted.sort(function(a, b) {
+                var va = a[sortField], vb = b[sortField];
+                if (typeof va === 'string') { va = va.toLowerCase(); vb = vb.toLowerCase(); }
+                if (va < vb) return sortDir === 'asc' ? -1 : 1;
+                if (va > vb) return sortDir === 'asc' ? 1 : -1;
+                return 0;
+            });
+            return sorted;
+        }
+
+        function renderStars(rating) {
+            var html = '';
+            for (var i = 1; i <= 5; i++) {
+                if (rating >= i) {
+                    html += '★';
+                } else if (rating >= i - 0.5) {
+                    html += '★';
+                } else {
+                    html += '<span class="star-empty">★</span>';
+                }
+            }
+            html += '<span class="rating-value">' + rating.toFixed(1) + '</span>';
+            return html;
+        }
+
+        function renderTable() {
+            var filtered = getSorted(getFiltered());
+            var total = filtered.length;
+            var totalPages = Math.max(1, Math.ceil(total / perPage));
+            if (currentPage > totalPages) currentPage = totalPages;
+            var start = (currentPage - 1) * perPage;
+            var pageData = filtered.slice(start, start + perPage);
+            var tbody = document.getElementById('productsTableBody');
+            var html = '';
+            pageData.forEach(function(p) {
+                var catClass = p.category.toLowerCase();
+                var icon = categoryIcons[p.category] || 'box';
+                var badge = categoryBadge[p.category] || 'secondary';
+                var sBadge = statusBadge[p.status] || 'secondary';
+                html += '<tr>' +
+                    '<td data-label="Product"><div class="product-cell"><div class="product-img-placeholder ' + catClass + '"><i data-feather="' + icon + '" class="le-icon-22"></i></div><div class="product-info"><div class="product-name">' + escHtml(p.name) + '</div><div class="product-sku">' + escHtml(p.sku) + '</div></div></div></td>' +
+                    '<td data-label="Category"><span class="badge bg-' + badge + '">' + escHtml(p.category) + '</span></td>' +
+                    '<td data-label="Price">$' + p.price.toFixed(2) + '</td>' +
+                    '<td data-label="Stock">' + p.stock.toLocaleString() + '</td>' +
+                    '<td data-label="Status"><span class="badge bg-' + sBadge + '">' + escHtml(p.status) + '</span></td>' +
+                    '<td data-label="Rating"><div class="star-rating">' + renderStars(p.rating) + '</div></td>' +
+                    '<td data-label="Sales">' + p.sales.toLocaleString() + '</td>' +
+                    '<td data-label="Actions" class="actions-cell">' +
+                        '<button class="btn btn-sm btn-outline-info" title="View" onclick="viewProduct(' + p.id + ')"><i data-feather="eye"></i></button>' +
+                        '<button class="btn btn-sm btn-outline-primary" title="Edit" onclick="editProduct(' + p.id + ')"><i data-feather="edit-2"></i></button>' +
+                        '<button class="btn btn-sm btn-outline-danger" title="Delete" onclick="deleteProduct(' + p.id + ')"><i data-feather="trash-2"></i></button>' +
+                    '</td></tr>';
+            });
+            tbody.innerHTML = html;
+
+            var showStart = total === 0 ? 0 : start + 1;
+            var showEnd = Math.min(start + perPage, total);
+            document.getElementById('paginationInfo').textContent = 'Showing ' + showStart + '-' + showEnd + ' of ' + total + ' products';
+
+            var pagHtml = '';
+            pagHtml += '<li class="page-item ' + (currentPage === 1 ? 'disabled' : '') + '"><a class="page-link" href="javascript:void(0)" onclick="goToPage(' + (currentPage - 1) + ');return false;">‹</a></li>';
+            for (var i = 1; i <= totalPages; i++) {
+                pagHtml += '<li class="page-item ' + (i === currentPage ? 'active' : '') + '"><a class="page-link" href="javascript:void(0)" onclick="goToPage(' + i + ');return false;">' + i + '</a></li>';
+            }
+            pagHtml += '<li class="page-item ' + (currentPage === totalPages ? 'disabled' : '') + '"><a class="page-link" href="javascript:void(0)" onclick="goToPage(' + (currentPage + 1) + ');return false;">›</a></li>';
+            document.getElementById('paginationNav').innerHTML = pagHtml;
+
+            if (typeof feather !== 'undefined') feather.replace();
+        }
+
+        function escHtml(s) {
+            var d = document.createElement('div');
+            d.textContent = s;
+            return d.innerHTML;
+        }
+
+        window.goToPage = function(page) {
+            var filtered = getFiltered();
+            var totalPages = Math.max(1, Math.ceil(filtered.length / perPage));
+            if (page < 1 || page > totalPages) return;
+            currentPage = page;
+            renderTable();
+        };
+
+        window.viewProduct = function(id) {
+            var p = productsData.find(function(x) { return x.id === id; });
+            if (!p) return;
+            var catClass = p.category.toLowerCase();
+            var sBadge = statusBadge[p.status] || 'secondary';
+            var badge = categoryBadge[p.category] || 'secondary';
+            var html = '<div class="text-center mb-3"><div class="product-img-placeholder ' + catClass + ' mx-auto le-box-80 le-fs-icon-2x"><i data-feather="' + (categoryIcons[p.category] || 'box') + '" class="le-box-36"></i></div></div>' +
+                '<h5 class="text-center mb-1">' + escHtml(p.name) + '</h5>' +
+                '<p class="text-center text-muted small mb-3">' + escHtml(p.sku) + '</p>' +
+                '<div class="view-detail-row"><span class="view-detail-label">Category</span><span class="badge bg-' + badge + '">' + escHtml(p.category) + '</span></div>' +
+                '<div class="view-detail-row"><span class="view-detail-label">Price</span><span>$' + p.price.toFixed(2) + '</span></div>' +
+                '<div class="view-detail-row"><span class="view-detail-label">Stock</span><span>' + p.stock.toLocaleString() + '</span></div>' +
+                '<div class="view-detail-row"><span class="view-detail-label">Status</span><span class="badge bg-' + sBadge + '">' + escHtml(p.status) + '</span></div>' +
+                '<div class="view-detail-row"><span class="view-detail-label">Rating</span><div class="star-rating">' + renderStars(p.rating) + '</div></div>' +
+                '<div class="view-detail-row"><span class="view-detail-label">Sales</span><span>' + p.sales.toLocaleString() + '</span></div>' +
+                '<div class="view-detail-row"><span class="view-detail-label">Description</span><span>' + escHtml(p.description || '—') + '</span></div>';
+            document.getElementById('viewModalBody').innerHTML = html;
+            if (typeof feather !== 'undefined') feather.replace();
+            new bootstrap.Modal(document.getElementById('viewModal')).show();
+        };
+
+        window.editProduct = function(id) {
+            var p = productsData.find(function(x) { return x.id === id; });
+            if (!p) return;
+            document.getElementById('productModalLabel').textContent = 'Edit Product';
+            document.getElementById('editProductId').value = p.id;
+            document.getElementById('productName').value = p.name;
+            document.getElementById('productSku').value = p.sku;
+            document.getElementById('productCategory').value = p.category;
+            document.getElementById('productPrice').value = p.price;
+            document.getElementById('productStock').value = p.stock;
+            document.getElementById('productStatus').value = p.status;
+            document.getElementById('productRating').value = p.rating;
+            document.getElementById('productDescription').value = p.description || '';
+            new bootstrap.Modal(document.getElementById('productModal')).show();
+        };
+
+        window.deleteProduct = function(id) {
+            var p = productsData.find(function(x) { return x.id === id; });
+            if (!p) return;
+            deleteTargetId = id;
+            document.getElementById('deleteProductName').textContent = p.name;
+            if (typeof feather !== 'undefined') feather.replace();
+            new bootstrap.Modal(document.getElementById('deleteModal')).show();
+        };
+
+        document.getElementById('confirmDeleteBtn').addEventListener('click', function() {
+            if (deleteTargetId !== null) {
+                productsData = productsData.filter(function(p) { return p.id !== deleteTargetId; });
+                deleteTargetId = null;
+                bootstrap.Modal.getInstance(document.getElementById('deleteModal')).hide();
+                renderTable();
+            }
+        });
+
+        document.getElementById('addProductBtn').addEventListener('click', function() {
+            document.getElementById('productModalLabel').textContent = 'Add Product';
+            document.getElementById('productForm').reset();
+            document.getElementById('editProductId').value = '';
+            document.getElementById('productRating').value = '0';
+        });
+
+        document.getElementById('saveProductBtn').addEventListener('click', function() {
+            var form = document.getElementById('productForm');
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+            var editId = document.getElementById('editProductId').value;
+            var data = {
+                name: document.getElementById('productName').value.trim(),
+                sku: document.getElementById('productSku').value.trim(),
+                category: document.getElementById('productCategory').value,
+                price: parseFloat(document.getElementById('productPrice').value),
+                stock: parseInt(document.getElementById('productStock').value, 10),
+                status: document.getElementById('productStatus').value,
+                rating: parseFloat(document.getElementById('productRating').value) || 0,
+                description: document.getElementById('productDescription').value.trim()
+            };
+            if (editId) {
+                var idx = productsData.findIndex(function(p) { return p.id === parseInt(editId, 10); });
+                if (idx !== -1) Object.assign(productsData[idx], data);
+            } else {
+                data.id = nextId++;
+                data.sales = 0;
+                productsData.push(data);
+            }
+            bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
+            renderTable();
+        });
+
+        document.getElementById('exportBtn').addEventListener('click', function() {
+            var filtered = getSorted(getFiltered());
+            var csv = 'SKU,Name,Category,Price,Stock,Status,Rating,Sales\n';
+            filtered.forEach(function(p) {
+                csv += '"' + p.sku + '","' + p.name.replace(/"/g, '""') + '","' + p.category + '",' + p.price.toFixed(2) + ',' + p.stock + ',"' + p.status + '",' + p.rating + ',' + p.sales + '\n';
+            });
+            var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'products_export.csv';
+            link.click();
+            URL.revokeObjectURL(link.href);
+        });
+
+        document.getElementById('searchInput').addEventListener('input', function() { currentPage = 1; renderTable(); });
+        document.getElementById('categoryFilter').addEventListener('change', function() { currentPage = 1; renderTable(); });
+        document.getElementById('statusFilter').addEventListener('change', function() { currentPage = 1; renderTable(); });
+
+        document.querySelectorAll('#productsTable thead th[data-sort]').forEach(function(th) {
+            th.addEventListener('click', function() {
+                var field = this.getAttribute('data-sort');
+                if (sortField === field) {
+                    sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+                } else {
+                    sortField = field;
+                    sortDir = 'asc';
+                }
+                document.querySelectorAll('#productsTable thead th').forEach(function(h) { h.classList.remove('sort-active'); });
+                this.classList.add('sort-active');
+                this.querySelector('.sort-icon').textContent = sortDir === 'asc' ? '↑' : '↓';
+                renderTable();
+            });
+        });
+
+        renderTable();
+    })();
+</script>
+{% endblock %}

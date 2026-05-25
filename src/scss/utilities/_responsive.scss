@@ -1,0 +1,93 @@
+/* ── Responsive Glass ── */
+
+@media (max-width: 767.98px) {
+  .bg-glass,
+  .bg-glass-primary,
+  .bg-glass-success,
+  .bg-glass-warning,
+  .bg-glass-danger,
+  .bg-glass-info {
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+  }
+
+  .bg-glass-strong {
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+  }
+
+  .bg-glass-dark {
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+  }
+
+  .backdrop-blur-lg {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .backdrop-blur-xl {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .animate-float,
+  .animate-pulse-soft,
+  .animate-shimmer,
+  .animate-glow {
+    animation: none;
+  }
+
+  .shadow-float {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  }
+
+  .shadow-neon {
+    box-shadow: 0 0 12px rgba(var(--le-primary-rgb), 0.30);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .bg-glass,
+  .bg-glass-primary,
+  .bg-glass-success,
+  .bg-glass-warning,
+  .bg-glass-danger,
+  .bg-glass-info {
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+  }
+
+  .bg-glass-strong {
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+  }
+
+  .backdrop-blur-xl {
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+  }
+}
+
+/* prefers-reduced-motion is handled globally in glass/_accessibility.scss.
+   Only utility-class-specific overrides remain here. */
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-pop,
+  .hover-bright,
+  .hover-tilt {
+    transition-duration: 0.01ms !important;
+  }
+
+  .transition-normal,
+  .transition-spring,
+  .transition-all,
+  .transition-transform,
+  .transition-opacity,
+  .transition-colors {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+

@@ -1,0 +1,353 @@
+/* =============================================================================
+   Confetti Particles
+   ============================================================================= */
+
+.confetti-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: confettiFall 2.5s ease-out forwards;
+}
+
+
+/* =============================================================================
+   Density Overrides
+   ============================================================================= */
+
+/* ---- Compact ---- */
+[data-density="compact"] {
+
+    .wizard-page-header {
+        margin-bottom: var(--le-spacing-lg);
+    }
+
+    .wizard-page-header h3 {
+        margin-bottom: 0.125rem;
+    }
+
+    .wizard-page-header p {
+        font-size: var(--le-font-size-xs);
+    }
+
+    .wizard-container {
+        max-width: 720px;
+    }
+
+    /* Progress indicator */
+    .wizard-progress {
+        margin-bottom: var(--le-spacing-xl);
+        padding: 0 var(--le-spacing-sm);
+    }
+
+    .wizard-progress::before {
+        top: 16px;
+        height: 2px;
+    }
+
+    .progress-line-fill {
+        top: 16px;
+        height: 2px;
+    }
+
+    .step-circle {
+        width: 32px;
+        height: 32px;
+        font-size: var(--le-font-size-xs);
+        margin-bottom: 0.25rem;
+    }
+
+    .step-circle.completed svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .step-label {
+        font-size: 0.625rem;
+    }
+
+    /* Form elements */
+    .form-group {
+        margin-bottom: var(--le-spacing-md);
+    }
+
+    .form-group label {
+        font-size: var(--le-font-size-xs);
+        margin-bottom: 0.25rem;
+    }
+
+    .form-group .glass-input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.4375rem 0.625rem;
+        font-size: var(--le-font-size-xs);
+    }
+
+    .form-group select {
+        padding-right: 1.75rem;
+    }
+
+    .form-group textarea {
+        min-height: 60px;
+    }
+
+    .error-msg {
+        font-size: 0.625rem;
+        margin-top: 0.125rem;
+    }
+
+    .form-row {
+        gap: var(--le-spacing-sm);
+    }
+
+    /* Priority pills */
+    .priority-group {
+        gap: 0.25rem;
+    }
+
+    .priority-pill {
+        padding: 0.25rem var(--le-spacing-md);
+        font-size: var(--le-font-size-xs);
+        gap: 0.25rem;
+    }
+
+    /* Team members */
+    .team-member-row {
+        gap: 0.5rem;
+        padding: 0.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .member-avatar {
+        width: 28px;
+        height: 28px;
+        font-size: 0.625rem;
+    }
+
+    .member-name {
+        font-size: var(--le-font-size-xs);
+    }
+
+    .member-role-select {
+        padding: 0.25rem 0.5rem;
+        font-size: var(--le-font-size-xs);
+    }
+
+    .btn-remove-member {
+        padding: 0.125rem;
+    }
+
+    .btn-add-member {
+        padding: 0.4375rem var(--le-spacing-sm);
+        font-size: var(--le-font-size-xs);
+    }
+
+    /* Size picker */
+    .size-picker {
+        gap: 0.25rem;
+    }
+
+    .size-option {
+        width: 32px;
+        height: 32px;
+        font-size: var(--le-font-size-xs);
+    }
+
+    /* Visibility options */
+    .visibility-group {
+        gap: 0.25rem;
+    }
+
+    .visibility-option {
+        gap: 0.5rem;
+        padding: 0.625rem var(--le-spacing-sm);
+    }
+
+    .visibility-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .visibility-icon i,
+    .visibility-icon svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .visibility-text strong {
+        font-size: var(--le-font-size-xs);
+    }
+
+    .visibility-text span {
+        font-size: 0.625rem;
+    }
+
+    /* Toggle switches */
+    .toggle-row {
+        padding: 0.5rem 0;
+    }
+
+    .toggle-label {
+        font-size: var(--le-font-size-xs);
+    }
+
+    .toggle-switch {
+        width: 36px;
+        height: 20px;
+    }
+
+    .toggle-slider::before {
+        width: 14px;
+        height: 14px;
+        left: 3px;
+        bottom: 3px;
+    }
+
+    .toggle-switch input:checked + .toggle-slider::before {
+        transform: translateX(16px);
+    }
+
+    /* Integration cards */
+    .integration-grid {
+        gap: 0.5rem;
+    }
+
+    .integration-card {
+        padding: var(--le-spacing-sm);
+    }
+
+    .integration-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .integration-name {
+        font-size: var(--le-font-size-xs);
+    }
+
+    /* Notification checkboxes */
+    .notif-checkboxes {
+        gap: 0.5rem;
+    }
+
+    .notif-check {
+        padding: 0.25rem 0.625rem;
+        font-size: var(--le-font-size-xs);
+    }
+
+    /* Review summary */
+    .review-section {
+        margin-bottom: var(--le-spacing-md);
+    }
+
+    .review-section-header {
+        margin-bottom: 0.25rem;
+    }
+
+    .review-section-header h6 {
+        font-size: var(--le-font-size-xs);
+    }
+
+    .review-edit-link {
+        font-size: 0.625rem;
+    }
+
+    .review-grid {
+        grid-template-columns: 120px 1fr;
+        gap: 0.25rem var(--le-spacing-sm);
+        font-size: var(--le-font-size-xs);
+        padding: var(--le-spacing-xs);
+    }
+
+    .review-tags {
+        gap: 0.25rem;
+    }
+
+    .review-tag {
+        padding: 0.125rem 0.5rem;
+        font-size: 0.625rem;
+    }
+
+    /* Terms checkbox */
+    .terms-check {
+        gap: 0.5rem;
+        padding: var(--le-spacing-sm);
+        margin-top: var(--le-spacing-sm);
+    }
+
+    .terms-check input[type="checkbox"] {
+        width: 14px;
+        height: 14px;
+    }
+
+    .terms-check label {
+        font-size: var(--le-font-size-xs);
+    }
+
+    /* Wizard navigation */
+    .wizard-nav {
+        margin-top: var(--le-spacing-lg);
+        padding-top: var(--le-spacing-lg);
+    }
+
+    .wizard-nav .step-info {
+        font-size: var(--le-font-size-xs);
+    }
+
+    .wizard-nav .nav-buttons {
+        gap: 0.5rem;
+    }
+
+    .btn-wizard-prev {
+        padding: 0.4375rem 0.875rem;
+        font-size: var(--le-font-size-xs);
+    }
+
+    .btn-wizard-next {
+        padding: 0.4375rem 1rem;
+        font-size: var(--le-font-size-xs);
+    }
+
+    .btn-wizard-launch {
+        padding: 0.4375rem 1rem;
+        font-size: var(--le-font-size-xs);
+    }
+
+    /* Success state */
+    .success-state {
+        padding: var(--le-spacing-2xl) var(--le-spacing-sm);
+    }
+
+    .success-checkmark {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto var(--le-spacing-lg);
+    }
+
+    .success-checkmark i,
+    .success-checkmark svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .success-state h4 {
+        margin-bottom: 0.25rem;
+    }
+
+    .success-state p {
+        margin-bottom: var(--le-spacing-lg);
+    }
+
+    .btn-go-dashboard {
+        padding: 0.5rem 1rem;
+        font-size: var(--le-font-size-xs);
+    }
+
+    /* Confetti */
+    .confetti-particle {
+        width: 6px;
+        height: 6px;
+    }
+}

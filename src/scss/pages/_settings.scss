@@ -1,0 +1,448 @@
+/* ============================================================================
+   11. SETTINGS
+   ============================================================================ */
+
+.settings-card .nav.nav-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.settings-card .nav-pills .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--le-radius-sm);
+  color: var(--le-text-secondary);
+  font-size: 14px;
+  transition: all var(--le-transition-fast);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.settings-card .nav-pills .nav-link:hover {
+  background: var(--le-glass-bg-subtle);
+  color: var(--le-text-primary);
+}
+
+.settings-card .nav-pills .nav-link.active {
+  background: var(--le-glass-bg);
+  color: var(--le-primary);
+  font-weight: 600;
+  box-shadow: 0 0 8px rgba(var(--le-primary-rgb), 0.08);
+}
+
+/* Tab pane visibility handled by Bootstrap's tab-content component */
+
+/* ---- integrations ---- */
+.integration-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+  transition: background var(--le-transition-fast);
+  border-radius: var(--le-radius-sm);
+}
+
+.integration-item:hover {
+  background: var(--le-glass-bg-subtle);
+  box-shadow: 0 0 0 1px rgba(var(--le-primary-rgb), 0.04);
+}
+
+.integration-item:last-child {
+  border-bottom: none;
+}
+
+.integration-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--le-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--le-glass-bg);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--le-text-primary);
+  flex-shrink: 0;
+}
+
+.integration-details {
+  flex: 1;
+}
+
+.app-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--le-text-primary);
+  margin-bottom: 2px;
+}
+
+.app-desc {
+  font-size: 13px;
+  color: var(--le-text-muted);
+}
+
+/* ---- two-factor ---- */
+.tfa-section {
+  padding: 20px;
+  background: var(--le-glass-bg-subtle);
+  border-radius: var(--le-radius);
+  margin-top: 16px;
+  border: 1px solid var(--le-glass-border-subtle);
+}
+
+
+/* ---- density: compact ---- */
+[data-density="compact"] .settings-card .nav-pills .nav-link {
+  padding: 8px 10px;
+  gap: 8px;
+  font-size: 13px;
+}
+
+[data-density="compact"] .integration-item {
+  padding: 12px;
+  gap: 12px;
+}
+
+[data-density="compact"] .integration-icon {
+  width: 36px;
+  height: 36px;
+  font-size: 12px;
+}
+
+[data-density="compact"] .app-name {
+  font-size: 13px;
+}
+
+[data-density="compact"] .app-desc {
+  font-size: 12px;
+}
+
+[data-density="compact"] .tfa-section {
+  padding: 14px;
+  margin-top: 12px;
+}
+
+
+/* ---- density: comfortable ---- */
+[data-density="comfortable"] .settings-card .nav-pills .nav-link {
+  padding: 12px 18px;
+  gap: 12px;
+  font-size: 15px;
+}
+
+[data-density="comfortable"] .integration-item {
+  padding: 20px;
+  gap: 20px;
+}
+
+[data-density="comfortable"] .integration-icon {
+  width: 52px;
+  height: 52px;
+  font-size: 16px;
+}
+
+[data-density="comfortable"] .app-name {
+  font-size: 15px;
+}
+
+[data-density="comfortable"] .app-desc {
+  font-size: 14px;
+}
+
+[data-density="comfortable"] .tfa-section {
+  padding: 24px;
+  margin-top: 20px;
+}
+
+// Migrated from templates/pages/pages/settings.njk
+.glass-card .card-header-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.glass-input {
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border);
+    border-radius: 8px;
+    color: var(--le-text-primary);
+}
+.glass-input:focus {
+    background: var(--le-glass-bg-strong);
+    border-color: var(--le-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--le-primary-rgb), 0.15);
+}
+.glass-table-wrapper {
+    background: var(--le-glass-bg);
+    backdrop-filter: blur(var(--le-glass-blur));
+    -webkit-backdrop-filter: blur(var(--le-glass-blur));
+    border: 1px solid var(--le-glass-border);
+    border-radius: var(--le-radius-lg);
+    overflow: hidden;
+}
+.glass-table-wrapper .table { margin-bottom: 0; }
+.glass-table-wrapper .table thead th {
+    border-bottom: 1px solid var(--le-glass-border);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 1rem 1.25rem;
+}
+.glass-table-wrapper .table tbody td {
+    padding: 0.85rem 1.25rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+.glass-table-wrapper .table tbody tr:last-child td { border-bottom: none; }
+
+/* Settings Nav Pills */
+.settings-card .nav.nav-pills { display: flex; flex-direction: column; gap: 0.25rem; }
+.settings-card .nav-pills .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--le-radius);
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--le-text-primary);
+    opacity: 0.75;
+    transition: all 0.2s;
+}
+.settings-card .nav-pills .nav-link:hover {
+    background: var(--le-glass-bg);
+    opacity: 1;
+}
+.settings-card .nav-pills .nav-link.active {
+    background: rgba(var(--le-primary-rgb), 0.18);
+    color: var(--le-primary);
+    opacity: 1;
+}
+.settings-card .nav-pills .nav-link i,
+.settings-card .nav-pills .nav-link svg { width: 18px; height: 18px; }
+
+/* Profile Upload (settings-specific override) */
+.profile-upload {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: var(--le-glass-bg);
+    border: 2px dashed var(--le-glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    transition: border-color 0.2s;
+}
+.profile-upload:hover { border-color: var(--le-primary); }
+.profile-upload .camera-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    color: var(--le-text-primary);
+    opacity: 0.85;
+}
+.profile-upload .camera-overlay i,
+.profile-upload .camera-overlay svg { width: 22px; height: 22px; }
+.profile-upload .camera-overlay span {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+}
+
+/* Password Requirements */
+.password-requirements { list-style: none; padding: 0; margin: 0.75rem 0 0; font-size: 0.82rem; }
+.password-requirements li {
+    padding: 0.2rem 0;
+    color: var(--le-text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.password-requirements li::before { content: '•'; color: var(--le-primary); font-weight: 700; }
+
+/* 2FA Section */
+.tfa-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--le-glass-bg-subtle);
+    border-radius: var(--le-radius);
+}
+
+/* Theme Cards */
+.theme-mode-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.25rem 1rem;
+    background: var(--le-glass-bg-subtle);
+    border: 2px solid var(--le-glass-border);
+    border-radius: var(--le-radius-lg);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+.theme-mode-card:hover { background: var(--le-glass-bg); }
+.theme-mode-card.selected {
+    border-color: var(--le-primary);
+    background: rgba(var(--le-primary-rgb), 0.1);
+}
+.theme-mode-card i,
+.theme-mode-card svg { width: 28px; height: 28px; margin-bottom: 0.25rem; }
+.theme-mode-card .mode-label { font-weight: 600; font-size: 0.9rem; }
+
+/* Color Presets */
+.color-preset {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+.color-preset:hover { transform: scale(1.1); }
+.color-preset.selected {
+    border-color: var(--le-primary);
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.25);
+}
+.color-preset.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+.preset-default { background: #6366f1; }
+.preset-ocean { background: #0ea5e9; }
+.preset-sunset { background: #f97316; }
+.preset-forest { background: #22c55e; }
+.preset-berry { background: #ec4899; }
+.preset-slate { background: #64748b; }
+
+/* Integration Items */
+.integration-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--le-glass-bg-subtle);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: var(--le-radius);
+    margin-bottom: 0.75rem;
+}
+.integration-item:last-child { margin-bottom: 0; }
+.integration-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--le-radius);
+    background: var(--le-glass-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.integration-details { flex: 1; }
+.integration-details .app-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.integration-details .app-desc {
+    font-size: 0.82rem;
+    color: var(--le-text-muted);
+    margin-top: 0.15rem;
+}
+.badge-status { font-size: 0.72rem; padding: 0.25em 0.6em; border-radius: 5px; }
+
+/* Notification Groups */
+.notification-group { margin-bottom: 1.75rem; }
+.notification-group:last-child { margin-bottom: 0; }
+.notification-group h6 {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+.notification-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+}
+.notification-row > span { font-size: 0.9rem; color: var(--le-text-primary); }
+
+/* Density Radio Cards */
+.density-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    background: var(--le-glass-bg-subtle);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: var(--le-radius);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 0.5rem;
+}
+.density-option:last-child { margin-bottom: 0; }
+.density-option:hover { background: var(--le-glass-bg); }
+.density-option.selected {
+    border-color: var(--le-primary);
+    background: rgba(var(--le-primary-rgb), 0.08);
+}
+
+/* Glass-card padding within settings context */
+.settings-card .glass-card { padding: var(--le-card-padding, 1.25rem); }
+
+/* Radio button rendering */
+.settings-radio .form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--le-glass-border);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-bottom: 0;
+}
+.settings-radio .form-check:hover {
+    background: rgba(var(--le-primary-rgb), 0.05);
+}
+.settings-radio .form-check-input {
+    margin: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--le-glass-border-strong);
+    background: transparent;
+    cursor: pointer;
+}
+.settings-radio .form-check-input:checked {
+    background-color: var(--le-primary);
+    border-color: var(--le-primary);
+}
+.settings-radio .form-check-label { margin: 0; cursor: pointer; font-size: 0.875rem; }

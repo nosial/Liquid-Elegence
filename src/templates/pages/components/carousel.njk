@@ -1,0 +1,266 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Carousel — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Carousel</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Basic Carousel ──────────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-8 mx-auto">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Basic Carousel</h5>
+                <p class="text-muted mb-3 le-fs-body">A standard Bootstrap carousel with controls and indicators, styled with glassmorphic design.</p>
+
+                <div id="carouselBasic" class="carousel slide le-carousel-glass" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselBasic" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#carouselBasic" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#carouselBasic" data-bs-slide-to="2"></button>
+                    </div>
+                    <div class="carousel-inner rounded-4">
+                        <div class="carousel-item active">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center le-bg-grad-indigo">
+                                <div class="text-center text-white p-5">
+                                    <i data-feather="feather" class="le-box-48 mb-3"></i>
+                                    <h3 class="text-white">Liquid Elegance</h3>
+                                    <p class="mb-0 opacity-75 text-white">A Bootstrap 5 admin template with liquid glass morphism</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center le-bg-grad-sky">
+                                <div class="text-center text-white p-5">
+                                    <i data-feather="layers" class="le-box-48 mb-3"></i>
+                                    <h3 class="text-white">Modular Design</h3>
+                                    <p class="mb-0 opacity-75 text-white">Comprehensive component library with consistent styling</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center le-bg-grad-fuchsia">
+                                <div class="text-center text-white p-5">
+                                    <i data-feather="moon" class="le-box-48 mb-3"></i>
+                                    <h3 class="text-white">Dark Mode Ready</h3>
+                                    <p class="mb-0 opacity-75 text-white">Full dark mode support with theme-aware glass effects</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselBasic" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselBasic" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;div id="myCarousel" class="carousel slide" data-bs-ride="carousel"&gt;
+    &lt;div class="carousel-indicators"&gt;…&lt;/div&gt;
+    &lt;div class="carousel-inner"&gt;
+        &lt;div class="carousel-item active"&gt;
+            &lt;img src="slide1.jpg" class="d-block w-100" alt="…"&gt;
+        &lt;/div&gt;
+        &lt;div class="carousel-item"&gt;…&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;button class="carousel-control-prev" data-bs-slide="prev"&gt;…&lt;/button&gt;
+    &lt;button class="carousel-control-next" data-bs-slide="next"&gt;…&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Carousel with Captions ────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-8 mx-auto">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Carousel with Captions</h5>
+                <p class="text-muted mb-3 le-fs-body">Add <code>.carousel-caption</code> inside each <code>.carousel-item</code> for overlaid text.</p>
+
+                <div id="carouselCaptions" class="carousel slide le-carousel-glass" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="2"></button>
+                    </div>
+                    <div class="carousel-inner rounded-4">
+                        <div class="carousel-item active">
+                            <div class="le-carousel-slide d-flex align-items-center le-bg-grad-coral" style="min-height:300px;">
+                                <div class="w-100 p-5 pb-0">
+                                    <div class="carousel-caption d-block text-start">
+                                        <h5 class="text-white fw-bold">Analytics Dashboard</h5>
+                                        <p class="opacity-75 text-white">Real-time metrics and performance tracking at a glance.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="le-carousel-slide d-flex align-items-center le-bg-grad-green" style="min-height:300px;">
+                                <div class="w-100 p-5 pb-0">
+                                    <div class="carousel-caption d-block text-center">
+                                        <h5 class="text-white fw-bold">Team Collaboration</h5>
+                                        <p class="opacity-75 text-white">Built-in chat, Kanban, and file management for seamless teamwork.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="le-carousel-slide d-flex align-items-center le-bg-grad-lavender" style="min-height:300px;">
+                                <div class="w-100 p-5 pb-0">
+                                    <div class="carousel-caption d-block text-end">
+                                        <h5 class="text-white fw-bold">Global Reach</h5>
+                                        <p class="opacity-75 text-white">RTL support and multi-language ready for international audiences.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Crossfade & Ride Options ─────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Crossfade Transition</h5>
+                <p class="text-muted mb-3 le-fs-body">Use <code>.carousel-fade</code> for a smooth crossfade instead of a slide.</p>
+
+                <div id="carouselFade" class="carousel slide carousel-fade le-carousel-glass" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded-4">
+                        <div class="carousel-item active">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center le-bg-grad-indigo" style="min-height:200px;">
+                                <span class="text-white fw-bold le-fs-xl">First Slide</span>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center le-bg-grad-sky" style="min-height:200px;">
+                                <span class="text-white fw-bold le-fs-xl">Second Slide</span>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center le-bg-grad-fuchsia" style="min-height:200px;">
+                                <span class="text-white fw-bold le-fs-xl">Third Slide</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" data-bs-target="#carouselFade" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" data-bs-target="#carouselFade" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── Dark Variant ──────────────────────────────────────────────── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Dark Variant</h5>
+                <p class="text-muted mb-3 le-fs-body">Add <code>.carousel-dark</code> for dark controls and indicators on light slides.</p>
+
+                <div id="carouselDark" class="carousel slide carousel-dark le-carousel-glass" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded-4">
+                        <div class="carousel-item active">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center" style="min-height:200px;background:#f8f9fa;">
+                                <span class="fw-bold le-fs-xl text-dark">Light Slide One</span>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center" style="min-height:200px;background:#e9ecef;">
+                                <span class="fw-bold le-fs-xl text-dark">Light Slide Two</span>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center" style="min-height:200px;background:#dee2e6;">
+                                <span class="fw-bold le-fs-xl text-dark">Light Slide Three</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" data-bs-target="#carouselDark" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" data-bs-target="#carouselDark" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Fade transition --&gt;
+&lt;div class="carousel slide carousel-fade" data-bs-ride="carousel"&gt;…&lt;/div&gt;
+
+&lt;!-- Dark variant --&gt;
+&lt;div class="carousel slide carousel-dark" data-bs-ride="carousel"&gt;…&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Without Controls ───────────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Carousel without Controls</h5>
+                <p class="text-muted mb-3 le-fs-body">A carousel with indicators only — useful for auto-rotating hero banners or testimonials.</p>
+
+                <div id="carouselAuto" class="carousel slide le-carousel-glass" data-bs-ride="carousel" data-bs-interval="3000">
+                    <div class="carousel-inner rounded-4">
+                        <div class="carousel-item active">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center le-bg-grad-indigo" style="min-height:160px;">
+                                <p class="text-white mb-0 le-fs-lg fst-italic">"The glass design system is stunning — our users love it."</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center le-bg-grad-sky" style="min-height:160px;">
+                                <p class="text-white mb-0 le-fs-lg fst-italic">"Dark mode support made the transition seamless for our team."</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="le-carousel-slide d-flex align-items-center justify-content-center le-bg-grad-fuchsia" style="min-height:160px;">
+                                <p class="text-white mb-0 le-fs-lg fst-italic">"Highly customisable and performant — exactly what we needed."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-indicators le-pos-static mt-3">
+                        <button type="button" data-bs-target="#carouselAuto" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#carouselAuto" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#carouselAuto" data-bs-slide-to="2"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

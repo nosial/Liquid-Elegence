@@ -1,0 +1,260 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="chirp-feed.html">Chirp</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@alice_codes</li>
+        </ol>
+    </nav>
+
+    <div class="row g-4">
+
+        <!-- Main Content Column -->
+        <div class="col-lg-8 chirp-main-col">
+
+            <div class="glass-card animate-fade-in-up stagger-1">
+
+            <!-- Profile Header -->
+            <section class="chirp-profile-header">
+                <div class="chirp-profile-banner"></div>
+                <div class="chirp-profile-info">
+                    <div class="chirp-profile-avatar le-bg-gradient-primary">AC</div>
+                    <div class="chirp-profile-actions">
+                        <button class="btn btn-outline-secondary btn-sm le-pill-icon"><i data-feather="more-horizontal" class="le-icon-16"></i></button>
+                        <button class="btn btn-outline-secondary btn-sm le-pill-icon"><i data-feather="mail" class="le-icon-16"></i></button>
+                        <button class="btn-chirp-following">Following</button>
+                    </div>
+                    <h3 class="chirp-profile-name">
+                        Alice Chen
+                        <span class="chirp-tweet-verified le-fs-3xl"><i data-feather="check-circle" class="le-icon-18"></i></span>
+                    </h3>
+                    <div class="chirp-profile-handle">@alice_codes</div>
+                    <div class="chirp-profile-bio">Full-stack developer passionate about web standards and open source. Building tools that make the web better. Currently obsessed with web components and edge computing. 🌐 ☁️ 🚀</div>
+                    <div class="chirp-profile-meta">
+                        <span><i data-feather="briefcase" class="le-icon-14"></i> Senior Engineer at WebScale</span>
+                        <span><i data-feather="map-pin" class="le-icon-14"></i> Portland, OR</span>
+                        <span><i data-feather="link" class="le-icon-14"></i> <a href="javascript:void(0)" class="le-link-primary">alice-codes.dev</a></span>
+                        <span><i data-feather="calendar" class="le-icon-14"></i> Joined March 2019</span>
+                    </div>
+                    <div class="chirp-profile-stats">
+                        <div>
+                            <a href="chirp-followers.html" class="text-decoration-none">
+                                <span class="chirp-profile-stat-value">342</span>
+                                <span class="chirp-profile-stat-label"> Following</span>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="chirp-followers.html" class="text-decoration-none">
+                                <span class="chirp-profile-stat-value">12.4K</span>
+                                <span class="chirp-profile-stat-label"> Followers</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="glass-divider my-3"></div>
+
+            <!-- Profile Tabs + Posts -->
+            <section>
+                <div class="chirp-profile-tabs">
+                    <button class="chirp-profile-tab active">Posts</button>
+                    <button class="chirp-profile-tab">Replies</button>
+                    <button class="chirp-profile-tab">Media</button>
+                    <button class="chirp-profile-tab">Likes</button>
+                </div>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Pinned Post -->
+                <div class="le-feed-footer">
+                    <i data-feather="map-pin" class="le-icon-12"></i> Pinned
+                </div>
+                <div class="chirp-tweet">
+                    <div class="chirp-tweet-avatar le-bg-gradient-primary">AC</div>
+                    <div class="chirp-tweet-content">
+                        <div class="chirp-tweet-header">
+                            <a href="chirp-profile.html" class="chirp-tweet-name">Alice Chen</a>
+                            <span class="chirp-tweet-verified" title="Verified"><i data-feather="check-circle" class="le-icon-14"></i></span>
+                            <span class="chirp-tweet-handle">@alice_codes</span>
+                            <span class="chirp-tweet-dot">&middot;</span>
+                            <span class="chirp-tweet-time">Mar 1</span>
+                        </div>
+                        <div class="chirp-tweet-body">
+                            🔨 I'm building DevToolkit — an open-source developer productivity suite.<br><br>
+                            ✅ AI-powered code review<br>
+                            ✅ Unified CLI for all your tools<br>
+                            ✅ Beautiful terminal UI<br>
+                            ✅ Plugin system for extensibility<br><br>
+                            Star us on GitHub! Link in bio. Contributions welcome! 🙌
+                        </div>
+                        <div class="chirp-tweet-actions">
+                            <button class="chirp-action chirp-action-reply"><i data-feather="message-circle" class="le-icon-16"></i> 234</button>
+                            <button class="chirp-action chirp-action-retweet active"><i data-feather="repeat" class="le-icon-16"></i> 1.2K</button>
+                            <button class="chirp-action chirp-action-like active"><i data-feather="heart" class="le-icon-16"></i> 8.9K</button>
+                            <button class="chirp-action chirp-action-share"><i data-feather="bar-chart-2" class="le-icon-16"></i> 156K</button>
+                            <button class="chirp-action chirp-action-bookmark active"><i data-feather="bookmark" class="le-icon-16"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Regular Posts -->
+                {% set profileTweets = [
+                    {
+                        time: "2h",
+                        body: "Just shipped a new feature using vanilla web components. No framework, no build step, just the platform. The future is here and it's beautiful. 🚀\n\nSometimes the best tool is the one you already have.",
+                        replies: 47, retweets: 234, likes: 1892, views: "24.5K",
+                        liked: true
+                    },
+                    {
+                        time: "8h",
+                        body: "A thread on CSS architecture for large applications 🧵\n\n1/7 After years of building design systems, here's what I've learned about organizing CSS at scale...",
+                        replies: 89, retweets: 567, likes: 3421, views: "67.8K",
+                        liked: false
+                    },
+                    {
+                        time: "1d",
+                        body: "TIL that the Performance Observer API can track layout shifts in real-time. Built a little debugging tool that highlights elements causing CLS.\n\nSharing the snippet in the replies 👇",
+                        replies: 34, retweets: 189, likes: 1234, views: "18.9K",
+                        liked: false
+                    },
+                    {
+                        time: "2d",
+                        body: "Hot take: Code reviews shouldn't take more than 30 minutes. If a PR is too big to review in that time, it's too big to merge.\n\nSmall PRs = faster reviews = fewer bugs = happier teams.",
+                        replies: 156, retweets: 892, likes: 5678, views: "95.2K",
+                        liked: true
+                    },
+                    {
+                        time: "3d",
+                        body: "Excited to announce I'll be speaking at WebConf 2026! 🎤\n\nMy talk: \"The Platform is the Framework\" — exploring how modern web APIs eliminate the need for heavy client-side frameworks.\n\nSee you in Amsterdam! 🇳🇱",
+                        replies: 67, retweets: 345, likes: 2890, views: "42.1K",
+                        liked: false
+                    }
+                ] %}
+
+                {% for tweet in profileTweets %}
+                <div class="chirp-tweet animate-fade-in-up stagger-{{ loop.index if loop.index <= 8 else 8 }}">
+                    <div class="chirp-tweet-avatar le-bg-gradient-primary">AC</div>
+                    <div class="chirp-tweet-content">
+                        <div class="chirp-tweet-header">
+                            <a href="chirp-profile.html" class="chirp-tweet-name">Alice Chen</a>
+                            <span class="chirp-tweet-verified" title="Verified"><i data-feather="check-circle" class="le-icon-14"></i></span>
+                            <span class="chirp-tweet-handle">@alice_codes</span>
+                            <span class="chirp-tweet-dot">&middot;</span>
+                            <span class="chirp-tweet-time">{{ tweet.time }}</span>
+                        </div>
+                        <div class="chirp-tweet-body">{{ tweet.body | replace("\n", "<br>") | safe }}</div>
+                        <div class="chirp-tweet-actions">
+                            <button class="chirp-action chirp-action-reply"><i data-feather="message-circle" class="le-icon-16"></i> {{ tweet.replies }}</button>
+                            <button class="chirp-action chirp-action-retweet"><i data-feather="repeat" class="le-icon-16"></i> {{ tweet.retweets }}</button>
+                            <button class="chirp-action chirp-action-like{% if tweet.liked %} active{% endif %}"><i data-feather="heart" class="le-icon-16"></i> {{ tweet.likes }}</button>
+                            <button class="chirp-action chirp-action-share"><i data-feather="bar-chart-2" class="le-icon-16"></i> {{ tweet.views }}</button>
+                            <button class="chirp-action chirp-action-bookmark"><i data-feather="bookmark" class="le-icon-16"></i></button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </section>
+
+            </div>
+
+        </div>
+
+        <!-- Sidebar backdrop (mobile) -->
+        <div class="chirp-sidebar-backdrop" id="chirpSidebarBackdrop"></div>
+
+        <!-- Right Sidebar Column -->
+        <div class="col-lg-4 chirp-sidebar-col" id="chirpSidebar">
+
+            <!-- Mobile header with close button -->
+            <div class="chirp-sidebar-mobile-header">
+                <span class="chirp-sidebar-mobile-title">Explore</span>
+                <button class="chirp-sidebar-close" id="chirpSidebarClose" aria-label="Close sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <!-- Search -->
+            <div class="chirp-search mb-3">
+                <i data-feather="search" class="chirp-search-icon le-icon-16"></i>
+                <input type="text" class="chirp-search-input" placeholder="Search Chirp">
+            </div>
+
+            <!-- Who to Follow + Trending -->
+            <div class="glass-card mb-3 stagger-2">
+
+                <section class="chirp-widget">
+                    <h5 class="chirp-widget-title">You might like</h5>
+                    {% set suggestions = [
+                        { initials: "MR", name: "Marcus Rivera", handle: "@marcusdev", color: "linear-gradient(135deg, #f59e0b, #d97706)" },
+                        { initials: "SK", name: "Sarah Kim", handle: "@sarahdesigns", color: "linear-gradient(135deg, #ec4899, #be185d)" },
+                        { initials: "JW", name: "James Wright", handle: "@jwright_dev", color: "linear-gradient(135deg, var(--le-success), #059669)" }
+                    ] %}
+                    {% for user in suggestions %}
+                    <div class="chirp-follow-item">
+                        <div class="chirp-tweet-avatar" style="background:{{ user.color }};">{{ user.initials }}</div>
+                        <div class="chirp-follow-details">
+                            <a href="chirp-profile.html" class="chirp-follow-name">{{ user.name }}</a>
+                            <span class="chirp-follow-handle">{{ user.handle }}</span>
+                        </div>
+                        <button class="btn-chirp-follow">Follow</button>
+                    </div>
+                    {% endfor %}
+                    <a href="javascript:void(0)" class="chirp-widget-more">Show more</a>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Trending -->
+                <section class="chirp-widget">
+                    <h5 class="chirp-widget-title">Trends for you</h5>
+                    {% set trends = [
+                        { category: "Technology · Trending", name: "#WebComponents", count: "12.4K posts" },
+                        { category: "Programming · Trending", name: "#BuildInPublic", count: "8.9K posts" },
+                        { category: "Trending in Design", name: "#UIDesign", count: "15.7K posts" }
+                    ] %}
+                    {% for trend in trends %}
+                    <div class="chirp-trend-item">
+                        <div>
+                            <div class="chirp-trend-category">{{ trend.category }}</div>
+                            <div class="chirp-trend-name">{{ trend.name }}</div>
+                            <div class="chirp-trend-count">{{ trend.count }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <a href="javascript:void(0)" class="chirp-widget-more">Show more</a>
+                </section>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="chirp-footer-links">
+                <a href="javascript:void(0)">Terms</a>
+                <a href="javascript:void(0)">Privacy</a>
+                <a href="javascript:void(0)">Cookies</a>
+                <a href="javascript:void(0)">Accessibility</a>
+                <span>© 2022-2026 Nosial</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Floating sidebar toggle (mobile) -->
+    <button class="chirp-sidebar-toggle-fab" id="chirpSidebarToggle" aria-label="Show sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </button>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/chirp.js"></script>
+{% endblock %}

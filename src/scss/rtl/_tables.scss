@@ -1,0 +1,14 @@
+/* ─────────────────────────────────────────────────────────────
+   6. Tables
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .table th,
+[dir="rtl"] .table td {
+    text-align: right;
+}
+
+[dir="rtl"] .table .le-table-actions {
+    text-align: left;
+}
+
+

@@ -1,0 +1,811 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Modals &amp; Offcanvas — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Modals &amp; Offcanvas</li>
+{% endblock %}
+
+
+{% block content %}
+<div class="row g-4 mb-4">
+
+    {# ── 1. Standard Bootstrap Modals ── #}
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Standard Bootstrap Modals</h5>
+                <p class="text-muted mb-3 le-fs-body">Default Bootstrap 5 modals with glass styling. Click each button to preview.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#defaultModal"><i data-feather="square" class="me-1 le-icon-16"></i>Default Modal</button>
+                    <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#scrollableModal"><i data-feather="align-left" class="me-1 le-icon-16"></i>Scrollable Modal</button>
+                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#centeredModal"><i data-feather="crosshair" class="me-1 le-icon-16"></i>Centered Modal</button>
+                    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#fullscreenModal"><i data-feather="maximize" class="me-1 le-icon-16"></i>Fullscreen Modal</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Trigger button --&gt;
+&lt;button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"&gt;
+  Open Modal
+&lt;/button&gt;
+
+&lt;!-- Modal structure --&gt;
+&lt;div class="modal fade" id="myModal" tabindex="-1" aria-hidden="true"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;
+        &lt;h5 class="modal-title"&gt;Modal Title&lt;/h5&gt;
+        &lt;button type="button" class="btn-close" data-bs-dismiss="modal"&gt;&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;div class="modal-body"&gt;Content here...&lt;/div&gt;
+      &lt;div class="modal-footer"&gt;
+        &lt;button class="btn btn-secondary" data-bs-dismiss="modal"&gt;Close&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Glass variant: add .modal-glass to .modal --&gt;
+&lt;div class="modal fade modal-glass" id="myGlassModal" tabindex="-1" aria-hidden="true"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── 2. Glass Modals ── #}
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Glass Modals</h5>
+                <p class="text-muted mb-3 le-fs-body">Modals with the <code>.modal-glass</code> class for a frosted-glass appearance.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-glass btn-glass-primary" data-bs-toggle="modal" data-bs-target="#glassModal1"><i data-feather="layers" class="me-1 le-icon-16"></i>Glass Modal</button>
+                    <button class="btn btn-glass btn-glass-danger" data-bs-toggle="modal" data-bs-target="#glassConfirmModal"><i data-feather="alert-triangle" class="me-1 le-icon-16"></i>Glass Confirm Dialog</button>
+                    <button class="btn btn-glass btn-glass-success" data-bs-toggle="modal" data-bs-target="#glassFormModal"><i data-feather="edit-3" class="me-1 le-icon-16"></i>Glass Form Modal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── 3. Modal Sizes ── #}
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Modal Sizes</h5>
+                <p class="text-muted mb-3 le-fs-body">Glass modals in all available Bootstrap sizes, from small to extra large.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-glass btn-glass-secondary" data-bs-toggle="modal" data-bs-target="#sizeSmModal"><i data-feather="minimize-2" class="me-1 le-icon-16"></i>Small Modal</button>
+                    <button class="btn btn-glass btn-glass-secondary" data-bs-toggle="modal" data-bs-target="#sizeDefaultModal"><i data-feather="square" class="me-1 le-icon-16"></i>Default Modal</button>
+                    <button class="btn btn-glass btn-glass-secondary" data-bs-toggle="modal" data-bs-target="#sizeLgModal"><i data-feather="maximize-2" class="me-1 le-icon-16"></i>Large Modal</button>
+                    <button class="btn btn-glass btn-glass-secondary" data-bs-toggle="modal" data-bs-target="#sizeXlModal"><i data-feather="monitor" class="me-1 le-icon-16"></i>Extra Large Modal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── 4. Offcanvas Panels ── #}
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Offcanvas Panels</h5>
+                <p class="text-muted mb-3 le-fs-body">Slide-in panels from all four directions. Each contains distinct sample content.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-glass btn-glass-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStart"><i data-feather="arrow-right" class="me-1 le-icon-16"></i>Offcanvas Start</button>
+                    <button class="btn btn-glass btn-glass-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd"><i data-feather="arrow-left" class="me-1 le-icon-16"></i>Offcanvas End</button>
+                    <button class="btn btn-glass btn-glass-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"><i data-feather="arrow-down" class="me-1 le-icon-16"></i>Offcanvas Top</button>
+                    <button class="btn btn-glass btn-glass-primary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"><i data-feather="arrow-up" class="me-1 le-icon-16"></i>Offcanvas Bottom</button>
+                </div>
+                <div class="glass-card mt-3 le-bg-glass-subtle">
+                    <div class="glass-card-body py-2 px-3">
+                        <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                        <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- Trigger button --&gt;
+&lt;button class="btn btn-glass btn-glass-primary"
+  data-bs-toggle="offcanvas" data-bs-target="#myOffcanvas"&gt;
+  Open Panel
+&lt;/button&gt;
+
+&lt;!-- Offcanvas panel --&gt;
+&lt;div class="offcanvas offcanvas-start" id="myOffcanvas" tabindex="-1"&gt;
+  &lt;div class="offcanvas-header"&gt;
+    &lt;h5 class="offcanvas-title"&gt;Panel Title&lt;/h5&gt;
+    &lt;button type="button" class="btn-close" data-bs-dismiss="offcanvas"&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="offcanvas-body"&gt;Content here...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── 5. Offcanvas Backdrop Options ── #}
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Offcanvas Backdrop Options</h5>
+                <p class="text-muted mb-3 le-fs-body">Different backdrop and scroll behaviour configurations for offcanvas panels.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-glass btn-glass-secondary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBackdrop"><i data-feather="sidebar" class="me-1 le-icon-16"></i>With Backdrop</button>
+                    <button class="btn btn-glass btn-glass-secondary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNoBackdrop"><i data-feather="eye-off" class="me-1 le-icon-16"></i>Without Backdrop</button>
+                    <button class="btn btn-glass btn-glass-secondary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasStaticBackdrop"><i data-feather="lock" class="me-1 le-icon-16"></i>Static Backdrop</button>
+                    <button class="btn btn-glass btn-glass-secondary" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrollable"><i data-feather="mouse-pointer" class="me-1 le-icon-16"></i>Scrollable Body</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# ── 6. Practical Modal Examples ── #}
+    <div class="col-12">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Practical Modal Examples</h5>
+                <p class="text-muted mb-3 le-fs-body">Real-world modal patterns commonly used in admin dashboards.</p>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteConfirmModal"><i data-feather="trash-2" class="me-1 le-icon-16"></i>Delete Confirmation</button>
+                    <button class="btn btn-glass btn-glass-primary" data-bs-toggle="modal" data-bs-target="#imagePreviewModal"><i data-feather="image" class="me-1 le-icon-16"></i>Image Preview</button>
+                    <button class="btn btn-glass btn-glass-secondary" data-bs-toggle="modal" data-bs-target="#termsModal"><i data-feather="file-text" class="me-1 le-icon-16"></i>Terms &amp; Conditions</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{# ═══════════════════════════════════════════════════════════════════════════
+   MODAL DEFINITIONS
+   ═══════════════════════════════════════════════════════════════════════════ #}
+
+{# ── 1a. Default Modal ── #}
+<div class="modal fade" id="defaultModal" tabindex="-1" aria-labelledby="defaultModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="defaultModalLabel">Default Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This is a standard Bootstrap 5 modal with default settings. It appears at the top of the viewport and can be dismissed by clicking the backdrop or the close button.</p>
+                <p class="mb-0 text-muted le-fs-body">Use modals to display contextual information, confirmations, or lightweight forms without leaving the current page.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 1b. Scrollable Modal (with form) ── #}
+<div class="modal fade" id="scrollableModal" tabindex="-1" aria-labelledby="scrollableModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="scrollableModalLabel">Scrollable Modal — Feedback Form</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted mb-3 le-fs-body">This modal scrolls independently when the content overflows. It also demonstrates a form inside a modal.</p>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control" placeholder="Jane Doe">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control" placeholder="jane@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Department</label>
+                        <select class="form-select">
+                            <option selected>Select department…</option>
+                            <option>Engineering</option>
+                            <option>Design</option>
+                            <option>Marketing</option>
+                            <option>Sales</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Feedback</label>
+                        <textarea class="form-control" rows="4" placeholder="Share your thoughts…"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Priority</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="priority" id="priorityLow">
+                            <label class="form-check-label" for="priorityLow">Low</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="priority" id="priorityMedium" checked>
+                            <label class="form-check-label" for="priorityMedium">Medium</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="priority" id="priorityHigh">
+                            <label class="form-check-label" for="priorityHigh">High</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Additional Notes</label>
+                        <textarea class="form-control" rows="6" placeholder="Any additional context or steps to reproduce the issue…"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Submit Feedback</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 1c. Centered Modal ── #}
+<div class="modal fade" id="centeredModal" tabindex="-1" aria-labelledby="centeredModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="centeredModalLabel">Vertically Centered</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center py-3">
+                    <i data-feather="check-circle" class="mb-3 le-icon-48 le-text-success"></i>
+                    <h5>Action Completed</h5>
+                    <p class="text-muted mb-0">This modal is vertically centered in the viewport using <code>.modal-dialog-centered</code>. It is ideal for confirmations and status messages.</p>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 1d. Fullscreen Modal ── #}
+<div class="modal fade" id="fullscreenModal" tabindex="-1" aria-labelledby="fullscreenModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="fullscreenModalLabel"><i data-feather="maximize" class="me-2 le-icon-18"></i>Fullscreen Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container py-4">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="glass-card">
+                                <div class="glass-card-body text-center py-4">
+                                    <i data-feather="users" class="mb-2 le-icon-32 le-text-primary"></i>
+                                    <h6>Users</h6>
+                                    <h3 class="mb-0">2,847</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="glass-card">
+                                <div class="glass-card-body text-center py-4">
+                                    <i data-feather="shopping-cart" class="mb-2 le-icon-32 le-text-success"></i>
+                                    <h6>Orders</h6>
+                                    <h3 class="mb-0">1,203</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="glass-card">
+                                <div class="glass-card-body text-center py-4">
+                                    <i data-feather="dollar-sign" class="mb-2 le-icon-32 le-text-warning"></i>
+                                    <h6>Revenue</h6>
+                                    <h3 class="mb-0">$54,200</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted mt-4">Fullscreen modals take over the entire viewport and are useful for immersive experiences such as dashboards, wizards, or rich media previews. Use <code>.modal-fullscreen</code> on the dialog element.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close Fullscreen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 2a. Glass Modal ── #}
+<div class="modal fade modal-glass" id="glassModal1" tabindex="-1" aria-labelledby="glassModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="glassModal1Label"><i data-feather="layers" class="me-2 le-icon-18"></i>Glass Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This modal uses the <code>.modal-glass</code> class to apply frosted-glass styling to the dialog. The content area inherits translucent backgrounds, soft borders, and backdrop blur effects.</p>
+                <div class="glass-card">
+                    <div class="glass-card-body">
+                        <div class="d-flex align-items-center gap-3">
+                            <i data-feather="info" class="le-icon-20 le-text-primary"></i>
+                            <span class="text-muted le-fs-body">Glass cards can be nested inside glass modals for layered depth effects.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-glass btn-glass-primary">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 2b. Glass Confirm Dialog ── #}
+<div class="modal fade modal-glass" id="glassConfirmModal" tabindex="-1" aria-labelledby="glassConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-body text-center py-4">
+                <div class="mb-3">
+                    <i data-feather="alert-triangle" class="le-icon-48 le-text-warning"></i>
+                </div>
+                <h5 class="mb-2">Are you sure?</h5>
+                <p class="text-muted mb-0 le-fs-body">This action cannot be undone. All associated data will be permanently removed from our servers.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-glass btn-glass-danger">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 2c. Glass Form Modal ── #}
+<div class="modal fade modal-glass" id="glassFormModal" tabindex="-1" aria-labelledby="glassFormModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="glassFormModalLabel"><i data-feather="user-plus" class="me-2 le-icon-18"></i>Create Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="glass-input" placeholder="Choose a username">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="glass-input" placeholder="you@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="glass-input" placeholder="Min. 8 characters">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role</label>
+                        <select class="glass-select">
+                            <option selected>Select role…</option>
+                            <option>Administrator</option>
+                            <option>Editor</option>
+                            <option>Viewer</option>
+                        </select>
+                    </div>
+                    <div class="form-check mb-0">
+                        <input class="form-check-input" type="checkbox" id="agreeTerms">
+                        <label class="form-check-label le-fs-body" for="agreeTerms">I agree to the terms and conditions</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-glass btn-glass-success">Create Account</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 3a. Small Modal ── #}
+<div class="modal fade modal-glass" id="sizeSmModal" tabindex="-1" aria-labelledby="sizeSmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sizeSmModalLabel">Small Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-0">This is a small glass modal using <code>.modal-sm</code>. Maximum width is 300px.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-glass btn-glass-primary btn-sm" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 3b. Default Size Modal ── #}
+<div class="modal fade modal-glass" id="sizeDefaultModal" tabindex="-1" aria-labelledby="sizeDefaultModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sizeDefaultModalLabel">Default Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="mb-0">This glass modal uses the default Bootstrap size. Maximum width is 500px. Suitable for most dialogs and forms.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-glass btn-glass-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 3c. Large Modal ── #}
+<div class="modal fade modal-glass" id="sizeLgModal" tabindex="-1" aria-labelledby="sizeLgModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sizeLgModalLabel">Large Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This glass modal uses <code>.modal-lg</code> for a maximum width of 800px. Ideal for data tables, detailed forms, or content that requires more horizontal space.</p>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <div class="glass-card">
+                            <div class="glass-card-body text-center">
+                                <i data-feather="bar-chart-2" class="mb-2 le-icon-24 le-text-primary"></i>
+                                <h6 class="mb-0">Analytics</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="glass-card">
+                            <div class="glass-card-body text-center">
+                                <i data-feather="pie-chart" class="le-icon-24 le-text-secondary mb-2"></i>
+                                <h6 class="mb-0">Reports</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-glass btn-glass-primary">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 3d. Extra Large Modal ── #}
+<div class="modal fade modal-glass" id="sizeXlModal" tabindex="-1" aria-labelledby="sizeXlModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sizeXlModalLabel">Extra Large Modal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This glass modal uses <code>.modal-xl</code> for a maximum width of 1140px. Best suited for complex layouts, multi-column forms, or embedded dashboards.</p>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="glass-card">
+                            <div class="glass-card-body">
+                                <i data-feather="cpu" class="mb-2 le-icon-20 le-text-primary"></i>
+                                <h6 class="mb-1">Performance</h6>
+                                <p class="text-muted mb-0 le-fs-body">CPU usage at 42% with 8 active cores processing requests.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card">
+                            <div class="glass-card-body">
+                                <i data-feather="hard-drive" class="mb-2 le-icon-20 le-text-success"></i>
+                                <h6 class="mb-1">Storage</h6>
+                                <p class="text-muted mb-0 le-fs-body">128 GB of 512 GB used. Healthy disk status across all volumes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="glass-card">
+                            <div class="glass-card-body">
+                                <i data-feather="activity" class="mb-2 le-icon-20 le-text-warning"></i>
+                                <h6 class="mb-1">Network</h6>
+                                <p class="text-muted mb-0 le-fs-body">Latency 12ms. Throughput 340 Mbps across 3 regions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-glass btn-glass-primary">Apply Settings</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 6a. Delete Confirmation ── #}
+<div class="modal fade modal-glass" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+            <div class="modal-body text-center py-4">
+                <div class="mb-3">
+                    <i data-feather="trash-2" class="le-icon-48 le-text-danger"></i>
+                </div>
+                <h5 class="mb-2">Delete Item?</h5>
+                <p class="text-muted mb-0 le-fs-body">This will permanently delete the selected item and all of its associated data. This action is irreversible.</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger">Delete Permanently</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 6b. Image Preview ── #}
+<div class="modal fade modal-glass" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imagePreviewModalLabel"><i data-feather="image" class="me-2 le-icon-18"></i>Image Preview</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+                <img src="https://placehold.co/800x450/0ea5e9/ffffff?text=Image+Preview" alt="Preview" class="img-fluid w-100 le-rounded-0">
+            </div>
+            <div class="modal-footer">
+                <span class="text-muted me-auto le-fs-body">sample-image.jpg — 800 × 450px</span>
+                <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-glass btn-glass-primary"><i data-feather="download" class="me-1 le-icon-14"></i>Download</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 6c. Terms & Conditions ── #}
+<div class="modal fade modal-glass" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="termsModalLabel"><i data-feather="file-text" class="me-2 le-icon-18"></i>Terms &amp; Conditions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h6>1. Acceptance of Terms</h6>
+                <p class="text-muted le-fs-body">By accessing and using this application, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service. These terms apply to all visitors, users, and others who access or use the service.</p>
+
+                <h6>2. Use of the Service</h6>
+                <p class="text-muted le-fs-body">You agree not to reproduce, duplicate, copy, sell, resell, or exploit any portion of the service, use of the service, or access to the service without the express written permission by us. You may not use the service for any illegal or unauthorized purpose nor may you, in the use of the service, violate any laws in your jurisdiction.</p>
+
+                <h6>3. User Accounts</h6>
+                <p class="text-muted le-fs-body">When you create an account with us, you must provide information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the terms, which may result in immediate termination of your account on our service. You are responsible for safeguarding the password and for all activities that occur under your account.</p>
+
+                <h6>4. Intellectual Property</h6>
+                <p class="text-muted le-fs-body">The service and its original content, features, and functionality are and will remain the exclusive property of the company and its licensors. The service is protected by copyright, trademark, and other laws of both domestic and foreign countries. Our trademarks may not be used in connection with any product or service without prior written consent.</p>
+
+                <h6>5. Privacy Policy</h6>
+                <p class="text-muted le-fs-body">Your privacy is important to us. Our Privacy Policy explains how we collect, use, and protect your personal information when you use our service. By using the service, you agree to the collection and use of information in accordance with our Privacy Policy. We will not share your information with third parties except as described in the policy.</p>
+
+                <h6>6. Termination</h6>
+                <p class="text-muted le-fs-body">We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the terms. Upon termination, your right to use the service will immediately cease. All provisions of the terms which by their nature should survive termination shall survive.</p>
+
+                <h6>7. Limitation of Liability</h6>
+                <p class="text-muted le-fs-body">In no event shall the company, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the service.</p>
+
+                <h6>8. Changes to Terms</h6>
+                <p class="text-muted mb-0 le-fs-body">We reserve the right, at our sole discretion, to modify or replace these terms at any time. If a revision is material, we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion. By continuing to access or use our service after those revisions become effective, you agree to be bound by the revised terms.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-glass btn-glass-secondary" data-bs-dismiss="modal">Decline</button>
+                <button type="button" class="btn btn-glass btn-glass-success">I Accept</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ═══════════════════════════════════════════════════════════════════════════
+   OFFCANVAS DEFINITIONS
+   ═══════════════════════════════════════════════════════════════════════════ #}
+
+{# ── 4a. Offcanvas Start (Left — Navigation) ── #}
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasStart" aria-labelledby="offcanvasStartLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasStartLabel"><i data-feather="menu" class="me-2 le-icon-18"></i>Navigation</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <nav class="nav flex-column gap-1">
+            <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded active" href="javascript:void(0)">
+                <i data-feather="home" class="le-icon-16"></i> Dashboard
+            </a>
+            <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded" href="javascript:void(0)">
+                <i data-feather="bar-chart-2" class="le-icon-16"></i> Analytics
+            </a>
+            <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded" href="javascript:void(0)">
+                <i data-feather="users" class="le-icon-16"></i> Customers
+            </a>
+            <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded" href="javascript:void(0)">
+                <i data-feather="shopping-bag" class="le-icon-16"></i> Products
+            </a>
+            <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded" href="javascript:void(0)">
+                <i data-feather="file-text" class="le-icon-16"></i> Orders
+            </a>
+            <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded" href="javascript:void(0)">
+                <i data-feather="mail" class="le-icon-16"></i> Messages
+            </a>
+            <a class="nav-link d-flex align-items-center gap-2 px-3 py-2 rounded" href="javascript:void(0)">
+                <i data-feather="settings" class="le-icon-16"></i> Settings
+            </a>
+        </nav>
+        <hr>
+        <p class="text-muted px-3 mb-0 le-fs-body">Slide-in navigation panel using <code>offcanvas-start</code>.</p>
+    </div>
+</div>
+
+{# ── 4b. Offcanvas End (Right — Settings / Filters) ── #}
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasEndLabel"><i data-feather="sliders" class="me-2 le-icon-18"></i>Filters &amp; Settings</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <form>
+            <div class="mb-3">
+                <label class="form-label">Search</label>
+                <input type="text" class="glass-input" placeholder="Filter items…">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Category</label>
+                <select class="glass-select">
+                    <option selected>All Categories</option>
+                    <option>Electronics</option>
+                    <option>Clothing</option>
+                    <option>Home &amp; Garden</option>
+                    <option>Sports</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Date Range</label>
+                <input type="date" class="glass-input mb-2">
+                <input type="date" class="glass-input">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Status</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="filterActive" checked>
+                    <label class="form-check-label" for="filterActive">Active</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="filterPending">
+                    <label class="form-check-label" for="filterPending">Pending</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="filterArchived">
+                    <label class="form-check-label" for="filterArchived">Archived</label>
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-glass btn-glass-primary">Apply Filters</button>
+                <button type="button" class="btn btn-glass btn-glass-secondary">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{# ── 4c. Offcanvas Top (Notification / Search Bar) ── #}
+<div class="offcanvas offcanvas-top le-max-h-50vh" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasTopLabel"><i data-feather="search" class="me-2 le-icon-18"></i>Quick Search</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="container le-max-w-720">
+            <div class="input-group mb-3">
+                <input type="text" class="glass-input le-rounded-start-8" placeholder="Search pages, components, settings…">
+                <button class="btn btn-glass btn-glass-primary le-rounded-end-8" type="button">
+                    <i data-feather="search" class="le-icon-16"></i>
+                </button>
+            </div>
+            <div class="d-flex flex-wrap gap-2">
+                <span class="badge bg-primary bg-opacity-10 text-primary le-fs-body">
+                    <i data-feather="clock" class="me-1 le-icon-12"></i>Dashboard
+                </span>
+                <span class="badge bg-primary bg-opacity-10 text-primary le-fs-body">
+                    <i data-feather="clock" class="me-1 le-icon-12"></i>User Settings
+                </span>
+                <span class="badge bg-primary bg-opacity-10 text-primary le-fs-body">
+                    <i data-feather="clock" class="me-1 le-icon-12"></i>Analytics
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── 4d. Offcanvas Bottom (Action Sheet) ── #}
+<div class="offcanvas offcanvas-bottom le-max-h-50vh" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasBottomLabel"><i data-feather="more-horizontal" class="me-2 le-icon-18"></i>Actions</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="container le-max-w-480">
+            <div class="d-grid gap-2">
+                <button class="btn btn-glass btn-glass-primary d-flex align-items-center gap-2 justify-content-center">
+                    <i data-feather="share-2" class="le-icon-16"></i> Share
+                </button>
+                <button class="btn btn-glass btn-glass-secondary d-flex align-items-center gap-2 justify-content-center">
+                    <i data-feather="copy" class="le-icon-16"></i> Duplicate
+                </button>
+                <button class="btn btn-glass btn-glass-secondary d-flex align-items-center gap-2 justify-content-center">
+                    <i data-feather="download" class="le-icon-16"></i> Export as PDF
+                </button>
+                <button class="btn btn-glass btn-glass-secondary d-flex align-items-center gap-2 justify-content-center">
+                    <i data-feather="archive" class="le-icon-16"></i> Archive
+                </button>
+                <button class="btn btn-glass btn-glass-danger d-flex align-items-center gap-2 justify-content-center">
+                    <i data-feather="trash-2" class="le-icon-16"></i> Delete
+                </button>
+            </div>
+            <button class="btn btn-secondary w-100 mt-3" data-bs-dismiss="offcanvas">Cancel</button>
+        </div>
+    </div>
+</div>
+
+{# ── 5a. Offcanvas With Backdrop (default) ── #}
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasBackdrop" aria-labelledby="offcanvasBackdropLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasBackdropLabel">With Backdrop</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>This offcanvas panel uses the default backdrop behaviour. Clicking the darkened backdrop area dismisses the panel.</p>
+        <p class="text-muted mb-0 le-fs-body">No extra attributes are needed — this is the default Bootstrap 5 offcanvas behaviour.</p>
+    </div>
+</div>
+
+{# ── 5b. Offcanvas Without Backdrop ── #}
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNoBackdrop" data-bs-backdrop="false" aria-labelledby="offcanvasNoBackdropLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNoBackdropLabel">Without Backdrop</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>This panel has no backdrop overlay. The page behind remains fully interactive while the offcanvas is open.</p>
+        <p class="text-muted mb-0 le-fs-body">Set <code>data-bs-backdrop="false"</code> to disable the backdrop.</p>
+    </div>
+</div>
+
+{# ── 5c. Offcanvas Static Backdrop ── #}
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasStaticBackdrop" data-bs-backdrop="static" aria-labelledby="offcanvasStaticBackdropLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasStaticBackdropLabel">Static Backdrop</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>This panel uses a static backdrop — clicking the backdrop area will <strong>not</strong> dismiss the panel. You must use the close button.</p>
+        <p class="text-muted mb-0 le-fs-body">Set <code>data-bs-backdrop="static"</code> to prevent dismissal on backdrop click.</p>
+    </div>
+</div>
+
+{# ── 5d. Offcanvas Scrollable Body ── #}
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasScrollable" data-bs-scroll="true" aria-labelledby="offcanvasScrollableLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollableLabel">Scrollable Body</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>With <code>data-bs-scroll="true"</code>, the page body remains scrollable while this offcanvas panel is open. This is useful for side panels that supplement — rather than block — the main content.</p>
+        <p class="text-muted le-fs-body">Try scrolling the page behind this panel to see the effect in action.</p>
+        <hr>
+        <h6>Sample Content</h6>
+        <p class="text-muted le-fs-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p class="text-muted le-fs-body">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p class="text-muted mb-0 le-fs-body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+    </div>
+</div>
+
+{% endblock %}

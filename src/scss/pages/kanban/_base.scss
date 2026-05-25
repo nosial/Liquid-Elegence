@@ -1,0 +1,76 @@
+/* =============================================================================
+   Liquid Elegance — Kanban App Styles
+   Modular liquid glass design for the kanban interface.
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+
+.kanban-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.kanban-header-left {
+    flex: 1;
+    min-width: 240px;
+}
+
+.kanban-header-left h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 0 0.25rem 0;
+    color: var(--le-text);
+}
+
+.kanban-header-left .project-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.kanban-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Progress Bar (Header)
+   -------------------------------------------------------------------------- */
+
+.kanban-progress {
+    flex: 0 0 220px;
+}
+
+.kanban-progress-label {
+    font-size: 0.75rem;
+    color: var(--le-text-muted);
+    font-weight: 600;
+}
+
+.kanban-progress-bar-wrap {
+    height: 8px;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-top: 0.25rem;
+}
+
+.kanban-progress-bar-fill {
+    height: 100%;
+    width: 62%;
+    background: linear-gradient(90deg, var(--le-primary), var(--le-secondary));
+    border-radius: 99px;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 8px rgba(var(--le-primary-rgb), 0.3);
+}

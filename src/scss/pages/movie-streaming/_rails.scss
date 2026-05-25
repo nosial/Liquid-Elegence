@@ -1,0 +1,194 @@
+/* =============================================================================
+   Movie Streaming — Horizontal Rails (bare, edge-to-edge, Netflix-style)
+   ============================================================================= */
+
+.movie-rail {
+    position: relative;
+    margin: 0 0 var(--le-mov-rail-section-gap);
+    padding: 0 var(--le-mov-rail-side-pad);
+}
+
+/* When the rail is composed with `.glass-card` (markup-side, for
+   visual consistency with the rest of the demo apps), reuse the
+   glass card's border / radius / shadow / backdrop-blur tokens
+   wholesale. The rail's own horizontal padding (56px) is preserved
+   so the side nav buttons still sit inside the rail's title gutter,
+   and `.glass-card`'s `overflow: visible` keeps the rail-track's
+   hover scale-up from being clipped by the card border. The only
+   thing the bare-rail layout lacks is vertical breathing room
+   between the title row and the card frame — add it here so the
+   rail-header doesn't butt the top edge of the glass surface and
+   the bottom row of cards doesn't kiss the bottom edge.
+
+   `:where()` keeps specificity at zero so per-page overrides
+   (e.g. compact rails) can still tweak this without `!important`. */
+.movie-rail:where(.glass-card) {
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.movie-rail-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.movie-rail-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    color: #e5e5e5;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+}
+
+[data-theme="light"] .movie-rail-title { color: var(--le-text-primary); }
+
+.movie-rail-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, color 0.15s ease;
+}
+
+[data-theme="light"] .movie-rail-link { color: var(--le-text-secondary); }
+
+.movie-rail:hover .movie-rail-link {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--le-mov-brand);
+}
+
+.movie-rail-viewport {
+    position: relative;
+    margin: 0 -8px;
+}
+
+.movie-rail-track {
+    display: flex;
+    gap: var(--le-mov-rail-gap);
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding: var(--le-mov-rail-track-pad-y) 8px;
+    margin: calc(var(--le-mov-rail-track-pad-y) * -1) 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.movie-rail-track::-webkit-scrollbar { display: none; }
+
+.movie-rail-track > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+}
+
+.movie-rail-nav {
+    position: absolute;
+    top: var(--le-mov-rail-track-pad-y);
+    bottom: var(--le-mov-rail-track-pad-y);
+    /* Must sit above hovered cards. `.movie-card:hover` lifts itself
+       to `z-index: 6` and scales 1.08 — without this, the scaled
+       card is painted ON TOP of the nav button, and any cursor
+       movement toward the button instead hovers the still-expanded
+       neighbor card, occluding the click target entirely. Anything
+       >= 7 works; using 20 to leave headroom for future card hover
+       layers (e.g. tooltips) without revisiting this rule. */
+    z-index: 20;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    /* Glass-tinted nav buttons (was a flat `rgba(20, 20, 20, 0.5)`
+       slab). Re-uses the standard glass surface tokens so the
+       buttons read as a translucent overlay matching the rest of
+       the template's chip / icon-button vocabulary, instead of a
+       hard black bar that only looked right on a Netflix-grey page
+       background. Adds a subtle border + backdrop-blur for the same
+       reason. */
+    border: 1px solid var(--le-glass-border-subtle);
+    background: var(--le-glass-bg-strong);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.movie-rail-nav:hover {
+    background: var(--le-glass-bg);
+    border-color: rgba(var(--le-primary-rgb), 0.4);
+    box-shadow: 0 6px 18px rgba(var(--le-primary-rgb), 0.2), 0 2px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(1.06);
+}
+
+.movie-rail-nav:active {
+    transform: scale(0.96);
+}
+/* Pull the nav buttons fully inside the viewport (was `-2px`, which
+   pushed them past the viewport's right/left hit-test edge). The
+   viewport has `margin: 0 -8px` so 6px from its edge still sits
+   inside the rail's 56px side gutter, but the entire 48px-wide
+   button now lives inside the viewport's bounding box — so moving
+   the cursor toward the button never crosses an unhovered gap that
+   would fade the button out before the cursor reaches it. */
+.movie-rail-nav.is-prev { left: 8px; }
+.movie-rail-nav.is-next { right: 8px; }
+
+.movie-rail-nav svg {
+    width: 22px;
+    height: 22px;
+    transition: transform 0.15s ease;
+    stroke-width: 2.5;
+}
+
+.movie-rail-nav:hover svg { transform: scale(1.12); }
+
+/* Trigger nav-button visibility from the entire `.movie-rail`
+   instead of just `.movie-rail-viewport`. The previous viewport-
+   only trigger had two problems:
+     1. The viewport is only as tall as the card row, so moving the
+        cursor up toward the rail title (or, on glass-card rails,
+        into the new top/bottom padding) immediately killed `:hover`
+        and faded the buttons out mid-reach.
+     2. The 0.2s opacity transition combined with `pointer-events:
+        none` while fading meant any momentary cursor exit (e.g.
+        crossing the inner gap between two cards' hover-scaled
+        edges, or the title-row baseline) would lock the buttons
+        out for the rest of the gesture.
+   Hovering anywhere inside the rail (header, padding, viewport, or
+   on the nav button itself) now keeps the buttons live, which
+   matches Netflix / YouTube / Prime rail behaviour. */
+.movie-rail:hover .movie-rail-nav,
+.movie-rail-nav:hover,
+.movie-rail-nav:focus-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.movie-rail-nav[disabled] { opacity: 0 !important; pointer-events: none; }
+
+/* Light theme: tint the nav button text/icon to remain visible */
+[data-theme="light"] .movie-rail-nav {
+    color: var(--le-text-primary);
+    background: var(--le-glass-bg-strong);
+}
+
+[data-theme="light"] .movie-rail-nav:hover {
+    border-color: rgba(var(--le-primary-rgb), 0.5);
+    color: var(--le-primary);
+}

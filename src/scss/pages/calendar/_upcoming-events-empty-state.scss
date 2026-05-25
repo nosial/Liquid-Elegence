@@ -1,0 +1,161 @@
+@use "../mixins" as *;
+
+/* ---------------------------------------------------------------------------
+   Upcoming Events — empty state
+   --------------------------------------------------------------------------- */
+
+.upcoming-empty {
+    font-size: 0.8rem;
+    color: var(--le-text-muted);
+    padding: 0.5rem 0;
+}
+
+
+/* ---------------------------------------------------------------------------
+   Delete Button — modal footer
+   --------------------------------------------------------------------------- */
+
+.btn-modal-delete {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid rgba(var(--le-danger-rgb), 0.3);
+    border-radius: var(--le-radius-sm);
+    cursor: pointer;
+    font-size: 0.8125rem;
+    font-weight: var(--le-font-weight-semibold);
+    color: var(--le-danger);
+    transition: all var(--le-transition-fast);
+    margin-right: auto;
+}
+
+.btn-modal-delete:hover {
+    background: rgba(var(--le-danger-rgb), 0.1);
+    border-color: var(--le-danger);
+    box-shadow: 0 2px 8px rgba(var(--le-danger-rgb), 0.2);
+}
+
+.btn-modal-delete i,
+.btn-modal-delete svg {
+    width: 14px;
+    height: 14px;
+}
+
+
+/* Mobile Navigation Elements (hidden on desktop) */
+.cal-sidebar-toggle { display: none; }
+.cal-sidebar-backdrop { display: none; }
+.cal-sidebar-header-mobile { display: none; }
+.cal-fab-create { display: none; }
+
+
+/* ---------------------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 991.98px) {
+    .calendar-layout {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .month-cell {
+        min-height: 70px;
+    }
+
+    /* Keep header in a single row; let inner groups wrap inside it.
+       Stacking the entire header eats vertical space and pushes the
+       calendar grid below the fold. */
+    .cal-main-header {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        row-gap: 0.5rem;
+    }
+
+    /* Sidebar toggle */
+    .cal-sidebar-toggle {
+        @include sidebar-toggle-inline;
+    }
+    .cal-sidebar-toggle:hover,
+    .cal-sidebar-toggle:active {
+        @include sidebar-toggle-hover;
+    }
+    .cal-sidebar-toggle svg { width: 20px; height: 20px; }
+
+    /* Sidebar backdrop */
+    .cal-sidebar-backdrop {
+        @include sidebar-backdrop;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        touch-action: none;
+        -webkit-overflow-scrolling: auto;
+    }
+    .cal-sidebar-backdrop.show {
+        @include sidebar-backdrop-show;
+    }
+
+    /* Sidebar drawer */
+    .calendar-sidebar {
+        @include sidebar-drawer-left;
+        height: 100vh;
+        height: 100dvh;
+    }
+    .calendar-sidebar.show {
+        transform: translateX(0);
+    }
+    .calendar-sidebar .glass-card {
+        border-radius: 0;
+        height: 100%;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        box-shadow: none;
+        border-left: none;
+    }
+
+    /* Sidebar mobile header */
+    .cal-sidebar-header-mobile {
+        @include sidebar-mobile-header;
+    }
+    .cal-sidebar-title {
+        @include sidebar-mobile-title;
+    }
+    .cal-sidebar-close {
+        @include sidebar-close-btn;
+    }
+    .cal-sidebar-close:hover { @include sidebar-close-hover; }
+    .cal-sidebar-close svg { width: 20px; height: 20px; }
+
+    /* Calendar main takes full width */
+    .calendar-main {
+        width: 100%;
+    }
+
+    /* Floating create event button */
+    .cal-fab-create {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 1020;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: none;
+        background: var(--le-primary);
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(var(--le-primary-rgb), 0.35),
+                    0 2px 8px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+    }
+    .cal-fab-create:active { filter: brightness(0.96); }
+    .cal-fab-create svg { width: 22px; height: 22px; }
+}
+
+

@@ -1,0 +1,32 @@
+/* =============================================================================
+   Liquid Elegance — Video Streaming
+   §1 Tokens
+   ============================================================================= */
+
+:root {
+    --le-vid-radius: 14px;
+    --le-vid-thumb-radius: 12px;
+    --le-vid-row-radius: 10px;
+}
+
+/* ---------------------------------------------------------------------------
+   Density overrides — the video-streaming app declared three radius
+   tokens but no density variants, so toggling compact / comfortable in
+   the customizer changed the surrounding shell while every video
+   surface (player frame, thumbs, watch-page rows, sidebar cards) kept
+   the same default radii. Compact tightens corners ~25 %, comfortable
+   relaxes them ~25 %, mirroring the global radius progression in
+   `glass/density/_compact.scss` (`--le-radius` shrinks from 12 → 8 in
+   compact, grows in comfortable).
+   ------------------------------------------------------------------------ */
+[data-density="compact"] {
+    --le-vid-radius: 10px;
+    --le-vid-thumb-radius: 8px;
+    --le-vid-row-radius: 7px;
+}
+
+[data-density="comfortable"] {
+    --le-vid-radius: 18px;
+    --le-vid-thumb-radius: 16px;
+    --le-vid-row-radius: 14px;
+}

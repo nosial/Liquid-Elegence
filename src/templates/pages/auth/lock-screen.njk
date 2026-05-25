@@ -1,0 +1,81 @@
+{% set root = "../../" %}
+{% extends "layouts/auth.njk" %}
+
+{% block body_attrs %} class="auth-page page-lock-screen"{% endblock %}
+
+{% block auth_content %}
+<div class="lock-screen-wrapper">
+        <div class="lock-time">
+            <div class="lock-time-display" id="timeDisplay">00:00</div>
+            <div class="lock-date-display" id="dateDisplay"></div>
+        </div>
+
+        <div class="auth-card">
+            <div class="lock-avatar">JD</div>
+            <div class="lock-name">John Doe</div>
+            <div class="lock-email">john.doe@example.com</div>
+
+            <form class="auth-form" id="lockForm" novalidate>
+                <div class="auth-input-group">
+                    <i data-feather="lock" class="input-icon"></i>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                    <div class="invalid-feedback">Please enter your password.</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Unlock</button>
+            </form>
+
+            <a href="signin.html" class="lock-alt-link">Sign in as a different user</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') feather.replace();
+
+            var timeDisplay = document.getElementById('timeDisplay');
+            var dateDisplay = document.getElementById('dateDisplay');
+
+            function updateClock() {
+                var now = new Date();
+                var hours = now.getHours().toString().padStart(2, '0');
+                var minutes = now.getMinutes().toString().padStart(2, '0');
+                timeDisplay.textContent = hours + ':' + minutes;
+
+                var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                dateDisplay.textContent = now.toLocaleDateString('en-US', options);
+            }
+
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            // Form validation
+            var form = document.getElementById('lockForm');
+            var passwordInput = document.getElementById('password');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                passwordInput.classList.remove('is-invalid');
+
+                if (!passwordInput.value) {
+                    passwordInput.classList.add('is-invalid');
+                    return;
+                }
+
+                var btn = form.querySelector('.btn-primary');
+                btn.textContent = 'Unlocking...';
+                btn.disabled = true;
+                setTimeout(function() {
+                    btn.textContent = 'Unlock';
+                    btn.disabled = false;
+                }, 2000);
+            });
+
+            passwordInput.addEventListener('input', function() {
+                this.classList.remove('is-invalid');
+            });
+        });
+</script>
+{% endblock %}

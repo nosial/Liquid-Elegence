@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Liquid Elegance — Layout System
+   Bootstrap 5 Admin Template with Apple Liquid-Glass / visionOS Aesthetic
+
+   Dependencies: liquid-glass.css (provides --le-* custom properties)
+
+   Sections:
+     1.  App Wrapper
+     2.  Sidebar — Shell & Header
+     3.  Sidebar — Navigation
+     4.  Sidebar — Collapsed State
+     5.  Sidebar — Hover Expand (Collapsed)
+     6.  Sidebar — Mobile & Backdrop
+     7.  Main Content Area
+     8.  Topbar — Shell
+     9.  Topbar — Left (Toggle + Breadcrumb)
+     10. Topbar — Right (Search, Icons, User)
+     11. Page Content & Header
+     12. Footer
+     13. Dropdown Glass Styling
+     14. Dark Mode Adjustments
+     15. Layout Variants (Horizontal, Boxed)
+     16. Density Levels (Compact, Comfortable)
+     17. Responsive Breakpoints
+     18. Custom Scrollbar
+     19. Utility Classes & Animations
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. APP WRAPPER
+   Works both with and without .app-wrapper wrapping element.
+   ========================================================================== */
+
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+    font-family: var(--le-font-family);
+    font-size: var(--le-font-size-base);
+    color: var(--le-text-primary);
+}
+
+

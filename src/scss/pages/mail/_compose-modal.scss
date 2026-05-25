@@ -1,0 +1,82 @@
+/* ---------------------------------------------------------------------------
+   Compose Modal
+   Surface (background, border, radius, shadow, blur) is provided by
+   `.modal-glass`. Only layout/structural rules live here.
+   --------------------------------------------------------------------------- */
+.compose-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.compose-modal .modal-header {
+    border-bottom: 1px solid var(--le-glass-border-subtle);
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.compose-modal .modal-header .modal-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--le-text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.compose-modal .modal-header .modal-title i,
+.compose-modal .modal-header .modal-title svg {
+    width: 16px;
+    height: 16px;
+    color: var(--le-primary);
+}
+
+.compose-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.compose-minimize-btn,
+.compose-expand-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: var(--le-radius-sm);
+    background: transparent;
+    color: var(--le-text-muted);
+    cursor: pointer;
+    transition: all var(--le-transition-fast);
+}
+
+.compose-minimize-btn:hover,
+.compose-expand-btn:hover {
+    background: rgba(var(--le-primary-rgb), 0.08);
+    color: var(--le-primary);
+}
+
+.compose-minimize-btn i, .compose-minimize-btn svg,
+.compose-expand-btn i, .compose-expand-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.compose-modal .modal-body {
+    padding: 1rem 1.25rem;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.compose-modal .modal-footer {
+    border-top: 1px solid var(--le-glass-border-subtle);
+    padding: 0.625rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

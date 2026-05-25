@@ -1,0 +1,45 @@
+/* Music app buttons */
+
+.music-btn {
+    appearance: none;
+    border: 1px solid transparent;
+    background: var(--le-glass-bg);
+    color: var(--le-text-primary);
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.music-btn svg { width: 16px; height: 16px; stroke-width: 2.2; }
+
+.music-btn:hover { transform: translateY(-1px); }
+
+.music-btn-primary {
+    background: var(--le-primary);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(var(--le-primary-rgb), 0.35);
+    border-color: rgba(var(--le-primary-rgb), 0.55);
+}
+
+.music-btn-primary:hover {
+    background: var(--le-primary-hover, var(--le-primary));
+    box-shadow: 0 10px 26px rgba(var(--le-primary-rgb), 0.45);
+}
+
+.music-btn-ghost {
+    background: var(--le-glass-bg);
+    border-color: var(--le-glass-border-subtle);
+    color: var(--le-text-primary);
+}
+
+.music-btn-ghost:hover {
+    background: var(--le-glass-bg-strong);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    color: var(--le-primary);
+}

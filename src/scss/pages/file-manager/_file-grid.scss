@@ -1,0 +1,113 @@
+/* -----------------------------------------------------------------------------
+   File Grid
+   -------------------------------------------------------------------------- */
+
+.fm-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 1.25rem;
+}
+
+.fm-grid-view { display: grid; }
+.fm-grid-view.hidden { display: none; }
+.fm-list-view { display: none; }
+.fm-list-view.visible { display: block; }
+
+/* -----------------------------------------------------------------------------
+   File Cards — glass morphism with top-edge reflection
+   -------------------------------------------------------------------------- */
+
+.fm-file-card {
+    position: relative;
+    overflow: hidden;
+    padding: 1.25rem;
+    border-radius: var(--le-radius);
+    border: 1px solid var(--le-glass-border);
+    background: var(--le-glass-bg);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.fm-file-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: radial-gradient(ellipse at 50% 0%, var(--le-reflection-start) 0%, transparent 70%);
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.fm-file-card:hover {
+    filter: brightness(1.06);
+    border-color: rgba(var(--le-primary-rgb), 0.35);
+    box-shadow: var(--le-glass-shadow-lg), 0 0 20px rgba(var(--le-primary-rgb), 0.08);
+}
+
+/* Selected file card */
+.fm-file-card.fm-selected {
+    border-color: var(--le-primary);
+    background: rgba(var(--le-primary-rgb), 0.08);
+    box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.1);
+}
+
+/* Checkbox glass toggle */
+.fm-checkbox {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    border-radius: var(--le-radius-xs);
+    border: 2px solid var(--le-glass-border-strong);
+    background: var(--le-glass-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all var(--le-transition-fast);
+    cursor: pointer;
+}
+
+.fm-file-card:hover .fm-checkbox,
+.fm-file-card.fm-selected .fm-checkbox {
+    opacity: 1;
+}
+
+.fm-file-card.fm-selected .fm-checkbox {
+    background: var(--le-primary);
+    border-color: var(--le-primary);
+    color: var(--le-text-inverse);
+}
+
+/* Mobile three-dot menu button on file cards */
+.fm-card-more-btn {
+    display: none;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: var(--le-radius-sm);
+    background: var(--le-glass-bg);
+    color: var(--le-text-muted);
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.15s, color 0.15s;
+
+    i, svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    &:hover, &:active {
+        background: rgba(var(--le-primary-rgb), 0.12);
+        color: var(--le-primary);
+    }
+}

@@ -1,0 +1,74 @@
+/* =========================================================================
+   Form Input Glow
+   ========================================================================= */
+
+/* Animated focus glow ring */
+@keyframes focus-ring-expand {
+    from {
+        box-shadow: 0 0 0 2px rgba(var(--le-primary-rgb), 0.32),
+                    0 0 10px rgba(var(--le-primary-rgb), 0.12);
+    }
+    to {
+        box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.22),
+                    0 0 24px rgba(var(--le-primary-rgb), 0.14);
+    }
+}
+
+.glass-input:focus,
+.glass-card .form-control:focus,
+.modal-glass .form-control:focus {
+    animation: focus-ring-expand 0.3s ease forwards;
+}
+
+/* Inner shadow for text inputs */
+.glass-input,
+.glass-card .form-control,
+.modal-glass .form-control {
+    box-shadow: var(--le-control-shadow);
+}
+
+[data-theme="dark"] .glass-input,
+[data-theme="dark"] .glass-card .form-control,
+[data-theme="dark"] .modal-glass .form-control {
+    box-shadow: var(--le-control-shadow);
+}
+
+/* Toggle switch glass styling.
+   The off-state knob uses an inline SVG with a subtle drop-shadow filter and
+   a faint stroke so the white knob stays visible against the light track in
+   light mode (without it the knob is white-on-white and the switch reads as
+   an empty pill). The on-state and dark mode keep a plain white fill because
+   they sit against a coloured/dark track with sufficient contrast. */
+.form-switch .form-check-input {
+    background-color: var(--le-control-bg);
+    border-color: var(--le-control-border);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3cdefs%3e%3cfilter id='s' x='-50%25' y='-50%25' width='200%25' height='200%25'%3e%3cfeDropShadow dx='0' dy='0.4' stdDeviation='0.35' flood-color='%23000' flood-opacity='0.28'/%3e%3c/filter%3e%3c/defs%3e%3ccircle r='3' fill='%23fff' stroke='rgba(0,0,0,0.12)' stroke-width='0.25' filter='url(%23s)'/%3e%3c/svg%3e");
+    transition: background-color var(--le-transition-fast), border-color var(--le-transition-fast), box-shadow var(--le-transition-fast);
+}
+
+.form-switch .form-check-input:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3cdefs%3e%3cfilter id='s' x='-50%25' y='-50%25' width='200%25' height='200%25'%3e%3cfeDropShadow dx='0' dy='0.4' stdDeviation='0.35' flood-color='%23000' flood-opacity='0.28'/%3e%3c/filter%3e%3c/defs%3e%3ccircle r='3' fill='%23fff' stroke='rgba(0,0,0,0.12)' stroke-width='0.25' filter='url(%23s)'/%3e%3c/svg%3e");
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 0 3px rgba(var(--le-primary-rgb), 0.18);
+}
+
+.form-switch .form-check-input:checked {
+    background-color: rgba(var(--le-primary-rgb), 0.24);
+    border-color: rgba(var(--le-primary-rgb), 0.36);
+    box-shadow: 0 0 14px rgba(var(--le-primary-rgb), 0.18);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+[data-theme="dark"] .form-switch .form-check-input {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255,255,255,0.5)'/%3e%3c/svg%3e");
+}
+
+[data-theme="dark"] .form-switch .form-check-input:checked {
+    background-color: rgba(var(--le-primary-rgb), 0.24);
+    border-color: rgba(var(--le-primary-rgb), 0.36);
+    box-shadow: 0 0 12px rgba(var(--le-primary-rgb), 0.22);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}

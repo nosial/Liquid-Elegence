@@ -1,0 +1,153 @@
+/* =========================================================================
+   Glass button colour variants — .btn-glass-{success|danger|warning|info|secondary}
+
+   All variants share the same flat lensing pattern as .btn-glass-primary:
+     • Translucent fill (alpha 0.14)
+     • Hairline border in the same hue (alpha 0.22)
+     • Hover  = brighter tint + edge ring, NO translateY
+     • Active = stronger tint + inner glow pulse
+     • Text in the saturated accent (or *-dark in light mode for AAA)
+   ========================================================================= */
+
+%btn-glass-color-base {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--le-btn-gap, 6px);
+    padding: var(--le-btn-padding-y, 8px) var(--le-btn-padding-x, 16px);
+    border-radius: var(--le-radius-sm);
+    font-size: var(--le-btn-font, 0.875rem);
+    font-weight: 600;
+    line-height: 1.5;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-shadow: none;
+    transition:
+        background-color 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+        color            0.2s  cubic-bezier(0.22, 0.61, 0.36, 1),
+        border-color     0.2s  cubic-bezier(0.22, 0.61, 0.36, 1),
+        box-shadow       0.3s  cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.btn-glass-success {
+    @extend %btn-glass-color-base;
+    background-color: rgba(var(--le-success-rgb), 0.14);
+    border-color:     rgba(var(--le-success-rgb), 0.22);
+    color:            var(--le-success-dark);
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    &:hover {
+        background-color: rgba(var(--le-success-rgb), 0.20);
+        border-color:     rgba(var(--le-success-rgb), 0.30);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.32),
+                          0 0 0 1px rgba(var(--le-success-rgb), 0.04);
+    }
+    &:active {
+        background-color: rgba(var(--le-success-rgb), 0.28);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.36),
+                          inset 0 0 12px rgba(var(--le-success-rgb), 0.10);
+    }
+    &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(var(--le-success-rgb), 0.28),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.30);
+    }
+}
+
+.btn-glass-danger {
+    @extend %btn-glass-color-base;
+    background-color: rgba(var(--le-danger-rgb), 0.14);
+    border-color:     rgba(var(--le-danger-rgb), 0.22);
+    color:            var(--le-danger-dark);
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    &:hover {
+        background-color: rgba(var(--le-danger-rgb), 0.20);
+        border-color:     rgba(var(--le-danger-rgb), 0.30);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.32),
+                          0 0 0 1px rgba(var(--le-danger-rgb), 0.04);
+    }
+    &:active {
+        background-color: rgba(var(--le-danger-rgb), 0.28);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.36),
+                          inset 0 0 12px rgba(var(--le-danger-rgb), 0.10);
+    }
+    &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(var(--le-danger-rgb), 0.28),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.30);
+    }
+}
+
+.btn-glass-warning {
+    @extend %btn-glass-color-base;
+    background-color: rgba(var(--le-warning-rgb), 0.14);
+    border-color:     rgba(var(--le-warning-rgb), 0.22);
+    color:            var(--le-warning-dark);
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    &:hover {
+        background-color: rgba(var(--le-warning-rgb), 0.20);
+        border-color:     rgba(var(--le-warning-rgb), 0.30);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.32),
+                          0 0 0 1px rgba(var(--le-warning-rgb), 0.04);
+    }
+    &:active {
+        background-color: rgba(var(--le-warning-rgb), 0.28);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.36),
+                          inset 0 0 12px rgba(var(--le-warning-rgb), 0.10);
+    }
+    &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(var(--le-warning-rgb), 0.28),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.30);
+    }
+}
+
+.btn-glass-info {
+    @extend %btn-glass-color-base;
+    background-color: rgba(var(--le-info-rgb), 0.14);
+    border-color:     rgba(var(--le-info-rgb), 0.22);
+    color:            var(--le-info-dark);
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+    &:hover {
+        background-color: rgba(var(--le-info-rgb), 0.20);
+        border-color:     rgba(var(--le-info-rgb), 0.30);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.32),
+                          0 0 0 1px rgba(var(--le-info-rgb), 0.04);
+    }
+    &:active {
+        background-color: rgba(var(--le-info-rgb), 0.28);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.36),
+                          inset 0 0 12px rgba(var(--le-info-rgb), 0.10);
+    }
+    &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(var(--le-info-rgb), 0.28),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.30);
+    }
+}
+
+/* Secondary glass = neutral material (NOT violet-tinted).
+   Per the philosophy "Tinting everything creates visual confusion." */
+.btn-glass-secondary {
+    @extend %btn-glass-color-base;
+    background-color: var(--le-control-bg);
+    border-color:     var(--le-control-border);
+    color:            var(--le-text-secondary);
+    font-weight: 500;
+    box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.30);
+
+    &:hover {
+        background-color: var(--le-control-bg-hover);
+        color:            var(--le-text-primary);
+        border-color:     var(--le-control-border-strong);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.40);
+    }
+    &:active {
+        background-color: var(--le-control-bg-active);
+        color:            var(--le-text-primary);
+        box-shadow:       inset 0 1px 0 rgba(255, 255, 255, 0.34),
+                          inset 0 0 10px rgba(0, 0, 0, 0.04);
+    }
+}

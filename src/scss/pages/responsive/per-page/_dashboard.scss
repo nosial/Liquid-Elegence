@@ -1,0 +1,100 @@
+// pages/responsive/per-page/_dashboard.scss
+// Responsive dashboard page rules across breakpoints.
+
+/* --------------------------------------------------------------------------
+   20j. Dashboard metrics & charts — XS breakpoints
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  /* Metric cards compact at XS */
+  .metric-value {
+    font-size: 1.125rem;
+  }
+
+  .metric-label {
+    font-size: 0.6875rem;
+  }
+
+  .metric-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .metric-icon svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Charts: shortest height at XS */
+  .chart-wrapper.le-chart-300 {
+    height: 160px;
+  }
+
+  .chart-wrapper.le-chart-220 {
+    height: 140px;
+  }
+
+  .chart-wrapper.le-chart-60 {
+    height: 40px;
+  }
+
+  /* Activity feed */
+  .activity-item,
+  .activity-feed .list-group-item {
+    padding: 8px 0;
+    font-size: 0.8125rem;
+  }
+
+  .activity-icon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+
+
+/* --------------------------------------------------------------------------
+   23d. Dashboard d-flex containers — gap reduction + wrapping on mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 575.98px) {
+  .glass-card-body .d-flex.gap-3:not(.flex-column) {
+    gap: 0.5rem !important;
+  }
+
+  .glass-card-body .d-flex.gap-4:not(.flex-column) {
+    gap: 0.75rem !important;
+  }
+
+  /* Activity / recent items lists — tighter spacing */
+  .glass-card-body .d-flex.align-items-center.gap-3 {
+    gap: 0.5rem !important;
+  }
+
+  /* Stat rows with inline content */
+  .glass-card-body .d-flex.justify-content-between.align-items-center {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   23e. Dashboard metric rows — responsive grid on phones
+   The metric markup uses `col-sm-6 col-xl-3` which gives:
+     • xs (<576px): col-12 → 1-up, full-width cards (Bootstrap default)
+     • sm/md/lg   : 2-up
+     • xl+        : 4-up
+   On wider phones in landscape (≥480px and <576px), 2-up still reads well, so
+   we promote those rows to 50% there. Below 480px (typical portrait phones)
+   we keep Bootstrap's full-width stack so cards aren't squished into ~170px
+   slots that crush the icon + value + sparkline together.
+   -------------------------------------------------------------------------- */
+@media (min-width: 480px) and (max-width: 575.98px) {
+  .row > [class*="col-sm-6"][class*="col-xl-3"] {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+
+

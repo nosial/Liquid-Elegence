@@ -1,0 +1,101 @@
+/* =========================================================================
+   23. ALERTS (liquid-glass)
+   ========================================================================= */
+
+.alert {
+    border-radius: var(--le-radius);
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: var(--le-inner-glow), 0 1px 0 0 rgba(255, 255, 255, 0.18) inset;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.25s cubic-bezier(0.22, 0.61, 0.36, 1),
+                border-color var(--le-transition-fast),
+                box-shadow 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Alert left accent bar */
+.alert::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 3px 0 0 3px;
+    pointer-events: none;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08);
+}
+
+.alert-primary::before { background: var(--le-primary); box-shadow: 2px 0 14px rgba(var(--le-primary-rgb), 0.25); }
+.alert-success::before { background: var(--le-success); box-shadow: 2px 0 14px rgba(var(--le-success-rgb, 16, 185, 129), 0.25); }
+.alert-warning::before { background: var(--le-warning); box-shadow: 2px 0 14px rgba(var(--le-warning-rgb, 245, 158, 11), 0.25); }
+.alert-danger::before  { background: var(--le-danger); box-shadow: 2px 0 14px rgba(var(--le-danger-rgb, 239, 68, 68), 0.25); }
+.alert-info::before    { background: var(--le-info); box-shadow: 2px 0 14px rgba(var(--le-info-rgb, 6, 182, 212), 0.25); }
+
+.alert-primary {
+    background: rgba(var(--le-primary-rgb), 0.11);
+    border-color: rgba(var(--le-primary-rgb), 0.22);
+    color: var(--le-primary-dark, var(--le-primary));
+    box-shadow: var(--le-inner-glow), 0 0 24px rgba(var(--le-primary-rgb), 0.08), 0 1px 0 0 rgba(255, 255, 255, 0.18) inset;
+}
+
+.alert-success {
+    background: rgba(var(--le-success-rgb), 0.11);
+    border-color: rgba(var(--le-success-rgb), 0.22);
+    color: var(--le-success-dark, var(--le-success));
+    box-shadow: var(--le-inner-glow), 0 0 24px rgba(var(--le-success-rgb), 0.08), 0 1px 0 0 rgba(255, 255, 255, 0.18) inset;
+}
+
+.alert-warning {
+    background: rgba(var(--le-warning-rgb), 0.11);
+    border-color: rgba(var(--le-warning-rgb), 0.22);
+    color: var(--le-warning-dark, var(--le-warning));
+    box-shadow: var(--le-inner-glow), 0 0 24px rgba(var(--le-warning-rgb), 0.08), 0 1px 0 0 rgba(255, 255, 255, 0.18) inset;
+}
+
+.alert-danger {
+    background: rgba(var(--le-danger-rgb), 0.11);
+    border-color: rgba(var(--le-danger-rgb), 0.22);
+    color: var(--le-danger-dark, var(--le-danger));
+    box-shadow: var(--le-inner-glow), 0 0 24px rgba(var(--le-danger-rgb), 0.08), 0 1px 0 0 rgba(255, 255, 255, 0.18) inset;
+}
+
+.alert-info {
+    background: rgba(var(--le-info-rgb), 0.11);
+    border-color: rgba(var(--le-info-rgb), 0.22);
+    color: var(--le-info-dark, var(--le-info));
+    box-shadow: var(--le-inner-glow), 0 0 24px rgba(var(--le-info-rgb), 0.08), 0 1px 0 0 rgba(255, 255, 255, 0.18) inset;
+}
+
+[data-theme="dark"] .alert-primary {
+    background: rgba(var(--le-primary-rgb), 0.16);
+    border-color: rgba(var(--le-primary-rgb), 0.28);
+    color: var(--le-primary-light, var(--le-primary));
+}
+
+[data-theme="dark"] .alert-success {
+    background: rgba(var(--le-success-rgb), 0.16);
+    border-color: rgba(var(--le-success-rgb), 0.28);
+    color: var(--le-success-light, var(--le-success));
+}
+
+[data-theme="dark"] .alert-warning {
+    background: rgba(var(--le-warning-rgb), 0.16);
+    border-color: rgba(var(--le-warning-rgb), 0.28);
+    color: var(--le-warning-light, var(--le-warning));
+}
+
+[data-theme="dark"] .alert-danger {
+    background: rgba(var(--le-danger-rgb), 0.16);
+    border-color: rgba(var(--le-danger-rgb), 0.28);
+    color: var(--le-danger-light, var(--le-danger));
+}
+
+[data-theme="dark"] .alert-info {
+    background: rgba(var(--le-info-rgb), 0.16);
+    border-color: rgba(var(--le-info-rgb), 0.28);
+    color: var(--le-info-light, var(--le-info));
+}

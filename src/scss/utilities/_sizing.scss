@@ -1,0 +1,69 @@
+// ── Min height ───────────────────────────────────────────────────────────
+.le-min-h-160 { min-height: 160px; }
+.le-min-h-200 { min-height: 200px; }
+.le-min-h-220 { min-height: 220px; }
+.le-min-h-280 { min-height: 280px; }
+
+// ── Max height ───────────────────────────────────────────────────────────
+.le-max-h-200  { max-height: 200px; }
+.le-max-h-50vh { height: auto; max-height: 50vh; }
+
+// ── Font size utilities ──────────────────────────────────────────────────
+.le-fs-half    { font-size: 0.5em; }
+.le-fs-3xs     { font-size: 0.5625rem; }
+.le-fs-xxs     { font-size: 0.625rem; }
+.le-fs-xs      { font-size: 0.6875rem; }
+.le-fs-sm      { font-size: 0.72rem; }
+.le-fs-base    { font-size: 0.75rem; }
+.le-fs-md      { font-size: 0.78rem; }
+.le-fs-body    { font-size: 0.8125rem; }
+.le-fs-ui      { font-size: 0.82rem; }
+.le-fs-lg      { font-size: 0.85rem; }
+.le-fs-xl      { font-size: 0.875rem; }
+.le-fs-2xl     { font-size: 0.95rem; }
+.le-fs-3xl     { font-size: 1rem; }
+.le-fs-4xl     { font-size: 1.15rem; }
+.le-fs-5xl     { font-size: 1.2rem; }
+.le-fs-6xl     { font-size: 1.3rem; }
+.le-fs-7xl     { font-size: 1.5rem; }
+.le-fs-8xl     { font-size: 3rem; }
+.le-fs-55      { font-size: 0.55rem; }
+.le-fs-65      { font-size: 0.65rem; }
+.le-fs-70      { font-size: 0.7rem; }
+.le-fs-80      { font-size: 0.8rem; }
+.le-fs-icon-xl { font-size: 1.4rem; }
+.le-fs-icon-2x { font-size: 32px; }
+
+// ── Line height ──────────────────────────────────────────────────────────
+.le-lh-tight { line-height: 1.1; }
+.le-lh-relaxed { line-height: 1.7; }
+
+// ── Background – theme variable shortcuts ────────────────────────────────
+.le-bg-glass         { background: var(--le-glass-bg); }
+.le-bg-glass-subtle  { background: var(--le-glass-bg-subtle); }
+.le-bg-glass-strong  { background: var(--le-glass-bg-strong); }
+.le-bg-primary       { background: var(--le-primary); }
+.le-bg-success       { background: var(--le-success); }
+.le-bg-warning       { background: var(--le-warning); }
+.le-bg-danger        { background: var(--le-danger); }
+.le-bg-info          { background: var(--le-info); }
+.le-bg-secondary     { background: var(--le-secondary); }
+.le-bg-text-muted    { background: var(--le-text-muted); }
+
+// ── Background – RGBA tints ──────────────────────────────────────────────
+.le-bg-primary-10   { background: rgba(var(--le-primary-rgb), 0.1); }
+.le-bg-primary-12   { background: rgba(var(--le-primary-rgb), 0.12); }
+.le-bg-primary-15   { background: rgba(var(--le-primary-rgb), 0.15); }
+.le-bg-primary-20   { background: rgba(var(--le-primary-rgb), 0.2); }
+.le-bg-primary-30   { background: rgba(var(--le-primary-rgb), 0.3); }
+.le-bg-success-12   { background: rgba(var(--le-success-rgb), 0.12); }
+.le-bg-success-15   { background: rgba(var(--le-success-rgb), 0.15); }
+.le-bg-success-30   { background: rgba(var(--le-success-rgb), 0.3); }
+.le-bg-warning-12   { background: rgba(var(--le-warning-rgb), 0.12); }
+.le-bg-warning-15   { background: rgba(var(--le-warning-rgb), 0.15); }
+.le-bg-warning-35   { background: rgba(var(--le-warning-rgb), 0.35); }
+.le-bg-danger-10    { background: rgba(var(--le-danger-rgb), 0.1); }
+.le-bg-danger-15    { background: rgba(var(--le-danger-rgb), 0.15); }
+.le-bg-danger-40    { background: rgba(var(--le-danger-rgb), 0.4); }
+.le-bg-info-15      { background: rgba(var(--le-info-rgb), 0.15); }
+.le-bg-secondary-30 { background: rgba(var(--le-secondary-rgb), 0.3); }

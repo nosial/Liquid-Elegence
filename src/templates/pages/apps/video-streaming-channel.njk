@@ -1,0 +1,201 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="video-streaming.html">Streamflix</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Channel</li>
+        </ol>
+    </nav>
+
+    <!-- Channel Header Card -->
+    <div class="glass-card mb-4 video-channel-card-large animate-fade-in-up">
+        <div class="video-channel-banner"></div>
+        <div class="video-channel-header">
+            <div class="video-channel-header-avatar le-lifted-avatar">WF</div>
+            <div class="video-channel-header-info">
+                <h2 class="video-channel-header-name">Wild Frames</h2>
+                <div class="video-channel-header-stats">
+                    <span>@wildframes</span><span class="dot">·</span>
+                    <span>3.4M subscribers</span><span class="dot">·</span>
+                    <span>96 videos</span>
+                </div>
+                <p class="video-channel-header-desc mb-0">Cinematic nature & wildlife shorts and documentaries. Filmed across 6 continents and counting.</p>
+            </div>
+            <div class="video-channel-header-actions">
+                <button class="btn btn-outline-secondary btn-sm le-pill-md"><i data-feather="bell" class="le-icon-14"></i> Notify</button>
+                <button class="btn btn-primary btn-sm le-pill-md video-subscribe-btn">Subscribe</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Channel Tabs -->
+    <div class="glass-card mb-4 video-tabs-card">
+        <div class="video-channel-tabs">
+            <a href="javascript:void(0)" class="video-channel-tab is-active">Home</a>
+            <a href="javascript:void(0)" class="video-channel-tab">Videos</a>
+            <a href="javascript:void(0)" class="video-channel-tab">Shorts</a>
+            <a href="javascript:void(0)" class="video-channel-tab">Live</a>
+            <a href="javascript:void(0)" class="video-channel-tab">Playlists</a>
+            <a href="javascript:void(0)" class="video-channel-tab">Community</a>
+            <a href="javascript:void(0)" class="video-channel-tab">About</a>
+        </div>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-8 video-main-col">
+
+            <!-- Layered main panel: featured + latest + playlists in one
+                 outer glass-card, separated by .glass-divider blocks. -->
+            <div class="glass-card glass-card-body video-channel-main-panel animate-fade-in-up stagger-2">
+
+                <!-- Featured Video -->
+                <section class="video-section">
+                    <h6 class="video-section-title mb-3"><i data-feather="star" class="le-icon-18 me-1"></i> Featured</h6>
+                    <a href="video-streaming-watch.html" class="video-hero-feature d-block">
+                        <div class="video-hero-thumb">
+                            <i data-feather="play"></i>
+                            <span class="video-thumb-duration">9:56</span>
+                        </div>
+                        <div class="video-meta mt-3">
+                            <div class="video-meta-text">
+                                <h6 class="video-meta-title">Big Buck Bunny — A Cinematic Open Movie Demo</h6>
+                                <div class="video-meta-stats"><span>12M views</span><span class="dot">·</span><span>2 weeks ago</span></div>
+                            </div>
+                        </div>
+                    </a>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Latest videos -->
+                <section class="video-section">
+                    <div class="video-section-header mb-3">
+                        <h5 class="video-section-title">Latest videos</h5>
+                        <a href="javascript:void(0)" class="video-section-link">All videos</a>
+                    </div>
+                    {% set chVideos = [
+                        { title: "Aurora — A 4K Cinematic Time-Lapse", duration: "6:52", views: "2.4M", age: "2 months ago", color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                        { title: "How They Made That Shot — Cinematography Breakdown", duration: "14:44", views: "412K", age: "1 week ago", color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                        { title: "Macro Insects of the Amazon — A 6 Month Project", duration: "18:22", views: "1.1M", age: "1 month ago", color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                        { title: "The Lighting Setup We Use for Wildlife", duration: "11:30", views: "320K", age: "3 weeks ago", color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                        { title: "We Spent 30 Days in the Arctic Circle", duration: "27:14", views: "3.2M", age: "4 months ago", color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                        { title: "Behind the Scenes: Big Buck Bunny", duration: "12:05", views: "680K", age: "5 weeks ago", color: "linear-gradient(135deg, #10b981, #06b6d4)" }
+                    ] %}
+                    <div class="video-card-grid">
+                        {% for v in chVideos %}
+                        <a href="video-streaming-watch.html" class="video-card animate-fade-in-up stagger-{{ loop.index + 2 }}">
+                            <div class="video-thumb" style="background:{{ v.color }};">
+                                <i data-feather="film" class="video-thumb-icon"></i>
+                                <span class="video-thumb-duration">{{ v.duration }}</span>
+                            </div>
+                            <div class="video-meta">
+                                <div class="video-meta-text">
+                                    <h6 class="video-meta-title">{{ v.title }}</h6>
+                                    <div class="video-meta-stats"><span>{{ v.views }} views</span><span class="dot">·</span><span>{{ v.age }}</span></div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Popular Playlists -->
+                <section class="video-section">
+                    <h5 class="video-section-title mb-3">Playlists</h5>
+                    {% set playlists = [
+                        { title: "Wildlife in 4K", count: "24 videos", color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                        { title: "Behind the Scenes", count: "12 videos", color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+                        { title: "Time-lapses", count: "18 videos", color: "linear-gradient(135deg, #6366f1, #8b5cf6)" }
+                    ] %}
+                    <div class="video-card-grid-dense">
+                        {% for p in playlists %}
+                        <a href="video-streaming-library.html" class="video-card">
+                            <div class="video-thumb video-thumb-playlist" style="background:{{ p.color }};">
+                                <i data-feather="list" class="video-thumb-icon"></i>
+                                <span class="video-thumb-duration"><i data-feather="play" class="le-icon-12"></i> {{ p.count }}</span>
+                            </div>
+                            <div class="video-meta">
+                                <div class="video-meta-text">
+                                    <h6 class="video-meta-title">{{ p.title }}</h6>
+                                    <span class="video-meta-channel">View full playlist</span>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4 video-sidebar-col">
+
+            <!-- Layered sidebar panel: about + related + links share one
+                 outer glass-card, divided by .glass-divider blocks. -->
+            <div class="glass-card glass-card-body video-sidebar-panel animate-fade-in-up stagger-2">
+
+                <!-- About -->
+                <section class="video-sidebar-section">
+                    <h6 class="video-widget-title mb-3">About</h6>
+                    <p class="le-fs-md le-text-muted mb-3">Cinematic nature & wildlife shorts and documentaries from across 6 continents. Filmed in stunning 4K and 8K resolution.</p>
+                    <div class="video-channel-stat-row"><span class="le-text-muted">Joined</span><strong>Mar 2014</strong></div>
+                    <div class="video-channel-stat-row"><span class="le-text-muted">Total views</span><strong>284M</strong></div>
+                    <div class="video-channel-stat-row"><span class="le-text-muted">Country</span><strong>Worldwide</strong></div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Related Channels -->
+                <section class="video-sidebar-section">
+                    <h6 class="video-widget-title mb-3">Related channels</h6>
+                    {% set related = [
+                        { name: "Atlas Wandering", handle: "@atlaswander", subs: "720K", initials: "AW", color: "linear-gradient(135deg, #0ea5e9, #22c55e)" },
+                        { name: "Pixel Perfect Studios", handle: "@pixelperfect", subs: "1.2M", initials: "PP", color: "linear-gradient(135deg, #6366f1, #8b5cf6)" },
+                        { name: "Synthwave Sundays", handle: "@synthwave", subs: "568K", initials: "SS", color: "linear-gradient(135deg, #ec4899, #8b5cf6)" }
+                    ] %}
+                    {% for c in related %}
+                    <a href="video-streaming-channel.html" class="video-channel-row">
+                        <span class="video-channel-row-avatar" style="background:{{ c.color }};">{{ c.initials }}</span>
+                        <div class="video-channel-row-info">
+                            <span class="video-channel-row-name">{{ c.name }}</span>
+                            <span class="video-channel-row-meta">{{ c.handle }} · {{ c.subs }}</span>
+                        </div>
+                        <button class="btn btn-outline-secondary btn-sm le-chip-sm video-row-action">Subscribe</button>
+                    </a>
+                    {% endfor %}
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Channel links -->
+                <section class="video-sidebar-section">
+                    <h6 class="video-widget-title mb-3">Links</h6>
+                    <div class="d-flex flex-column gap-2">
+                        <a href="javascript:void(0)" class="video-link-row"><i data-feather="globe" class="le-icon-16"></i><span>wildframes.tv</span></a>
+                        <a href="javascript:void(0)" class="video-link-row"><i data-feather="twitter" class="le-icon-16"></i><span>@wildframes</span></a>
+                        <a href="javascript:void(0)" class="video-link-row"><i data-feather="instagram" class="le-icon-16"></i><span>wildframes.tv</span></a>
+                        <a href="javascript:void(0)" class="video-link-row"><i data-feather="mail" class="le-icon-16"></i><span>contact@wildframes.tv</span></a>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/video-streaming.js"></script>
+{% endblock %}

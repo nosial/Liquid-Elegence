@@ -1,0 +1,312 @@
+/* ============================================================================
+   8. BILLING
+   ============================================================================ */
+
+.billing-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--le-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(var(--le-primary-rgb), 0.1);
+  color: var(--le-primary);
+  flex-shrink: 0;
+}
+
+.usage-stat {
+  margin-bottom: 16px;
+}
+
+.usage-label {
+  font-size: 13px;
+  color: var(--le-text-secondary);
+  margin-bottom: 2px;
+}
+
+.usage-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--le-text-primary);
+}
+
+/* ---- payment card (tile inside parent .glass-card panel) ---- */
+.payment-card {
+  background: var(--le-glass-bg);
+  border: 1px solid var(--le-glass-border-subtle);
+  border-radius: var(--le-radius-lg);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  color: var(--le-text-primary);
+  transition: background var(--le-transition-fast), border-color var(--le-transition-fast);
+}
+
+.payment-card:hover {
+  background: var(--le-glass-bg-strong);
+  border-color: rgba(var(--le-primary-rgb), 0.25);
+}
+
+.payment-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--le-primary), var(--le-secondary));
+}
+
+.next-billing {
+  font-size: 13px;
+  color: var(--le-text-secondary);
+  margin-top: 8px;
+}
+
+/* ---- status card ---- */
+.status-card {
+  background: var(--le-glass-bg-strong);
+  border: 1px solid var(--le-glass-border);
+  border-radius: var(--le-radius);
+  padding: 16px;
+}
+
+.status-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--le-text-primary);
+}
+
+
+/* ---- density: compact ---- */
+[data-density="compact"] .billing-icon {
+  width: 40px;
+  height: 40px;
+}
+
+[data-density="compact"] .usage-stat {
+  margin-bottom: 12px;
+}
+
+[data-density="compact"] .usage-label,
+[data-density="compact"] .usage-value {
+  font-size: 12px;
+}
+
+[data-density="compact"] .payment-card {
+  padding: 18px;
+}
+
+[data-density="compact"] .next-billing {
+  font-size: 12px;
+}
+
+[data-density="compact"] .status-card {
+  padding: 12px;
+}
+
+[data-density="compact"] .status-card-title {
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+
+/* ---- density: comfortable ---- */
+[data-density="comfortable"] .billing-icon {
+  width: 56px;
+  height: 56px;
+}
+
+[data-density="comfortable"] .usage-stat {
+  margin-bottom: 20px;
+}
+
+[data-density="comfortable"] .usage-label,
+[data-density="comfortable"] .usage-value {
+  font-size: 14px;
+}
+
+[data-density="comfortable"] .payment-card {
+  padding: 28px;
+}
+
+[data-density="comfortable"] .status-card {
+  padding: 20px;
+}
+
+[data-density="comfortable"] .status-card-title {
+  font-size: 15px;
+}
+
+// Migrated from templates/pages/pages/billing.njk
+.billing-page {
+    .glass-card {
+        background: var(--le-glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--le-glass-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+    }
+    .glass-card .card-header-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    .glass-table-wrapper {
+        background: var(--le-glass-bg);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--le-glass-border);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .glass-table-wrapper .table {
+        margin-bottom: 0;
+    }
+    .glass-table-wrapper .table thead th {
+        border-bottom: 1px solid var(--le-glass-border);
+        font-weight: 600;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        padding: 1rem 1.25rem;
+    }
+    .glass-table-wrapper .table tbody td {
+        padding: 0.85rem 1.25rem;
+        vertical-align: middle;
+        border-bottom: 1px solid var(--le-glass-border-subtle);
+    }
+    .glass-table-wrapper .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .progress {
+            background: var(--le-glass-bg);
+            border-radius: 6px;
+            height: 8px;
+        }
+        .usage-stat {
+            margin-bottom: 1.25rem;
+        }
+        .usage-stat:last-child {
+            margin-bottom: 0;
+        }
+        .usage-stat .d-flex {
+            margin-bottom: 0.4rem;
+        }
+        .usage-stat .usage-label {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .usage-stat .usage-value {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        .badge-status {
+            font-size: 0.78rem;
+            padding: 0.35em 0.75em;
+            border-radius: 6px;
+        }
+        .plan-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .plan-header h4 {
+            margin-bottom: 0;
+            font-weight: 700;
+        }
+        .plan-header .plan-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--bs-primary);
+        }
+        .payment-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--le-glass-bg);
+            border: 1px solid var(--le-glass-border);
+            border-radius: 10px;
+            margin-bottom: 0.75rem;
+        }
+        .payment-card .card-icon {
+            width: 48px;
+            height: 32px;
+            background: var(--le-glass-bg-strong);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+        .payment-card .card-details {
+            flex: 1;
+        }
+        .payment-card .card-details .card-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .payment-card .card-details .card-info {
+            font-size: 0.82rem;
+            opacity: 0.7;
+        }
+        .payment-card .default-badge {
+            font-size: 0.72rem;
+            padding: 0.25em 0.6em;
+            border-radius: 5px;
+        }
+        .invoice-line-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--le-glass-border-subtle);
+            font-size: 0.92rem;
+        }
+        .invoice-line-item:last-child {
+            border-bottom: none;
+        }
+        .invoice-line-item .item-note {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+        .invoice-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0 0;
+            margin-top: 0.5rem;
+            border-top: 2px solid var(--le-glass-border);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        .next-billing {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            padding: 1rem;
+            background: var(--le-glass-bg);
+            border-radius: 10px;
+        }
+        .next-billing .billing-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(var(--le-primary-rgb), 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-download {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.8rem;
+            border-radius: 6px;
+        }
+}

@@ -1,0 +1,416 @@
+{% set root = "../../" %}
+{% extends "layouts/dashboard.njk" %}
+
+{% block title %}Charts — Liquid Elegance{% endblock %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="javascript:void(0)">Components</a></li>
+<li class="breadcrumb-item active">Charts</li>
+{% endblock %}
+
+
+{% block content %}
+
+{# ── Line & Bar Charts ───────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Line Chart</h5>
+                <p class="text-muted mb-3 le-fs-body">Smooth line chart with gradient fill.</p>
+                <div class="chart-wrapper le-chart-260"><canvas id="demoLineChart" height="260"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Bar Chart</h5>
+                <p class="text-muted mb-3 le-fs-body">Vertical bar chart with rounded corners.</p>
+                <div class="chart-wrapper le-chart-260"><canvas id="demoBarChart" height="260"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="glass-card mt-3 le-bg-glass-subtle">
+            <div class="glass-card-body py-2 px-3">
+                <h6 class="d-flex align-items-center gap-2 mb-2 le-fs-base"><i data-feather="code" class="le-icon-14"></i> Usage</h6>
+                <pre class="mb-0 le-fs-base le-ws-pre-wrap"><code>&lt;!-- HTML --&gt;
+&lt;div class="glass-card"&gt;
+    &lt;div class="glass-card-body"&gt;
+        &lt;canvas id="myChart"&gt;&lt;/canvas&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+new Chart(document.getElementById('myChart'), {
+    type: 'line',
+    data: {
+        labels: ['Jan','Feb','Mar'],
+        datasets: [{
+            label: 'Sales',
+            data: [10, 20, 30]
+        }]
+    }
+});
+&lt;/script&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Doughnut & Pie Charts ───────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Doughnut Chart</h5>
+                <p class="text-muted mb-3 le-fs-body">Doughnut chart with custom legend.</p>
+                <div class="d-flex align-items-center gap-4">
+                    <div class="le-max-w-220 le-shrink-0">
+                        <canvas id="demoDoughnutChart" height="220" width="220"></canvas>
+                    </div>
+                    <div id="doughnutLegend" class="d-flex flex-column gap-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Pie Chart</h5>
+                <p class="text-muted mb-3 le-fs-body">Pie chart with custom legend and color dots.</p>
+                <div class="d-flex align-items-center gap-4">
+                    <div class="le-max-w-220 le-shrink-0">
+                        <canvas id="demoPieChart" height="220" width="220"></canvas>
+                    </div>
+                    <div id="pieLegend" class="d-flex flex-column gap-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Area & Radar Charts ─────────────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Area Chart</h5>
+                <p class="text-muted mb-3 le-fs-body">Stacked area chart with transparency.</p>
+                <div class="chart-wrapper le-chart-260"><canvas id="demoAreaChart" height="260"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Radar Chart</h5>
+                <p class="text-muted mb-3 le-fs-body">Radar chart comparing multiple datasets.</p>
+                <div class="chart-wrapper le-chart-260"><canvas id="demoRadarChart" height="260"></canvas></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# ── Horizontal Bar & Polar Area ──────────────────────────────────── #}
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Horizontal Bar Chart</h5>
+                <p class="text-muted mb-3 le-fs-body">Horizontal bars for comparison data.</p>
+                <div class="chart-wrapper le-chart-260"><canvas id="demoHBarChart" height="260"></canvas></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="glass-card-body">
+                <h5 class="mb-1">Polar Area Chart</h5>
+                <p class="text-muted mb-3 le-fs-body">Polar area chart with semi-transparent fills.</p>
+                <div class="chart-wrapper le-chart-260"><canvas id="demoPolarChart" height="260"></canvas></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}vendor/chart.js/chart.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var primary = getComputedStyle(document.documentElement).getPropertyValue('--le-primary').trim() || '#6366f1';
+    var primaryRgb = getComputedStyle(document.documentElement).getPropertyValue('--le-primary-rgb').trim() || '99,102,241';
+
+    var palette = [
+        'rgba(' + primaryRgb + ', 0.85)',
+        'rgba(16, 185, 129, 0.85)',
+        'rgba(245, 158, 11, 0.85)',
+        'rgba(239, 68, 68, 0.85)',
+        'rgba(139, 92, 246, 0.85)',
+        'rgba(14, 165, 233, 0.85)',
+        'rgba(236, 72, 153, 0.85)'
+    ];
+
+    var chartDefaults = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            x: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { font: { size: 11 } } },
+            y: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { font: { size: 11 } } }
+        }
+    };
+
+    var labels = ['Jan','Feb','Mar','Apr','May','Jun','Jul'];
+
+    // Line Chart
+    var lineCtx = document.getElementById('demoLineChart');
+    if (lineCtx) {
+        var grad = lineCtx.getContext('2d').createLinearGradient(0, 0, 0, 260);
+        grad.addColorStop(0, 'rgba(' + primaryRgb + ', 0.25)');
+        grad.addColorStop(1, 'rgba(' + primaryRgb + ', 0.02)');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Revenue',
+                    data: [30, 45, 38, 65, 55, 70, 60],
+                    borderColor: primary,
+                    backgroundColor: grad,
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: primary,
+                    pointBorderWidth: 2
+                }]
+            },
+            options: chartDefaults
+        });
+    }
+
+    // Bar Chart
+    var barCtx = document.getElementById('demoBarChart');
+    if (barCtx) {
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Sales',
+                    data: [42, 58, 35, 72, 48, 65, 55],
+                    backgroundColor: palette.slice(0, 7),
+                    borderRadius: 6,
+                    borderSkipped: false
+                }]
+            },
+            options: chartDefaults
+        });
+    }
+
+    // Doughnut Chart with custom legend
+    var doughnutCtx = document.getElementById('demoDoughnutChart');
+    if (doughnutCtx) {
+        var doughnutData = {
+            labels: ['Direct', 'Organic', 'Referral', 'Social', 'Email'],
+            datasets: [{
+                data: [35, 25, 20, 12, 8],
+                backgroundColor: palette.slice(0, 5),
+                borderWidth: 0,
+                hoverOffset: 6
+            }]
+        };
+        new Chart(doughnutCtx, {
+            type: 'doughnut',
+            data: doughnutData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                cutout: '65%',
+                plugins: { legend: { display: false } }
+            }
+        });
+        var legendEl = document.getElementById('doughnutLegend');
+        if (legendEl) {
+            doughnutData.labels.forEach(function(label, i) {
+                legendEl.innerHTML += '<div class="d-flex align-items-center gap-2"><span class="legend-dot" style="background:' + palette[i] + '"></span><span class="le-fs-body">' + label + ' <strong>' + doughnutData.datasets[0].data[i] + '%</strong></span></div>';
+            });
+        }
+    }
+
+    // Pie Chart with custom legend
+    var pieCtx = document.getElementById('demoPieChart');
+    if (pieCtx) {
+        var pieData = {
+            labels: ['Desktop', 'Mobile', 'Tablet'],
+            datasets: [{
+                data: [55, 35, 10],
+                backgroundColor: [palette[0], palette[1], palette[2]],
+                borderWidth: 0,
+                hoverOffset: 6
+            }]
+        };
+        new Chart(pieCtx, {
+            type: 'pie',
+            data: pieData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { display: false } }
+            }
+        });
+        var pieLegendEl = document.getElementById('pieLegend');
+        if (pieLegendEl) {
+            pieData.labels.forEach(function(label, i) {
+                pieLegendEl.innerHTML += '<div class="d-flex align-items-center gap-2"><span class="legend-dot" style="background:' + pieData.datasets[0].backgroundColor[i] + '"></span><span class="le-fs-body">' + label + ' <strong>' + pieData.datasets[0].data[i] + '%</strong></span></div>';
+            });
+        }
+    }
+
+    // Area Chart
+    var areaCtx = document.getElementById('demoAreaChart');
+    if (areaCtx) {
+        new Chart(areaCtx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Views',
+                        data: [20, 35, 30, 50, 45, 60, 55],
+                        backgroundColor: 'rgba(' + primaryRgb + ', 0.15)',
+                        borderColor: primary,
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 2,
+                        pointRadius: 0
+                    },
+                    {
+                        label: 'Clicks',
+                        data: [10, 20, 18, 30, 25, 35, 30],
+                        backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                        borderColor: 'rgb(16, 185, 129)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 2,
+                        pointRadius: 0
+                    }
+                ]
+            },
+            options: Object.assign({}, chartDefaults, {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { usePointStyle: true, pointStyle: 'circle', boxWidth: 6, font: { size: 11 } }
+                    }
+                }
+            })
+        });
+    }
+
+    // Radar Chart
+    var radarCtx = document.getElementById('demoRadarChart');
+    if (radarCtx) {
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Speed', 'Reliability', 'Comfort', 'Safety', 'Efficiency', 'Design'],
+                datasets: [
+                    {
+                        label: 'Product A',
+                        data: [85, 70, 90, 60, 75, 80],
+                        backgroundColor: 'rgba(' + primaryRgb + ', 0.2)',
+                        borderColor: primary,
+                        borderWidth: 2,
+                        pointRadius: 3,
+                        pointBackgroundColor: primary
+                    },
+                    {
+                        label: 'Product B',
+                        data: [65, 85, 70, 80, 65, 90],
+                        backgroundColor: 'rgba(16, 185, 129, 0.2)',
+                        borderColor: 'rgb(16, 185, 129)',
+                        borderWidth: 2,
+                        pointRadius: 3,
+                        pointBackgroundColor: 'rgb(16, 185, 129)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        grid: { color: 'rgba(0,0,0,0.05)' },
+                        angleLines: { color: 'rgba(0,0,0,0.05)' },
+                        ticks: { display: false },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { usePointStyle: true, pointStyle: 'circle', boxWidth: 6, font: { size: 11 } }
+                    }
+                }
+            }
+        });
+    }
+
+    // Horizontal Bar Chart
+    var hbarCtx = document.getElementById('demoHBarChart');
+    if (hbarCtx) {
+        new Chart(hbarCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Chrome', 'Safari', 'Firefox', 'Edge', 'Opera', 'Other'],
+                datasets: [{
+                    label: 'Usage %',
+                    data: [65, 18, 8, 5, 2, 2],
+                    backgroundColor: palette.slice(0, 6),
+                    borderRadius: 4,
+                    borderSkipped: false
+                }]
+            },
+            options: Object.assign({}, chartDefaults, { indexAxis: 'y' })
+        });
+    }
+
+    // Polar Area Chart
+    var polarCtx = document.getElementById('demoPolarChart');
+    if (polarCtx) {
+        new Chart(polarCtx, {
+            type: 'polarArea',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    data: [45, 60, 38, 72],
+                    backgroundColor: palette.slice(0, 4),
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        grid: { color: 'rgba(0,0,0,0.04)' },
+                        ticks: { display: false }
+                    }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

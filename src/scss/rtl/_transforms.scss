@@ -1,0 +1,14 @@
+/* ─────────────────────────────────────────────────────────────
+   22. Translate / Transform mirrors
+   ───────────────────────────────────────────────────────────── */
+
+[dir="rtl"] .le-translate-x {
+    --le-translate-dir: -1;
+}
+
+/* Add .le-mirror-rtl to any element that needs its horizontal axis mirrored in RTL context. */
+[dir="rtl"] .le-mirror-rtl {
+    transform: scaleX(-1);
+}
+
+

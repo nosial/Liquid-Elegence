@@ -1,0 +1,116 @@
+/* ---- Density × Horizontal Layout ----
+   Compound selectors ensure horizontal-nav-specific styles are not overridden
+   by the vertical-sidebar density rules above (which share the same specificity
+   and load after _variants.scss in the cascade). */
+
+@media (min-width: 992px) {
+
+    /* --- Compact × Horizontal --- */
+
+    [data-density="compact"][data-layout="horizontal"] .topbar {
+        height: 48px;
+        min-height: 48px;
+        border-bottom: none;
+        box-shadow: none;
+    }
+
+    [data-density="compact"][data-layout="horizontal"] .topbar::after {
+        display: none;
+    }
+
+    [data-density="compact"][data-layout="horizontal"] .sidebar {
+        top: 48px;
+        height: 34px;
+        border: none;
+        border-bottom: 1px solid var(--le-glass-border);
+        overflow: visible;
+    }
+
+    [data-density="compact"][data-layout="horizontal"] .main-content {
+        padding-top: calc(48px + 34px);
+    }
+
+    [data-density="compact"][data-layout="horizontal"] .sidebar-body {
+        padding: 0 14px;
+    }
+
+    [data-density="compact"][data-layout="horizontal"] .sidebar-nav-label {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+        margin-bottom: 0;
+        text-transform: none;
+        letter-spacing: 0;
+    }
+
+    [data-density="compact"][data-layout="horizontal"] .sidebar-link {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+        gap: 8px;
+    }
+
+    [data-density="compact"][data-layout="horizontal"] .sidebar-link svg,
+    [data-density="compact"][data-layout="horizontal"] .sidebar-link i {
+        width: 14px;
+        height: 14px;
+    }
+
+    [data-density="compact"][data-layout="horizontal"] .sidebar-item {
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    /* --- Comfortable × Horizontal --- */
+
+    [data-density="comfortable"][data-layout="horizontal"] .topbar {
+        height: 68px;
+        min-height: 68px;
+        border-bottom: none;
+        box-shadow: none;
+    }
+
+    [data-density="comfortable"][data-layout="horizontal"] .topbar::after {
+        display: none;
+    }
+
+    [data-density="comfortable"][data-layout="horizontal"] .sidebar {
+        top: 68px;
+        height: 46px;
+        border: none;
+        border-bottom: 1px solid var(--le-glass-border);
+        overflow: visible;
+    }
+
+    [data-density="comfortable"][data-layout="horizontal"] .main-content {
+        padding-top: calc(68px + 46px);
+    }
+
+    [data-density="comfortable"][data-layout="horizontal"] .sidebar-body {
+        padding: 0 24px;
+    }
+
+    [data-density="comfortable"][data-layout="horizontal"] .sidebar-nav-label {
+        font-size: 0.875rem;
+        padding: 9px 16px;
+        margin-bottom: 0;
+        text-transform: none;
+        letter-spacing: 0;
+    }
+
+    [data-density="comfortable"][data-layout="horizontal"] .sidebar-link {
+        padding: 10px 16px;
+        font-size: 0.875rem;
+        gap: 12px;
+    }
+
+    [data-density="comfortable"][data-layout="horizontal"] .sidebar-link svg,
+    [data-density="comfortable"][data-layout="horizontal"] .sidebar-link i {
+        width: 18px;
+        height: 18px;
+    }
+
+    [data-density="comfortable"][data-layout="horizontal"] .sidebar-item {
+        margin-bottom: 0;
+        padding: 0;
+    }
+}
+

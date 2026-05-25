@@ -1,0 +1,145 @@
+/* ---------------------------------------------------------------------------
+   Feed Tabs
+   --------------------------------------------------------------------------- */
+.chirp-feed-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--le-glass-border-subtle);
+}
+
+.chirp-feed-tab {
+  flex: 1;
+  text-align: center;
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--le-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--le-transition-fast);
+}
+
+.chirp-feed-tab:hover {
+  background: var(--le-glass-bg-subtle);
+  color: var(--le-text-primary);
+}
+
+.chirp-feed-tab.active {
+  color: var(--le-text-primary);
+}
+
+.chirp-feed-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 3px;
+  background: var(--le-primary);
+  border-radius: var(--le-radius-full);
+}
+
+/* ---------------------------------------------------------------------------
+   Profile Header
+   --------------------------------------------------------------------------- */
+.chirp-profile-header {
+  overflow: hidden;
+  padding: 0;
+}
+
+.chirp-profile-banner {
+  height: 200px;
+  background: linear-gradient(135deg, var(--le-primary), var(--le-secondary));
+  position: relative;
+}
+
+.chirp-profile-info {
+  padding: 0 20px 20px;
+  position: relative;
+}
+
+.chirp-profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: var(--le-radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 2.4rem;
+  color: var(--le-text-inverse);
+  border: 4px solid var(--le-glass-bg-strong);
+  margin-top: -64px;
+  position: relative;
+  z-index: 2;
+}
+
+[data-theme="dark"] .chirp-profile-avatar {
+  border-color: var(--le-dark-surface);
+}
+
+.chirp-profile-actions {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.chirp-profile-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--le-text-primary);
+  margin: 6px 0 0;
+  line-height: 1.3;
+}
+
+.chirp-profile-handle {
+  font-size: 0.88rem;
+  color: var(--le-text-muted);
+  margin-bottom: 10px;
+}
+
+.chirp-profile-bio {
+  font-size: 0.92rem;
+  color: var(--le-text-primary);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.chirp-profile-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+  color: var(--le-text-muted);
+}
+
+.chirp-profile-meta i,
+.chirp-profile-meta svg {
+  vertical-align: -2px;
+  margin-right: 3px;
+}
+
+.chirp-profile-stats {
+  display: flex;
+  gap: 20px;
+  font-size: 0.88rem;
+}
+
+.chirp-profile-stat-value {
+  font-weight: 700;
+  color: var(--le-text-primary);
+}
+
+.chirp-profile-stat-label {
+  color: var(--le-text-muted);
+}
+
+.chirp-profile-stat-label:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

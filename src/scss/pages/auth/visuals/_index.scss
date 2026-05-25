@@ -1,0 +1,9 @@
+// visuals/ — modular forwards (auth template visuals)
+@forward "shared";
+@forward "email-verification";
+@forward "forgot-password";
+@forward "lock-screen";
+@forward "reset-password";
+@forward "signin";
+@forward "signup";
+@forward "two-factor";

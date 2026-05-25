@@ -1,0 +1,76 @@
+/* ── Accordion Premium ── */
+
+.accordion-glass {
+  .accordion-item {
+    background: transparent;
+    border: 1px solid var(--le-glass-border-subtle);
+    border-radius: var(--le-radius-md, 0.5rem) !important;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    backdrop-filter: blur(var(--le-glass-blur-subtle)) saturate(var(--le-liquid-saturate-subtle)) brightness(var(--le-liquid-brightness));
+    transition: background-color var(--le-transition), border-color var(--le-transition), color var(--le-transition), box-shadow var(--le-transition), filter var(--le-transition);
+
+    &:not(:last-child) {
+      border-bottom: 1px solid transparent;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 1rem;
+        right: 1rem;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      }
+    }
+  }
+
+  .accordion-button {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--le-text-primary);
+    font-weight: 500;
+    padding: 1rem 1.25rem;
+    border: none;
+    box-shadow: none;
+    transition: background var(--le-transition-fast);
+
+    &:not(.collapsed) {
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 20px rgba(var(--le-primary-rgb), 0.05) inset;
+      color: var(--le-primary-on-glass);
+    }
+
+    &::after {
+      transition: transform var(--le-transition) cubic-bezier(0.4, 0, 0.2, 1);
+      filter: brightness(0) invert(1);
+      opacity: 0.6;
+    }
+
+    &:not(.collapsed)::after {
+      transform: rotate(-180deg);
+      opacity: 1;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(var(--le-primary-rgb), 0.12);
+    }
+  }
+
+  .accordion-body {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 1rem 1.25rem 1.25rem;
+    color: var(--le-text-secondary, rgba(255, 255, 255, 0.7));
+  }
+
+  /* Active item glow */
+  .accordion-item:has(.accordion-button:not(.collapsed)) {
+    border-color: rgba(var(--le-primary-rgb), 0.2);
+    box-shadow: 0 0 16px rgba(var(--le-primary-rgb), 0.06);
+  }
+}

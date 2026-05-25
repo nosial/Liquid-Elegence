@@ -1,0 +1,117 @@
+// Migrated from templates/pages/components/glass-effects.njk
+/* Shared demo backdrop base — themed via token colors */
+.demo-backdrop,
+.demo-backdrop-warm,
+.demo-backdrop-cool,
+.demo-backdrop-dark,
+.demo-backdrop-ocean,
+.demo-backdrop-mesh {
+    border-radius: var(--le-radius-lg);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+.demo-backdrop {
+    background: linear-gradient(135deg,
+        rgba(var(--le-info-rgb), 0.7) 0%,
+        rgba(var(--le-secondary-rgb), 0.7) 50%,
+        rgba(var(--le-primary-rgb), 0.5) 100%);
+}
+.demo-backdrop-warm {
+    background: linear-gradient(135deg,
+        rgba(var(--le-secondary-rgb), 0.6) 0%,
+        rgba(var(--le-danger-rgb), 0.6) 50%,
+        rgba(var(--le-warning-rgb), 0.5) 100%);
+}
+.demo-backdrop-cool {
+    background: linear-gradient(135deg,
+        rgba(var(--le-primary-rgb), 0.7) 0%,
+        rgba(var(--le-info-rgb), 0.5) 50%,
+        rgba(var(--le-success-rgb), 0.5) 100%);
+}
+.demo-backdrop-dark {
+    background: linear-gradient(135deg, var(--le-gray-900) 0%, var(--le-gray-800) 50%, var(--le-gray-700) 100%);
+}
+.demo-backdrop-ocean {
+    background: linear-gradient(135deg,
+        rgba(var(--le-primary-rgb), 0.8) 0%,
+        rgba(var(--le-info-rgb), 0.7) 50%,
+        rgba(var(--le-secondary-rgb), 0.6) 100%);
+}
+.demo-backdrop-mesh {
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(var(--le-info-rgb), 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(var(--le-secondary-rgb), 0.3) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 80%, rgba(var(--le-primary-rgb), 0.3) 0%, transparent 60%),
+        linear-gradient(135deg, var(--le-gray-800) 0%, var(--le-gray-900) 100%);
+}
+/* Floating demo shapes — use theme semantic colors */
+.demo-shapes {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.demo-shapes span {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+.demo-shapes .s1 { width: 120px; height: 120px; background: var(--le-warning); top: -20px; right: 15%; }
+.demo-shapes .s2 { width: 80px; height: 80px; background: var(--le-danger); bottom: 10px; left: 10%; }
+.demo-shapes .s3 { width: 60px; height: 60px; background: var(--le-success); top: 40%; right: 5%; }
+.demo-shapes .s4 { width: 100px; height: 100px; background: var(--le-primary); top: 10%; left: 25%; }
+/* Demo text on backdrop surfaces */
+.demo-text { color: #fff; }
+.demo-text-sm { font-size: 0.8125rem; color: var(--le-glass-bg-strong); }
+.demo-text-xs { font-size: 0.75rem; color: var(--le-glass-bg-strong); }
+.demo-text-title { color: #fff; font-size: 0.85rem; font-weight: 600; }
+.demo-icon { width: 24px; height: 24px; color: #fff; margin-bottom: 0.5rem; }
+.demo-icon-lg { width: 28px; height: 28px; color: #fff; margin-bottom: 0.5rem; }
+.demo-icon-xl { width: 32px; height: 32px; color: #fff; margin-bottom: 0.5rem; }
+.demo-stacked { position: relative; z-index: 1; }
+.demo-cell { min-height: 120px; }
+/* Code label tag */
+.demo-label {
+    display: inline-block;
+    font-family: var(--le-font-mono);
+    font-size: 0.75rem;
+    color: var(--le-glass-bg-strong);
+    background: rgba(0,0,0,0.25);
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--le-radius-sm);
+    margin-top: 0.5rem;
+}
+.demo-label-dark {
+    color: var(--le-text-muted);
+    background: var(--le-glass-bg);
+}
+/* Small icon sizing (16px for entrance animations) */
+.demo-icon-sm { width: 16px; height: 16px; color: #fff; }
+/* Showcase circle for combined effects */
+.demo-halo-orb {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Glass layer borders */
+.demo-layer { border: 1px solid var(--le-glass-border-subtle); }
+/* Halo demo items */
+.halo-demo-item {
+    text-align: center;
+    padding: 1.5rem 0.5rem;
+}
+.halo-demo-item .halo-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.75rem;
+    background: var(--le-glass-bg);
+    border: 1px solid var(--le-glass-border);
+}

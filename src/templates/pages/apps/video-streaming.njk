@@ -1,0 +1,282 @@
+{% extends "layouts/dashboard.njk" %}
+{% set root = "../../" %}
+
+
+{% block content %}
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">Streamflix</h1>
+        <p class="page-subtitle">Browse trending videos, live streams, and channels you love.</p>
+    </div>
+
+    <!-- Category Chips (Static) -->
+    <div class="glass-card mb-4 video-chip-card">
+        <div class="video-chip-row">
+            {% set categories = ["All", "Music", "Gaming", "Tech", "Movies", "News", "Sports", "Comedy", "Cooking", "Travel", "Education", "Live", "Animation", "Fashion"] %}
+            {% for cat in categories %}
+            <a href="javascript:void(0)" class="video-chip{% if loop.first %} is-active{% endif %}">{{ cat }}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- ================== Main column ================== -->
+        <div class="col-xxl-8 video-main-col">
+
+            <!-- Single layered panel containing every content section.
+                 Sub-sections are bare blocks separated by .glass-divider —
+                 mirrors the Music Player / Calendar layered-glass pattern. -->
+            <div class="glass-card glass-card-body animate-fade-in-up video-main-panel">
+
+                <!-- Featured / Hero -->
+                <section class="video-section">
+                    <div class="video-section-header mb-3">
+                        <h5 class="video-section-title">Featured</h5>
+                        <a href="javascript:void(0)" class="video-section-link">See all</a>
+                    </div>
+                    <div class="video-hero">
+                        {% set hero = { id: "v1", title: "Big Buck Bunny — A Cinematic Open Movie Demo", channel: "Wild Frames", initials: "WF", duration: "9:56", views: "12M", age: "2 weeks ago", color: "linear-gradient(135deg, #10b981, #06b6d4)", chColor: "linear-gradient(135deg, #10b981, #06b6d4)" } %}
+                        <a href="video-streaming-watch.html" class="video-hero-feature">
+                            <div class="video-hero-thumb" style="background:{{ hero.color }};">
+                                <i data-feather="play"></i>
+                                <span class="video-thumb-duration">{{ hero.duration }}</span>
+                            </div>
+                            <div class="video-meta">
+                                <span class="video-meta-avatar" style="background:{{ hero.chColor }};">{{ hero.initials }}</span>
+                                <div class="video-meta-text">
+                                    <h6 class="video-meta-title">{{ hero.title }}</h6>
+                                    <span class="video-meta-channel">{{ hero.channel }}</span>
+                                    <div class="video-meta-stats"><span>{{ hero.views }} views</span><span class="dot">·</span><span>{{ hero.age }}</span></div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="video-hero-side">
+                            {% set sideHero = [
+                                { title: "Building a Glassmorphism Dashboard from Scratch", channel: "CodeCraft Daily", initials: "CC", duration: "30:42", views: "540K", age: "3 days ago", color: "linear-gradient(135deg, #06b6d4, #3b82f6)", chColor: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+                                { title: "Synthwave Live Mix — Driving Through Neon City", channel: "Synthwave Sundays", initials: "SS", duration: "1:30:00", views: "1.2M", age: "1 week ago", color: "linear-gradient(135deg, #ec4899, #8b5cf6)", chColor: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+                                { title: "Why Does THIS Boss Feel Impossible?", channel: "Game Theory Lab", initials: "GT", duration: "21:04", views: "980K", age: "3 weeks ago", color: "linear-gradient(135deg, #f97316, #ef4444)", chColor: "linear-gradient(135deg, #f97316, #ef4444)" }
+                            ] %}
+                            {% for v in sideHero %}
+                            <a href="video-streaming-watch.html" class="video-card-h">
+                                <div class="video-thumb" style="background:{{ v.color }};">
+                                    <i data-feather="film" class="video-thumb-icon"></i>
+                                    <span class="video-thumb-duration">{{ v.duration }}</span>
+                                </div>
+                                <div class="video-meta">
+                                    <div class="video-meta-text">
+                                        <h6 class="video-meta-title">{{ v.title }}</h6>
+                                        <span class="video-meta-channel">{{ v.channel }}</span>
+                                        <div class="video-meta-stats"><span>{{ v.views }} views</span><span class="dot">·</span><span>{{ v.age }}</span></div>
+                                    </div>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Trending Now -->
+                <section class="video-section">
+                    <div class="video-section-header mb-3">
+                        <h5 class="video-section-title"><i data-feather="trending-up" class="le-icon-18 me-1"></i> Trending now</h5>
+                        <a href="javascript:void(0)" class="video-section-link">See all</a>
+                    </div>
+                    {% set trending = [
+                        { title: "Aurora — A 4K Cinematic Time-Lapse", channel: "Wild Frames", initials: "WF", duration: "6:52", views: "2.4M", age: "2 months ago", color: "linear-gradient(135deg, #10b981, #06b6d4)", chColor: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                        { title: "The Easiest Pasta You'll Ever Make (Seriously)", channel: "TasteBud Kitchen", initials: "TB", duration: "12:18", views: "412K", age: "5 days ago", color: "linear-gradient(135deg, #eab308, #f97316)", chColor: "linear-gradient(135deg, #eab308, #f97316)" },
+                        { title: "Pixel Art Animation: Day to Night Cycle", channel: "Pixel Perfect Studios", initials: "PP", duration: "10:12", views: "740K", age: "2 weeks ago", color: "linear-gradient(135deg, #6366f1, #8b5cf6)", chColor: "linear-gradient(135deg, #6366f1, #8b5cf6)" },
+                        { title: "Iceland in 4K — A Travel Diary", channel: "Atlas Wandering", initials: "AW", duration: "22:00", views: "980K", age: "1 month ago", color: "linear-gradient(135deg, #0ea5e9, #22c55e)", chColor: "linear-gradient(135deg, #0ea5e9, #22c55e)" }
+                    ] %}
+                    <div class="video-card-grid">
+                        {% for v in trending %}
+                        <a href="video-streaming-watch.html" class="video-card">
+                            <div class="video-thumb" style="background:{{ v.color }};">
+                                <i data-feather="film" class="video-thumb-icon"></i>
+                                <span class="video-thumb-duration">{{ v.duration }}</span>
+                            </div>
+                            <div class="video-meta">
+                                <span class="video-meta-avatar" style="background:{{ v.chColor }};">{{ v.initials }}</span>
+                                <div class="video-meta-text">
+                                    <h6 class="video-meta-title">{{ v.title }}</h6>
+                                    <span class="video-meta-channel">{{ v.channel }}</span>
+                                    <div class="video-meta-stats"><span>{{ v.views }} views</span><span class="dot">·</span><span>{{ v.age }}</span></div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Live Now -->
+                <section class="video-section">
+                    <div class="video-section-header mb-3">
+                        <h5 class="video-section-title">
+                            <span class="video-live-pulse"></span> Live now
+                        </h5>
+                        <a href="javascript:void(0)" class="video-section-link">See all</a>
+                    </div>
+                    {% set live = [
+                        { title: "Live: 24/7 Lo-Fi Beats & Coding Chillout", channel: "Synthwave Sundays", initials: "SS", views: "1.8K", color: "linear-gradient(135deg, #ec4899, #8b5cf6)", chColor: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+                        { title: "Live Coverage: Press Conference", channel: "QuickByte News", initials: "QN", views: "12.4K", color: "linear-gradient(135deg, #f43f5e, #a855f7)", chColor: "linear-gradient(135deg, #f43f5e, #a855f7)" },
+                        { title: "Speedrun Marathon — Day 3", channel: "Game Theory Lab", initials: "GT", views: "8.6K", color: "linear-gradient(135deg, #f97316, #ef4444)", chColor: "linear-gradient(135deg, #f97316, #ef4444)" },
+                        { title: "Live Cooking: Tonight's Dinner", channel: "TasteBud Kitchen", initials: "TB", views: "2.3K", color: "linear-gradient(135deg, #eab308, #f97316)", chColor: "linear-gradient(135deg, #eab308, #f97316)" }
+                    ] %}
+                    <div class="video-card-grid-dense">
+                        {% for v in live %}
+                        <a href="video-streaming-watch.html" class="video-card">
+                            <div class="video-thumb" style="background:{{ v.color }};">
+                                <i data-feather="film" class="video-thumb-icon"></i>
+                                <span class="video-thumb-live">Live</span>
+                            </div>
+                            <div class="video-meta">
+                                <span class="video-meta-avatar" style="background:{{ v.chColor }};">{{ v.initials }}</span>
+                                <div class="video-meta-text">
+                                    <h6 class="video-meta-title">{{ v.title }}</h6>
+                                    <span class="video-meta-channel">{{ v.channel }}</span>
+                                    <div class="video-meta-stats"><span>{{ v.views }} watching</span></div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                <div class="glass-divider my-4"></div>
+
+                <!-- Recommended -->
+                <section class="video-section">
+                    <div class="video-section-header mb-3">
+                        <h5 class="video-section-title">Recommended for you</h5>
+                        <a href="javascript:void(0)" class="video-section-link">See all</a>
+                    </div>
+                    {% set recommended = [
+                        { title: "Why Async Doesn't Mean Parallel — Explained Clearly", channel: "CodeCraft Daily", initials: "CC", duration: "15:24", views: "312K", age: "1 week ago", color: "linear-gradient(135deg, #06b6d4, #3b82f6)", chColor: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+                        { title: "Modular SCSS at Scale: One Architecture, Many Themes", channel: "CodeCraft Daily", initials: "CC", duration: "24:48", views: "184K", age: "3 weeks ago", color: "linear-gradient(135deg, #06b6d4, #3b82f6)", chColor: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+                        { title: "Stand-Up: 7 Minutes That Will (Probably) Make You Smile", channel: "Pixel Perfect Studios", initials: "PP", duration: "7:06", views: "880K", age: "2 weeks ago", color: "linear-gradient(135deg, #6366f1, #8b5cf6)", chColor: "linear-gradient(135deg, #6366f1, #8b5cf6)" },
+                        { title: "How They Made That Shot — Cinematography Breakdown", channel: "Wild Frames", initials: "WF", duration: "14:44", views: "412K", age: "1 week ago", color: "linear-gradient(135deg, #10b981, #06b6d4)", chColor: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                        { title: "10-Minute Tabata: Full Body Sweat", channel: "Pixel Perfect Studios", initials: "PP", duration: "10:12", views: "220K", age: "6 days ago", color: "linear-gradient(135deg, #6366f1, #8b5cf6)", chColor: "linear-gradient(135deg, #6366f1, #8b5cf6)" },
+                        { title: "Photoshop Plugins That Actually Save Time in 2026", channel: "Pixel Perfect Studios", initials: "PP", duration: "11:56", views: "96K", age: "4 days ago", color: "linear-gradient(135deg, #6366f1, #8b5cf6)", chColor: "linear-gradient(135deg, #6366f1, #8b5cf6)" }
+                    ] %}
+                    <div class="video-card-grid">
+                        {% for v in recommended %}
+                        <a href="video-streaming-watch.html" class="video-card">
+                            <div class="video-thumb" style="background:{{ v.color }};">
+                                <i data-feather="film" class="video-thumb-icon"></i>
+                                <span class="video-thumb-duration">{{ v.duration }}</span>
+                            </div>
+                            <div class="video-meta">
+                                <span class="video-meta-avatar" style="background:{{ v.chColor }};">{{ v.initials }}</span>
+                                <div class="video-meta-text">
+                                    <h6 class="video-meta-title">{{ v.title }}</h6>
+                                    <span class="video-meta-channel">{{ v.channel }}</span>
+                                    <div class="video-meta-stats"><span>{{ v.views }} views</span><span class="dot">·</span><span>{{ v.age }}</span></div>
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+        <!-- ================== Sidebar column ================== -->
+        <div class="col-xxl-4 video-sidebar-col">
+
+            <!-- Single layered sidebar panel: search + widgets share one
+                 outer glass-card, separated by .glass-divider blocks. -->
+            <div class="glass-card glass-card-body video-sidebar-panel">
+
+                <!-- Search -->
+                <section class="video-sidebar-section">
+                    <div class="video-search">
+                        <i data-feather="search" class="le-icon-16 video-search-icon"></i>
+                        <input type="text" class="video-search-input" placeholder="Search videos, channels…">
+                    </div>
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Top Channels -->
+                <section class="video-sidebar-section">
+                    <div class="video-section-header mb-3">
+                        <h6 class="video-widget-title mb-0">Top channels</h6>
+                        <a href="javascript:void(0)" class="video-section-link">Browse all</a>
+                    </div>
+                    {% set channels = [
+                        { name: "Wild Frames", handle: "@wildframes", subs: "3.4M", initials: "WF", color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                        { name: "Game Theory Lab", handle: "@gametheorylab", subs: "2.1M", initials: "GT", color: "linear-gradient(135deg, #f97316, #ef4444)" },
+                        { name: "QuickByte News", handle: "@quickbyte", subs: "1.5M", initials: "QN", color: "linear-gradient(135deg, #f43f5e, #a855f7)" },
+                        { name: "Pixel Perfect Studios", handle: "@pixelperfect", subs: "1.2M", initials: "PP", color: "linear-gradient(135deg, #6366f1, #8b5cf6)" },
+                        { name: "TasteBud Kitchen", handle: "@tastebud", subs: "980K", initials: "TB", color: "linear-gradient(135deg, #eab308, #f97316)" }
+                    ] %}
+                    {% for c in channels %}
+                    <a href="video-streaming-channel.html" class="video-channel-row">
+                        <span class="video-channel-row-avatar" style="background:{{ c.color }};">{{ c.initials }}</span>
+                        <div class="video-channel-row-info">
+                            <span class="video-channel-row-name">{{ c.name }}</span>
+                            <span class="video-channel-row-meta">{{ c.handle }} · {{ c.subs }}</span>
+                        </div>
+                        <button class="btn btn-outline-secondary btn-sm le-chip-sm video-row-action">Subscribe</button>
+                    </a>
+                    {% endfor %}
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Subscriptions -->
+                <section class="video-sidebar-section">
+                    <div class="video-section-header mb-3">
+                        <h6 class="video-widget-title mb-0">Your subscriptions</h6>
+                        <a href="javascript:void(0)" class="video-section-link">All</a>
+                    </div>
+                    {% set subs = [
+                        { name: "CodeCraft Daily", initials: "CC", count: "12 new", color: "linear-gradient(135deg, #06b6d4, #3b82f6)" },
+                        { name: "Wild Frames", initials: "WF", count: "3 new", color: "linear-gradient(135deg, #10b981, #06b6d4)" },
+                        { name: "Synthwave Sundays", initials: "SS", count: "Live", live: true, color: "linear-gradient(135deg, #ec4899, #8b5cf6)" },
+                        { name: "Atlas Wandering", initials: "AW", count: "1 new", color: "linear-gradient(135deg, #0ea5e9, #22c55e)" }
+                    ] %}
+                    {% for s in subs %}
+                    <a href="video-streaming-channel.html" class="video-channel-row">
+                        <span class="video-channel-row-avatar" style="background:{{ s.color }};">{{ s.initials }}</span>
+                        <div class="video-channel-row-info">
+                            <span class="video-channel-row-name">{{ s.name }}</span>
+                            <span class="video-channel-row-meta">{{ s.count }}</span>
+                        </div>
+                        {% if s.live %}<span class="video-row-badge video-row-badge-live">Live</span>{% endif %}
+                    </a>
+                    {% endfor %}
+                </section>
+
+                <div class="glass-divider my-3"></div>
+
+                <!-- Library quick links -->
+                <section class="video-sidebar-section">
+                    <h6 class="video-widget-title mb-3">Library</h6>
+                    <div class="d-flex flex-column gap-2">
+                        <a href="video-streaming-library.html" class="video-link-row"><i data-feather="clock" class="le-icon-16"></i><span>History</span></a>
+                        <a href="video-streaming-library.html" class="video-link-row"><i data-feather="bookmark" class="le-icon-16"></i><span>Watch later</span></a>
+                        <a href="video-streaming-library.html" class="video-link-row"><i data-feather="thumbs-up" class="le-icon-16"></i><span>Liked videos</span></a>
+                        <a href="video-streaming-library.html" class="video-link-row"><i data-feather="list" class="le-icon-16"></i><span>Playlists</span></a>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ asset_root or root }}js/apps/video-streaming.js"></script>
+{% endblock %}
