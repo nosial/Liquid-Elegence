@@ -9,3 +9,5 @@ dist/
 .tags*
 .cache/
 *.aider*
+
+package-lock.json
