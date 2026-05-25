@@ -6,7 +6,7 @@ resources:
   - /js:
     - js/*.js
     - js/apps/*.js
-  - /vendor: *
+  - /vendor: "*"
 web_application:
  - /*:
     - dynamical_web/**
