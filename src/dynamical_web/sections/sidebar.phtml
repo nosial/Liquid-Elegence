@@ -1,0 +1,39 @@
+<?php use DynamicalWeb\Html\Functions; ?>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <a href="<?php Functions::printRoute('home'); ?>" class="sidebar-brand">
+            <span class="brand-icon" aria-hidden="true"><span class="brand-icon-glyph">&#9670;</span></span>
+            <span class="brand-text">Liquid Elegance</span>
+        </a>
+        <button class="sidebar-toggle-btn" id="sidebarCollapseBtn">
+            <i data-feather="chevrons-left"></i>
+        </button>
+    </div>
+    <div class="sidebar-body">
+        <nav class="sidebar-nav">
+            <div class="sidebar-nav-section">
+                <span class="sidebar-nav-label"><?php Functions::printl('nav_dashboards'); ?></span>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item"><a href="<?php Functions::printRoute('home'); ?>" class="sidebar-link active"><i data-feather="home"></i><span><?php Functions::printl('nav_overview'); ?></span></a></li>
+                </ul>
+            </div>
+            <div class="sidebar-nav-section">
+                <span class="sidebar-nav-label"><?php Functions::printl('nav_pages'); ?></span>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item"><a href="<?php Functions::printRoute('home'); ?>" class="sidebar-link"><i data-feather="file-text"></i><span><?php Functions::printl('nav_invoices'); ?></span></a></li>
+                    <li class="sidebar-item"><a href="<?php Functions::printRoute('home'); ?>" class="sidebar-link"><i data-feather="credit-card"></i><span><?php Functions::printl('nav_billing'); ?></span></a></li>
+                    <li class="sidebar-item"><a href="<?php Functions::printRoute('home'); ?>" class="sidebar-link"><i data-feather="tag"></i><span><?php Functions::printl('nav_pricing'); ?></span></a></li>
+                    <li class="sidebar-item"><a href="<?php Functions::printRoute('home'); ?>" class="sidebar-link"><i data-feather="user"></i><span><?php Functions::printl('nav_profile'); ?></span></a></li>
+                    <li class="sidebar-item"><a href="<?php Functions::printRoute('home'); ?>" class="sidebar-link"><i data-feather="settings"></i><span><?php Functions::printl('nav_settings'); ?></span></a></li>
+                </ul>
+            </div>
+            <div class="sidebar-nav-section">
+                <span class="sidebar-nav-label"><?php Functions::printl('nav_utility'); ?></span>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item"><a href="<?php Functions::printRoute('home'); ?>" class="sidebar-link"><i data-feather="alert-circle"></i><span>404</span></a></li>
+                    <li class="sidebar-item"><a href="<?php Functions::printRoute('home'); ?>" class="sidebar-link"><i data-feather="alert-triangle"></i><span>500</span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</aside>

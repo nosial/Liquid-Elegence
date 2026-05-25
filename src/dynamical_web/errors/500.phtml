@@ -7,18 +7,26 @@
         <title>500 — Internal Server Error</title>
         <link rel="stylesheet" href="/css/liquid-elegance.css">
     </head>
-    <body class="page-layout">
-        <?php Functions::insertSection('navbar'); ?>
+    <body class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
+        <?php Functions::insertSection('sidebar'); ?>
+        <div class="sidebar-backdrop"></div>
 
-        <main class="page-main d-flex align-items-center justify-content-center">
-            <div class="glass-card p-5 text-center">
-                <h1 class="display-1 fw-bold text-danger">500</h1>
-                <p class="lead mb-4">Something went wrong on our end.</p>
-                <a href="<?php Functions::printRoute('home'); ?>" class="btn btn-primary">Go Home</a>
+        <div class="main-content">
+            <?php Functions::insertSection('topbar'); ?>
+
+            <div class="page-content d-flex align-items-center justify-content-center">
+                <div class="glass-card p-5 text-center" style="max-width: 480px;">
+                    <h1 class="display-1 fw-bold text-danger">500</h1>
+                    <h5 class="mb-3"><?php Functions::printl('500_heading'); ?></h5>
+                    <p class="text-muted mb-4"><?php Functions::printl('500_message'); ?></p>
+                    <a href="<?php Functions::printRoute('home'); ?>" class="btn btn-primary"><?php Functions::printl('go_home'); ?></a>
+                </div>
             </div>
-        </main>
 
-        <?php Functions::insertSection('footer'); ?>
+            <?php Functions::insertSection('footer'); ?>
+        </div>
+
+        <script src="/vendor/bootstrap/bootstrap.bundle.min.js"></script>
         <script src="/js/app.js"></script>
         <script src="/js/sidebar.js"></script>
     </body>
