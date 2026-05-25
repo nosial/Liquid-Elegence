@@ -61,7 +61,8 @@ jobs:
           for dir in artifacts/*/; do
             [ -d "$dir" ] || continue
             variant_name=$(basename "$dir")
-            zip -r "${variant_name}.zip" -C "$dir" .
+            (cd "$dir" && zip -r "/tmp/${variant_name}.zip" .)
+            mv "/tmp/${variant_name}.zip" "${variant_name}.zip"
             echo "Uploading: ${variant_name}.zip"
             gh release upload "${{ github.ref_name }}" "${variant_name}.zip"
           done
