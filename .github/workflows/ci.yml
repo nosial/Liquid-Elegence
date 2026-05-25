@@ -7,7 +7,8 @@ on:
     types: [published]
 
 env:
-  NODE_VERSION: '20'
+  NODE_VERSION: '24'
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
@@ -38,16 +39,10 @@ jobs:
       - name: Build variant HTML
         run: node scripts/build-variant-html.js ${{ matrix.color }} ${{ matrix.mode }} ${{ matrix.layout }}
 
-      - name: Create zip archive
-        run: |
-          cd dist
-          zip -r ../${{ matrix.color }}-${{ matrix.mode }}-${{ matrix.layout }}.zip \
-            ${{ matrix.color }}-${{ matrix.mode }}-${{ matrix.layout }}
-
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.color }}-${{ matrix.mode }}-${{ matrix.layout }}
-          path: ${{ matrix.color }}-${{ matrix.mode }}-${{ matrix.layout }}.zip
+          path: dist/${{ matrix.color }}-${{ matrix.mode }}-${{ matrix.layout }}/
           if-no-files-found: error
           retention-days: 14
 
@@ -62,14 +57,14 @@ jobs:
         with:
           path: artifacts
 
-      - name: Upload assets to release
+      - name: Zip and upload assets to release
         run: |
           for dir in artifacts/*/; do
-            for zip_file in "$dir"*.zip; do
-              [ -f "$zip_file" ] || continue
-              echo "Uploading: $zip_file"
-              gh release upload "${{ github.ref_name }}" "$zip_file"
-            done
+            [ -d "$dir" ] || continue
+            variant_name=$(basename "$dir")
+            zip -r "${variant_name}.zip" -C "$dir" .
+            echo "Uploading: ${variant_name}.zip"
+            gh release upload "${{ github.ref_name }}" "${variant_name}.zip"
           done
         env:
           GH_TOKEN: ${{ github.token }}
