@@ -1,0 +1,15 @@
+name: Liquid Elegance
+resources:
+  - /css:
+    - css/liquid-elegance.css
+    - css/liquid-elegance.css.map
+  - /js:
+    - js/*.js
+    - js/apps/*.js
+  - /vendor: *
+web_application:
+ - /*:
+    - dynamical_web/**
+web_locale:
+ - /*
+    - dynamical_locale/**

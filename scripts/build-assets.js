@@ -7,7 +7,6 @@ const fs = require('fs');
 const path = require('path');
 const copyDir = require('./lib/copy-dir');
 
-const SRC_ASSETS = path.join(__dirname, '..', 'src', 'assets');
 const DIST_ASSETS = path.join(__dirname, '..', 'dist', 'full', 'assets');
 let exitCode = 0;
 
@@ -25,12 +24,6 @@ function isDirEmpty(dir) {
     return true;
 }
 
-if (!fs.existsSync(SRC_ASSETS)) {
-    console.log('No src/assets/ directory found — nothing to copy.');
-    process.exit(0);
-}
-
-const copied = copyDir(SRC_ASSETS, DIST_ASSETS);
 
 // Create placeholder files if the img directory is empty
 const distImgDir = path.join(DIST_ASSETS, 'img');
@@ -43,5 +36,4 @@ if (isDirEmpty(distImgDir)) {
     console.log('Created placeholder in dist/full/assets/img/ (source directory was empty).');
 }
 
-console.log(`Copied ${copied} asset file${copied !== 1 ? 's' : ''} to dist/full/assets/`);
 process.exit(exitCode);

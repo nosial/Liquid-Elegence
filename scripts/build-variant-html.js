@@ -10,6 +10,10 @@ const DIST = path.join(ROOT, 'dist');
 const FULL = path.join(DIST, 'full');
 const VARIANT_CSS = path.join(DIST, '.variant-css');
 
+const SRC_DYNAMICAL_WEB = path.join(ROOT, 'src', 'dynamical_web');
+const SRC_DYNAMICAL_LOCALE = path.join(ROOT, 'src', 'dynamical_locale');
+const TEMPLATE_YML = path.join(ROOT, 'template.yml');
+
 const VALID_COLORS = ['default', 'ocean', 'sunset', 'forest', 'berry', 'slate', 'ruby', 'amber', 'rose', 'midnight', 'coral', 'sage'];
 const VALID_MODES = ['light', 'dark'];
 const VALID_LAYOUTS = ['vertical', 'horizontal'];
@@ -84,6 +88,13 @@ if (fs.existsSync(srcCss)) {
 }
 if (fs.existsSync(srcMap)) {
   fs.copyFileSync(srcMap, path.join(variantCssDir, 'liquid-elegance.css.map'));
+}
+
+// Copy DynamicalWeb template assets
+copyDir(SRC_DYNAMICAL_WEB, path.join(variantDir, 'dynamical_web'));
+copyDir(SRC_DYNAMICAL_LOCALE, path.join(variantDir, 'dynamical_locale'));
+if (fs.existsSync(TEMPLATE_YML)) {
+  fs.copyFileSync(TEMPLATE_YML, path.join(variantDir, 'template.yml'));
 }
 
 const context = {

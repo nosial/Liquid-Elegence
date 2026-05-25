@@ -17,6 +17,10 @@ const DIST = path.join(__dirname, '..', 'dist');
 const FULL = path.join(DIST, 'full');
 const VARIANT_CSS = path.join(DIST, '.variant-css');
 
+const SRC_DYNAMICAL_WEB = path.join(__dirname, '..', 'src', 'dynamical_web');
+const SRC_DYNAMICAL_LOCALE = path.join(__dirname, '..', 'src', 'dynamical_locale');
+const TEMPLATE_YML = path.join(__dirname, '..', 'template.yml');
+
 let exitCode = 0;
 
 const MODES = ['light', 'dark'];
@@ -121,6 +125,25 @@ function assembleVariantAssets(variantDir, cssVariantName) {
     if (fs.existsSync(srcMap)) {
         fs.copyFileSync(srcMap, path.join(variantCssDir, 'liquid-elegance.css.map'));
     }
+
+    // Copy DynamicalWeb template assets
+    copyDynamicalAssets(variantDir);
+}
+
+/**
+ * Copy DynamicalWeb template and locale files into a variant directory.
+ */
+function copyDynamicalAssets(targetDir) {
+    // Copy dynamical_web phtml templates
+    copyDir(SRC_DYNAMICAL_WEB, path.join(targetDir, 'dynamical_web'));
+
+    // Copy dynamical_locale yaml files
+    copyDir(SRC_DYNAMICAL_LOCALE, path.join(targetDir, 'dynamical_locale'));
+
+    // Copy template.yml manifest
+    if (fs.existsSync(TEMPLATE_YML)) {
+        fs.copyFileSync(TEMPLATE_YML, path.join(targetDir, 'template.yml'));
+    }
 }
 
 // ============================================================================
@@ -145,6 +168,10 @@ const full = renderPages(pages, FULL);
 totalCount += full.count;
 totalErrors += full.errors;
 console.log(`Rendered ${full.count} HTML pages to dist/full/`);
+
+// Copy DynamicalWeb template assets to full build
+copyDynamicalAssets(FULL);
+console.log('  ✓ dynamical_web/, dynamical_locale/, template.yml → dist/full/');
 
 // 2. Self-contained variant demos → dist/<color>-<mode>-<layout>/
 for (const color of COLORS) {
