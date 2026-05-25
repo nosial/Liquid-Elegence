@@ -1,0 +1,31 @@
+{
+  "name": "liquid-elegance",
+  "version": "1.0.0",
+  "description": "Liquid Elegance — A production-ready Bootstrap 5 admin template with glassmorphism design",
+  "private": true,
+  "scripts": {
+    "build:css": "sass src/scss/main.scss dist/full/css/liquid-elegance.css --style=compressed --source-map --load-path=node_modules --quiet-deps && node ./node_modules/postcss-cli/index.js dist/full/css/liquid-elegance.css --replace --no-map && sass src/scss/main.scss dist/full/css/liquid-elegance.dev.css --style=expanded --source-map --load-path=node_modules --quiet-deps && node ./node_modules/postcss-cli/index.js dist/full/css/liquid-elegance.dev.css --replace --no-map",
+    "build:variants": "node scripts/build-variants.js",
+    "build:js": "node scripts/build-js.js",
+    "build:vendor": "node scripts/build-vendor.js",
+    "build:html": "node scripts/build-html.js",
+    "build:assets": "node scripts/build-assets.js",
+    "build": "npm run build:vendor && npm run build:css && npm run build:js && npm run build:assets && npm run build:variants && npm run build:html",
+    "build:redist": "node scripts/build-redist.js",
+    "watch:css": "sass src/scss/main.scss dist/full/css/liquid-elegance.css --watch --style=expanded --source-map --load-path=node_modules --quiet-deps",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "chart.js": "^4.4.7",
+    "feather-icons": "^4.29.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "nunjucks": "^3.2.4",
+    "postcss": "^8.5.9",
+    "postcss-cli": "^11.0.1",
+    "sass": "^1.83.0"
+  },
+  "license": "MIT"
+}
