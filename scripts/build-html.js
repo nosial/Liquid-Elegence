@@ -146,6 +146,57 @@ function copyDynamicalAssets(targetDir) {
     }
 }
 
+/**
+ * Recursively collect all .phtml files under a directory.
+ */
+function getPhtmlFiles(dir) {
+    if (!fs.existsSync(dir)) return [];
+    let results = [];
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            results = results.concat(getPhtmlFiles(fullPath));
+        } else if (entry.name.endsWith('.phtml')) {
+            results.push(fullPath);
+        }
+    }
+    return results;
+}
+
+/**
+ * Post-process DynamicalWeb PHTML files in a variant directory so the
+ * SSR attributes (data-theme, data-theme-color, data-layout, data-variant)
+ * match the variant that was baked in.
+ */
+function processDynamicalFiles(variantDir, mode, color, layout) {
+    const dwDir = path.join(variantDir, 'dynamical_web');
+    if (!fs.existsSync(dwDir)) return;
+
+    const files = getPhtmlFiles(dwDir);
+    const layoutVal = layout === 'horizontal' ? 'horizontal' : 'sidebar';
+
+    for (const file of files) {
+        let content = fs.readFileSync(file, 'utf-8');
+
+        // Only touch files that contain an <html> tag
+        if (!/<html\b/i.test(content)) continue;
+
+        content = content
+            .replace(/data-theme="light"/, `data-theme="${mode}"`)
+            .replace(/data-theme-color="default"/, `data-theme-color="${color}"`)
+            .replace(/data-layout="sidebar"/, `data-layout="${layoutVal}"`);
+
+        if (!content.includes('data-variant')) {
+            content = content.replace(
+                /(<html\b[^>]*?)>/i,
+                '$1 data-variant>'
+            );
+        }
+
+        fs.writeFileSync(file, content);
+    }
+}
+
 // ============================================================================
 // Main
 // ============================================================================
@@ -183,6 +234,9 @@ for (const color of COLORS) {
 
             // Copy assets into self-contained folder
             assembleVariantAssets(variantDir, cssVariantName);
+
+            // Fix DynamicalWeb PHTML attributes to match this variant
+            processDynamicalFiles(variantDir, mode, color, layout);
 
             const context = {
                 is_variant: true,

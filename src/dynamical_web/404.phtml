@@ -8,11 +8,11 @@
         <link rel="stylesheet" href="/css/liquid-elegance.css">
     </head>
     <body class="d-flex align-items-center justify-content-center min-vh-100 bg-light">
-        <?php Functions::insertSection('sidebar'); ?>
+        <?php Functions::insertSection('sections/sidebar.phtml'); ?>
         <div class="sidebar-backdrop"></div>
 
         <div class="main-content">
-            <?php Functions::insertSection('topbar'); ?>
+            <?php Functions::insertSection('sections/topbar.phtml'); ?>
 
             <div class="page-content d-flex align-items-center justify-content-center">
                 <div class="glass-card p-5 text-center" style="max-width: 480px;">
@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <?php Functions::insertSection('footer'); ?>
+            <?php Functions::insertSection('sections/footer.phtml'); ?>
         </div>
 
         <script src="/vendor/bootstrap/bootstrap.bundle.min.js"></script>

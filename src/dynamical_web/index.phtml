@@ -8,11 +8,11 @@
         <link rel="stylesheet" href="/css/liquid-elegance.css">
     </head>
     <body>
-        <?php Functions::insertSection('sidebar'); ?>
+        <?php Functions::insertSection('sections/sidebar.phtml'); ?>
         <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
         <div class="main-content">
-            <?php Functions::insertSection('topbar'); ?>
+            <?php Functions::insertSection('sections/topbar.phtml'); ?>
 
             <div class="page-content">
                 <div class="row g-4 mb-4">
@@ -276,7 +276,7 @@
                 </div>
             </div>
 
-            <?php Functions::insertSection('footer'); ?>
+            <?php Functions::insertSection('sections/footer.phtml'); ?>
         </div>
 
         <script src="/vendor/bootstrap/bootstrap.bundle.min.js"></script>
